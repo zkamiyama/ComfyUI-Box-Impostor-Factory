@@ -1,0 +1,31 @@
+{
+  "assetId": "9b198df9dc8a8fcbedfa69c110881936bae3101d9278ae81b978bab600c045fa",
+  "meshSha256": "51d88da5990eafe4a6c180b5e01e84cb23d0e05af38cab9e8887f0915e103780",
+  "bytes": 21289906,
+  "archiveSha256": "bc5f44709bfa2e9c0f26f7d095890076563c53c76c91ce2358d9b58bbd9dff79",
+  "accepted": 6,
+  "renderSize": [
+    384,
+    384
+  ],
+  "renderView": "+Z perspective",
+  "maxChannelErrorAfterZipReload": 0,
+  "alphaMismatchesAgainstBaseline": 0,
+  "visiblePixels": 8561,
+  "changedVisibleRGB": 8343,
+  "preservedMapSha256": {
+    "normalMap": "65185f1cf2c8509e083369fa0cdbdba3fe02dfb93f228271ba2958d8134e17fb",
+    "intervalMap": "1135a6d850de688d0695afb4031b40ceadb6433ab89c6f03853a21f5032fc6b7",
+    "rangeMap": "3d7626e7124ed04f944684d150877224ac4cabf7754fa665a83f1a88ad86fca8",
+    "materialMap": "0619e7e02ed991be797cfb9ca59d93473ddd6b35115c7ca36406dc925b82b832"
+  },
+  "pbrReplay": {
+    "pixal3d": "reused",
+    "+X": "reused",
+    "-X": "reused",
+    "+Y": "reused",
+    "-Y": "reused",
+    "+Z": "reused",
+    "-Z": "reused"
+  }
+}
