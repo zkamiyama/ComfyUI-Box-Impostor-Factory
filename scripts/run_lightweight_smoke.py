@@ -16,7 +16,7 @@ import json
 import re
 import tempfile
 import time
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from urllib.error import HTTPError
 from urllib.parse import parse_qs, urlencode, urlsplit
 from urllib.request import Request, urlopen
@@ -75,12 +75,12 @@ def write_json(path, value):
     path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
 
 
-def request(origin, path, data=None):
+def request(origin, path, data=None, *, limit=None):
     payload = json.dumps(data).encode() if data is not None else None
     req = Request(origin.rstrip('/') + path, data=payload, headers={'Content-Type': 'application/json'})
     try:
         with urlopen(req, timeout=60) as response:
-            return response.read()
+            return response.read(limit)
     except HTTPError as exc:
         raise RuntimeError(f'ComfyUI {path} returned HTTP {exc.code}: {exc.read().decode(errors="replace")[:4000]}') from exc
 
@@ -94,17 +94,27 @@ def preflight(origin, graph, checkpoint):
     choices = spec[0] if isinstance(spec[0], list) else spec[1].get('options', [])
     if checkpoint not in choices:
         raise ValueError(f'Checkpoint {checkpoint!r} is missing. Registered checkpoints: {choices!r}')
+    mesh = graph['1']['inputs']['filename']
+    path = PurePosixPath(mesh)
+    if (path.is_absolute() or '..' in path.parts or ':' in mesh or chr(92) in mesh
+            or path.as_posix() != mesh or path.suffix.lower() != '.glb'):
+        raise ValueError(f'Expected a ComfyUI input-relative GLB path with forward slashes: {mesh!r}')
+    query = urlencode(dict(filename=path.name, subfolder='' if len(path.parts) == 1 else str(path.parent), type='input'))
+    header = request(origin, '/view?' + query, limit=12)
+    if (len(header) != 12 or header[:8] != b'glTF\x02\x00\x00\x00'
+            or int.from_bytes(header[8:12], 'little') < 20):
+        raise ValueError('ComfyUI input is not a GLB v2 file: ' + mesh)
     return json.loads(request(origin, '/system_stats')).get('devices', [])
 
 
-def wait_outputs(origin, prompt_id, timeout_minutes):
+def wait_history(origin, prompt_id, timeout_minutes):
     deadline = time.monotonic() + timeout_minutes * 60
     while time.monotonic() < deadline:
         entry = json.loads(request(origin, '/history/' + prompt_id)).get(prompt_id)
         if entry:
             if entry['status']['status_str'] != 'success':
                 raise RuntimeError(json.dumps(entry['status'], ensure_ascii=False)[-8000:])
-            return entry['outputs']
+            return entry
         time.sleep(1)
     raise TimeoutError(f'Prompt {prompt_id} still pending after {timeout_minutes:g} min')
 
@@ -215,8 +225,13 @@ def main():
             receipt = json.loads(request(args.origin, '/prompt', {'prompt': graph}))
             proof.update(promptId=receipt['prompt_id'], status='queued')
             write_json(directory / 'result.json', proof)
-            outputs = wait_outputs(args.origin, proof['promptId'], args.timeout_minutes)
-            proof.update(verify(args.origin, outputs, directory, args), status='passed')
+            entry = wait_history(args.origin, proof['promptId'], args.timeout_minutes)
+            samplers = {node_id for node_id, item in graph.items() if item['class_type'] == 'KSampler'}
+            cached = {str(node_id) for name, details in entry['status'].get('messages', [])
+                      if name == 'execution_cached' for node_id in details.get('nodes', [])}
+            proof['samplerIds'] = sorted(samplers)
+            proof['samplerIdsCachedAtStart'] = sorted(cached & samplers)
+            proof.update(verify(args.origin, entry['outputs'], directory, args), status='passed')
         else:
             proof['status'] = 'preflight-passed'
     except Exception as exc:

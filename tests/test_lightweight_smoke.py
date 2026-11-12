@@ -1,3 +1,4 @@
+import hashlib
 import io
 import json
 import tempfile
@@ -37,6 +38,25 @@ class LightweightSmokeTests(unittest.TestCase):
             self.assertEqual(render['inputs']['asset'], [asset, 0])
             self.assertEqual(join['inputs']['alpha'], [join['inputs']['image'][0], 1])
 
+    def test_preflight_reads_only_glb_header_and_finds_both_checkpoint_schemas(self):
+        graph = smoke.build_graph('props/one.glb', 'test.safetensors', 256, 4, 0, .6, 'webgl2')
+        for spec in [(['test.safetensors'],), ('COMBO', {'options': ['test.safetensors']})]:
+            registry = {item['class_type']: {} for item in graph.values()}
+            registry['CheckpointLoaderSimple'] = {'input': {'required': {'ckpt_name': spec}}}
+            def response(origin, path, *, limit=None):
+                if path == '/object_info':
+                    return json.dumps(registry).encode()
+                if path == '/system_stats':
+                    return b'{"devices":[]}'
+                self.assertEqual(path, '/view?filename=one.glb&subfolder=props&type=input')
+                self.assertEqual(limit, 12)
+                return b'glTF' + (2).to_bytes(4, 'little') + (128).to_bytes(4, 'little')
+            with patch.object(smoke, 'request', side_effect=response):
+                self.assertEqual(smoke.preflight('http://localhost', graph, 'test.safetensors'), [])
+        with patch.object(smoke, 'request', side_effect=[json.dumps(registry).encode(), b'wrong file']):
+            with self.assertRaisesRegex(ValueError, 'GLB v2'):
+                smoke.preflight('http://localhost', graph, 'test.safetensors')
+
     def test_all_six_tiles_must_change_inside_original_coverage(self):
         r = 2
         before = np.zeros((r * 2, r * 3, 4), dtype='<f2')
@@ -64,7 +84,7 @@ class LightweightSmokeTests(unittest.TestCase):
         media = {}
         def descriptor(directory, name, data):
             media[directory + name] = data
-            return dict(path=name, sha256=smoke.hashlib.sha256(data).hexdigest())
+            return dict(path=name, sha256=hashlib.sha256(data).hexdigest())
         maps = {}
         for name in ('normalMap', 'intervalMap', 'rangeMap'):
             maps[name] = descriptor(base_dir, name, name.encode())
