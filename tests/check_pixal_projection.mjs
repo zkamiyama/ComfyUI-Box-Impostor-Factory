@@ -1,5 +1,5 @@
 // Compare a single-view Pixal3D proxy in its conditioning camera to the actual crop mask.
-// Usage: node tests/check_pixal_projection.mjs ASSET_DIR CROPPED_MASK.png OUTPUT_DIR
+// Usage: node tests/check_pixal_projection.mjs ASSET_DIR CROPPED_MASK.png OUTPUT_DIR [--box]
 import assert from 'node:assert/strict';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
@@ -7,7 +7,8 @@ import { chromium } from 'playwright';
 import { chromiumOptions } from '../worker/chromium.mjs';
 import { startServer } from '../worker/server.mjs';
 
-const [asset, mask, output] = process.argv.slice(2);
+const [asset, mask, output, option] = process.argv.slice(2);
+assert(option === undefined || option === '--box', 'Expected optional --box');
 assert(asset && mask && output, 'Expected asset directory, conditioning mask PNG, and output directory');
 const maskURL = 'data:image/png;base64,' + (await readFile(mask)).toString('base64');
 const server = await startServer({ assetDir: resolve(asset) });
@@ -16,10 +17,10 @@ try {
   browser = await chromium.launch(chromiumOptions('webgl2'));
   const page = await browser.newPage();
   await page.goto(server.origin + '/bridge');
-  const result = await page.evaluate(async maskURL => {
-    const { Matrix4, PerspectiveCamera, RenderTarget, Scene } = await import('three/webgpu');
-    const { makeRenderer, fetchChecked, assetURL } = await import('/web/asset_io.mjs');
-    const { loadProxy, disposeProxy } = await import('/worker/runtime.mjs');
+  const result = await page.evaluate(async ({maskURL, compareBox}) => {
+    const { Matrix4, PerspectiveCamera, RenderTarget, Scene, HemisphereLight, DirectionalLight, SRGBColorSpace } = await import('three/webgpu');
+    const { makeRenderer, fetchChecked, assetURL, readAsset } = await import('/web/asset_io.mjs');
+    const { loadProxy, disposeProxy, restoreBox } = await import('/worker/runtime.mjs');
     const manifestURL = new URL('/asset/manifest.json', location.href);
     const manifest = await (await fetchChecked(manifestURL)).json();
     const camera = manifest.reference?.camera;
@@ -48,7 +49,10 @@ try {
     const proxy = await loadProxy(await (await fetchChecked(assetURL(manifestURL, manifest.proxy))).arrayBuffer());
     proxy.applyMatrix4(new Matrix4().fromArray(manifest.inverseTransform));
     const scene = new Scene();
-    scene.add(proxy);
+    scene.add(new HemisphereLight(0xf3f5ff, 0xc2bdb5, 1.7));
+    const sun = new DirectionalLight(0xffffff, 2);
+    sun.position.set(2, 4, 3);
+    scene.add(sun);
     let triangles = 0, primitives = 0, texturedUVPrimitives = 0;
     proxy.traverse(node => {
       if (!node.isMesh) return;
@@ -59,40 +63,65 @@ try {
     });
     const renderer = await makeRenderer('webgl2');
     const target = new RenderTarget(width, height);
-    let pixels;
+    target.texture.colorSpace = SRGBColorSpace;
+    async function measure(mesh) {
+      scene.add(mesh);
+      renderer.render(scene, view);
+      const raw = await renderer.readRenderTargetPixelsAsync(target, 0, 0, width, height);
+      scene.remove(mesh);
+      const rgba = ctx.createImageData(width, height);
+      for (let y = 0; y < height; y++) {
+        rgba.data.set(raw.subarray((height - 1 - y) * width * 4, (height - y) * width * 4), y * width * 4);
+      }
+      ctx.drawImage(crop, 0, 0);
+      const overlay = ctx.getImageData(0, 0, width, height);
+      let intersection = 0, missing = 0, extra = 0;
+      for (let i = 0; i < rgba.data.length; i += 4) {
+        const expected = reference[i] >= 128, actual = rgba.data[i + 3] >= 128;
+        if (expected && actual) intersection++;
+        if (expected && !actual) { missing++; overlay.data.set([255, 65, 95, 255], i); }
+        if (actual && !expected) { extra++; overlay.data.set([20, 175, 255, 255], i); }
+      }
+      if (!intersection && !missing) throw new Error('Empty conditioning mask');
+      if (!intersection && !extra) throw new Error('Empty recovered silhouette in the conditioning camera');
+      const asPNG = image => { ctx.putImageData(image, 0, 0); return canvas.toDataURL('image/png').split(',')[1]; };
+      return {overlay: asPNG(overlay), shaded: compareBox ? asPNG(rgba) : null,
+        measurements: {intersection, missing, extra, silhouetteIoU: intersection / (intersection + missing + extra)}};
+    }
+    let box;
     try {
       renderer.setSize(width, height, false);
       renderer.setClearColor(0, 0);
       renderer.setRenderTarget(target);
-      renderer.render(scene, view);
-      pixels = await renderer.readRenderTargetPixelsAsync(target, 0, 0, width, height);
+      const projected = await measure(proxy);
+      const images = {'projection-overlay.png': projected.overlay};
+      const metrics = {assetId: manifest.asset_id, width, height, horizontalFovDegrees,
+        cameraDistance: distance, focalPixels: camera.focalPixels, triangles, primitives, texturedUVPrimitives,
+        ...projected.measurements};
+      if (compareBox) {
+        const {files} = await readAsset(manifestURL);
+        box = await restoreBox(manifest, files, renderer);
+        box.mesh.applyMatrix4(new Matrix4().fromArray(manifest.inverseTransform));
+        const restored = await measure(box.mesh);
+        metrics.box = restored.measurements;
+        images['projection-mesh.png'] = projected.shaded;
+        images['projection-box.png'] = restored.shaded;
+        images['projection-box-overlay.png'] = restored.overlay;
+      }
+      return {images, metrics};
     } finally {
       renderer.setRenderTarget(null);
+      box?.dispose();
       target.dispose();
       disposeProxy(proxy);
       renderer.dispose();
     }
-    ctx.drawImage(crop, 0, 0);
-    const overlay = ctx.getImageData(0, 0, width, height);
-    let intersection = 0, missing = 0, extra = 0;
-    for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
-      const i = (y * width + x) * 4;
-      const expected = reference[i] >= 128;
-      const actual = pixels[((height - 1 - y) * width + x) * 4 + 3] >= 128;
-      if (expected && actual) intersection++;
-      if (expected && !actual) { missing++; overlay.data.set([255, 65, 95, 255], i); }
-      if (actual && !expected) { extra++; overlay.data.set([20, 175, 255, 255], i); }
-    }
-    if (!intersection && !missing) throw new Error('Empty conditioning mask');
-    if (!intersection && !extra) throw new Error('Generated proxy has no coverage in the conditioning camera');
-    ctx.putImageData(overlay, 0, 0);
-    return { png: canvas.toDataURL('image/png').split(',')[1], assetId: manifest.asset_id, width, height,
-      horizontalFovDegrees, cameraDistance: distance, focalPixels: camera.focalPixels, triangles,
-      primitives, texturedUVPrimitives, intersection, missing, extra, silhouetteIoU: intersection / (intersection + missing + extra) };
-  }, maskURL);
-  const { png, ...metrics } = result;
+  }, {maskURL, compareBox: option === '--box'});
+  const {images, metrics} = result;
   await mkdir(output, { recursive: true });
-  await writeFile(join(output, 'projection-overlay.png'), Buffer.from(png, 'base64'));
+  for (const [filename, png] of Object.entries(images)) {
+    await writeFile(join(output, filename), Buffer.from(png, 'base64'));
+  }
   await writeFile(join(output, 'projection.json'), JSON.stringify(metrics, null, 2) + '\n');
   console.log(JSON.stringify(metrics));
   assert.equal(metrics.texturedUVPrimitives, metrics.primitives, 'Missing base color texture or UVs');

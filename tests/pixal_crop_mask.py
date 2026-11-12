@@ -19,6 +19,8 @@ def main():
     sys.path.insert(0, str(args.comfy.resolve()))
     # ComfyUI parses its own argv on import. The crop can run entirely on the CPU.
     sys.argv[1:] = ['--cpu']
+    import comfy.options
+    comfy.options.enable_args_parsing()
     from comfy_extras.nodes_images import ImageCropToMask
 
     manifest = json.loads((args.asset / 'manifest.json').read_text())

@@ -5,11 +5,90 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
-import { checkCompiled, checkedMaterialTextures, configureMaterialMaps, configureCompactProxy, configureEditGraph, preflight, workflows, run, inferenceReport, selectFace, verifyOutput, saveSplatOutput, verifySplatOutput } from '../scripts/run_model_workflow.mjs';
+import { checkCompiled, checkedMaterialTextures, configureMaterialMaps, configureFlatBackground, configureCompactProxy, configureEditGraph, packCompletedBox, preflight, workflows, run, inferenceReport, selectFace, verifyOutput, saveSplatOutput, verifySplatOutput } from '../scripts/run_model_workflow.mjs';
 
 const dirs = ['+X', '-X', '+Y', '-Y', '+Z', '-Z'];
 const digest = 'a'.repeat(64);
 const load = name => readFile(new URL('../workflows/' + workflows[name] + '.json', import.meta.url), 'utf8').then(JSON.parse);
+
+test('flat input background keeps the appearance mattes and drops unused model dependencies', async () => {
+  for (const model of ['pixal3d', 'triposplat', 'qwen', 'h3']) {
+    const graph = await load(model);
+    configureFlatBackground(graph);
+    const prepare = graph.nodes.find(n => n.type === 'BIPrepareReference');
+    assert.equal(prepare.widgets_values[0], 'flat_background');
+    assert.equal(prepare.inputs.find(p => p.name === 'mask').link, null);
+    const inputImage = graph.nodes.find(n => n.type === 'LoadImage');
+    const inputEdges = graph.links.filter(edge => edge[1] === inputImage.id);
+    assert.equal(inputEdges.length, 1);
+    assert.equal(inputEdges[0][3], prepare.id);
+    const edited = model === 'qwen' || model === 'h3';
+    assert.equal(graph.nodes.filter(n => n.type === 'RemoveBackground').length, edited ? 6 : 0);
+    assert.equal(graph.nodes.filter(n => n.type === 'LoadBackgroundRemovalModel').length, edited ? 1 : 0);
+    const ids = new Set(graph.nodes.map(n => n.id));
+    assert(graph.links.every(edge => ids.has(edge[1]) && ids.has(edge[3])));
+  }
+});
+
+test('portable export rejects invalid names and splat, and checks the additional registered nodes', async () => {
+  await assert.rejects(run({model:'triposplat', pack:'splat'}), /requires a completed/);
+  for (const pack of ['', '../box', 'two names', 'x'.repeat(101)])
+    await assert.rejects(run({model:'qwen', pack}), /export name/);
+  const graph = await load('pixal3d');
+  const normal = preflight(graph, {}, 'source.png');
+  const withPack = preflight(graph, {}, 'source.png', 'portable');
+  assert.equal(withPack.pack, 'portable');
+  assert(!Object.hasOwn(normal, 'pack'));
+  assert.deepEqual(withPack.missingNodes.filter(n => !normal.missingNodes.includes(n)), ['BILoadBox', 'BIPackBox']);
+});
+
+test('portable export reloads the actual native pack output and verifies the restored asset before publishing', async t => {
+  const dir = await mkdtemp(join(tmpdir(), 'bi-pack-'));
+  // A ZIP with one manifest.json entry.
+  const zip = Buffer.from(
+    'UEsDBBQAAAAAAAAAIQD3xj9KUAAAAFAAAAANAAAAbWFuaWZlc3QuanNvbnsiYXNzZXRfaWQiOiAiYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYSJ9UEsBAhQDFAAAAAAAAAAhAPfGP0pQAAAAUAAAAA0AAAAAAAAAAAAAAIABAAAAAG1hbmlmZXN0Lmpzb25QSwUGAAAAAAEAAQA7AAAAewAAAAAA', 'base64');
+  const calls = [];
+  let restored = digest, download = zip;
+  const server = createServer(async (req, res) => {
+    const url = new URL(req.url, 'http://localhost');
+    if (url.pathname === '/prompt') {
+      let body = '';
+      for await (const chunk of req) body += chunk;
+      calls.push(JSON.parse(body).prompt);
+      res.end(JSON.stringify({prompt_id:'pack-id'}));
+    } else if (url.pathname === '/history/pack-id') {
+      res.end(JSON.stringify({'pack-id':{status:{status_str:'success'}, outputs:{4:{box_impostor:[
+        '/box-impostor/web/viewer.html?manifest=/box-impostor/assets/' + restored + '/manifest.json']}}}}));
+    } else if (url.pathname.endsWith('/manifest.json')) {
+      res.end(JSON.stringify({asset_id:restored}));
+    } else if (url.pathname === '/view' && url.searchParams.get('type') === 'output' &&
+      url.searchParams.get('subfolder') === 'box_impostor_exports' && url.searchParams.get('filename') === 'portable.box.zip') {
+      res.end(download);
+    } else { res.statusCode = 404; res.end(); }
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  t.after(async () => { await new Promise(resolve => server.close(resolve)); await rm(dir, {recursive:true, force:true}); });
+  const args = {origin:'http://127.0.0.1:' + server.address().port, assetId:digest, name:'portable', outputDir:dir};
+  const packed = await packCompletedBox(args);
+  assert.deepEqual(calls[0], {
+    1:{class_type:'BILoadBox',inputs:{source:digest}}, 2:{class_type:'BIPackBox',inputs:{asset:['1',0],name:'portable'}},
+    3:{class_type:'BILoadBox',inputs:{source:['2',0]}}, 4:{class_type:'BIPreviewBox',inputs:{asset:['3',0]}},
+  });
+  assert.equal(packed.restoredAssetId, digest);
+  assert.equal(packed.serverPath, 'box_impostor_exports/portable.box.zip');
+  assert.equal(packed.sha256, createHash('sha256').update(zip).digest('hex'));
+  assert.equal(packed.bytes, zip.length);
+  assert.deepEqual(await readFile(packed.localPath), zip);
+  assert.deepEqual(await packCompletedBox(args), packed);
+  const mismatchedDir = join(dir, 'mismatched');
+  restored = 'b'.repeat(64);
+  await assert.rejects(packCompletedBox({...args, outputDir:mismatchedDir}), /restored Box/);
+  assert(!(await readdir(mismatchedDir)).includes('portable.box.zip'));
+  restored = digest;
+  download = zip.subarray(0, -1);
+  await assert.rejects(packCompletedBox({...args, outputDir:mismatchedDir}), /Incomplete Box ZIP/);
+  assert(!(await readdir(mismatchedDir)).some(name => name.endsWith('.zip') || name.endsWith('.part')));
+});
 
 test('a nonemissive mesh retains material channels when emission was also requested', () => {
   const maps = ['roughness', 'metalness', 'ao'];

@@ -233,6 +233,31 @@ class NodeTests(unittest.TestCase):
         graph['1']['inputs']['steps']=20
         self.assertEqual(node.check_lazy_status(**kwargs),['image'])
 
+    def test_flat_background_keeps_pale_enclosed_subject_and_detached_ink(self):
+        paper = np.full((1, 64, 64, 3), .9, dtype=np.float32)
+        paper[0, 12:31, 10:29] = .2
+        paper[0, 14:29, 12:27] = .9  # flag with a paper-colored opaque interior
+        paper[0, 16:57, 9:12] = .2
+        paper[0, 41:45, 44:48] = .2  # accessory separate from the flag
+        paper[0, 50, 22] = .2  # isolated speck
+        preparer = nodes.PrepareReference()
+        graph = {'1': {'class_type':'BIPrepareReference','inputs':{}}}
+        kwargs = dict(image=paper, mask_mode='flat_background', prompt=graph, unique_id='1')
+        self.assertEqual(preparer.check_lazy_status(**kwargs), [])
+        with patch.object(nodes, 'tensor', side_effect=lambda a: a):
+            rgb, alpha, meta = preparer.prepare(**kwargs)
+        self.assertEqual(meta['maskMode'], 'flat_background')
+        np.testing.assert_array_equal(rgb, paper)
+        self.assertGreater(alpha[0,20,20], .99)
+        self.assertGreater(alpha[0,44,10], .9)
+        self.assertGreater(alpha[0,42,45], .9)
+        self.assertLess(alpha[0,50,22], .01)
+        self.assertLess(alpha[0,5,35], .01)
+        with self.assertRaisesRegex(ValueError, 'No foreground'):
+            faces.rgba(np.ones_like(paper), 'flat_background')
+        with self.assertRaisesRegex(ValueError, 'uniform image border'):
+            faces.rgba(np.random.default_rng(42).random(paper.shape), 'flat_background')
+
     def test_reference_and_connected_mesh_skip_cached_upstream(self):
         mat = nodes.PrepareReference()
         rgb = np.ones((1,8,8,3), np.float32)

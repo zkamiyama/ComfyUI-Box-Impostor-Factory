@@ -1,8 +1,10 @@
 // Use the installed Comfy frontend to compile and run the distributed visual graph.
 import assert from 'node:assert/strict';
 import { createHash, randomUUID } from 'node:crypto';
-import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { createReadStream, createWriteStream } from 'node:fs';
+import { link, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
+import { pipeline } from 'node:stream/promises';
 import { setTimeout as delay } from 'node:timers/promises';
 import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
@@ -21,6 +23,7 @@ const h3Denoisers = {
 };
 const directions = ['+X', '-X', '+Y', '-Y', '+Z', '-Z'];
 const slugs = { '+X': 'px', '-X': 'nx', '+Y': 'py', '-Y': 'ny', '+Z': 'pz', '-Z': 'nz' };
+const packNodeTypes = ['BILoadBox', 'BIPackBox', 'BIPreviewBox'];
 const sha256 = /^[a-f\d]{64}$/;
 const jsonFile = (path, value) => writeFile(path, JSON.stringify(value, null, 2) + '\n');
 
@@ -60,6 +63,24 @@ function disconnect(graph, pin) {
   output.links = output.links.filter(value => value !== id);
   graph.links = graph.links.filter(edge => edge !== link);
   pin.link = null;
+}
+
+export function configureFlatBackground(graph) {
+  const prepared = graph.nodes.find(n => n.type === 'BIPrepareReference');
+  const mask = prepared.inputs.find(p => p.name === 'mask');
+  const upstream = pin => graph.nodes.find(n => n.id === graph.links.find(([id]) => id === pin.link)[1]);
+  const matte = upstream(mask);
+  assert.equal(matte.type, 'RemoveBackground');
+  const loader = upstream(matte.inputs.find(p => p.name === 'bg_removal_model'));
+  disconnect(graph, mask);
+  prepared.widgets_values[0] = 'flat_background';
+  if (prepared.widgets_values_named) prepared.widgets_values_named.mask_mode = 'flat_background';
+  // The edit workflows still need the shared model for the six generated views.
+  for (const node of [matte, loader]) {
+    if (node.outputs.some(p => p.links?.length)) continue;
+    for (const pin of node.inputs ?? []) disconnect(graph, pin);
+    graph.nodes = graph.nodes.filter(n => n !== node);
+  }
 }
 
 function configureH3Denoiser(graph, selection) {
@@ -161,7 +182,7 @@ function comboHas(spec, value) {
 
 // Read choices from the distributed graph before the frontend has a chance to
 // replace a missing model selection with the loader's first installed model.
-export function preflight(graph, registry, input) {
+export function preflight(graph, registry, input, packName) {
   const subgraphs = graph.definitions?.subgraphs ?? [];
   const subgraphIds = new Set(subgraphs.map(s => s.id));
   const missingNodes = new Set();
@@ -181,9 +202,12 @@ export function preflight(graph, registry, input) {
     }
   }
   if (graph.nodes.some(n => n.type === 'BITripoSplatGuide') && !registry.RenderSplat) missingNodes.add('RenderSplat');
+  if (packName !== undefined)
+    for (const type of packNodeTypes) if (!registry[type]) missingNodes.add(type);
   const inputAvailable = comboHas(registry.LoadImage?.input?.required?.image, input);
   return { ready: !missingNodes.size && inputAvailable && [...models.values()].every(m => m.available),
-    missingNodes: [...missingNodes].sort(), input, inputAvailable, models: [...models.values()] };
+    missingNodes: [...missingNodes].sort(), input, inputAvailable, models: [...models.values()],
+    ...(packName !== undefined && { pack: packName }) };
 }
 
 const materialChannels = {
@@ -217,6 +241,11 @@ export function checkCompiled(prompt, model, report) {
   const nodes = Object.values(prompt);
   const byType = type => nodes.filter(n => n.class_type === type);
   assert.deepEqual(byType('LoadImage').map(n => n.inputs.image), [report.input], 'Frontend changed the reference image');
+  if (report.flatBackground) {
+    const [prepared] = byType('BIPrepareReference');
+    assert.equal(prepared.inputs.mask_mode, 'flat_background');
+    assert.equal(prepared.inputs.mask, undefined, 'Input matte should be derived from the RGB border');
+  }
   for (const { name, loader } of report.models)
     assert(byType(loader).some(n => Object.values(n.inputs).includes(name)), 'Frontend lost ' + name);
   if (report.materialMaps !== undefined) {
@@ -230,10 +259,12 @@ export function checkCompiled(prompt, model, report) {
       return found[0];
     };
     const [reference, prepared] = entry('BIPrepareReference');
-    const [matte, removed] = entry('RemoveBackground');
-    assert.equal(prepared.inputs.mask_mode, 'foreground');
-    assert.deepEqual(prepared.inputs.mask, [matte, 0]);
-    assert.deepEqual(removed.inputs.image, prepared.inputs.image);
+    if (!report.flatBackground) {
+      const [matte, removed] = entry('RemoveBackground');
+      assert.equal(prepared.inputs.mask_mode, 'foreground');
+      assert.deepEqual(prepared.inputs.mask, [matte, 0]);
+      assert.deepEqual(removed.inputs.image, prepared.inputs.image);
+    }
     const [decode] = entry('VAEDecodeTripoSplat');
     const [cache, cached] = entry('BICachedTripoSplat');
     assert.deepEqual(cached.inputs, {reference: [reference, 2], splat: [decode, 0]});
@@ -569,11 +600,107 @@ export async function saveSplatOutput(dir, origin, prompt, outputs, opts, trace,
   return { workflow, prompt_id: promptId, asset_id: report.asset, inference: inferenceReport(prompt, null, trace), ...verified };
 }
 
+async function executePrompt(origin, prompt, clientId, timeoutMinutes, dir, prefix = '') {
+  const receipt = await (await response(new URL('/prompt', origin), {method: 'POST',
+    headers: {'Content-Type': 'application/json'}, body: JSON.stringify({prompt, client_id: clientId})})).json();
+  assert.equal(typeof receipt.prompt_id, 'string', 'ComfyUI returned no prompt ID');
+  await jsonFile(join(dir, prefix + 'receipt.json'), receipt);
+  console.log('Queued:', receipt.prompt_id);
+  const deadline = Date.now() + timeoutMinutes * 60_000;
+  const historyURL = new URL('/history/' + encodeURIComponent(receipt.prompt_id), origin);
+  while (Date.now() < deadline) {
+    const history = (await (await response(historyURL)).json())[receipt.prompt_id];
+    if (!history) { await delay(2000); continue; }
+    const statusPath = join(dir, prefix + 'status.json');
+    await jsonFile(statusPath, history.status);
+    if (history.status?.status_str !== 'success') throw new Error('Execution failed. See ' + statusPath);
+    return {receipt, history};
+  }
+  throw new Error('Timed out waiting. The queued job may still be running. History: ' + historyURL);
+}
+
+function validatePackName(name) {
+  assert(typeof name === 'string' && /^[A-Za-z0-9_-]{1,100}$/.test(name),
+    '--pack needs an export name of 1–100 letters, digits, underscores or hyphens.');
+}
+
+// Publish only a complete download and preserve any unrelated file at the destination.
+async function saveArchive(url, path, timeoutMinutes) {
+  const download = await response(url, {signal: AbortSignal.timeout(Math.min(2_147_483_647, Math.ceil(timeoutMinutes * 60_000)))});
+  const hash = createHash('sha256');
+  let bytes = 0;
+  const header = Buffer.alloc(4);
+  const temp = path + '.' + randomUUID() + '.part';
+  try {
+    await pipeline(download.body, async function* (chunks) {
+      for await (const chunk of chunks) {
+        if (bytes < 4) Buffer.from(chunk.buffer, chunk.byteOffset, chunk.byteLength).copy(header, bytes, 0, 4 - bytes);
+        bytes += chunk.byteLength;
+        hash.update(chunk);
+        yield chunk;
+      }
+    }, createWriteStream(temp, {flags: 'wx'}));
+    assert(bytes >= 22 && header.equals(Buffer.from('504b0304', 'hex')), 'Expected a Box ZIP download.');
+    // The ZIP end record has 22 fixed bytes and at most 65535 comment bytes.
+    const chunks = [];
+    for await (const chunk of createReadStream(temp, {start: Math.max(0, bytes - 65557)})) chunks.push(chunk);
+    const tail = Buffer.concat(chunks);
+    const marker = Buffer.from('504b0506', 'hex');
+    let offset = tail.lastIndexOf(marker, tail.length - 22);
+    while (offset > 0 && offset + 22 + tail.readUInt16LE(offset + 20) !== tail.length)
+      offset = tail.lastIndexOf(marker, offset - 1);
+    assert(offset >= 0 && offset + 22 + tail.readUInt16LE(offset + 20) === tail.length, 'Incomplete Box ZIP download.');
+    const digest = hash.digest('hex');
+    try { await link(temp, path); }
+    catch (error) {
+      if (error.code !== 'EEXIST') throw error;
+      const existing = createHash('sha256');
+      for await (const chunk of createReadStream(path)) existing.update(chunk);
+      assert.equal(existing.digest('hex'), digest, 'A different archive already exists at ' + path);
+    }
+    return {bytes, sha256: digest};
+  } finally { await rm(temp, {force: true}); }
+}
+
+// This independent prompt can also package a completed model run after a restart.
+export async function packCompletedBox({origin, assetId, name, outputDir, timeoutMinutes = 30}) {
+  validatePackName(name);
+  assert.match(assetId, sha256, 'Expected a completed Box asset ID');
+  assert(Number.isFinite(timeoutMinutes) && timeoutMinutes > 0, 'Pack timeout must be positive.');
+  await mkdir(outputDir, {recursive: true});
+  const prompt = {
+    '1': {class_type: 'BILoadBox', inputs: {source: assetId}},
+    '2': {class_type: 'BIPackBox', inputs: {asset: ['1', 0], name}},
+    '3': {class_type: 'BILoadBox', inputs: {source: ['2', 0]}},
+    '4': {class_type: 'BIPreviewBox', inputs: {asset: ['3', 0]}},
+  };
+  await jsonFile(join(outputDir, 'pack-prompt.json'), prompt);
+  const {receipt, history} = await executePrompt(origin, prompt, randomUUID(), timeoutMinutes, outputDir, 'pack-');
+  const viewer = assetURL(history.outputs['4']?.box_impostor?.[0], origin);
+  const manifestURL = assetURL(viewer.searchParams.get('manifest'), origin);
+  const manifest = await (await response(manifestURL)).json();
+  assert.equal(manifest.asset_id, assetId, 'The restored Box does not match the completed asset ID.');
+  const fileName = name + '.box.zip';
+  const subfolder = 'box_impostor_exports';
+  const archiveURL = new URL('/view', origin);
+  archiveURL.search = new URLSearchParams({type: 'output', subfolder, filename: fileName});
+  const localPath = resolve(outputDir, fileName);
+  const file = await saveArchive(archiveURL, localPath, timeoutMinutes);
+  const result = {name, fileName, serverPath: subfolder + '/' + fileName, localPath, url: archiveURL.href,
+    restoredAssetId: manifest.asset_id, prompt_id: receipt.prompt_id, ...file};
+  await jsonFile(join(outputDir, 'pack-result.json'), result);
+  return result;
+}
+
 export async function run(opts) {
   const name = workflows[opts.model];
   if (!Object.hasOwn(workflows, opts.model)) throw new Error('Choose --model ' + Object.keys(workflows).join(', ') + '.');
   if (opts.face && (!directions.includes(opts.face) || opts.model === 'pixal3d')) throw new Error('--face needs qwen, h3 or triposplat and one of +X, -X, +Y, -Y, +Z, -Z.');
   const isSplat = opts.model === 'triposplat';
+  if (opts.pack !== undefined) {
+    if (isSplat) throw new Error('--pack requires a completed Pixal3D, Qwen or H3 Box.');
+    validatePackName(opts.pack);
+  }
   const isEdit = opts.model === 'qwen' || opts.model === 'h3';
   const h3ReferenceFirst = opts['h3-reference-first'];
   if (h3ReferenceFirst && opts.model !== 'h3') throw new Error('--h3-reference-first needs h3.');
@@ -607,6 +734,7 @@ export async function run(opts) {
   const graph = JSON.parse(await readFile(new URL('../workflows/' + name + '.json', import.meta.url), 'utf8'));
   if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, face: opts.face, faceSeed, h3ReferenceFirst, h3Denoiser });
   if (opts['compact-proxy']) configureCompactProxy(graph);
+  if (opts['flat-background']) configureFlatBackground(graph);
   if (opts['material-maps'] !== undefined) configureMaterialMaps(graph, opts['material-maps']);
   const image = graph.nodes.find(n => n.type === 'LoadImage');
   image.widgets_values[0] = opts.input;
@@ -617,7 +745,12 @@ export async function run(opts) {
   }
   await jsonFile(join(dir, 'workflow.json'), graph);
   const registry = await (await response(new URL('/object_info', origin))).json();
-  const report = preflight(graph, registry, opts.input);
+  const report = preflight(graph, registry, opts.input, opts.pack);
+  if (opts['flat-background']) {
+    report.flatBackground = true;
+    if (!comboHas(registry.BIPrepareReference?.input?.required?.mask_mode, 'flat_background'))
+      throw new Error('Update the Box Impostor nodes and restart ComfyUI to use --flat-background.');
+  }
   if (opts['compact-proxy']) report.compactProxy = true;
   if (opts['material-maps'] !== undefined) report.materialMaps = opts['material-maps'];
   if (faceSeed) report.faceSeed = faceSeed;
@@ -656,69 +789,62 @@ export async function run(opts) {
   const clientId = randomUUID();
   const live = await observe(origin, clientId);
   try {
-    const receipt = await (await response(new URL('/prompt', origin), { method: 'POST',
-      headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt, client_id: clientId }) })).json();
-    assert.equal(typeof receipt.prompt_id, 'string', 'ComfyUI returned no prompt ID');
-    await jsonFile(join(dir, 'receipt.json'), receipt);
-    console.log('Queued:', receipt.prompt_id);
-    const deadline = Date.now() + timeout * 60_000;
-    const historyURL = new URL('/history/' + encodeURIComponent(receipt.prompt_id), origin);
-    while (Date.now() < deadline) {
-      const history = (await (await response(historyURL)).json())[receipt.prompt_id];
-      if (!history) { await delay(2000); continue; }
-      await jsonFile(join(dir, 'status.json'), history.status);
-      if (history.status?.status_str !== 'success') throw new Error('Execution failed. See ' + join(dir, 'status.json'));
-      if (isSplat) {
-        const summary = await saveSplatOutput(dir, origin, prompt, history.outputs, opts,
-          live.traces.get(receipt.prompt_id), name, receipt.prompt_id);
-        await jsonFile(join(dir, 'result.json'), summary);
-        console.log(JSON.stringify(summary, null, 2));
-        return;
-      }
-      const preview = Object.entries(prompt).find(([, n]) => n.class_type === 'BIPreviewBox')[0];
-      const viewer = assetURL(history.outputs[preview]?.box_impostor?.[0], origin);
-      const manifestURL = assetURL(viewer.searchParams.get('manifest'), origin);
-      const manifest = await (await response(manifestURL)).json();
-      await jsonFile(join(dir, 'manifest.json'), manifest);
-      let qa;
-      if (manifest.qa) {
-        qa = await (await response(assetURL(manifest.qa, manifestURL))).json();
-        await jsonFile(join(dir, 'qa.json'), qa);
-      }
-      const materialSha256 = {};
-      if (report.materialMaps !== undefined) {
-        for (const key of checkedMaterialTextures(report.materialMaps, manifest)) {
-          const descriptor = manifest.textures[key];
-          const bytes = await (await response(assetURL(descriptor.path, manifestURL))).arrayBuffer();
-          const digest = createHash('sha256').update(new Uint8Array(bytes)).digest('hex');
-          assert.equal(digest, descriptor.sha256, key + ' digest mismatch');
-          materialSha256[key] = digest;
-        }
-      }
-      const summary = { workflow: name, ...(report.materialMaps !== undefined && {materialMaps: report.materialMaps, bakedChannels: manifest.maps, materialSha256}), prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
-        viewer: viewer.href, inference: inferenceReport(prompt, opts.face, live.traces.get(receipt.prompt_id)),
-        ...(opts.model === 'h3' && { imageOrder: h3ReferenceFirst ? ['reference', 'guide'] : ['guide', 'reference'] }),
-        ...(meshDigest && { inputMesh: opts.mesh, inputMeshSha256: meshDigest }),
-        ...(faceSeed && { faceSeed }), ...verifyOutput(opts.model, manifest, qa, opts.face, meshDigest, faceSeed, h3Denoiser) };
-      const views = join(dir, 'views');
-      await mkdir(views);
-      for (const side of opts.face ? [opts.face] : directions) {
-        const entry = manifest.faces[side];
-        const guide = Buffer.from(await (await response(assetURL(entry.guide, manifestURL))).arrayBuffer());
-        assert.equal(createHash('sha256').update(guide).digest('hex'), entry.guideSha256, 'Guide digest mismatch on ' + side);
-        await writeFile(join(views, slugs[side] + '-guide.png'), guide);
-        if (entry.edit) {
-          const generated = await response(assetURL(entry.edit.view, manifestURL));
-          await writeFile(join(views, slugs[side] + '-generated.png'), new Uint8Array(await generated.arrayBuffer()));
-        }
-      }
-      const hero = await response(assetURL('previews/hero.png', manifestURL));
-      await writeFile(join(dir, 'preview.png'), new Uint8Array(await hero.arrayBuffer()));
+    const {receipt, history} = await executePrompt(origin, prompt, clientId, timeout, dir);
+    if (isSplat) {
+      const summary = await saveSplatOutput(dir, origin, prompt, history.outputs, opts,
+        live.traces.get(receipt.prompt_id), name, receipt.prompt_id);
       await jsonFile(join(dir, 'result.json'), summary);
       console.log(JSON.stringify(summary, null, 2));
       return;
     }
-    throw new Error('Timed out waiting. The queued job may still be running. History: ' + historyURL);
+    const preview = Object.entries(prompt).find(([, n]) => n.class_type === 'BIPreviewBox')[0];
+    const viewer = assetURL(history.outputs[preview]?.box_impostor?.[0], origin);
+    const manifestURL = assetURL(viewer.searchParams.get('manifest'), origin);
+    const manifest = await (await response(manifestURL)).json();
+    await jsonFile(join(dir, 'manifest.json'), manifest);
+    let qa;
+    if (manifest.qa) {
+      qa = await (await response(assetURL(manifest.qa, manifestURL))).json();
+      await jsonFile(join(dir, 'qa.json'), qa);
+    }
+    const materialSha256 = {};
+    if (report.materialMaps !== undefined) {
+      for (const key of checkedMaterialTextures(report.materialMaps, manifest)) {
+        const descriptor = manifest.textures[key];
+        const bytes = await (await response(assetURL(descriptor.path, manifestURL))).arrayBuffer();
+        const digest = createHash('sha256').update(new Uint8Array(bytes)).digest('hex');
+        assert.equal(digest, descriptor.sha256, key + ' digest mismatch');
+        materialSha256[key] = digest;
+      }
+    }
+    if (report.flatBackground && !opts.mesh)
+      assert.equal(manifest.reference.maskMode, 'flat_background', 'Saved Box has the wrong input matte');
+    const summary = { workflow: name, ...(report.flatBackground && {referenceMask: 'flat_background'}), ...(report.materialMaps !== undefined && {materialMaps: report.materialMaps, bakedChannels: manifest.maps, materialSha256}), prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
+      viewer: viewer.href, inference: inferenceReport(prompt, opts.face, live.traces.get(receipt.prompt_id)),
+      ...(opts.model === 'h3' && { imageOrder: h3ReferenceFirst ? ['reference', 'guide'] : ['guide', 'reference'] }),
+      ...(meshDigest && { inputMesh: opts.mesh, inputMeshSha256: meshDigest }),
+      ...(faceSeed && { faceSeed }), ...verifyOutput(opts.model, manifest, qa, opts.face, meshDigest, faceSeed, h3Denoiser) };
+    const views = join(dir, 'views');
+    await mkdir(views);
+    for (const side of opts.face ? [opts.face] : directions) {
+      const entry = manifest.faces[side];
+      const guide = Buffer.from(await (await response(assetURL(entry.guide, manifestURL))).arrayBuffer());
+      assert.equal(createHash('sha256').update(guide).digest('hex'), entry.guideSha256, 'Guide digest mismatch on ' + side);
+      await writeFile(join(views, slugs[side] + '-guide.png'), guide);
+      if (entry.edit) {
+        const generated = await response(assetURL(entry.edit.view, manifestURL));
+        await writeFile(join(views, slugs[side] + '-generated.png'), new Uint8Array(await generated.arrayBuffer()));
+      }
+    }
+    const hero = await response(assetURL('previews/hero.png', manifestURL));
+    await writeFile(join(dir, 'preview.png'), new Uint8Array(await hero.arrayBuffer()));
+    await jsonFile(join(dir, 'result.json'), summary);
+    if (opts.pack !== undefined) {
+      summary.pack = await packCompletedBox({origin, assetId: summary.asset_id, name: opts.pack, outputDir: dir, timeoutMinutes: timeout});
+      await jsonFile(join(dir, 'result.json'), summary);
+    }
+    console.log(JSON.stringify(summary, null, 2));
+    return;
   } finally {
     live.close();
   }
@@ -727,10 +853,10 @@ export async function run(opts) {
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const { values } = parseArgs({ options: { model: { type: 'string' }, origin: { type: 'string', default: 'http://127.0.0.1:8188' },
     input: { type: 'string', default: 'reference.png' }, output: { type: 'string', default: '.test-output/models' },
-    face: { type: 'string' }, 'face-seed': { type: 'string' }, size: { type: 'string' }, mesh: { type: 'string' }, 'compact-proxy': { type: 'boolean' },
+    pack: { type: 'string' }, face: { type: 'string' }, 'face-seed': { type: 'string' }, size: { type: 'string' }, mesh: { type: 'string' }, 'compact-proxy': { type: 'boolean' }, 'flat-background': { type: 'boolean' },
     'h3-reference-first': { type: 'boolean' }, 'h3-denoiser': { type: 'string' }, 'material-maps': { type: 'string' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
   if (values.help) {
-    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--h3-denoiser int8|w4a8] [--material-maps none|material|emissive|material+emissive] [--size 512] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to the local INT8 file. An explicit --h3-denoiser selects the official weight for every face and verifies its SHA-256 in the saved output. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
+    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--flat-background] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--h3-denoiser int8|w4a8] [--material-maps none|material|emissive|material+emissive] [--size 512] [--pack NAME] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to the local INT8 file. An explicit --h3-denoiser selects the official weight for every face and verifies its SHA-256 in the saved output. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. --pack NAME saves NAME.box.zip in the evidence directory and verifies the restored asset ID. --flat-background extracts a closed ink silhouette from a mostly solid backdrop for the input image. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
   } else {
     run(values).catch(error => { console.error(error.message); process.exitCode = 1; });
   }

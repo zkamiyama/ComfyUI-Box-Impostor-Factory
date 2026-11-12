@@ -51,7 +51,7 @@ class PrepareReference:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'mask_mode': (['opaque', 'rgba', 'foreground', 'load_image'],)}, 'optional': {'mask': ('MASK', {'lazy': True})}, 'hidden': {'prompt': 'PROMPT', 'unique_id': 'UNIQUE_ID'}}
+        return {'required': {'image': ('IMAGE',), 'mask_mode': (['opaque', 'rgba', 'foreground', 'load_image', 'flat_background'],)}, 'optional': {'mask': ('MASK', {'lazy': True})}, 'hidden': {'prompt': 'PROMPT', 'unique_id': 'UNIQUE_ID'}}
 
     @migrate_stage('prepared', 'result.json')
     def request(self, image, mask_mode, prompt, unique_id, *, legacy=False):

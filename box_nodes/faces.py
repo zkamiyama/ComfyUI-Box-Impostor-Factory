@@ -22,6 +22,29 @@ def array(value):
     return np.asarray(value, dtype=np.float32)
 
 
+def flat_background_alpha(rgb):
+    """Recover opaque outlined subjects on solid paper from one RGB image."""
+    border = np.concatenate((rgb[0], rgb[-1], rgb[:, 0], rgb[:, -1]))
+    paper = np.median(border, axis=0)
+    border_diff = np.max(np.abs(border - paper), axis=-1)
+    if np.quantile(border_diff, 0.75) > 12 / 255:
+        raise ValueError('Flat background needs a mostly uniform image border. Use foreground for photographs.')
+    # Ignore slight paper/JPEG variation. Close one-pixel breaks in an ink outline
+    # before filling enclosed regions such as a pale flag or shoe.
+    tolerance = max(8 / 255, float(np.quantile(border_diff, 0.75)) * 2)
+    ink = np.max(np.abs(rgb - paper), axis=-1) > tolerance
+    closed = ndimage.binary_closing(np.pad(ink, 2, mode='edge'))[2:-2, 2:-2]
+    filled = ndimage.binary_fill_holes(closed)
+    labels, _ = ndimage.label(filled)
+    sizes = np.bincount(labels.ravel())
+    keep = sizes >= max(3, round(filled.size / 50_000))
+    keep[0] = False
+    foreground = keep[labels]
+    if not foreground.any():
+        raise ValueError('No foreground outline found on the flat background.')
+    return ndimage.gaussian_filter(foreground.astype(np.float32), 0.55)
+
+
 def rgba(image, mask_mode, mask=None):
     image = array(image)
     if image.ndim != 4 or image.shape[0] != 1 or image.shape[-1] not in (3, 4):
@@ -32,6 +55,8 @@ def rgba(image, mask_mode, mask=None):
         alpha = image[..., 3]
     elif mask_mode == 'opaque':
         alpha = np.ones((h, w), dtype=np.float32)
+    elif mask_mode == 'flat_background':
+        alpha = flat_background_alpha(image[..., :3])
     elif mask_mode in ('load_image', 'foreground') and mask is not None:
         alpha = array(mask)
         if alpha.ndim == 3 and alpha.shape[0] == 1:

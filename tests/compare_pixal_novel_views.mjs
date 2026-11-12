@@ -1,5 +1,5 @@
-// Compare the CC0 Lantern and its single-view Pixal3D reconstruction in one fixed world frame.
-// node tests/compare_pixal_novel_views.mjs ORIGINAL_LANTERN.glb UNPACKED_PIXAL_ASSET OUTPUT_DIR
+// Compare a static CC0 source and its single-view Pixal3D reconstruction in one fixed world frame.
+// node tests/compare_pixal_novel_views.mjs ORIGINAL.glb UNPACKED_PIXAL_ASSET OUTPUT_DIR [cameraX,cameraY,cameraZ]
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {mkdir, readFile, writeFile} from 'node:fs/promises';
@@ -8,8 +8,11 @@ import {chromium} from 'playwright';
 import {chromiumOptions} from '../worker/chromium.mjs';
 import {startServer} from '../worker/server.mjs';
 
-const [original, asset, output] = process.argv.slice(2);
-assert(original && asset && output, 'Expected original Lantern GLB, unpacked Pixal3D Box, output directory');
+const [original, asset, output, direction = '1,.66,1'] = process.argv.slice(2);
+assert(original && asset && output, 'Expected static source GLB, unpacked Pixal3D Box, output directory');
+const referenceDirection = direction.split(',').map(Number);
+assert(referenceDirection.length === 3 && referenceDirection.every(Number.isFinite) &&
+  Math.hypot(referenceDirection[0],referenceDirection[2]) > 0, 'Expected a nonvertical x,y,z reference camera direction');
 const sourceHash = createHash('sha256').update(await readFile(original)).digest('hex');
 const server = await startServer({input:resolve(original),assetDir:resolve(asset)});
 let browser;
@@ -17,12 +20,12 @@ try {
   browser = await chromium.launch(chromiumOptions('webgl2'));
   const page = await browser.newPage();
   await page.goto(server.origin + '/bridge');
-  const {sheet, ...report} = await page.evaluate(async () => {
+  const {sheet, ...report} = await page.evaluate(async referenceDirection => {
     const T = await import('three/webgpu');
-    const {loadProxy,disposeProxy} = await import('/worker/runtime.mjs');
-    const {makeRenderer,fetchChecked,assetURL} = await import('/web/asset_io.mjs');
+    const {loadProxy,disposeProxy,restoreBox} = await import('/worker/runtime.mjs');
+    const {makeRenderer,fetchChecked,readAsset,assetURL} = await import('/web/asset_io.mjs');
     const manifestURL = new URL('/asset/manifest.json',location.href);
-    const manifest = await (await fetchChecked(manifestURL)).json();
+    const {manifest, files} = await readAsset(manifestURL);
     if (!manifest.reference?.camera || manifest.provenance?.meshGeneration?.backend !== 'native_mesh')
       throw new Error('Expected a generated Pixal3D Box with conditioning camera.');
     const load = async url => loadProxy(await (await fetchChecked(url)).arrayBuffer());
@@ -40,7 +43,7 @@ try {
     // with a 2% bake margin on all sides and the viewer's fit-to-box distance.
     const radius = sourceBounds.getSize(new T.Vector3()).addScalar(.04).length() / 2;
     const distance = radius * 1.1 / Math.sin(T.MathUtils.degToRad(18));
-    const front = new T.Vector3(1,.66,1).normalize();
+    const front = new T.Vector3(...referenceDirection).normalize();
     const basis = new T.Matrix4().lookAt(front,new T.Vector3(),new T.Vector3(0,1,0));
     const eyeRight = new T.Vector3().setFromMatrixColumn(basis,0);
     const eyeUp = new T.Vector3().setFromMatrixColumn(basis,1);
@@ -101,6 +104,8 @@ try {
     const renderer = await makeRenderer('webgl2');
     renderer.setSize(size,size,false);
     renderer.setClearColor(0,0);
+    const restored = await restoreBox(manifest,files,renderer);
+    restored.mesh.applyMatrix4(model.matrixWorld.clone().multiply(generated.matrix));
     const target=new T.RenderTarget(size,size);
     target.texture.colorSpace=T.SRGBColorSpace;
     target.depthTexture=new T.DepthTexture(size,size,T.UnsignedIntType);
@@ -140,50 +145,63 @@ try {
     const poses=[['Reference',front],['Right (+X)',new T.Vector3(1,0,0)],['Left (-X)',new T.Vector3(-1,0,0)],
       ['Top (+Y)',new T.Vector3(0,1,0)],['Bottom (-Y)',new T.Vector3(0,-1,0)],
       ['Front (+Z)',new T.Vector3(0,0,1)],['Back (-Z)',new T.Vector3(0,0,-1)],['Opposite',front.clone().negate()]];
-    const labels=['CC0 mesh','Pixal3D mesh','Silhouette'];
-    const tile=140, left=99, header=34;
+    const labels=['CC0 mesh','Pixal3D mesh','Box','Box vs CC0'];
+    const tile=140, left=115, header=34;
     const sheet=document.createElement('canvas');
-    sheet.width=left+tile*poses.length;sheet.height=header+3*tile+48;
+    sheet.width=left+tile*poses.length;sheet.height=header+labels.length*tile+71;
     const ctx=sheet.getContext('2d');
     ctx.fillStyle='#232d37';ctx.fillRect(0,0,sheet.width,sheet.height);
     ctx.fillStyle='white';ctx.font='15px sans-serif';
     labels.forEach((l,i)=>ctx.fillText(l,8,header+(i+.5)*tile));
-    ctx.fillText('IoU',8,header+3*tile+18);
+    const footer = header+labels.length*tile;
+    ctx.fillText('Mesh IoU',8,footer+17);ctx.fillText('Box IoU',8,footer+36);
     const buffer=document.createElement('canvas');buffer.width=buffer.height=size;
     const off=buffer.getContext('2d'), values=[];
-    try {
-      for (const [i,[label,direction]] of poses.entries()) {
-        pose(direction);
-        const a=await render(source), b=await render(model);
-        const orig=a.rgba, inferred=b.rgba, depthError=[];
-        const mask=new Uint8ClampedArray(orig.length);
-        let both=0,missing=0,extra=0;
-        for (let p=0;p<orig.length;p+=4) {
-          const seenA=orig[p+3]>=128,seenB=inferred[p+3]>=128;
-          if(seenA&&seenB) {both++;depthError.push(Math.abs(a.depth[p/4]-b.depth[p/4]));}
-          else if(seenA) missing++; else if(seenB) extra++;
+    function compare(a,b,mask=null) {
+      const depthError=[];
+      let both=0,missing=0,extra=0,absoluteRGB=0;
+      for (let p=0;p<a.rgba.length;p+=4) {
+        const seenA=a.rgba[p+3]>=128,seenB=b.rgba[p+3]>=128;
+        if(seenA&&seenB) {
+          both++;
+          depthError.push(Math.abs(a.depth[p/4]-b.depth[p/4]));
+          for(let c=0;c<3;c++) absoluteRGB+=Math.abs(a.rgba[p+c]-b.rgba[p+c]);
+        }
+        else if(seenA) missing++; else if(seenB) extra++;
+        if(mask) {
           const color=seenA&&seenB?[224,229,235]:seenA?[241,150,50]:seenB?[55,191,218]:[67,73,79];
           mask.set([...color,255],p);
         }
-        if (!both) throw new Error('No shared foreground in '+label);
-        const iou=both/(both+missing+extra);
-        depthError.sort((a,b)=>a-b);
-        values.push({label,direction:direction.toArray(),iou,overlapPixels:both,sourceOnlyPixels:missing,generatedOnlyPixels:extra,
-          surfaceDepthMAE:depthError.reduce((sum,x)=>sum+x,0)/both,surfaceDepthP95:depthError[Math.ceil(.95*both)-1]});
+      }
+      if (!both) throw new Error('No shared foreground');
+      depthError.sort((a,b)=>a-b);
+      return {iou:both/(both+missing+extra),overlapPixels:both,sourceOnlyPixels:missing,generatedOnlyPixels:extra,
+        meanAbsoluteRGB8OnOverlap:absoluteRGB/(3*both),surfaceDepthMAE:depthError.reduce((sum,x)=>sum+x,0)/both,
+        surfaceDepthP95:depthError[Math.ceil(.95*both)-1]};
+    }
+    try {
+      for (const [i,[label,direction]] of poses.entries()) {
+        pose(direction);
+        const a=await render(source), b=await render(model), c=await render(restored.mesh);
+        const mask=new Uint8ClampedArray(a.rgba.length);
+        const mesh=compare(a,b), boxVsSource=compare(a,c,mask);
+        values.push({label,direction:direction.toArray(),...mesh,boxVsSource,boxVsProxy:compare(b,c)});
         const x=left+i*tile;
         ctx.textAlign='center';ctx.fillStyle='white';ctx.fillText(label,x+tile/2,22);
-        for (const [row,data] of [orig,inferred,mask].entries()) {
+        for (const [row,data] of [a.rgba,b.rgba,c.rgba,mask].entries()) {
           const y=header+row*tile;
           off.putImageData(new ImageData(data,size,size),0,0);
           ctx.fillStyle='#697079';ctx.fillRect(x,y,tile-2,tile-2);
           ctx.drawImage(buffer,x,y,tile-2,tile-2);
         }
-        ctx.fillStyle='white';ctx.fillText(iou.toFixed(3),x+tile/2,header+3*tile+18);
+        ctx.fillStyle='white';
+        ctx.fillText(mesh.iou.toFixed(3),x+tile/2,footer+17);
+        ctx.fillText(boxVsSource.iou.toFixed(3),x+tile/2,footer+36);
       }
       ctx.textAlign='left';ctx.font='13px sans-serif';
-      ctx.fillStyle='#e0e5eb';ctx.fillText('Both',left,header+3*tile+38);
-      ctx.fillStyle='#f19632';ctx.fillText('CC0 only',left+58,header+3*tile+38);
-      ctx.fillStyle='#37bfda';ctx.fillText('Pixal3D only',left+151,header+3*tile+38);
+      ctx.fillStyle='#e0e5eb';ctx.fillText('Both',left,footer+58);
+      ctx.fillStyle='#f19632';ctx.fillText('CC0 only',left+58,footer+58);
+      ctx.fillStyle='#37bfda';ctx.fillText('Box only',left+151,footer+58);
       return {camera:{fovDegrees:36,sourceFitDistance:distance,size,projection:'perspective',referenceDirection:front.toArray()},
         registration:{referenceFrame:'CC0 canonical world: longest dimension = 1',method:'Align Pixal3D +Z with the known reference viewing axis and +Y with camera up. Match silhouette height and image bounding-box center in that camera with one uniform scale and two image-plane translations. Set 3D depth midpoint equal to the source midpoint along the viewing axis.',
           assumption:'The relative depth midpoint is unknown from the reference. No individual view is registered independently.',
@@ -191,13 +209,14 @@ try {
           uniformScaleAfterUndoingCanonicalization:model.scale.x,sourceDepthMidpoint:sourceDepthCenter},
         generatedCanonicalGlbSha256:manifest.proxySha256,views:values,
         depthUnits:'Absolute view-space depth error on shared foreground; one unit equals the source mesh longest axis.',
+        meanNovelBoxIoU:values.slice(1).reduce((a,v)=>a+v.boxVsSource.iou,0)/7,
         meanNovelIoU:values.slice(1).reduce((a,v)=>a+v.iou,0)/7,
         sheet:sheet.toDataURL('image/webp',.91).split(',')[1]};
     } finally {
       renderer.setRenderTarget(null);target.dispose();depthTarget.dispose();depthMaterial.dispose();renderer.dispose();
-      disposeProxy(source);disposeProxy(generated);
+      restored.dispose();disposeProxy(source);disposeProxy(generated);
     }
-  });
+  }, referenceDirection);
   report.sourceGlbSha256=sourceHash;
   report.renderer={chromiumVersion:browser.version(),backend:'webgl2',softwareGpuRequested:process.env.BI_SOFTWARE_GPU==='1'};
   await mkdir(output,{recursive:true});
