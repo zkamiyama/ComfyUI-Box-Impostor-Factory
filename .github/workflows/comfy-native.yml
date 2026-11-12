@@ -2,7 +2,7 @@ name: ComfyUI native nodes
 on:
   push:
     branches: [main]
-    paths: ['box_nodes/**', '__init__.py', 'worker/**', '.github/workflows/comfy-native.yml', 'tests/comfy_smoke.py', 'tests/comfy_frontend_smoke.mjs', 'tests/check_workflow_types.py', 'tests/test_*.py', 'pyproject.toml', 'requirements.txt', 'workflows/**']
+    paths: ['box_nodes/**', '__init__.py', 'worker/**', '.github/workflows/comfy-native.yml', 'tests/comfy_smoke.py', 'tests/comfy_frontend_smoke.mjs', 'tests/make_fixture.mjs', 'tests/check_workflow_types.py', 'tests/test_*.py', 'pyproject.toml', 'requirements.txt', 'workflows/**']
   workflow_dispatch:
 permissions:
   contents: read
