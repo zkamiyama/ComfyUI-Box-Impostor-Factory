@@ -1,8 +1,9 @@
 // Measure the saved Box against the canonical GLB under matching cameras, material lighting and depth.
-// Usage: node tests/compare_proxy.mjs ASSET_DIRECTORY [REPORT.json] [webgl2|webgpu] [--compare-interval]
+// Usage: node tests/compare_proxy.mjs ASSET_DIRECTORY [REPORT.json] [webgl2|webgpu] [--compare-interval] [--size 256]
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { parseArgs } from 'node:util';
 import { chromium } from 'playwright';
 import { chromiumOptions } from '../worker/chromium.mjs';
 import { startServer } from '../worker/server.mjs';
@@ -58,14 +59,15 @@ export function fidelity(proxy,box){
     overlapDepthP95:both?round(dz[Math.ceil(both*.95)-1]):null};
 }
 
-export async function compareProxy(asset,reportPath,backend='webgl2',compareInterval=false){
+export async function compareProxy(asset,reportPath,backend='webgl2',compareInterval=false,size=64){
+  if (![64,128,256].includes(size)) throw new Error('Capture size must be 64, 128 or 256');
   const server=await startServer({assetDir:resolve(asset)});
   let browser;
   try{
     const software=process.env.BI_SOFTWARE_GPU==='1';
     browser=await chromium.launch(chromiumOptions(backend));
     const page=await browser.newPage();await page.goto(server.origin+'/bridge');
-    const result=await page.evaluate(async ({backend,compareInterval})=>{
+    const result=await page.evaluate(async ({backend,compareInterval,size})=>{
       const {snapshot}=await import('/worker/browser_bridge.mjs');
       const {makeRenderer,readAsset,backendName}=await import('/web/asset_io.mjs');
       const {loadProxy,restoreBox,disposeProxy}=await import('/worker/runtime.mjs');
@@ -75,8 +77,8 @@ export async function compareProxy(asset,reportPath,backend='webgl2',compareInte
         const {manifest,files}=await readAsset('/asset/manifest.json',{proxy:true});
         mesh=await loadProxy(files.get(manifest.proxy));
         restored=await restoreBox(manifest,files,renderer);
-        const reference=await snapshot(renderer,mesh,manifest.bakeBox);
-        const actual=await snapshot(renderer,restored.mesh,manifest.bakeBox);
+        const reference=await snapshot(renderer,mesh,manifest.bakeBox,size);
+        const actual=await snapshot(renderer,restored.mesh,manifest.bakeBox,size);
         let nearest;
         if(compareInterval){
           const {NearestFilter,RenderTarget,Mesh}=await import('three/webgpu');
@@ -99,12 +101,12 @@ export async function compareProxy(asset,reportPath,backend='webgl2',compareInte
           }
           variantMaterial=new ImpostorNodeMaterial({...data,intervalMap:sampled});
           const variantMesh=new Mesh(restored.mesh.geometry,variantMaterial);
-          nearest=await snapshot(renderer,variantMesh,manifest.bakeBox);
+          nearest=await snapshot(renderer,variantMesh,manifest.bakeBox,size);
         }
         return {backend:backendName(renderer),resolution:manifest.resolution,proxySha256:manifest.proxySha256,
           textures:Object.fromEntries(Object.entries(manifest.textures).map(([k,v])=>[k,v.sha256])),reference,actual,nearest};
       } finally {variantMaterial?.dispose();variantTexture?.dispose();if(mesh)disposeProxy(mesh);restored?.dispose();await renderer.dispose();}
-    },{backend,compareInterval});
+    },{backend,compareInterval,size});
     const {reference,actual,nearest,...common}=result;
     const views=reference.map((p,i)=>fidelity(p,actual[i]));
     const stats=vs=>({minimumIoU:Math.min(...vs.map(v=>v.silhouetteIoU)),meanIoU:round(vs.reduce((a,v)=>a+v.silhouetteIoU,0)/vs.length)});
@@ -112,19 +114,20 @@ export async function compareProxy(asset,reportPath,backend='webgl2',compareInte
       renderSize:[reference[0].width,reference[0].height],projection:'orthographic',steps:128,
       depthUnits:'normalized orthographic camera depth, overlapping foreground pixels',colorUnits:'absolute RGB channel difference in RGBA8 readback, overlapping foreground pixels',
       axes:stats(views.slice(0,6)),obliques:stats(views.slice(6)),views};
+    const summarize=values=>({
+      meanViewColorMAE8:values.every(v=>v.overlapPixels>0) ? round(values.reduce((s,v)=>s+v.overlapColorMAE8,0)/values.length) : null,
+      maximumViewDepthP95:values.every(v=>v.overlapPixels>0) ? Math.max(...values.map(v=>v.overlapDepthP95)) : null,
+      minimumViewIoU:Math.min(...values.map(v=>v.silhouetteIoU)),
+      referenceHolePixels:values.reduce((s,v)=>s+v.holePixels,0),
+      filledHolePixels:values.reduce((s,v)=>s+v.filledHolePixels,0),
+      leakedHolePixels:values.reduce((s,v)=>s+v.leakedHolePixels,0),
+    });
+    report.summary=summarize(views);
     if(compareInterval){
       const nearestViews=reference.map((p,i)=>fidelity(p,nearest[i]));
-      const summarize=values=>({
-        meanViewColorMAE8:values.every(v=>v.overlapPixels>0) ? round(values.reduce((s,v)=>s+v.overlapColorMAE8,0)/values.length) : null,
-        maximumViewDepthP95:values.every(v=>v.overlapPixels>0) ? Math.max(...values.map(v=>v.overlapDepthP95)) : null,
-        minimumViewIoU:Math.min(...values.map(v=>v.silhouetteIoU)),
-        referenceHolePixels:values.reduce((s,v)=>s+v.holePixels,0),
-        filledHolePixels:values.reduce((s,v)=>s+v.filledHolePixels,0),
-        leakedHolePixels:values.reduce((s,v)=>s+v.leakedHolePixels,0),
-      });
       report.experiment={change:'In-memory nearest min/mag filter on intervalMap only; all stored bytes and upstream shader identical.',
         holeDefinition:'Proxy background enclosed using four-connected pixels; filled is Box foreground, leaked is Box background connected to image border.',
-        native:summarize(views),intervalNearest:summarize(nearestViews),
+        native:report.summary,intervalNearest:summarize(nearestViews),
         nearestViews:nearestViews.map(({id,silhouetteIoU,overlapColorMAE8,overlapDepthP95,filledHolePixels,leakedHolePixels})=>
           ({id,silhouetteIoU,overlapColorMAE8,overlapDepthP95,filledHolePixels,leakedHolePixels}))};
     }
@@ -139,8 +142,11 @@ export async function compareProxy(asset,reportPath,backend='webgl2',compareInte
   } finally {if(browser)await browser.close();await server.close();}
 }
 if(process.argv[1] && import.meta.url===pathToFileURL(resolve(process.argv[1])).href){
-  if(!process.argv[2])throw new Error('An asset directory is required');
-  if(process.argv[5] && process.argv[5]!=='--compare-interval') throw new Error('Unknown experiment argument');
-  const report=await compareProxy(process.argv[2],process.argv[3],process.argv[4],process.argv[5]==='--compare-interval');
+  const {positionals,values}=parseArgs({allowPositionals:true,options:{
+    'compare-interval':{type:'boolean',default:false},size:{type:'string',default:'64'}
+  }});
+  if(!positionals.length || positionals.length>3)throw new Error('Expected an asset directory, optional report path and backend');
+  const [asset,path,backend]=positionals;
+  const report=await compareProxy(asset,path,backend,values['compare-interval'],Number(values.size));
   console.log(JSON.stringify(report,null,2));
 }

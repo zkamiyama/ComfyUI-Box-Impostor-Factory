@@ -15,8 +15,9 @@ function base64(bytes) {
   return btoa(binary);
 }
 
-export async function snapshot(renderer, mesh, bounds) {
-  const size = 64; // RGBA8 readback is exactly one 256-byte WebGPU row.
+export async function snapshot(renderer, mesh, bounds, size = 64) {
+  // Every supported RGBA8 scanline is aligned for WebGPU readback.
+  if (![64, 128, 256].includes(size)) throw new Error('Capture size must be 64, 128 or 256');
   const scene = new Scene();
   scene.add(mesh, new HemisphereLight(0xf3f5ff, 0xc2bdb5, 1.7));
   const light = new DirectionalLight(0xffffff, 2);
