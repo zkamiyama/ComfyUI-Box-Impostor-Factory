@@ -87,6 +87,55 @@ class PrepareReference:
         return tensor(rgba[None, ..., :3]), tensor(rgba[None, ..., 3]), meta
 
 
+def pixal_single_view_rig(prompt, unique_id):
+    """Identify the source GLB frame and its actual connected conditioning crop and lens."""
+    pins = prompt[str(unique_id)]['inputs']
+
+    def source(link):
+        if not isinstance(link, list) or len(link) != 2 or link[1] != 0:
+            return {}
+        return prompt.get(str(link[0]), {})
+
+    def follow(node, types, pin):
+        seen = set()
+        while node.get('class_type') in types and id(node) not in seen:
+            seen.add(id(node))
+            link = node['inputs'].get(pin)
+            if pin == 'positive' and (not isinstance(link, list) or len(link) != 2
+                                      or node['inputs'].get('negative') != [link[0], 1]):
+                return {}
+            node = source(link)
+        return node
+
+    # Limit the walk to operations which keep the native decoder's coordinate frame.
+    exported = source(pins.get('model_3d'))
+    if exported.get('class_type') != 'MeshToFile3D':
+        return False
+    geometry = follow(source(exported['inputs'].get('mesh')), {
+        'MeshSmoothNormals', 'ApplyTextureToMesh', 'UnwrapMesh', 'DecimateMesh', 'RemeshMesh', 'GetMeshInfo'
+    }, 'mesh')
+    if geometry.get('class_type') != 'VaeDecodeShapeTrellis':
+        return False
+    sampler = source(geometry['inputs'].get('samples'))
+    if sampler.get('class_type') != 'KSampler':
+        return False
+    conditioning = follow(sampler, {'KSampler', 'Trellis2ShapeStage', 'Trellis2UpsampleStage'}, 'positive')
+    lens = source(pins.get('horizontal_fov_degrees'))
+    crop = source(pins.get('cropped'))
+    if (conditioning.get('class_type') != 'Pixal3DConditioning' or lens.get('class_type') != 'MoGeGeometryToFOV'
+            or crop.get('class_type') != 'ImageCropToMask'):
+        return False
+    fov = pins['horizontal_fov_degrees']
+    angles = lens['inputs']
+    distance_map = source(angles.get('moge_geometry'))
+    return (conditioning['inputs'].get('image') == pins['cropped']
+            and conditioning['inputs'].get('camera_angle_x') == fov
+            and pins.get('focal_pixels') == [fov[0], 1]
+            and (angles.get('axis'), angles.get('unit')) == ('horizontal', 'degrees')
+            and distance_map.get('class_type') == 'MoGeInference'
+            and distance_map['inputs'].get('image') == pins['cropped'])
+
+
 class CanonicalizeProxy:
     CATEGORY = CATEGORY
     FUNCTION = 'canonicalize'
@@ -196,6 +245,7 @@ class CanonicalizeProxy:
                 (stage / 'camera.json').write_text(json.dumps(camera, allow_nan=False), encoding='utf-8')
             stage = faces.cache_dir('mesh-camera', capture, write_capture)
             result['camera'] = json.loads((stage / 'camera.json').read_bytes())
+            result['camera']['rig'] = 'pixal3d-single-view-v1' if pixal_single_view_rig(prompt, unique_id) else 'unspecified'
             result['croppedImage'] = str(stage / 'cropped.png')
             result['stageKey'] = store.key(result['stageKey'], capture, result['camera'])
         return (result,)

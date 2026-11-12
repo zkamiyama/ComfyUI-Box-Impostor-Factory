@@ -273,6 +273,7 @@ class NodeTests(unittest.TestCase):
             self.assertEqual(captured['path'], proxy['path'])
             self.assertNotEqual(captured['stageKey'], proxy['stageKey'])
             camera = captured['camera']
+            self.assertEqual(camera['rig'], 'unspecified')
             self.assertEqual((camera['width'], camera['height']), (8, 4))
             self.assertEqual((camera['horizontalFovDegrees'], camera['focalPixels']), (55., 7.7))
             self.assertEqual(camera['sha256'], store.file_hash(Path(captured['croppedImage'])))
@@ -281,6 +282,30 @@ class NodeTests(unittest.TestCase):
             self.assertEqual(run.call_count, 1)
         graph['3']['inputs']['seed'] = 100
         self.assertEqual(node.check_lazy_status(**common), ['model_3d'])
+
+    def test_pixal_rig_is_bound_to_the_geometry_crop_and_lens(self):
+        def n(kind, **inputs):
+            return {'class_type': kind, 'inputs': inputs}
+        graph = {
+            'out': n('BICanonicalizeProxy', model_3d=['export', 0], cropped=['crop', 0],
+                     horizontal_fov_degrees=['lens', 0], focal_pixels=['lens', 1]),
+            'export': n('MeshToFile3D', mesh=['prepare', 0]), 'prepare': n('DecimateMesh', mesh=['shape', 0]),
+            'shape': n('VaeDecodeShapeTrellis', samples=['sample', 0]),
+            'sample': n('KSampler', positive=['stage', 0], negative=['stage', 1]),
+            'stage': n('Trellis2UpsampleStage', positive=['cond', 0], negative=['cond', 1]),
+            'cond': n('Pixal3DConditioning', image=['crop', 0], camera_angle_x=['lens', 0]),
+            'crop': n('ImageCropToMask'), 'moge': n('MoGeInference', image=['crop', 0]),
+            'lens': n('MoGeGeometryToFOV', axis='horizontal', unit='degrees', moge_geometry=['moge', 0]),
+        }
+        self.assertTrue(nodes.pixal_single_view_rig(graph, 'out'))
+        for key, changed in [('prepare', n('TransformMesh', mesh=['shape', 0])),
+                             ('sample', n('KSampler', positive=['stage', 0], negative=['other', 1])),
+                             ('cond', n('MultiviewConditioning', image=['crop', 0], camera_angle_x=['lens', 0])),
+                             ('cond', n('Pixal3DConditioning', image=['other', 0], camera_angle_x=['lens', 0])),
+                             ('moge', n('MoGeInference', image=['other', 0])),
+                             ('lens', n('MoGeGeometryToFOV', axis='vertical', unit='degrees', moge_geometry=['moge', 0]))]:
+            with self.subTest(key=key, node=changed):
+                self.assertFalse(nodes.pixal_single_view_rig({**graph, key: changed}, 'out'))
 
     def test_confinement(self):
         for bad in ('../proxy.glb','/etc/passwd','C:/Windows/x','a/../b','a\\b','./a'):

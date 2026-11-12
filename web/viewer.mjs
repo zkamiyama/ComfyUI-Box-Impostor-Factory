@@ -1,5 +1,5 @@
 import {
-  Vector3, HemisphereLight, DirectionalLight, PerspectiveCamera, OrthographicCamera, Scene, DataUtils,
+  Vector3, Matrix4, HemisphereLight, DirectionalLight, PerspectiveCamera, OrthographicCamera, Scene, DataUtils,
   RenderTarget, DepthTexture, UnsignedIntType, HalfFloatType, MeshBasicNodeMaterial, QuadMesh
 } from 'three/webgpu';
 import {
@@ -8,6 +8,7 @@ import {
 } from 'three/tsl';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { restoreBox, loadProxy, disposeProxy } from '../worker/runtime.mjs';
+import { sha256 } from '../worker/codec.mjs';
 import { assetURL, fetchChecked, readAsset, makeRenderer, backendName } from './asset_io.mjs';
 
 const el = id => document.getElementById(id);
@@ -18,6 +19,40 @@ const directions = {
 
 function appendOption(select,value,label) {
   select.add(new Option(label,value));
+}
+
+async function prepareReferenceCamera(manifest,url) {
+  const crop=manifest.reference?.camera;
+  const generation=manifest.provenance?.meshGeneration;
+  if (generation?.backend!=='native_mesh') return null;
+  // The shipped Lantern archives predate rig metadata. Face/PBR edits reuse the verified
+  // mesh and camera but may recompile the workflow with a different graph hash.
+  const verifiedMeshes=['51d88da5990eafe4a6c180b5e01e84cb23d0e05af38cab9e8887f0915e103780',
+    'c9a59defa83a07488140ed802806edd15fc8f224a4c42f2ccca7c803c9da009e'];
+  const legacy=crop?.rig===undefined && verifiedMeshes.includes(manifest.proxySha256) &&
+    crop?.sha256==='160c35b232c7d06f6a8bb7f512260d6afae6fe0a74b25f450c015bffc3f13d87' &&
+    crop.horizontalFovDegrees===29.348602898000774 &&
+    Object.values(generation.weights || {}).includes('4621eac3b715484f79303c7152af641fe0b2b14f4d0e3d394fd6922d00f955ec');
+  if (crop?.rig!=='pixal3d-single-view-v1' && !legacy) return null;
+  if (!crop?.image || !crop.sha256 || !Number.isInteger(crop.width) || crop.width<=0 ||
+      crop.width!==crop.height || !(crop.horizontalFovDegrees>0 && crop.horizontalFovDegrees<180)) return null;
+  const blob=await (await fetchChecked(assetURL(url,crop.image))).blob();
+  if (await sha256(new Uint8Array(await blob.arrayBuffer()))!==crop.sha256) throw Error('参照画像のハッシュが一致しません');
+  const image=el('referenceCrop');
+  image.src=URL.createObjectURL(blob);
+  try {
+    await image.decode();
+    if (image.naturalWidth!==crop.width || image.naturalHeight!==crop.height) throw Error('参照画像の寸法が一致しません');
+  } finally {URL.revokeObjectURL(image.src);}
+  const sourceToBox=new Matrix4().fromArray(manifest.transform);
+  const scale=new Vector3().setFromMatrixColumn(sourceToBox,0).length();
+  const distance=.5/Math.tan(crop.horizontalFovDegrees*Math.PI/360);
+  const camera=new PerspectiveCamera(crop.horizontalFovDegrees,1,.001*scale,(distance+5)*scale);
+  camera.position.set(0,0,distance).applyMatrix4(sourceToBox);
+  camera.up.set(0,1,0).transformDirection(sourceToBox);
+  camera.lookAt(new Vector3().applyMatrix4(sourceToBox));
+  camera.updateMatrixWorld();
+  return camera;
 }
 
 function showFaceDecisions(manifest, url) {
@@ -165,6 +200,13 @@ async function run() {
   const [firstActive,proxy] = await Promise.all([
     restoreBox(manifest,files,renderer,{sampling:currentSampling}), loadProxy(files.get(manifest.proxy).slice().buffer)
   ]);
+  let referenceCamera;
+  try { referenceCamera=await prepareReferenceCamera(manifest,url); }
+  catch(error) { console.warn('Pixal3D reference comparison unavailable:',error.message); }
+  if (referenceCamera) {
+    appendOption(el('mode'),'reference-proxy','参照画像と元のメッシュ');
+    appendOption(el('mode'),'reference-box','参照画像とBox');
+  }
   let active=firstActive;
   const hasBase = manifest.baseColor?.sha256 && manifest.baseColor.sha256 !== manifest.textures.colorMap.sha256;
   const baselineManifest=hasBase ? {...manifest,textures:{
@@ -222,36 +264,45 @@ async function run() {
     camera.updateProjectionMatrix();
   }
 
-  function renderPane(scene,left,w) {
-    setProjection(w,height);
+  function renderPane(scene,left,w,paneCamera=camera) {
+    if (paneCamera===camera) setProjection(w,height);
     renderer.setViewport(left,0,w,height);
     renderer.setScissor(left,0,w,height);
     const mode=el('shading').value;
-    if(mode==='lit') renderer.render(scene,camera);
+    if(mode==='lit') renderer.render(scene,paneCamera);
     else {
       const i=left===0?0:1;
       const pane=diagnostics[i] ??= diagnosticPane(radius);
-      pane.draw(renderer,scene,camera,mode,w,height,center);
+      pane.draw(renderer,scene,paneCamera,mode,w,height,center);
     }
   }
 
   function render() {
-    const w = stage.clientWidth, h = stage.clientHeight;
+    const mode=el('mode').value;
+    const reference=mode==='reference-box' || mode==='reference-proxy';
+    const square=Math.min(Math.floor(stage.clientWidth/2),stage.clientHeight);
+    const w = reference ? square : stage.clientWidth, h = reference ? square : stage.clientHeight;
     if (!w || !h) return;
     if (width !== w || height !== h) {
       width = w; height = h;
       renderer.setSize(width,height,false);
+      if (reference) stage.style.setProperty('--crop-size',square+'px');
     }
-    if (el('mode').value === 'atlas') return;
+    if (mode==='atlas') return;
+    if (reference) {
+      renderer.setScissorTest(false);
+      renderPane(mode==='reference-box' ? box.scene : mesh.scene,0,w,referenceCamera);
+      return;
+    }
     controls.update();
-    if (el('mode').value === 'both') {
+    if (mode==='both') {
       const half = Math.floor(width/2);
       renderer.setScissorTest(true);
       renderPane(mesh.scene,0,half);
       renderPane(box.scene,half,width-half);
     } else {
       renderer.setScissorTest(false);
-      renderPane(el('mode').value === 'proxy' ? mesh.scene : box.scene,0,width);
+      renderPane(mode==='proxy' ? mesh.scene : box.scene,0,width);
     }
   }
 
@@ -299,13 +350,21 @@ async function run() {
 
   function modeChanged() {
     const mode = el('mode').value, atlas = mode==='atlas';
-    el('labels').style.display = mode==='both' ? 'flex' : 'none';
+    const reference=mode==='reference-box' || mode==='reference-proxy';
+    const proxyOnly=mode==='proxy' || mode==='reference-proxy';
+    stage.classList.toggle('reference',reference);
+    el('referenceCrop').hidden=!reference;
+    el('labels').style.display = mode==='both' || reference ? 'flex' : 'none';
+    el('labels').firstElementChild.textContent=reference ? '参照画像' : '元のメッシュ';
+    el('labels').lastElementChild.textContent=proxyOnly ? '元のメッシュ' : 'Box';
+    controls.enabled=!reference;
+    for (const id of ['viewLabel','projectionLabel','fit']) el(id).hidden=reference;
     el('mapLabel').hidden = !atlas; el('atlas').hidden = !atlas;
-    el('appearanceLabel').hidden = !hasBase || mode==='proxy' || atlas;
-    el('samplingLabel').hidden = mode==='proxy' || atlas;
+    el('appearanceLabel').hidden = !hasBase || proxyOnly || atlas;
+    el('samplingLabel').hidden = proxyOnly || atlas;
     el('shadingLabel').hidden = atlas;
     el('lightLabel').hidden = atlas || el('shading').value!=='lit';
-    help.hidden = atlas;
+    help.hidden = atlas || reference;
     if (atlas) selectMap();
     releaseDiagnostics();
   }

@@ -14,6 +14,8 @@ select,input,button{font:inherit}button,select{border:1px solid #444d50;border-r
 button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #afd9b1;outline-offset:2px}
 #stage{position:relative;border:1px solid #444b4d;overflow:hidden;flex:1;min-height:340px;border-radius:7px;background:#42474b}
 #canvas{width:100%;height:100%;display:block;position:absolute;inset:0;touch-action:none}
+#stage.reference #canvas,#referenceCrop{position:absolute;inset:auto;top:50%;left:75%;transform:translate(-50%,-50%);width:var(--crop-size);height:var(--crop-size);pointer-events:none}
+#referenceCrop{left:25%;object-fit:contain}
 #stage.checker{background:repeating-conic-gradient(#50555a 0 25%,#404449 0 50%) 0/24px 24px}
 .labels{position:absolute;inset:0;pointer-events:none;display:none}.labels span{width:50%;padding:10px;color:white;text-shadow:0 1px 4px black}.labels span+span{border-left:1px solid #b6bdc0}
 #atlas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#292d31;image-rendering:pixelated}
@@ -36,14 +38,15 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid 
 <label id="samplingLabel">補間<select id="sampling"><option value="standard">標準（穴・細部優先）</option><option value="reduce_bleeding">色にじみ低減（境界優先）</option></select></label>
 <label id="shadingLabel">描画<select id="shading"><option value="lit">照明あり</option><option value="albedo">色のみ</option><option value="normal">面の法線（ワールド）</option><option value="depth">ヒット深度（手前が白）</option></select></label>
 <label id="mapLabel" hidden>画像<select id="map"></select></label>
-<label>視点<select id="view"><option value="diagonal">斜め</option><option>+X</option><option>-X</option><option>+Y</option><option>-Y</option><option>+Z</option><option>-Z</option></select></label>
-<label>投影<select id="projection"><option value="perspective">透視</option><option value="orthographic">正投影</option></select></label>
+<label id="viewLabel">視点<select id="view"><option value="diagonal">斜め</option><option>+X</option><option>-X</option><option>+Y</option><option>-Y</option><option>+Z</option><option>-Z</option></select></label>
+<label id="projectionLabel">投影<select id="projection"><option value="perspective">透視</option><option value="orthographic">正投影</option></select></label>
 <label>背景<select id="background"><option value="checker">市松</option><option value="#71767a">グレー</option><option value="#111111">黒</option><option value="#ffffff">白</option></select></label>
 <label id="lightLabel">照明角度<input type="range" id="light" min="-180" max="180" value="36"></label>
 <button id="fit" type="button">全体表示</button>
 </div>
 <div id="stage" class="checker">
 <canvas id="canvas" aria-label="3Dモデル"></canvas><img id="atlas" alt="選択中のテクスチャまたはガイド" hidden>
+<img id="referenceCrop" alt="Pixal3Dが生成に使った参照画像" hidden>
 <div class="labels" id="labels"><span>元のメッシュ</span><span>Box</span></div>
 </div>
 </main><details id="faceQA" hidden><summary>6面の採否</summary><table>

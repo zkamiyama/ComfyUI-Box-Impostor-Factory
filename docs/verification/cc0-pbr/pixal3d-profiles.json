@@ -1,0 +1,230 @@
+{
+  "workflow": "05_pixal3d_baseline",
+  "input": "bi-cc0-lantern-reference.png",
+  "inputSha256": "bd73c4ba45d3a7d184f131e02b2cfe196f846a002e3a6af85d5b2c14288d91a0",
+  "conditioningMaskSha256": "026d53cb6bb31dcb9ac3539967b6bd8b14b430242b2aeb81f5c06f754e21733c",
+  "machine": "270-PC, RTX 4080 16 GB, WSL2",
+  "serverArguments": [
+    "--reserve-vram",
+    "2",
+    "--lowvram",
+    "--disable-dynamic-vram"
+  ],
+  "memoryMethod": "One-second nvidia-smi total device usage across separate native runs. Peaks can fall between samples, and other desktop/model allocations can differ. These are observed totals, not minimum VRAM.",
+  "compact": {
+    "profile": "compact",
+    "graphSha256": "39da512f0a3aa66be79f71841d6568d2a63fbfc9027725bfa0323db37dd4ddb7",
+    "assetId": "0c56b0d8f1836d33fe64d23f8ba6131ef205e5d193ef81533558c77a0d96e34b",
+    "promptId": "91dcfd36-3e59-4f32-98db-61885969f38b",
+    "observedSamplers": [
+      "5:23",
+      "5:10",
+      "5:18",
+      "5:12"
+    ],
+    "requested": {
+      "cascade": 1024,
+      "remeshGrid": 256,
+      "decimationTargetTriangles": 100000,
+      "uv": 1024,
+      "bakedTexture": 1024,
+      "normal": 1024,
+      "ao": 512,
+      "aoSamples": 32,
+      "boxResolution": 256,
+      "boxMaterialMaps": "none"
+    },
+    "comfyExecutionSeconds": 75.71,
+    "deviceMemory": {
+      "samplingSeconds": 1,
+      "samples": 80,
+      "startingMiB": 2949,
+      "observedPeakMiB": 13132
+    },
+    "canonicalGlbBytes": 5630636,
+    "canonicalGlbSha256": "51d88da5990eafe4a6c180b5e01e84cb23d0e05af38cab9e8887f0915e103780",
+    "zipBytes": 8005476,
+    "zipSha256": "d3d742a6ccf1ce92f8cfd6a879babaeafdb29f33b11e8aa1415888c0ef59bfa4",
+    "projection": {
+      "width": 1024,
+      "height": 1024,
+      "horizontalFovDegrees": 29.348602898000774,
+      "triangles": 97924,
+      "primitives": 1,
+      "texturedUVPrimitives": 1,
+      "intersection": 135594,
+      "missing": 2081,
+      "extra": 4867,
+      "silhouetteIoU": 0.9512564717767394
+    },
+    "novelViewSourceComparison": {
+      "meanIoU": 0.8609484308811259,
+      "meanViewSurfaceDepthMAE": 0.014734140084298972,
+      "views": [
+        {
+          "label": "Reference",
+          "iou": 0.9244409157072913,
+          "surfaceDepthMAE": 0.01157774771314414,
+          "surfaceDepthP95": 0.02033233642578125
+        },
+        {
+          "label": "Right (+X)",
+          "iou": 0.8688563327032136,
+          "surfaceDepthMAE": 0.02568115762047123,
+          "surfaceDepthP95": 0.10238885879516602
+        },
+        {
+          "label": "Left (-X)",
+          "iou": 0.8898132741726752,
+          "surfaceDepthMAE": 0.006216860203888618,
+          "surfaceDepthP95": 0.011626720428466797
+        },
+        {
+          "label": "Top (+Y)",
+          "iou": 0.8067692307692308,
+          "surfaceDepthMAE": 0.03603392998559342,
+          "surfaceDepthP95": 0.17347562313079834
+        },
+        {
+          "label": "Bottom (-Y)",
+          "iou": 0.8205327126971813,
+          "surfaceDepthMAE": 0.012462384310799594,
+          "surfaceDepthP95": 0.03211069107055664
+        },
+        {
+          "label": "Front (+Z)",
+          "iou": 0.8552084729856549,
+          "surfaceDepthMAE": 0.008297349988414419,
+          "surfaceDepthP95": 0.022124528884887695
+        },
+        {
+          "label": "Back (-Z)",
+          "iou": 0.8538245895074089,
+          "surfaceDepthMAE": 0.007051890197584523,
+          "surfaceDepthP95": 0.02024364471435547
+        },
+        {
+          "label": "Opposite",
+          "iou": 0.9316344033325166,
+          "surfaceDepthMAE": 0.007395408283341,
+          "surfaceDepthP95": 0.017040252685546875
+        }
+      ]
+    }
+  },
+  "default": {
+    "profile": "default",
+    "graphSha256": "a4b63f99b4b5601a4b34c259a7a283fc4f8baf172fcbfa310da2b8ece1fb3de0",
+    "assetId": "a9d4d7fe4fbb469f356fbe62f00d019c1f66d6f1ccd1928e977e6e648a8a66b7",
+    "promptId": "7efa22a7-096a-47d2-8cb7-dcf1d5e9cd32",
+    "observedSamplers": [
+      "5:23",
+      "5:10",
+      "5:18",
+      "5:12"
+    ],
+    "requested": {
+      "cascade": 1536,
+      "remeshGrid": 768,
+      "decimationTargetTriangles": 700000,
+      "uv": 4096,
+      "bakedTexture": 4096,
+      "normal": 2048,
+      "ao": 1024,
+      "aoSamples": 64,
+      "boxResolution": 256,
+      "boxMaterialMaps": "none"
+    },
+    "comfyExecutionSeconds": 135.681,
+    "deviceMemory": {
+      "samplingSeconds": 1,
+      "samples": 144,
+      "startingMiB": 10322,
+      "observedPeakMiB": 10336
+    },
+    "canonicalGlbBytes": 45962856,
+    "canonicalGlbSha256": "c9a59defa83a07488140ed802806edd15fc8f224a4c42f2ccca7c803c9da009e",
+    "zipBytes": 40328918,
+    "zipSha256": "52c6ccad94ad6b58ba6abf111087237a38788846f5b67f311e02d08aecd03c11",
+    "projection": {
+      "width": 1024,
+      "height": 1024,
+      "horizontalFovDegrees": 29.348602898000774,
+      "triangles": 699978,
+      "primitives": 1,
+      "texturedUVPrimitives": 1,
+      "intersection": 135674,
+      "missing": 2001,
+      "extra": 3305,
+      "silhouetteIoU": 0.9623634558093347
+    },
+    "serviceCgroup": {
+      "ramLimitBytes": 31138512896,
+      "swapLimitBytes": 5368709120,
+      "sampledPeakMemoryBytes": 19447586816,
+      "sampledPeakSwapBytes": 1815064576,
+      "observedOomKills": 0
+    },
+    "roundtrip": {
+      "pass": true,
+      "worstColorLSB": 0,
+      "worstDepthLSB": 0,
+      "views": 18
+    },
+    "novelViewSourceComparison": {
+      "meanIoU": 0.8821691241170851,
+      "meanViewSurfaceDepthMAE": 0.014107130615793098,
+      "views": [
+        {
+          "label": "Reference",
+          "iou": 0.929506008010681,
+          "surfaceDepthMAE": 0.009063816197265739,
+          "surfaceDepthP95": 0.015468835830688477
+        },
+        {
+          "label": "Right (+X)",
+          "iou": 0.8898038265923952,
+          "surfaceDepthMAE": 0.02508269916362067,
+          "surfaceDepthP95": 0.14391756057739258
+        },
+        {
+          "label": "Left (-X)",
+          "iou": 0.9210022953328233,
+          "surfaceDepthMAE": 0.005108653248779994,
+          "surfaceDepthP95": 0.009979009628295898
+        },
+        {
+          "label": "Top (+Y)",
+          "iou": 0.8240682248894504,
+          "surfaceDepthMAE": 0.03881977133569977,
+          "surfaceDepthP95": 0.17646420001983643
+        },
+        {
+          "label": "Bottom (-Y)",
+          "iou": 0.8494073275862069,
+          "surfaceDepthMAE": 0.009376975569768894,
+          "surfaceDepthP95": 0.019414186477661133
+        },
+        {
+          "label": "Front (+Z)",
+          "iou": 0.8864924650905571,
+          "surfaceDepthMAE": 0.006940234882416609,
+          "surfaceDepthP95": 0.02007436752319336
+        },
+        {
+          "label": "Back (-Z)",
+          "iou": 0.8735443211398822,
+          "surfaceDepthMAE": 0.006568562057116998,
+          "surfaceDepthP95": 0.019527196884155273
+        },
+        {
+          "label": "Opposite",
+          "iou": 0.9308654081882815,
+          "surfaceDepthMAE": 0.006853018053148746,
+          "surfaceDepthP95": 0.017833471298217773
+        }
+      ]
+    }
+  },
+  "novelViewMethod": "tests/compare_pixal_novel_views.mjs aligned each proxy once to the known source camera. Evaluations use the six CC0 axes and the opposite camera, with the transform fixed for all views."
+}

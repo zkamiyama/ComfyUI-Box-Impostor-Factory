@@ -47,6 +47,8 @@ test('saved Box preview switches proxy, Box and synchronized split view, rotates
     await page.waitForFunction(() => /webgpu|webgl2|表示エラー/.test(document.querySelector('#status').textContent));
     assert.equal(await page.locator('#status.error').count(),0,await page.locator('#status').innerText());
     const manifest=await (await page.request.get(server.origin+'/asset/manifest.json')).json();
+    if (!manifest.provenance?.meshGeneration)
+      assert.equal(await page.locator('#mode option[value^="reference-"]').count(),0);
     const img2imgFaces=manifest.faceOrder.filter(id=>{
       const edit=manifest.faces[id].edit;
       return edit?.status==='accepted' && edit.provenance?.generator==='comfy-native-checkpoint-img2img';
@@ -190,3 +192,134 @@ test('saved Box preview switches proxy, Box and synchronized split view, rotates
     assert.deepEqual(errors,[]);
   } finally { await browser?.close(); await server.close(); }
 });
+
+// Compare the right canvas coverage with the native conditioning mask at the same pixel centers.
+function referenceCoverage({differentFrom,sameAs}={}) {
+  const crop=document.querySelector('#referenceCrop'), panel=document.querySelector('#canvas');
+  if (crop.hidden || !crop.complete) return false;
+  const canvas=document.createElement('canvas');
+  const box=panel.getBoundingClientRect(), left=crop.getBoundingClientRect(), stage=document.querySelector('#stage');
+  if (box.width!==box.height || box.width!==left.width || box.height!==left.height ||
+      Math.abs(box.y-left.y)>1 || Math.abs((box.x-left.x)-stage.clientWidth/2)>1) return false;
+  canvas.width=canvas.height=256;
+  const ctx=canvas.getContext('2d',{willReadFrequently:true});
+  ctx.drawImage(window.conditioningMask,0,0,256,256);
+  const expected=ctx.getImageData(0,0,256,256).data;
+  ctx.clearRect(0,0,256,256);
+  ctx.drawImage(panel,0,0,256,256);
+  const actual=ctx.getImageData(0,0,256,256).data;
+  let both=0, union=0, colorHash=0;
+  for(let i=0;i<actual.length;i+=4){
+    const a=expected[i]>=128;
+    const b=actual[i+3]>=128;
+    if (b) colorHash=(colorHash*31+((actual[i]*256+actual[i+1])*256+actual[i+2]))|0;
+    if(a && b) both++;
+    if(a || b) union++;
+  }
+  return union && both/union>.92 && colorHash!==differentFrom && (sameAs===undefined || colorHash===sameAs) &&
+    {iou:both/union,side:box.width,colorHash};
+}
+
+async function verifyReferenceViewer(archive) {
+  const {mkdtemp,readFile,rm} = await import('node:fs/promises');
+  const {tmpdir}=await import('node:os');
+  const {join}=await import('node:path');
+  const {execFileSync}=await import('node:child_process');
+  const scratch=await mkdtemp(join(tmpdir(),'bi-pixal-viewer-'));
+  let server,browser;
+  try {
+    const asset=process.env.BI_TEST_PIXAL_ASSET || scratch;
+    if (!process.env.BI_TEST_PIXAL_ASSET)
+      execFileSync('python',['-m','zipfile','-e',resolve('examples',archive),asset]);
+    server=await startServer({assetDir:resolve(asset)});
+    const backend=process.env.BI_TEST_BACKEND || 'auto';
+    browser=await chromium.launch(chromiumOptions(backend));
+    const page=await browser.newPage({viewport:{width:950,height:610}});
+    const errors=[];
+    page.on('pageerror',e=>errors.push(e.message));
+    await page.goto(server.origin+'/web/viewer.html?manifest=/asset/manifest.json&backend='+backend);
+    await page.waitForFunction(()=>!!document.querySelector('#mode option[value="reference-proxy"]'));
+    // Generated from this archive by tests/pixal_crop_mask.py using ComfyUI ImageCropToMask.
+    const mask=await readFile(new URL('./fixtures/pixal-lantern-conditioning-mask.png',import.meta.url));
+    assert(await page.evaluate(async data=>{
+      window.conditioningMask=new Image();
+      window.conditioningMask.src='data:image/png;base64,'+data;
+      await window.conditioningMask.decode();
+      const {reference}=await (await fetch('/asset/manifest.json')).json();
+      const saved=await createImageBitmap(await (await fetch('/asset/'+reference.camera.image)).blob());
+      const display=document.querySelector('#referenceCrop');
+      const canvas=document.createElement('canvas');
+      canvas.width=saved.width; canvas.height=saved.height;
+      const ctx=canvas.getContext('2d',{willReadFrequently:true});
+      function pixels(image) {
+        ctx.drawImage(image,0,0);
+        return ctx.getImageData(0,0,canvas.width,canvas.height).data;
+      }
+      const expected=pixels(saved), actual=pixels(display);saved.close();
+      return window.conditioningMask.naturalWidth===canvas.width && expected.every((c,i)=>c===actual[i]);
+    },mask.toString('base64')),'the left image is the exact conditioning crop');
+    await page.selectOption('#mode','both');
+    await page.selectOption('#view','-X');
+    await page.selectOption('#projection','orthographic');
+    await page.waitForFunction(presentedForeground,2);
+    const canvas=page.locator('#canvas'), orbit=await canvas.screenshot();
+    const scores={};
+    for (const mode of ['reference-proxy','reference-box']) {
+      await page.selectOption('#mode',mode);
+      const measured=await (await page.waitForFunction(referenceCoverage)).jsonValue();
+      scores[mode]={lit:measured.iou};
+      await page.selectOption('#shading','normal');
+      const normal=await (await page.waitForFunction(referenceCoverage,{differentFrom:measured.colorHash})).jsonValue();
+      scores[mode].normal=normal.iou;
+      await page.selectOption('#shading','lit');
+      await page.waitForFunction(referenceCoverage,{sameAs:measured.colorHash});
+      assert.equal(await page.locator('#view').isVisible(),false);
+      assert.equal(await page.locator('#projection').isVisible(),false);
+      assert.equal(await page.locator('#fit').isVisible(),false);
+      assert.deepEqual(await page.locator('#labels span').allTextContents(),['参照画像',mode==='reference-box'?'Box':'元のメッシュ']);
+      const rect=await canvas.boundingBox(), x=rect.x+rect.width/2, y=rect.y+rect.height/2;
+      await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+40,y+30);await page.mouse.up();
+      await page.mouse.wheel(0,-120);
+      assert.equal((await (await page.waitForFunction(referenceCoverage)).jsonValue()).iou,measured.iou);
+    }
+    for (const viewport of [{width:540,height:740},{width:1210,height:450}]) {
+      await page.setViewportSize(viewport);
+      await page.waitForFunction(referenceCoverage);
+      const w=await canvas.boundingBox();
+      assert(Math.abs(w.width-w.height)<=1);
+    }
+    console.log('Pixal3D conditioning crop comparison',archive,backend,scores);
+    await page.setViewportSize({width:950,height:610});
+    await page.selectOption('#mode','both');
+    await page.waitForFunction(presentedForeground,2);
+    assert(orbit.equals(await canvas.screenshot()),'unmodified orbit camera after leaving the fixed reference');
+    // New exports identify the rig by proven graph connections, independent of the weight precision.
+    let rig='pixal3d-single-view-v1';
+    await page.route('**/asset/manifest.json',async route=>{
+      const response=await route.fetch(), manifest=await response.json();
+      manifest.reference.camera.rig=rig;
+      if (rig==='pixal3d-single-view-v1')
+        manifest.provenance.meshGeneration.weights={'diffusion_models/another-precision.safetensors':'a'.repeat(64)};
+      if (rig==='altered-legacy-fov') {
+        delete manifest.reference.camera.rig;
+        manifest.reference.camera.horizontalFovDegrees+=1;
+      }
+      await route.fulfill({response,json:manifest});
+    });
+    for (const [value,count] of [['pixal3d-single-view-v1',2],['unspecified',0],['altered-legacy-fov',0]]) {
+      rig=value;
+      await page.reload();
+      await page.waitForFunction(()=>/webgl2|webgpu/.test(document.querySelector('#status').textContent));
+      assert.equal(await page.locator('#mode option[value^="reference-"]').count(),count);
+    }
+    assert.deepEqual(errors,[]);
+  } finally {await browser?.close();await server?.close();await rm(scratch,{recursive:true,force:true});}
+}
+
+const pixalArchives=process.env.BI_TEST_PIXAL_ASSET ? ['unpacked'] :
+  ['cc0-lantern-pixal3d-compact.box.zip','cc0-lantern-pixal3d-qwen-pbr.box.zip'];
+for (const archive of pixalArchives) {
+  test(archive+' compares the Box and proxy in the conditioning camera and restores the orbit view', {
+    skip: process.env.BI_TEST_ASSET || process.env.BI_TEST_PIXAL_ASSET ? false : 'set BI_TEST_ASSET to run browser integration'
+  },()=>verifyReferenceViewer(archive));
+}
