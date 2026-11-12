@@ -1,0 +1,17 @@
+{
+  "name": "comfyui-box-impostor-factory",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "box": "node worker/cli.mjs",
+    "fixture": "node tests/make_fixture.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.57.0",
+    "three": "0.186.0",
+    "three-impostor": "0.4.1"
+  }
+}
