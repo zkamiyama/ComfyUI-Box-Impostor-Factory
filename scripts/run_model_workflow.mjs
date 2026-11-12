@@ -10,6 +10,7 @@ import { chromiumOptions } from '../worker/chromium.mjs';
 
 export const workflows = {
   pixal3d: '05_pixal3d_baseline', qwen: '02_box_from_reference_qwen21', h3: '03_box_from_reference_h3',
+  triposplat: '08_triposplat_guide',
 };
 const directions = ['+X', '-X', '+Y', '-Y', '+Z', '-Z'];
 const slugs = { '+X': 'px', '-X': 'nx', '+Y': 'py', '-Y': 'ny', '+Z': 'pz', '-Z': 'nz' };
@@ -42,6 +43,7 @@ export function preflight(graph, registry, input) {
       }
     }
   }
+  if (graph.nodes.some(n => n.type === 'BITripoSplatGuide') && !registry.RenderSplat) missingNodes.add('RenderSplat');
   const inputAvailable = comboHas(registry.LoadImage?.input?.required?.image, input);
   return { ready: !missingNodes.size && inputAvailable && [...models.values()].every(m => m.available),
     missingNodes: [...missingNodes].sort(), input, inputAvailable, models: [...models.values()] };
@@ -53,6 +55,32 @@ export function checkCompiled(prompt, model, report) {
   assert.deepEqual(byType('LoadImage').map(n => n.inputs.image), [report.input], 'Frontend changed the reference image');
   for (const { name, loader } of report.models)
     assert(byType(loader).some(n => Object.values(n.inputs).includes(name)), 'Frontend lost ' + name);
+  if (model === 'triposplat') {
+    const entry = type => {
+      const found = Object.entries(prompt).filter(([,n]) => n.class_type === type);
+      assert.equal(found.length, 1, 'Missing or duplicate ' + type);
+      return found[0];
+    };
+    const [reference, prepared] = entry('BIPrepareReference');
+    const [matte, removed] = entry('RemoveBackground');
+    assert.equal(prepared.inputs.mask_mode, 'foreground');
+    assert.deepEqual(prepared.inputs.mask, [matte, 0]);
+    assert.deepEqual(removed.inputs.image, prepared.inputs.image);
+    const [decode] = entry('VAEDecodeTripoSplat');
+    const [cache, cached] = entry('BICachedTripoSplat');
+    assert.deepEqual(cached.inputs, {reference: [reference, 2], splat: [decode, 0]});
+    const [transform, aligned] = entry('TransformSplat');
+    assert.deepEqual(aligned.inputs.splat, [cache, 0]);
+    const [guide, rendered] = entry('BITripoSplatGuide');
+    assert.deepEqual(rendered.inputs.splat, [transform, 0]);
+    assert.deepEqual(rendered.inputs.guides, [entry('BIMakeSixGuides')[0], 6]);
+    assert.deepEqual(entry('PreviewImage')[1].inputs.images, [guide, 0]);
+    assert.deepEqual(entry('PreviewAny')[1].inputs.source, [guide, 2]);
+    assert.equal(entry('BICanonicalizeProxy')[1].inputs.filename, report.mesh);
+    assert.equal(rendered.inputs.face_id, report.face);
+    assert.equal(rendered.inputs.coordinate_space, report.coordinateSpace);
+    return;
+  }
   for (const type of ['Pixal3DConditioning', 'MeshToFile3D', 'BIPreviewBox', 'BISaveBox'])
     assert.equal(byType(type).length, 1, 'Missing or duplicate ' + type);
   if (model !== 'pixal3d') {
@@ -94,7 +122,8 @@ function samplerGroups(prompt, face) {
   }
   const result = {};
   for (const node of Object.values(prompt)) {
-    if (node.class_type === 'BICanonicalizeProxy') result.pixal3d = samplers(node.inputs.model_3d);
+    if (node.class_type === 'BICachedTripoSplat') result.triposplat = samplers(node.inputs.splat);
+    if (node.class_type === 'BICanonicalizeProxy' && node.inputs.model_3d) result.pixal3d = samplers(node.inputs.model_3d);
     if (node.class_type === 'BICachedGeneratedFace' && (!face || node.inputs.face_id === face)) {
       result[node.inputs.face_id] = samplers(node.inputs.image);
     }
@@ -209,10 +238,84 @@ function assetURL(value, base) {
   return url;
 }
 
+async function inputMeshAvailable(origin, mesh) {
+  const parts = mesh.split('/');
+  const filename = parts.pop();
+  const url = new URL('/view', origin);
+  url.search = new URLSearchParams({type: 'input', subfolder: parts.join('/'), filename});
+  const result = await fetch(url, {headers: {Range: 'bytes=0-11'}, signal: AbortSignal.timeout(60_000)});
+  if (result.status === 404) return false;
+  if (!result.ok) throw new Error('Mesh lookup failed: HTTP ' + result.status);
+  const head = Buffer.alloc(12);
+  let n = 0;
+  for await (const chunk of result.body) {
+    const bytes = Buffer.from(chunk).subarray(0, 12-n);
+    bytes.copy(head,n);
+    n += bytes.length;
+    if (n === 12) break;
+  }
+  return n === 12 && head.toString('ascii',0,4) === 'glTF' &&
+    head.readUInt32LE(4) === 2 && head.readUInt32LE(8) >= 20;
+}
+
+export function verifySplatOutput(report, manifest, face, space) {
+  for (const k of ['asset', 'splatSha256', 'rendererSha256', 'meshGuideSha256', 'stageKey'])
+    assert.match(report[k] ?? '', sha256, 'Missing ' + k);
+  assert.equal(report.faceId, face);
+  assert.equal(report.coordinateSpace, space);
+  assert.equal(manifest.asset_id, report.asset);
+  assert.equal(report.resolution, manifest.resolution);
+  assert(report.resolution >= 8 && Number.isInteger(report.resolution));
+  assert.equal(manifest.faces[face].guideSha256, report.meshGuideSha256);
+  assert.match(manifest.provenance?.originalGlbSha256 ?? '', sha256);
+  const qa = report.qa;
+  assert(Number.isInteger(qa.splatPixels) && qa.splatPixels >= 0 && qa.splatPixels <= report.resolution ** 2);
+  assert(Number.isInteger(qa.meshPixels) && qa.meshPixels >= 0 && qa.meshPixels <= report.resolution ** 2);
+  assert(Number.isFinite(qa.iou) && qa.iou >= 0 && qa.iou <= 1);
+  assert(['measured','constant-depth','insufficient-overlap','mesh-depth-unavailable'].includes(qa.relativeDepth?.status));
+  return { mode: 'splat-guide', face, coordinateSpace: space, splatSha256: report.splatSha256,
+    meshSha256: manifest.provenance.originalGlbSha256, qa };
+}
+
+export async function saveSplatOutput(dir, origin, prompt, outputs, opts, trace, workflow, promptId) {
+  const id = type => Object.keys(prompt).find(k => prompt[k].class_type === type);
+  const raw = outputs[id('PreviewAny')]?.text?.[0];
+  assert.equal(typeof raw, 'string', 'Missing splat guide QA from PreviewAny');
+  const report = JSON.parse(raw);
+  await jsonFile(join(dir, 'qa.json'), report);
+  assert.match(report.asset ?? '', sha256);
+  const url = new URL('/box-impostor/assets/' + report.asset + '/manifest.json', origin);
+  const manifest = await (await response(url)).json();
+  const verified = verifySplatOutput(report, manifest, opts.face ?? '+Z', opts['coordinate-space'] ?? 'canonical_box');
+  await jsonFile(join(dir, 'manifest.json'), manifest);
+  const image = outputs[id('PreviewImage')]?.images?.[0];
+  assert(image?.filename && image.type === 'temp', 'Missing native guide preview');
+  const previewURL = new URL('/view', origin);
+  previewURL.search = new URLSearchParams({type: image.type, filename: image.filename, subfolder: image.subfolder ?? ''});
+  const png = Buffer.from(await (await response(previewURL)).arrayBuffer());
+  assert(png.length >= 57 && png.subarray(0,8).equals(Buffer.from('89504e470d0a1a0a','hex')) &&
+    png.toString('ascii',12,16) === 'IHDR' && png.subarray(-12).equals(Buffer.from('0000000049454e44ae426082','hex')),
+    'Invalid or truncated guide preview PNG');
+  assert.equal(png.readUInt32BE(16), report.resolution);
+  assert.equal(png.readUInt32BE(20), report.resolution);
+  await writeFile(join(dir, 'splat-guide.png'), png);
+  const proxy = Buffer.from(await (await response(assetURL(manifest.faces[report.faceId].guide, url))).arrayBuffer());
+  assert.equal(createHash('sha256').update(proxy).digest('hex'), report.meshGuideSha256);
+  await writeFile(join(dir, 'mesh-guide.png'), proxy);
+  return { workflow, prompt_id: promptId, asset_id: report.asset, inference: inferenceReport(prompt, null, trace), ...verified };
+}
+
 export async function run(opts) {
   const name = workflows[opts.model];
-  if (!Object.hasOwn(workflows, opts.model)) throw new Error('Choose --model pixal3d, qwen or h3.');
-  if (opts.face && (!directions.includes(opts.face) || opts.model === 'pixal3d')) throw new Error('--face needs qwen or h3 and one of +X, -X, +Y, -Y, +Z, -Z.');
+  if (!Object.hasOwn(workflows, opts.model)) throw new Error('Choose --model ' + Object.keys(workflows).join(', ') + '.');
+  if (opts.face && (!directions.includes(opts.face) || opts.model === 'pixal3d')) throw new Error('--face needs qwen, h3 or triposplat and one of +X, -X, +Y, -Y, +Z, -Z.');
+  const isSplat = opts.model === 'triposplat';
+  if (isSplat && (typeof opts.mesh !== 'string' || !opts.mesh.toLowerCase().endsWith('.glb') ||
+      /[\\:\x00]/.test(opts.mesh) || opts.mesh.split('/').some(p => !p || p === '.' || p === '..')))
+    throw new Error('TripoSplat needs --mesh matching.glb relative to ComfyUI/input.');
+  if (!isSplat && (opts.mesh || opts['coordinate-space'])) throw new Error('--mesh and --coordinate-space apply to triposplat.');
+  const coordinateSpace = opts['coordinate-space'] ?? 'canonical_box';
+  if (!['canonical_box','source_glb'].includes(coordinateSpace)) throw new Error('Choose --coordinate-space canonical_box or source_glb.');
   const origin = new URL(opts.origin);
   if (!['http:', 'https:'].includes(origin.protocol)) throw new Error('--origin must be HTTP(S).');
   const timeout = Number(opts['timeout-minutes']);
@@ -223,9 +326,15 @@ export async function run(opts) {
   const graph = JSON.parse(await readFile(new URL('../workflows/' + name + '.json', import.meta.url), 'utf8'));
   const registry = await (await response(new URL('/object_info', origin))).json();
   const report = preflight(graph, registry, opts.input);
+  if (isSplat) {
+    Object.assign(report, {mesh: opts.mesh, meshAvailable: await inputMeshAvailable(origin, opts.mesh),
+      face: opts.face ?? '+Z', coordinateSpace});
+    report.ready &&= report.meshAvailable;
+  }
   await jsonFile(join(dir, 'preflight.json'), report);
   if (!report.ready) {
     const missing = [...report.missingNodes, ...report.models.filter(m => !m.available).map(m => (m.directory ?? m.loader) + '/' + m.name)];
+    if (isSplat && !report.meshAvailable) missing.push('input/' + opts.mesh + ' (GLB v2)');
     if (!report.inputAvailable) missing.push('input/' + opts.input);
     throw new Error('Missing on this ComfyUI server:\n' + missing.join('\n'));
   }
@@ -234,9 +343,13 @@ export async function run(opts) {
   const image = graph.nodes.find(n => n.type === 'LoadImage');
   image.widgets_values[0] = opts.input;
   if (image.widgets_values_named) image.widgets_values_named.image = opts.input;
+  if (isSplat) {
+    graph.nodes.find(n => n.type === 'BICanonicalizeProxy').widgets_values[0] = opts.mesh;
+    graph.nodes.find(n => n.type === 'BITripoSplatGuide').widgets_values = [report.face, coordinateSpace];
+  }
   const prompt = await compile(origin.href, graph);
   checkCompiled(prompt, opts.model, report);
-  selectFace(prompt, opts.face);
+  if (!isSplat) selectFace(prompt, opts.face);
   await jsonFile(join(dir, 'prompt.json'), prompt);
   const stats = await (await response(new URL('/system_stats', origin))).json();
   await jsonFile(join(dir, 'environment.json'), { devices: stats.devices, system: {
@@ -257,6 +370,13 @@ export async function run(opts) {
       if (!history) { await delay(2000); continue; }
       await jsonFile(join(dir, 'status.json'), history.status);
       if (history.status?.status_str !== 'success') throw new Error('Execution failed. See ' + join(dir, 'status.json'));
+      if (isSplat) {
+        const summary = await saveSplatOutput(dir, origin, prompt, history.outputs, opts,
+          live.traces.get(receipt.prompt_id), name, receipt.prompt_id);
+        await jsonFile(join(dir, 'result.json'), summary);
+        console.log(JSON.stringify(summary, null, 2));
+        return;
+      }
       const preview = Object.entries(prompt).find(([, n]) => n.class_type === 'BIPreviewBox')[0];
       const viewer = assetURL(history.outputs[preview]?.box_impostor?.[0], origin);
       const manifestURL = assetURL(viewer.searchParams.get('manifest'), origin);
@@ -297,9 +417,9 @@ export async function run(opts) {
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const { values } = parseArgs({ options: { model: { type: 'string' }, origin: { type: 'string', default: 'http://127.0.0.1:8188' },
     input: { type: 'string', default: 'reference.png' }, output: { type: 'string', default: '.test-output/models' },
-    face: { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
+    face: { type: 'string' }, mesh: { type: 'string' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
   if (values.help) {
-    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3 [--origin URL] [--input reference.png] [--output DIR] [--face=+Z] [--run] [--timeout-minutes 180]\nPlace the image in ComfyUI/input. Default: check installed models and input, without queuing.');
+    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--output DIR] [--face=+Z] [--run] [--timeout-minutes 180]\nPlace the image in ComfyUI/input. Default: check installed models and input, without queuing.');
   } else {
     run(values).catch(error => { console.error(error.message); process.exitCode = 1; });
   }

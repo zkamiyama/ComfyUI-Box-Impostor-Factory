@@ -83,6 +83,8 @@ node scripts/run_model_workflow.mjs --model qwen --input reference.png --face=+Z
 
 `BI TripoSplatGuide` にComfyUIの `SPLAT` と、同じ物体のGLBから作った `BI MakeSixGuides` の `guides` をつなぐ。`face_id` で方向を選び、スプラットを元のGLBに位置合わせした場合は `source_glb`、正規化後のGLBに合わせた場合は `canonical_box` を指定する。位置・向き・スケールが違う場合は上流の `Transform Splat` で合わせる。
 
+コマンドで試すには `node scripts/run_model_workflow.mjs --model triposplat --input reference.png --mesh matching.glb --face=+Z` を実行する。参照画像とGLBをComfyUIの `input/` に置く。重みとGLBの事前確認が通ったら `--run` を付ける。ガイド画像、同じ面のメッシュ画像、輪郭・深度の計測値を保存する。
+
 出力の `guide` は画像生成に渡すRGB画像、`foreground` は物体を1とするマスク。`qa_json` でメッシュとの輪郭IoU、境界距離、重なる画素の深度順位相関を確認できる。Boxの法線・区間・占有範囲は、この場合もGLBからベイクする。
 
 ## 保存・再利用・品質の確認
