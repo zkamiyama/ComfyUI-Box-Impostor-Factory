@@ -259,6 +259,15 @@ async function describeTexture(name,texture,resolution,renderer,backend) {
     alpha:name==='colorMap'?'premultiplied-coverage':name==='intervalMap'?'gap-end':name==='rangeMap'?'constant-one':'coverage'}};
 }
 
+export function createBoxMaterial(data) {
+  const material=new ImpostorNodeMaterial(data);
+  // A ray can cross sqrt(3)*R texels diagonally. Occupied steps advance 1.5 texels
+  // and empty steps cross one of at most 3*R/8 cell boundaries. Leave room for
+  // the first and last cells. The shader still exits at the first hit or box exit.
+  material.steps=Math.max(material.steps,2*data.resolution);
+  return material;
+}
+
 export async function bakeGLB(data,options={}) {
   const resolution=options.resolution??256, requested=options.maps??[];
   verifyResolution(resolution);
@@ -301,7 +310,7 @@ export async function bakeGLB(data,options={}) {
           transform:canonical.transform,inverseTransform:canonical.inverseTransform,
           faceOrder:FACES.map(f=>f.id),faces,maps:[...baked.maps],textures,baseColor:{...textures.colorMap},
           backend,versions:{three:THREE.REVISION,baker:'0.4.1',bakerCommit:PIN},coordinateSystem:'right-handed-y-up'};
-        material=new ImpostorNodeMaterial(baked);
+        material=createBoxMaterial(baked);
         const mesh=new THREE.Mesh(baked.geometry,material);
         if(options.beforeDispose) await options.beforeDispose({mesh,renderer,manifest,files});
         if(options.renderer){
@@ -390,7 +399,7 @@ export async function restoreBox(manifest,files,renderer,{sampling='standard'}={
         data[name]=t;
       }
     }
-    material=new ImpostorNodeMaterial(data);
+    material=createBoxMaterial(data);
     return {mesh:new THREE.Mesh(geometry,material),dispose};
   } catch(cause){dispose();throw cause;}
 }

@@ -1,6 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {fidelity} from './compare_proxy.mjs';
+import {createBoxMaterial} from '../worker/runtime.mjs';
+
+test('Box ray budget covers the far side of the baked volume at every supported resolution',()=>{
+  for (const resolution of [32,64,128,256,512,1024,2048]) {
+    const material=createBoxMaterial({maps:[],layout:'box',resolution});
+    const diagonalFineSteps=Math.ceil(Math.sqrt(3)*resolution/1.5);
+    const cellCrossings=3*Math.ceil(resolution/8);
+    assert(material.steps>=diagonalFineSteps+cellCrossings+2);
+    material.dispose();
+  }
+});
 
 function frame(colors,depth){
   const color=Buffer.from(colors.flat()).toString('base64');

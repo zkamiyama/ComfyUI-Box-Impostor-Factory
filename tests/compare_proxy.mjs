@@ -70,7 +70,7 @@ export async function compareProxy(asset,reportPath,backend='webgl2',compareInte
     const result=await page.evaluate(async ({backend,compareInterval,size})=>{
       const {snapshot}=await import('/worker/browser_bridge.mjs');
       const {makeRenderer,readAsset,backendName}=await import('/web/asset_io.mjs');
-      const {loadProxy,restoreBox,disposeProxy}=await import('/worker/runtime.mjs');
+      const {loadProxy,restoreBox,disposeProxy,createBoxMaterial}=await import('/worker/runtime.mjs');
       const renderer=await makeRenderer(backend);
       let mesh,restored,variantTexture,variantMaterial;
       try{
@@ -82,7 +82,6 @@ export async function compareProxy(asset,reportPath,backend='webgl2',compareInte
         let nearest;
         if(compareInterval){
           const {NearestFilter,RenderTarget,Mesh}=await import('three/webgpu');
-          const {ImpostorNodeMaterial}=await import('three-impostor');
           const data=restored.mesh.material.impostor, original=data.intervalMap;
           let sampled;
           if(original.isRenderTargetTexture){
@@ -99,11 +98,11 @@ export async function compareProxy(asset,reportPath,backend='webgl2',compareInte
             variantTexture.needsUpdate=true;
             sampled=variantTexture;
           }
-          variantMaterial=new ImpostorNodeMaterial({...data,intervalMap:sampled});
+          variantMaterial=createBoxMaterial({...data,intervalMap:sampled});
           const variantMesh=new Mesh(restored.mesh.geometry,variantMaterial);
           nearest=await snapshot(renderer,variantMesh,manifest.bakeBox,size);
         }
-        return {backend:backendName(renderer),resolution:manifest.resolution,proxySha256:manifest.proxySha256,
+        return {backend:backendName(renderer),resolution:manifest.resolution,proxySha256:manifest.proxySha256,steps:restored.mesh.material.steps,
           textures:Object.fromEntries(Object.entries(manifest.textures).map(([k,v])=>[k,v.sha256])),reference,actual,nearest};
       } finally {variantMaterial?.dispose();variantTexture?.dispose();if(mesh)disposeProxy(mesh);restored?.dispose();await renderer.dispose();}
     },{backend,compareInterval,size});
@@ -111,7 +110,7 @@ export async function compareProxy(asset,reportPath,backend='webgl2',compareInte
     const views=reference.map((p,i)=>fidelity(p,actual[i]));
     const stats=vs=>({minimumIoU:Math.min(...vs.map(v=>v.silhouetteIoU)),meanIoU:round(vs.reduce((a,v)=>a+v.silhouetteIoU,0)/vs.length)});
     const report={...common,chromiumVersion:browser.version(),softwareGpuRequested:software,source:'canonical proxy GLB',candidate:'restored Box',
-      renderSize:[reference[0].width,reference[0].height],projection:'orthographic',steps:128,
+      renderSize:[reference[0].width,reference[0].height],projection:'orthographic',
       depthUnits:'normalized orthographic camera depth, overlapping foreground pixels',colorUnits:'absolute RGB channel difference in RGBA8 readback, overlapping foreground pixels',
       axes:stats(views.slice(0,6)),obliques:stats(views.slice(6)),views};
     const summarize=values=>({
