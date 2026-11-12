@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
-import { checkedMaterialTextures, configureMaterialMaps, configureCompactProxy, configureEditGraph, preflight, workflows, run, inferenceReport, selectFace, verifyOutput, saveSplatOutput, verifySplatOutput } from '../scripts/run_model_workflow.mjs';
+import { checkCompiled, checkedMaterialTextures, configureMaterialMaps, configureCompactProxy, configureEditGraph, preflight, workflows, run, inferenceReport, selectFace, verifyOutput, saveSplatOutput, verifySplatOutput } from '../scripts/run_model_workflow.mjs';
 
 const dirs = ['+X', '-X', '+Y', '-Y', '+Z', '-Z'];
 const digest = 'a'.repeat(64);
@@ -68,12 +68,107 @@ test('installed dropdowns must contain each requested file, including the Qwen-o
     }
     assert(preflight(graph, registry, 'object.png').ready);
     assert(!preflight(graph, registry, 'missing.png').ready);
+    if (name === 'h3') {
+      configureEditGraph(graph, 'h3', {h3Denoiser:'w4a8'});
+      const unavailable = preflight(graph, registry, 'object.png');
+      assert(!unavailable.ready);
+      assert.deepEqual(unavailable.models.filter(m => !m.available).map(m => m.name), [h3Weights.w4a8[0]]);
+      registry.UNETLoader.input.required.model[1].options.push(h3Weights.w4a8[0]);
+      assert(preflight(graph, registry, 'object.png').ready);
+    }
     if (name === 'qwen') {
       registry.LoraLoaderModelOnly.input.required.model[1].options = ['other.safetensors'];
       const report = preflight(graph, registry, 'object.png');
       assert.equal(report.ready, false);
       assert.deepEqual(report.models.filter(m => !m.available).map(m => m.name), ['QI2.1_AnyAngle.safetensors']);
     }
+  }
+});
+
+const h3Weights = {
+  int8: ['minimax_h3_image_pruned_int8_convrot.safetensors', '83eb140f1ff95c068f8a6886e6d3f3d0d4ab2e07bb2fe6d2ef992a51146ee622'],
+  w4a8: ['minimax_h3_image_pruned_w4a8.safetensors', '517cc19b85348386f4df7c806dce80d839d0899e7cdaa3e1dbb09de964381dbb'],
+};
+
+test('H3 selection rewrites the shared loader and every recipe and keeps the default workflow intact', async () => {
+  const graph = await load('h3'), original = structuredClone(graph);
+  configureEditGraph(graph, 'h3');
+  assert.deepEqual(graph, original);
+  const loader = graph.nodes.find(n => n.type === 'UNETLoader');
+  configureEditGraph(graph, 'h3', {h3Denoiser:'int8'});
+  assert.equal(loader.properties.models[0].url, 'https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/0bb149f51e3156ed4b90dd45d5620346bfe1df8f/diffusion_models/'+h3Weights.int8[0]);
+  assert.deepEqual(graph.nodes.filter(n => n.type !== 'UNETLoader'), original.nodes.filter(n => n.type !== 'UNETLoader'));
+  loader.widgets_values_named = {unet_name:h3Weights.int8[0], weight_dtype:'default'};
+  configureEditGraph(graph, 'h3', {h3Denoiser:'w4a8'});
+  const name = h3Weights.w4a8[0];
+  assert.equal(loader.widgets_values[0], name);
+  assert.equal(loader.widgets_values_named.unet_name, name);
+  assert.deepEqual(loader.properties.models, [{name, directory:'diffusion_models',
+    url:'https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/0bb149f51e3156ed4b90dd45d5620346bfe1df8f/diffusion_models/'+name}]);
+  const recipes = graph.nodes.filter(n => n.type === 'BICachedGeneratedFace');
+  assert.deepEqual(recipes.map(n => n.widgets_values[0]), dirs);
+  for (const node of recipes) {
+    const before = original.nodes.find(n => n.id === node.id);
+    const expected = {...JSON.parse(before.widgets_values[2]), model:name};
+    assert.deepEqual(JSON.parse(node.widgets_values[2]), expected);
+    assert.equal(node.widgets_values_named.recipe, node.widgets_values[2]);
+  }
+  assert.deepEqual(graph.links, original.links);
+  assert.deepEqual(graph.definitions, original.definitions);
+  assert.throws(() => configureEditGraph(graph, 'h3', {h3Denoiser:'other'}), /int8 or w4a8/);
+  for (const model of ['pixal3d', 'qwen', 'triposplat'])
+    await assert.rejects(run({model,'h3-denoiser':'int8'}), /--h3-denoiser needs h3/);
+  await assert.rejects(run({model:'h3','h3-denoiser':'__proto__'}), /int8 or w4a8/);
+});
+
+test('H3 compiled and saved evidence requires the selected denoiser for all six face branches', () => {
+  const node = (class_type,inputs={}) => ({class_type,inputs});
+  for (const [selection,[name,hash]] of Object.entries(h3Weights)) {
+    const report = {input:'ref.png', mesh:'proxy.glb', models:[{loader:'UNETLoader',name}], h3Denoiser:selection};
+    const prompt = {load:node('LoadImage',{image:report.input}), ref:node('BIPrepareReference'),
+      proxy:node('BICanonicalizeProxy',{filename:report.mesh}), save:node('BISaveBox'), preview:node('BIPreviewBox'),
+      order:node('PrimitiveBoolean',{value:false}), orderSwitch:node('ComfySwitchNode',{switch:['order',0]}),
+      loader:node('UNETLoader',{unet_name:name}), other:node('UNETLoader',{unet_name:'other.safetensors'})};
+    const manifest = {layout:'box',asset_id:digest,mode:'geometry_baseline',reference:{sha256:digest},
+      provenance:{originalGlbSha256:digest},faces:{}}, qa = {faces:{}};
+    for (const [i,face] of dirs.entries()) {
+      prompt['canvas'+i] = node('BIModelCanvas',{reference:['ref',0]});
+      prompt['cond'+i] = node('MiniMaxH3ImageConditioning',{'images.image_1':['orderSwitch',0]});
+      prompt['seed'+i] = node('PrimitiveInt',{value:101+i});
+      prompt['sample'+i] = node('KSampler',{model:['loader',0],seed:['seed'+i,0]});
+      const image = ['sample'+i,0];
+      prompt['mask'+i] = node('RemoveBackground',{image});
+      prompt['face'+i] = node('BICachedGeneratedFace',{face_id:face,mask_mode:'foreground',
+        mask:['mask'+i,0],image,seed:['seed'+i,0],recipe:JSON.stringify({model:name})});
+      manifest.faces[face] = {guideSha256:digest,edit:{source:'h3_enhanced',status:'fallback',
+        reference:'reference/'+digest+'/source.png',provenance:{faceId:face,referenceSha256:digest,
+          guideSha256:digest,recipe:{model:name},weights:{['diffusion_models/'+name]:hash}}}};
+      qa.faces[face] = {status:'fallback'};
+    }
+    checkCompiled(prompt, 'h3', report);
+    prompt.sample5.inputs.model = ['other',0];
+    assert.throws(() => checkCompiled(prompt,'h3',report), /sampler denoiser on -Z/);
+    prompt.sample5.inputs.model = ['loader',0];
+    prompt.face4.inputs.recipe = JSON.stringify({model:'other.safetensors'});
+    assert.throws(() => checkCompiled(prompt,'h3',report), /compiled H3 recipe on \+Z/);
+    const verify = () => verifyOutput('h3',manifest,qa,undefined,digest,undefined,selection);
+    const proof = verify();
+    assert.deepEqual([proof.h3Denoiser,proof.denoiserFile,proof.denoiserSha256,proof.fallback],[selection,name,hash,6]);
+    if (selection === 'int8') {
+      const local = structuredClone(manifest);
+      for (const dir of dirs) local.faces[dir].edit.provenance.weights['diffusion_models/'+name] = digest;
+      const localProof = () => verifyOutput('h3',local,qa,undefined,digest);
+      assert.equal(localProof().denoiserSha256, digest, 'The default reports the actual same-name local file');
+      assert.throws(() => verifyOutput('h3',local,qa,undefined,digest,undefined,'int8'), /Wrong H3 weight digest/);
+      local.faces['-Y'].edit.provenance.weights['diffusion_models/'+name] = hash;
+      assert.throws(localProof, /Inconsistent H3 weight digest on -Y/);
+    }
+    const provenance = manifest.faces['-Y'].edit.provenance;
+    provenance.weights['diffusion_models/'+name] = digest;
+    assert.throws(verify, /Wrong H3 weight digest on -Y/);
+    provenance.recipe.model = 'other.safetensors';
+    provenance.weights['diffusion_models/other.safetensors'] = hash;
+    assert.throws(verify, /Wrong H3 denoiser in the saved recipe on -Y/);
   }
 });
 
@@ -119,11 +214,13 @@ test('a failed preflight writes evidence without sending a queue request', async
   try {
     const opts = { model: 'h3', origin: 'http://127.0.0.1:' + server.address().port, input: 'object.png', output,
       run: true, 'timeout-minutes': '15' };
-    await assert.rejects(() => run(opts), /input\/object.png/);
+    await assert.rejects(() => run({...opts,'h3-denoiser':'w4a8'}), /minimax_h3_image_pruned_w4a8/);
     assert.deepEqual(requests, [['GET', '/object_info']]);
     const [dir] = await readdir(output);
     const report = JSON.parse(await readFile(join(output, dir, 'preflight.json')));
     assert(!report.ready && !report.inputAvailable);
+    assert.equal(report.h3Denoiser, 'w4a8');
+    assert.equal(report.models.find(m => m.name === h3Weights.w4a8[0]).expectedSha256, h3Weights.w4a8[1]);
     assert(report.models.find(m => m.loader === 'LoadMoGeModel' && m.directory === 'geometry_estimation'));
   } finally {
     await new Promise(ok => server.close(ok));
@@ -205,7 +302,7 @@ test('report distinguishes six fallbacks, accepted edits, and untouched baseline
   assert.throws(() => verifyOutput('qwen', supplied, qa, '+X', digest), /GLB digest/);
   supplied.faces['+X'].edit.reference = 'wrong.png';
   assert.throws(() => verifyOutput('qwen', supplied, qa, '+X', 'b'.repeat(64)));
-  manifest.faces['+X'].edit.provenance.weights = {};
+  manifest.faces['+X'].edit.provenance.weights = {'diffusion_models/wrong-name.safetensors':digest};
   assert.throws(() => verifyOutput('qwen', manifest, qa, '+X'), /weight digest/);
 });
 

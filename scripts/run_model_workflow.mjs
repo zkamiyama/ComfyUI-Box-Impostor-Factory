@@ -12,6 +12,13 @@ export const workflows = {
   pixal3d: '05_pixal3d_baseline', qwen: '02_box_from_reference_qwen21', h3: '03_box_from_reference_h3',
   triposplat: '08_triposplat_guide',
 };
+const h3Revision = '0bb149f51e3156ed4b90dd45d5620346bfe1df8f';
+const h3Denoisers = {
+  int8: { name: 'minimax_h3_image_pruned_int8_convrot.safetensors',
+    sha256: '83eb140f1ff95c068f8a6886e6d3f3d0d4ab2e07bb2fe6d2ef992a51146ee622' },
+  w4a8: { name: 'minimax_h3_image_pruned_w4a8.safetensors',
+    sha256: '517cc19b85348386f4df7c806dce80d839d0899e7cdaa3e1dbb09de964381dbb' },
+};
 const directions = ['+X', '-X', '+Y', '-Y', '+Z', '-Z'];
 const slugs = { '+X': 'px', '-X': 'nx', '+Y': 'py', '-Y': 'ny', '+Z': 'pz', '-Z': 'nz' };
 const sha256 = /^[a-f\d]{64}$/;
@@ -55,13 +62,38 @@ function disconnect(graph, pin) {
   pin.link = null;
 }
 
+function configureH3Denoiser(graph, selection) {
+  assert(Object.hasOwn(h3Denoisers, selection), 'Choose --h3-denoiser int8 or w4a8.');
+  const { name } = h3Denoisers[selection];
+  const loaders = graph.nodes.filter(n => n.type === 'UNETLoader');
+  assert.equal(loaders.length, 1, 'Expected one shared H3 denoiser');
+  const [loader] = loaders;
+  const descriptor = loader.properties.models.find(m => m.name === loader.widgets_values[0]);
+  assert.equal(descriptor?.directory, 'diffusion_models', 'Missing H3 download descriptor');
+  loader.widgets_values[0] = descriptor.name = name;
+  if (loader.widgets_values_named) loader.widgets_values_named.unet_name = name;
+  descriptor.url = 'https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/' + h3Revision + '/diffusion_models/' + name;
+  const faces = graph.nodes.filter(n => n.type === 'BICachedGeneratedFace');
+  assert.equal(faces.length, 6, 'Expected six H3 recipes');
+  for (const node of faces) {
+    const recipe = JSON.parse(node.widgets_values[2]);
+    recipe.model = name;
+    node.widgets_values[2] = JSON.stringify(recipe);
+    if (node.widgets_values_named) node.widgets_values_named.recipe = node.widgets_values[2];
+  }
+}
+
 // Derive the optional supplied-GLB route from the same editable model subgraph as
 // the full workflow. Keep its node and link IDs so one-face runs can reuse caches.
-export function configureEditGraph(graph, model, { mesh, size, face, faceSeed, h3ReferenceFirst } = {}) {
+export function configureEditGraph(graph, model, { mesh, size, face, faceSeed, h3ReferenceFirst, h3Denoiser } = {}) {
   const qwen = model === 'qwen';
   if (!qwen && model !== 'h3') throw new Error('An appearance workflow needs qwen or h3.');
   const canvases = graph.nodes.filter(n => n.type === 'BIModelCanvas');
   assert.equal(canvases.length, 6);
+  if (h3Denoiser !== undefined) {
+    assert.equal(model, 'h3', '--h3-denoiser needs h3.');
+    configureH3Denoiser(graph, h3Denoiser);
+  }
   if (h3ReferenceFirst) {
     assert.equal(model, 'h3', '--h3-reference-first needs h3.');
     const switches = graph.nodes.filter(n => n.type === 'PrimitiveBoolean');
@@ -275,6 +307,11 @@ export function checkCompiled(prompt, model, report) {
       }
     }
     const groups = samplerGroups(prompt);
+    // CPU-only frontend smoke tests also use this graph checker without a model inventory.
+    const h3Name = model === 'h3' && report.h3Denoiser ? h3Denoisers[report.h3Denoiser].name : null;
+    const h3Loader = h3Name && Object.keys(prompt).find(id =>
+      prompt[id].class_type === 'UNETLoader' && prompt[id].inputs.unet_name === h3Name);
+    if (h3Name) assert(h3Loader, 'Compiled graph is missing the selected H3 denoiser ' + h3Name);
     for (const n of byType('BICachedGeneratedFace')) {
       const { face_id, mask_mode, mask, image, seed } = n.inputs;
       assert.equal(mask_mode, 'foreground', 'Missing generated-image foreground coverage on ' + face_id);
@@ -282,7 +319,12 @@ export function checkCompiled(prompt, model, report) {
       assert.equal(matte?.class_type, 'RemoveBackground');
       assert.deepEqual(matte.inputs.image, image);
       assert.equal(groups[face_id].length, 1);
-      assert.deepEqual(prompt[groups[face_id][0]].inputs.seed, seed);
+      const sampler = prompt[groups[face_id][0]];
+      assert.deepEqual(sampler.inputs.seed, seed);
+      if (h3Name) {
+        assert.equal(JSON.parse(n.inputs.recipe).model, h3Name, 'Wrong compiled H3 recipe on ' + face_id);
+        assert.deepEqual(sampler.inputs.model, [h3Loader, 0], 'Wrong compiled H3 sampler denoiser on ' + face_id);
+      }
       const expected = report.faceSeed?.face === face_id ? report.faceSeed.seed : 101 + directions.indexOf(face_id);
       assert.equal(prompt[seed[0]]?.inputs?.value, expected, 'Unexpected face seed');
     }
@@ -382,7 +424,7 @@ async function response(url, init) {
   return result;
 }
 
-export function verifyOutput(model, manifest, qa, face, inputMeshSha256, faceSeed) {
+export function verifyOutput(model, manifest, qa, face, inputMeshSha256, faceSeed, h3Denoiser) {
   assert.equal(manifest.layout, 'box');
   assert.match(manifest.asset_id, sha256);
   const mesh = manifest.provenance?.meshGeneration;
@@ -403,6 +445,10 @@ export function verifyOutput(model, manifest, qa, face, inputMeshSha256, faceSee
     return { mode: manifest.mode };
   }
   const backend = model === 'qwen' ? 'qwen_enhanced' : 'h3_enhanced';
+  const selection = h3Denoiser ?? 'int8';
+  if (model === 'h3') assert(Object.hasOwn(h3Denoisers, selection), 'Unknown H3 denoiser for output verification');
+  const expectedH3 = model === 'h3' ? h3Denoisers[selection] : null;
+  let h3Digest;
   const faces = {};
   for (const dir of directions) {
     const edit = manifest.faces[dir].edit;
@@ -422,12 +468,20 @@ export function verifyOutput(model, manifest, qa, face, inputMeshSha256, faceSee
     const weight = edit.provenance.recipe.model;
     assert(Object.entries(edit.provenance.weights).some(([k, hash]) => k === 'diffusion_models/' + weight &&
       sha256.test(hash)), 'Missing appearance-model weight digest on ' + dir);
+    if (expectedH3) {
+      assert.equal(weight, expectedH3.name, 'Wrong H3 denoiser in the saved recipe on ' + dir);
+      const observed = edit.provenance.weights['diffusion_models/' + weight];
+      if (h3Denoiser !== undefined) assert.equal(observed, expectedH3.sha256, 'Wrong H3 weight digest on ' + dir);
+      h3Digest ??= observed;
+      assert.equal(observed, h3Digest, 'Inconsistent H3 weight digest on ' + dir);
+    }
     assert(['accepted', 'fallback'].includes(edit.status));
     assert.equal(qa?.faces?.[dir]?.status, edit.status);
     faces[dir] = { status: edit.status, reason: edit.reason };
   }
   const accepted = Object.values(faces).filter(f => f.status === 'accepted').length;
-  return { mode: manifest.mode, accepted, fallback: Object.keys(faces).length - accepted, baselineFaces: 6 - Object.keys(faces).length, faces };
+  return { ...(expectedH3 && { h3Denoiser: selection, denoiserFile: expectedH3.name, denoiserSha256: h3Digest }),
+    mode: manifest.mode, accepted, fallback: Object.keys(faces).length - accepted, baselineFaces: 6 - Object.keys(faces).length, faces };
 }
 
 function assetURL(value, base) {
@@ -523,6 +577,9 @@ export async function run(opts) {
   const isEdit = opts.model === 'qwen' || opts.model === 'h3';
   const h3ReferenceFirst = opts['h3-reference-first'];
   if (h3ReferenceFirst && opts.model !== 'h3') throw new Error('--h3-reference-first needs h3.');
+  const h3Denoiser = opts['h3-denoiser'];
+  if (h3Denoiser !== undefined && opts.model !== 'h3') throw new Error('--h3-denoiser needs h3.');
+  if (h3Denoiser !== undefined && !Object.hasOwn(h3Denoisers, h3Denoiser)) throw new Error('Choose --h3-denoiser int8 or w4a8.');
   let faceSeed;
   if (opts['face-seed'] !== undefined) {
     const match = /^([+-][XYZ]):(\d+)$/.exec(opts['face-seed']);
@@ -548,7 +605,7 @@ export async function run(opts) {
   const dir = await mkdtemp(join(resolve(opts.output), opts.model + '-'));
   console.log('Evidence:', dir);
   const graph = JSON.parse(await readFile(new URL('../workflows/' + name + '.json', import.meta.url), 'utf8'));
-  if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, face: opts.face, faceSeed, h3ReferenceFirst });
+  if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, face: opts.face, faceSeed, h3ReferenceFirst, h3Denoiser });
   if (opts['compact-proxy']) configureCompactProxy(graph);
   if (opts['material-maps'] !== undefined) configureMaterialMaps(graph, opts['material-maps']);
   const image = graph.nodes.find(n => n.type === 'LoadImage');
@@ -564,7 +621,14 @@ export async function run(opts) {
   if (opts['compact-proxy']) report.compactProxy = true;
   if (opts['material-maps'] !== undefined) report.materialMaps = opts['material-maps'];
   if (faceSeed) report.faceSeed = faceSeed;
-  if (opts.model === 'h3') report.h3ReferenceFirst = Boolean(h3ReferenceFirst);
+  if (opts.model === 'h3') {
+    report.h3ReferenceFirst = Boolean(h3ReferenceFirst);
+    report.h3Denoiser = h3Denoiser ?? 'int8';
+    if (h3Denoiser !== undefined) {
+      const expected = h3Denoisers[h3Denoiser];
+      report.models.find(m => m.loader === 'UNETLoader' && m.name === expected.name).expectedSha256 = expected.sha256;
+    }
+  }
   if (size !== undefined) report.size = size;
   if (isSplat) Object.assign(report, { face: opts.face ?? '+Z', coordinateSpace });
   else if (opts.face) report.face = opts.face;
@@ -635,7 +699,7 @@ export async function run(opts) {
         viewer: viewer.href, inference: inferenceReport(prompt, opts.face, live.traces.get(receipt.prompt_id)),
         ...(opts.model === 'h3' && { imageOrder: h3ReferenceFirst ? ['reference', 'guide'] : ['guide', 'reference'] }),
         ...(meshDigest && { inputMesh: opts.mesh, inputMeshSha256: meshDigest }),
-        ...(faceSeed && { faceSeed }), ...verifyOutput(opts.model, manifest, qa, opts.face, meshDigest, faceSeed) };
+        ...(faceSeed && { faceSeed }), ...verifyOutput(opts.model, manifest, qa, opts.face, meshDigest, faceSeed, h3Denoiser) };
       const views = join(dir, 'views');
       await mkdir(views);
       for (const side of opts.face ? [opts.face] : directions) {
@@ -664,9 +728,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   const { values } = parseArgs({ options: { model: { type: 'string' }, origin: { type: 'string', default: 'http://127.0.0.1:8188' },
     input: { type: 'string', default: 'reference.png' }, output: { type: 'string', default: '.test-output/models' },
     face: { type: 'string' }, 'face-seed': { type: 'string' }, size: { type: 'string' }, mesh: { type: 'string' }, 'compact-proxy': { type: 'boolean' },
-    'h3-reference-first': { type: 'boolean' }, 'material-maps': { type: 'string' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
+    'h3-reference-first': { type: 'boolean' }, 'h3-denoiser': { type: 'string' }, 'material-maps': { type: 'string' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
   if (values.help) {
-    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--material-maps none|material|emissive|material+emissive] [--size 512] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
+    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--h3-denoiser int8|w4a8] [--material-maps none|material|emissive|material+emissive] [--size 512] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to the local INT8 file. An explicit --h3-denoiser selects the official weight for every face and verifies its SHA-256 in the saved output. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
   } else {
     run(values).catch(error => { console.error(error.message); process.exitCode = 1; });
   }
