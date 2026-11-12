@@ -1,0 +1,64 @@
+{
+  "checkpoint": "v1-5-pruned-emaonly-fp16.safetensors",
+  "mesh": "Lantern.glb",
+  "positivePrompt": "a weathered timber street-lamp post, crossbeam, hanging warm golden lantern, aged dark iron fittings, detailed wood grain, studio product photograph",
+  "materialMaps": "material+emissive",
+  "status": "passed",
+  "devices": [
+    {
+      "name": "cuda:0 NVIDIA GeForce RTX 4080 : cudaMallocAsync",
+      "type": "cuda",
+      "index": 0,
+      "vram_total": 17170956288,
+      "vram_free": 15685517312,
+      "torch_vram_total": 33554432,
+      "torch_vram_free": 23986176
+    }
+  ],
+  "promptId": "259c220c-03ec-4e6f-998b-d7dfcfc53925",
+  "samplerIds": [
+    "22",
+    "27",
+    "32",
+    "37",
+    "42",
+    "47"
+  ],
+  "samplerIdsCachedAtStart": [],
+  "geometrySha256": {
+    "normalMap": "bb52d1b45a62f6f28e0f8cda06961039b612bf0f22a2fca89c0bfd1da296f49b",
+    "intervalMap": "6095d98e5ad0e0165b4a3a8d4d365b66fcf2a1c8908e7dc1225ca8b4b322e0bd",
+    "rangeMap": "fe98536b5379dc693b364c4ff502b37d6f5f1828b1f25e0e0ed7d9f694623008"
+  },
+  "materialSha256": {
+    "materialMap": "152e86862feb8af2e0137b68a7e4ab50835bcc3b57e5c06edd476ba9d406988d",
+    "emissiveMap": "0f51cf2b35ee40469be365512fdb57d4cc1f7f68d504c4d7e03535f2197e3c46"
+  },
+  "colorTexelsChanged": {
+    "+X": 22565,
+    "-X": 22565,
+    "+Y": 25334,
+    "-Y": 25334,
+    "+Z": 11663,
+    "-Z": 11662
+  },
+  "renderedPixelsChanged": 4441,
+  "renderedPixelsCovered": 4509,
+  "sourceSha256": "a79458c4b02d695187a952f23a63b8bf278e7bc3d316a3c2a314f2d6974181f1",
+  "runnerCommit": "118941699fe0646fca3f0e3856446a506b91882f",
+  "backend": "webgl2 (SwiftShader)",
+  "seed": 19590,
+  "steps": 6,
+  "denoise": 0.5,
+  "resolution": 256,
+  "graphSeconds": 6.001,
+  "archive": {
+    "sha256": "0dcbb1db598b9eaa6ff37966542b7de58919cec1092d0613446fe79b5856c6f1",
+    "bytes": 13677192,
+    "entries": 41,
+    "asset": "02b6a96cab3fbd357e5610d04af0b4c2c9ca47a9f3157b4cf1edfa58153117e8",
+    "maxChannelError": 0,
+    "alphaMismatches": 0,
+    "file": "examples/cc0-lantern-sd15.box.zip"
+  }
+}

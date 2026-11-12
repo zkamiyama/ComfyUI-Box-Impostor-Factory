@@ -5,6 +5,7 @@ GLBから6方向の正投影ガイドとthree-impostor互換のBoxアセット�
 | 経路 | 検証状況 |
 |---|---|
 | GLB → Box → 保存 → 再読込 | 実際のChromiumでWebGL2とWebGPUのソフトウェア描画を確認。6軸と12斜視で、ベイク直後と別プロセスで読み込んだBoxの色・深度を比較。 |
+| CC0のPBRモデル | 木製街灯と金属ボトルで元メッシュとBoxを18方向から比較。街灯はRTX 4080でSD 1.5による6面編集も実行した。[比較画像・再現手順](docs/verification/cc0-pbr/README.md) · [生成済みの街灯Box](examples/cc0-lantern-sd15.box.zip) |
 | ComfyUI、手動画像、プレビュー | CPU版ComfyUIの画面から01と04を読み込み、GLBのベイクと手動6面の採用を確認。キューで保存・再読込と1面更新も実行。ブラウザでメッシュとBoxの左右比較、視点変更、アトラス表示を操作。 |
 | 軽量チェックポイントによる6面生成 | RTX 4080でSD 1.5を6面それぞれに実行。3種の幾何マップと輪郭を保持し、最終Boxの色に反映されることを確認。[実機の計測結果](docs/verification/rtx4080-sd15.json) |
 | TripoSplatの追加ガイド | RTX 4080で公式重みから262,144個のガウスをデコード。次の方向では同じスプラットを再利用した。[2方向の計測結果](docs/verification/rtx4080-triposplat.json) |
