@@ -74,8 +74,10 @@ export async function bake({resolution=256,maps=[],backend='auto',asset_id,verif
     const glb = await (await fetchChecked('/job/input.glb')).arrayBuffer();
     result = await bakeGLB(glb,{resolution,maps,backend,asset_id,renderer,guides,canonical:canonicalMeta ?? canonical});
     for (const [path,bytes] of result.files) {
+      // Chromium can stall when adjacent 192 MiB R2048 maps use the in-memory
+      // Fetch buffer body. Its Blob upload path streams the body to the server.
       const res = await fetch('/job/files/'+path.split('/').map(encodeURIComponent).join('/'),
-        {method:'PUT',body:bytes});
+        {method:'PUT',body:new Blob([bytes])});
       if (!res.ok) throw new Error('Cannot stage ' + path + ' (HTTP ' + res.status + ')');
     }
     return {manifest:result.manifest,backend:backendName(renderer),snapshot:verify ?
@@ -101,7 +103,7 @@ export async function reload({backend='auto',verify=true,manifestUrl='/asset/man
 export async function canonicalize({rotationDeg=[0,0,0]}={}) {
   const glb = await (await fetchChecked('/job/input.glb')).arrayBuffer();
   const {bytes,transform,inverseTransform,tightBounds} = await canonicalizeGLB(glb,{rotationDeg});
-  const res = await fetch('/job/files/canonical.glb',{method:'PUT',body:bytes});
+  const res = await fetch('/job/files/canonical.glb',{method:'PUT',body:new Blob([bytes])});
   if (!res.ok) throw new Error('Cannot stage canonical GLB (HTTP ' + res.status + ')');
   return {transform,inverseTransform,tightBounds};
 }

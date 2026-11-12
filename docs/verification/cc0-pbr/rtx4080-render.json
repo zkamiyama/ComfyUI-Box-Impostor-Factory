@@ -1,0 +1,534 @@
+{
+  "model": "Microsoft Lantern (CC0)",
+  "source": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/8f492390ddc7a2ae221a1369ef560589cf8c70fb/Models/Lantern",
+  "machine": "270-PC, Windows native Edge, NVIDIA RTX 4080 (16376 MiB)",
+  "baselineCommit": "20a5691ce389a19ed3532d4783712be00053ecc2",
+  "browser": "157.0.4341.46",
+  "gpu": "NVIDIA GeForce RTX 4080",
+  "driver": "32.0.16.1088",
+  "adapters": {
+    "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 (0x00002704) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "webgpu": {
+      "vendor": "nvidia",
+      "description": "",
+      "device": "",
+      "architecture": "lovelace",
+      "isFallbackAdapter": false,
+      "maxTextureDimension2D": 16384
+    }
+  },
+  "proxySha256": "094d4430498ebfee702de821fc6ecbcca23970f10a04228813ed579ebaac41ea",
+  "cases": [
+    {
+      "case": "lantern-256-webgl2",
+      "backend": "webgl2",
+      "resolution": 256,
+      "steps": 128,
+      "processSeconds": 6.66,
+      "boardStartMiB": 1168,
+      "boardPeakMiB": 1420,
+      "roundtripViews": 18,
+      "roundtripPassed": true,
+      "maxColorLSB": 0,
+      "maxDepthLSB": 0,
+      "maxSilhouetteMismatch": 0,
+      "minIoU": 0.9080695,
+      "meanAxesIoU": 0.9638433,
+      "meanObliquesIoU": 0.9656152,
+      "meanRgbMAE8": 4.631752
+    },
+    {
+      "case": "lantern-256-webgpu",
+      "backend": "webgpu",
+      "resolution": 256,
+      "steps": 128,
+      "processSeconds": 5.62,
+      "boardStartMiB": 1168,
+      "boardPeakMiB": 1384,
+      "roundtripViews": 18,
+      "roundtripPassed": true,
+      "maxColorLSB": 0,
+      "maxDepthLSB": 0,
+      "maxSilhouetteMismatch": 0,
+      "minIoU": 0.9080695,
+      "meanAxesIoU": 0.9638433,
+      "meanObliquesIoU": 0.9656152,
+      "meanRgbMAE8": 4.6177272
+    },
+    {
+      "case": "lantern-512-webgpu",
+      "backend": "webgpu",
+      "resolution": 512,
+      "steps": 128,
+      "processSeconds": 6.8,
+      "boardStartMiB": 1168,
+      "boardPeakMiB": 1498,
+      "roundtripViews": 18,
+      "roundtripPassed": true,
+      "maxColorLSB": 0,
+      "maxDepthLSB": 0,
+      "maxSilhouetteMismatch": 0,
+      "minIoU": 0.9480122,
+      "meanAxesIoU": 0.9808554,
+      "meanObliquesIoU": 0.9811789,
+      "meanRgbMAE8": 4.0269834
+    },
+    {
+      "case": "lantern-1024-webgpu",
+      "backend": "webgpu",
+      "resolution": 1024,
+      "steps": 128,
+      "processSeconds": 13.16,
+      "boardStartMiB": 1168,
+      "boardPeakMiB": 1933,
+      "roundtripViews": 18,
+      "roundtripPassed": true,
+      "maxColorLSB": 0,
+      "maxDepthLSB": 0,
+      "maxSilhouetteMismatch": 0,
+      "minIoU": 0.4686589,
+      "meanAxesIoU": 0.9553606,
+      "meanObliquesIoU": 0.9087576,
+      "meanRgbMAE8": 4.2298479
+    },
+    {
+      "case": "fixed-256-webgl2",
+      "backend": "webgl2",
+      "resolution": 256,
+      "steps": 512,
+      "processSeconds": 6.54,
+      "boardStartMiB": 1168,
+      "boardPeakMiB": 1421,
+      "roundtripViews": 18,
+      "roundtripPassed": true,
+      "maxColorLSB": 0,
+      "maxDepthLSB": 0,
+      "maxSilhouetteMismatch": 0,
+      "minIoU": 0.9141982,
+      "meanAxesIoU": 0.9648648,
+      "meanObliquesIoU": 0.9656152,
+      "meanRgbMAE8": 4.6323358
+    },
+    {
+      "case": "fixed-256-webgpu",
+      "backend": "webgpu",
+      "resolution": 256,
+      "steps": 512,
+      "processSeconds": 3.5,
+      "boardStartMiB": 1168,
+      "boardPeakMiB": 1382,
+      "roundtripViews": 18,
+      "roundtripPassed": true,
+      "maxColorLSB": 0,
+      "maxDepthLSB": 0,
+      "maxSilhouetteMismatch": 0,
+      "minIoU": 0.9141982,
+      "meanAxesIoU": 0.9648648,
+      "meanObliquesIoU": 0.9656152,
+      "meanRgbMAE8": 4.6183087
+    },
+    {
+      "case": "fixed-512-webgpu",
+      "backend": "webgpu",
+      "resolution": 512,
+      "steps": 1024,
+      "processSeconds": 6.54,
+      "boardStartMiB": 1168,
+      "boardPeakMiB": 1498,
+      "roundtripViews": 18,
+      "roundtripPassed": true,
+      "maxColorLSB": 0,
+      "maxDepthLSB": 0,
+      "maxSilhouetteMismatch": 0,
+      "minIoU": 0.9673802,
+      "meanAxesIoU": 0.9852473,
+      "meanObliquesIoU": 0.9827572,
+      "meanRgbMAE8": 4.0363011
+    },
+    {
+      "case": "fixed-1024-webgpu",
+      "backend": "webgpu",
+      "resolution": 1024,
+      "steps": 2048,
+      "processSeconds": 12.1,
+      "boardStartMiB": 1168,
+      "boardPeakMiB": 1933,
+      "roundtripViews": 18,
+      "roundtripPassed": true,
+      "maxColorLSB": 0,
+      "maxDepthLSB": 0,
+      "maxSilhouetteMismatch": 0,
+      "minIoU": 0.9831039,
+      "meanAxesIoU": 0.996084,
+      "meanObliquesIoU": 0.9914024,
+      "meanRgbMAE8": 4.4403892
+    },
+    {
+      "case": "blob-2048-webgpu",
+      "backend": "webgpu",
+      "resolution": 2048,
+      "steps": 4096,
+      "processSeconds": 15.17,
+      "boardStartMiB": 1405,
+      "boardPeakMiB": 4860,
+      "roundtripViews": 18,
+      "roundtripPassed": true,
+      "maxColorLSB": 0,
+      "maxDepthLSB": 0,
+      "maxSilhouetteMismatch": 0,
+      "minIoU": 0.9956195,
+      "meanAxesIoU": 0.9991578,
+      "meanObliquesIoU": 0.9967382,
+      "meanRgbMAE8": 4.7345871
+    },
+    {
+      "case": "final-2048-webgpu",
+      "backend": "webgpu",
+      "resolution": 2048,
+      "steps": 4096,
+      "processSeconds": 12.88,
+      "boardStartMiB": 9282,
+      "boardPeakMiB": 11824,
+      "roundtripViews": 18,
+      "roundtripPassed": true,
+      "maxColorLSB": 0,
+      "maxDepthLSB": 0,
+      "maxSilhouetteMismatch": 0,
+      "minIoU": 0.9956195,
+      "meanAxesIoU": 0.9991578,
+      "meanObliquesIoU": 0.9967382,
+      "meanRgbMAE8": 4.7345871
+    },
+    {
+      "case": "final-2048-webgl2",
+      "backend": "webgl2",
+      "resolution": 2048,
+      "steps": 4096,
+      "processSeconds": 15.71,
+      "boardStartMiB": 10854,
+      "boardPeakMiB": 13423,
+      "roundtripViews": 18,
+      "roundtripPassed": true,
+      "maxColorLSB": 0,
+      "maxDepthLSB": 0,
+      "maxSilhouetteMismatch": 0,
+      "minIoU": 0.9956195,
+      "meanAxesIoU": 0.9991578,
+      "meanObliquesIoU": 0.9967382,
+      "meanRgbMAE8": 4.7389778
+    }
+  ],
+  "conditions": {
+    "maps": [
+      "roughness",
+      "metalness",
+      "ao",
+      "emissive"
+    ],
+    "roundtrip": "Each case freshly baked to a new directory. Real 64x64 RGBA + packed depth from six axis and twelve oblique views were compared after reopening in a separate browser process.",
+    "fidelity": "Canonical glTF vs restored Box, 256x256 RGBA8, orthographic six axes plus twelve obliques. RGB MAE uses only shared foreground, averaged equally over 18 views.",
+    "processSeconds": "A single wall time per case for the complete CLI bake --verify, including both browser startups, PBR map readback, guides, disk writes, fresh browser reload and 18-view QA. Browser/disk caches may be warm.",
+    "memory": "Global board use from nvidia-smi sampled at 250 ms during bake --verify. This is not per-process allocation. The last two 2048 runs shared memory with model inference.",
+    "cases": "lantern-* used the baseline. fixed-* used the resolution-dependent ray step limit. blob-* and final-* additionally uploaded each map as a Blob (blob-* included diagnostic logging).",
+    "transportTest": "R2048 WebGPU with buffer-body PUT stopped after writing the 201326592-byte color map and exceeded the four-minute deadline. Blob-body PUT completed for all files in two independent WebGPU runs and one WebGL2 run.",
+    "benchmark": "Run between AI jobs. Each scene used separate objects sharing geometry/material. Median of seven batches of 100 offscreen draws, with one synchronized 64x1 readback per batch. Excludes compilation, baking, loading and onscreen presentation. The WebGL2 async readback is affected by browser polling."
+  },
+  "commands": [
+    "node worker/cli.mjs bake --input Lantern.glb --output asset --resolution 2048 --backend webgpu --maps roughness,metalness,ao,emissive --verify",
+    "node tests/compare_proxy.mjs asset fidelity.json webgpu --size 256",
+    "node tests/benchmark_render.mjs asset-r256 webgpu"
+  ],
+  "renderBenchmarks": [
+    {
+      "browserVersion": "157.0.4341.46",
+      "backend": "webgpu",
+      "adapter": {
+        "vendor": "nvidia",
+        "architecture": "lovelace",
+        "description": "",
+        "isFallbackAdapter": false
+      },
+      "resolution": 256,
+      "proxySha256": "094d4430498ebfee702de821fc6ecbcca23970f10a04228813ed579ebaac41ea",
+      "sampling": "standard",
+      "rayStepLimit": 512,
+      "batches": 7,
+      "framesPerBatch": 100,
+      "metric": "steady-state offscreen wall time per frame including CPU submission and one synchronized 64x1 readback per batch; separate object draws share geometry and material",
+      "rows": [
+        {
+          "size": 256,
+          "instances": 1,
+          "kind": "mesh",
+          "foreground": 5464,
+          "medianMsPerFrame": 0.116,
+          "batchMsPerFrame": [
+            0.143,
+            0.125,
+            0.103,
+            0.116,
+            0.126,
+            0.103,
+            0.079
+          ]
+        },
+        {
+          "size": 256,
+          "instances": 1,
+          "kind": "box",
+          "foreground": 5229,
+          "medianMsPerFrame": 0.113,
+          "batchMsPerFrame": [
+            0.127,
+            0.113,
+            0.109,
+            0.131,
+            0.11,
+            0.084,
+            0.115
+          ]
+        },
+        {
+          "size": 256,
+          "instances": 16,
+          "kind": "mesh",
+          "foreground": 5424,
+          "medianMsPerFrame": 0.149,
+          "batchMsPerFrame": [
+            0.149,
+            0.118,
+            0.154,
+            0.133,
+            0.16,
+            0.16,
+            0.101
+          ]
+        },
+        {
+          "size": 256,
+          "instances": 16,
+          "kind": "box",
+          "foreground": 5248,
+          "medianMsPerFrame": 0.146,
+          "batchMsPerFrame": [
+            0.14,
+            0.15,
+            0.142,
+            0.154,
+            0.146,
+            0.146,
+            0.131
+          ]
+        },
+        {
+          "size": 1024,
+          "instances": 1,
+          "kind": "mesh",
+          "foreground": 87283,
+          "medianMsPerFrame": 0.098,
+          "batchMsPerFrame": [
+            0.083,
+            0.069,
+            0.093,
+            0.103,
+            0.153,
+            0.106,
+            0.098
+          ]
+        },
+        {
+          "size": 1024,
+          "instances": 1,
+          "kind": "box",
+          "foreground": 83851,
+          "medianMsPerFrame": 0.187,
+          "batchMsPerFrame": [
+            0.186,
+            0.198,
+            0.183,
+            0.187,
+            0.174,
+            0.192,
+            0.193
+          ]
+        },
+        {
+          "size": 1024,
+          "instances": 16,
+          "kind": "mesh",
+          "foreground": 87424,
+          "medianMsPerFrame": 0.149,
+          "batchMsPerFrame": [
+            0.152,
+            0.149,
+            0.134,
+            0.161,
+            0.156,
+            0.135,
+            0.135
+          ]
+        },
+        {
+          "size": 1024,
+          "instances": 16,
+          "kind": "box",
+          "foreground": 83664,
+          "medianMsPerFrame": 0.296,
+          "batchMsPerFrame": [
+            0.303,
+            0.296,
+            0.293,
+            0.303,
+            0.316,
+            0.295,
+            0.283
+          ]
+        }
+      ]
+    },
+    {
+      "browserVersion": "157.0.4341.46",
+      "backend": "webgl2",
+      "adapter": {
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 (0x00002704) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "resolution": 256,
+      "proxySha256": "094d4430498ebfee702de821fc6ecbcca23970f10a04228813ed579ebaac41ea",
+      "sampling": "standard",
+      "rayStepLimit": 512,
+      "batches": 7,
+      "framesPerBatch": 100,
+      "metric": "steady-state offscreen wall time per frame including CPU submission and one synchronized 64x1 readback per batch; separate object draws share geometry and material",
+      "rows": [
+        {
+          "size": 256,
+          "instances": 1,
+          "kind": "mesh",
+          "foreground": 5464,
+          "medianMsPerFrame": 0.165,
+          "batchMsPerFrame": [
+            0.153,
+            0.161,
+            0.169,
+            0.163,
+            0.166,
+            0.166,
+            0.165
+          ]
+        },
+        {
+          "size": 256,
+          "instances": 1,
+          "kind": "box",
+          "foreground": 5229,
+          "medianMsPerFrame": 0.166,
+          "batchMsPerFrame": [
+            0.162,
+            0.168,
+            0.164,
+            0.169,
+            0.168,
+            0.165,
+            0.166
+          ]
+        },
+        {
+          "size": 256,
+          "instances": 16,
+          "kind": "mesh",
+          "foreground": 5424,
+          "medianMsPerFrame": 0.165,
+          "batchMsPerFrame": [
+            0.158,
+            0.183,
+            0.151,
+            0.163,
+            0.167,
+            0.165,
+            0.169
+          ]
+        },
+        {
+          "size": 256,
+          "instances": 16,
+          "kind": "box",
+          "foreground": 5248,
+          "medianMsPerFrame": 0.495,
+          "batchMsPerFrame": [
+            0.495,
+            0.5,
+            0.336,
+            0.497,
+            0.501,
+            0.33,
+            0.333
+          ]
+        },
+        {
+          "size": 1024,
+          "instances": 1,
+          "kind": "mesh",
+          "foreground": 87283,
+          "medianMsPerFrame": 0.166,
+          "batchMsPerFrame": [
+            0.092,
+            0.168,
+            0.166,
+            0.169,
+            0.165,
+            0.165,
+            0.166
+          ]
+        },
+        {
+          "size": 1024,
+          "instances": 1,
+          "kind": "box",
+          "foreground": 83852,
+          "medianMsPerFrame": 0.168,
+          "batchMsPerFrame": [
+            0.295,
+            0.169,
+            0.163,
+            0.171,
+            0.164,
+            0.165,
+            0.168
+          ]
+        },
+        {
+          "size": 1024,
+          "instances": 16,
+          "kind": "mesh",
+          "foreground": 87424,
+          "medianMsPerFrame": 0.167,
+          "batchMsPerFrame": [
+            0.098,
+            0.168,
+            0.167,
+            0.165,
+            0.168,
+            0.167,
+            0.168
+          ]
+        },
+        {
+          "size": 1024,
+          "instances": 16,
+          "kind": "box",
+          "foreground": 83664,
+          "medianMsPerFrame": 0.5,
+          "batchMsPerFrame": [
+            0.461,
+            0.498,
+            0.503,
+            0.496,
+            0.502,
+            0.5,
+            0.5
+          ]
+        }
+      ]
+    }
+  ]
+}
