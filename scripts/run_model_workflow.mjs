@@ -57,11 +57,18 @@ function disconnect(graph, pin) {
 
 // Derive the optional supplied-GLB route from the same editable model subgraph as
 // the full workflow. Keep its node and link IDs so one-face runs can reuse caches.
-export function configureEditGraph(graph, model, { mesh, size, face, faceSeed } = {}) {
+export function configureEditGraph(graph, model, { mesh, size, face, faceSeed, h3ReferenceFirst } = {}) {
   const qwen = model === 'qwen';
   if (!qwen && model !== 'h3') throw new Error('An appearance workflow needs qwen or h3.');
   const canvases = graph.nodes.filter(n => n.type === 'BIModelCanvas');
   assert.equal(canvases.length, 6);
+  if (h3ReferenceFirst) {
+    assert.equal(model, 'h3', '--h3-reference-first needs h3.');
+    const switches = graph.nodes.filter(n => n.type === 'PrimitiveBoolean');
+    assert.equal(switches.length, 1, 'Expected the shared H3 image-order switch');
+    switches[0].widgets_values[0] = true;
+    if (switches[0].widgets_values_named) switches[0].widgets_values_named.value = true;
+  }
   if (faceSeed) {
     assert(Object.hasOwn(slugs, faceSeed.face) && Number.isSafeInteger(faceSeed.seed) && faceSeed.seed >= 0,
       '--face-seed expects a direction and a nonnegative safe integer, for example +Z:321.');
@@ -210,6 +217,13 @@ export function checkCompiled(prompt, model, report) {
   if (model !== 'pixal3d') {
     const type = model === 'qwen' ? 'TextEncodeQwenImage21' : 'MiniMaxH3ImageConditioning';
     assert.equal(byType(type).length, 6, 'Missing generated view branches');
+    if (model === 'h3') {
+      for (const encoder of byType(type)) {
+        const orderSwitch = prompt[encoder.inputs['images.image_1'][0]];
+        assert.equal(orderSwitch.class_type, 'ComfySwitchNode');
+        assert.equal(prompt[orderSwitch.inputs.switch[0]].inputs.value, Boolean(report.h3ReferenceFirst));
+      }
+    }
     assert.deepEqual(byType('BICachedGeneratedFace').map(n => n.inputs.face_id).sort(), [...directions].sort());
     if (report.face) {
       assert.deepEqual(Object.keys(byType('BIFaceInputs')[0].inputs), [slugs[report.face]], 'Wrong generated face selection');
@@ -476,6 +490,8 @@ export async function run(opts) {
   if (opts.face && (!directions.includes(opts.face) || opts.model === 'pixal3d')) throw new Error('--face needs qwen, h3 or triposplat and one of +X, -X, +Y, -Y, +Z, -Z.');
   const isSplat = opts.model === 'triposplat';
   const isEdit = opts.model === 'qwen' || opts.model === 'h3';
+  const h3ReferenceFirst = opts['h3-reference-first'];
+  if (h3ReferenceFirst && opts.model !== 'h3') throw new Error('--h3-reference-first needs h3.');
   let faceSeed;
   if (opts['face-seed'] !== undefined) {
     const match = /^([+-][XYZ]):(\d+)$/.exec(opts['face-seed']);
@@ -501,7 +517,7 @@ export async function run(opts) {
   const dir = await mkdtemp(join(resolve(opts.output), opts.model + '-'));
   console.log('Evidence:', dir);
   const graph = JSON.parse(await readFile(new URL('../workflows/' + name + '.json', import.meta.url), 'utf8'));
-  if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, face: opts.face, faceSeed });
+  if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, face: opts.face, faceSeed, h3ReferenceFirst });
   if (opts['compact-proxy']) configureCompactProxy(graph);
   const image = graph.nodes.find(n => n.type === 'LoadImage');
   image.widgets_values[0] = opts.input;
@@ -515,6 +531,7 @@ export async function run(opts) {
   const report = preflight(graph, registry, opts.input);
   if (opts['compact-proxy']) report.compactProxy = true;
   if (faceSeed) report.faceSeed = faceSeed;
+  if (opts.model === 'h3') report.h3ReferenceFirst = Boolean(h3ReferenceFirst);
   if (size !== undefined) report.size = size;
   if (isSplat) Object.assign(report, { face: opts.face ?? '+Z', coordinateSpace });
   else if (opts.face) report.face = opts.face;
@@ -573,6 +590,7 @@ export async function run(opts) {
       }
       const summary = { workflow: name, prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
         viewer: viewer.href, inference: inferenceReport(prompt, opts.face, live.traces.get(receipt.prompt_id)),
+        ...(opts.model === 'h3' && { imageOrder: h3ReferenceFirst ? ['reference', 'guide'] : ['guide', 'reference'] }),
         ...(meshDigest && { inputMesh: opts.mesh, inputMeshSha256: meshDigest }),
         ...(faceSeed && { faceSeed }), ...verifyOutput(opts.model, manifest, qa, opts.face, meshDigest, faceSeed) };
       const views = join(dir, 'views');
@@ -603,9 +621,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   const { values } = parseArgs({ options: { model: { type: 'string' }, origin: { type: 'string', default: 'http://127.0.0.1:8188' },
     input: { type: 'string', default: 'reference.png' }, output: { type: 'string', default: '.test-output/models' },
     face: { type: 'string' }, 'face-seed': { type: 'string' }, size: { type: 'string' }, mesh: { type: 'string' }, 'compact-proxy': { type: 'boolean' },
-    'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
+    'h3-reference-first': { type: 'boolean' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
   if (values.help) {
-    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--size 512] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 internally scales reference images to at least 1024. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
+    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--size 512] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
   } else {
     run(values).catch(error => { console.error(error.message); process.exitCode = 1; });
   }

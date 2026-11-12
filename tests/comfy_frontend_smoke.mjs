@@ -225,7 +225,7 @@ try{
     }else proof.compiledOnly.push({workflow:name,expandedNodes:Object.keys(prompt).length});
   }
   for(const name of workflowNames.slice(2,4)){
-    const prompt=await compile(name,{mesh:'asymmetric.glb',face:'+Z',faceSeed:{face:'+Z',seed:321},size:512});
+    const prompt=await compile(name,{mesh:'asymmetric.glb',face:'+Z',faceSeed:{face:'+Z',seed:321},size:512,h3ReferenceFirst:name.startsWith('03')});
     proof.compiledOnly.push({workflow:name+'-supplied-glb',expandedNodes:Object.keys(prompt).length});
   }
   const compactName='05_pixal3d_baseline';
