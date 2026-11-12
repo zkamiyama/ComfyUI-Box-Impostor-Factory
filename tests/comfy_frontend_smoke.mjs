@@ -11,7 +11,7 @@ import { preflight } from '../scripts/run_model_workflow.mjs';
 const [origin,inputDir,artifacts]=process.argv.slice(2);
 if(!origin||!inputDir||!artifacts)throw new Error('Usage: node tests/comfy_frontend_smoke.mjs ORIGIN INPUT_DIR OUTPUT_DIR');
 const workflowNames=['01_box_from_glb','04_manual_six_faces','02_box_from_reference_qwen21',
-  '03_box_from_reference_h3','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide'];
+  '03_box_from_reference_h3','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision'];
 const sides=[['+X','px'],['-X','nx'],['+Y','py'],['-Y','ny'],['+Z','pz'],['-Z','nz']];
 const resources=new URL('../workflows/',import.meta.url);
 const browser=await chromium.launch(chromiumOptions('webgl2'));
@@ -37,6 +37,13 @@ async function compile(name){
   assert.ok(prompt&&Object.keys(prompt).length,'No API prompt for '+name);
   await writeFile(join(artifacts,name+'.api.json'),JSON.stringify(prompt,null,2)+'\n');
   const byType=t=>Object.entries(prompt).filter(([,n])=>n.class_type===t);
+  if(name.startsWith('09')){
+    const [[id,revision]]=byType('BIRebakeProxyRevision');
+    assert.deepEqual(revision.inputs.asset,[byType('BILoadBox')[0][0],0]);
+    assert.deepEqual(revision.inputs.corrected_proxy,[byType('BICanonicalizeProxy')[0][0],0]);
+    assert.deepEqual(byType('BIPreviewBox')[0][1].inputs.asset,[id,0]);
+    return prompt;
+  }
   if(name.startsWith('08')){
     const [[ref]]=byType('BIPrepareReference');
     const [[decode,decoder]]=byType('VAEDecodeTripoSplat');
@@ -185,6 +192,18 @@ try{
     if(name.startsWith('07')){
       const {prompt_id}=await queue(prompt);
       proof.executed.push({workflow:name,prompt_id,image:'rendered-box.png'});
+    }else if(name.startsWith('09')){
+      const {manifest,url,prompt_id}=await queue(prompt);
+      const qaResponse=await page.request.get(new URL(manifest.qa,url).href);
+      assert(qaResponse.ok());
+      const qa=await qaResponse.json();
+      assert.equal(qa.status,'rebaked');
+      assert.equal(qa.originalAsset,manifest.parentAsset);
+      assert.equal(qa.revisedAsset,manifest.asset_id);
+      assert.notEqual(qa.originalProxySha256,qa.correctedProxySha256);
+      assert(Object.values(qa.guideComparisons).every(face=>face.status==='compared'));
+      await writeFile(join(artifacts,'geometry-revision.json'),JSON.stringify(qa,null,2));
+      proof.executed.push({workflow:name,prompt_id,asset:manifest.asset_id});
     }else proof.compiledOnly.push({workflow:name,expandedNodes:Object.keys(prompt).length});
   }
   await writeFile(join(artifacts,'frontend-workflows.json'),JSON.stringify(proof,null,2)+'\n');

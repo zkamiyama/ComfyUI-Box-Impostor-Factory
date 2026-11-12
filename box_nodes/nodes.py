@@ -17,6 +17,7 @@ from .canvas import ModelCanvas
 from .splat import TripoSplatGuide
 from .splat_cache import CachedTripoSplat
 from .silhouette import InspectFaceSilhouette
+from .revision import RebakeProxyRevision
 
 CATEGORY = 'Box Impostor'
 BACKENDS = ['auto', 'webgpu', 'webgl2']
@@ -530,4 +531,5 @@ NODE_CLASS_MAPPINGS['BIPackBox'] = PackBox
 NODE_CLASS_MAPPINGS['BITripoSplatGuide'] = TripoSplatGuide
 NODE_CLASS_MAPPINGS['BICachedTripoSplat'] = CachedTripoSplat
 NODE_CLASS_MAPPINGS['BIInspectFaceSilhouette'] = InspectFaceSilhouette
+NODE_CLASS_MAPPINGS['BIRebakeProxyRevision'] = RebakeProxyRevision
 NODE_DISPLAY_NAME_MAPPINGS = {name: 'BI ' + name[2:] for name in NODE_CLASS_MAPPINGS}

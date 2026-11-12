@@ -1,6 +1,6 @@
 # ComfyUI Box Impostor Factory 実装指示書
 
-v0.2 ｜ 2026-11-12 ｜ 設計時点の仕様と受け入れ基準
+v0.3 ｜ 仕様、受け入れ基準、実装の検証状況
 
 GLBのベイク・保存・再読込とComfyUIノードは実装済み。現在使えるワークフロー、導入手順、GPU推論の検証状況は [README](../README.md) に記載した。元メッシュとBoxの形状・色の差は [描画比較の記録](./verification/proxy-box-r128.json) を参照。
 
@@ -12,14 +12,14 @@ GLBのベイク・保存・再読込とComfyUIノードは実装済み。現在�
 
 1面だけを差し替えたときは、その面の整列・品質判定、影響する面間比較、カラーアトラスの合成、プレビューを更新する。GLB生成、幾何ベイク、ほかの5面の生成は再実行しない。再起動後も保存済み工程を再利用する。
 
-元の色に戻した面は面ID・理由・枚数を表示する。ベイクや保存に失敗した場合はアセットを公開しない。モデル別の対応は、実際に生成した6面と斜視での結果を記録してから「検証済み」と表示する。研究段階の証拠は次の範囲に限る。
+元の色に戻した面は面ID・理由・枚数を表示する。ベイクや保存に失敗した場合はアセットを公開しない。モデル別の対応は、実際に生成した6面と斜視での結果を記録してから「検証済み」と表示する。経路ごとの検証状況を以下に示す。
 
 | 経路 | 本改訂で確認したこと | 次に必要な証拠 |
 |---|---|---|
-| GLB → Box | 上流のBakerとShaderを読解。固定版のBakerをCPUで呼び、6方向のカメラとRenderTargetの設定を照合した。 | GLBの実描画、GPUからの読み戻し、別プロセスでの描画一致 |
-| Pixal3D → Qwen＋AnyAngle | 公開作例と配布ワークフロー、公式ノードの入出力を確認した。 | 本プロジェクトの固定カメラを用いた6面と斜視での採用率 |
-| H3-Image | ComfyUIのネイティブ編集、入力スロットの意味、配布テンプレートを確認した。 | 画像の順序を変えた比較、正面・背面・上下面の一致、メモリ実測 |
-| TripoSplat | ネイティブ出力はGaussian Splat。ガイドに利用できる公開例がある。 | 同一物体のGLBと座標を合わせ、深度・マスクのずれを測る試験 |
+| GLB → Box | WebGL2・WebGPUのソフトウェア描画で、保存前後およびZIP展開前後の色・深度・輪郭を18視点で比較した。 | 実機GPUでの互換性・速度 |
+| Pixal3D → Qwen＋AnyAngle | 実際のComfyUIフロントエンドで、6面ぶんの生成画像と前景マスクの接続を確認した。 | 本プロジェクトの固定カメラを用いた6面と斜視での採用率 |
+| H3-Image | ComfyUIに配布ワークフローを読み込み、元画像とガイドの順序、編集結果と前景マスクの接続を確認した。 | 画像の順序を変えた比較、正面・背面・上下面の一致、メモリ実測 |
+| TripoSplat | 合成PLYをネイティブのSPLATとして読み込み、GLBの6方向のカメラで色付き目印の座標を照合した。 | 学習済みモデルで生成したスプラットと同一物体のGLBの位置合わせ・品質 |
 
 ## 2　幾何と外観の分担
 
@@ -129,6 +129,10 @@ Bakerは `tightBounds` の最大辺の2%を各側に加える。下表の `x,y,z
 | BI BakeBox | 正規化GLB、R、材質設定、任意の整列済み面 | ベイクキャッシュから幾何マップを取得し、採用色を合成する。返す `BOX_IMPOSTOR` はmanifestを参照する。 |
 | BI PreviewBox | BOX_IMPOSTOR | preview URL、静止IMAGE、元メッシュとの比較UI |
 | BI SaveBox / BI LoadBox | BOX_IMPOSTORと保存先／保存済みmanifest | 持ち出せるアセット一式／検証済みのBOX_IMPOSTOR。Load時にモデルやBakerを起動しない。 |
+| BI RenderBox | BOX_IMPOSTOR、カメラ、投影、画像サイズ、補間 | RGBのIMAGEと背景を1とするMASK。色にじみ低減はプレビューと最終描画で選ぶ。 |
+| BI PackBox / BI LoadBox | BOX_IMPOSTORと書き出し名／保存済みの `.box.zip` | 可逆ZIP／展開・検証済みのBOX_IMPOSTOR。幾何マップのビット列を保持する。 |
+| BI InspectFaceSilhouette | BOX_IMPOSTOR、面ID | 位置合わせ前の輪郭差を重ねたIMAGE、余分な前景・欠けた前景のMASK、計測JSON。 |
+| BI RebakeProxyRevision | 元のBOX_IMPOSTOR、同じ元座標系の修正BOX_PROXY、描画backend | 修正版のBox、視線が一致する面の輪郭・深度を照合したJSON。元のアセットIDを保持する。 |
 
 ComfyUIの `LoadImage.MASK` は透明側が1で、アルファのない入力は64×64のゼロマスクを返す場合がある。既知のLoadImage由来なら `1−mask` を前景coverageに変換する。外部マスクは極性と有効性を明示し、寸法だけで判定しない。QwenのRGBAは必要に応じてRGBとアルファに分け、最後に同じcoverage規約へそろえる。[LoadImageの定義](https://github.com/Comfy-Org/ComfyUI/blob/c5751c81abe131202eea9e4c66d000589013dd0b/nodes.py#L1764-L1805)
 

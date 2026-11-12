@@ -26,6 +26,7 @@ def run(comfy, output):
     write_splat_fixture(inputs)
     fixture = inputs / "asymmetric.glb"
     subprocess.run(["node", str(ROOT / "tests/make_fixture.mjs"), str(fixture)], check=True)
+    subprocess.run(["node", str(ROOT / "tests/make_open_frame.mjs"), str(inputs / 'corrected.glb')], check=True)
     with socket.socket() as listener:
         listener.bind(("127.0.0.1", 0))
         port = listener.getsockname()[1]

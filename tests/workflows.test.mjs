@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const names=[
   '01_box_from_glb','02_box_from_reference_qwen21','03_box_from_reference_h3',
-  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide'
+  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision'
 ];
 const faces=['+X','-X','+Y','-Y','+Z','-Z'];
 const graph = async name => JSON.parse(await readFile(new URL('../workflows/'+name+'.json',import.meta.url),'utf8'));
@@ -50,6 +50,13 @@ function validate(g){
 for(const name of names)test(name+' is a closed, typed native GUI workflow',async()=>{
   const g=await graph(name);
   validate(g);
+  if(name.startsWith('09')){
+    const [rev]=nodesOf(g,'BIRebakeProxyRevision');
+    assert.equal(upstream(g,rev,'asset').from,nodesOf(g,'BILoadBox')[0].id);
+    assert.equal(upstream(g,rev,'corrected_proxy').from,nodesOf(g,'BICanonicalizeProxy')[0].id);
+    assert.deepEqual(upstream(g,nodesOf(g,'BIPreviewBox')[0],'asset'),{from:rev.id,slot:0});
+    return;
+  }
   if(name.startsWith('08')){
     const one=t=>{const n=nodesOf(g,t);assert.equal(n.length,1,t);return n[0];};
     const ref=one('BIPrepareReference'),crop=one('TripoSplatPreprocessImage');

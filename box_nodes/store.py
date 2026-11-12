@@ -221,9 +221,13 @@ def publish(asset_id, producer, expected_manifest=None):
 
 
 def baseline(proxy, resolution, backend, material_maps='none'):
-    if material_maps not in MATERIAL_OPTIONS:
+    if isinstance(material_maps, str) and material_maps in MATERIAL_OPTIONS:
+        maps = MATERIAL_OPTIONS[material_maps]
+    elif (isinstance(material_maps, tuple) and set(material_maps) <= set(MATERIAL_OPTIONS['material+emissive'])
+          and len(set(material_maps)) == len(material_maps)):
+        maps = material_maps
+    else:
         raise ValueError('Unknown Box material map selection.')
-    maps = MATERIAL_OPTIONS[material_maps]
     asset_id = key('baseline-v3', worker_version(), proxy['stageKey'], proxy['sha256'], resolution, backend, maps)
     def generate(directory):
         run_worker('bake', '--input', proxy['path'], '--output', directory, '--resolution', resolution, '--backend', backend, '--asset-id', asset_id, '--canonical-meta', proxy['metadata'], '--maps', ','.join(maps))
