@@ -8,6 +8,8 @@ import { startServer, relativeFile } from './server.mjs';
 import { writeEvidence } from './evidence.mjs';
 import { validateDescriptor } from './codec.mjs';
 
+import { chromiumOptions, presentedForeground } from './chromium.mjs';
+
 const usage = `node worker/cli.mjs bake --input model.glb --output asset-dir [--resolution 256] [--backend auto|webgpu|webgl2] [--maps roughness,metalness,ao,emissive] [--verify]
 node worker/cli.mjs canonicalize --input model.glb --output new-dir
 node worker/cli.mjs preview --asset asset-dir [--port 8080]
@@ -36,11 +38,7 @@ async function exists(path) {
 }
 async function browserCall(server, method, options) {
   const { chromium } = await import('playwright');
-  const args = ['--use-angle=swiftshader','--enable-unsafe-swiftshader'];
-  // Leave hardware selection to Chromium unless software rendering was requested.
-  const flags = process.env.BI_SOFTWARE_GPU === '1' ? args : [];
-  if (options.backend === 'webgpu') flags.push('--enable-unsafe-webgpu');
-  const browser = await chromium.launch({headless:true, args:flags, executablePath:process.env.BI_CHROMIUM || undefined});
+  const browser = await chromium.launch(chromiumOptions(options.backend));
   const diagnostics = [];
   try {
     const page = await browser.newPage();
@@ -51,7 +49,7 @@ async function browserCall(server, method, options) {
       await page.goto(server.origin+'/web/viewer.html?manifest=/asset/manifest.json&backend='+options.backend);
       await page.waitForFunction(()=>/webgpu|webgl2|表示エラー/.test(document.querySelector('#status').textContent));
       if(await page.locator('#status.error').count()) throw new Error(await page.locator('#status').innerText());
-      await page.evaluate(()=>new Promise(ok=>requestAnimationFrame(()=>requestAnimationFrame(ok))));
+      await page.waitForFunction(presentedForeground,1,{timeout:20000});
       return await page.locator('#canvas').screenshot({type:'png'});
     }
     await page.goto(server.origin+'/bridge');

@@ -1,0 +1,232 @@
+{
+  "backend": "webgl2",
+  "resolution": 128,
+  "proxySha256": "345b576dc03f752170fd03ae853fbe2f7980861bd626358970f9322382beeab4",
+  "textures": {
+    "colorMap": "66e88a707df8327c7e6ac391c25b87f5a30646c59ecb20482108b6e9fa67f605",
+    "normalMap": "c9762dc6b6c4f686129d1070b1e373040314d0a66fbdc0dbdabc30fea1145e08",
+    "intervalMap": "6535dadf28b7e46ebcc5d9647a1f7d36e7b9d9f77d700780b392e5731cdeebd9",
+    "rangeMap": "97f1ed26af4e1aa166f2ab7bb9a6611fcd88f055583b7a787a6329fad7fefc8d",
+    "materialMap": "b87ced30d9794c8f28dd12188183e4434bcf5c5885c5945517e22b415b59f7d0"
+  },
+  "chromiumVersion": "143.0.7499.0",
+  "softwareGpuRequested": true,
+  "source": "canonical proxy GLB",
+  "candidate": "restored Box",
+  "renderSize": [
+    64,
+    64
+  ],
+  "projection": "orthographic",
+  "steps": 128,
+  "depthUnits": "normalized orthographic camera depth, overlapping foreground pixels",
+  "colorUnits": "absolute RGB channel difference in RGBA8 readback, overlapping foreground pixels",
+  "axes": {
+    "minimumIoU": 0.9814551,
+    "meanIoU": 0.9928301
+  },
+  "obliques": {
+    "minimumIoU": 0.9495033,
+    "meanIoU": 0.9791465
+  },
+  "views": [
+    {
+      "id": "+X",
+      "pixels": 4096,
+      "proxyPixels": 361,
+      "boxPixels": 361,
+      "overlapPixels": 361,
+      "silhouetteIoU": 1,
+      "overlapColorMAE8": 31.0360111,
+      "overlapDepthMAE": 0.0007939,
+      "overlapDepthP95": 0.0012615
+    },
+    {
+      "id": "-X",
+      "pixels": 4096,
+      "proxyPixels": 361,
+      "boxPixels": 361,
+      "overlapPixels": 361,
+      "silhouetteIoU": 1,
+      "overlapColorMAE8": 12.8328717,
+      "overlapDepthMAE": 0.0004155,
+      "overlapDepthP95": 0.0010239
+    },
+    {
+      "id": "+Y",
+      "pixels": 4096,
+      "proxyPixels": 687,
+      "boxPixels": 693,
+      "overlapPixels": 687,
+      "silhouetteIoU": 0.991342,
+      "overlapColorMAE8": 39.6055313,
+      "overlapDepthMAE": 0.0006317,
+      "overlapDepthP95": 0.0009232
+    },
+    {
+      "id": "-Y",
+      "pixels": 4096,
+      "proxyPixels": 696,
+      "boxPixels": 693,
+      "overlapPixels": 688,
+      "silhouetteIoU": 0.9814551,
+      "overlapColorMAE8": 8.2592054,
+      "overlapDepthMAE": 0.0003452,
+      "overlapDepthP95": 0.0009443
+    },
+    {
+      "id": "+Z",
+      "pixels": 4096,
+      "proxyPixels": 937,
+      "boxPixels": 946,
+      "overlapPixels": 937,
+      "silhouetteIoU": 0.9904863,
+      "overlapColorMAE8": 41.3888296,
+      "overlapDepthMAE": 0.0008327,
+      "overlapDepthP95": 0.0010056
+    },
+    {
+      "id": "-Z",
+      "pixels": 4096,
+      "proxyPixels": 952,
+      "boxPixels": 946,
+      "overlapPixels": 946,
+      "silhouetteIoU": 0.9936975,
+      "overlapColorMAE8": 16.3830162,
+      "overlapDepthMAE": 0.00174,
+      "overlapDepthP95": 0.0010055
+    },
+    {
+      "id": "xy:-1,-1",
+      "pixels": 4096,
+      "proxyPixels": 704,
+      "boxPixels": 688,
+      "overlapPixels": 688,
+      "silhouetteIoU": 0.9772727,
+      "overlapColorMAE8": 8.5043605,
+      "overlapDepthMAE": 0.0005184,
+      "overlapDepthP95": 0.0014076
+    },
+    {
+      "id": "xy:-1,1",
+      "pixels": 4096,
+      "proxyPixels": 720,
+      "boxPixels": 702,
+      "overlapPixels": 702,
+      "silhouetteIoU": 0.975,
+      "overlapColorMAE8": 23.1723647,
+      "overlapDepthMAE": 0.0008368,
+      "overlapDepthP95": 0.0013908
+    },
+    {
+      "id": "xy:1,-1",
+      "pixels": 4096,
+      "proxyPixels": 718,
+      "boxPixels": 702,
+      "overlapPixels": 702,
+      "silhouetteIoU": 0.9777159,
+      "overlapColorMAE8": 12.194207,
+      "overlapDepthMAE": 0.0007097,
+      "overlapDepthP95": 0.0015795
+    },
+    {
+      "id": "xy:1,1",
+      "pixels": 4096,
+      "proxyPixels": 704,
+      "boxPixels": 704,
+      "overlapPixels": 704,
+      "silhouetteIoU": 1,
+      "overlapColorMAE8": 31.6027462,
+      "overlapDepthMAE": 0.0016776,
+      "overlapDepthP95": 0.0016888
+    },
+    {
+      "id": "xz:-1,-1",
+      "pixels": 4096,
+      "proxyPixels": 906,
+      "boxPixels": 904,
+      "overlapPixels": 904,
+      "silhouetteIoU": 0.9977925,
+      "overlapColorMAE8": 13.9369469,
+      "overlapDepthMAE": 0.0011282,
+      "overlapDepthP95": 0.0015945
+    },
+    {
+      "id": "xz:-1,1",
+      "pixels": 4096,
+      "proxyPixels": 923,
+      "boxPixels": 922,
+      "overlapPixels": 922,
+      "silhouetteIoU": 0.9989166,
+      "overlapColorMAE8": 25.9316703,
+      "overlapDepthMAE": 0.0011055,
+      "overlapDepthP95": 0.0015945
+    },
+    {
+      "id": "xz:1,-1",
+      "pixels": 4096,
+      "proxyPixels": 923,
+      "boxPixels": 922,
+      "overlapPixels": 922,
+      "silhouetteIoU": 0.9989166,
+      "overlapColorMAE8": 13.9302242,
+      "overlapDepthMAE": 0.0012271,
+      "overlapDepthP95": 0.0017158
+    },
+    {
+      "id": "xz:1,1",
+      "pixels": 4096,
+      "proxyPixels": 906,
+      "boxPixels": 904,
+      "overlapPixels": 904,
+      "silhouetteIoU": 0.9977925,
+      "overlapColorMAE8": 34.9996313,
+      "overlapDepthMAE": 0.0012006,
+      "overlapDepthP95": 0.0017158
+    },
+    {
+      "id": "yz:-1,-1",
+      "pixels": 4096,
+      "proxyPixels": 1200,
+      "boxPixels": 1145,
+      "overlapPixels": 1145,
+      "silhouetteIoU": 0.9541667,
+      "overlapColorMAE8": 10.5030568,
+      "overlapDepthMAE": 0.0015578,
+      "overlapDepthP95": 0.0014112
+    },
+    {
+      "id": "yz:-1,1",
+      "pixels": 4096,
+      "proxyPixels": 1191,
+      "boxPixels": 1147,
+      "overlapPixels": 1144,
+      "silhouetteIoU": 0.958124,
+      "overlapColorMAE8": 24.7727273,
+      "overlapDepthMAE": 0.0009154,
+      "overlapDepthP95": 0.001411
+    },
+    {
+      "id": "yz:1,-1",
+      "pixels": 4096,
+      "proxyPixels": 1208,
+      "boxPixels": 1147,
+      "overlapPixels": 1147,
+      "silhouetteIoU": 0.9495033,
+      "overlapColorMAE8": 22.9712293,
+      "overlapDepthMAE": 0.0015973,
+      "overlapDepthP95": 0.0012733
+    },
+    {
+      "id": "yz:1,1",
+      "pixels": 4096,
+      "proxyPixels": 1182,
+      "boxPixels": 1146,
+      "overlapPixels": 1143,
+      "silhouetteIoU": 0.964557,
+      "overlapColorMAE8": 29.1918927,
+      "overlapDepthMAE": 0.0009521,
+      "overlapDepthP95": 0.0012734
+    }
+  ]
+}

@@ -1,0 +1,372 @@
+{
+  "backend": "webgl2",
+  "chromiumVersion": "143.0.7499.0",
+  "proxySha256": "345b576dc03f752170fd03ae853fbe2f7980861bd626358970f9322382beeab4",
+  "textures": {
+    "colorMap": "66e88a707df8327c7e6ac391c25b87f5a30646c59ecb20482108b6e9fa67f605",
+    "normalMap": "c9762dc6b6c4f686129d1070b1e373040314d0a66fbdc0dbdabc30fea1145e08",
+    "intervalMap": "6535dadf28b7e46ebcc5d9647a1f7d36e7b9d9f77d700780b392e5731cdeebd9",
+    "rangeMap": "97f1ed26af4e1aa166f2ab7bb9a6611fcd88f055583b7a787a6329fad7fefc8d",
+    "materialMap": "b87ced30d9794c8f28dd12188183e4434bcf5c5885c5945517e22b415b59f7d0"
+  },
+  "resolution": 128,
+  "renderSize": [
+    64,
+    64
+  ],
+  "projection": "orthographic",
+  "steps": 128,
+  "depthUnits": "normalized orthographic camera depth, overlapping foreground pixels",
+  "colorUnits": "absolute RGB channel difference in RGBA8 readback, overlapping foreground pixels",
+  "method": "Same R128 asset for all three passes. 18 orthographic views, equal weight per view. Native renderer sampled packed RGBA16F textures on SwiftShader. Diagnostic alternatives applied only to the viewer in a separate browser process.",
+  "alternatives": {
+    "native": {
+      "change": "Pinned three-impostor 0.4.1 unmodified.",
+      "meanViewColorMAE8": 22.2898068,
+      "minimumViewIoU": 0.9495033,
+      "maximumViewDepthP95": 0.0017158,
+      "views": [
+        {
+          "id": "+X",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 31.0360111,
+          "overlapDepthP95": 0.0012615
+        },
+        {
+          "id": "-X",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 12.8328717,
+          "overlapDepthP95": 0.0010239
+        },
+        {
+          "id": "+Y",
+          "silhouetteIoU": 0.991342,
+          "overlapColorMAE8": 39.6055313,
+          "overlapDepthP95": 0.0009232
+        },
+        {
+          "id": "-Y",
+          "silhouetteIoU": 0.9814551,
+          "overlapColorMAE8": 8.2592054,
+          "overlapDepthP95": 0.0009443
+        },
+        {
+          "id": "+Z",
+          "silhouetteIoU": 0.9904863,
+          "overlapColorMAE8": 41.3888296,
+          "overlapDepthP95": 0.0010056
+        },
+        {
+          "id": "-Z",
+          "silhouetteIoU": 0.9936975,
+          "overlapColorMAE8": 16.3830162,
+          "overlapDepthP95": 0.0010055
+        },
+        {
+          "id": "xy:-1,-1",
+          "silhouetteIoU": 0.9772727,
+          "overlapColorMAE8": 8.5043605,
+          "overlapDepthP95": 0.0014076
+        },
+        {
+          "id": "xy:-1,1",
+          "silhouetteIoU": 0.975,
+          "overlapColorMAE8": 23.1723647,
+          "overlapDepthP95": 0.0013908
+        },
+        {
+          "id": "xy:1,-1",
+          "silhouetteIoU": 0.9777159,
+          "overlapColorMAE8": 12.194207,
+          "overlapDepthP95": 0.0015795
+        },
+        {
+          "id": "xy:1,1",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 31.6027462,
+          "overlapDepthP95": 0.0016888
+        },
+        {
+          "id": "xz:-1,-1",
+          "silhouetteIoU": 0.9977925,
+          "overlapColorMAE8": 13.9369469,
+          "overlapDepthP95": 0.0015945
+        },
+        {
+          "id": "xz:-1,1",
+          "silhouetteIoU": 0.9989166,
+          "overlapColorMAE8": 25.9316703,
+          "overlapDepthP95": 0.0015945
+        },
+        {
+          "id": "xz:1,-1",
+          "silhouetteIoU": 0.9989166,
+          "overlapColorMAE8": 13.9302242,
+          "overlapDepthP95": 0.0017158
+        },
+        {
+          "id": "xz:1,1",
+          "silhouetteIoU": 0.9977925,
+          "overlapColorMAE8": 34.9996313,
+          "overlapDepthP95": 0.0017158
+        },
+        {
+          "id": "yz:-1,-1",
+          "silhouetteIoU": 0.9541667,
+          "overlapColorMAE8": 10.5030568,
+          "overlapDepthP95": 0.0014112
+        },
+        {
+          "id": "yz:-1,1",
+          "silhouetteIoU": 0.958124,
+          "overlapColorMAE8": 24.7727273,
+          "overlapDepthP95": 0.001411
+        },
+        {
+          "id": "yz:1,-1",
+          "silhouetteIoU": 0.9495033,
+          "overlapColorMAE8": 22.9712293,
+          "overlapDepthP95": 0.0012733
+        },
+        {
+          "id": "yz:1,1",
+          "silhouetteIoU": 0.964557,
+          "overlapColorMAE8": 29.1918927,
+          "overlapDepthP95": 0.0012734
+        }
+      ]
+    },
+    "nearestInterval": {
+      "change": "Set only minFilter and magFilter of the restored intervalMap to NearestFilter before allocating its GPU storage.",
+      "meanViewColorMAE8": 2.1043923,
+      "minimumViewIoU": 0.9772727,
+      "maximumViewDepthP95": 0.0022094,
+      "views": [
+        {
+          "id": "+X",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 2.8818098,
+          "overlapDepthP95": 0.0012963
+        },
+        {
+          "id": "-X",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 0.5161588,
+          "overlapDepthP95": 0.0012963
+        },
+        {
+          "id": "+Y",
+          "silhouetteIoU": 0.987069,
+          "overlapColorMAE8": 5.1188743,
+          "overlapDepthP95": 0.0006322
+        },
+        {
+          "id": "-Y",
+          "silhouetteIoU": 0.9772727,
+          "overlapColorMAE8": 0.6075581,
+          "overlapDepthP95": 0.0005441
+        },
+        {
+          "id": "+Z",
+          "silhouetteIoU": 0.9842437,
+          "overlapColorMAE8": 3.1469228,
+          "overlapDepthP95": 0.0004938
+        },
+        {
+          "id": "-Z",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 1.3869048,
+          "overlapDepthP95": 0.0004936
+        },
+        {
+          "id": "xy:-1,-1",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 0.4109848,
+          "overlapDepthP95": 0.0022094
+        },
+        {
+          "id": "xy:-1,1",
+          "silhouetteIoU": 0.9972222,
+          "overlapColorMAE8": 2.4795729,
+          "overlapDepthP95": 0.0020176
+        },
+        {
+          "id": "xy:1,-1",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 1.218663,
+          "overlapDepthP95": 0.0021251
+        },
+        {
+          "id": "xy:1,1",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 3.3910985,
+          "overlapDepthP95": 0.0018294
+        },
+        {
+          "id": "xz:-1,-1",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 0.9201619,
+          "overlapDepthP95": 0.0019584
+        },
+        {
+          "id": "xz:-1,1",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 1.7118093,
+          "overlapDepthP95": 0.0019584
+        },
+        {
+          "id": "xz:1,-1",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 1.3264717,
+          "overlapDepthP95": 0.0010045
+        },
+        {
+          "id": "xz:1,1",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 3.0791023,
+          "overlapDepthP95": 0.0011472
+        },
+        {
+          "id": "yz:-1,-1",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 1.1213889,
+          "overlapDepthP95": 0.0007007
+        },
+        {
+          "id": "yz:-1,1",
+          "silhouetteIoU": 0.9859272,
+          "overlapColorMAE8": 2.1760425,
+          "overlapDepthP95": 0.0008894
+        },
+        {
+          "id": "yz:1,-1",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 3.0883002,
+          "overlapDepthP95": 0.0005963
+        },
+        {
+          "id": "yz:1,1",
+          "silhouetteIoU": 0.985,
+          "overlapColorMAE8": 3.2972363,
+          "overlapDepthP95": 0.0005962
+        }
+      ]
+    },
+    "coverageWeighted": {
+      "change": "Replace the Box shader expression anyW.mul(towardRay) with anyW.mul(towardRay).mul(mix(0.002, 1, smoothstep(0.95, 0.999, c.a))); preserve all other weights, samplers and stages.",
+      "meanViewColorMAE8": 5.0310943,
+      "minimumViewIoU": 0.9495033,
+      "maximumViewDepthP95": 0.0017158,
+      "views": [
+        {
+          "id": "+X",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 7.5309326,
+          "overlapDepthP95": 0.0012615
+        },
+        {
+          "id": "-X",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 0.700831,
+          "overlapDepthP95": 0.0010239
+        },
+        {
+          "id": "+Y",
+          "silhouetteIoU": 0.991342,
+          "overlapColorMAE8": 15.2013586,
+          "overlapDepthP95": 0.0009232
+        },
+        {
+          "id": "-Y",
+          "silhouetteIoU": 0.9814551,
+          "overlapColorMAE8": 1.4917636,
+          "overlapDepthP95": 0.0009443
+        },
+        {
+          "id": "+Z",
+          "silhouetteIoU": 0.9904863,
+          "overlapColorMAE8": 6.2600498,
+          "overlapDepthP95": 0.0010056
+        },
+        {
+          "id": "-Z",
+          "silhouetteIoU": 0.9936975,
+          "overlapColorMAE8": 2.7596899,
+          "overlapDepthP95": 0.0010055
+        },
+        {
+          "id": "xy:-1,-1",
+          "silhouetteIoU": 0.9772727,
+          "overlapColorMAE8": 0.7030039,
+          "overlapDepthP95": 0.0014076
+        },
+        {
+          "id": "xy:-1,1",
+          "silhouetteIoU": 0.975,
+          "overlapColorMAE8": 7.1676163,
+          "overlapDepthP95": 0.0013908
+        },
+        {
+          "id": "xy:1,-1",
+          "silhouetteIoU": 0.9777159,
+          "overlapColorMAE8": 2.5294397,
+          "overlapDepthP95": 0.0015795
+        },
+        {
+          "id": "xy:1,1",
+          "silhouetteIoU": 1,
+          "overlapColorMAE8": 11.0383523,
+          "overlapDepthP95": 0.0016888
+        },
+        {
+          "id": "xz:-1,-1",
+          "silhouetteIoU": 0.9977925,
+          "overlapColorMAE8": 1.5464602,
+          "overlapDepthP95": 0.0015945
+        },
+        {
+          "id": "xz:-1,1",
+          "silhouetteIoU": 0.9989166,
+          "overlapColorMAE8": 3.439624,
+          "overlapDepthP95": 0.0015945
+        },
+        {
+          "id": "xz:1,-1",
+          "silhouetteIoU": 0.9989166,
+          "overlapColorMAE8": 2.8524946,
+          "overlapDepthP95": 0.0017158
+        },
+        {
+          "id": "xz:1,1",
+          "silhouetteIoU": 0.9977925,
+          "overlapColorMAE8": 6.0523599,
+          "overlapDepthP95": 0.0017158
+        },
+        {
+          "id": "yz:-1,-1",
+          "silhouetteIoU": 0.9541667,
+          "overlapColorMAE8": 2.1694323,
+          "overlapDepthP95": 0.0014112
+        },
+        {
+          "id": "yz:-1,1",
+          "silhouetteIoU": 0.958124,
+          "overlapColorMAE8": 4.3350816,
+          "overlapDepthP95": 0.001411
+        },
+        {
+          "id": "yz:1,-1",
+          "silhouetteIoU": 0.9495033,
+          "overlapColorMAE8": 7.0200523,
+          "overlapDepthP95": 0.0012733
+        },
+        {
+          "id": "yz:1,1",
+          "silhouetteIoU": 0.964557,
+          "overlapColorMAE8": 7.7611549,
+          "overlapDepthP95": 0.0012734
+        }
+      ]
+    }
+  }
+}

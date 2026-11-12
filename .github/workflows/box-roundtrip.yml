@@ -6,7 +6,11 @@ on:
 permissions:
   contents: read
 jobs:
-  software-webgl2:
+  renderer:
+    strategy:
+      fail-fast: false
+      matrix:
+        backend: [webgl2, webgpu]
     runs-on: ubuntu-24.04
     timeout-minutes: 18
     env:
@@ -22,12 +26,14 @@ jobs:
       - run: npx playwright install --with-deps chromium --only-shell
       - run: node tests/make_fixture.mjs .test-output/source.glb
       - name: Bake and reload in a new Chromium process
-        run: node worker/cli.mjs bake --input .test-output/source.glb --output .test-output/box --backend webgl2 --resolution 128 --maps roughness,metalness,ao --verify --evidence .test-output/evidence
+        run: node worker/cli.mjs bake --input .test-output/source.glb --output .test-output/box --backend ${{ matrix.backend }} --resolution 128 --maps roughness,metalness,ao --verify --evidence .test-output/evidence
+      - name: Verify the low-resolution texture restore
+        run: node worker/cli.mjs bake --input .test-output/source.glb --output .test-output/box32 --backend ${{ matrix.backend }} --resolution 32 --maps roughness,metalness,ao --verify --evidence .test-output/evidence32
       - name: Compare mesh and Box in the viewer
-        run: BI_TEST_ASSET=.test-output/box BI_TEST_BACKEND=webgl2 node --test tests/viewer_integration.test.mjs
+        run: BI_TEST_ASSET=.test-output/box BI_TEST_BACKEND=${{ matrix.backend }} node --test tests/viewer_integration.test.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: box-roundtrip
+          name: box-roundtrip-${{ matrix.backend }}
           path: .test-output/
           if-no-files-found: ignore
