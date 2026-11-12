@@ -73,6 +73,20 @@ export async function bake({resolution=256,maps=[],backend='auto',asset_id,verif
   try {
     const glb = await (await fetchChecked('/job/input.glb')).arrayBuffer();
     result = await bakeGLB(glb,{resolution,maps,backend,asset_id,renderer,guides,canonical:canonicalMeta ?? canonical});
+    // Record the actual device that produced these textures, including software adapters.
+    let adapter;
+    if (renderer.backend.isWebGPUBackend) {
+      const info = renderer.backend.device.adapterInfo;
+      if (info) {
+        const {vendor, architecture, device, description, isFallbackAdapter} = info;
+        adapter = {vendor, architecture, device, description, isFallbackAdapter};
+      }
+    } else {
+      const gl = renderer.getContext();
+      const debug = gl.getExtension('WEBGL_debug_renderer_info');
+      if (debug) adapter = {renderer:gl.getParameter(debug.UNMASKED_RENDERER_WEBGL)};
+    }
+    if (adapter) result.manifest.provenance = {...result.manifest.provenance, renderAdapter:adapter};
     for (const [path,bytes] of result.files) {
       // Chromium can stall when adjacent 192 MiB R2048 maps use the in-memory
       // Fetch buffer body. Its Blob upload path streams the body to the server.

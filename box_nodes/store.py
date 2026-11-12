@@ -91,22 +91,33 @@ def check_interrupted():
     throw_exception_if_processing_interrupted()
 
 
+def renderer_environment():
+    return {
+        'node': os.environ.get('BI_NODE') or 'node',
+        'chromium': os.environ.get('BI_CHROMIUM') or '',
+        'software': os.environ.get('BI_SOFTWARE_GPU') == '1',
+    }
+
+
 def worker_version():
     paths = sorted((REPO / 'worker').glob('*.mjs'))
     paths += [REPO / 'web' / 'asset_io.mjs', REPO / 'package-lock.json', REPO / 'worker' / 'package-lock.json']
-    return key([(str(path.relative_to(REPO)), file_hash(path)) for path in paths if path.is_file() and 'node_modules' not in path.parts])
+    return key(renderer_environment(), [(str(path.relative_to(REPO)), file_hash(path)) for path in paths if path.is_file() and 'node_modules' not in path.parts])
 
 
 def presentation_version():
     paths = ('web/viewer.html', 'web/viewer.mjs', 'web/asset_io.mjs',
              'worker/chromium.mjs', 'worker/cli.mjs', 'worker/server.mjs',
              'worker/runtime.mjs', 'worker/codec.mjs', 'package-lock.json')
-    return key([(name, file_hash(REPO / name)) for name in paths])
+    return key(renderer_environment(), [(name, file_hash(REPO / name)) for name in paths])
 
 
 def run_worker(*args):
-    executable = shutil.which('node')
+    requested = os.environ.get('BI_NODE') or 'node'
+    executable = shutil.which(requested)
     if not executable:
+        if os.environ.get('BI_NODE'):
+            raise RuntimeError(f'Cannot execute the Node.js worker configured in BI_NODE: {requested}')
         raise RuntimeError('Install Node.js and install the project dependencies before baking.')
     command = [executable, str(REPO / 'worker' / 'cli.mjs'), *map(str, args)]
     with tempfile.TemporaryFile() as log:
