@@ -50,6 +50,10 @@ async function compile(name, edit){
     return prompt;
   }
   const byType=t=>Object.entries(prompt).filter(([,n])=>n.class_type===t);
+  for(const [,n] of [...byType('BIAlignAndValidateFaces'),...byType('BIReplaceFaces')]){
+    assert.deepEqual([n.inputs.min_iou,n.inputs.max_shift,n.inputs.max_scale_change],
+      [0.85,0.10,0.15],name+' must preserve the shipped alignment thresholds');
+  }
   if(name.startsWith('09')){
     const [[id,revision]]=byType('BIRebakeProxyRevision');
     assert.deepEqual(revision.inputs.asset,[byType('BILoadBox')[0][0],0]);

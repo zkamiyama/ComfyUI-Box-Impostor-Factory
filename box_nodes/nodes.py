@@ -255,7 +255,11 @@ class AlignAndValidateFaces:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return inputs(faces=('BOX_FACES',), guides=('BOX_GUIDES',), min_iou=('FLOAT', {'default': .85, 'min': 0., 'max': 1.}), max_shift=('FLOAT', {'default': .1, 'min': 0., 'max': 1.}), max_scale_change=('FLOAT', {'default': .15, 'min': 0., 'max': 1.}))
+        bounds = {'min': 0., 'max': 1., 'step': .01, 'round': .01}
+        return inputs(faces=('BOX_FACES',), guides=('BOX_GUIDES',),
+                      min_iou=('FLOAT', {**bounds, 'default': .85}),
+                      max_shift=('FLOAT', {**bounds, 'default': .10}),
+                      max_scale_change=('FLOAT', {**bounds, 'default': .15}))
 
     def align(self, faces, guides, min_iou, max_shift, max_scale_change):
         from .faces import align
