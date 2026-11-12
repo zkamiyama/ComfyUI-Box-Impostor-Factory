@@ -1,0 +1,169 @@
+{
+  "source": {
+    "model": "Microsoft CC0 Lantern reference + Pixal3D guide mesh + native Qwen-Image 2.1/AnyAngle on RTX 4080",
+    "proxySha256": "51d88da5990eafe4a6c180b5e01e84cb23d0e05af38cab9e8887f0915e103780",
+    "referenceSha256": "4965760c6049a108d9e45f1f31a4b3a82bdd9de41b06fbbf0c40495ef4923fb9",
+    "savedSixViewsAsset": "4cd4b612431f3713d059311f7f65b31cd868681f4998297b010d468baa0ff86b",
+    "seedInDirectionOrder": [
+      101,
+      102,
+      103,
+      104,
+      105,
+      106
+    ],
+    "canvas": 512,
+    "guideResolution": 256,
+    "admissionMinIoU": 0.85,
+    "maxShiftFraction": 0.1,
+    "maxScaleChange": 0.15
+  },
+  "directions": [
+    "+X",
+    "-X",
+    "+Y",
+    "-Y",
+    "+Z",
+    "-Z"
+  ],
+  "maskComparison": {
+    "method": "Bilinearly resize each RGBA guide to its recorded physical rectangle on a transparent 512x512 canvas. Resize both guide and raw matted generation to 256x256, threshold each alpha at 128. Rows are generated faces, columns are guides. These scores measure camera correspondence before undoing the letterbox, separately from atlas-space admission.",
+    "physicalCanvasIoU": [
+      [
+        0.86543,
+        0.03912,
+        0.25268,
+        0.04355,
+        0.09759,
+        0.18063
+      ],
+      [
+        0.04314,
+        0.92466,
+        0.0817,
+        0.30756,
+        0.179,
+        0.09278
+      ],
+      [
+        0.24653,
+        0.10663,
+        0.80182,
+        0.2309,
+        0.3262,
+        0.15533
+      ],
+      [
+        0.05318,
+        0.31017,
+        0.21858,
+        0.84559,
+        0.40213,
+        0.11692
+      ],
+      [
+        0.09516,
+        0.17723,
+        0.29435,
+        0.36337,
+        0.88913,
+        0.09647
+      ],
+      [
+        0.19351,
+        0.09287,
+        0.17718,
+        0.10355,
+        0.10489,
+        0.94259
+      ]
+    ],
+    "rawAtlasIoU": [
+      0.86507,
+      0.92388,
+      0.8025,
+      0.84492,
+      0.89034,
+      0.94318
+    ],
+    "boundingBoxAtlasIoU": [
+      0.79527,
+      0.8763,
+      0.78757,
+      0.86366,
+      0.84993,
+      0.91863
+    ],
+    "bestPureTranslationAtlasIoU": [
+      0.87324,
+      0.92601,
+      0.8078,
+      0.88459,
+      0.90653,
+      0.94549
+    ],
+    "translationSearch": "Integer dx, dy between -26 and +25 pixels in the 256px atlas tile. Maximize intersection while counting the full untransformed foreground in the union; moving pixels outside the image cannot improve the score.",
+    "plusY": "The main shaft joint, cap and lamp contours disagree in different places. The prescribed camera wins against all five alternatives. Translation alone never reaches the admission cutoff."
+  },
+  "donorExperiment": {
+    "target": "+Y",
+    "donors": [
+      "+X",
+      "-X",
+      "+Z",
+      "-Z"
+    ],
+    "method": "Decode original generated RGBA in the manifest canvas and use the higher-IoU identity or bounding-box alignment from ae815c4. For each target texel, use cross-view-v2 geometry and visibility rules at full R256 instead of the diagnostic 128 grid. Require transformed source and target normal cosines above 0.25, their mutual dot product above 0.75, slope-dependent depth agreement and source generated alpha above .99. This bake did not include roughness/metalness; no specularity exclusion applied. No color from the rejected +Y generation is used.",
+    "foregroundTexels": 16503,
+    "eligibleByTargetDepthNormals": 14754,
+    "seenByDonor": {
+      "+X": 4627,
+      "-X": 3403,
+      "+Z": 2606,
+      "-Z": 7632
+    },
+    "seenByOneOrMore": 12056,
+    "seenByTwoOrMore": 6212,
+    "donorAgreement": {
+      "meanChannelRangeAcrossDonorsPercentiles": {
+        "p50": 0.01933961,
+        "p90": 0.05516244,
+        "p95": 0.07260507
+      },
+      "twoOrMoreWithMeanChannelRangeAtMostPoint03": 4207
+    },
+    "crossValidation": "On target texels visible to both groups, withhold one accepted donor. Compare its linear RGB with the arithmetic mean from all other contributing donors and separately with the original target baseline. This tests mutual agreement of generated views. No independent target-view photographic ground truth was available.",
+    "errorMeasure": "mean absolute linear RGB difference (range 0–1)",
+    "heldOut": {
+      "+X": {
+        "texels": 3648,
+        "baselineMedian": 0.04550537,
+        "baselineP95": 0.11196177,
+        "donorsMedian": 0.0176207,
+        "donorsP95": 0.06988198
+      },
+      "-X": {
+        "texels": 2564,
+        "baselineMedian": 0.05916217,
+        "baselineP95": 0.11942002,
+        "donorsMedian": 0.0214146,
+        "donorsP95": 0.0761178
+      },
+      "+Z": {
+        "texels": 58,
+        "baselineMedian": 0.03272896,
+        "baselineP95": 0.04883012,
+        "donorsMedian": 0.00059789,
+        "donorsP95": 0.05654921
+      },
+      "-Z": {
+        "texels": 6154,
+        "baselineMedian": 0.05228747,
+        "baselineP95": 0.10799358,
+        "donorsMedian": 0.01947154,
+        "donorsP95": 0.07282832
+      }
+    },
+    "publishedAtlasModified": false
+  }
+}

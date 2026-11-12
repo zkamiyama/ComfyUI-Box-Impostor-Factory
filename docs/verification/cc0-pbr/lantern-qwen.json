@@ -1,0 +1,458 @@
+{
+  "case": "Single-image CC0 Lantern as generated with compact Pixal3D, then local Qwen-Image 2.1 + AnyAngle on six orthographic guide canvases.",
+  "reference": "4965760c6049a108d9e45f1f31a4b3a82bdd9de41b06fbbf0c40495ef4923fb9",
+  "device": "GeForce RTX 4080 16 GiB / WSL2",
+  "torch": "2.9.1+cu128",
+  "comfy": "0.45.0",
+  "canvas": 512,
+  "bakeResolution": 256,
+  "weights": {
+    "loras/QI2.1_AnyAngle.safetensors": "e4d7a0d44a45ed62daabd0f2484a1a59046618a4c47e76b1eab5e386a7a35d8a",
+    "diffusion_models/qwen_image_2.1_int8_convrot.safetensors": "cb74113cb03faecd79611b01fd7fd642f0aa60d6f0b95086abee214d75eaa57d",
+    "text_encoders/qwen3vl_8b_int8_convrot.safetensors": "8bfd0f6e12abf2d2d697ecc888e5e90b0d6741d6708f05799f53afa560452e8f",
+    "vae/qwen_image_2.1_vae_bf16.safetensors": "bb21f7473051e1ac368515dd3f2e15cd44d7a11748ee8823e1ddca3e4876b7c9",
+    "background_removal/birefnet.safetensors": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154"
+  },
+  "patches": {
+    "registration": "ae815c4",
+    "graphCache": "127efaf"
+  },
+  "order": [
+    "qwen-pixal-front",
+    "qwen-pixal-six",
+    "qwen-pixal-fixed-six",
+    "qwen-stable-cache",
+    "qwen-pixal-reseed"
+  ],
+  "measurements": [
+    {
+      "case": "qwen-pixal-fixed-six",
+      "promptId": "99293839-ebc8-46b5-8804-3fbfbdd4bf1f",
+      "asset": "f94ef409d75264c1d9fd817b225c8d0e7e8988222e3fc7856730eb5a337ccf77",
+      "parent": "472d6053ff540bea50cc98210960ea3ea487e9994d04a4ebb8fbcbfc3cd60d7e",
+      "mode": "qwen_enhanced",
+      "accepted": 5,
+      "fallback": 1,
+      "untouched": 0,
+      "imageOrder": [
+        "reference",
+        "guide"
+      ],
+      "inference": {
+        "pixal3d": "sampled",
+        "+X": "sampled",
+        "-X": "sampled",
+        "+Y": "sampled",
+        "-Y": "sampled",
+        "+Z": "sampled",
+        "-Z": "sampled"
+      },
+      "colorChangedRelativeToGeometry": true,
+      "geometryMapDigestsUnchanged": {
+        "normalMap": true,
+        "intervalMap": true,
+        "rangeMap": true
+      },
+      "crossViewMeasuredPairs": 12,
+      "crossViewWorstPair": "-Y/+Z",
+      "crossViewWorstP95LinearRGBMAE": 0.15570881962776184,
+      "executionSeconds": 599.654,
+      "wallSeconds": 634.89,
+      "sampleCount": 412,
+      "startingDeviceUsedMiB": 1510,
+      "maximumObservedDeviceUsedMiB": 15422,
+      "nativeMeshSha256": "cb45029901962ea7854e58c8e5bddc76ace8435e27371cdee9732c9379944cca",
+      "loadersAndSamplers": {
+        "CLIPLoader": 1,
+        "CLIPVisionLoader": 1,
+        "KSampler": 10,
+        "LoadBackgroundRemovalModel": 1,
+        "LoadMoGeModel": 1,
+        "LoraLoaderModelOnly": 1,
+        "UNETLoader": 2,
+        "VAELoader": 3
+      },
+      "faceCandidates": {
+        "+X": {
+          "status": "accepted",
+          "seed": 101,
+          "beforeIoU": 0.8665504398129804,
+          "afterIoU": 0.8665504398129804,
+          "sourcePngSha256": "5fd0332a935ebd8e13e719e7518f7960ffcdf0ade7fe815d711e1583917bc1e2"
+        },
+        "-X": {
+          "status": "accepted",
+          "seed": 102,
+          "beforeIoU": 0.9289271879199936,
+          "afterIoU": 0.9289271879199936,
+          "sourcePngSha256": "9c49340abed581feab4a30a879f133120d630fb0a072066ec285c91fed70fb8d"
+        },
+        "+Y": {
+          "status": "fallback",
+          "seed": 103,
+          "beforeIoU": 0.7909792724196277,
+          "afterIoU": 0.7909792724196277,
+          "sourcePngSha256": "9cca4f228ee96ed9fe5caefb7abd38a98da9f48042e94b814cd2e57941b17d98"
+        },
+        "-Y": {
+          "status": "accepted",
+          "seed": 104,
+          "beforeIoU": 0.8603516166601963,
+          "afterIoU": 0.8603516166601963,
+          "sourcePngSha256": "0708560b12e86431624e11d38d1f9ad3b96204061531e0b8b6a5f00d93d7353b"
+        },
+        "+Z": {
+          "status": "accepted",
+          "seed": 105,
+          "beforeIoU": 0.8878226984900146,
+          "afterIoU": 0.8878226984900146,
+          "sourcePngSha256": "e59891271ffcb978da87598200861aaab921028a5a14f5e16fe14ee4c8012ed0"
+        },
+        "-Z": {
+          "status": "accepted",
+          "seed": 106,
+          "beforeIoU": 0.9454653524196345,
+          "afterIoU": 0.9454653524196345,
+          "sourcePngSha256": "a382cca34f24664bbdf3152999bd957e8f64781d02344ce766404f96770c7270"
+        }
+      }
+    },
+    {
+      "case": "qwen-pixal-front",
+      "promptId": "f713276f-8a27-4a74-9e22-bbdef47aaad6",
+      "asset": "e93db763d7f69cf4292f908c53fc3cfa6a53ef0b5a53b294fed1e18d39942c6c",
+      "parent": "0c56b0d8f1836d33fe64d23f8ba6131ef205e5d193ef81533558c77a0d96e34b",
+      "mode": "qwen_enhanced",
+      "accepted": 0,
+      "fallback": 1,
+      "untouched": 5,
+      "imageOrder": [
+        "reference",
+        "guide"
+      ],
+      "inference": {
+        "pixal3d": "reused",
+        "+Z": "sampled"
+      },
+      "colorChangedRelativeToGeometry": false,
+      "geometryMapDigestsUnchanged": {
+        "normalMap": true,
+        "intervalMap": true,
+        "rangeMap": true
+      },
+      "crossViewMeasuredPairs": 12,
+      "crossViewWorstPair": "-Y/+Z",
+      "crossViewWorstP95LinearRGBMAE": 0.01693216897547245,
+      "executionSeconds": 126.913,
+      "wallSeconds": 137.76,
+      "sampleCount": 89,
+      "startingDeviceUsedMiB": 8998,
+      "maximumObservedDeviceUsedMiB": 15560,
+      "nativeMeshSha256": "89a61f50f90090dc6003bda4da8705036732df52ab8e134aad760701ebe3f737",
+      "faceCandidates": {
+        "+X": {
+          "status": "baseline"
+        },
+        "-X": {
+          "status": "baseline"
+        },
+        "+Y": {
+          "status": "baseline"
+        },
+        "-Y": {
+          "status": "baseline"
+        },
+        "+Z": {
+          "status": "fallback",
+          "seed": 105,
+          "beforeIoU": 0.8903421014103753,
+          "afterIoU": 0.8499323802163833,
+          "sourcePngSha256": "130c3a7d4a68e0e718237380b5c2b64cdec58fc85399c605ac683e6bd00749dc"
+        },
+        "-Z": {
+          "status": "baseline"
+        }
+      }
+    },
+    {
+      "case": "qwen-pixal-reseed",
+      "promptId": "ed51d80d-17cf-489c-af3b-d6bbfafedba2",
+      "asset": "5ed84c686d2161be134d0d94eca20720727615732b38205424035b9fc9c621f7",
+      "parent": "884106ddca0b2a768d0de0351259414ebd2d9caaba55f291fad2d244a87c17b0",
+      "mode": "qwen_enhanced",
+      "accepted": 6,
+      "fallback": 0,
+      "untouched": 0,
+      "imageOrder": [
+        "reference",
+        "guide"
+      ],
+      "inference": {
+        "pixal3d": "reused",
+        "+X": "reused",
+        "-X": "reused",
+        "+Y": "sampled",
+        "-Y": "reused",
+        "+Z": "reused",
+        "-Z": "reused"
+      },
+      "colorChangedRelativeToGeometry": true,
+      "geometryMapDigestsUnchanged": {
+        "normalMap": true,
+        "intervalMap": true,
+        "rangeMap": true
+      },
+      "crossViewMeasuredPairs": 12,
+      "crossViewWorstPair": "+X/-Y",
+      "crossViewWorstP95LinearRGBMAE": 0.18705923855304718,
+      "executionSeconds": 98.746,
+      "wallSeconds": 107.77,
+      "sampleCount": 70,
+      "startingDeviceUsedMiB": 1510,
+      "maximumObservedDeviceUsedMiB": 13431,
+      "nativeMeshSha256": "89a61f50f90090dc6003bda4da8705036732df52ab8e134aad760701ebe3f737",
+      "loadersAndSamplers": {
+        "CLIPLoader": 1,
+        "KSampler": 1,
+        "LoadBackgroundRemovalModel": 1,
+        "LoraLoaderModelOnly": 1,
+        "UNETLoader": 1,
+        "VAELoader": 1
+      },
+      "faceCandidates": {
+        "+X": {
+          "status": "accepted",
+          "seed": 101,
+          "beforeIoU": 0.8650705565244966,
+          "afterIoU": 0.8650705565244966,
+          "sourcePngSha256": "83c218b645e30bfb25442f0fec0f59dcddda843fd6715e90b51ac2314155edce"
+        },
+        "-X": {
+          "status": "accepted",
+          "seed": 102,
+          "beforeIoU": 0.9238787113076438,
+          "afterIoU": 0.9238787113076438,
+          "sourcePngSha256": "b7b91a95e790ba2524d2b5fa49a8b15a4ae3a7065c2b83a327a969cca805e10a"
+        },
+        "+Y": {
+          "status": "accepted",
+          "seed": 321,
+          "beforeIoU": 0.9316051382941789,
+          "afterIoU": 0.9316051382941789,
+          "sourcePngSha256": "f190b9b1fd74643c565622979c524c6fc1265f615704a502571bd63fd7c2853a"
+        },
+        "-Y": {
+          "status": "accepted",
+          "seed": 104,
+          "beforeIoU": 0.8449206608866351,
+          "afterIoU": 0.8636587636204348,
+          "sourcePngSha256": "1cde21c546788194079a1da2dc4ef928fae3f592236879f2ba93a6493749be20"
+        },
+        "+Z": {
+          "status": "accepted",
+          "seed": 105,
+          "beforeIoU": 0.8903421014103753,
+          "afterIoU": 0.8903421014103753,
+          "sourcePngSha256": "130c3a7d4a68e0e718237380b5c2b64cdec58fc85399c605ac683e6bd00749dc"
+        },
+        "-Z": {
+          "status": "accepted",
+          "seed": 106,
+          "beforeIoU": 0.9431812552632882,
+          "afterIoU": 0.9431812552632882,
+          "sourcePngSha256": "bf035e80b79c577e886e121d2f657c73096dbca7bf8549f8a8cad01027afb75c"
+        }
+      }
+    },
+    {
+      "case": "qwen-pixal-six",
+      "promptId": "a10d17cc-0e00-4721-b127-5a687e2b5f9e",
+      "asset": "4cd4b612431f3713d059311f7f65b31cd868681f4998297b010d468baa0ff86b",
+      "parent": "997b24f8ce4505f52248e980dbcff13bad0055ca58f5750eefe3e4b1eefeb9c1",
+      "mode": "qwen_enhanced",
+      "accepted": 3,
+      "fallback": 3,
+      "untouched": 0,
+      "imageOrder": [
+        "reference",
+        "guide"
+      ],
+      "inference": {
+        "pixal3d": "reused",
+        "+X": "sampled",
+        "-X": "sampled",
+        "+Y": "sampled",
+        "-Y": "sampled",
+        "+Z": "reused",
+        "-Z": "sampled"
+      },
+      "colorChangedRelativeToGeometry": true,
+      "geometryMapDigestsUnchanged": {
+        "normalMap": true,
+        "intervalMap": true,
+        "rangeMap": true
+      },
+      "crossViewMeasuredPairs": 12,
+      "crossViewWorstPair": "+X/-Y",
+      "crossViewWorstP95LinearRGBMAE": 0.3771626949310303,
+      "executionSeconds": 448.682,
+      "wallSeconds": 473.88,
+      "sampleCount": 307,
+      "startingDeviceUsedMiB": 14024,
+      "maximumObservedDeviceUsedMiB": 15368,
+      "nativeMeshSha256": "89a61f50f90090dc6003bda4da8705036732df52ab8e134aad760701ebe3f737",
+      "faceCandidates": {
+        "+X": {
+          "status": "fallback",
+          "seed": 101,
+          "beforeIoU": 0.8650705565244966,
+          "afterIoU": 0.7952684941794969,
+          "sourcePngSha256": "83c218b645e30bfb25442f0fec0f59dcddda843fd6715e90b51ac2314155edce"
+        },
+        "-X": {
+          "status": "accepted",
+          "seed": 102,
+          "beforeIoU": 0.9238787113076438,
+          "afterIoU": 0.8762998603135186,
+          "sourcePngSha256": "b7b91a95e790ba2524d2b5fa49a8b15a4ae3a7065c2b83a327a969cca805e10a"
+        },
+        "+Y": {
+          "status": "fallback",
+          "seed": 103,
+          "beforeIoU": 0.8024961331271001,
+          "afterIoU": 0.7875680200920887,
+          "sourcePngSha256": "f29325a731b146e4b9749082512e510b9e9081b371043463acbcec771b5439c8"
+        },
+        "-Y": {
+          "status": "accepted",
+          "seed": 104,
+          "beforeIoU": 0.8449206608866351,
+          "afterIoU": 0.8636587636204348,
+          "sourcePngSha256": "1cde21c546788194079a1da2dc4ef928fae3f592236879f2ba93a6493749be20"
+        },
+        "+Z": {
+          "status": "fallback",
+          "seed": 105,
+          "beforeIoU": 0.8903421014103753,
+          "afterIoU": 0.8499323802163833,
+          "sourcePngSha256": "130c3a7d4a68e0e718237380b5c2b64cdec58fc85399c605ac683e6bd00749dc"
+        },
+        "-Z": {
+          "status": "accepted",
+          "seed": 106,
+          "beforeIoU": 0.9431812552632882,
+          "afterIoU": 0.9186274509803921,
+          "sourcePngSha256": "bf035e80b79c577e886e121d2f657c73096dbca7bf8549f8a8cad01027afb75c"
+        }
+      }
+    },
+    {
+      "case": "qwen-stable-cache",
+      "promptId": "0f04fb00-7f6c-4ac8-9bc2-a72a65240822",
+      "asset": "1b89e74a7f80caecc3500fe4c7e69676a95884566997c7e762d0e45a5ff37b83",
+      "parent": "884106ddca0b2a768d0de0351259414ebd2d9caaba55f291fad2d244a87c17b0",
+      "mode": "qwen_enhanced",
+      "accepted": 5,
+      "fallback": 1,
+      "untouched": 0,
+      "imageOrder": [
+        "reference",
+        "guide"
+      ],
+      "inference": {
+        "pixal3d": "reused",
+        "+X": "reused",
+        "-X": "reused",
+        "+Y": "reused",
+        "-Y": "reused",
+        "+Z": "reused",
+        "-Z": "reused"
+      },
+      "colorChangedRelativeToGeometry": true,
+      "geometryMapDigestsUnchanged": {
+        "normalMap": true,
+        "intervalMap": true,
+        "rangeMap": true
+      },
+      "crossViewMeasuredPairs": 12,
+      "crossViewWorstPair": "+X/-Y",
+      "crossViewWorstP95LinearRGBMAE": 0.18705923855304718,
+      "executionSeconds": 0.751,
+      "wallSeconds": 7.64,
+      "sampleCount": 5,
+      "startingDeviceUsedMiB": 1510,
+      "maximumObservedDeviceUsedMiB": 1510,
+      "nativeMeshSha256": "89a61f50f90090dc6003bda4da8705036732df52ab8e134aad760701ebe3f737",
+      "loadersAndSamplers": {},
+      "faceCandidates": {
+        "+X": {
+          "status": "accepted",
+          "seed": 101,
+          "beforeIoU": 0.8650705565244966,
+          "afterIoU": 0.8650705565244966,
+          "sourcePngSha256": "83c218b645e30bfb25442f0fec0f59dcddda843fd6715e90b51ac2314155edce"
+        },
+        "-X": {
+          "status": "accepted",
+          "seed": 102,
+          "beforeIoU": 0.9238787113076438,
+          "afterIoU": 0.9238787113076438,
+          "sourcePngSha256": "b7b91a95e790ba2524d2b5fa49a8b15a4ae3a7065c2b83a327a969cca805e10a"
+        },
+        "+Y": {
+          "status": "fallback",
+          "seed": 103,
+          "beforeIoU": 0.8024961331271001,
+          "afterIoU": 0.8024961331271001,
+          "sourcePngSha256": "f29325a731b146e4b9749082512e510b9e9081b371043463acbcec771b5439c8"
+        },
+        "-Y": {
+          "status": "accepted",
+          "seed": 104,
+          "beforeIoU": 0.8449206608866351,
+          "afterIoU": 0.8636587636204348,
+          "sourcePngSha256": "1cde21c546788194079a1da2dc4ef928fae3f592236879f2ba93a6493749be20"
+        },
+        "+Z": {
+          "status": "accepted",
+          "seed": 105,
+          "beforeIoU": 0.8903421014103753,
+          "afterIoU": 0.8903421014103753,
+          "sourcePngSha256": "130c3a7d4a68e0e718237380b5c2b64cdec58fc85399c605ac683e6bd00749dc"
+        },
+        "-Z": {
+          "status": "accepted",
+          "seed": 106,
+          "beforeIoU": 0.9431812552632882,
+          "afterIoU": 0.9431812552632882,
+          "sourcePngSha256": "bf035e80b79c577e886e121d2f657c73096dbca7bf8549f8a8cad01027afb75c"
+        }
+      }
+    }
+  ],
+  "archive": {
+    "name": "cc0-lantern-pixal-qwen.box.zip",
+    "bytes": 21072294,
+    "sha256": "4abd1a2c08fb7d04e78932c4535e28450ab90b1f7ce1a3d5363e5c6bdc2f6869",
+    "entries": 42,
+    "allSourceFilesByteIdentical": true
+  },
+  "changedCandidatePNGOnSeedUpdate": [
+    "+Y"
+  ],
+  "sampling": "NVIDIA-SMI samples whole-device memory at nominal 1.5 s intervals. Execution seconds are server execution_start to execution_success. The first front run started after a Pixal3D run with model weights resident; six-face and restart runs have distinct cache states shown in inference.",
+  "limits": "Silhouette admission refers to generated proxy guides. It does not measure fidelity to unseen sides of the real model. qwen-pixal-fixed-six re-sampled a proxy before fixing graph ID dependence; compare qwen-pixal-six and qwen-stable-cache for the same source mesh.",
+  "suppliedMeshControl": {
+    "promptId": "2649cbcc-a7ae-42e7-901d-7747c19ff9e6",
+    "asset": "0adce91793e25f655c736a8cd642ebd6c5e50229b8a0a29c05c1e273b728b794",
+    "mesh": "cc0-lantern-20261112/Lantern.glb",
+    "originalGlbSha256": "a79458c4b02d695187a952f23a63b8bf278e7bc3d316a3c2a314f2d6974181f1",
+    "face": "+Z",
+    "accepted": 1,
+    "seed": 105,
+    "beforeIoU": 0.9556210595267338,
+    "afterIoU": 0.9594472320473801,
+    "executionSeconds": 98.503,
+    "maximumObservedDeviceUsedMiB": 13152
+  }
+}
