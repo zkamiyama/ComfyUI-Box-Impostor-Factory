@@ -525,5 +525,21 @@
     "executionSeconds": 31.881,
     "maximumObservedDeviceUsedMiB": 13144,
     "cacheState": "Same ComfyUI process as the 5/6 original-seed run."
+  },
+  "standardWorkflowFront": {
+    "promptId": "070069ec-ce34-44cc-a61e-1643b979bee3",
+    "asset": "63091e84da1364ce4e04aa7374bd98cb217d389f2c254681cb2533ad235e308f",
+    "settings": "Shipped Qwen 1024x1024, 24 steps; standard Pixal3D proxy from workflow 05.",
+    "pixalSamplersExecuted": 0,
+    "qwenSamplersExecuted": 1,
+    "face": "+Z",
+    "accepted": 1,
+    "seed": 105,
+    "rawIoU": 0.8843745518856652,
+    "bboxIoU": 0.837202718006795,
+    "registeredIoU": 0.8843745518856652,
+    "sourcePngSha256": "4884cefc3d07d834f762393546603957e35829eeec15399d99644bf45a801fba",
+    "executionSeconds": 240.617,
+    "maximumObservedDeviceUsedMiB": 13296
   }
 }

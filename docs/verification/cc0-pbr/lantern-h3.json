@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "hardware": "270-PC, GeForce RTX 4080 (16 GB), WSL2",
+  "reference": "bi-cc0-lantern-reference.png",
+  "referenceInputSha256": "bd73c4ba45d3a7d184f131e02b2cfe196f846a002e3a6af85d5b2c14288d91a0",
+  "proxy": "compact native Pixal3D generated from the same reference",
+  "cases": [
+    {
+      "case": "h3-guide-first",
+      "returnCode": 0,
+      "executionSeconds": 517.171,
+      "wallSeconds": 548.29,
+      "sampleCount": 357,
+      "maximumObservedDeviceUsedMiB": 15328,
+      "maximumObservedServerCgroupBytes": 21703938048,
+      "maximumObservedServerSwapBytes": 0,
+      "errorNode": null,
+      "error": null,
+      "promptId": "fcab8972-67d8-4082-b954-a0bb4b7954c5",
+      "canvasPixels": 512,
+      "lastObservedNodeType": "BIPreviewBox",
+      "asset_id": "ecb68b0890bf382d5f7d0cbfb411077cc060bb611611891c95eb5ef269a98eef",
+      "mode": "geometry_baseline",
+      "imageOrder": [
+        "guide",
+        "reference"
+      ],
+      "accepted": 0,
+      "fallback": 1,
+      "baselineFaces": 5,
+      "parentAsset": "6cfa119afe6af2ab58988dbfac917c3b9ca02c0c1af84b8386cda7fac8e98cde",
+      "inference": {
+        "pixal3d": "reused",
+        "+Z": "sampled"
+      },
+      "nodeExecutions": {
+        "CLIPLoader": 1,
+        "UNETLoader": 1,
+        "MiniMaxH3ImageConditioning": 1,
+        "KSampler": 1,
+        "VAEDecode": 1
+      },
+      "faces": {
+        "+Z": {
+          "status": "fallback",
+          "reason": "silhouette-iou",
+          "rawIoU": 0.7148673376029278,
+          "alignedIoU": 0.7148673376029278,
+          "seed": 105,
+          "guideSha256": "723f46793583df386218b4df8bb4028a7d384aa3e33dadadb2fcf0f47e5ad7c7",
+          "sourcePngSha256": "b941a2eb9ff55c6df3a75f65f9fa11236bcd4ff4c90aa5fac5ec93c19d7bfc7f"
+        }
+      },
+      "textureMatchesParent": {
+        "colorMap": true,
+        "normalMap": true,
+        "intervalMap": true,
+        "rangeMap": true
+      },
+      "crossViewMeasuredPairs": 12,
+      "crossViewWorstPair": "-Y/+Z",
+      "crossViewWorstP95LinearRGBMAE": 0.01693216897547245
+    },
+    {
+      "case": "h3-reference-first",
+      "returnCode": 0,
+      "executionSeconds": 350.939,
+      "wallSeconds": 373.57,
+      "sampleCount": 243,
+      "maximumObservedDeviceUsedMiB": 15490,
+      "maximumObservedServerCgroupBytes": 27917131776,
+      "maximumObservedServerSwapBytes": 0,
+      "errorNode": null,
+      "error": null,
+      "promptId": "27b68431-e507-4a8d-a479-f82a5e938836",
+      "canvasPixels": 512,
+      "lastObservedNodeType": "BIPreviewBox",
+      "asset_id": "1f0e3dfe1b768fb1ae6a943a4c2ae314aa7baa96c0da901c670b6ff636883149",
+      "mode": "geometry_baseline",
+      "imageOrder": [
+        "reference",
+        "guide"
+      ],
+      "accepted": 0,
+      "fallback": 1,
+      "baselineFaces": 5,
+      "parentAsset": "6cfa119afe6af2ab58988dbfac917c3b9ca02c0c1af84b8386cda7fac8e98cde",
+      "inference": {
+        "pixal3d": "reused",
+        "+Z": "sampled"
+      },
+      "nodeExecutions": {
+        "MiniMaxH3ImageConditioning": 1,
+        "KSampler": 1,
+        "VAEDecode": 1
+      },
+      "faces": {
+        "+Z": {
+          "status": "fallback",
+          "reason": "silhouette-iou",
+          "rawIoU": 0.6067475391087693,
+          "alignedIoU": 0.6788479405388665,
+          "seed": 105,
+          "guideSha256": "723f46793583df386218b4df8bb4028a7d384aa3e33dadadb2fcf0f47e5ad7c7",
+          "sourcePngSha256": "a0c5736654959e30c3e245d01fb0846b7bb0ead9977ebdb71769c020e338dce7"
+        }
+      },
+      "textureMatchesParent": {
+        "colorMap": true,
+        "normalMap": true,
+        "intervalMap": true,
+        "rangeMap": true
+      },
+      "crossViewMeasuredPairs": 12,
+      "crossViewWorstPair": "-Y/+Z",
+      "crossViewWorstP95LinearRGBMAE": 0.01693216897547245
+    }
+  ],
+  "weights": {
+    "diffusion_models/minimax_h3_image_pruned_int8_convrot.safetensors": "83eb140f1ff95c068f8a6886e6d3f3d0d4ab2e07bb2fe6d2ef992a51146ee622",
+    "text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors": "bc2ced0fbea64757fa9acddccfc0b3f4819d1dcf1da6c124d690d368be283923",
+    "vae/minimax_h3_image_vae_fp16.safetensors": "d80e9c2e5cfc9844869961ff5a58c9a9e52182df6bfb30b26018dd7f348721af",
+    "background_removal/birefnet.safetensors": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154"
+  },
+  "memorySampling": "Device memory is whole-GPU NVIDIA-SMI memory.used, sampled with service cgroup memory.current and memory.swap.current roughly every 1.5 s. Cgroup memory includes file cache."
+}
