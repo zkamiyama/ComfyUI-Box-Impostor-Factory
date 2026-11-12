@@ -12,6 +12,23 @@
       "node tests/check_pbr_sampler.mjs probe-input"
     ]
   },
+  "portableWslLauncher": {
+    "script": "scripts/wsl-windows-node.sh",
+    "configuration": "BI_NODE pointed to the repository launcher. Windows node.exe was located through WSL PATH. Same four optional material channels, native WebGPU, fresh Comfy output directory and process.",
+    "promptId": "4a60e9cf-aed9-45ec-a521-fd55dd324baa",
+    "assetId": "dd6f7a62bddbfc35ca2dd2cb4575dd57883e0bdc3e9663ed1c6218ffb0f2a002",
+    "archiveSha256": "d39f0a6d35f5fdd87bcdb0bfc7270bb90a2f7a12fe20092ee2345e0f8c46f8e0",
+    "adapter": {
+      "vendor": "nvidia",
+      "architecture": "lovelace",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": false
+    },
+    "foregroundPixels": 11698,
+    "wallSeconds": 23.07,
+    "matchesPriorSixTextureHashes": true
+  },
   "runs": [
     {
       "promptId": "b4413272-f95a-4dae-9646-cfa945ac8e99",
