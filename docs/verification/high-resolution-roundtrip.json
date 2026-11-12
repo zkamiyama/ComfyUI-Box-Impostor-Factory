@@ -1,0 +1,111 @@
+{
+  "fixture": {
+    "generator": "tests/make_fixture.mjs",
+    "glbSha256": "07d40bda6214786bdefdce300644981ba0e32505ae501c5ece687dca7967fc67"
+  },
+  "faceResolution": 1024,
+  "textures": {
+    "colorMap": {
+      "width": 3072,
+      "height": 2048,
+      "format": "RGBA16F",
+      "byteLength": 50331648
+    },
+    "normalMap": {
+      "width": 3072,
+      "height": 2048,
+      "format": "RGBA16F",
+      "byteLength": 50331648
+    },
+    "intervalMap": {
+      "width": 3072,
+      "height": 1024,
+      "format": "RGBA16F",
+      "byteLength": 25165824
+    },
+    "rangeMap": {
+      "width": 384,
+      "height": 128,
+      "format": "RGBA16F",
+      "byteLength": 393216
+    }
+  },
+  "sixDepthGuidesBytes": 12582912,
+  "versions": {
+    "chromium": "Chromium 143.0.7499.0",
+    "three": "186",
+    "baker": "0.4.1",
+    "bakerCommit": "4d525ca3aecc5ed2009d6bd9b8c6d6c289248768"
+  },
+  "softwareRendering": "Linux Chromium SwiftShader, BI_SOFTWARE_GPU=1",
+  "reproduce": [
+    "node tests/make_fixture.mjs fixture.glb",
+    "node worker/cli.mjs bake --input fixture.glb --output box --resolution 1024 --backend <webgl2|webgpu> --verify"
+  ],
+  "comparison": {
+    "before": "live ImpostorBaker result",
+    "after": "saved asset restored by a fresh Chromium process",
+    "viewResolution": [
+      64,
+      64
+    ],
+    "axisViews": 6,
+    "obliqueViews": 12,
+    "color": "RGBA8",
+    "depth": "24-bit"
+  },
+  "runs": {
+    "webgl2": {
+      "pass": true,
+      "assetId": "266545d66d1658acb58cd3b4020230d222dd36dae24ef46fae5b5f4ef1cdd7ca",
+      "bakeVerifyWallSeconds": 25.397,
+      "views": 18,
+      "coveredPixelsAcrossViews": 15152,
+      "worstColorLSB": 0,
+      "worstDepthLSB": 0,
+      "coverageMismatchPixels": 0,
+      "depthCoverageMismatchPixels": 0,
+      "fullRoundtripReportSha256": "cd46cb740a45bc0f55983f2d4bf0d1b35210e22e2781882058e439df8fded11c",
+      "savedTextureSha256": {
+        "colorMap": "39120ddacb03fff797d37c841fcde2dd37595199b67f32a3fcb635116c85e993",
+        "normalMap": "08e393f5d422325c4e2e749c00615fd5b328a412f0f27d9cd1b87534ae0a4f0b",
+        "intervalMap": "ec1e469e1c984bf9180360522f107c8b8511141c4d0c0413c0a529228a8d7468",
+        "rangeMap": "7a10aca8b78d259b993a84126828f3bc5975859ec7788ecca5f0df6296a4e88b"
+      }
+    },
+    "webgpu": {
+      "pass": true,
+      "assetId": "ff98f6b7e500519d2212e97902f7fbc0139590d89d7d902cd393a24381401b37",
+      "bakeVerifyWallSeconds": 25.047,
+      "views": 18,
+      "coveredPixelsAcrossViews": 15152,
+      "worstColorLSB": 0,
+      "worstDepthLSB": 0,
+      "coverageMismatchPixels": 0,
+      "depthCoverageMismatchPixels": 0,
+      "fullRoundtripReportSha256": "cf62b30f50f22637be3d37ca6d1798771d558bc20aeede795eb562f531c35f52",
+      "savedTextureSha256": {
+        "colorMap": "39120ddacb03fff797d37c841fcde2dd37595199b67f32a3fcb635116c85e993",
+        "normalMap": "08e393f5d422325c4e2e749c00615fd5b328a412f0f27d9cd1b87534ae0a4f0b",
+        "intervalMap": "ec1e469e1c984bf9180360522f107c8b8511141c4d0c0413c0a529228a8d7468",
+        "rangeMap": "7a10aca8b78d259b993a84126828f3bc5975859ec7788ecca5f0df6296a4e88b"
+      }
+    }
+  },
+  "savedAssetRender": {
+    "backend": "webgl2",
+    "view": "diagonal",
+    "projection": "orthographic",
+    "sampling": "standard",
+    "seconds": 27.456,
+    "width": 1024,
+    "height": 1024,
+    "format": "RGBA",
+    "alphaZeroPixels": 817116,
+    "alphaOpaquePixels": 231460,
+    "alphaIntermediatePixels": 0,
+    "distinctForegroundColors": 10217,
+    "pngSha256": "af584a96cc97bc3aaf863b312acf02ae9effa993e6095d26e4635c3d8756b603"
+  },
+  "productionGpuMemoryMeasured": false
+}

@@ -39,6 +39,8 @@ node worker/cli.mjs inspect --asset .test-output/box
 node worker/cli.mjs preview --asset .test-output/box
 ```
 
+同じ非対称GLBを1面1024画素（カラーアトラス3072×2048）でも検証した。WebGL2・WebGPUとも、ベイク直後と新しいChromiumで再読込した後の18視点を各64×64で比較し、色・深度・輪郭の差は0だった。保存済みのBoxから1024×1024の透過PNGを書き出す試験も実施した。実機のVRAM使用量と1面2048画素のベイクは未測定。[R=1024の計測条件と結果](docs/verification/high-resolution-roundtrip.json)
+
 最後のコマンドが表示するローカルURLを開く。PNGだけを出力する場合は `node worker/cli.mjs thumbnail --asset .test-output/box --output .test-output/hero.png` を使う。自動選択には `--backend auto`、WebGPUを必須にするには `--backend webgpu` を指定する。CIと同じソフトウェア描画を試す環境変数は `BI_SOFTWARE_GPU=1`。入力や設定を変えたときは別の出力ディレクトリを選ぶ。
 
 ## ワークフローと入力
