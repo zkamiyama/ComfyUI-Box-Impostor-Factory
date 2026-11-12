@@ -1,0 +1,45 @@
+name: ComfyUI native nodes
+on:
+  push:
+    branches: [main]
+    paths: ['box_nodes/**', '__init__.py', 'worker/**', '.github/workflows/comfy-native.yml', 'tests/comfy_smoke.py', 'workflows/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: comfy-native-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  queue:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      BI_SOFTWARE_GPU: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: Comfy-Org/ComfyUI
+          ref: c5751c81abe131202eea9e4c66d000589013dd0b
+          path: .test-comfy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: .test-comfy/requirements.txt
+      - run: npm ci && npx playwright install --with-deps chromium --only-shell
+      - name: Install ComfyUI with CPU PyTorch
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu torch torchvision torchaudio
+          python -m pip install -r .test-comfy/requirements.txt
+          ln -s "$GITHUB_WORKSPACE" .test-comfy/custom_nodes/box_impostor_factory
+      - run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Queue GLB, export, reload and replace one face
+        run: python tests/comfy_smoke.py --comfy .test-comfy --output .test-output/comfy
+      - name: Show ComfyUI log on failure
+        if: failure()
+        run: tail -150 .test-output/comfy/comfy.log || true
