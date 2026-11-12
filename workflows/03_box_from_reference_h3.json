@@ -2,7 +2,7 @@
   "id": "87001b0a-bb1a-594c-be9a-b7f2bec268ea",
   "revision": 0,
   "last_node_id": 46,
-  "last_link_id": 129,
+  "last_link_id": 132,
   "nodes": [
     {
       "id": 1,
@@ -233,7 +233,22 @@
             46,
             64,
             82,
-            100
+            100,
+            130
+          ]
+        },
+        {
+          "name": "horizontal_fov_degrees",
+          "type": "FLOAT",
+          "links": [
+            131
+          ]
+        },
+        {
+          "name": "focal_pixels",
+          "type": "FLOAT",
+          "links": [
+            132
           ]
         }
       ],
@@ -252,7 +267,7 @@
       ],
       "size": [
         265,
-        177
+        249
       ],
       "flags": {},
       "order": 5,
@@ -267,6 +282,21 @@
           "name": "reference",
           "type": "BOX_REFERENCE",
           "link": 8
+        },
+        {
+          "name": "cropped",
+          "type": "IMAGE",
+          "link": 130
+        },
+        {
+          "name": "horizontal_fov_degrees",
+          "type": "FLOAT",
+          "link": 131
+        },
+        {
+          "name": "focal_pixels",
+          "type": "FLOAT",
+          "link": 132
         }
       ],
       "outputs": [
@@ -3508,6 +3538,30 @@
       46,
       0,
       "BOX_IMPOSTOR"
+    ],
+    [
+      130,
+      5,
+      1,
+      6,
+      2,
+      "IMAGE"
+    ],
+    [
+      131,
+      5,
+      2,
+      6,
+      3,
+      "FLOAT"
+    ],
+    [
+      132,
+      5,
+      3,
+      6,
+      4,
+      "FLOAT"
     ]
   ],
   "groups": [],
@@ -3535,7 +3589,7 @@
         "state": {
           "lastGroupId": 0,
           "lastNodeId": 319,
-          "lastLinkId": 70,
+          "lastLinkId": 72,
           "lastRerouteId": 0
         },
         "revision": 0,
@@ -3608,6 +3662,30 @@
             "pos": [
               4190,
               18
+            ]
+          },
+          {
+            "name": "horizontal_fov_degrees",
+            "type": "FLOAT",
+            "linkIds": [
+              71
+            ],
+            "id": "fa428a84-5f1b-5c83-a341-87a8212e9284",
+            "pos": [
+              4190,
+              42
+            ]
+          },
+          {
+            "name": "focal_pixels",
+            "type": "FLOAT",
+            "linkIds": [
+              72
+            ],
+            "id": "3ae35cd1-5727-56e7-b3f7-e06cbc26b955",
+            "pos": [
+              4190,
+              66
             ]
           }
         ],
@@ -5195,13 +5273,16 @@
                 "name": "fov",
                 "type": "FLOAT",
                 "links": [
-                  66
+                  66,
+                  71
                 ]
               },
               {
                 "name": "focal_pixels",
                 "type": "FLOAT",
-                "links": []
+                "links": [
+                  72
+                ]
               }
             ],
             "properties": {
@@ -6114,6 +6195,22 @@
             "target_id": -20,
             "target_slot": 1,
             "type": "IMAGE"
+          },
+          {
+            "id": 71,
+            "origin_id": 242,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 2,
+            "type": "FLOAT"
+          },
+          {
+            "id": 72,
+            "origin_id": 242,
+            "origin_slot": 1,
+            "target_id": -20,
+            "target_slot": 3,
+            "type": "FLOAT"
           }
         ],
         "extra": {}

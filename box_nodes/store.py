@@ -191,6 +191,11 @@ def validate(directory, expected_id=None, check_bytes=True):
             raise ValueError('Invalid canonical transform')
     if set(manifest['faces']) != set(FACES):
         raise ValueError('Missing face metadata')
+    camera = manifest.get('reference', {}).get('camera')
+    if camera is not None:
+        crop = contained(directory, camera['image'])
+        if not crop.is_file() or (check_bytes and file_hash(crop) != camera['sha256']):
+            raise ValueError('Invalid reference camera image')
     for face in manifest['faces'].values():
         guide = contained(directory, face['guide'])
         if not guide.is_file():
@@ -250,6 +255,10 @@ def baseline(proxy, resolution, backend, material_maps='none'):
             for name in ('source.npy', 'source.png'):
                 shutil.copyfile(source / name, directory / 'reference' / name)
             manifest['reference'] = {**ref, 'image': 'reference/source.png', 'samples': 'reference/source.npy'}
+            if proxy.get('camera'):
+                camera = proxy['camera']
+                shutil.copyfile(proxy['croppedImage'], contained(directory, camera['image']))
+                manifest['reference']['camera'] = camera
         manifest_path.write_text(json.dumps(manifest, indent=2, allow_nan=False), encoding='utf-8')
     return publish(asset_id, generate)
 

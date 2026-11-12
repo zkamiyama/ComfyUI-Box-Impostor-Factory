@@ -238,6 +238,24 @@ class NodeTests(unittest.TestCase):
             proxy = node.canonicalize(**common,model_3d=NativeGLB())[0]
             self.assertEqual(node.check_lazy_status(**common), [])
             self.assertEqual(nodes.CanonicalizeProxy().canonicalize(**common)[0],proxy)
+            graph['5'] = {'class_type': 'CropFixture', 'inputs': {}}
+            graph['6'] = {'class_type': 'LensFixture', 'inputs': {'mode': 'degrees'}}
+            pins = graph['4']['inputs']
+            pins['cropped'] = ['5', 0]
+            with self.assertRaisesRegex(ValueError, 'both lens outputs'):
+                node.check_lazy_status(**common)
+            pins.update(horizontal_fov_degrees=['6', 0], focal_pixels=['6', 1])
+            self.assertEqual(node.check_lazy_status(**common), list(node.capture_pins))
+            captured = node.canonicalize(**common, cropped=rgb[:, :4], horizontal_fov_degrees=55.,
+                                         focal_pixels=7.7)[0]
+            self.assertEqual(captured['path'], proxy['path'])
+            self.assertNotEqual(captured['stageKey'], proxy['stageKey'])
+            camera = captured['camera']
+            self.assertEqual((camera['width'], camera['height']), (8, 4))
+            self.assertEqual((camera['horizontalFovDegrees'], camera['focalPixels']), (55., 7.7))
+            self.assertEqual(camera['sha256'], store.file_hash(Path(captured['croppedImage'])))
+            self.assertEqual(node.check_lazy_status(**common), [])
+            self.assertEqual(node.canonicalize(**common)[0], captured)
             self.assertEqual(run.call_count, 1)
         graph['3']['inputs']['seed'] = 100
         self.assertEqual(node.check_lazy_status(**common), ['model_3d'])

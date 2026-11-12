@@ -17,6 +17,7 @@ def visible_members(m):
         members.add(face.get('edit', {}).get('reference'))
     if m.get('reference'):
         members.add(m['reference'].get('image'))
+        members.add(m['reference'].get('camera', {}).get('image'))
     members.add(m.get('qa'))
     return members
 

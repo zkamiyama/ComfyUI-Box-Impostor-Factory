@@ -90,11 +90,17 @@ class CanonicalizeProxy:
     CATEGORY = CATEGORY
     FUNCTION = 'canonicalize'
     RETURN_TYPES = ('BOX_PROXY',)
+    capture_pins = ('cropped', 'horizontal_fov_degrees', 'focal_pixels')
 
     @classmethod
     def INPUT_TYPES(cls):
         angle = ('FLOAT', {'default': 0., 'min': -360., 'max': 360., 'step': .1})
-        return {'required': {'filename': ('STRING', {'default': ''})}, 'optional': {'model_3d': ('FILE_3D_GLB', {'lazy': True}), 'reference': ('BOX_REFERENCE',), 'rotate_x': angle, 'rotate_y': angle, 'rotate_z': angle}, 'hidden': {'prompt': 'PROMPT', 'unique_id': 'UNIQUE_ID'}}
+        camera = ('FLOAT', {'forceInput': True, 'lazy': True})
+        return {'required': {'filename': ('STRING', {'default': ''})}, 'optional': {
+            'model_3d': ('FILE_3D_GLB', {'lazy': True}), 'reference': ('BOX_REFERENCE',),
+            'rotate_x': angle, 'rotate_y': angle, 'rotate_z': angle, 'cropped': ('IMAGE', {'lazy': True}),
+            'horizontal_fov_degrees': camera, 'focal_pixels': camera
+        }, 'hidden': {'prompt': 'PROMPT', 'unique_id': 'UNIQUE_ID'}}
 
     @classmethod
     def IS_CHANGED(cls, filename, model_3d=None, **kwargs):
@@ -107,19 +113,32 @@ class CanonicalizeProxy:
         digest = store.key('generated-glb-v1', reference['sha256'], lineage_key)
         return digest, {'backend': 'native_mesh', 'graphSha256': lineage_key, 'weights': weights}
 
-    def check_lazy_status(self, filename='', model_3d=None, reference=None, prompt=None, unique_id=None, **pose):
-        linked = prompt is not None and 'model_3d' in prompt[str(unique_id)]['inputs']
+    def capture_key(self, reference, prompt, unique_id):
+        pins = (prompt or {}).get(str(unique_id), {}).get('inputs', {})
+        supplied = [p for p in self.capture_pins if p in pins]
+        if not supplied:
+            return None
+        if len(supplied) != len(self.capture_pins) or reference is None or 'model_3d' not in pins:
+            raise ValueError('Connect cropped image, both lens outputs, reference and generated GLB together.')
+        graph_hash, _, _ = lineage(prompt, unique_id, sockets=self.capture_pins)
+        return store.key('mesh-reference-camera-v1', reference['sha256'], graph_hash)
+
+    def check_lazy_status(self, filename='', model_3d=None, reference=None, prompt=None, unique_id=None, **options):
+        linked = 'model_3d' in (prompt or {}).get(str(unique_id), {}).get('inputs', {})
         if filename and linked:
             raise ValueError('Choose one source: filename or connected GLB.')
-        if filename or model_3d is not None or not linked:
-            return []
-        if reference is not None:
-            digest, _ = self.cached_request(reference, prompt, unique_id)
-            if (store.root() / '.stages' / 'native-mesh' / digest / 'source.glb').is_file():
-                return []
-        return ['model_3d']
+        needed = []
+        capture = self.capture_key(reference, prompt, unique_id)
+        if capture and not (store.root() / '.stages' / 'mesh-camera' / capture / 'camera.json').is_file():
+            needed.extend(p for p in self.capture_pins if options.get(p) is None)
+        if linked and model_3d is None:
+            if reference is None or not (store.root() / '.stages' / 'native-mesh' /
+                    self.cached_request(reference, prompt, unique_id)[0] / 'source.glb').is_file():
+                needed.append('model_3d')
+        return needed
 
-    def canonicalize(self, filename='', model_3d=None, reference=None, rotate_x=0., rotate_y=0., rotate_z=0., prompt=None, unique_id=None):
+    def canonicalize(self, filename='', model_3d=None, reference=None, rotate_x=0., rotate_y=0., rotate_z=0.,
+                     prompt=None, unique_id=None, cropped=None, horizontal_fov_degrees=None, focal_pixels=None):
         rotation = tuple(float(x) for x in (rotate_x, rotate_y, rotate_z))
         if not all(math.isfinite(v) and -360. <= v <= 360. for v in rotation):
             raise ValueError('Rotation angles must be finite degrees in [-360,360].')
@@ -158,6 +177,24 @@ class CanonicalizeProxy:
         result = {'stageKey': digest, 'sha256': glb_hash, 'path': str(path), 'metadata': str(metadata), 'rotationDegreesXYZ': rotation}
         if provenance:
             result.update(stageKey=store.key(digest, request_key), reference=reference, provenance=provenance)
+        elif reference is not None:
+            result.update(stageKey=store.key(digest, reference['sha256']), reference=reference)
+        capture = self.capture_key(reference, prompt, unique_id)
+        if capture:
+            def write_capture(stage):
+                fov, focal = float(horizontal_fov_degrees), float(focal_pixels)
+                if not (0 < fov < 180 and math.isfinite(focal) and focal > 0):
+                    raise ValueError('Expected a finite horizontal field of view and positive focal length.')
+                pixels = faces.rgba(cropped, 'opaque')
+                faces.png(stage / 'cropped.png', pixels[..., :3])
+                camera = {'horizontalFovDegrees': fov, 'focalPixels': focal,
+                          'width': pixels.shape[1], 'height': pixels.shape[0],
+                          'image': 'reference/cropped.png', 'sha256': store.file_hash(stage / 'cropped.png')}
+                (stage / 'camera.json').write_text(json.dumps(camera, allow_nan=False), encoding='utf-8')
+            stage = faces.cache_dir('mesh-camera', capture, write_capture)
+            result['camera'] = json.loads((stage / 'camera.json').read_bytes())
+            result['croppedImage'] = str(stage / 'cropped.png')
+            result['stageKey'] = store.key(result['stageKey'], capture, result['camera'])
         return (result,)
 
 
