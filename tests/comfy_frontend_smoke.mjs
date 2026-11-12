@@ -15,7 +15,8 @@ const workflowNames=['01_box_from_glb','04_manual_six_faces','02_box_from_refere
 const sides=[['+X','px'],['-X','nx'],['+Y','py'],['-Y','ny'],['+Z','pz'],['-Z','nz']];
 const resources=new URL('../workflows/',import.meta.url);
 const browser=await chromium.launch(chromiumOptions('webgl2'));
-const page=await browser.newPage();
+const context=await browser.newContext();
+const page=await context.newPage();
 page.on('pageerror',e=>console.error('Frontend page error:',e.message));
 await mkdir(artifacts,{recursive:true});
 
@@ -163,7 +164,7 @@ try{
   for(const [id] of sides)assert.equal(manual.manifest.faces[id].edit.status,'accepted','Manual '+id);
   for(const key of ['normalMap','rangeMap','intervalMap'])
     assert.deepEqual(manual.manifest.textures[key],baseline.manifest.textures[key]);
-  const preview=await page.context().newPage();
+  const preview=await context.newPage();
   try {
     const url=new URL('/box-impostor/web/viewer.html',origin);
     url.searchParams.set('manifest',manual.url.pathname);
