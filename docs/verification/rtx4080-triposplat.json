@@ -1,0 +1,175 @@
+{
+  "date": "2026-11-12",
+  "scope": "Native TripoSplat image-to-splat inference and two axis-aligned guide renders for one synthetic object.",
+  "workflow": "08_triposplat_guide",
+  "device": "NVIDIA GeForce RTX 4080 16 GB",
+  "environment": "Ubuntu WSL2",
+  "driver": "610.88",
+  "python": "3.12.3",
+  "torch": "2.9.1+cu128",
+  "comfyUIVersion": "0.45.0",
+  "comfyUI": "c5751c81abe131202eea9e4c66d000589013dd0b",
+  "factory": "ffbbfb83887d1d6408015cd0361b4e770d46aa97",
+  "weights": {
+    "repository": "VAST-AI/TripoSplat",
+    "revision": "56a96e603204ec410c4da60c13ea4fa09a2169a9",
+    "totalBytes": 3779190284,
+    "verifiedBy": "SHA-256 and byte size before installation",
+    "files": [
+      {
+        "path": "background_removal/birefnet.safetensors",
+        "bytes": 444473596,
+        "sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154",
+        "source": "https://huggingface.co/VAST-AI/TripoSplat/resolve/56a96e603204ec410c4da60c13ea4fa09a2169a9/background_removal/birefnet.safetensors"
+      },
+      {
+        "path": "clip_vision/dino_v3_vit_h.safetensors",
+        "bytes": 1681247696,
+        "sha256": "a29ef35101a16966972a0d50732a6f3a608ff7cfffb2afa9bbe9007cb842cc53",
+        "source": "https://huggingface.co/VAST-AI/TripoSplat/resolve/56a96e603204ec410c4da60c13ea4fa09a2169a9/clip_vision/dino_v3_vit_h.safetensors"
+      },
+      {
+        "path": "diffusion_models/triposplat_fp16.safetensors",
+        "bytes": 741106994,
+        "sha256": "c870b97ac1d6bc9177608a5ec625e19ef9f3c5019aa68f64b0fb7803abcd6d20",
+        "source": "https://huggingface.co/VAST-AI/TripoSplat/resolve/56a96e603204ec410c4da60c13ea4fa09a2169a9/diffusion_models/triposplat_fp16.safetensors"
+      },
+      {
+        "path": "vae/flux2-vae.safetensors",
+        "bytes": 336213556,
+        "sha256": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5",
+        "source": "https://huggingface.co/VAST-AI/TripoSplat/resolve/56a96e603204ec410c4da60c13ea4fa09a2169a9/vae/flux2-vae.safetensors"
+      },
+      {
+        "path": "vae/triposplat_vae_decoder_fp16.safetensors",
+        "bytes": 576148442,
+        "sha256": "ed0d0c3d43b599e326845d0ec70f3cf77be9a55e2d97627ac3b34d2830763cc8",
+        "source": "https://huggingface.co/VAST-AI/TripoSplat/resolve/56a96e603204ec410c4da60c13ea4fa09a2169a9/vae/triposplat_vae_decoder_fp16.safetensors"
+      }
+    ]
+  },
+  "input": {
+    "generator": "tests/make_fixture.mjs",
+    "sourceGlbSha256": "07d40bda6214786bdefdce300644981ba0e32505ae501c5ece687dca7967fc67",
+    "sourceBaselineAsset": "c5a31298d33aa617fbbf286df241e627515262f004f53baca03d603a948a2815",
+    "guideFace": "+Z",
+    "sourceGuideSha256": "b43a7f8cfe7941c6a36dae57b540d9a9e20f946fba28d3c34b4f93b41198aefe",
+    "pngSha256": "88b5e9bbeba3c790455015f3ab6707e29bb284880055440ca970e75cdf3cb54e",
+    "dimensions": [
+      512,
+      512
+    ],
+    "contentDimensions": [
+      448,
+      239
+    ],
+    "contentOffset": [
+      32,
+      136
+    ],
+    "backgroundSRGB8": [
+      224,
+      224,
+      224
+    ],
+    "preparation": "Resize the RGBA proxy guide using its physical orthographic width and height, use Lanczos and center it on an opaque background. Both runs use this same RGB reference."
+  },
+  "configuration": {
+    "preprocessSize": 1024,
+    "erodeRadius": 1,
+    "preprocessMatte": "BiRefNet",
+    "steps": 20,
+    "sampler": "dpmpp_2m",
+    "scheduler": "simple",
+    "cfg": 3,
+    "seed": 46,
+    "requestedGaussians": 262144,
+    "decoderSeed": 790219963981395,
+    "transform": "identity",
+    "coordinateSpace": "canonical_box",
+    "guideResolution": 256,
+    "rendererSha256": "6869dcae9739d78f1b86f8d8d21dbbd025f9dd658a1ce052f474db703b382491",
+    "comfyArgs": [
+      "--reserve-vram",
+      "2",
+      "--lowvram",
+      "--disable-dynamic-vram"
+    ]
+  },
+  "meshGuideAsset": "707410f307c41b6ae39092769446a8e3c11df8c610be9cd77175a0f0ef1d2047",
+  "memory": {
+    "sampleIntervalSeconds": 1.5,
+    "coldSamples": 42,
+    "startingDeviceUsedMiB": 3739,
+    "maximumObservedDeviceUsedMiB": 4318,
+    "deviceCapacityMiB": 16376,
+    "maximumObservedGPUUtilizationPercent": 100,
+    "method": "nvidia-smi sampled total device usage, including the desktop and other resident allocations. Shorter spikes can fall between samples."
+  },
+  "runs": [
+    {
+      "face": "+Z",
+      "promptId": "a7738bef-8cc8-444b-986c-c330e6ce2ea3",
+      "executionStatus": "success",
+      "inference": {
+        "state": "sampled",
+        "samplerIds": [
+          "10"
+        ],
+        "observedRunning": [
+          "10"
+        ]
+      },
+      "comfyExecutionSeconds": 60.279,
+      "runnerWallSeconds": 64.95,
+      "qa": {
+        "iou": 0.29819869106234675,
+        "boundaryP95Px": 91.17043983229895,
+        "meshPixels": 47301,
+        "splatPixels": 16769,
+        "relativeDepth": {
+          "samples": 14717,
+          "status": "measured",
+          "spearman": 0.218340884658196
+        }
+      },
+      "meshGuidePngSha256": "b43a7f8cfe7941c6a36dae57b540d9a9e20f946fba28d3c34b4f93b41198aefe",
+      "meshDepthSha256": "6cade99c0e837996e32c9c58110727ab1690ca2e665c89dbe7c5b53f472b5059",
+      "splatGuidePngSha256": "0eb41b4e8384bc4ac6497449efb8b92820284d45e6cd61c26cd299a64f067e6c",
+      "projectionStageKey": "5c0dae09b8e8fa90df92004786ce903d279d3bf994656e24df724471bd63bb92",
+      "splatSha256": "b385619911bcc2fca0c35b7e737ddef04cdf5a8540338e64495c498b405465cb"
+    },
+    {
+      "face": "+X",
+      "promptId": "20904f89-1dd8-4914-8398-edb9730b212a",
+      "executionStatus": "success",
+      "inference": {
+        "state": "reused",
+        "samplerIds": [
+          "10"
+        ],
+        "observedRunning": []
+      },
+      "comfyExecutionSeconds": 0.979,
+      "runnerWallSeconds": 5.73,
+      "qa": {
+        "iou": 0.5001968024291042,
+        "boundaryP95Px": 69,
+        "meshPixels": 50724,
+        "splatPixels": 29316,
+        "relativeDepth": {
+          "samples": 26687,
+          "status": "measured",
+          "spearman": -0.2972507118301942
+        }
+      },
+      "meshGuidePngSha256": "796c6459bdf09a8535b5a90a740b416b3327c6ea502d61273bbc46c53e29c422",
+      "meshDepthSha256": "5c945c4e0a9db261a4c4cab29d68d36cffb412519f1df4cce022fd003eafdb7d",
+      "splatGuidePngSha256": "54010cb49e72b9531d5efa72530de0f0b944dea08230a2b4ff0a5ee00774e215",
+      "projectionStageKey": "5ff7aed93ded070e63bc3dc9e6bf42320ccd33462158dff0a81e573e13689475",
+      "splatSha256": "b385619911bcc2fca0c35b7e737ddef04cdf5a8540338e64495c498b405465cb"
+    }
+  ],
+  "qaInterpretation": "IoU compares thresholded splat coverage with the proxy silhouette. Depth Spearman is measured over their overlap. The guide reports these metrics without an acceptance threshold.",
+  "cacheObservation": "On the same ComfyUI server, selecting +X after +Z reused the decoded splat. Only the camera face changed; both renders have the same splat digest and the warm sampler was not observed executing."
+}

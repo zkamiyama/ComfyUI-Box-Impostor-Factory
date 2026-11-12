@@ -7,6 +7,7 @@ GLBから6方向の正投影ガイドとthree-impostor互換のBoxアセット�
 | GLB → Box → 保存 → 再読込 | 実際のChromiumでWebGL2とWebGPUのソフトウェア描画を確認。6軸と12斜視で、ベイク直後と別プロセスで読み込んだBoxの色・深度を比較。 |
 | ComfyUI、手動画像、プレビュー | CPU版ComfyUIの画面から01と04を読み込み、GLBのベイクと手動6面の採用を確認。キューで保存・再読込と1面更新も実行。ブラウザでメッシュとBoxの左右比較、視点変更、アトラス表示を操作。 |
 | 軽量チェックポイントによる6面生成 | RTX 4080でSD 1.5を6面それぞれに実行。3種の幾何マップと輪郭を保持し、最終Boxの色に反映されることを確認。[実機の計測結果](docs/verification/rtx4080-sd15.json) |
+| TripoSplatの追加ガイド | RTX 4080で公式重みから262,144個のガウスをデコード。次の方向では同じスプラットを再利用した。[2方向の計測結果](docs/verification/rtx4080-triposplat.json) |
 | Pixal3D、Qwen-Image 2.1＋AnyAngle、MiniMax H3-Image | 実際のComfyUI画面で各ワークフローを実行用グラフに展開し、画像・ガイドの接続を検査。対象モデルでの推論、必要VRAM、背面・上下面の生成品質は未測定。 |
 
 ## ComfyUIでGLBを開く
@@ -114,6 +115,13 @@ RTX 4080の初回キューは256角・各6ステップで10.90秒。斜視の前
 コマンドで試すには `node scripts/run_model_workflow.mjs --model triposplat --input reference.png --mesh matching.glb --face=+Z` を実行する。参照画像とGLBをComfyUIの `input/` に置く。重みとGLBの事前確認が通ったら `--run` を付ける。ガイド画像、同じ面のメッシュ画像、輪郭・深度の計測値を保存する。
 
 出力の `guide` は画像生成に渡すRGB画像、`foreground` は物体を1とするマスク。`qa_json` でメッシュとの輪郭IoU、境界距離、重なる画素の深度順位相関を確認できる。Boxの法線・区間・占有範囲は、この場合もGLBからベイクする。
+
+RTX 4080の実機試験では、同じ非対称GLBの＋Zガイドから参照画像を作り、公式重みで20ステップ推論した。＋Zの初回実行は60.28秒、保存済みスプラットを別方向の＋Xに投影した2回目は0.98秒。下表は手動位置合わせ前の測定値で、1に近いほど輪郭が重なる。[実行条件・重み・深度の計測値](docs/verification/rtx4080-triposplat.json)
+
+| 方向 | GLBのガイド | TripoSplatのガイド | 輪郭IoU |
+|---|---|---|---:|
+| ＋Z | [元メッシュ](docs/verification/tripo-pz-mesh.png) | [スプラットの投影](docs/verification/tripo-pz-splat.png) | 0.298 |
+| ＋X | [元メッシュ](docs/verification/tripo-px-mesh.png) | [スプラットの投影](docs/verification/tripo-px-splat.png) | 0.500 |
 
 ## 保存・再利用・品質の確認
 
