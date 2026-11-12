@@ -454,5 +454,76 @@
     "afterIoU": 0.9594472320473801,
     "executionSeconds": 98.503,
     "maximumObservedDeviceUsedMiB": 13152
+  },
+  "renderComparison": {
+    "reference": "same canonical Pixal3D proxy, with its baseline materials",
+    "method": "tests/compare_proxy.mjs; 6 orthographic axial and 12 oblique views, 128x128 each, WebGL2 on Chromium SwiftShader",
+    "baselineAsset": "884106ddca0b2a768d0de0351259414ebd2d9caaba55f291fad2d244a87c17b0",
+    "editedAsset": "5ed84c686d2161be134d0d94eca20720727615732b38205424035b9fc9c621f7",
+    "both": {
+      "axisMeanIoU": 0.9837485,
+      "obliqueMeanIoU": 0.9813821,
+      "minimumIoU": 0.9736842,
+      "maximumNormalizedDepthP95": 0.0034961
+    },
+    "meanAbsoluteRGB8VsProxy": {
+      "baseline": 1.78791,
+      "edited": 5.6750268
+    }
+  },
+  "suppliedMeshSixFaceControl": {
+    "promptId": "0507847f-2c05-4b6f-b03d-c3be1c646115",
+    "asset": "13d69e5f89f9d70da519a05eaa48e496a07e3c1734ef2a223a33e44451ac46e4",
+    "originalGlbSha256": "a79458c4b02d695187a952f23a63b8bf278e7bc3d316a3c2a314f2d6974181f1",
+    "accepted": 5,
+    "fallback": 1,
+    "reused": [
+      "+Z"
+    ],
+    "sampled": [
+      "+X",
+      "-X",
+      "+Y",
+      "-Y",
+      "-Z"
+    ],
+    "registeredIoU": {
+      "+X": 0.9632082413539367,
+      "-X": 0.9826726174849042,
+      "+Y": 0.8699754334745612,
+      "-Y": 0.7146946924322899,
+      "+Z": 0.9594472320473801,
+      "-Z": 0.9409522264579446
+    },
+    "fallbackFaces": [
+      "-Y"
+    ],
+    "fallbackReason": "silhouette-iou",
+    "executionSeconds": 424.793,
+    "maximumObservedDeviceUsedMiB": 13366,
+    "geometryTextureDigestsUnchanged": [
+      "normalMap",
+      "intervalMap",
+      "rangeMap"
+    ],
+    "crossViewMeasuredPairs": 5,
+    "crossViewWorstPair": "+X/+Y",
+    "crossViewWorstP95LinearRGBMAE": 0.09888473898172379
+  },
+  "suppliedMeshSingleFaceRetry": {
+    "promptId": "f0d466d6-b119-455f-b7ea-68b8bf1077ec",
+    "asset": "1260b470d6b46b837a6bdb1fea2f66d5123434e5032d5551c4c601cc426dfaae",
+    "accepted": 6,
+    "fallback": 0,
+    "changedFace": "-Y",
+    "seed": 321,
+    "beforeIoU": 0.8410505902765965,
+    "afterIoU": 0.8540186462412921,
+    "sourcePngSha256": "0c6dabafa3486a1e13789cd43a2226b266e603b7dc6b98f17f458475c1057d0a",
+    "unchangedCandidatePNGCount": 5,
+    "sampledFaceCount": 1,
+    "executionSeconds": 31.881,
+    "maximumObservedDeviceUsedMiB": 13144,
+    "cacheState": "Same ComfyUI process as the 5/6 original-seed run."
   }
 }

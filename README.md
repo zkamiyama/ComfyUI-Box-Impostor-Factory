@@ -4,12 +4,14 @@ GLBから6方向の正投影ガイドとthree-impostor互換のBoxアセット�
 
 | 経路 | 検証状況 |
 |---|---|
-| GLB → Box → 保存 → 再読込 | 実際のChromiumでWebGL2とWebGPUのソフトウェア描画を確認。6軸と12斜視で、ベイク直後と別プロセスで読み込んだBoxの色・深度を比較。 |
+| GLB → Box → 保存 → 再読込 | RTX 4080上のWindows版EdgeとSwiftShaderでWebGL2・WebGPUを検証。街灯は1面2048 pxでも、ベイク直後と再読込後の18方向で色・深度・輪郭が一致した。 |
 | CC0のPBRモデル | 木製街灯と金属ボトルで元メッシュとBoxを18方向から比較。街灯はRTX 4080でSD 1.5による6面編集も実行した。[比較画像・再現手順](docs/verification/cc0-pbr/README.md) · [生成済みの街灯Box](examples/cc0-lantern-sd15.box.zip) |
 | ComfyUI、手動画像、プレビュー | CPU版ComfyUIの画面から01と04を読み込み、GLBのベイクと手動6面の採用を確認。キューで保存・再読込と1面更新も実行。ブラウザでメッシュとBoxの左右比較、視点変更、アトラス表示を操作。 |
 | 軽量チェックポイントによる6面生成 | RTX 4080でSD 1.5を6面それぞれに実行。3種の幾何マップと輪郭を保持し、最終Boxの色に反映されることを確認。[実機の計測結果](docs/verification/rtx4080-sd15.json) |
-| TripoSplatの追加ガイド | RTX 4080で公式重みから262,144個のガウスをデコード。次の方向では同じスプラットを再利用した。[2方向の計測結果](docs/verification/rtx4080-triposplat.json) |
-| Pixal3D、Qwen-Image 2.1＋AnyAngle、MiniMax H3-Image | 実際のComfyUI画面で各ワークフローを実行用グラフに展開し、画像・ガイドの接続を検査。対象モデルでの推論、必要VRAM、背面・上下面の生成品質は未測定。 |
+| TripoSplatの追加ガイド | RTX 4080で街灯の参照画像から262,144個のガウスを生成。6方向に同じ位置・尺度補正を適用し、元メッシュとの平均輪郭IoUが0.545から0.812に改善した。[6方向の計測結果](docs/verification/cc0-pbr/lantern-triposplat.json) |
+| Pixal3Dの単画像入力 | RTX 4080で同じ街灯の画像1枚を使用。軽量設定は75.71秒、標準設定は135.68秒。元メッシュと比較した未使用7視点の平均IoUはそれぞれ0.861、0.882だった。[軽量版のPBR付きBox](examples/cc0-lantern-pixal3d-compact.box.zip) · [標準版のBox](examples/cc0-lantern-pixal3d-default.box.zip) |
+| Qwen-Image 2.1＋AnyAngle | 街灯の画像から生成した軽量版プロキシを使い、512 pxで6方向を編集した。真上だけseedを変えて6面とも採用。色を更新し、4枚の幾何・材質マップと最終描画の透明度を保持した。[編集済みPBR付きBox](examples/cc0-lantern-pixal3d-qwen-pbr.box.zip) · [比較画像・再現手順](docs/verification/cc0-pbr/README.md) |
+| MiniMax H3-Image | ワークフロー03をComfyUIの実行グラフに展開し、ガイドと元画像の入力順を切り替えられることを確認した。 |
 
 ## ComfyUIでGLBを開く
 
@@ -42,9 +44,21 @@ node worker/cli.mjs inspect --asset .test-output/box
 node worker/cli.mjs preview --asset .test-output/box
 ```
 
-同じ非対称GLBを1面1024画素（カラーアトラス3072×2048）でも検証した。WebGL2・WebGPUとも、ベイク直後と新しいChromiumで再読込した後の18視点を各64×64で比較し、色・深度・輪郭の差は0だった。保存済みのBoxから1024×1024の透過PNGを書き出す試験も実施した。実機のVRAM使用量と1面2048画素のベイクは未測定。[R=1024の計測条件と結果](docs/verification/high-resolution-roundtrip.json)
+同じ非対称GLBを1面1024画素（カラーアトラス3072×2048）でも検証した。WebGL2・WebGPUとも、ベイク直後と新しいChromiumで再読込した後の18視点を各64×64で比較し、色・深度・輪郭の差は0だった。保存済みのBoxから1024×1024の透過PNGを書き出す試験も実施した。RTX 4080でCC0の街灯を1面2048画素・フルPBRでベイクし、保存・別プロセスでの再読込まで計測した。WebGPUは12.88秒、WebGL2は15.71秒だった。[R=1024の試験](docs/verification/high-resolution-roundtrip.json) · [実機の条件と計測値](docs/verification/cc0-pbr/rtx4080-render.json)
 
 最後のコマンドが表示するローカルURLを開く。PNGだけを出力する場合は `node worker/cli.mjs thumbnail --asset .test-output/box --output .test-output/hero.png` を使う。自動選択には `--backend auto`、WebGPUを必須にするには `--backend webgpu` を指定する。CIと同じソフトウェア描画を試す環境変数は `BI_SOFTWARE_GPU=1`。入力や設定を変えたときは別の出力ディレクトリを選ぶ。
+
+### WSLのComfyUIからWindowsのGPUでベイクする
+
+Windows側のNode.js 22以降とEdgeまたはChromiumを使う。WSLのシェルで `node.exe --version` を確認し、このリポジトリのルートで次を設定する。ブラウザのパスは実際のインストール先に合わせる。
+
+```sh
+export BI_NODE="$PWD/scripts/wsl-windows-node.sh"
+export BI_CHROMIUM='C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
+export BI_SOFTWARE_GPU=0
+```
+
+同じシェルからComfyUIを起動する。通常の `BI BakeBox` と `BI RenderBox` がWindows側のワーカーを使う。ベイクしたアダプターはアセットのmanifestで確認できる。[RTX 4080での登録ノードの実測](docs/verification/cc0-pbr/rtx4080-comfy-waterbottle.json)
 
 ## ワークフローと入力
 
@@ -91,7 +105,9 @@ node scripts/run_model_workflow.mjs --model qwen --input reference.png --face=+Z
 node scripts/run_model_workflow.mjs --model qwen --input reference.png --mesh matching.glb --face=+Z --size 512 --run
 ```
 
-Pixal3Dを通る02・03・05では、実際に使った切り抜きを `reference/cropped.png` に保存する。`manifest.reference.camera` にその寸法・推定水平画角（度）・焦点距離（ピクセル）を記録する。推定画角から物体の正面やカメラの外部姿勢は決まらない。
+街灯を試したRTX 4080（16 GB）ではPixal3Dの標準設定と軽量設定の両方が完走した。短時間で試すには `--compact-proxy` を使う。4段のサンプリングを保ち、再メッシュを256、目標面数を10万、UVと法線マップを1024 pxにする。材質アトラスを保存するときは `--material-maps material+emissive` を足す。発光材質のないメッシュではラフネス・メタルネス・AOを保存する。Qwen・H3の6面のうち1面のseedを変えるには、たとえば `--face-seed=+Y:321` を指定する。`--face` は単独の面を試すときに使う。
+
+Pixal3Dを通る02・03・05では、実際に使った切り抜きを `reference/cropped.png` に保存する。`manifest.reference.camera` にその寸法・推定水平画角（度）・焦点距離（ピクセル）を記録する。単画像用のPixal3Dの座標系とカメラを確認できるアセットでは、ビューアの「参照画像と元のメッシュ」「参照画像とBox」で、入力の切り抜きと同じカメラから形状を比較できる。
 
 ### 軽量モデルで6面の色と最終描画を検査する
 
