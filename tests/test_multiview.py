@@ -68,6 +68,20 @@ class MultiView(unittest.TestCase):
         self.assertIsNone(report['pairs']['+X/+Z']['p95LinearRGBMAE'])
         self.assertEqual(report['pairs']['-X/+Z']['status'],'measured')
 
+    def test_legacy_zero_background_is_excluded_from_silhouette_stencil(self):
+        r = 8
+        face = {'side': [0, 0, 1], 'up': [0, 1, 0], 'tile': [0, 0]}
+        color = np.zeros((r, r, 4), dtype='<f2')
+        color[2:6, 2:6, 3] = 1
+        normal = np.broadcast_to([.5, .5, 1., 1.], color.shape)
+        for background in (0., np.nan):
+            with self.subTest(background=background):
+                depth = np.full((r, r), background, dtype='<f2')
+                depth[2:6, 2:6] = .02  # close enough to zero to pass a depth-only stencil
+                view = multiview.View('+Z', r, face, depth, color, normal, None)
+                result = view.sample(np.array([2, 3]), np.array([3, 3]), np.ones(3))
+                np.testing.assert_array_equal(result[3], [False, True])
+
     def test_edit_one_face_refreshes_only_its_four_adjacent_pairs(self):
         misses=[]
         def cache(_kind,key,write):

@@ -10,7 +10,7 @@ from . import store
 MAX_GRID = 128
 MIN_SAMPLES = 24
 MIN_COSINE = 0.25
-VERSION = 'cross-view-v1'
+VERSION = 'cross-view-v2'
 
 
 def atlas(directory, descriptor, dtype):
@@ -56,7 +56,10 @@ class View:
         max_delta = (pitch / MIN_COSINE) / thickness + .001
         for ox,oy in [(-1,0),(1,0),(0,-1),(0,1)]:
             neighbor = self.depth[y+oy,x+ox].astype(np.float32)
-            valid &= np.isfinite(neighbor) & (np.abs(neighbor-z) < max_delta)
+            # Older guides stored zero depth in the background. The Baker's color
+            # coverage is immutable across face edits and distinguishes those pixels.
+            covered = self.color[y + oy, x + ox, 3] > 0
+            valid &= covered & np.isfinite(neighbor) & (np.abs(neighbor-z) < max_delta)
         if self.material is not None:
             surface = self.material[y,x,:2].astype(np.float32) / 255
             valid &= ~((surface[:,0] < .35) & (surface[:,1] > .5))

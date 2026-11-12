@@ -200,7 +200,8 @@ async function captureGuides(proxy,box,resolution,renderer,backend) {
       const d=await pixels(renderer,rt,1,'float16',backend);
       const z=new Uint16Array(resolution*resolution);
       // Depth is normalized distance from the viewing side; NaN marks background.
-      for(let k=0;k<z.length;k++) z[k]=THREE.DataUtils.fromHalfFloat(d[4*k+3])>.5?d[4*k]:0x7e00;
+      // Only the primary attachment clears its alpha to zero on both renderers.
+      for(let k=0;k<z.length;k++) z[k]=THREE.DataUtils.fromHalfFloat(color[4*k+3])>.5?d[4*k]:0x7e00;
       const png=await guidePNG(color,resolution);visible+=png.hits;
       const guide='guides/'+f.slug+'.png', depthPath='guides/'+f.slug+'.depth16f.bin';
       files.set(guide,png.bytes);files.set(depthPath,encodeRaw(z));

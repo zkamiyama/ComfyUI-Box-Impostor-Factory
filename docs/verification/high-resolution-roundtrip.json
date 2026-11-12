@@ -57,8 +57,8 @@
   "runs": {
     "webgl2": {
       "pass": true,
-      "assetId": "266545d66d1658acb58cd3b4020230d222dd36dae24ef46fae5b5f4ef1cdd7ca",
-      "bakeVerifyWallSeconds": 25.397,
+      "assetId": "7b489e83d10806f8dd62726ccc72f2adb63e8d7210d46ec90ad278e82b8760a2",
+      "bakeVerifyWallSeconds": 29.541,
       "views": 18,
       "coveredPixelsAcrossViews": 15152,
       "worstColorLSB": 0,
@@ -71,12 +71,50 @@
         "normalMap": "08e393f5d422325c4e2e749c00615fd5b328a412f0f27d9cd1b87534ae0a4f0b",
         "intervalMap": "ec1e469e1c984bf9180360522f107c8b8511141c4d0c0413c0a529228a8d7468",
         "rangeMap": "7a10aca8b78d259b993a84126828f3bc5975859ec7788ecca5f0df6296a4e88b"
+      },
+      "guideDepthVsPngAlpha": {
+        "+X": {
+          "foregroundPixels": 810344,
+          "backgroundPixels": 238232,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        },
+        "-X": {
+          "foregroundPixels": 810344,
+          "backgroundPixels": 238232,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        },
+        "+Y": {
+          "foregroundPixels": 821344,
+          "backgroundPixels": 227232,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        },
+        "-Y": {
+          "foregroundPixels": 821344,
+          "backgroundPixels": 227232,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        },
+        "+Z": {
+          "foregroundPixels": 755380,
+          "backgroundPixels": 293196,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        },
+        "-Z": {
+          "foregroundPixels": 755380,
+          "backgroundPixels": 293196,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        }
       }
     },
     "webgpu": {
       "pass": true,
-      "assetId": "ff98f6b7e500519d2212e97902f7fbc0139590d89d7d902cd393a24381401b37",
-      "bakeVerifyWallSeconds": 25.047,
+      "assetId": "2b01406f5d67fdd552b161ff9b361afa5c42b54ef59fee1b5268dcf8b96ba338",
+      "bakeVerifyWallSeconds": 23.483,
       "views": 18,
       "coveredPixelsAcrossViews": 15152,
       "worstColorLSB": 0,
@@ -89,6 +127,44 @@
         "normalMap": "08e393f5d422325c4e2e749c00615fd5b328a412f0f27d9cd1b87534ae0a4f0b",
         "intervalMap": "ec1e469e1c984bf9180360522f107c8b8511141c4d0c0413c0a529228a8d7468",
         "rangeMap": "7a10aca8b78d259b993a84126828f3bc5975859ec7788ecca5f0df6296a4e88b"
+      },
+      "guideDepthVsPngAlpha": {
+        "+X": {
+          "foregroundPixels": 810344,
+          "backgroundPixels": 238232,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        },
+        "-X": {
+          "foregroundPixels": 810344,
+          "backgroundPixels": 238232,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        },
+        "+Y": {
+          "foregroundPixels": 821344,
+          "backgroundPixels": 227232,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        },
+        "-Y": {
+          "foregroundPixels": 821344,
+          "backgroundPixels": 227232,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        },
+        "+Z": {
+          "foregroundPixels": 755380,
+          "backgroundPixels": 293196,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        },
+        "-Z": {
+          "foregroundPixels": 755380,
+          "backgroundPixels": 293196,
+          "nonfiniteForegroundDepth": 0,
+          "nonNaNBackgroundDepth": 0
+        }
       }
     }
   },
@@ -97,7 +173,7 @@
     "view": "diagonal",
     "projection": "orthographic",
     "sampling": "standard",
-    "seconds": 27.456,
+    "seconds": 29.431,
     "width": 1024,
     "height": 1024,
     "format": "RGBA",

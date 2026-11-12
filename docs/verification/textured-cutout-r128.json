@@ -1,0 +1,452 @@
+{
+  "backend": "webgl2",
+  "resolution": 128,
+  "proxySha256": "c7f193ff566130967878d3413993d6d110c570658c8ab64d8e6d912cae5f7df3",
+  "textures": {
+    "colorMap": "55c524a32f681a059251266843b12a9a7b34bb75d5467a4ef0549f070a6bfd96",
+    "normalMap": "372761f6f7641b9f4a43f09641fa886fab2e5013bc2f43890e3307439dddb9dd",
+    "intervalMap": "740069f5d637004e28f8ed3e3479b6c880992878c942b5250e6c4b34efb03a86",
+    "rangeMap": "e299495ff0eeff34adf103e6372fd59955ca35f4f56231eb4f3bb6c221c9601a",
+    "materialMap": "0be9a144016a2d43e83c728eb55eaf1e2ee2e675da3907e46600509fc87b0aad"
+  },
+  "chromiumVersion": "143.0.7499.0",
+  "softwareGpuRequested": true,
+  "source": "canonical proxy GLB",
+  "candidate": "restored Box",
+  "renderSize": [
+    64,
+    64
+  ],
+  "projection": "orthographic",
+  "steps": 128,
+  "depthUnits": "normalized orthographic camera depth, overlapping foreground pixels",
+  "colorUnits": "absolute RGB channel difference in RGBA8 readback, overlapping foreground pixels",
+  "axes": {
+    "minimumIoU": 0.5542169,
+    "meanIoU": 0.8514056
+  },
+  "obliques": {
+    "minimumIoU": 0.612426,
+    "meanIoU": 0.7643158
+  },
+  "views": [
+    {
+      "id": "+X",
+      "pixels": 4096,
+      "proxyPixels": 336,
+      "boxPixels": 336,
+      "overlapPixels": 336,
+      "holePixels": 0,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 0,
+      "silhouetteIoU": 1,
+      "overlapColorMAE8": 23.5257937,
+      "overlapDepthMAE": 0.0009699,
+      "overlapDepthP95": 0.0013785
+    },
+    {
+      "id": "-X",
+      "pixels": 4096,
+      "proxyPixels": 336,
+      "boxPixels": 336,
+      "overlapPixels": 336,
+      "holePixels": 0,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 0,
+      "silhouetteIoU": 1,
+      "overlapColorMAE8": 9.5496032,
+      "overlapDepthMAE": 0.0003623,
+      "overlapDepthP95": 0.0009266
+    },
+    {
+      "id": "+Y",
+      "pixels": 4096,
+      "proxyPixels": 276,
+      "boxPixels": 276,
+      "overlapPixels": 276,
+      "holePixels": 0,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 0,
+      "silhouetteIoU": 1,
+      "overlapColorMAE8": 28.9698068,
+      "overlapDepthMAE": 0.0006574,
+      "overlapDepthP95": 0.0008979
+    },
+    {
+      "id": "-Y",
+      "pixels": 4096,
+      "proxyPixels": 276,
+      "boxPixels": 276,
+      "overlapPixels": 276,
+      "holePixels": 0,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 0,
+      "silhouetteIoU": 1,
+      "overlapColorMAE8": 7.9565217,
+      "overlapDepthMAE": 0.0011744,
+      "overlapDepthP95": 0.0014332
+    },
+    {
+      "id": "+Z",
+      "pixels": 4096,
+      "proxyPixels": 1162,
+      "boxPixels": 644,
+      "overlapPixels": 644,
+      "holePixels": 35,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 35,
+      "silhouetteIoU": 0.5542169,
+      "overlapColorMAE8": 33.7065217,
+      "overlapDepthMAE": 0.0003951,
+      "overlapDepthP95": 0.0005136
+    },
+    {
+      "id": "-Z",
+      "pixels": 4096,
+      "proxyPixels": 1162,
+      "boxPixels": 644,
+      "overlapPixels": 644,
+      "holePixels": 35,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 35,
+      "silhouetteIoU": 0.5542169,
+      "overlapColorMAE8": 15.3550725,
+      "overlapDepthMAE": 0.0003951,
+      "overlapDepthP95": 0.0005136
+    },
+    {
+      "id": "xy:-1,-1",
+      "pixels": 4096,
+      "proxyPixels": 432,
+      "boxPixels": 420,
+      "overlapPixels": 420,
+      "holePixels": 0,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 0,
+      "silhouetteIoU": 0.9722222,
+      "overlapColorMAE8": 8.3793651,
+      "overlapDepthMAE": 0.0008718,
+      "overlapDepthP95": 0.0017405
+    },
+    {
+      "id": "xy:-1,1",
+      "pixels": 4096,
+      "proxyPixels": 432,
+      "boxPixels": 432,
+      "overlapPixels": 432,
+      "holePixels": 0,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 0,
+      "silhouetteIoU": 1,
+      "overlapColorMAE8": 18.9305556,
+      "overlapDepthMAE": 0.0005899,
+      "overlapDepthP95": 0.0011814
+    },
+    {
+      "id": "xy:1,-1",
+      "pixels": 4096,
+      "proxyPixels": 432,
+      "boxPixels": 432,
+      "overlapPixels": 432,
+      "holePixels": 0,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 0,
+      "silhouetteIoU": 1,
+      "overlapColorMAE8": 14.6851852,
+      "overlapDepthMAE": 0.0015312,
+      "overlapDepthP95": 0.0021223
+    },
+    {
+      "id": "xy:1,1",
+      "pixels": 4096,
+      "proxyPixels": 432,
+      "boxPixels": 420,
+      "overlapPixels": 420,
+      "holePixels": 0,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 0,
+      "silhouetteIoU": 0.9722222,
+      "overlapColorMAE8": 22.884127,
+      "overlapDepthMAE": 0.0011595,
+      "overlapDepthP95": 0.0020049
+    },
+    {
+      "id": "xz:-1,-1",
+      "pixels": 4096,
+      "proxyPixels": 927,
+      "boxPixels": 672,
+      "overlapPixels": 672,
+      "holePixels": 7,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 7,
+      "silhouetteIoU": 0.7249191,
+      "overlapColorMAE8": 10.7157738,
+      "overlapDepthMAE": 0.0005949,
+      "overlapDepthP95": 0.0011305
+    },
+    {
+      "id": "xz:-1,1",
+      "pixels": 4096,
+      "proxyPixels": 1017,
+      "boxPixels": 672,
+      "overlapPixels": 672,
+      "holePixels": 28,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 28,
+      "silhouetteIoU": 0.660767,
+      "overlapColorMAE8": 21.375496,
+      "overlapDepthMAE": 0.0005949,
+      "overlapDepthP95": 0.0011305
+    },
+    {
+      "id": "xz:1,-1",
+      "pixels": 4096,
+      "proxyPixels": 1038,
+      "boxPixels": 672,
+      "overlapPixels": 672,
+      "holePixels": 28,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 28,
+      "silhouetteIoU": 0.6473988,
+      "overlapColorMAE8": 14.9206349,
+      "overlapDepthMAE": 0.0015607,
+      "overlapDepthP95": 0.0018666
+    },
+    {
+      "id": "xz:1,1",
+      "pixels": 4096,
+      "proxyPixels": 927,
+      "boxPixels": 672,
+      "overlapPixels": 672,
+      "holePixels": 7,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 7,
+      "silhouetteIoU": 0.7249191,
+      "overlapColorMAE8": 31.0119048,
+      "overlapDepthMAE": 0.0091109,
+      "overlapDepthP95": 0.0704879
+    },
+    {
+      "id": "yz:-1,-1",
+      "pixels": 4096,
+      "proxyPixels": 998,
+      "boxPixels": 621,
+      "overlapPixels": 621,
+      "holePixels": 25,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 25,
+      "silhouetteIoU": 0.6222445,
+      "overlapColorMAE8": 10.4530327,
+      "overlapDepthMAE": 0.0006957,
+      "overlapDepthP95": 0.0020117
+    },
+    {
+      "id": "yz:-1,1",
+      "pixels": 4096,
+      "proxyPixels": 1014,
+      "boxPixels": 621,
+      "overlapPixels": 621,
+      "holePixels": 25,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 25,
+      "silhouetteIoU": 0.612426,
+      "overlapColorMAE8": 22.7971014,
+      "overlapDepthMAE": 0.0006957,
+      "overlapDepthP95": 0.0020117
+    },
+    {
+      "id": "yz:1,-1",
+      "pixels": 4096,
+      "proxyPixels": 1014,
+      "boxPixels": 621,
+      "overlapPixels": 621,
+      "holePixels": 25,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 25,
+      "silhouetteIoU": 0.612426,
+      "overlapColorMAE8": 16.3784219,
+      "overlapDepthMAE": 0.0005812,
+      "overlapDepthP95": 0.0012152
+    },
+    {
+      "id": "yz:1,1",
+      "pixels": 4096,
+      "proxyPixels": 998,
+      "boxPixels": 621,
+      "overlapPixels": 621,
+      "holePixels": 25,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 25,
+      "silhouetteIoU": 0.6222445,
+      "overlapColorMAE8": 25.2302738,
+      "overlapDepthMAE": 0.0005812,
+      "overlapDepthP95": 0.0012152
+    }
+  ],
+  "experiment": {
+    "change": "In-memory nearest min/mag filter on intervalMap only; all stored bytes and upstream shader identical.",
+    "holeDefinition": "Proxy background enclosed using four-connected pixels; filled is Box foreground, leaked is Box background connected to image border.",
+    "native": {
+      "meanViewColorMAE8": 18.7125107,
+      "maximumViewDepthP95": 0.0704879,
+      "minimumViewIoU": 0.5542169,
+      "referenceHolePixels": 240,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 240
+    },
+    "intervalNearest": {
+      "meanViewColorMAE8": 2.2719308,
+      "maximumViewDepthP95": 0.0692583,
+      "minimumViewIoU": 0.5542169,
+      "referenceHolePixels": 240,
+      "filledHolePixels": 0,
+      "leakedHolePixels": 240
+    },
+    "nearestViews": [
+      {
+        "id": "+X",
+        "silhouetteIoU": 1,
+        "overlapColorMAE8": 1.9097222,
+        "overlapDepthP95": 0.0000573,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 0
+      },
+      {
+        "id": "-X",
+        "silhouetteIoU": 1,
+        "overlapColorMAE8": 1.0059524,
+        "overlapDepthP95": 0.0012568,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 0
+      },
+      {
+        "id": "+Y",
+        "silhouetteIoU": 1,
+        "overlapColorMAE8": 3.0241546,
+        "overlapDepthP95": 0.0000653,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 0
+      },
+      {
+        "id": "-Y",
+        "silhouetteIoU": 1,
+        "overlapColorMAE8": 0.763285,
+        "overlapDepthP95": 0.0005566,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 0
+      },
+      {
+        "id": "+Z",
+        "silhouetteIoU": 0.5542169,
+        "overlapColorMAE8": 3.2189441,
+        "overlapDepthP95": 0.0001452,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 35
+      },
+      {
+        "id": "-Z",
+        "silhouetteIoU": 0.5542169,
+        "overlapColorMAE8": 1.4689441,
+        "overlapDepthP95": 0.0001453,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 35
+      },
+      {
+        "id": "xy:-1,-1",
+        "silhouetteIoU": 0.9722222,
+        "overlapColorMAE8": 0.7142857,
+        "overlapDepthP95": 0.0017105,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 0
+      },
+      {
+        "id": "xy:-1,1",
+        "silhouetteIoU": 1,
+        "overlapColorMAE8": 1.7993827,
+        "overlapDepthP95": 0.0018088,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 0
+      },
+      {
+        "id": "xy:1,-1",
+        "silhouetteIoU": 1,
+        "overlapColorMAE8": 1.3896605,
+        "overlapDepthP95": 0.0007248,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 0
+      },
+      {
+        "id": "xy:1,1",
+        "silhouetteIoU": 0.9722222,
+        "overlapColorMAE8": 1.7206349,
+        "overlapDepthP95": 0.0001962,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 0
+      },
+      {
+        "id": "xz:-1,-1",
+        "silhouetteIoU": 0.7036649,
+        "overlapColorMAE8": 1.3923611,
+        "overlapDepthP95": 0.0019591,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 7
+      },
+      {
+        "id": "xz:-1,1",
+        "silhouetteIoU": 0.6430622,
+        "overlapColorMAE8": 2.2202381,
+        "overlapDepthP95": 0.0019591,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 28
+      },
+      {
+        "id": "xz:1,-1",
+        "silhouetteIoU": 0.630394,
+        "overlapColorMAE8": 1.7668651,
+        "overlapDepthP95": 0.0002141,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 28
+      },
+      {
+        "id": "xz:1,1",
+        "silhouetteIoU": 0.7036649,
+        "overlapColorMAE8": 10.3497024,
+        "overlapDepthP95": 0.0692583,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 7
+      },
+      {
+        "id": "yz:-1,-1",
+        "silhouetteIoU": 0.6452906,
+        "overlapColorMAE8": 1.4347826,
+        "overlapDepthP95": 0.0010294,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 25
+      },
+      {
+        "id": "yz:-1,1",
+        "silhouetteIoU": 0.6351085,
+        "overlapColorMAE8": 3.3519669,
+        "overlapDepthP95": 0.0010294,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 25
+      },
+      {
+        "id": "yz:1,-1",
+        "silhouetteIoU": 0.6351085,
+        "overlapColorMAE8": 1.2546584,
+        "overlapDepthP95": 0.000238,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 25
+      },
+      {
+        "id": "yz:1,1",
+        "silhouetteIoU": 0.6452906,
+        "overlapColorMAE8": 2.1092133,
+        "overlapDepthP95": 0.000238,
+        "filledHolePixels": 0,
+        "leakedHolePixels": 25
+      }
+    ]
+  }
+}

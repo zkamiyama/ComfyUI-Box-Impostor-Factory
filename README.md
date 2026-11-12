@@ -96,6 +96,8 @@ ComfyUIでは `output/box_impostor/<asset_id>/manifest.json` がアセットの�
 
 Boxを1ファイルで渡すには `BI PackBox` にアセットと書き出し名をつなぐ。`output/box_impostor_exports/<name>.box.zip` に、GLB、manifest、各マップ、ガイド、QAを可逆圧縮する。`BI LoadBox` は書き出したZIPのパスや `input/` に置いたZIPの相対パスも開ける。展開時に各マップを検証し、同じZIPを再度開くときは取り込み済みのアセットを使う。
 
+各面の深度ガイドは、物体上を0〜1の距離、背景を半精度の `NaN` として保存する。古い書き出しには、透明な画素の深度が0のものがある。外部で読み込むときはガイドPNGのアルファで背景を判定できる。UV付きGLBの試験には、PNGを内包し、色の目印と透明な穴を持つ [テスト用モデルの生成スクリプト](tests/make_textured_fixture.mjs) を使う。
+
 手動・生成画像の整列では前景輪郭を比較する。採用した面でも元のアトラスのcoverageは保持し、線形RGBだけを合成する。輪郭が基準を満たさない指定面はプロキシのベース色に戻す。結果の `qa/report.json` に方向別の理由と、深度で照合できた共通表面の色差が残る。直方体のように隣接カメラから同じ面がほとんど見えない場合は比較不能として扱う。
 
 ビューアの「6面の採否」を開くと、各面の表示色と判定理由が分かる。`BI InspectFaceSilhouette` は、生成画像を元のガイドの画角に戻し、**位置合わせ前**の前景を重ねて表示する。オレンジは生成・手動画像にだけある領域、水色はGLBのガイドにだけある領域。それぞれを個別のマスクとして取り出せる。面画像やカメラ変換が足りない場合は、計測できなかった理由を `qa_json` に記録する。
@@ -114,6 +116,8 @@ Boxを1ファイルで渡すには `BI PackBox` にアセットと書き出し�
 | intervalMapのみ最近傍補間（比較実験） | 2.10 / 255 | 0.002209 |
 
 貫通穴を持つ薄い枠でも比較した。最近傍補間で色の平均誤差は22.48から7.84に下がり、最も輪郭が崩れた視点のシルエットIoUは0.825から0.934に上がった（1が完全一致）。穴を見通せた10方向の計6,799画素のうち、標準ではすべて背景のまま、最近傍補間では11画素が物体の色で埋まった。配布版は上流の標準設定を使用する。[色付き直方体の比較画像](docs/verification/color-fringe-comparison.png) · [直方体の18方向の計測値](docs/verification/color-fringe-comparison.json) · [開いた枠の18方向の計測値](docs/verification/open-frame-r128.json)
+
+厚みのない板ポリゴンは、ガイドやカラーアトラスに正しく写っていても、最終Boxの描画から消えることがある。UVテクスチャ付きの直方体と、そこから離れた透過板を同じGLBに入れた試験では、正面から見た前景が元メッシュの1,162画素から644画素に減った（64×64で比較）。色にじみ低減を有効にしても、この向きの輪郭IoUは0.554のままだった。[透過板の18視点比較](docs/verification/textured-cutout-r128.json)
 
 別のGLBでも、上記のCLIでベイクした後に `node tests/compare_proxy.mjs .test-output/box .test-output/comparison.json webgl2 --compare-interval` を実行すると、同じアセットを使って両方の補間を比較できる。枠のGLBは `node tests/make_open_frame.mjs .test-output/open-frame.glb` で作成できる。
 

@@ -40,6 +40,11 @@ jobs:
           python -m box_nodes.archive pack .test-output/box .test-output/sample.box.zip
           python -m box_nodes.archive unpack .test-output/sample.box.zip .test-output/unpacked
           node tests/compare_archive.mjs .test-output/box .test-output/unpacked ${{ matrix.backend }} > .test-output/evidence/archive-roundtrip.json
+      - name: Check embedded UV texture, cutout holes and guide depth
+        run: |
+          node tests/make_textured_fixture.mjs .test-output/textured.glb
+          node worker/cli.mjs bake --input .test-output/textured.glb --output .test-output/textured --resolution 128 --backend ${{ matrix.backend }} --verify
+          python tests/check_textured_bake.py .test-output/textured ${{ matrix.backend }}
       - name: Render final Box IMAGE with optional anti-bleeding
         run: |
           node worker/cli.mjs render --asset .test-output/box --output .test-output/standard.png --backend ${{ matrix.backend }} --view diagonal --projection orthographic --width 320 --height 256 --sampling standard
