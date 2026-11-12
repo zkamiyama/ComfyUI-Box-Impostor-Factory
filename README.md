@@ -26,7 +26,7 @@ LinuxでChromiumのシステムライブラリも必要な場合は `npx playwri
 
 ComfyUIを再起動し、[01_box_from_glb.json](workflows/01_box_from_glb.json) を画面にドロップして実行する。最初のノードのファイル名は `asymmetric.glb`。自分のGLBを使うときはComfyUIの `input/` に置き、この欄を変更する。正面を合わせるには `BI CanonicalizeProxy` の各軸の回転角（度）を指定する。
 
-`BI PreviewBox` のボタンからビューアを開く。「左右で比較」を選ぶと、左にプロキシ、右にBoxが表示される。背景、照明、正投影／透視、6方向を切り替えられる。「アトラス・ガイド」では方向別の入力や区間・占有範囲も確認できる。
+`BI PreviewBox` のボタンからビューアを開く。「左右で比較」を選ぶと、左にプロキシ、右にBoxが表示される。背景、照明、正投影／透視、6方向を切り替えられる。「色のみ」で照明の影響を外し、「法線」「ヒット深度」で同じ画素に見える表面を調べる。「アトラス・ガイド」では各方向の深度や、区間・占有範囲の各チャンネルを確認できる。
 
 ## ComfyUIを起動せずに試す
 
@@ -81,6 +81,24 @@ node scripts/run_model_workflow.mjs --model qwen --input reference.png --face=+Z
 ```
 
 全6面を生成するには `--face=+Z` を外す。H3は `--model h3`、Pixal3DによるGLBとBoxの確認は `--model pixal3d` を使う。ComfyUIの接続先は `--origin` で指定できる。実行記録は既定で `.test-output/models/` に残る。各面の採否と理由、実際に動いたサンプラー、ガイドと生成画像はその記録で確認できる。重みを同じファイル名で交換した場合はComfyUIを再起動する。
+
+既存GLBで外観だけ試す場合は、参照画像と同じ物体のGLBを `input/` に置く。次の例ではQwenが＋Z面を512角で生成する。H3でも同じ指定を使える。H3は内部の参照画像を最低1024画素に拡大する。実行記録の `workflow.json` は、同じ設定でComfyUIの画面から開ける。
+
+```sh
+node scripts/run_model_workflow.mjs --model qwen --input reference.png --mesh matching.glb --face=+Z --size 512 --run
+```
+
+Pixal3Dを通る02・03・05では、実際に使った切り抜きを `reference/cropped.png` に保存する。`manifest.reference.camera` にその寸法・推定水平画角（度）・焦点距離（ピクセル）を記録する。推定画角から物体の正面やカメラの外部姿勢は決まらない。
+
+### 軽量モデルで6面の色と最終描画を検査する
+
+SD 1.5のFP16チェックポイント（約2.13 GB）を `ComfyUI/models/checkpoints/` に置き、上の手順で作った `asymmetric.glb` を使う。参照メッシュの6枚のガイドをそれぞれimg2imgに渡す。輪郭にはガイドのアルファを使う。[チェックポイントの固定版](https://huggingface.co/Comfy-Org/stable-diffusion-1.5/blob/96a4eb63b0056942bd4c59222cdd5e6e2c9d0f89/v1-5-pruned-emaonly-fp16.safetensors)
+
+```sh
+python scripts/run_lightweight_smoke.py --mesh asymmetric.glb --backend webgl2 --resolution 256 --steps 6 --run
+```
+
+`.test-output/lightweight/run-*/` に6枚の生成画像、変更前後のBoxの透過PNG、manifest、検査結果が残る。各面の前景に色が反映された画素数、最終描画の色の変化、法線・区間・占有範囲のバイト一致を記録する。
 
 ## TripoSplatをガイドに使う
 

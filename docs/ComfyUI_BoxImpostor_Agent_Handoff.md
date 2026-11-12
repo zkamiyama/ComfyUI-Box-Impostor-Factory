@@ -180,19 +180,18 @@ ComfyUIの `LoadImage.MASK` は透明側が1で、アルファのない入力は
 
 任意でsteps・露出・AO・ワイヤーフレームを切り替え、表示条件をスクリーンショットに添える。三角形が12枚であることだけを高速化の根拠にしない。実際のカメラ距離・表示サイズでGPU時間を測る。専用ルートは同一オリジンの `/box-impostor/` 配下に置き、サーバーはasset_idから公開済みファイルだけを解決する。再起動後の表示はmanifestから再現する。
 
-## 11　実装ファイルの配置案
-
-以下はこれから作る構成を示す。調査時点のリポジトリには設計資料とライセンスがある。
+## 11　実装ファイルの配置
 
 | 配置 | 役割 |
 |---|---|
-| `__init__.py`、`pyproject.toml`、`requirements.txt` | ノード登録、`WEB_DIRECTORY`、Pythonの最小依存 |
-| `nodes/{reference,canonicalize,guides,faces,qa,bake,preview,assets}.py` | 各ノードの入出力、実行とエラーの通知 |
-| `core/{schema,geometry,image_alignment,quality_metrics,file_store,worker_client}.py` | 共通データ型、座標、整列・指標、永続キャッシュ、ワーカー呼出し |
-| `worker/src/{bake,guide_renderer,export_maps,import_maps,worker_server}.ts` | three.jsのBaker、固定カメラ、raw入出力、復元アダプター。依存はlockfileで固定 |
-| `web/extension.js`、`web/viewer/` | ComfyUI内の操作と単独ビューア |
-| `workflows/` | `01_box_from_glb.json`、`02_box_from_reference_qwen21.json`、`03_box_from_reference_h3.json`、`04_manual_six_faces.json` |
-| `examples/`、`tests/`、`docs/` | 自作の非対称GLB、既知正解、CPU・GPUの試験、再現手順、環境・ライセンス・結果 |
+| `__init__.py`、`pyproject.toml`、`requirements.txt` | ノード登録、Web Extensionの場所、Python依存 |
+| `box_nodes/nodes.py`、`generation.py`、`canvas.py` | 基本ノード、モデル出力のキャッシュ、生成キャンバスへの変換と復元 |
+| `box_nodes/faces.py`、`multiview.py`、`silhouette.py` | 面画像の整列と合成、面間の色比較、輪郭の検査 |
+| `box_nodes/store.py`、`archive.py`、`routes.py` | 工程キャッシュ、公開・再読込、ZIP、ComfyUIからのアセット配信 |
+| `box_nodes/splat.py`、`splat_cache.py`、`revision.py` | TripoSplatのガイドと再利用、修正GLBからの再ベイク |
+| `worker/`、`web/`、`extension/` | Baker、カメラとraw入出力、three.jsビューア、ComfyUIのプレビューボタン |
+| `workflows/`、`scripts/` | 9本のGUIワークフロー、対象モデルの1面・6面実行、軽量チェックポイントでの実行試験 |
+| `tests/`、`docs/verification/` | 自作GLB、CPU・ブラウザ・ComfyUI試験、条件を明記した測定結果 |
 
 ## 12　開発順序と各段階の終了条件
 
