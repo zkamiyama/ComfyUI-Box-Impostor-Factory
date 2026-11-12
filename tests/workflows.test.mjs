@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const names=[
   '01_box_from_glb','02_box_from_reference_qwen21','03_box_from_reference_h3',
-  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box'
+  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide'
 ];
 const faces=['+X','-X','+Y','-Y','+Z','-Z'];
 const graph = async name => JSON.parse(await readFile(new URL('../workflows/'+name+'.json',import.meta.url),'utf8'));
@@ -50,6 +50,22 @@ function validate(g){
 for(const name of names)test(name+' is a closed, typed native GUI workflow',async()=>{
   const g=await graph(name);
   validate(g);
+  if(name.startsWith('08')){
+    const one=t=>{const n=nodesOf(g,t);assert.equal(n.length,1,t);return n[0];};
+    const ref=one('BIPrepareReference'),crop=one('TripoSplatPreprocessImage');
+    const cond=one('TripoSplatConditioning'),sample=one('KSampler');
+    const decoder=one('VAEDecodeTripoSplat'),cache=one('BICachedTripoSplat');
+    const align=one('TransformSplat'),guide=one('BITripoSplatGuide');
+    for(const [node,input,source,slot] of [
+      [crop,'image',ref,0],[crop,'mask',ref,1],[cond,'image',crop,0],
+      [sample,'latent_image',cond,2],[decoder,'samples',sample,0],
+      [cache,'reference',ref,2],[cache,'splat',decoder,0],[align,'splat',cache,0],
+      [guide,'splat',align,0],[guide,'guides',one('BIMakeSixGuides'),6],
+      [one('PreviewImage'),'images',guide,0],[one('PreviewAny'),'source',guide,2]
+    ])assert.deepEqual(upstream(g,node,input),{from:source.id,slot});
+    assert.deepEqual(guide.widgets_values,['+Z','canonical_box']);
+    return;
+  }
   if(name.startsWith('07')){
     const [render]=nodesOf(g,'BIRenderBox'),[join]=nodesOf(g,'JoinImageWithAlpha');
     assert.equal(upstream(g,render,'asset').from,nodesOf(g,'BILoadBox')[0].id);

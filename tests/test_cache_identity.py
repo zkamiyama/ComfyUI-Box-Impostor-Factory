@@ -80,6 +80,8 @@ class CacheIdentityTests(unittest.TestCase):
             render = nodes.RenderBox()
             for revision, expected_calls in [('first', 2), ('first', 2), ('new', 4)]:
                 version.return_value = revision
+                for cls in (nodes.PreviewBox, nodes.RenderBox):
+                    self.assertEqual(cls.IS_CHANGED(asset=None), revision)
                 render.render(self.asset, 64, 64)
                 self.assertEqual(store.thumbnail(self.directory, self.manifest), old)
                 self.assertEqual(worker.call_count, expected_calls)

@@ -18,6 +18,9 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid 
 .labels{position:absolute;inset:0;pointer-events:none;display:none}.labels span{width:50%;padding:10px;color:white;text-shadow:0 1px 4px black}.labels span+span{border-left:1px solid #b6bdc0}
 #atlas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#292d31;image-rendering:pixelated}
 #stage strong{font-weight:500}footer{font-size:12px;color:#b6c0c3;padding-top:0}
+#faceQA{margin:0 18px 12px;color:#d2dbdd}#faceQA summary{width:fit-content;cursor:pointer}
+#faceQA table{margin:8px 0;border-collapse:collapse;font-size:13px}#faceQA :is(th,td){padding:3px 12px 3px 0;text-align:left}
+#faceQA a{color:#b8d9f0}
 [hidden]{display:none!important}@media(max-width:600px){header,main,footer{padding-left:10px;padding-right:10px}#stage{min-height:45dvh}}
 </style>
 <script type="importmap">
@@ -42,6 +45,9 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid 
 <canvas id="canvas" aria-label="3Dモデル"></canvas><img id="atlas" alt="選択中のテクスチャまたはガイド" hidden>
 <div class="labels" id="labels"><span>元のメッシュ</span><span>Box</span></div>
 </div>
-</main><footer id="help">ドラッグで回転、ホイールでズーム、右ドラッグで移動</footer>
+</main><details id="faceQA" hidden><summary>6面の採否</summary><table>
+<thead><tr><th>方向</th><th>表示中の色</th><th>判定理由</th></tr></thead><tbody></tbody>
+</table><a hidden>面別の計測結果（JSON）</a></details>
+<footer id="help">ドラッグで回転、ホイールでズーム、右ドラッグで移動</footer>
 <script type="module" src="./viewer.mjs"></script>
 </body></html>

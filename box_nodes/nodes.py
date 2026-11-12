@@ -15,6 +15,8 @@ from . import faces, store
 from .generation import CachedGeneratedFace, lineage
 from .canvas import ModelCanvas
 from .splat import TripoSplatGuide
+from .splat_cache import CachedTripoSplat
+from .silhouette import InspectFaceSilhouette
 
 CATEGORY = 'Box Impostor'
 BACKENDS = ['auto', 'webgpu', 'webgl2']
@@ -280,6 +282,10 @@ class PreviewBox:
     RETURN_NAMES = ('viewer_url', 'thumbnail')
 
     @classmethod
+    def IS_CHANGED(cls, **kwargs):
+        return store.presentation_version()
+
+    @classmethod
     def INPUT_TYPES(cls):
         return {'required': {'asset': ('BOX_IMPOSTOR',)},
                 'optional': {'sampling': (['standard', 'reduce_bleeding'], {'default': 'standard'})}}
@@ -305,6 +311,10 @@ class RenderBox:
     FUNCTION = 'render'
     RETURN_TYPES = ('IMAGE', 'MASK')
     RETURN_NAMES = ('image', 'mask')
+
+    @classmethod
+    def IS_CHANGED(cls, **kwargs):
+        return store.presentation_version()
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -518,4 +528,6 @@ def copy_asset(directory, output, manifest):
 NODE_CLASS_MAPPINGS = {'BIModelCanvas': ModelCanvas, 'BIReplaceFaces': ReplaceFaces, 'BICachedGeneratedFace': CachedGeneratedFace, 'BIPrepareReference': PrepareReference, 'BICanonicalizeProxy': CanonicalizeProxy, 'BIMakeSixGuides': MakeSixGuides, 'BIFaceImage': FaceImage, 'BIFaceInputs': FaceInputs, 'BIAlignAndValidateFaces': AlignAndValidateFaces, 'BIBakeBox': BakeBox, 'BIPreviewBox': PreviewBox, 'BIRenderBox': RenderBox, 'BISaveBox': SaveBox, 'BILoadBox': LoadBox}
 NODE_CLASS_MAPPINGS['BIPackBox'] = PackBox
 NODE_CLASS_MAPPINGS['BITripoSplatGuide'] = TripoSplatGuide
+NODE_CLASS_MAPPINGS['BICachedTripoSplat'] = CachedTripoSplat
+NODE_CLASS_MAPPINGS['BIInspectFaceSilhouette'] = InspectFaceSilhouette
 NODE_DISPLAY_NAME_MAPPINGS = {name: 'BI ' + name[2:] for name in NODE_CLASS_MAPPINGS}

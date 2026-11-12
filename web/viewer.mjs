@@ -15,6 +15,28 @@ function appendOption(select,value,label) {
   select.add(new Option(label,value));
 }
 
+function showFaceDecisions(manifest, url) {
+  if (!manifest.faceOrder.some(id => manifest.faces[id].edit)) return;
+  const panel=el('faceQA');
+  const reasons={'empty-foreground':'前景が空', 'transform-limit':'移動量または拡大率が許容値外',
+    'silhouette-iou':'輪郭の一致率が基準未満', 'generation-canvas-aspect':'生成画像の縦横比が不一致',
+    'silhouette-passed':'輪郭の基準を満たした'};
+  const sources={qwen_enhanced:'Qwen',h3_enhanced:'H3',manual_faces:'手動画像'};
+  for (const id of manifest.faceOrder) {
+    const edit=manifest.faces[id].edit;
+    const row=panel.querySelector('tbody').insertRow();
+    const color=edit?.status==='accepted' ? (sources[edit.source] || edit.source) : 'ベイク時の色';
+    const reason=edit ? (reasons[edit.reason] || edit.reason) : '画像の指定なし';
+    for (const text of [id,color,reason]) row.insertCell().textContent=text;
+  }
+  if (manifest.qa) {
+    const report=panel.querySelector('a');
+    report.href=assetURL(url,manifest.qa).href;
+    report.target='_blank'; report.rel='noopener'; report.hidden=false;
+  }
+  panel.hidden=false;
+}
+
 function texturePreview(name, descriptor, bytes) {
   const {width,height,dtype} = descriptor;
   const samples = new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);
@@ -52,6 +74,7 @@ async function run() {
   const manifestURL = params.get('manifest');
   if (!manifestURL) throw new Error('manifest パラメーターにアセットのURLを指定してください');
   const {manifest,files,url} = await readAsset(manifestURL, {proxy:true});
+  showFaceDecisions(manifest,url);
   const selectedSampling=params.get('sampling') || 'standard';
   if(!['standard','reduce_bleeding'].includes(selectedSampling)) throw new Error('不明な補間設定です');
   el('sampling').value=selectedSampling;

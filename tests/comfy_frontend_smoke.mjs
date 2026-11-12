@@ -11,7 +11,7 @@ import { preflight } from '../scripts/run_model_workflow.mjs';
 const [origin,inputDir,artifacts]=process.argv.slice(2);
 if(!origin||!inputDir||!artifacts)throw new Error('Usage: node tests/comfy_frontend_smoke.mjs ORIGIN INPUT_DIR OUTPUT_DIR');
 const workflowNames=['01_box_from_glb','04_manual_six_faces','02_box_from_reference_qwen21',
-  '03_box_from_reference_h3','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box'];
+  '03_box_from_reference_h3','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide'];
 const sides=[['+X','px'],['-X','nx'],['+Y','py'],['-Y','ny'],['+Z','pz'],['-Z','nz']];
 const resources=new URL('../workflows/',import.meta.url);
 const browser=await chromium.launch(chromiumOptions('webgl2'));
@@ -37,6 +37,23 @@ async function compile(name){
   assert.ok(prompt&&Object.keys(prompt).length,'No API prompt for '+name);
   await writeFile(join(artifacts,name+'.api.json'),JSON.stringify(prompt,null,2)+'\n');
   const byType=t=>Object.entries(prompt).filter(([,n])=>n.class_type===t);
+  if(name.startsWith('08')){
+    const [[ref]]=byType('BIPrepareReference');
+    const [[decode,decoder]]=byType('VAEDecodeTripoSplat');
+    const [[cache,cached]]=byType('BICachedTripoSplat');
+    const [[align,transform]]=byType('TransformSplat');
+    const [[guide,render]]=byType('BITripoSplatGuide');
+    assert.equal(decoder.inputs.num_gaussians,262144);
+    assert.deepEqual(cached.inputs,{reference:[ref,2],splat:[decode,0]});
+    assert.deepEqual(transform.inputs.splat,[cache,0]);
+    assert.deepEqual(render.inputs.splat,[align,0]);
+    assert.deepEqual(render.inputs.guides,[byType('BIMakeSixGuides')[0][0],6]);
+    assert.equal(render.inputs.face_id,'+Z');
+    assert.equal(render.inputs.coordinate_space,'canonical_box');
+    assert.deepEqual(byType('PreviewImage')[0][1].inputs.images,[guide,0]);
+    assert.deepEqual(byType('PreviewAny')[0][1].inputs.source,[guide,2]);
+    return prompt;
+  }
   if(name.startsWith('07')){
     const [[id,render]]=byType('BIRenderBox');
     const [[join,rgba]]=byType('JoinImageWithAlpha');
@@ -139,6 +156,19 @@ try{
   for(const [id] of sides)assert.equal(manual.manifest.faces[id].edit.status,'accepted','Manual '+id);
   for(const key of ['normalMap','rangeMap','intervalMap'])
     assert.deepEqual(manual.manifest.textures[key],baseline.manifest.textures[key]);
+  const preview=await page.context().newPage();
+  try {
+    const url=new URL('/box-impostor/web/viewer.html',origin);
+    url.searchParams.set('manifest',manual.url.pathname);
+    url.searchParams.set('backend','webgl2');
+    await preview.goto(url.href);
+    await preview.locator('#faceQA summary').click();
+    const decisions=await preview.locator('#faceQA tbody tr').allTextContents();
+    assert.equal(decisions.length,6);
+    assert(decisions.every(row=>row.includes('手動画像') && row.includes('輪郭の基準を満たした')));
+    const qa=await page.request.get(await preview.locator('#faceQA a').getAttribute('href'));
+    assert(qa.ok());
+  } finally { await preview.close(); }
   const proof={
     frontendBrowser:browser.version(),
     executed:[{workflow:workflowNames[0],prompt_id:baseline.prompt_id,asset:baseline.manifest.asset_id},

@@ -107,6 +107,13 @@ def run(comfy, output):
             baseline = json.loads(request(manifest_path))
             check_splat(queue, node, inputs, output, fixture.name, baseline)
             assert len(request(viewer_path)) > 1000
+            zipped = queue({
+                '1': node('BILoadBox', source='fixture'),
+                '2': node('BIPackBox', asset=['1', 0], name='native-smoke'),
+                '3': node('BILoadBox', source=['2', 0]),
+                '4': node('BIPreviewBox', asset=['3', 0]),
+            })
+            assert zipped['4']['box_impostor'][0] == viewer_path
             for rel in ("web/viewer.mjs","worker/runtime.mjs","vendor/three/build/three.webgpu.js"):
                 assert len(request("/box-impostor/" + rel)) > 100
             # Use the actual guide for one manual face, pass through the native queue and reload the export.
