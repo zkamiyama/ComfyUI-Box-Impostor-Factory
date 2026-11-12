@@ -6,6 +6,7 @@ GLBから6方向の正投影ガイドとthree-impostor互換のBoxアセット�
 |---|---|
 | GLB → Box → 保存 → 再読込 | 実際のChromiumでWebGL2とWebGPUのソフトウェア描画を確認。6軸と12斜視で、ベイク直後と別プロセスで読み込んだBoxの色・深度を比較。 |
 | ComfyUI、手動画像、プレビュー | CPU版ComfyUIの画面から01と04を読み込み、GLBのベイクと手動6面の採用を確認。キューで保存・再読込と1面更新も実行。ブラウザでメッシュとBoxの左右比較、視点変更、アトラス表示を操作。 |
+| 軽量チェックポイントによる6面生成 | RTX 4080でSD 1.5を6面それぞれに実行。3種の幾何マップと輪郭を保持し、最終Boxの色に反映されることを確認。[実機の計測結果](docs/verification/rtx4080-sd15.json) |
 | Pixal3D、Qwen-Image 2.1＋AnyAngle、MiniMax H3-Image | 実際のComfyUI画面で各ワークフローを実行用グラフに展開し、画像・ガイドの接続を検査。対象モデルでの推論、必要VRAM、背面・上下面の生成品質は未測定。 |
 
 ## ComfyUIでGLBを開く
@@ -99,6 +100,12 @@ python scripts/run_lightweight_smoke.py --mesh asymmetric.glb --backend webgl2 -
 ```
 
 `.test-output/lightweight/run-*/` に6枚の生成画像、変更前後のBoxの透過PNG、manifest、検査結果が残る。各面の前景に色が反映された画素数、最終描画の色の変化、法線・区間・占有範囲のバイト一致を記録する。
+
+RTX 4080の初回キューは256角・各6ステップで10.90秒。斜視の前景14,929画素すべてでRGBが変わり、透明度は全画素で一致した。推論はCUDA、Boxのベイクと描画はWSL2のChromium（WebGL2・SwiftShader）を使った。GPU全体の使用量は1秒間隔で計測し、開始時1,835 MiB、観測最大3,901 MiBだった。
+
+| 元のBox | SD 1.5で6面を編集したBox |
+|---|---|
+| ![元の斜視](docs/verification/sd15-box-before.png) | ![編集後の同じ斜視](docs/verification/sd15-box-after.png) |
 
 ## TripoSplatをガイドに使う
 

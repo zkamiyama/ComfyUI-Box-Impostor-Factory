@@ -1,0 +1,103 @@
+{
+  "status": "passed",
+  "date": "2026-11-12",
+  "device": "NVIDIA GeForce RTX 4080 16 GB",
+  "environment": "Ubuntu WSL2",
+  "driver": "610.88",
+  "python": "3.12.3",
+  "torch": "2.9.1+cu128",
+  "cuda": "12.8",
+  "comfyUI": "c5751c81abe131202eea9e4c66d000589013dd0b",
+  "factory": "ffbbfb83887d1d6408015cd0361b4e770d46aa97",
+  "checkpoint": {
+    "name": "v1-5-pruned-emaonly-fp16.safetensors",
+    "sha256": "e9476a13728cd75d8279f6ec8bad753a66a1957ca375a1464dc63b37db6e3916",
+    "bytes": 2132696762,
+    "source": "https://huggingface.co/Comfy-Org/stable-diffusion-1.5/blob/96a4eb63b0056942bd4c59222cdd5e6e2c9d0f89/v1-5-pruned-emaonly-fp16.safetensors"
+  },
+  "input": {
+    "generator": "tests/make_fixture.mjs",
+    "glbSha256": "07d40bda6214786bdefdce300644981ba0e32505ae501c5ece687dca7967fc67"
+  },
+  "configuration": {
+    "faceResolution": 256,
+    "stepsPerFace": 6,
+    "sampler": "euler",
+    "scheduler": "normal",
+    "denoise": 0.5,
+    "cfg": 6.0,
+    "seeds": [
+      19570,
+      19571,
+      19572,
+      19573,
+      19574,
+      19575
+    ],
+    "foreground": "mesh guide alpha",
+    "camera": "diagonal orthographic",
+    "renderBackend": "WebGL2, Chromium 143 ANGLE SwiftShader",
+    "inferenceDevice": "cuda:0",
+    "comfyArgs": [
+      "--reserve-vram",
+      "2",
+      "--lowvram",
+      "--disable-dynamic-vram"
+    ]
+  },
+  "coldQueue": {
+    "samplerIds": [
+      "22",
+      "27",
+      "32",
+      "37",
+      "42",
+      "47"
+    ],
+    "samplerIdsCachedAtStart": [],
+    "comfyExecutionSeconds": 10.9,
+    "gpuMemoryMiB": {
+      "source": "nvidia-smi total device memory.used, 1 second polling",
+      "samples": 12,
+      "first": 1835,
+      "maximumObserved": 3901,
+      "last": 3899
+    }
+  },
+  "asset": "428235000d32f0df5616ca385d8f96a728a79b37cb14b668f41b9ff2250bd56b",
+  "baseline": "c5a31298d33aa617fbbf286df241e627515262f004f53baca03d603a948a2815",
+  "acceptedFaces": [
+    "+X",
+    "-X",
+    "+Y",
+    "-Y",
+    "+Z",
+    "-Z"
+  ],
+  "colorTexelsChanged": {
+    "+X": 50724,
+    "-X": 50713,
+    "+Y": 51334,
+    "-Y": 51334,
+    "+Z": 47301,
+    "-Z": 47301
+  },
+  "unchangedGeometrySha256": {
+    "normalMap": "27a6391f467150caaa1d01d6626107983dbf4ca7b2b46ffffd9b9b71ef53eebb",
+    "intervalMap": "7e4ac805c1ef69bb3f8bd7b3a05193018abf485a0b35274b6af29b3fee6bd440",
+    "rangeMap": "460b6bbc45cf59649d920f5f62e972bc56c2a7498573593f56182747b9aefe0c"
+  },
+  "finalRender": {
+    "status": "identical alpha; visible RGB changed",
+    "visiblePixels": 14929,
+    "changedVisiblePixels": 14929,
+    "before": {
+      "file": "sd15-box-before.png",
+      "sha256": "34267d567b61e26ea5153e52970f4442c993e54bc29d271c775c851dffd8401f"
+    },
+    "after": {
+      "file": "sd15-box-after.png",
+      "sha256": "91824c60bf985feb1e647b0a3586d28d0afe6b6c67b0746d52d31ff01359aee2"
+    }
+  }
+}
