@@ -151,6 +151,12 @@ class NodeTests(unittest.TestCase):
         np.testing.assert_array_equal(faces.tile_view(z,'+X'), faces.tile_view(atlas(self.asset,self.m),'+X'))
         np.testing.assert_array_equal(faces.tile_view(z,'-Z'), faces.tile_view(x,'-Z'))
         self.assertEqual(m['faces']['+X']['edit']['status'],'fallback')
+        self.assertEqual(m['mode'], 'qwen_enhanced')  # the accepted -Z edit is still visible
+        last, = replace(fallback, {'-Z': faces.save_view(np.zeros_like(image))}, .95, .1, .1)
+        last_manifest = store.validate(store.asset_dir(last), last)
+        self.assertEqual(last_manifest['mode'], 'geometry_baseline')
+        self.assertEqual(last_manifest['faces']['-Z']['edit']['status'], 'fallback')
+        np.testing.assert_array_equal(atlas(last, last_manifest), atlas(self.asset, self.m))
 
     def test_threshold_changes_reuse_registration(self):
         image = np.zeros((8,8,4), dtype=np.float32); image[1:7,1:7,3] = 1.
@@ -171,6 +177,22 @@ class NodeTests(unittest.TestCase):
         self.assertGreater(report['after']['iou'], report['before']['iou'])
         self.assertIsNone(faces.align_one(a,guide,.95,.01,.1)[0])
         self.assertIsNone(faces.align_one(a*0,guide,.95,.2,.1)[0])
+
+    def test_accurate_camera_alignment_survives_a_biased_foreground_bounding_box(self):
+        guide = np.zeros((64,64),np.float32)
+        guide[12:52,20:44] = 1
+        source = np.zeros((64,64,4),np.float32)
+        source[...,3] = guide
+        source[14:24,22:32,3] = 0
+        source[20,44:49,3] = 1
+        candidate, report = faces.align_one(source,guide,.85,.1,.15)
+        self.assertEqual(report['status'], 'accepted')
+        self.assertAlmostEqual(report['before']['iou'], 860/965)
+        self.assertLess(report['boundingBoxRegistration']['scores']['iou'], .85)
+        self.assertEqual(report['after'], report['before'])
+        self.assertEqual(report['registration'], {'scale':1., 'centerShiftYX':[0.,0.]})
+        np.testing.assert_array_equal(candidate[...,3], source[...,3])
+        self.assertEqual(faces.align_one(source,guide,.85,.01,.15)[1]['reason'], 'transform-limit')
 
     def test_load_save_and_corruption(self):
         node=nodes.SaveBox()

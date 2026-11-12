@@ -124,9 +124,15 @@ def align_one(source, guide, min_iou, max_shift, max_scale_change):
     if scale != 1 or np.any(displacement):
         offset = center - target_center / scale
         aligned = np.stack([ndimage.affine_transform(channel, np.eye(2) / scale, offset=offset, output_shape=(h, w), order=1, mode='constant', cval=0., prefilter=False) for channel in np.moveaxis(moving, -1, 0)], axis=-1)
+        after = scores(aligned[..., 3] >= .5, fixed)
+        # A small protrusion can bias the bounding box even when the object
+        # already matches the camera. Keep the higher-IoU registration.
+        if before['iou'] >= after['iou']:
+            report['boundingBoxRegistration'] = {**report['registration'], 'scores': after}
+            report['registration'] = {'scale': 1., 'centerShiftYX': [0., 0.]}
+            aligned, after = moving, before
     else:
-        aligned = moving
-    after = scores(aligned[..., 3] >= .5, fixed)
+        aligned, after = moving, before
     report['after'] = after
     if after['iou'] < min_iou:
         return None, {**report, 'reason': 'silhouette-iou'}
@@ -146,7 +152,7 @@ def align(faces, guide_id, min_iou, max_shift, max_scale_change):
         canvas = source.get('provenance', {}).get('canvas')
         if canvas is not None and canvas.get('faceId') != face_id:
             raise ValueError('Generation canvas belongs to a different face.')
-        measurement = store.key('face-measure-v2', source['sha256'], face_id, store.file_hash(guide_path), canvas)
+        measurement = store.key('face-measure-v3', source['sha256'], face_id, store.file_hash(guide_path), canvas)
         def measure(stage):
             data = np.load(Path(source['path']) / 'source.npy', allow_pickle=False)
             original_size = [data.shape[1], data.shape[0]]
@@ -169,12 +175,14 @@ def align(faces, guide_id, min_iou, max_shift, max_scale_change):
                 np.save(stage / 'aligned.npy', result, allow_pickle=False)
             (stage / 'report.json').write_text(json.dumps(report, allow_nan=False), encoding='utf-8')
         measured = cache_dir('measure', measurement, measure)
-        digest = store.key('admission-v1', measurement, min_iou, max_shift, max_scale_change)
+        digest = store.key('admission-v2', measurement, min_iou, max_shift, max_scale_change)
         def decide(stage):
             report = json.loads((measured / 'report.json').read_bytes())
             report['thresholds'] = {'minIoU': min_iou, 'maxShiftFraction': max_shift, 'maxScaleChange': max_scale_change}
             if report['status'] == 'accepted':
-                reg = report['registration']
+                # Retain the configured bound on foreground displacement and scale
+                # even when leaving the pixels in place wins the IoU comparison.
+                reg = report.get('boundingBoxRegistration', report['registration'])
                 w, h = report['tileSize']
                 dy, dx = reg['centerShiftYX']
                 if max(abs(dx)/w, abs(dy)/h) > max_shift or abs(reg['scale'] - 1) > max_scale_change:
@@ -211,7 +219,7 @@ def compose(baseline, aligned):
     provenance = {fid: item['source'].get('provenance', {}) for fid, item in aligned['faces'].items()}
     models = {item.get('backend', 'manual_faces') for item in provenance.values()}
     mode = next(iter(models)) if len(models) == 1 else 'manual_faces'
-    asset_id = store.key('compose-v3', multiview.VERSION, baseline, mode, provenance, {fid: item['key'] for fid, item in aligned['faces'].items()})
+    asset_id = store.key('compose-v4', multiview.VERSION, baseline, mode, provenance, {fid: item['key'] for fid, item in aligned['faces'].items()})
     source = store.asset_dir(baseline)
     def write(stage):
         shutil.copytree(source, stage, ignore=shutil.ignore_patterns('previews'))
@@ -264,7 +272,7 @@ def compose(baseline, aligned):
         atlas.tofile(data_path)
         manifest['textures']['colorMap'] = {**base, 'path': 'maps/' + data_path.name, 'sha256': store.file_hash(data_path)}
         active_modes = {entry['edit']['source'] for entry in manifest['faces'].values() if entry.get('edit', {}).get('status') == 'accepted'}
-        effective_mode = next(iter(active_modes)) if len(active_modes) == 1 else mode if not active_modes else 'manual_faces'
+        effective_mode = next(iter(active_modes), 'geometry_baseline') if len(active_modes) <= 1 else 'manual_faces'
         manifest.update(asset_id=asset_id, parentAsset=baseline, geometryAsset=manifest.get('geometryAsset', manifest.get('parentAsset', baseline)), mode=effective_mode, qa='qa/report.json')
         (stage / 'qa').mkdir(exist_ok=True)
         face_keys = {fid: manifest['faces'][fid].get('edit', {}).get('alignmentKey', current['sha256']) if report['status'] == 'accepted' else 'baseline'
