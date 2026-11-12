@@ -45,6 +45,19 @@ jobs:
           node worker/cli.mjs render --asset .test-output/box --output .test-output/standard.png --backend ${{ matrix.backend }} --view diagonal --projection orthographic --width 320 --height 256 --sampling standard
           node worker/cli.mjs render --asset .test-output/box --output .test-output/reduced.png --backend ${{ matrix.backend }} --view diagonal --projection orthographic --width 320 --height 256 --sampling reduce_bleeding
           node tests/check_render.mjs .test-output/standard.png .test-output/reduced.png 320 256
+      - name: Fit the whole Box at the narrowest supported aspect
+        run: |
+          for projection in orthographic perspective; do
+            node worker/cli.mjs render --asset .test-output/box --output .test-output/portrait-$projection.png --backend ${{ matrix.backend }} --view +Z --projection "$projection" --width 64 --height 2048
+          done
+          python - <<'PY'
+          from PIL import Image
+          for projection in ('orthographic','perspective'):
+              with Image.open(f'.test-output/portrait-{projection}.png') as image:
+                  assert image.size == (64, 2048)
+                  left, top, right, bottom = image.getchannel('A').getbbox()
+                  assert 0 < left < right < 64 and 0 < top < bottom < 2048
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:

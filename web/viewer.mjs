@@ -106,20 +106,23 @@ async function run() {
     const oldDirection = camera?.position.clone().sub(target).normalize();
     const oldUp = camera?.up.clone();
     const fov = 36, tangent=Math.tan(fov*Math.PI/360);
-    const visibleAspect = Math.max(.05, (el('mode').value === 'both' ? Math.floor(stage.clientWidth/2) : stage.clientWidth)/Math.max(stage.clientHeight,1));
-    const distance = !reset && camera ? camera.position.distanceTo(target) :
-      radius*1.1 / Math.sin(Math.atan(tangent * Math.min(visibleAspect,1)));
+    const paneWidth=el('mode').value === 'both' ? Math.floor(stage.clientWidth/2) : stage.clientWidth;
+    const visibleAspect = Math.max(1,paneWidth)/Math.max(stage.clientHeight,1);
+    const fitDistance=radius*1.1 / Math.sin(Math.atan(tangent * Math.min(visibleAspect,1)));
+    const distance = !reset && camera ? camera.position.distanceTo(target) : fitDistance;
+    const maxDistance=Math.max(radius*35,fitDistance*1.2,distance);
+    const far=Math.max(100*radius,maxDistance+2*radius);
     const direction = !reset && !newPose && oldDirection ? oldDirection : new Vector3(...directions[el('view').value]).normalize();
     controls?.dispose();
-    camera = orthographic ? new OrthographicCamera(-1,1,1,-1,0.01*radius,100*radius) :
-      new PerspectiveCamera(fov,1,0.01*radius,100*radius);
+    camera = orthographic ? new OrthographicCamera(-1,1,1,-1,0.01*radius,far) :
+      new PerspectiveCamera(fov,1,0.01*radius,far);
     if (!reset && !newPose && oldUp) camera.up.copy(oldUp);
     else if (Math.abs(direction.y)>.99999) camera.up.set(0,0,direction.y>0?-1:1);
     camera.position.copy(target).addScaledVector(direction,distance);
     camera.lookAt(target);
     controls = new OrbitControls(camera,el('canvas'));
     controls.target.copy(target);
-    controls.minDistance = radius*.12; controls.maxDistance = radius*35;
+    controls.minDistance = radius*.12; controls.maxDistance = maxDistance;
     controls.update();
     // Keep apparent magnification when switching projection.
     camera.userData.halfHeight = distance*tangent;
