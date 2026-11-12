@@ -14,6 +14,9 @@ def visible_members(m):
         members.add(face['guide'])
         members.add(face.get('depth'))
         members.add(face.get('edit', {}).get('view'))
+        members.add(face.get('edit', {}).get('reference'))
+    if m.get('reference'):
+        members.add(m['reference'].get('image'))
     members.add(m.get('qa'))
     return members
 
@@ -33,7 +36,8 @@ def register_routes():
                 raise web.HTTPNotFound()
         except (ValueError, KeyError, TypeError, OSError):
             raise web.HTTPNotFound()
-        return web.FileResponse(path, headers={'X-Content-Type-Options': 'nosniff'})
+        media_type = {'.json': 'application/json', '.png': 'image/png', '.glb': 'model/gltf-binary'}.get(path.suffix.lower(), 'application/octet-stream')
+        return web.FileResponse(path, headers={'Content-Type': media_type, 'X-Content-Type-Options': 'nosniff'})
 
     @routes.get('/box-impostor/{section:web|worker|vendor}/{relative:.+}')
     async def static(request):

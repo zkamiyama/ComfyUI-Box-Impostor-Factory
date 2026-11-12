@@ -15,6 +15,7 @@ REPO = Path(__file__).resolve().parents[1]
 FACES = ('+X', '-X', '+Y', '-Y', '+Z', '-Z')
 ID = re.compile(r'[0-9a-f]{64}\Z')
 REQUIRED_MAPS = ('colorMap', 'normalMap', 'intervalMap', 'rangeMap')
+MATERIAL_OPTIONS = {'none': (), 'material': ('roughness', 'metalness', 'ao'), 'emissive': ('emissive',), 'material+emissive': ('roughness', 'metalness', 'ao', 'emissive')}
 
 
 def root():
@@ -127,14 +128,14 @@ def validate(directory, expected_id=None, check_bytes=True):
     if not isinstance(manifest.get('asset_id'), str) or (expected_id is not None and manifest['asset_id'] != expected_id):
         raise ValueError('Box manifest asset ID mismatch')
     r = manifest.get('resolution')
-    if type(r) is not int or r < 1 or list(manifest.get('faceOrder', [])) != list(FACES):
+    if type(r) is not int or not 1 <= r <= 8192 or list(manifest.get('faceOrder', [])) != list(FACES):
         raise ValueError('Invalid resolution or face order')
     for field in ('tightBounds', 'bakeBox'):
         bounds = manifest[field]
         for side in ('min', 'max'):
             if len(bounds[side]) != 3 or not all(isinstance(v, (int, float)) and math.isfinite(v) for v in bounds[side]):
                 raise ValueError('Invalid bounding box')
-        if any(a > b for a, b in zip(bounds['min'], bounds['max'])):
+        if any(a > b or (field == 'bakeBox' and a == b) for a, b in zip(bounds['min'], bounds['max'])):
             raise ValueError('Invalid bounding box ordering')
     textures = manifest['textures']
     if any(name not in textures for name in REQUIRED_MAPS):
@@ -182,12 +183,19 @@ def validate(directory, expected_id=None, check_bytes=True):
     if set(manifest['faces']) != set(FACES):
         raise ValueError('Missing face metadata')
     for face in manifest['faces'].values():
-        if not contained(directory, face['guide']).is_file():
+        guide = contained(directory, face['guide'])
+        if not guide.is_file():
             raise ValueError('Missing face guide')
+        if check_bytes and face.get('guideSha256') and file_hash(guide) != face['guideSha256']:
+            raise ValueError('Face guide digest mismatch')
+        if face.get('depth'):
+            depth = contained(directory, face['depth'])
+            if depth.stat().st_size != r * r * 2 or (check_bytes and face.get('depthSha256') and file_hash(depth) != face['depthSha256']):
+                raise ValueError('Invalid face guide depth')
     return manifest
 
 
-def publish(asset_id, producer):
+def publish(asset_id, producer, expected_manifest=None):
     destination = asset_dir(asset_id)
     with lock(asset_id):
         if not destination.exists():
@@ -197,19 +205,29 @@ def publish(asset_id, producer):
                 validate(staging, asset_id)
                 os.rename(staging, destination)
         else:
-            validate(destination, asset_id)
+            existing = validate(destination, asset_id)
+            if expected_manifest is not None and existing != expected_manifest:
+                raise ValueError('An asset with this ID already exists with a different manifest.')
     return asset_id
 
 
-def baseline(proxy, resolution, backend):
-    asset_id = key('baseline-v2', worker_version(), proxy['stageKey'], proxy['sha256'], resolution, backend)
+def baseline(proxy, resolution, backend, material_maps='none'):
+    if material_maps not in MATERIAL_OPTIONS:
+        raise ValueError('Unknown Box material map selection.')
+    maps = MATERIAL_OPTIONS[material_maps]
+    asset_id = key('baseline-v3', worker_version(), proxy['stageKey'], proxy['sha256'], resolution, backend, maps)
     def generate(directory):
-        run_worker('bake', '--input', proxy['path'], '--output', directory, '--resolution', resolution, '--backend', backend, '--asset-id', asset_id, '--canonical-meta', proxy['metadata'])
+        run_worker('bake', '--input', proxy['path'], '--output', directory, '--resolution', resolution, '--backend', backend, '--asset-id', asset_id, '--canonical-meta', proxy['metadata'], '--maps', ','.join(maps))
         manifest_path = directory / 'manifest.json'
         manifest = json.loads(manifest_path.read_bytes())
         canonical = json.loads(Path(proxy['metadata']).read_bytes())
+        manifest['provenance']['requestedMaterialMaps'] = list(maps)
         manifest['provenance']['originalGlbSha256'] = canonical['sourceSha256']
         manifest['provenance']['rotationDegreesXYZ'] = proxy.get('rotationDegreesXYZ', (0, 0, 0))
+        for face in manifest['faces'].values():
+            face['guideSha256'] = file_hash(contained(directory, face['guide']))
+            if face.get('depth'):
+                face['depthSha256'] = file_hash(contained(directory, face['depth']))
         if proxy.get('provenance'):
             manifest['provenance']['meshGeneration'] = proxy['provenance']
         if proxy.get('reference'):

@@ -2,7 +2,7 @@ name: ComfyUI native nodes
 on:
   push:
     branches: [main]
-    paths: ['box_nodes/**', '__init__.py', 'worker/**', '.github/workflows/comfy-native.yml', 'tests/comfy_smoke.py', 'workflows/**']
+    paths: ['box_nodes/**', '__init__.py', 'worker/**', '.github/workflows/comfy-native.yml', 'tests/comfy_smoke.py', 'tests/check_workflow_types.py', 'tests/test_*.py', 'pyproject.toml', 'requirements.txt', 'workflows/**']
   workflow_dispatch:
 permissions:
   contents: read
@@ -35,7 +35,7 @@ jobs:
       - name: Install ComfyUI with CPU PyTorch
         run: |
           python -m pip install --index-url https://download.pytorch.org/whl/cpu torch torchvision torchaudio
-          python -m pip install -r .test-comfy/requirements.txt
+          python -m pip install -r .test-comfy/requirements.txt -r requirements.txt
           ln -s "$GITHUB_WORKSPACE" .test-comfy/custom_nodes/box_impostor_factory
       - run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Queue GLB, export, reload and replace one face

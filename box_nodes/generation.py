@@ -50,6 +50,8 @@ def lineage(prompt, node_id, sockets=('image', 'mask')):
                 visit(pin)
                 continue
             group = MODEL_INPUTS.get(field)
+            if kind == 'CLIPVisionLoader' and field == 'clip_name':
+                group = 'clip_vision'
             if kind == 'LoadMoGeModel' and pin.endswith(('.safetensors', '.pt', '.pth')):
                 group = 'geometry_estimation'
             if group:
@@ -61,8 +63,8 @@ def lineage(prompt, node_id, sockets=('image', 'mask')):
                 import folder_paths
                 image_inputs[pin] = fingerprint_file(folder_paths.get_annotated_filepath(pin))
         if kind in ('KSampler', 'KSamplerAdvanced'):
-            sampler_settings.append({k: literal(v) for k, v in pins.items() if k in ('seed', 'noise_seed', 'steps', 'cfg', 'denoise', 'sampler_name', 'scheduler')}
-            )
+            parameters = ('seed', 'noise_seed', 'steps', 'cfg', 'denoise', 'sampler_name', 'scheduler')
+            sampler_settings.append({k: literal(v) for k, v in pins.items() if k in parameters})
         if kind in ('TextEncodeQwenImage21', 'MiniMaxH3ImageConditioning'):
             sampler_settings.append({'conditioning': kind, **{k: literal(v) for k, v in pins.items() if k in ('prompt', 'negative_prompt', 'width', 'height', 'resolution')}})
     pins = prompt[str(node_id)]['inputs']
@@ -71,7 +73,7 @@ def lineage(prompt, node_id, sockets=('image', 'mask')):
     return store.key(nodes, model_files, image_inputs), model_files, sampler_settings
 
 
-def generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id):
+def generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas=None):
     if face_id not in store.FACES or backend not in MODES:
         raise ValueError('Unknown face or model backend.')
     recipe_data = json.loads(recipe or '{}')
@@ -82,7 +84,11 @@ def generation_request(guides, reference, face_id, backend, recipe, seed, mask_m
     guide_hash = store.file_hash(store.contained(base, manifest['faces'][face_id]['guide']))
     graph_hash, weights, actual = lineage(prompt, unique_id)
     source = {'backend': backend, 'faceId': face_id, 'recipe': recipe_data, 'recipeSeed': seed, 'samplers': actual, 'graphSha256': graph_hash, 'weights': weights, 'referenceSha256': reference['sha256'], 'guideSha256': guide_hash, 'maskMode': mask_mode}
-    digest = store.key('generated-face-v1', source)
+    if canvas is not None:
+        if canvas.get('faceId') != face_id:
+            raise ValueError('Generated image and canvas refer to different faces.')
+        source['canvas'] = canvas
+    digest = store.key('generated-face-v2', source)
     return digest, source
 
 
@@ -93,10 +99,10 @@ class CachedGeneratedFace:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return {'required': {'guides': ('BOX_GUIDES',), 'reference': ('BOX_REFERENCE',), 'face_id': (list(store.FACES),), 'backend': (list(MODES),), 'recipe': ('STRING', {'default': '{}', 'multiline': True}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 0xffffffffffffffff}), 'mask_mode': (faces.MASK_MODES,), 'image': ('IMAGE', {'lazy': True})}, 'optional': {'mask': ('MASK', {'lazy': True})}, 'hidden': {'prompt': 'PROMPT', 'unique_id': 'UNIQUE_ID'}}
+        return {'required': {'guides': ('BOX_GUIDES',), 'reference': ('BOX_REFERENCE',), 'face_id': (list(store.FACES),), 'backend': (list(MODES),), 'recipe': ('STRING', {'default': '{}', 'multiline': True}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 0xffffffffffffffff}), 'mask_mode': (faces.MASK_MODES,), 'image': ('IMAGE', {'lazy': True})}, 'optional': {'mask': ('MASK', {'lazy': True}), 'canvas': ('BOX_CANVAS',)}, 'hidden': {'prompt': 'PROMPT', 'unique_id': 'UNIQUE_ID'}}
 
-    def check_lazy_status(self, guides, reference, face_id, backend, recipe, seed, mask_mode, image=None, mask=None, prompt=None, unique_id=None):
-        digest, _ = generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id)
+    def check_lazy_status(self, guides, reference, face_id, backend, recipe, seed, mask_mode, image=None, mask=None, prompt=None, unique_id=None, canvas=None):
+        digest, _ = generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas)
         if (store.root() / '.stages' / 'generated' / digest / 'result.json').is_file():
             return []
         missing = ['image'] if image is None else []
@@ -106,8 +112,8 @@ class CachedGeneratedFace:
             missing.append('mask')
         return missing
 
-    def resolve(self, guides, reference, face_id, backend, recipe, seed, mask_mode, image=None, mask=None, prompt=None, unique_id=None):
-        digest, source = generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id)
+    def resolve(self, guides, reference, face_id, backend, recipe, seed, mask_mode, image=None, mask=None, prompt=None, unique_id=None, canvas=None):
+        digest, source = generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas)
         def write(stage):
             if image is None:
                 raise ValueError('Missing generated image after cache miss.')
@@ -118,6 +124,8 @@ class CachedGeneratedFace:
         stage = faces.cache_dir('generated', digest, write)
         item = json.loads((stage / 'result.json').read_bytes())
         item['path'] = str(store.root() / '.stages' / 'faces' / item['sha256'])
+        if 'path' in reference:
+            item['reference'] = reference
         if not (Path(item['path']) / 'source.npy').is_file():
             raise ValueError('Generated image cache payload is missing.')
         return (item,)

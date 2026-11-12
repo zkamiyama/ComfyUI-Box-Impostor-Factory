@@ -143,7 +143,7 @@ def evaluate_pairs(directory, manifest, *, face_keys=None, cache=None):
         def measure():
             return pair_report(views[a],views[b],lengths)
         if cache and face_keys is not None:
-            key=store.key(VERSION,manifest['parentAsset'],a,face_keys[a],b,face_keys[b])
+            key=store.key(VERSION,manifest.get('geometryAsset', manifest['parentAsset']),a,face_keys[a],b,face_keys[b])
             def write(stage):
                 (stage/'pair.json').write_text(json.dumps(measure(),allow_nan=False),encoding='utf-8')
             folder=cache('cross-view',key,write)

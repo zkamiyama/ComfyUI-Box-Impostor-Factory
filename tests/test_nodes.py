@@ -92,6 +92,46 @@ class NodeTests(unittest.TestCase):
             self.assertEqual(faces.compose(self.asset, faces.align({'+X':face}, self.asset,.9,.1,.1)), asset)
         self.assertEqual(nodes.LoadBox().load(asset), (asset,))
 
+    def test_replace_one_saved_face_keeps_other_ai_face_and_baseline(self):
+        image = np.zeros((8,8,4), dtype=np.float32)
+        image[1:7,1:7,3] = 1.
+        image[1:7,1:7,0] = 1.
+        a = {**faces.save_view(image), 'provenance': {'backend': 'qwen_enhanced'}}
+        image[..., :3] = [0,1,0]
+        b = {**faces.save_view(image), 'provenance': {'backend': 'qwen_enhanced'}}
+        replace = nodes.ReplaceFaces().replace
+        parent, = replace(self.asset, {'+X': a, '-Z': b}, .95, .1, .1)
+        image[..., :3] = [0,0,1]
+        c = faces.save_view(image)
+        with patch.object(store, 'run_worker', side_effect=RuntimeError('unnecessary worker')):
+            child, = replace(parent, {'+X': c}, .95, .1, .1)
+        old, new = [store.validate(store.asset_dir(k), k) for k in (parent, child)]
+        self.assertEqual(new['parentAsset'], parent)
+        self.assertEqual(new['geometryAsset'], self.asset)
+        self.assertEqual(old['baseColor'], new['baseColor'])
+        self.assertEqual(old['faces']['-Z']['edit'], new['faces']['-Z']['edit'])
+        atlas = lambda k,m: np.fromfile(store.asset_dir(k) / m['textures']['colorMap']['path'], '<f2').reshape(16,24,4)
+        x,y = atlas(parent,old), atlas(child,new)
+        self.assertFalse(np.array_equal(faces.tile_view(x,'+X'), faces.tile_view(y,'+X')))
+        for fid in store.FACES[1:]:
+            np.testing.assert_array_equal(faces.tile_view(x,fid).view('u2'), faces.tile_view(y,fid).view('u2'))
+        np.testing.assert_array_equal(x[...,3].view('u2'), y[...,3].view('u2'))
+        fallback, = replace(child, {'+X': faces.save_view(np.zeros_like(image))}, .95, .1, .1)
+        m = store.validate(store.asset_dir(fallback),fallback)
+        z = atlas(fallback,m)
+        np.testing.assert_array_equal(faces.tile_view(z,'+X'), faces.tile_view(atlas(self.asset,self.m),'+X'))
+        np.testing.assert_array_equal(faces.tile_view(z,'-Z'), faces.tile_view(x,'-Z'))
+        self.assertEqual(m['faces']['+X']['edit']['status'],'fallback')
+
+    def test_threshold_changes_reuse_registration(self):
+        image = np.zeros((8,8,4), dtype=np.float32); image[1:7,1:7,3] = 1.
+        item = faces.save_view(image)
+        a = faces.align({'+X': item}, self.asset, .85, .1, .15)
+        with patch.object(faces, 'align_one', side_effect=RuntimeError('unnecessary registration')):
+            b = faces.align({'+X': item}, self.asset,.95,.2,.2)
+        self.assertEqual(a['faces']['+X']['measured'], b['faces']['+X']['measured'])
+        self.assertNotEqual(a['faces']['+X']['key'], b['faces']['+X']['key'])
+
     def test_foreground_registration_and_fallback(self):
         guide = np.zeros((32,32), np.float32)
         guide[6:24,6:24] = 1
@@ -108,6 +148,7 @@ class NodeTests(unittest.TestCase):
         exported=Path(node.save(self.asset,'sample')[0])
         self.assertEqual(exported,Path(self.tmp.name)/'box_impostor_exports/sample/manifest.json')
         self.assertEqual(nodes.LoadBox().load('sample'),(self.asset,))
+        self.assertEqual(nodes.LoadBox().load(str(exported)), (self.asset,))
         with self.assertRaises(ValueError):
             node.save(self.asset,'../escape')
         path=self.base/self.asset/self.m['textures']['rangeMap']['path']

@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const names=[
   '01_box_from_glb','02_box_from_reference_qwen21','03_box_from_reference_h3',
-  '04_manual_six_faces','05_pixal3d_baseline'
+  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face'
 ];
 const faces=['+X','-X','+Y','-Y','+Z','-Z'];
 const graph = async name => JSON.parse(await readFile(new URL('../workflows/'+name+'.json',import.meta.url),'utf8'));
@@ -62,7 +62,17 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
     }
   }
   for(const node of g.nodes)if(/^[a-f0-9-]{36}$/.test(node.type))assert(subgraphs(g).some(s=>s.id===node.type));
-  assert.equal(nodesOf(g,'BIBakeBox').length,1);
+  if(name.startsWith('06')){
+    assert.equal(nodesOf(g,'BIBakeBox').length,0);
+    assert.equal(nodesOf(g,'BICanonicalizeProxy').length,0);
+    assert.equal(nodesOf(g,'BILoadBox').length,1);
+    const replace=nodesOf(g,'BIReplaceFaces')[0];
+    assert.equal(upstream(g,replace,'asset').from,nodesOf(g,'BILoadBox')[0].id);
+    assert.equal(upstream(g,replace,'faces').from,nodesOf(g,'BIFaceInputs')[0].id);
+    for(const name of ['BIPreviewBox','BISaveBox'])assert.equal(upstream(g,nodesOf(g,name)[0],'asset').from,replace.id);
+    const pins=nodesOf(g,'BIFaceInputs')[0].inputs;
+    assert.deepEqual(pins.filter(p=>p.link!=null).map(p=>p.name),['px']);
+  }else{assert.equal(nodesOf(g,'BIBakeBox').length,1);}
   assert.equal(nodesOf(g,'BIPreviewBox').length,1);
   assert.equal(nodesOf(g,'BISaveBox').length,1);
   const pixal=subgraphs(g).find(s=>s.name.startsWith('Pixal3D'));
@@ -80,6 +90,9 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
   if(name.startsWith('04')){
     assert.equal(nodesOf(g,'LoadImage').length,6);
     assert.equal(nodesOf(g,'BIFaceImage').length,6);
+    const align=nodesOf(g,'BIAlignAndValidateFaces')[0];
+    assert.deepEqual(align.widgets_values,[.85,.1,.15]);
+    assert.equal(upstream(g,nodesOf(g,'BIBakeBox')[0],'faces').from,align.id);
   }
   const isQ=name.startsWith('02'),isH=name.startsWith('03');
   if(!isQ&&!isH)return;
@@ -120,7 +133,14 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
   for(const [i,n] of collectors.entries()){
     assert.equal(n.widgets_values[0],faces[i]);
     const generator=gen.find(z=>z.id===upstream(g,n,'image').from);assert(generator);
-    assert.equal(upstream(g,generator,'guide').slot,i);
+    const canvas=g.nodes.find(z=>z.id===upstream(g,generator,'guide').from);
+    assert.equal(canvas.type,'BIModelCanvas');
+    assert.equal(upstream(g,generator,'guide').slot,1);
+    assert.equal(upstream(g,generator,'reference').from,canvas.id);
+    assert.equal(upstream(g,generator,'reference').slot,0);
+    assert.equal(upstream(g,canvas,'guide').slot,i);
+    assert.deepEqual(canvas.widgets_values,[faces[i],isQ?1024:2048]);
+    assert.equal(upstream(g,n,'canvas').from,canvas.id);
     assert.deepEqual(upstream(g,generator,'seed'),upstream(g,n,'seed'));
     const mask=g.nodes.find(z=>z.id===upstream(g,n,'mask').from);
     assert.equal(mask.type,'RemoveBackground');

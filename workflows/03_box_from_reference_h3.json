@@ -1,8 +1,8 @@
 {
   "id": "87001b0a-bb1a-594c-be9a-b7f2bec268ea",
   "revision": 0,
-  "last_node_id": 40,
-  "last_link_id": 105,
+  "last_node_id": 46,
+  "last_link_id": 129,
   "nodes": [
     {
       "id": 1,
@@ -88,12 +88,12 @@
           "type": "BOX_REFERENCE",
           "links": [
             8,
-            20,
-            34,
-            48,
-            62,
-            76,
-            90
+            23,
+            41,
+            59,
+            77,
+            95,
+            113
           ]
         }
       ],
@@ -125,12 +125,12 @@
           "type": "BACKGROUND_REMOVAL",
           "links": [
             1,
-            17,
-            31,
-            45,
-            59,
-            73,
-            87
+            20,
+            38,
+            56,
+            74,
+            92,
+            110
           ]
         }
       ],
@@ -228,12 +228,12 @@
           "name": "cropped",
           "type": "IMAGE",
           "links": [
-            13,
-            27,
-            41,
-            55,
-            69,
-            83
+            10,
+            28,
+            46,
+            64,
+            82,
+            100
           ]
         }
       ],
@@ -275,7 +275,7 @@
           "type": "BOX_PROXY",
           "links": [
             9,
-            102
+            126
           ]
         }
       ],
@@ -315,55 +315,61 @@
           "name": "px",
           "type": "IMAGE",
           "links": [
-            14
+            11
           ]
         },
         {
           "name": "nx",
           "type": "IMAGE",
           "links": [
-            28
+            29
           ]
         },
         {
           "name": "py",
           "type": "IMAGE",
           "links": [
-            42
+            47
           ]
         },
         {
           "name": "ny",
           "type": "IMAGE",
           "links": [
-            56
+            65
           ]
         },
         {
           "name": "pz",
           "type": "IMAGE",
           "links": [
-            70
+            83
           ]
         },
         {
           "name": "nz",
           "type": "IMAGE",
           "links": [
-            84
+            101
           ]
         },
         {
           "name": "guides",
           "type": "BOX_GUIDES",
           "links": [
-            19,
-            33,
-            47,
-            61,
-            75,
-            89,
-            101
+            12,
+            22,
+            30,
+            40,
+            48,
+            58,
+            66,
+            76,
+            84,
+            94,
+            102,
+            112,
+            125
           ]
         }
       ],
@@ -395,12 +401,12 @@
           "name": "BOOLEAN",
           "type": "BOOLEAN",
           "links": [
-            16,
-            30,
-            44,
-            58,
-            72,
-            86
+            19,
+            37,
+            55,
+            73,
+            91,
+            109
           ]
         }
       ],
@@ -432,12 +438,12 @@
           "name": "MODEL",
           "type": "MODEL",
           "links": [
-            10,
-            24,
-            38,
-            52,
-            66,
-            80
+            13,
+            31,
+            49,
+            67,
+            85,
+            103
           ]
         }
       ],
@@ -476,12 +482,12 @@
           "name": "CLIP",
           "type": "CLIP",
           "links": [
-            11,
-            25,
-            39,
-            53,
-            67,
-            81
+            14,
+            32,
+            50,
+            68,
+            86,
+            104
           ]
         }
       ],
@@ -521,12 +527,12 @@
           "name": "VAE",
           "type": "VAE",
           "links": [
-            12,
-            26,
-            40,
-            54,
-            68,
-            82
+            15,
+            33,
+            51,
+            69,
+            87,
+            105
           ]
         }
       ],
@@ -546,6 +552,69 @@
     },
     {
       "id": 12,
+      "type": "BIModelCanvas",
+      "pos": [
+        2270,
+        155
+      ],
+      "size": [
+        245,
+        145
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference",
+          "type": "IMAGE",
+          "link": 10
+        },
+        {
+          "name": "guide",
+          "type": "IMAGE",
+          "link": 11
+        },
+        {
+          "name": "guides",
+          "type": "BOX_GUIDES",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ref_canvas",
+          "type": "IMAGE",
+          "links": [
+            16
+          ]
+        },
+        {
+          "name": "guide_canvas",
+          "type": "IMAGE",
+          "links": [
+            17
+          ]
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIModelCanvas"
+      },
+      "widgets_values": [
+        "+X",
+        2048
+      ],
+      "title": "+X · geometric canvas"
+    },
+    {
+      "id": 13,
       "type": "434c4361-74aa-531a-bf12-ccad97c3fc0b",
       "pos": [
         2580,
@@ -556,43 +625,43 @@
         199
       ],
       "flags": {},
-      "order": 11,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
           "name": "model",
           "type": "MODEL",
-          "link": 10
+          "link": 13
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 11
+          "link": 14
         },
         {
           "name": "vae",
           "type": "VAE",
-          "link": 12
+          "link": 15
         },
         {
           "name": "reference",
           "type": "IMAGE",
-          "link": 13
+          "link": 16
         },
         {
           "name": "guide",
           "type": "IMAGE",
-          "link": 14
+          "link": 17
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 15
+          "link": 18
         },
         {
           "name": "ref_first",
           "type": "BOOLEAN",
-          "link": 16
+          "link": 19
         }
       ],
       "outputs": [
@@ -600,8 +669,8 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            18,
-            22
+            21,
+            25
           ]
         }
       ],
@@ -612,18 +681,18 @@
       "title": "Generate +X · H3"
     },
     {
-      "id": 13,
+      "id": 14,
       "type": "PrimitiveInt",
       "pos": [
         2270,
-        115
+        35
       ],
       "size": [
         230,
         85
       ],
       "flags": {},
-      "order": 12,
+      "order": 13,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -631,8 +700,8 @@
           "name": "INT",
           "type": "INT",
           "links": [
-            15,
-            21
+            18,
+            24
           ]
         }
       ],
@@ -646,7 +715,7 @@
       "title": "+X seed"
     },
     {
-      "id": 14,
+      "id": 15,
       "type": "RemoveBackground",
       "pos": [
         2895,
@@ -657,18 +726,18 @@
         89
       ],
       "flags": {},
-      "order": 13,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
           "name": "bg_removal_model",
           "type": "BACKGROUND_REMOVAL",
-          "link": 17
+          "link": 20
         },
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 18
+          "link": 21
         }
       ],
       "outputs": [
@@ -676,7 +745,7 @@
           "name": "mask",
           "type": "MASK",
           "links": [
-            23
+            26
           ]
         }
       ],
@@ -687,7 +756,7 @@
       "title": "+X foreground"
     },
     {
-      "id": 15,
+      "id": 16,
       "type": "BICachedGeneratedFace",
       "pos": [
         3220,
@@ -698,23 +767,23 @@
         240
       ],
       "flags": {},
-      "order": 14,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
           "name": "guides",
           "type": "BOX_GUIDES",
-          "link": 19
+          "link": 22
         },
         {
           "name": "reference",
           "type": "BOX_REFERENCE",
-          "link": 20
+          "link": 23
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 21,
+          "link": 24,
           "widget": {
             "name": "seed"
           }
@@ -722,12 +791,17 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 22
+          "link": 25
         },
         {
           "name": "mask",
           "type": "MASK",
-          "link": 23
+          "link": 26
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "link": 27
         }
       ],
       "outputs": [
@@ -735,7 +809,7 @@
           "name": "BOX_FACE",
           "type": "BOX_FACE",
           "links": [
-            94
+            118
           ]
         }
       ],
@@ -752,7 +826,70 @@
       "title": "+X · keep generated view"
     },
     {
-      "id": 16,
+      "id": 17,
+      "type": "BIModelCanvas",
+      "pos": [
+        2270,
+        480
+      ],
+      "size": [
+        245,
+        145
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference",
+          "type": "IMAGE",
+          "link": 28
+        },
+        {
+          "name": "guide",
+          "type": "IMAGE",
+          "link": 29
+        },
+        {
+          "name": "guides",
+          "type": "BOX_GUIDES",
+          "link": 30
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ref_canvas",
+          "type": "IMAGE",
+          "links": [
+            34
+          ]
+        },
+        {
+          "name": "guide_canvas",
+          "type": "IMAGE",
+          "links": [
+            35
+          ]
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "links": [
+            45
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIModelCanvas"
+      },
+      "widgets_values": [
+        "-X",
+        2048
+      ],
+      "title": "-X · geometric canvas"
+    },
+    {
+      "id": 18,
       "type": "434c4361-74aa-531a-bf12-ccad97c3fc0b",
       "pos": [
         2580,
@@ -763,43 +900,43 @@
         199
       ],
       "flags": {},
-      "order": 15,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
           "name": "model",
           "type": "MODEL",
-          "link": 24
+          "link": 31
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 25
+          "link": 32
         },
         {
           "name": "vae",
           "type": "VAE",
-          "link": 26
+          "link": 33
         },
         {
           "name": "reference",
           "type": "IMAGE",
-          "link": 27
+          "link": 34
         },
         {
           "name": "guide",
           "type": "IMAGE",
-          "link": 28
+          "link": 35
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 29
+          "link": 36
         },
         {
           "name": "ref_first",
           "type": "BOOLEAN",
-          "link": 30
+          "link": 37
         }
       ],
       "outputs": [
@@ -807,8 +944,8 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            32,
-            36
+            39,
+            43
           ]
         }
       ],
@@ -819,18 +956,18 @@
       "title": "Generate -X · H3"
     },
     {
-      "id": 17,
+      "id": 19,
       "type": "PrimitiveInt",
       "pos": [
         2270,
-        440
+        360
       ],
       "size": [
         230,
         85
       ],
       "flags": {},
-      "order": 16,
+      "order": 18,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -838,8 +975,8 @@
           "name": "INT",
           "type": "INT",
           "links": [
-            29,
-            35
+            36,
+            42
           ]
         }
       ],
@@ -853,7 +990,7 @@
       "title": "-X seed"
     },
     {
-      "id": 18,
+      "id": 20,
       "type": "RemoveBackground",
       "pos": [
         2895,
@@ -864,18 +1001,18 @@
         89
       ],
       "flags": {},
-      "order": 17,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
           "name": "bg_removal_model",
           "type": "BACKGROUND_REMOVAL",
-          "link": 31
+          "link": 38
         },
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 32
+          "link": 39
         }
       ],
       "outputs": [
@@ -883,7 +1020,7 @@
           "name": "mask",
           "type": "MASK",
           "links": [
-            37
+            44
           ]
         }
       ],
@@ -894,7 +1031,7 @@
       "title": "-X foreground"
     },
     {
-      "id": 19,
+      "id": 21,
       "type": "BICachedGeneratedFace",
       "pos": [
         3220,
@@ -905,23 +1042,23 @@
         240
       ],
       "flags": {},
-      "order": 18,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
           "name": "guides",
           "type": "BOX_GUIDES",
-          "link": 33
+          "link": 40
         },
         {
           "name": "reference",
           "type": "BOX_REFERENCE",
-          "link": 34
+          "link": 41
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 35,
+          "link": 42,
           "widget": {
             "name": "seed"
           }
@@ -929,12 +1066,17 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 36
+          "link": 43
         },
         {
           "name": "mask",
           "type": "MASK",
-          "link": 37
+          "link": 44
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "link": 45
         }
       ],
       "outputs": [
@@ -942,7 +1084,7 @@
           "name": "BOX_FACE",
           "type": "BOX_FACE",
           "links": [
-            95
+            119
           ]
         }
       ],
@@ -959,7 +1101,70 @@
       "title": "-X · keep generated view"
     },
     {
-      "id": 20,
+      "id": 22,
+      "type": "BIModelCanvas",
+      "pos": [
+        2270,
+        805
+      ],
+      "size": [
+        245,
+        145
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference",
+          "type": "IMAGE",
+          "link": 46
+        },
+        {
+          "name": "guide",
+          "type": "IMAGE",
+          "link": 47
+        },
+        {
+          "name": "guides",
+          "type": "BOX_GUIDES",
+          "link": 48
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ref_canvas",
+          "type": "IMAGE",
+          "links": [
+            52
+          ]
+        },
+        {
+          "name": "guide_canvas",
+          "type": "IMAGE",
+          "links": [
+            53
+          ]
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "links": [
+            63
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIModelCanvas"
+      },
+      "widgets_values": [
+        "+Y",
+        2048
+      ],
+      "title": "+Y · geometric canvas"
+    },
+    {
+      "id": 23,
       "type": "434c4361-74aa-531a-bf12-ccad97c3fc0b",
       "pos": [
         2580,
@@ -970,43 +1175,43 @@
         199
       ],
       "flags": {},
-      "order": 19,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
           "name": "model",
           "type": "MODEL",
-          "link": 38
+          "link": 49
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 39
+          "link": 50
         },
         {
           "name": "vae",
           "type": "VAE",
-          "link": 40
+          "link": 51
         },
         {
           "name": "reference",
           "type": "IMAGE",
-          "link": 41
+          "link": 52
         },
         {
           "name": "guide",
           "type": "IMAGE",
-          "link": 42
+          "link": 53
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 43
+          "link": 54
         },
         {
           "name": "ref_first",
           "type": "BOOLEAN",
-          "link": 44
+          "link": 55
         }
       ],
       "outputs": [
@@ -1014,8 +1219,8 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            46,
-            50
+            57,
+            61
           ]
         }
       ],
@@ -1026,18 +1231,18 @@
       "title": "Generate +Y · H3"
     },
     {
-      "id": 21,
+      "id": 24,
       "type": "PrimitiveInt",
       "pos": [
         2270,
-        765
+        685
       ],
       "size": [
         230,
         85
       ],
       "flags": {},
-      "order": 20,
+      "order": 23,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1045,8 +1250,8 @@
           "name": "INT",
           "type": "INT",
           "links": [
-            43,
-            49
+            54,
+            60
           ]
         }
       ],
@@ -1060,7 +1265,7 @@
       "title": "+Y seed"
     },
     {
-      "id": 22,
+      "id": 25,
       "type": "RemoveBackground",
       "pos": [
         2895,
@@ -1071,18 +1276,18 @@
         89
       ],
       "flags": {},
-      "order": 21,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
           "name": "bg_removal_model",
           "type": "BACKGROUND_REMOVAL",
-          "link": 45
+          "link": 56
         },
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 46
+          "link": 57
         }
       ],
       "outputs": [
@@ -1090,7 +1295,7 @@
           "name": "mask",
           "type": "MASK",
           "links": [
-            51
+            62
           ]
         }
       ],
@@ -1101,7 +1306,7 @@
       "title": "+Y foreground"
     },
     {
-      "id": 23,
+      "id": 26,
       "type": "BICachedGeneratedFace",
       "pos": [
         3220,
@@ -1112,23 +1317,23 @@
         240
       ],
       "flags": {},
-      "order": 22,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
           "name": "guides",
           "type": "BOX_GUIDES",
-          "link": 47
+          "link": 58
         },
         {
           "name": "reference",
           "type": "BOX_REFERENCE",
-          "link": 48
+          "link": 59
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 49,
+          "link": 60,
           "widget": {
             "name": "seed"
           }
@@ -1136,12 +1341,17 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 50
+          "link": 61
         },
         {
           "name": "mask",
           "type": "MASK",
-          "link": 51
+          "link": 62
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "link": 63
         }
       ],
       "outputs": [
@@ -1149,7 +1359,7 @@
           "name": "BOX_FACE",
           "type": "BOX_FACE",
           "links": [
-            96
+            120
           ]
         }
       ],
@@ -1166,7 +1376,70 @@
       "title": "+Y · keep generated view"
     },
     {
-      "id": 24,
+      "id": 27,
+      "type": "BIModelCanvas",
+      "pos": [
+        2270,
+        1130
+      ],
+      "size": [
+        245,
+        145
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference",
+          "type": "IMAGE",
+          "link": 64
+        },
+        {
+          "name": "guide",
+          "type": "IMAGE",
+          "link": 65
+        },
+        {
+          "name": "guides",
+          "type": "BOX_GUIDES",
+          "link": 66
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ref_canvas",
+          "type": "IMAGE",
+          "links": [
+            70
+          ]
+        },
+        {
+          "name": "guide_canvas",
+          "type": "IMAGE",
+          "links": [
+            71
+          ]
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "links": [
+            81
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIModelCanvas"
+      },
+      "widgets_values": [
+        "-Y",
+        2048
+      ],
+      "title": "-Y · geometric canvas"
+    },
+    {
+      "id": 28,
       "type": "434c4361-74aa-531a-bf12-ccad97c3fc0b",
       "pos": [
         2580,
@@ -1177,43 +1450,43 @@
         199
       ],
       "flags": {},
-      "order": 23,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
           "name": "model",
           "type": "MODEL",
-          "link": 52
+          "link": 67
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 53
+          "link": 68
         },
         {
           "name": "vae",
           "type": "VAE",
-          "link": 54
+          "link": 69
         },
         {
           "name": "reference",
           "type": "IMAGE",
-          "link": 55
+          "link": 70
         },
         {
           "name": "guide",
           "type": "IMAGE",
-          "link": 56
+          "link": 71
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 57
+          "link": 72
         },
         {
           "name": "ref_first",
           "type": "BOOLEAN",
-          "link": 58
+          "link": 73
         }
       ],
       "outputs": [
@@ -1221,8 +1494,8 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            60,
-            64
+            75,
+            79
           ]
         }
       ],
@@ -1233,18 +1506,18 @@
       "title": "Generate -Y · H3"
     },
     {
-      "id": 25,
+      "id": 29,
       "type": "PrimitiveInt",
       "pos": [
         2270,
-        1090
+        1010
       ],
       "size": [
         230,
         85
       ],
       "flags": {},
-      "order": 24,
+      "order": 28,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1252,8 +1525,8 @@
           "name": "INT",
           "type": "INT",
           "links": [
-            57,
-            63
+            72,
+            78
           ]
         }
       ],
@@ -1267,7 +1540,7 @@
       "title": "-Y seed"
     },
     {
-      "id": 26,
+      "id": 30,
       "type": "RemoveBackground",
       "pos": [
         2895,
@@ -1278,18 +1551,18 @@
         89
       ],
       "flags": {},
-      "order": 25,
+      "order": 29,
       "mode": 0,
       "inputs": [
         {
           "name": "bg_removal_model",
           "type": "BACKGROUND_REMOVAL",
-          "link": 59
+          "link": 74
         },
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 60
+          "link": 75
         }
       ],
       "outputs": [
@@ -1297,7 +1570,7 @@
           "name": "mask",
           "type": "MASK",
           "links": [
-            65
+            80
           ]
         }
       ],
@@ -1308,7 +1581,7 @@
       "title": "-Y foreground"
     },
     {
-      "id": 27,
+      "id": 31,
       "type": "BICachedGeneratedFace",
       "pos": [
         3220,
@@ -1319,23 +1592,23 @@
         240
       ],
       "flags": {},
-      "order": 26,
+      "order": 30,
       "mode": 0,
       "inputs": [
         {
           "name": "guides",
           "type": "BOX_GUIDES",
-          "link": 61
+          "link": 76
         },
         {
           "name": "reference",
           "type": "BOX_REFERENCE",
-          "link": 62
+          "link": 77
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 63,
+          "link": 78,
           "widget": {
             "name": "seed"
           }
@@ -1343,12 +1616,17 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 64
+          "link": 79
         },
         {
           "name": "mask",
           "type": "MASK",
-          "link": 65
+          "link": 80
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "link": 81
         }
       ],
       "outputs": [
@@ -1356,7 +1634,7 @@
           "name": "BOX_FACE",
           "type": "BOX_FACE",
           "links": [
-            97
+            121
           ]
         }
       ],
@@ -1373,7 +1651,70 @@
       "title": "-Y · keep generated view"
     },
     {
-      "id": 28,
+      "id": 32,
+      "type": "BIModelCanvas",
+      "pos": [
+        2270,
+        1455
+      ],
+      "size": [
+        245,
+        145
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference",
+          "type": "IMAGE",
+          "link": 82
+        },
+        {
+          "name": "guide",
+          "type": "IMAGE",
+          "link": 83
+        },
+        {
+          "name": "guides",
+          "type": "BOX_GUIDES",
+          "link": 84
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ref_canvas",
+          "type": "IMAGE",
+          "links": [
+            88
+          ]
+        },
+        {
+          "name": "guide_canvas",
+          "type": "IMAGE",
+          "links": [
+            89
+          ]
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "links": [
+            99
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIModelCanvas"
+      },
+      "widgets_values": [
+        "+Z",
+        2048
+      ],
+      "title": "+Z · geometric canvas"
+    },
+    {
+      "id": 33,
       "type": "434c4361-74aa-531a-bf12-ccad97c3fc0b",
       "pos": [
         2580,
@@ -1384,43 +1725,43 @@
         199
       ],
       "flags": {},
-      "order": 27,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
           "name": "model",
           "type": "MODEL",
-          "link": 66
+          "link": 85
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 67
+          "link": 86
         },
         {
           "name": "vae",
           "type": "VAE",
-          "link": 68
+          "link": 87
         },
         {
           "name": "reference",
           "type": "IMAGE",
-          "link": 69
+          "link": 88
         },
         {
           "name": "guide",
           "type": "IMAGE",
-          "link": 70
+          "link": 89
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 71
+          "link": 90
         },
         {
           "name": "ref_first",
           "type": "BOOLEAN",
-          "link": 72
+          "link": 91
         }
       ],
       "outputs": [
@@ -1428,8 +1769,8 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            74,
-            78
+            93,
+            97
           ]
         }
       ],
@@ -1440,18 +1781,18 @@
       "title": "Generate +Z · H3"
     },
     {
-      "id": 29,
+      "id": 34,
       "type": "PrimitiveInt",
       "pos": [
         2270,
-        1415
+        1335
       ],
       "size": [
         230,
         85
       ],
       "flags": {},
-      "order": 28,
+      "order": 33,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1459,8 +1800,8 @@
           "name": "INT",
           "type": "INT",
           "links": [
-            71,
-            77
+            90,
+            96
           ]
         }
       ],
@@ -1474,7 +1815,7 @@
       "title": "+Z seed"
     },
     {
-      "id": 30,
+      "id": 35,
       "type": "RemoveBackground",
       "pos": [
         2895,
@@ -1485,18 +1826,18 @@
         89
       ],
       "flags": {},
-      "order": 29,
+      "order": 34,
       "mode": 0,
       "inputs": [
         {
           "name": "bg_removal_model",
           "type": "BACKGROUND_REMOVAL",
-          "link": 73
+          "link": 92
         },
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 74
+          "link": 93
         }
       ],
       "outputs": [
@@ -1504,7 +1845,7 @@
           "name": "mask",
           "type": "MASK",
           "links": [
-            79
+            98
           ]
         }
       ],
@@ -1515,7 +1856,7 @@
       "title": "+Z foreground"
     },
     {
-      "id": 31,
+      "id": 36,
       "type": "BICachedGeneratedFace",
       "pos": [
         3220,
@@ -1526,23 +1867,23 @@
         240
       ],
       "flags": {},
-      "order": 30,
+      "order": 35,
       "mode": 0,
       "inputs": [
         {
           "name": "guides",
           "type": "BOX_GUIDES",
-          "link": 75
+          "link": 94
         },
         {
           "name": "reference",
           "type": "BOX_REFERENCE",
-          "link": 76
+          "link": 95
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 77,
+          "link": 96,
           "widget": {
             "name": "seed"
           }
@@ -1550,12 +1891,17 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 78
+          "link": 97
         },
         {
           "name": "mask",
           "type": "MASK",
-          "link": 79
+          "link": 98
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "link": 99
         }
       ],
       "outputs": [
@@ -1563,7 +1909,7 @@
           "name": "BOX_FACE",
           "type": "BOX_FACE",
           "links": [
-            98
+            122
           ]
         }
       ],
@@ -1580,7 +1926,70 @@
       "title": "+Z · keep generated view"
     },
     {
-      "id": 32,
+      "id": 37,
+      "type": "BIModelCanvas",
+      "pos": [
+        2270,
+        1780
+      ],
+      "size": [
+        245,
+        145
+      ],
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference",
+          "type": "IMAGE",
+          "link": 100
+        },
+        {
+          "name": "guide",
+          "type": "IMAGE",
+          "link": 101
+        },
+        {
+          "name": "guides",
+          "type": "BOX_GUIDES",
+          "link": 102
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ref_canvas",
+          "type": "IMAGE",
+          "links": [
+            106
+          ]
+        },
+        {
+          "name": "guide_canvas",
+          "type": "IMAGE",
+          "links": [
+            107
+          ]
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "links": [
+            117
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIModelCanvas"
+      },
+      "widgets_values": [
+        "-Z",
+        2048
+      ],
+      "title": "-Z · geometric canvas"
+    },
+    {
+      "id": 38,
       "type": "434c4361-74aa-531a-bf12-ccad97c3fc0b",
       "pos": [
         2580,
@@ -1591,43 +2000,43 @@
         199
       ],
       "flags": {},
-      "order": 31,
+      "order": 37,
       "mode": 0,
       "inputs": [
         {
           "name": "model",
           "type": "MODEL",
-          "link": 80
+          "link": 103
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 81
+          "link": 104
         },
         {
           "name": "vae",
           "type": "VAE",
-          "link": 82
+          "link": 105
         },
         {
           "name": "reference",
           "type": "IMAGE",
-          "link": 83
+          "link": 106
         },
         {
           "name": "guide",
           "type": "IMAGE",
-          "link": 84
+          "link": 107
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 85
+          "link": 108
         },
         {
           "name": "ref_first",
           "type": "BOOLEAN",
-          "link": 86
+          "link": 109
         }
       ],
       "outputs": [
@@ -1635,8 +2044,8 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            88,
-            92
+            111,
+            115
           ]
         }
       ],
@@ -1647,18 +2056,18 @@
       "title": "Generate -Z · H3"
     },
     {
-      "id": 33,
+      "id": 39,
       "type": "PrimitiveInt",
       "pos": [
         2270,
-        1740
+        1660
       ],
       "size": [
         230,
         85
       ],
       "flags": {},
-      "order": 32,
+      "order": 38,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1666,8 +2075,8 @@
           "name": "INT",
           "type": "INT",
           "links": [
-            85,
-            91
+            108,
+            114
           ]
         }
       ],
@@ -1681,7 +2090,7 @@
       "title": "-Z seed"
     },
     {
-      "id": 34,
+      "id": 40,
       "type": "RemoveBackground",
       "pos": [
         2895,
@@ -1692,18 +2101,18 @@
         89
       ],
       "flags": {},
-      "order": 33,
+      "order": 39,
       "mode": 0,
       "inputs": [
         {
           "name": "bg_removal_model",
           "type": "BACKGROUND_REMOVAL",
-          "link": 87
+          "link": 110
         },
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 88
+          "link": 111
         }
       ],
       "outputs": [
@@ -1711,7 +2120,7 @@
           "name": "mask",
           "type": "MASK",
           "links": [
-            93
+            116
           ]
         }
       ],
@@ -1722,7 +2131,7 @@
       "title": "-Z foreground"
     },
     {
-      "id": 35,
+      "id": 41,
       "type": "BICachedGeneratedFace",
       "pos": [
         3220,
@@ -1733,23 +2142,23 @@
         240
       ],
       "flags": {},
-      "order": 34,
+      "order": 40,
       "mode": 0,
       "inputs": [
         {
           "name": "guides",
           "type": "BOX_GUIDES",
-          "link": 89
+          "link": 112
         },
         {
           "name": "reference",
           "type": "BOX_REFERENCE",
-          "link": 90
+          "link": 113
         },
         {
           "name": "seed",
           "type": "INT",
-          "link": 91,
+          "link": 114,
           "widget": {
             "name": "seed"
           }
@@ -1757,12 +2166,17 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 92
+          "link": 115
         },
         {
           "name": "mask",
           "type": "MASK",
-          "link": 93
+          "link": 116
+        },
+        {
+          "name": "canvas",
+          "type": "BOX_CANVAS",
+          "link": 117
         }
       ],
       "outputs": [
@@ -1770,7 +2184,7 @@
           "name": "BOX_FACE",
           "type": "BOX_FACE",
           "links": [
-            99
+            123
           ]
         }
       ],
@@ -1787,7 +2201,7 @@
       "title": "-Z · keep generated view"
     },
     {
-      "id": 36,
+      "id": 42,
       "type": "BIFaceInputs",
       "pos": [
         3610,
@@ -1798,38 +2212,38 @@
         177
       ],
       "flags": {},
-      "order": 35,
+      "order": 41,
       "mode": 0,
       "inputs": [
         {
           "name": "px",
           "type": "BOX_FACE",
-          "link": 94
+          "link": 118
         },
         {
           "name": "nx",
           "type": "BOX_FACE",
-          "link": 95
+          "link": 119
         },
         {
           "name": "py",
           "type": "BOX_FACE",
-          "link": 96
+          "link": 120
         },
         {
           "name": "ny",
           "type": "BOX_FACE",
-          "link": 97
+          "link": 121
         },
         {
           "name": "pz",
           "type": "BOX_FACE",
-          "link": 98
+          "link": 122
         },
         {
           "name": "nz",
           "type": "BOX_FACE",
-          "link": 99
+          "link": 123
         }
       ],
       "outputs": [
@@ -1837,7 +2251,7 @@
           "name": "BOX_FACES",
           "type": "BOX_FACES",
           "links": [
-            100
+            124
           ]
         }
       ],
@@ -1847,7 +2261,7 @@
       "widgets_values": []
     },
     {
-      "id": 37,
+      "id": 43,
       "type": "BIAlignAndValidateFaces",
       "pos": [
         3930,
@@ -1858,18 +2272,18 @@
         155
       ],
       "flags": {},
-      "order": 36,
+      "order": 42,
       "mode": 0,
       "inputs": [
         {
           "name": "faces",
           "type": "BOX_FACES",
-          "link": 100
+          "link": 124
         },
         {
           "name": "guides",
           "type": "BOX_GUIDES",
-          "link": 101
+          "link": 125
         }
       ],
       "outputs": [
@@ -1877,7 +2291,7 @@
           "name": "BOX_ALIGNED_FACES",
           "type": "BOX_ALIGNED_FACES",
           "links": [
-            103
+            127
           ]
         }
       ],
@@ -1891,7 +2305,7 @@
       ]
     },
     {
-      "id": 38,
+      "id": 44,
       "type": "BIBakeBox",
       "pos": [
         4255,
@@ -1902,18 +2316,18 @@
         133
       ],
       "flags": {},
-      "order": 37,
+      "order": 43,
       "mode": 0,
       "inputs": [
         {
           "name": "proxy",
           "type": "BOX_PROXY",
-          "link": 102
+          "link": 126
         },
         {
           "name": "faces",
           "type": "BOX_ALIGNED_FACES",
-          "link": 103
+          "link": 127
         }
       ],
       "outputs": [
@@ -1921,8 +2335,8 @@
           "name": "BOX_IMPOSTOR",
           "type": "BOX_IMPOSTOR",
           "links": [
-            104,
-            105
+            128,
+            129
           ]
         }
       ],
@@ -1935,7 +2349,7 @@
       ]
     },
     {
-      "id": 39,
+      "id": 45,
       "type": "BIPreviewBox",
       "pos": [
         4595,
@@ -1946,13 +2360,13 @@
         89
       ],
       "flags": {},
-      "order": 38,
+      "order": 44,
       "mode": 0,
       "inputs": [
         {
           "name": "asset",
           "type": "BOX_IMPOSTOR",
-          "link": 104
+          "link": 128
         }
       ],
       "outputs": [
@@ -1973,7 +2387,7 @@
       "widgets_values": []
     },
     {
-      "id": 40,
+      "id": 46,
       "type": "BISaveBox",
       "pos": [
         4595,
@@ -1984,13 +2398,13 @@
         89
       ],
       "flags": {},
-      "order": 39,
+      "order": 45,
       "mode": 0,
       "inputs": [
         {
           "name": "asset",
           "type": "BOX_IMPOSTOR",
-          "link": 105
+          "link": 129
         }
       ],
       "outputs": [
@@ -2083,454 +2497,462 @@
     ],
     [
       10,
-      9,
+      5,
+      1,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      11,
+      7,
       0,
       12,
+      1,
+      "IMAGE"
+    ],
+    [
+      12,
+      7,
+      6,
+      12,
+      2,
+      "BOX_GUIDES"
+    ],
+    [
+      13,
+      9,
+      0,
+      13,
       0,
       "MODEL"
     ],
     [
-      11,
+      14,
       10,
       0,
-      12,
+      13,
       1,
       "CLIP"
     ],
     [
-      12,
+      15,
       11,
       0,
-      12,
+      13,
       2,
       "VAE"
     ],
     [
-      13,
-      5,
-      1,
+      16,
       12,
+      0,
+      13,
       3,
       "IMAGE"
     ],
     [
-      14,
-      7,
-      0,
+      17,
       12,
+      1,
+      13,
       4,
       "IMAGE"
     ],
     [
-      15,
-      13,
+      18,
+      14,
       0,
-      12,
+      13,
       5,
       "INT"
     ],
     [
-      16,
+      19,
       8,
       0,
-      12,
+      13,
       6,
       "BOOLEAN"
     ],
     [
-      17,
+      20,
       3,
       0,
-      14,
+      15,
       0,
       "BACKGROUND_REMOVAL"
-    ],
-    [
-      18,
-      12,
-      0,
-      14,
-      1,
-      "IMAGE"
-    ],
-    [
-      19,
-      7,
-      6,
-      15,
-      0,
-      "BOX_GUIDES"
-    ],
-    [
-      20,
-      2,
-      2,
-      15,
-      1,
-      "BOX_REFERENCE"
     ],
     [
       21,
       13,
       0,
       15,
+      1,
+      "IMAGE"
+    ],
+    [
+      22,
+      7,
+      6,
+      16,
+      0,
+      "BOX_GUIDES"
+    ],
+    [
+      23,
+      2,
+      2,
+      16,
+      1,
+      "BOX_REFERENCE"
+    ],
+    [
+      24,
+      14,
+      0,
+      16,
       2,
       "INT"
     ],
     [
-      22,
-      12,
+      25,
+      13,
       0,
-      15,
+      16,
       3,
       "IMAGE"
     ],
     [
-      23,
-      14,
-      0,
+      26,
       15,
+      0,
+      16,
       4,
       "MASK"
     ],
     [
-      24,
-      9,
-      0,
-      16,
-      0,
-      "MODEL"
-    ],
-    [
-      25,
-      10,
-      0,
-      16,
-      1,
-      "CLIP"
-    ],
-    [
-      26,
-      11,
-      0,
-      16,
-      2,
-      "VAE"
-    ],
-    [
       27,
-      5,
-      1,
+      12,
+      2,
       16,
-      3,
-      "IMAGE"
+      5,
+      "BOX_CANVAS"
     ],
     [
       28,
-      7,
+      5,
       1,
-      16,
-      4,
+      17,
+      0,
       "IMAGE"
     ],
     [
       29,
+      7,
+      1,
       17,
-      0,
-      16,
-      5,
-      "INT"
+      1,
+      "IMAGE"
     ],
     [
       30,
-      8,
-      0,
-      16,
-      6,
-      "BOOLEAN"
-    ],
-    [
-      31,
-      3,
-      0,
-      18,
-      0,
-      "BACKGROUND_REMOVAL"
-    ],
-    [
-      32,
-      16,
-      0,
-      18,
-      1,
-      "IMAGE"
-    ],
-    [
-      33,
       7,
       6,
-      19,
-      0,
+      17,
+      2,
       "BOX_GUIDES"
     ],
     [
-      34,
-      2,
-      2,
-      19,
-      1,
-      "BOX_REFERENCE"
-    ],
-    [
-      35,
-      17,
-      0,
-      19,
-      2,
-      "INT"
-    ],
-    [
-      36,
-      16,
-      0,
-      19,
-      3,
-      "IMAGE"
-    ],
-    [
-      37,
-      18,
-      0,
-      19,
-      4,
-      "MASK"
-    ],
-    [
-      38,
+      31,
       9,
       0,
-      20,
+      18,
       0,
       "MODEL"
     ],
     [
-      39,
+      32,
       10,
       0,
-      20,
+      18,
       1,
       "CLIP"
     ],
     [
-      40,
+      33,
       11,
       0,
-      20,
+      18,
       2,
       "VAE"
     ],
     [
-      41,
-      5,
-      1,
-      20,
+      34,
+      17,
+      0,
+      18,
       3,
       "IMAGE"
     ],
     [
-      42,
-      7,
-      2,
-      20,
+      35,
+      17,
+      1,
+      18,
       4,
       "IMAGE"
     ],
     [
-      43,
-      21,
+      36,
+      19,
       0,
-      20,
+      18,
       5,
       "INT"
     ],
     [
-      44,
+      37,
       8,
       0,
-      20,
+      18,
       6,
       "BOOLEAN"
     ],
     [
-      45,
+      38,
       3,
       0,
-      22,
+      20,
       0,
       "BACKGROUND_REMOVAL"
     ],
     [
-      46,
+      39,
+      18,
+      0,
+      20,
+      1,
+      "IMAGE"
+    ],
+    [
+      40,
+      7,
+      6,
+      21,
+      0,
+      "BOX_GUIDES"
+    ],
+    [
+      41,
+      2,
+      2,
+      21,
+      1,
+      "BOX_REFERENCE"
+    ],
+    [
+      42,
+      19,
+      0,
+      21,
+      2,
+      "INT"
+    ],
+    [
+      43,
+      18,
+      0,
+      21,
+      3,
+      "IMAGE"
+    ],
+    [
+      44,
       20,
       0,
-      22,
+      21,
+      4,
+      "MASK"
+    ],
+    [
+      45,
+      17,
+      2,
+      21,
+      5,
+      "BOX_CANVAS"
+    ],
+    [
+      46,
+      5,
       1,
+      22,
+      0,
       "IMAGE"
     ],
     [
       47,
       7,
-      6,
-      23,
-      0,
-      "BOX_GUIDES"
-    ],
-    [
-      48,
       2,
-      2,
-      23,
+      22,
       1,
-      "BOX_REFERENCE"
-    ],
-    [
-      49,
-      21,
-      0,
-      23,
-      2,
-      "INT"
-    ],
-    [
-      50,
-      20,
-      0,
-      23,
-      3,
       "IMAGE"
     ],
     [
-      51,
+      48,
+      7,
+      6,
       22,
-      0,
-      23,
-      4,
-      "MASK"
+      2,
+      "BOX_GUIDES"
     ],
     [
-      52,
+      49,
       9,
       0,
-      24,
+      23,
       0,
       "MODEL"
     ],
     [
-      53,
+      50,
       10,
       0,
-      24,
+      23,
       1,
       "CLIP"
     ],
     [
-      54,
+      51,
       11,
       0,
-      24,
+      23,
       2,
       "VAE"
     ],
     [
-      55,
-      5,
-      1,
-      24,
+      52,
+      22,
+      0,
+      23,
       3,
       "IMAGE"
     ],
     [
-      56,
-      7,
-      3,
-      24,
+      53,
+      22,
+      1,
+      23,
       4,
       "IMAGE"
     ],
     [
-      57,
-      25,
-      0,
+      54,
       24,
+      0,
+      23,
       5,
       "INT"
     ],
     [
-      58,
+      55,
       8,
       0,
-      24,
+      23,
       6,
       "BOOLEAN"
     ],
     [
-      59,
+      56,
       3,
       0,
-      26,
+      25,
       0,
       "BACKGROUND_REMOVAL"
+    ],
+    [
+      57,
+      23,
+      0,
+      25,
+      1,
+      "IMAGE"
+    ],
+    [
+      58,
+      7,
+      6,
+      26,
+      0,
+      "BOX_GUIDES"
+    ],
+    [
+      59,
+      2,
+      2,
+      26,
+      1,
+      "BOX_REFERENCE"
     ],
     [
       60,
       24,
       0,
       26,
-      1,
-      "IMAGE"
-    ],
-    [
-      61,
-      7,
-      6,
-      27,
-      0,
-      "BOX_GUIDES"
-    ],
-    [
-      62,
-      2,
-      2,
-      27,
-      1,
-      "BOX_REFERENCE"
-    ],
-    [
-      63,
-      25,
-      0,
-      27,
       2,
       "INT"
     ],
     [
-      64,
-      24,
+      61,
+      23,
       0,
-      27,
+      26,
       3,
       "IMAGE"
     ],
     [
-      65,
-      26,
+      62,
+      25,
       0,
-      27,
+      26,
       4,
       "MASK"
     ],
     [
+      63,
+      22,
+      2,
+      26,
+      5,
+      "BOX_CANVAS"
+    ],
+    [
+      64,
+      5,
+      1,
+      27,
+      0,
+      "IMAGE"
+    ],
+    [
+      65,
+      7,
+      3,
+      27,
+      1,
+      "IMAGE"
+    ],
+    [
       66,
+      7,
+      6,
+      27,
+      2,
+      "BOX_GUIDES"
+    ],
+    [
+      67,
       9,
       0,
       28,
@@ -2538,7 +2960,7 @@
       "MODEL"
     ],
     [
-      67,
+      68,
       10,
       0,
       28,
@@ -2546,7 +2968,7 @@
       "CLIP"
     ],
     [
-      68,
+      69,
       11,
       0,
       28,
@@ -2554,23 +2976,23 @@
       "VAE"
     ],
     [
-      69,
-      5,
-      1,
+      70,
+      27,
+      0,
       28,
       3,
       "IMAGE"
     ],
     [
-      70,
-      7,
-      4,
+      71,
+      27,
+      1,
       28,
       4,
       "IMAGE"
     ],
     [
-      71,
+      72,
       29,
       0,
       28,
@@ -2578,7 +3000,7 @@
       "INT"
     ],
     [
-      72,
+      73,
       8,
       0,
       28,
@@ -2586,7 +3008,7 @@
       "BOOLEAN"
     ],
     [
-      73,
+      74,
       3,
       0,
       30,
@@ -2594,7 +3016,7 @@
       "BACKGROUND_REMOVAL"
     ],
     [
-      74,
+      75,
       28,
       0,
       30,
@@ -2602,7 +3024,7 @@
       "IMAGE"
     ],
     [
-      75,
+      76,
       7,
       6,
       31,
@@ -2610,7 +3032,7 @@
       "BOX_GUIDES"
     ],
     [
-      76,
+      77,
       2,
       2,
       31,
@@ -2618,7 +3040,7 @@
       "BOX_REFERENCE"
     ],
     [
-      77,
+      78,
       29,
       0,
       31,
@@ -2626,7 +3048,7 @@
       "INT"
     ],
     [
-      78,
+      79,
       28,
       0,
       31,
@@ -2634,7 +3056,7 @@
       "IMAGE"
     ],
     [
-      79,
+      80,
       30,
       0,
       31,
@@ -2642,210 +3064,394 @@
       "MASK"
     ],
     [
-      80,
-      9,
-      0,
-      32,
-      0,
-      "MODEL"
-    ],
-    [
       81,
-      10,
-      0,
-      32,
-      1,
-      "CLIP"
+      27,
+      2,
+      31,
+      5,
+      "BOX_CANVAS"
     ],
     [
       82,
-      11,
-      0,
-      32,
-      2,
-      "VAE"
-    ],
-    [
-      83,
       5,
       1,
       32,
-      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      83,
+      7,
+      4,
+      32,
+      1,
       "IMAGE"
     ],
     [
       84,
       7,
-      5,
+      6,
       32,
-      4,
-      "IMAGE"
+      2,
+      "BOX_GUIDES"
     ],
     [
       85,
+      9,
+      0,
       33,
       0,
-      32,
-      5,
-      "INT"
+      "MODEL"
     ],
     [
       86,
-      8,
+      10,
       0,
-      32,
-      6,
-      "BOOLEAN"
+      33,
+      1,
+      "CLIP"
     ],
     [
       87,
-      3,
+      11,
       0,
-      34,
-      0,
-      "BACKGROUND_REMOVAL"
+      33,
+      2,
+      "VAE"
     ],
     [
       88,
       32,
       0,
-      34,
-      1,
+      33,
+      3,
       "IMAGE"
     ],
     [
       89,
+      32,
+      1,
+      33,
+      4,
+      "IMAGE"
+    ],
+    [
+      90,
+      34,
+      0,
+      33,
+      5,
+      "INT"
+    ],
+    [
+      91,
+      8,
+      0,
+      33,
+      6,
+      "BOOLEAN"
+    ],
+    [
+      92,
+      3,
+      0,
+      35,
+      0,
+      "BACKGROUND_REMOVAL"
+    ],
+    [
+      93,
+      33,
+      0,
+      35,
+      1,
+      "IMAGE"
+    ],
+    [
+      94,
       7,
       6,
-      35,
+      36,
       0,
       "BOX_GUIDES"
     ],
     [
-      90,
+      95,
       2,
       2,
-      35,
+      36,
       1,
       "BOX_REFERENCE"
     ],
     [
-      91,
-      33,
+      96,
+      34,
       0,
-      35,
+      36,
       2,
       "INT"
     ],
     [
-      92,
-      32,
+      97,
+      33,
       0,
-      35,
+      36,
       3,
       "IMAGE"
     ],
     [
-      93,
-      34,
-      0,
+      98,
       35,
+      0,
+      36,
       4,
       "MASK"
     ],
     [
-      94,
-      15,
-      0,
-      36,
-      0,
-      "BOX_FACE"
-    ],
-    [
-      95,
-      19,
-      0,
-      36,
-      1,
-      "BOX_FACE"
-    ],
-    [
-      96,
-      23,
-      0,
-      36,
-      2,
-      "BOX_FACE"
-    ],
-    [
-      97,
-      27,
-      0,
-      36,
-      3,
-      "BOX_FACE"
-    ],
-    [
-      98,
-      31,
-      0,
-      36,
-      4,
-      "BOX_FACE"
-    ],
-    [
       99,
-      35,
-      0,
+      32,
+      2,
       36,
       5,
-      "BOX_FACE"
+      "BOX_CANVAS"
     ],
     [
       100,
-      36,
-      0,
+      5,
+      1,
       37,
       0,
-      "BOX_FACES"
+      "IMAGE"
     ],
     [
       101,
       7,
+      5,
+      37,
+      1,
+      "IMAGE"
+    ],
+    [
+      102,
+      7,
       6,
       37,
+      2,
+      "BOX_GUIDES"
+    ],
+    [
+      103,
+      9,
+      0,
+      38,
+      0,
+      "MODEL"
+    ],
+    [
+      104,
+      10,
+      0,
+      38,
+      1,
+      "CLIP"
+    ],
+    [
+      105,
+      11,
+      0,
+      38,
+      2,
+      "VAE"
+    ],
+    [
+      106,
+      37,
+      0,
+      38,
+      3,
+      "IMAGE"
+    ],
+    [
+      107,
+      37,
+      1,
+      38,
+      4,
+      "IMAGE"
+    ],
+    [
+      108,
+      39,
+      0,
+      38,
+      5,
+      "INT"
+    ],
+    [
+      109,
+      8,
+      0,
+      38,
+      6,
+      "BOOLEAN"
+    ],
+    [
+      110,
+      3,
+      0,
+      40,
+      0,
+      "BACKGROUND_REMOVAL"
+    ],
+    [
+      111,
+      38,
+      0,
+      40,
+      1,
+      "IMAGE"
+    ],
+    [
+      112,
+      7,
+      6,
+      41,
+      0,
+      "BOX_GUIDES"
+    ],
+    [
+      113,
+      2,
+      2,
+      41,
+      1,
+      "BOX_REFERENCE"
+    ],
+    [
+      114,
+      39,
+      0,
+      41,
+      2,
+      "INT"
+    ],
+    [
+      115,
+      38,
+      0,
+      41,
+      3,
+      "IMAGE"
+    ],
+    [
+      116,
+      40,
+      0,
+      41,
+      4,
+      "MASK"
+    ],
+    [
+      117,
+      37,
+      2,
+      41,
+      5,
+      "BOX_CANVAS"
+    ],
+    [
+      118,
+      16,
+      0,
+      42,
+      0,
+      "BOX_FACE"
+    ],
+    [
+      119,
+      21,
+      0,
+      42,
+      1,
+      "BOX_FACE"
+    ],
+    [
+      120,
+      26,
+      0,
+      42,
+      2,
+      "BOX_FACE"
+    ],
+    [
+      121,
+      31,
+      0,
+      42,
+      3,
+      "BOX_FACE"
+    ],
+    [
+      122,
+      36,
+      0,
+      42,
+      4,
+      "BOX_FACE"
+    ],
+    [
+      123,
+      41,
+      0,
+      42,
+      5,
+      "BOX_FACE"
+    ],
+    [
+      124,
+      42,
+      0,
+      43,
+      0,
+      "BOX_FACES"
+    ],
+    [
+      125,
+      7,
+      6,
+      43,
       1,
       "BOX_GUIDES"
     ],
     [
-      102,
+      126,
       6,
       0,
-      38,
+      44,
       0,
       "BOX_PROXY"
     ],
     [
-      103,
-      37,
+      127,
+      43,
       0,
-      38,
+      44,
       1,
       "BOX_ALIGNED_FACES"
     ],
     [
-      104,
-      38,
+      128,
+      44,
       0,
-      39,
+      45,
       0,
       "BOX_IMPOSTOR"
     ],
     [
-      105,
-      38,
+      129,
+      44,
       0,
-      40,
+      46,
       0,
       "BOX_IMPOSTOR"
     ]
@@ -5661,8 +6267,8 @@
             },
             "widgets_values": [
               "Refine the orthographic object in <Picture 1>. Preserve its exact silhouette, framing, orientation and flat background. Transfer surface colors and markings from <Picture 2>. Keep the lighting neutral.",
-              1024,
-              1024
+              2048,
+              2048
             ]
           },
           {

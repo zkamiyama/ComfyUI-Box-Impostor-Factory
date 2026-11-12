@@ -187,19 +187,36 @@ async function run() {
   const faceReports=Object.values(manifest.faces||{}).map(f=>f.edit?.status);
   const fallback=faceReports.filter(s=>s==='fallback').length;
   el('status').textContent=[backendName(renderer),manifest.mode,'R='+manifest.resolution,fallback ? '元の色へ戻した面 '+fallback : ''].filter(Boolean).join(' · ');
+  let closing=false;
+  if (renderer.backend.isWebGPUBackend) renderer.backend.device.lost.then(info => {
+    if (closing) return;
+    renderer.setAnimationLoop(null);
+    const fallbackURL=new URL(location.href);
+    fallbackURL.searchParams.set('backend','webgl2');
+    if (!params.has('backend') || params.get('backend')==='auto') {
+      location.replace(fallbackURL);
+      return;
+    }
+    showError(new Error('WebGPU デバイスを失いました。'+(info.message || info.reason || '')));
+    const link=document.createElement('a');
+    link.href=fallbackURL.href; link.textContent='WebGL2 で開く'; link.style.color='inherit';
+    el('status').append(' ',link);
+  });
   renderer.setAnimationLoop(render);
   window.addEventListener('pagehide',() => {
-    renderer.setAnimationLoop(null); controls.dispose();
+    closing=true;renderer.setAnimationLoop(null); controls.dispose();
     active.dispose(); baseline?.dispose();
     disposeProxy(proxy);
     renderer.dispose();
   },{once:true});
 }
 
-run().catch(error => {
+function showError(error) {
   console.error(error);
   el('status').textContent='表示エラー  '+error.message;
   el('status').classList.add('error');
   document.querySelector('.controls').hidden=true;
   el('help').hidden=true;
-});
+}
+
+run().catch(showError);

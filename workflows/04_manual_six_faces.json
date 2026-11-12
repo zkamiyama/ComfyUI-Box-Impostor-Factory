@@ -168,7 +168,7 @@
       ],
       "size": [
         265,
-        111
+        133
       ],
       "flags": {},
       "order": 3,
@@ -198,7 +198,8 @@
         "Node name for S&R": "BIFaceImage"
       },
       "widgets_values": [
-        "load_image"
+        "load_image",
+        "{}"
       ],
       "title": "+X foreground from PNG alpha"
     },
@@ -251,7 +252,7 @@
       ],
       "size": [
         265,
-        111
+        133
       ],
       "flags": {},
       "order": 5,
@@ -281,7 +282,8 @@
         "Node name for S&R": "BIFaceImage"
       },
       "widgets_values": [
-        "load_image"
+        "load_image",
+        "{}"
       ],
       "title": "-X foreground from PNG alpha"
     },
@@ -334,7 +336,7 @@
       ],
       "size": [
         265,
-        111
+        133
       ],
       "flags": {},
       "order": 7,
@@ -364,7 +366,8 @@
         "Node name for S&R": "BIFaceImage"
       },
       "widgets_values": [
-        "load_image"
+        "load_image",
+        "{}"
       ],
       "title": "+Y foreground from PNG alpha"
     },
@@ -417,7 +420,7 @@
       ],
       "size": [
         265,
-        111
+        133
       ],
       "flags": {},
       "order": 9,
@@ -447,7 +450,8 @@
         "Node name for S&R": "BIFaceImage"
       },
       "widgets_values": [
-        "load_image"
+        "load_image",
+        "{}"
       ],
       "title": "-Y foreground from PNG alpha"
     },
@@ -500,7 +504,7 @@
       ],
       "size": [
         265,
-        111
+        133
       ],
       "flags": {},
       "order": 11,
@@ -530,7 +534,8 @@
         "Node name for S&R": "BIFaceImage"
       },
       "widgets_values": [
-        "load_image"
+        "load_image",
+        "{}"
       ],
       "title": "+Z foreground from PNG alpha"
     },
@@ -583,7 +588,7 @@
       ],
       "size": [
         265,
-        111
+        133
       ],
       "flags": {},
       "order": 13,
@@ -613,7 +618,8 @@
         "Node name for S&R": "BIFaceImage"
       },
       "widgets_values": [
-        "load_image"
+        "load_image",
+        "{}"
       ],
       "title": "-Z foreground from PNG alpha"
     },

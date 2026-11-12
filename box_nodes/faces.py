@@ -143,28 +143,59 @@ def align(faces, guide_id, min_iou, max_shift, max_scale_change):
         if face_id not in SLUGS:
             raise ValueError('Unknown face: ' + face_id)
         guide_path = store.contained(directory, manifest['faces'][face_id]['guide'])
-        digest = store.key('align-v1', source['sha256'], face_id, store.file_hash(guide_path), min_iou, max_shift, max_scale_change)
-        def write(stage):
+        canvas = source.get('provenance', {}).get('canvas')
+        if canvas is not None and canvas.get('faceId') != face_id:
+            raise ValueError('Generation canvas belongs to a different face.')
+        measurement = store.key('face-measure-v2', source['sha256'], face_id, store.file_hash(guide_path), canvas)
+        def measure(stage):
             data = np.load(Path(source['path']) / 'source.npy', allow_pickle=False)
+            original_size = [data.shape[1], data.shape[0]]
+            if canvas is not None:
+                if data.shape[0] != data.shape[1]:
+                    report = {'status': 'fallback', 'reason': 'generation-canvas-aspect', 'originalSize': original_size, 'guideCanvas': canvas}
+                    (stage / 'report.json').write_text(json.dumps(report), encoding='utf-8')
+                    return
+                from .canvas import undo_guide_canvas
+                data = undo_guide_canvas(data, canvas)
             with Image.open(guide_path) as guide_png:
                 if 'A' not in guide_png.getbands():
-                    raise ValueError('Face guide must include Baker coverage as alpha.')
+                    raise ValueError('Face guide must include capture coverage as alpha.')
                 guide = np.asarray(guide_png.getchannel('A'), dtype=np.float32) / 255
-            result, report = align_one(data, guide, min_iou, max_shift, max_scale_change)
-            report['thresholds'] = {'minIoU': min_iou, 'maxShiftFraction': max_shift, 'maxScaleChange': max_scale_change}
+            # Measure once up to the widest limits offered by the node widgets.
+            result, report = align_one(data, guide, 0., 1., 1.)
+            report['originalSize'] = original_size
+            report['guideCanvas'] = canvas
             if result is not None:
                 np.save(stage / 'aligned.npy', result, allow_pickle=False)
             (stage / 'report.json').write_text(json.dumps(report, allow_nan=False), encoding='utf-8')
-        output = cache_dir('align', digest, write)
-        aligned[face_id] = {'key': digest, 'source': source, 'directory': str(output)}
+        measured = cache_dir('measure', measurement, measure)
+        digest = store.key('admission-v1', measurement, min_iou, max_shift, max_scale_change)
+        def decide(stage):
+            report = json.loads((measured / 'report.json').read_bytes())
+            report['thresholds'] = {'minIoU': min_iou, 'maxShiftFraction': max_shift, 'maxScaleChange': max_scale_change}
+            if report['status'] == 'accepted':
+                reg = report['registration']
+                w, h = report['tileSize']
+                dy, dx = reg['centerShiftYX']
+                if max(abs(dx)/w, abs(dy)/h) > max_shift or abs(reg['scale'] - 1) > max_scale_change:
+                    report.update(status='fallback', reason='transform-limit')
+                elif report['after']['iou'] < min_iou:
+                    report.update(status='fallback', reason='silhouette-iou')
+            (stage / 'report.json').write_text(json.dumps(report, allow_nan=False), encoding='utf-8')
+        output = cache_dir('align', digest, decide)
+        aligned[face_id] = {'key': digest, 'source': source, 'directory': str(output), 'measured': str(measured)}
     return {'baseline': guide_id, 'faces': aligned}
 
 
-def replace_tile(atlas, face_id, candidate):
+def tile_view(atlas, face_id):
     r = atlas.shape[1] // 3
     idx = store.FACES.index(face_id)
     row, col = divmod(idx, 3)
-    tile = atlas[row*r:(row+1)*r, col*r:(col+1)*r]
+    return atlas[row*r:(row+1)*r, col*r:(col+1)*r]
+
+
+def replace_tile(atlas, face_id, candidate):
+    tile = tile_view(atlas, face_id)
     candidate = candidate[::-1]  # top-origin PNG to increasing shader V
     w = candidate[..., 3:4]
     blend = tile[..., :3].astype(np.float32) * (1 - w) + candidate[..., :3] * tile[..., 3:4].astype(np.float32) * w
@@ -180,38 +211,63 @@ def compose(baseline, aligned):
     provenance = {fid: item['source'].get('provenance', {}) for fid, item in aligned['faces'].items()}
     models = {item.get('backend', 'manual_faces') for item in provenance.values()}
     mode = next(iter(models)) if len(models) == 1 else 'manual_faces'
-    asset_id = store.key('compose-v2', multiview.VERSION, baseline, mode, provenance, {fid: item['key'] for fid, item in aligned['faces'].items()})
+    asset_id = store.key('compose-v3', multiview.VERSION, baseline, mode, provenance, {fid: item['key'] for fid, item in aligned['faces'].items()})
     source = store.asset_dir(baseline)
     def write(stage):
         shutil.copytree(source, stage, ignore=shutil.ignore_patterns('previews'))
         manifest = store.validate(stage, baseline, check_bytes=False)
         base = manifest['baseColor']
-        atlas = np.fromfile(store.contained(stage, base['path']), dtype='<f2').reshape(base['height'], base['width'], 4)
-        reports = {}
+        shape = (base['height'], base['width'], 4)
+        backup = np.memmap(store.contained(stage, base['path']), dtype='<f2', mode='r', shape=shape)
+        current = manifest['textures']['colorMap']
+        atlas = np.fromfile(store.contained(stage, current['path']), dtype='<f2').reshape(shape)
+        prior_qa = manifest.get('qa')
+        reports = json.loads(store.contained(stage, prior_qa).read_bytes()).get('faces', {}) if prior_qa else {}
         for face_id in store.FACES:
             item = aligned['faces'].get(face_id)
             if item is None:
-                reports[face_id] = {'status': 'baseline', 'reason': 'not-supplied'}
+                reports.setdefault(face_id, {'status': 'baseline', 'reason': 'not-supplied'})
                 continue
             folder = Path(item['directory'])
             report = json.loads((folder / 'report.json').read_bytes())
             rel = f'views/{SLUGS[face_id]}'
             view = stage / rel
+            if view.is_dir():
+                shutil.rmtree(view)
             view.mkdir(parents=True, exist_ok=True)
             for name in ('source.png', 'source.npy'):
                 shutil.copyfile(Path(item['source']['path']) / name, view / name)
+            tile_view(atlas, face_id)[:] = tile_view(backup, face_id)
             if report['status'] == 'accepted':
-                candidate = np.load(folder / 'aligned.npy', allow_pickle=False)
+                measured = Path(item['measured']) / 'aligned.npy'
+                candidate = np.load(measured, allow_pickle=False)
                 replace_tile(atlas, face_id, candidate)
-                shutil.copyfile(folder / 'aligned.npy', view / 'aligned.npy')
+                shutil.copyfile(measured, view / 'aligned.npy')
             reports[face_id] = report
-            manifest['faces'][face_id]['edit'] = {'status': report['status'], 'reason': report['reason'], 'source': provenance[face_id].get('backend', 'manual_faces'), 'provenance': provenance[face_id], 'view': rel + '/source.png'}
+            manifest['faces'][face_id]['edit'] = {'status': report['status'], 'reason': report['reason'], 'source': provenance[face_id].get('backend', 'manual_faces'), 'alignmentKey': item['key'], 'provenance': provenance[face_id], 'view': rel + '/source.png'}
+            ref = item['source'].get('reference')
+            if ref:
+                if not store.ID.fullmatch(ref['sha256']):
+                    raise ValueError('Invalid reference digest.')
+                if manifest.get('reference', {}).get('sha256') == ref['sha256']:
+                    reference_path = manifest['reference']['image']
+                else:
+                    ref_rel = 'reference/' + ref['sha256']
+                    ref_dir = store.contained(stage, ref_rel)
+                    ref_dir.mkdir(parents=True, exist_ok=True)
+                    for filename in ('source.npy', 'source.png'):
+                        if not (ref_dir / filename).exists():
+                            shutil.copyfile(Path(ref['path']) / filename, ref_dir / filename)
+                    reference_path = ref_rel + '/source.png'
+                manifest['faces'][face_id]['edit']['reference'] = reference_path
         data_path = stage / 'maps' / 'color_edited.rgba16f.bin'
         atlas.tofile(data_path)
         manifest['textures']['colorMap'] = {**base, 'path': 'maps/' + data_path.name, 'sha256': store.file_hash(data_path)}
-        manifest.update(asset_id=asset_id, parentAsset=baseline, mode=mode, qa='qa/report.json')
+        active_modes = {entry['edit']['source'] for entry in manifest['faces'].values() if entry.get('edit', {}).get('status') == 'accepted'}
+        effective_mode = next(iter(active_modes)) if len(active_modes) == 1 else mode if not active_modes else 'manual_faces'
+        manifest.update(asset_id=asset_id, parentAsset=baseline, geometryAsset=manifest.get('geometryAsset', manifest.get('parentAsset', baseline)), mode=effective_mode, qa='qa/report.json')
         (stage / 'qa').mkdir(exist_ok=True)
-        face_keys = {fid: aligned['faces'][fid]['key'] if report['status'] == 'accepted' else 'baseline'
+        face_keys = {fid: manifest['faces'][fid].get('edit', {}).get('alignmentKey', current['sha256']) if report['status'] == 'accepted' else 'baseline'
                      for fid, report in reports.items()}
         cross_view = multiview.evaluate_pairs(stage, manifest, face_keys=face_keys, cache=cache_dir)
         (stage / 'qa/report.json').write_text(json.dumps({'faces': reports, 'crossView': cross_view}, indent=2, allow_nan=False), encoding='utf-8')

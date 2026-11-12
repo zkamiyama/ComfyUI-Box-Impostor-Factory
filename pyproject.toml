@@ -1,0 +1,10 @@
+[project]
+name = "comfyui-box-impostor-factory"
+version = "0.1.0"
+description = "Bake, edit, save and preview three-impostor Box assets in ComfyUI."
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+dependencies = ["numpy>=1.24", "Pillow>=10", "scipy>=1.10", "aiohttp>=3.9"]
+
+[project.urls]
+Repository = "https://github.com/zkamiyama/ComfyUI-Box-Impostor-Factory"

@@ -13,6 +13,7 @@ from PIL import Image
 
 from . import faces, store
 from .generation import CachedGeneratedFace, lineage
+from .canvas import ModelCanvas
 
 CATEGORY = 'Box Impostor'
 BACKENDS = ['auto', 'webgpu', 'webgl2']
@@ -164,10 +165,10 @@ class MakeSixGuides:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return inputs(proxy=('BOX_PROXY',), resolution=RESOLUTION, backend=(BACKENDS,))
+        return {'required': {'proxy': ('BOX_PROXY',), 'resolution': RESOLUTION, 'backend': (BACKENDS,)}, 'optional': {'material_maps': (list(store.MATERIAL_OPTIONS),)}}
 
-    def guides(self, proxy, resolution, backend):
-        asset = store.baseline(proxy, resolution, backend)
+    def guides(self, proxy, resolution, backend, material_maps='none'):
+        asset = store.baseline(proxy, resolution, backend, material_maps)
         directory = store.asset_dir(asset)
         manifest = store.validate(directory, asset, check_bytes=False)
         result = []
@@ -229,14 +230,45 @@ class BakeBox:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return {'required': {'proxy': ('BOX_PROXY',), 'resolution': RESOLUTION, 'backend': (BACKENDS,)}, 'optional': {'faces': ('BOX_ALIGNED_FACES',)}}
+        return {'required': {'proxy': ('BOX_PROXY',), 'resolution': RESOLUTION, 'backend': (BACKENDS,)}, 'optional': {'faces': ('BOX_ALIGNED_FACES',), 'material_maps': (list(store.MATERIAL_OPTIONS),)}}
 
-    def bake(self, proxy, resolution, backend, faces=None):
-        asset = store.baseline(proxy, resolution, backend)
+    def bake(self, proxy, resolution, backend, faces=None, material_maps='none'):
+        asset = store.baseline(proxy, resolution, backend, material_maps)
         if faces:
             from .faces import compose
+            if faces['baseline'] != asset:
+                parent = store.asset_dir(faces['baseline'])
+                prior = store.validate(parent, faces['baseline'], check_bytes=False)
+                current = store.validate(store.asset_dir(asset), asset, check_bytes=False)
+                same = all(prior[k] == current[k] for k in ('proxySha256', 'bakeBox', 'resolution', 'faceOrder'))
+                if same:
+                    for fid in faces['faces']:
+                        a, b = prior['faces'][fid], current['faces'][fid]
+                        if a.get('viewMatrix') != b.get('viewMatrix') or a.get('projectionMatrix') != b.get('projectionMatrix') or store.file_hash(store.contained(parent, a['guide'])) != store.file_hash(store.contained(store.asset_dir(asset), b['guide'])):
+                            same = False
+                            break
+                if not same:
+                    raise ValueError('Supplied faces were aligned to incompatible proxy captures.')
+                faces = {**faces, 'baseline': asset}
             asset = compose(asset, faces)
         return (asset,)
+
+
+class ReplaceFaces:
+    """Start from a saved or live Box and update only the supplied faces."""
+    CATEGORY = CATEGORY
+    FUNCTION = 'replace'
+    RETURN_TYPES = ('BOX_IMPOSTOR',)
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        thresholds = AlignAndValidateFaces.INPUT_TYPES()['required']
+        return inputs(asset=('BOX_IMPOSTOR',), faces=('BOX_FACES',), **{k: thresholds[k] for k in ('min_iou','max_shift','max_scale_change')})
+
+    def replace(self, asset, faces, min_iou, max_shift, max_scale_change):
+        from .faces import compose
+        aligned, = AlignAndValidateFaces().align(faces, asset, min_iou, max_shift, max_scale_change)
+        return (compose(asset, aligned),)
 
 
 class PreviewBox:
@@ -316,7 +348,13 @@ class LoadBox:
         if store.ID.fullmatch(source) and store.asset_dir(source).is_dir():
             store.validate(store.asset_dir(source), source)
             return (source,)
-        if NAME.fullmatch(source) and store.contained(export_root(), source).is_dir():
+        if Path(source).is_absolute():
+            path = Path(source).resolve()
+            # BISaveBox emits an absolute manifest path within the export root.
+            if path.name != 'manifest.json' or not path.is_relative_to(export_root().resolve()):
+                raise ValueError('Absolute manifest paths must identify a Box export.')
+            directory = path.parent
+        elif NAME.fullmatch(source) and store.contained(export_root(), source).is_dir():
             directory = store.contained(export_root(), source)
         else:
             path = input_path(source)
@@ -331,14 +369,7 @@ class LoadBox:
             copy_asset(directory, stage, manifest)
             manifest['asset_id'] = asset_id
             (stage / 'manifest.json').write_text(json.dumps(manifest, indent=2, allow_nan=False), encoding='utf-8')
-        # A foreign manifest is not trusted to claim the identity of a different published asset.
-        dest = store.asset_dir(asset_id)
-        if dest.exists():
-            current = store.validate(dest, asset_id)
-            expected = {**manifest, 'asset_id': asset_id}
-            if current != expected:
-                raise ValueError('An asset with this ID already exists with a different manifest.')
-        return (store.publish(asset_id, copy),)
+        return (store.publish(asset_id, copy, expected_manifest={**manifest, 'asset_id': asset_id}),)
 
 
 def copy_asset(directory, output, manifest):
@@ -371,5 +402,5 @@ def copy_asset(directory, output, manifest):
                     shutil.copyfile(path, target)
 
 
-NODE_CLASS_MAPPINGS = {'BICachedGeneratedFace': CachedGeneratedFace, 'BIPrepareReference': PrepareReference, 'BICanonicalizeProxy': CanonicalizeProxy, 'BIMakeSixGuides': MakeSixGuides, 'BIFaceImage': FaceImage, 'BIFaceInputs': FaceInputs, 'BIAlignAndValidateFaces': AlignAndValidateFaces, 'BIBakeBox': BakeBox, 'BIPreviewBox': PreviewBox, 'BISaveBox': SaveBox, 'BILoadBox': LoadBox}
+NODE_CLASS_MAPPINGS = {'BIModelCanvas': ModelCanvas, 'BIReplaceFaces': ReplaceFaces, 'BICachedGeneratedFace': CachedGeneratedFace, 'BIPrepareReference': PrepareReference, 'BICanonicalizeProxy': CanonicalizeProxy, 'BIMakeSixGuides': MakeSixGuides, 'BIFaceImage': FaceImage, 'BIFaceInputs': FaceInputs, 'BIAlignAndValidateFaces': AlignAndValidateFaces, 'BIBakeBox': BakeBox, 'BIPreviewBox': PreviewBox, 'BISaveBox': SaveBox, 'BILoadBox': LoadBox}
 NODE_DISPLAY_NAME_MAPPINGS = {name: 'BI ' + name[2:] for name in NODE_CLASS_MAPPINGS}

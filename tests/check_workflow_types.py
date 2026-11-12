@@ -29,6 +29,7 @@ def find_input(ports, name):
 
 def check_workflows(registry, directory):
     counts = {}
+    problems = []
     for path in sorted(Path(directory).glob('*.json')):
         graph = json.loads(path.read_text(encoding='utf-8'))
         definitions = {sg['id']: sg for sg in graph.get('definitions', {}).get('subgraphs', [])}
@@ -43,28 +44,39 @@ def check_workflows(registry, directory):
                         actual = [(p['name'], p['type']) for p in node[side]]
                         expected = [(p['name'], p['type']) for p in sg[side]]
                         if actual != expected:
-                            raise AssertionError(f'{where} invalid subgraph {side}')
+                            problems.append(f'{where} invalid subgraph {side}')
                     continue
                 if kind not in registry:
-                    raise AssertionError(f'{where} is missing from /object_info')
+                    problems.append(f'{where} is missing from /object_info')
+                    continue
                 info = registry[kind]
                 ports = {**info['input'].get('required', {}), **info['input'].get('optional', {})}
                 for pin in node.get('inputs', []):
                     value = find_input(ports, pin['name'])
                     if value is None or not compatible(pin['type'], value[0]):
-                        raise AssertionError(f'{where} invalid input {pin["name"]} ({pin["type"]})')
+                        problems.append(f'{where} invalid input {pin["name"]} ({pin["type"]})')
                 for i, output in enumerate(node.get('outputs', [])):
                     if i >= len(info['output']) or not compatible(output['type'], info['output'][i]):
-                        raise AssertionError(f'{where} invalid output {i} ({output["type"]})')
+                        problems.append(f'{where} invalid output {i} ({output["type"]})')
                 # Required object sockets must be present; scalar and combo widgets can be literals.
                 for k, spec in info['input'].get('required', {}).items():
                     t = spec[0]
                     if isinstance(t, list) or t in ('INT', 'FLOAT', 'STRING', 'BOOLEAN', 'COMBO') or t.startswith('COMFY_'):
                         continue
+                    options = spec[1] if len(spec) > 1 and isinstance(spec[1], dict) else {}
+                    # For example IO.Color.Input is a socketless widget. The official
+                    # Pixal graph stores background='#000000' in widgets_values_named.
+                    if options.get('socketless') or t in ('COLOR', 'COLORS'):
+                        named = node.get('widgets_values_named') or {}
+                        if k not in named and 'default' not in options:
+                            problems.append(f'{where} lacks widget value/default for {k}')
+                        continue
                     if not any(p['name'] == k and p.get('link') is not None for p in node.get('inputs', [])):
-                        raise AssertionError(f'{where} lacks required socket {k}')
+                        problems.append(f'{where} lacks required socket {k}')
                 count += 1
         counts[path.name] = count
     if not counts:
         raise ValueError(f'No workflows in {directory}')
+    if problems:
+        raise AssertionError('\n'.join(problems))
     return counts
