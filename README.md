@@ -54,6 +54,18 @@ node worker/cli.mjs preview --asset .test-output/box
 
 02・03・05のモデルファイル名は各ローダーに設定済み。必要な重みと配置は公式テンプレートに従う。Qwenの第1画像は元画像、第2画像はガイド。LoRAはモデル側だけに適用する。H3では第1画像が編集対象になる。ガイドは余白を加えてモデルの正方形入力へ収める。生成後は同じ変換を逆にたどり、ガイドの画角に戻す。面別seedを変更すると、その面の生成からやり直せる。[Pixal3D](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/3d_pixal3d_trellis2_image_to_model.json) · [Qwen](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/image_qwen_image_2_1_image_edit.json) · [AnyAngle](https://huggingface.co/lilylilith/QI_2.1_AnyAngle) · [H3](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/image_minimax_h3_image_edit.json)
 
+## BoxをIMAGEとしてレンダリング
+
+`BI RenderBox` は保存済みのBoxを指定方向から描画し、透過PNG相当の `IMAGE` とComfyUI方式の `MASK`（背景=1）を出力する。画角は正投影・透視から、視点は6軸と斜め方向から選ぶ。幅・高さは64〜2048px。出力は条件別にキャッシュし、元の `colorMap`、`intervalMap`、`rangeMap` を変更しない。
+
+`BI PreviewBox` の `IMAGE` サムネイルでも `sampling` を選べる。標準は `standard`。硬い境界の色にじみを抑えたい場合だけ `reduce_bleeding` を使う。この設定は描画時の `intervalMap` サンプリングを最近傍にするもので、穴・細部や深度が悪化する場合がある。ビューアでも「補間」から切り替えられる。
+
+CLIから画像を得る場合:
+
+```sh
+node worker/cli.mjs render --asset .test-output/box --output .test-output/side.png --view +Z --projection orthographic --width 512 --height 512 --sampling reduce_bleeding
+```
+
 ## 保存・再利用・品質の確認
 
 ComfyUIでは `output/box_impostor/<asset_id>/manifest.json` がアセットの入口になる。GLB、RGBA16Fの幾何マップ、カラー、6方向のガイドと深度をまとめて参照する。`BI BakeBox` の `material_maps` でroughness・metalness・AOやemissiveを選べる。roughness・metalness・AOは上流と同じRGBA8アトラスに保存する。`BI SaveBox` で `output/box_impostor_exports/<name>/` に書き出し、`BI LoadBox` でアセットID・書き出し名・SaveBoxの出力パス・inputからの相対manifestパスを指定する。

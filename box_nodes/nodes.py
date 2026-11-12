@@ -291,8 +291,53 @@ class PreviewBox:
         image_path = store.thumbnail(directory, manifest, sampling)
         with Image.open(image_path) as image:
             preview = tensor(np.asarray(image.convert('RGB'), np.float32)[None] / 255)
-        url = f'/box-impostor/web/viewer.html?manifest=/box-impostor/assets/{asset}/manifest.json&sampling={sampling}'
+        url = f'/box-impostor/web/viewer.html?manifest=/box-impostor/assets/{asset}/manifest.json'
+        if sampling != 'standard':
+            url += f'&sampling={sampling}'
         return {'ui': {'box_impostor': [url]}, 'result': (url, preview)}
+
+
+class RenderBox:
+    """Render the final Box to a reproducible transparent IMAGE and ComfyUI MASK."""
+    CATEGORY = CATEGORY
+    OUTPUT_NODE = True
+    FUNCTION = 'render'
+    RETURN_TYPES = ('IMAGE', 'MASK')
+    RETURN_NAMES = ('image', 'mask')
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        size = ('INT', {'default': 512, 'min': 64, 'max': 2048, 'step': 8})
+        return inputs(asset=('BOX_IMPOSTOR',), width=size, height=size,
+                      view=(['diagonal', '+X', '-X', '+Y', '-Y', '+Z', '-Z'],),
+                      projection=(['orthographic', 'perspective'],),
+                      sampling=(['standard', 'reduce_bleeding'],),
+                      backend=(BACKENDS,))
+
+    def render(self, asset, width=512, height=512, view='diagonal',
+               projection='orthographic', sampling='standard', backend='auto'):
+        if type(width) is not int or type(height) is not int or not (64 <= width <= 2048 and 64 <= height <= 2048):
+            raise ValueError('Render width and height must be between 64 and 2048 pixels.')
+        if view not in ('diagonal', '+X', '-X', '+Y', '-Y', '+Z', '-Z'):
+            raise ValueError('Unknown Box camera view')
+        if projection not in ('orthographic', 'perspective'):
+            raise ValueError('Unknown Box projection')
+        if sampling not in ('standard', 'reduce_bleeding') or backend not in BACKENDS:
+            raise ValueError('Unknown Box renderer or sampling')
+        directory = store.asset_dir(asset)
+        store.validate(directory, asset, check_bytes=False)
+        digest = store.key('render-box-v1', store.worker_version(), asset,
+                           width, height, view, projection, sampling, backend)
+        def write(stage):
+            store.run_worker('render', '--asset', directory, '--output', stage / 'render.png',
+                             '--width', width, '--height', height, '--view', view,
+                             '--projection', projection, '--sampling', sampling, '--backend', backend)
+        stage = faces.cache_dir('renders', digest, write)
+        with Image.open(stage / 'render.png') as image:
+            pixels = np.asarray(image.convert('RGBA'), dtype=np.float32) / 255
+        if pixels.shape[:2] != (height, width):
+            raise ValueError('Box renderer returned an unexpected image size.')
+        return (tensor(pixels[None, ..., :3]), tensor((1 - pixels[None, ..., 3])))
 
 
 class SaveBox:
@@ -405,5 +450,5 @@ def copy_asset(directory, output, manifest):
                     shutil.copyfile(path, target)
 
 
-NODE_CLASS_MAPPINGS = {'BIModelCanvas': ModelCanvas, 'BIReplaceFaces': ReplaceFaces, 'BICachedGeneratedFace': CachedGeneratedFace, 'BIPrepareReference': PrepareReference, 'BICanonicalizeProxy': CanonicalizeProxy, 'BIMakeSixGuides': MakeSixGuides, 'BIFaceImage': FaceImage, 'BIFaceInputs': FaceInputs, 'BIAlignAndValidateFaces': AlignAndValidateFaces, 'BIBakeBox': BakeBox, 'BIPreviewBox': PreviewBox, 'BISaveBox': SaveBox, 'BILoadBox': LoadBox}
+NODE_CLASS_MAPPINGS = {'BIModelCanvas': ModelCanvas, 'BIReplaceFaces': ReplaceFaces, 'BICachedGeneratedFace': CachedGeneratedFace, 'BIPrepareReference': PrepareReference, 'BICanonicalizeProxy': CanonicalizeProxy, 'BIMakeSixGuides': MakeSixGuides, 'BIFaceImage': FaceImage, 'BIFaceInputs': FaceInputs, 'BIAlignAndValidateFaces': AlignAndValidateFaces, 'BIBakeBox': BakeBox, 'BIPreviewBox': PreviewBox, 'BIRenderBox': RenderBox, 'BISaveBox': SaveBox, 'BILoadBox': LoadBox}
 NODE_DISPLAY_NAME_MAPPINGS = {name: 'BI ' + name[2:] for name in NODE_CLASS_MAPPINGS}

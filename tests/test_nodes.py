@@ -59,6 +59,35 @@ class NodeTests(unittest.TestCase):
         self.asset = 'a' * 64
         self.m = fixture(self.base / self.asset, self.asset)
 
+    def test_render_box_image_mask_cache_and_parameters(self):
+        calls = []
+        def fake_worker(*args):
+            calls.append(args)
+            image = np.zeros((80, 96, 4), dtype=np.uint8)
+            image[12:66, 20:80, :3] = (40, 120, 220)
+            image[12:66, 20:80, 3] = 255
+            Image.fromarray(image, mode='RGBA').save(args[args.index('--output') + 1])
+        with patch.object(store, 'run_worker', side_effect=fake_worker), patch.object(store, 'worker_version', return_value='unit-test-render'):
+            rendered, mask = nodes.RenderBox().render(self.asset, 96, 80, '+Z',
+                                                       'orthographic', 'reduce_bleeding', 'webgl2')
+            self.assertEqual(tuple(rendered.shape), (1, 80, 96, 3))
+            self.assertEqual(tuple(mask.shape), (1, 80, 96))
+            self.assertEqual(float(mask[0, 0, 0]), 1.0)
+            self.assertEqual(float(mask[0, 20, 30]), 0.0)
+            self.assertAlmostEqual(float(rendered[0, 20, 30, 2]), 220 / 255, places=5)
+            nodes.RenderBox().render(self.asset, 96, 80, '+Z',
+                                     'orthographic', 'reduce_bleeding', 'webgl2')
+            self.assertEqual(len(calls), 1, 'Identical render must reuse the stored PNG')
+            nodes.RenderBox().render(self.asset, 96, 80, '+Z',
+                                     'orthographic', 'standard', 'webgl2')
+            self.assertEqual(len(calls), 2, 'Sampling choice must be part of the cache key')
+            self.assertIn('--sampling', calls[0])
+            self.assertIn('reduce_bleeding', calls[0])
+        with self.assertRaises(ValueError):
+            nodes.RenderBox().render(self.asset, 8, 80)
+        with self.assertRaises(ValueError):
+            nodes.RenderBox().render(self.asset, 96, 80, sampling='invalid')
+
     def test_foreground_conventions_and_placeholder(self):
         image = np.zeros((1,8,8,3), dtype=np.float32)
         mask = np.ones((1,8,8), dtype=np.float32)

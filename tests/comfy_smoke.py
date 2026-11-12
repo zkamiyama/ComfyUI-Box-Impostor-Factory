@@ -71,7 +71,7 @@ def run(comfy, output):
             registry_proof = check_workflows(json.loads(request('/object_info')), ROOT / 'workflows')
             (output / 'workflow-nodes.json').write_text(json.dumps(registry_proof, indent=2))
             print('Runtime workflow node checks', json.dumps(registry_proof), flush=True)
-            required = ["BICanonicalizeProxy", "BIBakeBox", "BIFaceImage", "BIPreviewBox", "BILoadBox"]
+            required = ["BICanonicalizeProxy", "BIBakeBox", "BIFaceImage", "BIPreviewBox", "BIRenderBox", "BILoadBox"]
             for name in required:
                 if name not in json.loads(request("/object_info/" + name)):
                     raise RuntimeError("ComfyUI did not register " + name)
@@ -81,6 +81,10 @@ def run(comfy, output):
                 "3": node("BIPreviewBox", asset=["2",0]),
                 "4": node("BISaveBox", asset=["2",0], name="fixture"),
             }
+            render_check = queue({**common,
+                "5": node("BIRenderBox", asset=["2",0], width=96, height=80, view="+Z",
+                          projection="orthographic", sampling="reduce_bleeding", backend="webgl2")})
+            assert "5" in render_check or "3" in render_check
             first = queue(common)
             viewer_path = first["3"]["box_impostor"][0]
             manifest_path = viewer_path.split("?manifest=",1)[1]

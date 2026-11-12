@@ -31,6 +31,11 @@ jobs:
         run: node worker/cli.mjs bake --input .test-output/source.glb --output .test-output/box32 --backend ${{ matrix.backend }} --resolution 32 --maps roughness,metalness,ao --verify --evidence .test-output/evidence32
       - name: Compare mesh and Box in the viewer
         run: BI_TEST_ASSET=.test-output/box BI_TEST_BACKEND=${{ matrix.backend }} node --test tests/viewer_integration.test.mjs
+      - name: Render final Box IMAGE with optional anti-bleeding
+        run: |
+          node worker/cli.mjs render --asset .test-output/box --output .test-output/standard.png --backend ${{ matrix.backend }} --view +Z --projection orthographic --width 320 --height 256 --sampling standard
+          node worker/cli.mjs render --asset .test-output/box --output .test-output/reduced.png --backend ${{ matrix.backend }} --view +Z --projection orthographic --width 320 --height 256 --sampling reduce_bleeding
+          node tests/check_render.mjs .test-output/standard.png .test-output/reduced.png 320 256
       - uses: actions/upload-artifact@v4
         if: always()
         with:
