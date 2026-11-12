@@ -1,320 +1,225 @@
 # ComfyUI Box Impostor Factory 実装指示書
 
-作成日：2026-11-12  
-設計段階：v0.1（実装前）
+v0.2 ｜ 2026-11-12 ｜ 設計・調査段階
 
-## 1 目的と完成条件
+参照画像1枚から静止物体のメッシュを作り、6方向の見た目を個別に編集できるBox Impostorとして保存する。表示にはthree.jsとthree-impostorの既存Shaderを使う。最初の実装は、手元のGLBだけでベイク・保存・別プロセスでの再読込・360度プレビューまで通す。画像モデルの統合はその後に進める。[先行事例・比較実験・CPUでの確認結果](./research.md)
 
-参照画像1枚から、ComfyUI上で6方向の高精細な見た目を生成し、`three-impostor`の`box`レイアウトに互換なImpostorアセットを作成する。生成したアセットをthree.jsのインタラクティブなビューアで即座に360度確認し、保存・再読込できること。
+## 1　完成条件
 
-画像生成バックエンドは**Qwen-Image 2.1**と**MiniMax H3-Image**を切り替えられること。カメラ方向はプロンプトだけに任せず、一度参照画像をメッシュまたは3D Gaussian Splatに変換して得られる幾何ガイドで制御すること。
+利用者はComfyUI上でGLBまたは参照画像を入力し、元メッシュとBoxを同じカメラで比較できる。外観の入力は `geometry_baseline`（プロキシの色）、`manual_faces`（手動画像）、`qwen_enhanced`、`h3_enhanced` の4通りとする。どの入力からも同じ形式の保存アセットを返す。
 
-初期版の完成条件は次のとおり。
+1面だけを差し替えたときは、その面の整列・品質判定、影響する面間比較、カラーアトラスの合成、プレビューを更新する。GLB生成、幾何ベイク、ほかの5面の生成は再実行しない。再起動後も保存済み工程を再利用する。
 
-- 参照画像1枚 → 形状プロキシGLB → 正投影6方向のガイド画像 → AIによる6方向RGB(A) → Box Impostorを一連のComfyUIワークフローとして実行できる。
-- 6方向画像は個別に上書き・再生成でき、形状推定とベイクを不要に再実行しない。
-- Box Impostorはテクスチャ、Bounding Box、メタデータを同一アセットとして保存し、ComfyUI再起動後にも読み込める。
-- three.jsプレビューでカメラを回せる。プロキシGLBとのA/B比較、6枚の元画像、生成した各種マップを表示できる。
-- Qwen-Image 2.1とH3-Imageの両方で同一の後処理・ベイク・プレビューに接続できる。
-- 生成不能・画像不整合・GPUメモリ不足時に明確なエラーやフォールバックを返し、壊れたアセットを成功扱いしない。
+元の色に戻した面は面ID・理由・枚数を表示する。ベイクや保存に失敗した場合はアセットを公開しない。モデル別の対応は、実際に生成した6面と斜視での結果を記録してから「検証済み」と表示する。研究段階の証拠は次の範囲に限る。
 
-現段階では、学習・LoRA作成、厳密なメッシュ復元、動画アニメーション、3DGSの直接Box化、商用向けの最適圧縮は対象外。
-
-## 2 確認済みの既存実装と基本方針
-
-1. 指定された混合順氏の記事と配布ワークフロー：Pixal3DでGLBを生成し、Qwen-Image 2.1 + `lilylilith/QI_2.1_AnyAngle`で別角度画像を生成する。GLB入力だけの後段ワークフローもある。
-   - https://note.com/kongo_jun/n/ndbabf97a8f41?hl=en
-2. `three-impostor`：`ImpostorBaker.bake(object, {layout:'box', resolution:256})`と`ImpostorNodeMaterial`を再利用する。MIT。GPUで複数マップを生成する実装は`Impostor.js`に存在する。
-   - https://github.com/richardmonette/three-impostor
-3. Pixal3D：ComfyUIネイティブの画像→PBRメッシュ生成。画素と3Dの位置合わせを意図した設計。**初期版の標準形状バックエンド**。
-   - https://github.com/Comfy-Org/docs/blob/main/tutorials/3d/pixal3d.mdx
-4. TripoSplat：ComfyUIネイティブの画像→3DGS。**代替ガイド生成器**として採用。3DGSのみでは既存の`ImpostorBaker`に直接入力できないため、Boxベイク時には別途GLBメッシュが必要。
-   - https://www.comfyui.org/en/bringing-native-support-for-3d-gaussian
-5. AnyAngle Studio T8：3Dカメラ・TripoSplat・角度ガイド・バッチ生成を既に持つ。ソースを参照し、必要なら任意連携するが、初期版で一から同等のエディタを再開発しない。
-   - https://github.com/T8mars/Comfyui-Qwen-Image-2.1-MultiAngle-T8
-6. Qwen-Image 2.1とH3-Imageは2026年11月時点でどちらもComfyUIネイティブ対応。H3-Imageは動画モデルH3とは別の画像モデル。
-   - https://github.com/QwenLM/Qwen-Image-2.1
-   - https://blog.comfy.org/p/minimax-h3-image-is-now-available
-
-**重要な設計原則**：幾何形状の権威はPixal3D等のプロキシGLBに置く。AIで生成する6方向画像は主に表面色・微細な見た目を供給する。`intervalMap`・`rangeMap`・法線・深度をRGB画像だけから推測した結果で、無検証に上書きしない。
-
-## 3 全体のデータフロー
-
-```text
-Load Reference IMAGE
-       │
-       ├── Mask/Matting (Qwen native RGBA or BiRefNet)
-       │
-       ▼
-Proxy Geometry ─── Pixal3D [default] / existing GLB / optional TripoSplat
-       │                 ※3DGS only ⇒ mesh proxy required for Box bake
-       ▼
-Canonicalize Y-up + bounds + source-view calibration
-       │
-       ├── 6 orthographic guide renders (+X,-X,+Y,-Y,+Z,-Z)
-       │            │
-       │            └── View Image Generation Adapter
-       │                   ├── Qwen-Image 2.1 + AnyAngle LoRA
-       │                   └── MiniMax H3-Image image editing (no AnyAngle LoRA)
-       │                       │
-       │                       ▼
-       │               6 RGB(A) views → Alpha / registration / QA
-       │                                    │
-       ▼                                    │
-three-impostor BOX bake (geometry truth)   │
-       │                                    │
-       ├── normalMap, intervalMap, rangeMap │
-       └── baseline colorMap ───────────────┴── geometry-aligned color replacement
-                                           │
-                                     manifest + texture files
-                                           │
-                           three.js 360° preview / Save / Reload
-```
-
-**モードを分けること**
-
-- `geometry_baseline`：AI色生成をスキップし、Pixal3D/GLBのテクスチャで正しいBoxアセットを作る。最優先で実装し、比較の正解基準とする。
-- `qwen_enhanced`：AnyAngle LoRAを使用し、6方向のAI画像でカラーアトラスを高精細化する。
-- `h3_enhanced`：H3-Imageの2画像参照編集で同じ6方向のガイドを利用する。Qwen専用LoRAを誤って適用しない。
-- `manual_faces`：外部生成した6方向画像を入力できる。生成後の修正と比較に必須。
-
-## 4 モデルごとの実装方針
-
-### Qwen-Image 2.1
-
-- 公式ネイティブComfyUI Image Editサブグラフを利用。`TextEncodeQwenImage21`に`image_1 = original reference`、`image_2 = geometric guide`を入力する。
-- `lilylilith/QI_2.1_AnyAngle`のLoRAをモデル側に適用する。初期パラメータはLoRA強度1.0、20 steps以上、CFG 3を実験基準にする（標準QwenテンプレートのCFG 1と区別）。推奨プロンプト：`Change the camera angle from <image2> to <image1>.`。モデル仕様は運用時に再確認する。
-- RGBAが得られる場合はalphaを使用する。ComfyUI IMAGE型の4チャンネルを扱えない既存ノードとの互換には、Split/Join alpha処理を使用。
-- 高速版を使う場合は品質比較を経て別プリセットにする。
-
-### MiniMax H3-Image
-
-- ネイティブ`MiniMaxH3ImageConditioning`（モデル本体 + VAE + Qwen3-VL系エンコーダー）を利用。Qwen用AnyAngle LoRAは**非互換**。
-- `image_1 = original reference`、`image_2 = target camera coarse guide`とし、`<Picture 1>`と`<Picture 2>`を明記するモデル専用プロンプトを組み立てる。
-- 推奨実験設定は公式の6 steps、CFG 1。ネガティブプロンプトやLoRAを流用しない。元画像とガイドのうち、どちらに外観／幾何を従わせるか明確に記述する。
-- ネイティブ透過出力は前提としない。BiRefNet等で背景を除去し、必ず透過輪郭を検査する。
-- ローカルとAPI/Partner Nodesの双方を将来選べるようにする。API鍵はサーバー側環境変数で扱い、ワークフローJSONへ保存しない。APIでseedが指定できない場合はnullで記録し、出力画像をキャッシュする。
-
-### 3D生成
-
-- **Pixal3D GLBが既定**。実際の出力が参照画像のカメラに一致しているか確認してから正規化する。
-- ユーザーが既存GLBを与えた場合は画像→3D生成を省略する。
-- TripoSplatは新視点のガイド描画には有効だが、Boxは3Dメッシュの表面・裏面・ギャップをベイクするため、Pixal3D GLB、別メッシュ、または検証済みのスプラット→メッシュ抽出結果が必要。TripoSplatの描画だけは専用のsplatビューア／AnyAngle Studioから導出してよいが、初期版の`BI MakeSixGuides`はGLB入力を必須とし、SPZ/PLY入力を暗黙に受理しない。
-- 将来のVisual Hull/深度融合は別バックエンドとし、初期版のパイプラインに混ぜない。
-
-## 5 カメラと座標系の厳密な契約
-
-- **Y-up、右手座標系、単位スケールを正規化**し、ローカルBounding Boxのmin/maxと中心を記録する。参照画像の撮影方向は必ず別フィールドに保持し、参照画像＝+Z正面と暗黙に決めない。
-- Boxの6方向は**`+X, -X, +Y, -Y, +Z, -Z`**の順。three-impostorのコードはこの順で3列×2行の`colorMap`と`normalMap`に格納する。
-- 元`ImpostorBaker`のカメラ向き、upベクトル、上下反転、正投影範囲、Bounding Boxの寸法をそのまま用いる。全方向で正投影／固定物体姿勢／固定BBox／中心を変更しない。
-- 元参照が斜め視点でも、Pixal3Dの画像位置合わせ情報を用いて正面を確定する。自動推定が難しい場合は`source_view_rotation`の手動調整を許す。
-- Top/Bottomではカメラupが退化しない向きにする。上下方向の画像回転はユニットテストで固定する。
-- ガイド画像は各方向で影・背景・余計な物体を排除した正投影レンダーとし、必要に応じてnormal、depth、maskも別デバッグ出力する。
-
-## 6 Box Impostorの正確なテクスチャ契約
-
-`three-impostor/Impostor.js`の`_bakeBox()`が生成するレイアウトと同じ意味・精度を保つ。`resolution=256`が初期値。
-
-| 名前 | 内容 | 256px時の寸法 | 用途 |
-|---|---|---:|---|
-| `colorMap` | RGBA、6方向の色とcoverage | 768×512 | 表面色 |
-| `normalMap` | 6方向の法線とcoverageに関連する値 | 768×512 | シェーディング |
-| `intervalMap` | XYZ軸ごとの前後面の区間と最初の内部ギャップ | 768×256 | Boxの幾何判定 |
-| `rangeMap` | 8×8 texelセルごとの占有範囲 | 96×32 | Ray Marchingの空領域スキップ |
-| `materialMap` | 任意。roughness/metalness/AO | 768×512 | PBR |
-| `emissiveMap` | 任意 | 768×512 | 発光 |
-
-`intervalMap`のRが正側の最前面位置、Gが`1 - 負側の最前面位置`、B/Aが最初の内部空隙に関する位置。`rangeMap`はセルごとのlow/high。元ソースにはcoverage境界、空領域、薄い形状、開放メッシュの補正があるため、この演算を初期版でPythonに書き直さない。
-
-`ImpostorNodeMaterial`はBoxを実際にRay Marchingして着色し、シーンに正しい深度を出力する。カラーをAI画像で差し替える際も、**`normalMap`と`intervalMap`/`rangeMap`は必ず同じプロキシ形状から取得する**。AI側のマスクと形状のシルエットが合わない場合は、補正を試しても一致しなければその方向のAI色の適用を保留する。
-
-### Color replacement
-
-- 6方向のAI画像を「正投影の各画素→プロキシBoxの対応面」という同じキャプチャ座標に配置する。
-- alphaは参照輪郭、ガイド輪郭と比較し、単なる背景の黒色を透明と誤認しない。
-- 色は原則として未照明のAlbedoに近い状態で生成する。陰影の焼き込みが残る場合はPBRシェーディングで陰影が二重になる旨をUIで明示し、unlit比較プレビューを用意する。
-- AI画像の見た目がプロキシと局所的にずれている場合は、正規化・2D位置合わせ・ガイド差分マスクで調整。大きな形状変形を無制限にワープしてごまかさない。
-- いずれかの方向が破綻したときは、その方向だけプロキシベイクのベースカラーに戻せること。
-
-## 7 実装技術スタック
-
-| 層 | 依存・技術 | 方針 |
+| 経路 | 本改訂で確認したこと | 次に必要な証拠 |
 |---|---|---|
-| ワークフロー | 最新安定ComfyUIのネイティブノード + カスタムノード | モデル本体をカスタムノードから直接実装しない |
-| 画像モデル | Qwen-Image 2.1 / MiniMax H3-Image | 公式テンプレートの条件付けとサンプラーを流用 |
-| 画像→3D | Pixal3D、代替TripoSplat、手動GLB | Geometry Adapterで統一 |
-| マスク・幾何補助 | Qwen native alpha / BiRefNet / MoGe | 生成モデルの差をアダプターで吸収 |
-| 画像整列とQA | Python 3.11+、NumPy、Pillow、OpenCV | alpha、bbox、IoU、エッジ誤差、色差 |
-| Box Baker | `three-impostor` + three.js r186以上 | 既存BakerのJSを呼ぶ。独自の間隔マップ実装禁止 |
-| 自動レンダー | Node.js + Playwright Chromium（WebGPU/WebGL2） | 専用プロセスで初期化し、GPU互換性を検証 |
-| Preview | three.js + `ImpostorNodeMaterial` + OrbitControls | ComfyUI Web extensionとローカルWebページ |
-| UI | ComfyUI Web extension (`WEB_DIRECTORY`等) | 独立したReact SPAを最初から作らない。必要なUIだけ追加 |
-| 保存 | バージョン付きmanifest + half-floatテクスチャ + PNG | 保存・再ロードのroundtripを必ず試験 |
-| 試験 | pytest、Vitest、Playwright | Pythonロジック、JSシェーダー、統合フローを分離 |
+| GLB → Box | 上流のBakerとShaderを読解。固定版のBakerをCPUで呼び、6方向のカメラとRenderTargetの設定を照合した。 | GLBの実描画、GPUからの読み戻し、別プロセスでの描画一致 |
+| Pixal3D → Qwen＋AnyAngle | 公開作例と配布ワークフロー、公式ノードの入出力を確認した。 | 本プロジェクトの固定カメラを用いた6面と斜視での採用率 |
+| H3-Image | ComfyUIのネイティブ編集、入力スロットの意味、配布テンプレートを確認した。 | 画像の順序を変えた比較、正面・背面・上下面の一致、メモリ実測 |
+| TripoSplat | ネイティブ出力はGaussian Splat。ガイドに利用できる公開例がある。 | 同一物体のGLBと座標を合わせ、深度・マスクのずれを測る試験 |
 
-**自動ベイクの注意**：`three-impostor`のBakerはブラウザGPUレンダラー上で動く。PythonのComfyUIノードだけで`ImpostorBaker`を直接実行する設計にしない。Node.js/Playwrightによるheadless Chromiumワーカーを設ける。WSL2でWebGPUが不安定な場合はthree.jsの`WebGPURenderer({forceWebGL:true})`を試し、ベイクが不可能なら事前検証で明確に止める。必要ならBlender/EGL等を別フォールバックとして後から追加する。
+## 2　幾何と外観の分担
 
-## 8 推奨カスタムノード分割
+標準の形状入力は正規化した三角形GLBとする。Boxの占有区間、占有範囲、法線、カラーの輪郭は、そのGLBを1回ベイクして決める。AIは各面の色と見た目を提案する。1枚の参照に写らなかった背面や底面には正解画像がないため、推定した外観として記録する。
 
-**独自処理は小さなノードに分離する。** 最初から単一の巨大ノードに画像生成・3D・ベイクを埋め込まない。
+AIを使った形状補正を試す場合はPhase 5に置く。元のベイク画像と生成画像を参照し、マスク・不一致領域や修正案を保存する。採用した修正から別バージョンのプロキシを作り、Bakerで全幾何マップを再生成する。学習器の出力を配布用の `normalMap`、`intervalMap`、`rangeMap` に直接書き込む経路は設けない。補正の採否は同じカメラで元のプロキシと比較できるようにする。
 
-- `BI PrepareReference`：IMAGE、任意MASK → 正規化参照画像、マスク、画像メタデータ。
-- `BI CanonicalizeProxy`：FILE3DGLB、参照姿勢情報 → 正規化GLB、BBox、canonical transform。Pixal3D自体は標準ノードを使用。
-- `BI MakeSixGuides`：正規化GLBとBBox → 6方向の`IMAGE`群と`BOX_FACE_META`。撮影は専用three.jsレンダーワーカーで固定カメラを再利用。
-- `BI FaceInputs`：6方向の出力画像または手動差替え → `BOX_FACES`。画像を方向ID付きの構造として扱う。
-- `BI AlignAndValidateFaces`：AI画像、ガイド、BBox、カメラ → 色マップ候補、個別スコア、警告、fallback状態。
-- `BI BakeBox`：正規化GLB、BOX_FACES、resolution、PBRフラグ → `BOX_IMPOSTOR`、manifest path、デバッグマップ。専用JSワーカーへ依頼。
-- `BI PreviewBox`：BOX_IMPOSTOR → プレビューURL、静止プレビューIMAGE、オービットUI起動用操作。
-- `BI SaveBox` / `BI LoadBox`：manifest・マップ・bboxの書出しと再読込。
+## 3　処理の順序と保存単位
 
-**モデルアダプターはComfyUIネイティブグラフで実装**。`GenerateView-Qwen21`と`GenerateView-H3Image`という別サブグラフを用意し、同じ`FACE_VIEW_RESULT`（方向ID、RGBA画像、生成条件）に接続する。選択していないモデルがメモリに読み込まれたり実行されたりしないこと（必要ならQwen用・H3用の上位ワークフローJSONを別々に保持）。6方向は同じモデルローダーを共有し、実行・再生成は方向別にキャッシュする。ComfyUI内部から`/prompt`を入れ子に投入して同一キューを待つデッドロック設計は避ける。
+| 工程 | 入力 | 保存する出力 |
+|---|---|---|
+| 参照の準備 | IMAGE、任意MASK、切抜き条件 | 元画像、参照RGB、前景coverage、切抜き・リサイズの変換 |
+| 形状の確定 | Pixal3D出力または既存GLB、姿勢指定 | 正規化GLB、入力からの変換と逆変換、BBox、参照カメラ |
+| ガイドの描画 | 正規化GLB、ベイク範囲、面解像度 | 6組のRGB・coverage・深度、カメラ行列。必要に応じて法線・表面ID |
+| 幾何ベイク | 同じGLB、Bakerの版、解像度、材質設定 | 元のカラーアトラスと幾何・材質マップ。ガイドと共有するベイク範囲 |
+| 面ごとの生成と整列 | 元画像、該当面のガイド、選択モデルまたは手動画像 | 生成原寸、整列後の色とcoverage、変換、モデル条件、合否 |
+| 合成と公開 | 保存済みベイク、面別の採用結果 | 新しいカラーアトラス、manifest、品質レポート、プレビュー画像 |
 
-## 9 ファイルと再利用契約
+ガイドはBakerと同じカメラ定義から作る。ガイドとベイクは同じ形状を参照するため、面の生成結果を待たずに実行できる。ベイク時の `data.box` がガイド用に計算したBBoxと違った場合は、面を生成する前に停止する。
 
-`BOX_IMPOSTOR`はメモリに閉じたGPU RenderTargetではなく、下記manifestを持つ保存済みアセットへの参照とする。
+## 4　形状・画像モデルの接続
 
-```text
-output/box_impostor/<asset_id>/
-  manifest.json
-  geometry/proxy.glb
-  reference/reference.png
-  guides/+X.png ... -Z.png
-  views/+X.png ... -Z.png
-  maps/color.rgba16f.bin
-  maps/normal.rgba16f.bin
-  maps/interval.rgba16f.bin
-  maps/range.rgba16f.bin
-  maps/material.rgba16f.bin      # optional
-  maps/emissive.rgba16f.bin      # optional
-  previews/hero.png
-  qa/report.json
-```
+### Pixal3DとTripoSplat
 
-MVPではGPUから読み出したRGBA16Fデータをヘッダーなしの**little-endian half-float raw**で格納してよい。テクスチャごとの解像度、dtype、origin/rowOrder、色空間、alpha表現、使用モデル・seed・設定、BBox、座標変換、ソースコードのrevisionを必ずmanifestに入れる。ブラウザでは`DataTexture`に復元し、`ImpostorNodeMaterial`へ渡す。復元アダプターは`layout=box`、`box=Box3`、`resolution`、`maps`、`colorMap`、`normalMap`、`intervalMap`、`rangeMap`、任意の`materialMap`・`emissiveMap`、対応する`BoxGeometry`を正しく構築する。公開された`ImpostorData`のコンストラクタがGPUの`RenderTarget`を前提とするため、偽のRenderTargetを無理に挿入せず、`ImpostorNodeMaterial`が必要とする実データ契約をテストで確認する。EXR/KTX2最適化は後段階。RGBのプレビューPNGは本体のhalf-floatテクスチャの代用としない。
+Pixal3Dの公式テンプレートでは、テクスチャを適用した枝の `ApplyTextureToMesh → MeshSmoothNormals → MeshToFile3D` から `FILE_3D_GLB` を受け取る。頂点色プレビューの枝との取り違えを防ぐため、既知の柄がある入力で材質とUVを確認する。既存GLB入力ではこの生成を省略する。Pixal3Dは入力視点の画素と3Dを対応づける。切抜き、余白、推定画角を保存し、参照が斜めならそのまま参照姿勢として扱う。意味上の「正面」は必要に応じて手動で合わせる。[公式テンプレート](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/3d_pixal3d_trellis2_image_to_model.json) · [Pixal3D論文](https://arxiv.org/abs/2605.10922)
 
-**最重要のroundtrip試験**：Baker直後のGPUテクスチャで描いた結果と、保存→ロード後に描いた結果を、全6正面＋斜め方向で比較する。色空間、UV反転、premultiplied-alpha、16F精度の差異をここで検出する。
+TripoSplatのデコーダーは位置・スケール・回転・不透明度・球面調和係数を持つSplatを返す。Phase 5でガイドとして使う場合も、Boxベイクには別途GLBが必要になる。スプラットからメッシュを抽出する実験では、抽出法と生成物を別の形状として記録する。[デコーダーの出力定義](https://github.com/Comfy-Org/ComfyUI/blob/c5751c81abe131202eea9e4c66d000589013dd0b/comfy_extras/nodes_triposplat.py#L140-L181)
 
-## 10 ComfyUI内プレビュー仕様
+### 6面の生成
 
-- `BI PreviewBox`を選択すると、ComfyUIの同一オリジンに設置したthree.jsビューアを開く。Orbit・Pan・Zoom、正投影／透視、照明回転、ワイヤーフレーム表示を持つ。
-- 表示切替は`Box Impostor / Proxy GLB / side-by-side`。背景をグレー、チェック、黒、白から選べる。正面6方向へワンクリックで切り替えられる。
-- `steps`（Ray Marching最大ステップ数）、露出、AOの比較値を調整できる。法線／深度／interval／range／6方向カラーのタイルを表示するデバッグビューを設ける。
-- スクリーンショットとmanifest配下への保存、再ロードを用意する。UIとワークフローは保存された`asset_id`/manifestで接続し、ブラウザだけに永続状態を置かない。
-- 実際の描画には`WebGPURenderer`と`ImpostorNodeMaterial`を使用。WebGPUが使えなければthree.jsのWebGL2 fallbackを試す。
-- カスタムサーバールートは専用プレフィックス（例`/box-impostor/*`）に限定し、ファイルパスの検証とディレクトリ逸脱防止を行う。
+| 項目 | Qwen-Image 2.1＋AnyAngle | MiniMax H3-Image |
+|---|---|---|
+| ネイティブ分岐 | `TextEncodeQwenImage21` にVAEを接続し、モデルにAnyAngle LoRAを適用 | `MiniMaxH3ImageConditioning` に専用VAEとテンプレートのテキストエンコーダーを接続 |
+| 画像の順序 | `image_1` が元画像、`image_2` が目的視点の粗いガイド | `image_1` が編集対象。候補Aはガイドを第1画像、元画像を第2画像とし、候補Bでは逆順にする。役割をプロンプトにも明記 |
+| 比較の開始条件 | 作者の指定はLoRA強度1、CFG 3、20 steps以上。通常の編集テンプレートのCFG 1とは別のプリセットにする。編集指示は `Change the camera angle from <image2> to <image1>.` | 公式ローカル編集テンプレートの6 steps、CFG 1、KSamplerの `euler/simple` を保持。画像の参照名は `<Picture 1>`、`<Picture 2>`。A/Bでseed・キャンバス・ガイドを固定する |
+| 解像度と透過 | 第1参照の縦横比が出力latentの寸法に影響する。両入力を記録済みの変換で同じキャンバスに合わせ、1方向ずつ渡す。RGBAが得られた場合に限りアルファを取り出す | 自動寸法は第1画像に依存する。比較時は縦横を明示する。出力をマッティングし、輪郭をガイドと比較する |
+| 採否 | ガイド由来の形状誤り、文字・部品の入替え、背面・底面の不一致を面別に記録 | 2画像編集が通ることと、指定視点を保てることを別々に判定する。Qwen用LoRAは読み込まない |
 
-## 11 ソースコード構造
+参考実装は[Qwen公式テンプレート](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/image_qwen_image_2_1_image_edit.json)、[Qwenエンコーダー](https://github.com/Comfy-Org/ComfyUI/blob/c5751c81abe131202eea9e4c66d000589013dd0b/comfy_extras/nodes_qwen.py#L111-L181)、[AnyAngleモデルカード](https://huggingface.co/lilylilith/QI_2.1_AnyAngle)、[H3公式テンプレート](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/image_minimax_h3_image_edit.json)、[H3編集入力の説明](https://blog.comfy.org/p/minimax-h3-image-is-now-available)を参照する。
 
-```text
-ComfyUI-BoxImpostorFactory/
-  __init__.py                  # Node registration / WEB_DIRECTORY
-  pyproject.toml               # Comfy Registry向けメタデータ
-  requirements.txt             # Python minimal deps
-  nodes/
-    reference.py
-    canonicalize.py
-    guides.py
-    faces.py
-    qa.py
-    bake.py
-    preview.py
-    assets.py
-  core/
-    schema.py                  # BOX_FACES / BOX_IMPOSTOR / manifest
-    geometry.py
-    image_alignment.py
-    quality_metrics.py
-    file_store.py
-    worker_client.py
-  worker/
-    package.json               # three.js / three-impostor / Playwright
-    src/
-      bake.ts                  # ImpostorBaker invocation
-      guide_renderer.ts        # canonical six ortho cameras
-      export_maps.ts           # readbacks / raw half-float serialization
-      import_maps.ts           # runtime DataTexture / impostor-like object
-      worker_server.ts
-  web/
-    extension.js               # ComfyUI node widget integration
-    viewer/                    # minimal three.js / Vite viewer
-  workflows/
-    01_box_from_glb.json
-    02_box_from_reference_qwen21.json
-    03_box_from_reference_h3.json
-    04_manual_six_faces.json
-  examples/
-    cube.glb
-    hollow_shape.glb
-    sample_reference.png
-  tests/
-    test_manifest.py
-    test_alignment.py
-    test_camera_axis.py
-    test_bake_roundtrip.spec.ts
-    test_pipeline_smoke.py
-  docs/
-    architecture.md
-    install.md
-    qa.md
-    third_party_licenses.md
-```
+Qwen用・H3用のComfyUIサブグラフは同じ `FACE_VIEW_RESULT` を返す。入力は元画像、1面のガイド、`face_id`、seed、出力寸法、設定。出力は面ID、RGB(A)、元画像からの変換、モデル・LoRA・ワークフローのリビジョン、実際の生成設定とする。6面でモデルローダーを共有し、選択されなかったモデルの読み込みを防ぐ。最初は上位ワークフローを2本に分ける。ノードから同じComfyUIキューに `/prompt` を投入して待機する構成は避ける。
 
-外部ライブラリを不用意にコピーしない。`three-impostor`・three.js・ComfyUIのバージョンをlockfile/commit hashで固定し、ライセンスを保持する。
+ローカル版とPartner Node/API版は別の検証結果を持つ。APIキーはサーバー側から読み、ワークフロー・キャッシュ・manifestに含めない。seed非対応なら `null` とし、実際の出力を保存する。24 GB級GPUでのH3推論、量子化版、Turboは実測してから対応環境に加える。
 
-## 12 開発順序
+## 5　カメラと座標系
 
-**Phase 0 — Bakerの正確な保存・復元**：まず外部GLBを入力し、AI生成を使わずに既存BakerでBoxをベイク。half-floatマップを保存・再ロードし、同一描画に見えることを確認する。プレビューのOrbit操作が必須。この段階が成立するまでモデルを統合しない。
+canonical空間は右手系、Y-up。ローカルGLBを一様にスケールし、採用した原点・単位・正面・変換行列を保存する。Bakerは入力ルート自身の平行移動・回転・スケールをリセットする。正規化済みの子を単位変換の親Groupに入れるか、変換を頂点へ適用してから渡す。入力メッシュのローカルBBox、正規化後の `tightBounds`、Bakerが返した `bakeBox` を区別する。空または非有限のBBoxはエラーとする。[Bakerの座標処理](https://github.com/richardmonette/three-impostor/blob/4d525ca3aecc5ed2009d6bd9b8c6d6c289248768/Impostor.js#L395-L429)
 
-**Phase 1 — ComfyUIノード化**：GLB選択、6方向ガイド、BoxBake、Preview、Save/Loadを個別のノードとして実装。`01_box_from_glb.json`がGUIから無人実行できる。
+Bakerは `tightBounds` の最大辺の2%を各側に加える。下表の `x,y,z` は、この余白付きBBox内で0から1に正規化した点。`face_id` は中心から見たカメラ位置の側を表し、カメラは中心を向く。タイル番号はShader側のUVで示す。PNGの先頭行とrawの先頭行は別途定義する。[6方向の定義](https://github.com/richardmonette/three-impostor/blob/4d525ca3aecc5ed2009d6bd9b8c6d6c289248768/Impostor.js#L91-L130)
 
-**Phase 2 — 参照画像→3D**：ComfyUI標準Pixal3DのGLB出力をPhase 1へ接続。source-view校正とcanonical camerasを検証する。
+| face_id | camera up | 面内 (u,v)、vは上向き | アトラス (列,行) | 投影幅 × 高さ |
+|---|---|---|---|---|
+| +X | +Y | (1−z, y) | (0,0) | Z × Y |
+| −X | +Y | (z, y) | (1,0) | Z × Y |
+| +Y | −Z | (x, 1−z) | (2,0) | X × Z |
+| −Y | +Z | (x, z) | (0,1) | X × Z |
+| +Z | +Y | (x, y) | (1,1) | X × Y |
+| −Z | +Y | (1−x, y) | (2,1) | X × Y |
 
-**Phase 3 — Qwen-Image 2.1**：指定記事のAnyAngle LoRAとプロンプトの接続を基準に6方向出力。AI色を形状由来のアトラスに合成し、視点間整合性を検査。方向ごとの再生成を可能にする。
+ファイル・JSONの面IDはASCIIの `+X,-X,+Y,-Y,+Z,-Z` とする。余白付きBBoxの面に垂直な方向の半長をh、余白付き最大辺の0.1倍をmとすると、カメラ位置は中心＋side×(h+m)、nearはm/2、farは2h+1.5m。各面の幅と高さをそのまま正投影範囲とし、R×R画素に描く。横長の物体もBakerのタイルは正方形になる。[カメラ設定](https://github.com/richardmonette/three-impostor/blob/4d525ca3aecc5ed2009d6bd9b8c6d6c289248768/Impostor.js#L447-L496)
 
-**Phase 4 — MiniMax H3-Image**：モデル専用conditioningとプロンプトで同じ6方向を生成。GPUを食うため、Qwen/H3を同時常駐させない。APIとローカルの選択肢、モデルの可用性、ライセンス制約を明示する。
+生成モデルに自然な縦横比のガイドを渡す場合は、幅W・高さHの面を一様に縮放して正方形の中央に置く。L=max(W,H)として、横座標は `0.5+(u−0.5)W/L`、縦座標は `0.5+(v−0.5)H/L`。この余白・切抜き・上下反転を含む往復変換、view行列、projection行列、行列の格納順を面メタデータに記録する。画像を整列した後、Bakerのタイル座標に戻す。面ごとに輪郭の外接矩形を取り直して中心・スケールを変えない。
 
-**Phase 5 — 任意拡張**：TripoSplatガイド、3DGS→mesh、Visual Hullによる幾何補正、KTX2圧縮、テクスチャ品質の自動再試行、Comfy Registry公開。
+## 6　Boxテクスチャと色の合成
 
-## 13 QA、障害対策、達成基準
+互換対象は `three-impostor 0.4.1` の `ImpostorBaker` と `ImpostorNodeMaterial`。Rは1面のベイク解像度、Cは `ceil(R/8)`。下表はGPU値をそのまま再現する配布形式とする。[Bakerのアトラス生成](https://github.com/richardmonette/three-impostor/blob/4d525ca3aecc5ed2009d6bd9b8c6d6c289248768/Impostor.js#L584-L736)
 
-### 再現性・品質
+| マップ | サイズ：一般式／R=256 | 格納型・フィルター | 値の意味 |
+|---|---|---|---|
+| colorMap | 3R×2R／768×512 | RGBA16F・linear | 線形の表面色とベイクしたcoverage |
+| normalMap | 3R×2R／768×512 | RGBA16F・linear | 0..1に符号化したcanonical空間の法線。coverageを掛けた値を保持 |
+| intervalMap | 3R×R／768×256 | RGBA16F・linear | X,Y,Z各軸に1タイル。Rは高側、Gは1−低側、B/Aは最初の内部空隙の上端・下端 |
+| rangeMap | 3C×C／96×32 | RGBA16F・nearest | 8×8セルと周囲のサンプルから得る占有範囲。RGがlow/high、BAは0/1 |
+| materialMap（任意） | 3R×2R／768×512 | RGBA8 UNORM・linear | roughness、metalness、AOを共有アトラスに格納 |
+| emissiveMap（任意） | 3R×2R／768×512 | RGBA16F・linear | 発光する材質があり、emissiveを要求した場合の発光色 |
 
-- 6つの軸方向のプレビューと、最低12個の斜め方向でベイク前GLBとBoxを比較する。
-- テスト形状：単純立方体、非対称形状、細い脚のある形状、空洞／開放形状、透過輪郭のある毛・葉の形状。
-- top/bottomの画像が90度回転・鏡像化していないことを自動テストする。
-- AI色とプロキシ輪郭のIoU、境界ずれ、各視点での不一致、色バランスをログに残す。閾値は実験で決定可能にし、暫定値を公式仕様として固定しない。
-- 不合格の方向はプロキシ色へfallbackし、**何方向が置換されたか**をmanifestへ記録する。
-- geometry-onlyとAI-enhancedのプレビュー切替で細部の増減を見分けられること。
+全マップのmipmap生成は無効。フィルター列はmin/magの両方に適用する。`intervalMap` には空隙が閉じた場合の符号化、輪郭近傍の補正、開口側の延長がある。`rangeMap` はこれと組にして使う。どちらも検査用の可視化PNGとは別に、Bakerが返した値を保存する。
 
-### 運用
+**カラーの更新単位は、採用した面のRGBとする。** Shaderは色・法線・材質を `colorMap.a` で割り戻し、各面のcoverageと法線で重み付けする。生成画像のアルファはマッティング、位置合わせ、画素の採否に使う。出力のAにはベイク済みcoverageのビットを保持する。[Shaderのサンプリング](https://github.com/richardmonette/three-impostor/blob/4d525ca3aecc5ed2009d6bd9b8c6d6c289248768/Impostor.js#L1426-L1462)
 
-- ComfyUIのキャンセル・実行失敗でプロセスが残留せず、tempを後処理で削除する。生成中間ファイルはjob IDで隔離し、成功時にatomic renameする。
-- 同じ入力画像、3D backend、参照姿勢、model revision、prompt、seed、パラメータからキャッシュキーを作る。API側でseedを保証しない場合は結果ファイルのcontent hashを使う。
-- 3D/画像モデルの各フェーズが独立して再試行でき、Queueが1つの失敗で止まり続けないこと。
-- 2モデルを切り替えても、同じ形式の`BOX_IMPOSTOR`が得られる。選択されないモデルの重みは読み込まない。
-- H3-Imageローカル推論は大容量モデルのため、24GB級GPUではオフロードや量子化でも動作保証しない。API/Partner Nodes利用も可能にする。
-- モデルウェイトをcustom-nodeの配布物に同梱しない。MiniMax H3-Image Community Licenseには適用地域の制限（EU、UK、韓国、米国を除外）があり、利用前に原文確認。Qwenおよび各依存モデルの商用条件も別に検査する。
+生成画像をstraight RGBとして解釈し、色プロファイルを記録して線形色へ変換する。ベイクしたcoverageをa、採用重みをwとすると、アトラスに書くRGBは `(1−w) × baselineRGB + w × a × generatedLinearRGB`。すでにpremultipliedの入力は先にstraightへ戻す。完全な空画素のRGBは0。w=0の面・画素にはベースのバイト列をそのまま使う。黒い模様は有効色とする。照明や影がすでに描かれた面は照明なしの比較表示でも確認し、PBR照明を掛けて二重の陰影が出れば採用を見直す。
 
-**完成判定**：参照画像をComfyUIに読み込み、`qwen_enhanced`または`h3_enhanced`を選ぶだけで、6方向の見た目と正しいBoxのマップが作られ、Orbit可能なBox Impostorプレビューと永続保存アセットを返す。失敗時には不一致の箇所と使用したfallbackを記録する。
+生成原寸とアトラス内での解像度を別々に記録する。R=256に2Kの画像を戻した場合、最終アトラスに残るのは1面256画素である。Shaderは半texelのクランプにもRを使う。初版はマップ一式を同じRで生成する。Rを上げる実験ではVRAM、ベイク時間、レイマーチのsteps、細い形状の欠損を再計測する。[Shaderと解像度](https://github.com/richardmonette/three-impostor/blob/4d525ca3aecc5ed2009d6bd9b8c6d6c289248768/Impostor.js#L1206-L1235)
 
-## 14 根拠ソース
+## 7　実行環境
 
-- 指定記事・配布JSON： https://note.com/kongo_jun/n/ndbabf97a8f41?hl=en
-- AnyAngle LoRAモデルカード： https://huggingface.co/lilylilith/QI_2.1_AnyAngle
-- AnyAngle Studio T8： https://github.com/T8mars/Comfyui-Qwen-Image-2.1-MultiAngle-T8
-- `three-impostor`のBaker/Shader： https://github.com/richardmonette/three-impostor/blob/main/Impostor.js
-- Pixal3D公式ComfyUI解説： https://github.com/Comfy-Org/docs/blob/main/tutorials/3d/pixal3d.mdx
-- Qwen-Image 2.1公式ComfyUI： https://github.com/Comfy-Org/docs/blob/main/tutorials/image/qwen/qwen-image-2-1.mdx
-- H3-Image公式ComfyUI： https://blog.comfy.org/p/minimax-h3-image-is-now-available
-- H3-ImageモデルREADME： https://github.com/MiniMax-AI/MiniMax-H3-Image
-- H3-Image利用条件： https://github.com/MiniMax-AI/MiniMax-H3-Image/blob/main/LICENSE
-- ComfyUI Web拡張： https://github.com/Comfy-Org/ComfyUI_frontend/blob/main/docs/extensions/development.md
-- three.js WebGPURenderer： https://threejs.org/manual/pages/webgpurenderer
+| 部分 | 採用技術とバージョン管理 |
+|---|---|
+| ノード・整列 | ComfyUIネイティブノード＋Python、NumPy、Pillow、OpenCV。ComfyUI本体・フロント・ワークフローの版を記録し、その組み合わせでテストする。 |
+| ベイク | Node.jsからPlaywrightでChromiumを起動し、ブラウザ内の `WebGPURenderer` でBakerを呼ぶ。three-impostorの参照コミットは `4d525ca3aecc5ed2009d6bd9b8c6d6c289248768`。three.jsのCPU試験はr186。実機試験で使うthree.jsのパッチ版・Playwright・Chromiumも固定する。 |
+| プレビュー | three.js、TSL、`ImpostorNodeMaterial`、OrbitControls。ComfyUI同一オリジンのWeb Extensionと、Phase 0用の単独ビューアで同じ復元関数を使う。 |
+| 検査 | pytestでスキーマ・マスク・整列・キャッシュを、JSの単体試験でカメラとバイナリを、PlaywrightでGPU描画と再読込を検査する。 |
 
-## Agentへの最初の具体的な指示
+ワーカーは実際に選ばれたWebGPUまたはWebGL2 backendを記録する。開始時に小さいRGBA16FのMRT描画・読み戻し・DataTexture再アップロードを試す。WebGPUが使えない環境では `WebGPURenderer({forceWebGL:true})` を同じ試験に通す。どちらも失敗したら、backend、失敗段階、例外を返す。ソフトウェアGPUで通った結果は、実GPUでの速度とVRAMの測定から区別する。[three.jsのbackend選択](https://threejs.org/manual/pages/webgpurenderer) · [上流の依存条件](https://github.com/richardmonette/three-impostor/blob/4d525ca3aecc5ed2009d6bd9b8c6d6c289248768/package.json)
 
-1. 直ちにAIモデル統合から始めず、**Phase 0の単独GLB→BoxBake→保存→再読込→360度プレビュー**を完成させる。ここが既存Bakerへの互換性を証明する最小単位。
-2. 必ず`three-impostor`の現行ソースとREADMEを確認して実装。`intervalMap`の仕様は本書の説明だけで再実装しない。
-3. 次に指定記事のGLBから後半を生成するJSONを参照し、Qwen-Image 2.1 + AnyAngleの条件付けを独立サブグラフとして移植する。
-4. 保存方式は試験可能なmanifest+raw half-floatから始める。不要な依存や独自UIフレームワークを増やさない。
-5. 各Phaseで実際の出力画像とテスト結果を確認し、READMEに制約・未実装・再現手順を更新する。
+## 8　ComfyUIのノード
+
+次の `BOX_*` と `FACE_VIEW_RESULT` は本プロジェクトで定義する型である。3Dファイルと画像は接続先が受け付けるComfyUIの型に合わせる。各ノードは画面上の表示名のほかに、変更しない内部IDを持つ。
+
+| ノード | 入力 | 出力と役割 |
+|---|---|---|
+| BI PrepareReference | IMAGE、任意MASK、その極性 | RGBと前景coverage（不透明=1）、参照メタデータ。元のアルファがなければ未指定とし、マッティングまたは明示された不透明条件を使う。 |
+| BI CanonicalizeProxy | FILE_3D_GLBまたは既存GLB、姿勢 | 正規化GLB、tightBounds、変換・逆変換、参照姿勢 |
+| BI MakeSixGuides | 正規化GLB、ベイク条件 | 6方向のIMAGEと `BOX_FACE_META`。RGB、深度、coverageを同じカメラで描く。 |
+| BI FaceInputs | 各面の生成出力、任意の手動入力 | 面IDをキーとする `BOX_FACES`。重複・未知のIDを拒否し、未指定の面にはベース色を指定する。 |
+| BI AlignAndValidateFaces | BOX_FACES、ガイド、カメラ | 方向別の位置合わせ、面間比較、採用重み、警告。色候補と `qa/report.json` を返す。 |
+| BI BakeBox | 正規化GLB、R、材質設定、任意の整列済み面 | ベイクキャッシュから幾何マップを取得し、採用色を合成する。返す `BOX_IMPOSTOR` はmanifestを参照する。 |
+| BI PreviewBox | BOX_IMPOSTOR | preview URL、静止IMAGE、元メッシュとの比較UI |
+| BI SaveBox / BI LoadBox | BOX_IMPOSTORと保存先／保存済みmanifest | 持ち出せるアセット一式／検証済みのBOX_IMPOSTOR。Load時にモデルやBakerを起動しない。 |
+
+ComfyUIの `LoadImage.MASK` は透明側が1で、アルファのない入力は64×64のゼロマスクを返す場合がある。既知のLoadImage由来なら `1−mask` を前景coverageに変換する。外部マスクは極性と有効性を明示し、寸法だけで判定しない。QwenのRGBAは必要に応じてRGBとアルファに分け、最後に同じcoverage規約へそろえる。[LoadImageの定義](https://github.com/Comfy-Org/ComfyUI/blob/c5751c81abe131202eea9e4c66d000589013dd0b/nodes.py#L1764-L1805)
+
+## 9　ファイル形式と再利用
+
+`output/box_impostor/<asset_id>/` の下に次を保存する。各ファイルのパスはmanifestからの相対パスとする。
+
+| パス | 内容 |
+|---|---|
+| `manifest.json` | 形式の版、生成物・親バージョン、モード、状態、面別採否、下記の読込情報 |
+| `geometry/proxy.glb`、`reference/` | 正規化GLBと、入力に使った画像・coverage・参照姿勢。GLBだけのモードでは参照画像は任意。 |
+| `guides/<face_id>/`、`views/<face_id>/` | ガイドRGB・深度・マスク・カメラ。生成原寸、整列後画像、変換、手動入力を上書きせず保存。 |
+| `maps/` | `color_base.rgba16f.bin`、`color.rgba16f.bin`、`normal.rgba16f.bin`、`interval.rgba16f.bin`、`range.rgba16f.bin`。任意で `material.rgba8.bin` と `emissive.rgba16f.bin`。同内容の実体は共有可。 |
+| `qa/report.json`、`previews/` | 面・面対の指標、失敗理由、比較画像、テスト条件 |
+
+### manifestとrawの読み方
+
+`schemaVersion`、`asset_id`、`mode`、`layout="box"`、`resolution`、`tightBounds`、`bakeBox` のmin/max、GLBの変換、6面の順序とカメラ、Bakerが実際に返した `maps` リストを必須とする。マップごとにパス、幅・高さ、channels、dtype、endian、行順、rowBytes、色空間、alpha規約、min/magFilter、wrap、mipmap、byteLength、SHA-256を保存する。参照入力、プロキシ、モデル・LoRA・テンプレート・ワーカーの版、seed、prompt、実GPU/backendも記録する。手動入力とGLBのみのモードでは該当しない項目を明示する。
+
+ディスク上はヘッダーなし、RGBA順、行に余白なし、16FはIEEE 754 binary16のlittle-endian。行順は `increasingShaderV` と定義し、先頭行をShaderのv=0側の画素中心に対応させる。PNGの先頭行は画像の上端なので、面内vと混同しない。各backendからこの行順に変換する箇所を1か所に集め、非対称パターンで確定する。範囲外のパス、未知のmajor版、重複面、欠落した必須マップ、寸法・バイト数・ハッシュの不一致はロードエラーにする。
+
+`renderer.readRenderTargetPixelsAsync` の戻り値から、行ごとの実データだけをコピーする。r186のWebGPUはrow strideを256バイトの倍数に切り上げ、最終行の末尾にはパディングを付けない。例えばR=128のrangeMapは48×16で、1行384バイト、GPU上の読み戻しstrideは512バイト、保存長は6,144バイト。各backendの型とstrideを検査する。16Fのビット列を8bit画像に通さない。[WebGPUの読み戻し](https://github.com/mrdoob/three.js/blob/r186/src/renderers/webgpu/utils/WebGPUTextureUtils.js#L803-L861) · [WebGL2の読み戻し](https://github.com/mrdoob/three.js/blob/r186/src/renderers/webgl-fallback/utils/WebGLTextureUtils.js)
+
+復元時は16Fを `Uint16Array`＋`HalfFloatType`、RGBA8を `Uint8Array`＋`UnsignedByteType` のRGBA DataTextureにする。サンプラー設定と行順を復元し、`needsUpdate` を設定する。ベイク済みの線形RGBにはsRGBの再デコードを掛けない。空間データは色変換を無効にする。`Box3` から `BoxGeometry(size.x,size.y,size.z)` を作り、BBoxの中心へ平行移動する。マテリアルには `layout, box, resolution, maps, colorMap, normalMap, intervalMap, rangeMap` と実在する任意マップを渡す。復元用のアダプターがジオメトリとテクスチャの破棄も担当する。[ImpostorDataのgeometryと所有関係](https://github.com/richardmonette/three-impostor/blob/4d525ca3aecc5ed2009d6bd9b8c6d6c289248768/Impostor.js#L292-L341)
+
+### キャッシュと公開
+
+| 変更 | 再計算するもの |
+|---|---|
+| +Xのseed、prompt、手動画像だけを変更 | +Xの生成または手動取込、+Xの整列、+Xが関わる面間比較、色の合成、manifest、プレビュー |
+| 同じ画像でQA閾値を変更 | 保存済み面の指標を再判定し、採否が変わる場合は色を再合成 |
+| GLBの内容・正規化姿勢・撮影範囲を変更 | 影響を受けるガイド、幾何ベイク、各面の生成・整列と後段。元の参照画像は再利用 |
+| ベイク解像度Rを変更 | 幾何マップ一式とタイル座標への再サンプル。モデルに渡すガイド・キャンバスの内容が同一なら生成原寸を再利用 |
+| カメラが見る向き、露出などプレビュー操作だけを変更 | プレビュー描画のみ |
+
+キャッシュキーは工程名・実装版・入力内容のSHA-256・出力に影響するパラメータから作る。ファイル名だけをキーにしない。APIのseedが固定できない場合もリクエスト条件と返った画像のhashを関連付ける。明示的な「この面を再生成」で別の生成結果を採用できる。
+
+再起動後に高価なノードを飛ばすには、画像生成やPixal3Dを評価する前にキャッシュを引く。軽量な入力情報からキーを確定し、ヒット時は保存パスから復元する。ミス時に限り、遅延入力として接続した生成サブグラフの出力を要求する。手動差し替え時も元の生成分岐は評価しない。再起動直後の再実行でモデルローダーの呼出し回数を検査する。[ComfyUIの遅延評価](https://docs.comfy.org/custom-nodes/backend/lazy_evaluation)
+
+ジョブごとに一時領域を設け、同じキーの同時生成は1回にまとめる。全バイトの書込み・検証が成功してから同一ファイルシステム上でatomic renameし、manifestを最後に公開する。失敗・キャンセル・OOM時は一時領域とワーカーを片付ける。既存の公開版は参照できる状態を保つ。
+
+## 10　プレビュー
+
+同じカメラと照明で `Proxy GLB / Box（元の色）/ Box（採用色）` を即座に切り替え、並列表示も選べるようにする。正面6方向、斜視、Orbit/Pan/Zoom、正投影／透視、背景色／チェッカー、照明回転に対応する。色の比較には照明なしの表示も用意する。GPU検証用にはヒット深度、法線、区間、占有範囲、面別のガイドと生成結果を個別に表示する。
+
+任意でsteps・露出・AO・ワイヤーフレームを切り替え、表示条件をスクリーンショットに添える。三角形が12枚であることだけを高速化の根拠にしない。実際のカメラ距離・表示サイズでGPU時間を測る。専用ルートは同一オリジンの `/box-impostor/` 配下に置き、サーバーはasset_idから公開済みファイルだけを解決する。再起動後の表示はmanifestから再現する。
+
+## 11　実装ファイルの配置案
+
+以下はこれから作る構成を示す。調査時点のリポジトリには設計資料とライセンスがある。
+
+| 配置 | 役割 |
+|---|---|
+| `__init__.py`、`pyproject.toml`、`requirements.txt` | ノード登録、`WEB_DIRECTORY`、Pythonの最小依存 |
+| `nodes/{reference,canonicalize,guides,faces,qa,bake,preview,assets}.py` | 各ノードの入出力、実行とエラーの通知 |
+| `core/{schema,geometry,image_alignment,quality_metrics,file_store,worker_client}.py` | 共通データ型、座標、整列・指標、永続キャッシュ、ワーカー呼出し |
+| `worker/src/{bake,guide_renderer,export_maps,import_maps,worker_server}.ts` | three.jsのBaker、固定カメラ、raw入出力、復元アダプター。依存はlockfileで固定 |
+| `web/extension.js`、`web/viewer/` | ComfyUI内の操作と単独ビューア |
+| `workflows/` | `01_box_from_glb.json`、`02_box_from_reference_qwen21.json`、`03_box_from_reference_h3.json`、`04_manual_six_faces.json` |
+| `examples/`、`tests/`、`docs/` | 自作の非対称GLB、既知正解、CPU・GPUの試験、再現手順、環境・ライセンス・結果 |
+
+## 12　開発順序と各段階の終了条件
+
+| Phase | 最初に実装するもの | 段階を完了できる証拠 |
+|---|---|---|
+| 0 | 単独GLB → 正規化 → 既存Baker → raw＋manifest → 別プロセスでLoad → Orbit | 非対称GLB、全4必須マップ、任意マップの有無、6正面＋斜め12方向、深度、上下の向き、同一backendの保存前後差を記録 |
+| 1 | ノードとWeb Extension、手動6面差し替え | GUIから01と04を実行。1面更新で幾何ベイク0回・他面生成0回、再起動後Load、元メッシュ比較。 |
+| 2 | 公式Pixal3Dのテクスチャ付きGLBを既存入力へ接続 | 参照の切抜きと推定画角を記録。参照姿勢に戻した輪郭と手動補正後の向きを提示。既存GLB経路とも同じ形式で読める。 |
+| 3 | Qwen＋AnyAngleの1面、次いで6面 | 手動の既知画像で合成を先に検証。同一GLBでベース色・手動・Qwenの斜視を比較し、採否・失敗条件・所要時間を記録。 |
+| 4 | H3-Imageの独立分岐 | 入力順A/BとQwenを同じガイドで比較し、同じ後処理・保存・再読込を通す。未選択モデルのロード0回。 |
+| 5 | TripoSplatガイド、形状補正、圧縮、任意の配布 | 各拡張を個別に試験。形状変更後は再ベイク。圧縮後の深度・輪郭・画質を未圧縮版と比較。 |
+
+Phase 0の最初のfixtureには中心をずらした直方体を使い、面ごとに異なる色、上下面に回転を識別できる印、片側に突起を付ける。Bakerを直接呼ぶ基準描画と、保存ファイルだけを渡した別プロセスの描画を同時に用意する。検査に失敗したら生のタイル・カメラ・行順を比較できるよう、元のベイク結果も残す。
+
+## 13　受け入れテストと失敗時の動作
+
+| 試験 | 方法 | 合否・記録 |
+|---|---|---|
+| カメラと座標 | 非正方形、原点外の子、ルート・子の変換、上下の矢印、面別の既知パターンを描画 | 6面IDと投影先、左右と上方向、中心、変換の往復を自動照合。面の交換、鏡像、90度回転は不合格。 |
+| 型とraw | 16Fの0、0.5、1、隣接する16F値を含む独立した既知パターンを使用。R=256とR=128を試験。PBR全有／全無、発光なしも確認 | ディスク上のbyteLength、SHA-256、ビット列を比較。行パディングが残る、8bitを経由する、optionalとmapsの内容が食い違う場合は不合格。 |
+| 描画の往復 | ベイク直後と、プロセスを終了してLoadしたBoxを同一backend・カメラ・露出・照明・stepsで描画 | 全6正面＋少なくとも12斜視。各マップをサンプルする診断描画と最終色・深度を対比。同一環境での繰返し差を先に測り、色・深度の許容値を記録して固定。別backendは別の結果として記録。 |
+| Boxの形状近似 | GLBとBoxの輪郭・ヒット深度、別メッシュを貫く前後関係を比較。脚、貫通穴、開底形状、alpha-cutoutの葉も試す | 輪郭IoU、深度差の分位点、面積、最悪視点を記録。奥の空隙が埋まる例と、保存時に生じた差を区別する。 |
+| アルファと色 | 不透明な黒、透明、半透明の境界、既知の色票。無変更のカラーを取り出して戻す経路と1面だけ変更する経路を試す | 元のcolor.a、ほか5面のRGB、全幾何・材質マップのhashが一致。通常の半透明材質の再現は個別の対応項目とする。 |
+| 個別の整列 | ガイドと候補の前景で平行移動・一様拡縮から始める。変換量に上限を設け、許容範囲を超える変形や左右反転が必要な場合はベース色に戻す | 面ごとに輪郭IoU、境界距離p95（pxとR比）、ランドマークのずれを変換の前後で記録。空マスクや裏返った文字は個別に検出／目視判定する。 |
+| 面どうしの整合 | プロキシ上の同じ点を各カメラへ再投影し、両方の深度と一致する対だけで色・模様の位置を比較。輪郭、掠れ角、鏡面は別集計 | 色差、比較可能点数・面積率、最悪の面対、辺を横切る軌道での二重像を記録。重なりが少ない面対は「比較不能」。閾値は既知柄・手動整列の基準画像で調整し、評価セットの前に版を固定する。 |
+| 障害と再実行 | キャッシュ済み状態から1面更新、同時ジョブ、破損raw、GPUメモリ不足、キャンセル、再起動を試す | 工程ごとの実行回数を記録。面不合格はベース色へ戻して理由を表示。GPU失敗・破損・欠落では成功manifestを公開しない。 |
+
+評価セットには正解画像を持つ手続き生成アセットと、参照が1枚だけの実例を含める。成功面数・ベース色に戻した面数・比較不能な面対を併記する。全6面をベース色に戻した画像をモデルの生成成功として計上しない。レポートには実行環境、モデル版、最大VRAM、生成時間、再実行時間、表示サイズごとのGPU時間を残す。
+
+## 14　依存関係と公開条件
+
+three-impostorはMIT。Bakerの表現には閉じたメッシュが適し、複数段の深い空隙や開いた底は近似される。上流版では投影シャドウに制限がある。GPU実装の互換性は実際に通過した組み合わせごとに掲示する。[上流README](https://github.com/richardmonette/three-impostor/blob/4d525ca3aecc5ed2009d6bd9b8c6d6c289248768/README.md#notes)
+
+Qwen-Image 2.1本体はQwenのResearch Licenseで研究・評価用途を規定し、商用利用には別のライセンスを求める。AnyAngle LoRAのカードに記載されたApache-2.0はLoRA側の条件である。H3-Image Community LicenseはEU・英国・韓国・米国を適用地域から除き、第V条4項は出力の使用・配布・表示にも触れている。コード、モデル本体、LoRA、生成例、外部APIの契約を別々に記録する。公開リポジトリにはモデルウェイトを同梱せず、GPU検証には自作の手続き生成アセットを使う。[Qwen本体](https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE) · [AnyAngle](https://huggingface.co/lilylilith/QI_2.1_AnyAngle) · [MiniMax H3-Image](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image/blob/main/LICENSE)
+
+初回の開発報告には、Phase 0の固定バージョン、実行手順、使ったGLB、Baker直後と再読込後の同一視点画像、数値差、失敗した環境を添える。生のマップとプレビューを照合できてからPhase 1へ進む。
