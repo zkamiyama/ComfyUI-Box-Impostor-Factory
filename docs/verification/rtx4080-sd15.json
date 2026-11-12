@@ -99,5 +99,39 @@
       "file": "sd15-box-after.png",
       "sha256": "91824c60bf985feb1e647b0a3586d28d0afe6b6c67b0746d52d31ff01359aee2"
     }
+  },
+  "gui": {
+    "factory": "e12c355a1faa7d61eca11983bc4ed55d2a6eea84",
+    "comfyFrontend": "1.59.1",
+    "workflowNodes": 46,
+    "links": 89,
+    "firstRunWithExistingBake": {
+      "submitToHistorySeconds": 3.62148,
+      "cachedSamplers": 0
+    },
+    "immediateRepeat": {
+      "submitToHistorySeconds": 0.0617,
+      "cachedSamplers": 6
+    },
+    "acceptedFaces": 6,
+    "qaReportIdenticalToAPI": true,
+    "baselineImagePixelDifferencesVsAPI": 0,
+    "enhancedImagePixelDifferencesVsAPI": 0,
+    "geometryBytesIdenticalToAPI": true
+  },
+  "portableArchive": {
+    "file": "sd15-six-faces.box.zip",
+    "bytes": 4312879,
+    "sha256": "7cbd3565572bd7d5c137ede14d95fa3de3a8d9994b325eeb46139e7611af860a",
+    "entries": 39,
+    "unpackedBytes": 24984022,
+    "comfyLoadReturnedSameAsset": true,
+    "newDirectoryAndChromium": {
+      "view": "diagonal",
+      "width": 256,
+      "height": 256,
+      "changedPixels": 0,
+      "maxRGBAError": 0
+    }
   }
 }
