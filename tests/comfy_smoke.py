@@ -140,6 +140,19 @@ def run(comfy, output):
             print(json.dumps({"ok":True,"baseline":baseline["asset_id"],"manual":updated["asset_id"]}))
             subprocess.run(['node', str(ROOT / 'tests/comfy_frontend_smoke.mjs'), origin,
                             str(inputs), str(output / 'frontend')], cwd=ROOT, check=True, timeout=960)
+            # The actual frontend independently numbers Pixal3D nodes for each containing workflow.
+            sys.path.insert(0, str(ROOT))
+            sys.path.insert(0, str(comfy))
+            import folder_paths
+            from box_nodes.generation import lineage
+            folder_paths.set_input_directory(str(inputs))
+            folder_paths.set_output_directory(str(output / 'output'))
+            keys = []
+            for name in ('02_box_from_reference_qwen21', '03_box_from_reference_h3', '05_pixal3d_baseline'):
+                graph = json.loads((output/'frontend'/(name+'.api.json')).read_text())
+                proxy = next(i for i, n in graph.items() if n['class_type']=='BICanonicalizeProxy')
+                keys.append(lineage(graph,proxy,('model_3d',))[0])
+            assert len(set(keys)) == 1, 'Independently expanded Pixal3D subgraphs must share one cache entry'
             with Image.open(output / 'frontend/rendered-box.png') as image:
                 assert image.mode == 'RGBA' and image.size == (512, 512)
                 assert image.getpixel((0, 0))[3] == 0 and image.getpixel((256, 256))[3] == 255

@@ -1,5 +1,7 @@
 """Persistent pre-inference caching for the two local ComfyUI adapter graphs."""
 import json
+import shutil
+from functools import wraps
 from pathlib import Path
 
 from . import faces, store
@@ -18,13 +20,55 @@ def fingerprint_file(path):
     return (faces.cache_dir('file-sha', digest, write) / 'sha256').read_text(encoding='ascii')
 
 
-def lineage(prompt, node_id, sockets=('image', 'mask')):
+def migrate_stage(kind, marker):
+    """Adopt a committed cache entry from the exact old graph once, under the normal stage lock."""
+    def decorate(request):
+        @wraps(request)
+        def lookup(*args, **kwargs):
+            current = request(*args, **kwargs)
+            if current is None:
+                return None
+            def digest(value):
+                return value[0] if isinstance(value, tuple) else value
+            base = store.root() / '.stages' / kind
+            key = digest(current)
+            if base.is_dir() and not (base / key / marker).is_file():
+                previous = base / digest(request(*args, **kwargs, legacy=True))
+                if (previous / marker).is_file():
+                    faces.cache_dir(kind, key, lambda stage: shutil.copytree(previous, stage, dirs_exist_ok=True))
+            return current
+        return lookup
+    return decorate
+
+
+def structural_graph(bindings, nodes):
+    """Number reachable nodes by sorted socket traversal, keeping fan-out and output slots."""
+    indices = {}
+    ordered = []
+    def encode(value):
+        if not (isinstance(value, list) and len(value) == 2 and isinstance(value[0], (str, int))
+                and type(value[1]) is int and str(value[0]) in nodes):
+            return {'literal': value}
+        key = str(value[0])
+        if key not in indices:
+            indices[key] = len(ordered)
+            raw = nodes[key]
+            normalized = {'type': raw['type']}
+            ordered.append(normalized)
+            if 'inputs' in raw:
+                normalized['inputs'] = {k: encode(raw['inputs'][k]) for k in sorted(raw['inputs'])}
+        return {'node': indices[key], 'output': value[1]}
+    roots = {k: encode(bindings[k]) for k in sorted(bindings)}
+    return roots, ordered, indices
+
+
+def lineage(prompt, node_id, sockets=('image', 'mask'), *, legacy=False):
     """Trace the actual input edges, terminating at already hashed reference and guide nodes."""
     if not isinstance(prompt, dict) or str(node_id) not in prompt:
         raise ValueError('ComfyUI prompt graph is required to cache model output safely.')
     nodes = {}
     model_files = {}
-    sampler_settings = []
+    sampler_settings = {}
     def literal(value):
         if isinstance(value, list) and len(value) == 2:
             entry = prompt.get(str(value[0]), {})
@@ -64,18 +108,30 @@ def lineage(prompt, node_id, sockets=('image', 'mask')):
                 image_inputs[pin] = fingerprint_file(folder_paths.get_annotated_filepath(pin))
         if kind in ('KSampler', 'KSamplerAdvanced'):
             parameters = ('seed', 'noise_seed', 'steps', 'cfg', 'denoise', 'sampler_name', 'scheduler')
-            sampler_settings.append({k: literal(v) for k, v in pins.items() if k in parameters})
+            sampler_settings[node] = {k: literal(v) for k, v in pins.items() if k in parameters}
         if kind in ('TextEncodeQwenImage21', 'MiniMaxH3ImageConditioning'):
-            sampler_settings.append({'conditioning': kind, **{k: literal(v) for k, v in pins.items() if k in ('prompt', 'negative_prompt', 'width', 'height', 'resolution')}})
+            sampler_settings[node] = {'conditioning': kind, **{k: literal(v) for k, v in pins.items() if k in ('prompt', 'negative_prompt', 'width', 'height', 'resolution')}}
     pins = prompt[str(node_id)]['inputs']
     bindings = {name: pins.get(name) for name in sockets}
     for value in bindings.values():
         visit(value)
     # Two outputs of the same upstream node may contain different images, masks or GLBs.
-    return store.key(bindings, nodes, model_files, image_inputs), model_files, sampler_settings
+    if legacy:
+        return store.key(bindings, nodes, model_files, image_inputs), model_files, list(sampler_settings.values())
+    roots, ordered, indices = structural_graph(bindings, nodes)
+    settings = []
+    for key in indices:
+        if key in sampler_settings:
+            item = sampler_settings[key].copy()
+            for pin, value in item.items():
+                if isinstance(value, list) and len(value) == 2 and str(value[0]) in indices:
+                    item[pin] = {'node': indices[str(value[0])], 'output': value[1]}
+            settings.append(item)
+    return store.key('graph-v2', roots, ordered, model_files, image_inputs), model_files, settings
 
 
-def generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas=None):
+@migrate_stage('generated', 'result.json')
+def generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas=None, *, legacy=False):
     if face_id not in store.FACES or backend not in MODES:
         raise ValueError('Unknown face or model backend.')
     recipe_data = json.loads(recipe or '{}')
@@ -84,7 +140,7 @@ def generation_request(guides, reference, face_id, backend, recipe, seed, mask_m
     base = store.asset_dir(guides)
     manifest = json.loads((base / 'manifest.json').read_bytes())
     guide_hash = store.file_hash(store.contained(base, manifest['faces'][face_id]['guide']))
-    graph_hash, weights, actual = lineage(prompt, unique_id)
+    graph_hash, weights, actual = lineage(prompt, unique_id, legacy=legacy)
     source = {'backend': backend, 'faceId': face_id, 'recipe': recipe_data, 'recipeSeed': seed, 'samplers': actual, 'graphSha256': graph_hash, 'weights': weights, 'referenceSha256': reference['sha256'], 'guideSha256': guide_hash, 'maskMode': mask_mode}
     if canvas is not None:
         if canvas.get('faceId') != face_id:
@@ -125,6 +181,7 @@ class CachedGeneratedFace:
             (stage / 'result.json').write_text(json.dumps({'sha256': item['sha256'], 'provenance': source}), encoding='utf-8')
         stage = faces.cache_dir('generated', digest, write)
         item = json.loads((stage / 'result.json').read_bytes())
+        item['provenance'] = source
         item['path'] = str(store.root() / '.stages' / 'faces' / item['sha256'])
         if 'path' in reference:
             item['reference'] = reference

@@ -12,7 +12,7 @@ import numpy as np
 from PIL import Image
 
 from . import faces, store
-from .generation import CachedGeneratedFace, lineage
+from .generation import CachedGeneratedFace, lineage, migrate_stage
 from .canvas import ModelCanvas
 from .splat import TripoSplatGuide
 from .splat_cache import CachedTripoSplat
@@ -53,13 +53,14 @@ class PrepareReference:
     def INPUT_TYPES(cls):
         return {'required': {'image': ('IMAGE',), 'mask_mode': (['opaque', 'rgba', 'foreground', 'load_image'],)}, 'optional': {'mask': ('MASK', {'lazy': True})}, 'hidden': {'prompt': 'PROMPT', 'unique_id': 'UNIQUE_ID'}}
 
-    def request(self, image, mask_mode, prompt, unique_id):
+    @migrate_stage('prepared', 'result.json')
+    def request(self, image, mask_mode, prompt, unique_id, *, legacy=False):
         if prompt is None or str(unique_id) not in prompt or mask_mode not in ('foreground', 'load_image'):
             return None
         if 'mask' not in prompt[str(unique_id)].get('inputs', {}):
             raise ValueError('Connect a mask or choose an explicit opaque/RGBA reference.')
         pixels = faces.array(image)
-        graph, _, _ = lineage(prompt, unique_id, sockets=('mask',))
+        graph, _, _ = lineage(prompt, unique_id, sockets=('mask',), legacy=legacy)
         return store.key('prepared-reference-v1', pixels.shape, hashlib.sha256(pixels.tobytes()).hexdigest(), mask_mode, graph)
 
     def check_lazy_status(self, image, mask_mode, mask=None, prompt=None, unique_id=None):
@@ -108,19 +109,21 @@ class CanonicalizeProxy:
             return hashlib.sha256(model_3d.get_bytes()).hexdigest() if hasattr(model_3d, 'get_bytes') else float('nan')
         return store.file_hash(input_path(filename)) if filename else ''
 
-    def cached_request(self, reference, prompt, unique_id):
-        lineage_key, weights, _ = lineage(prompt, unique_id, sockets=('model_3d',))
+    @migrate_stage('native-mesh', 'source.glb')
+    def cached_request(self, reference, prompt, unique_id, *, legacy=False):
+        lineage_key, weights, _ = lineage(prompt, unique_id, sockets=('model_3d',), legacy=legacy)
         digest = store.key('generated-glb-v1', reference['sha256'], lineage_key)
         return digest, {'backend': 'native_mesh', 'graphSha256': lineage_key, 'weights': weights}
 
-    def capture_key(self, reference, prompt, unique_id):
+    @migrate_stage('mesh-camera', 'camera.json')
+    def capture_key(self, reference, prompt, unique_id, *, legacy=False):
         pins = (prompt or {}).get(str(unique_id), {}).get('inputs', {})
         supplied = [p for p in self.capture_pins if p in pins]
         if not supplied:
             return None
         if len(supplied) != len(self.capture_pins) or reference is None or 'model_3d' not in pins:
             raise ValueError('Connect cropped image, both lens outputs, reference and generated GLB together.')
-        graph_hash, _, _ = lineage(prompt, unique_id, sockets=self.capture_pins)
+        graph_hash, _, _ = lineage(prompt, unique_id, sockets=self.capture_pins, legacy=legacy)
         return store.key('mesh-reference-camera-v1', reference['sha256'], graph_hash)
 
     def check_lazy_status(self, filename='', model_3d=None, reference=None, prompt=None, unique_id=None, **options):

@@ -13,7 +13,8 @@ OPERATORS = set(LOADERS) | {'TripoSplatConditioning', 'KSampler', 'VAEDecodeTrip
                             'TripoSplatPreprocessImage', 'PrimitiveInt', 'BIPrepareReference'}
 
 
-def decoder_request(reference, prompt, unique_id):
+@generation.migrate_stage('triposplat', 'result.json')
+def decoder_request(reference, prompt, unique_id, *, legacy=False):
     """Only skip inputs for deterministic native graphs with provable reference/weight identities."""
     pins = (prompt or {}).get(str(unique_id), {}).get('inputs', {})
     output = pins.get('splat')
@@ -45,7 +46,7 @@ def decoder_request(reference, prompt, unique_id):
         pending.extend(str(v[0]) for v in n['inputs'].values() if isinstance(v, list) and len(v) == 2)
     if references != {str(ref[0])}:
         return None
-    graph, weights, settings = generation.lineage(prompt, unique_id, sockets=('splat',))
+    graph, weights, settings = generation.lineage(prompt, unique_id, sockets=('splat',), legacy=legacy)
     if not files or files != set(weights):
         return None
     from comfy import model_management

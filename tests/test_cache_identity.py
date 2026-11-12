@@ -1,4 +1,5 @@
 from pathlib import Path
+import copy
 import shutil
 import tempfile
 import unittest
@@ -22,6 +23,52 @@ class CacheIdentityTests(unittest.TestCase):
         self.directory = self.root / self.asset
         self.manifest = fixture(self.directory, self.asset)
         self.enterContext(patch.object(store, 'root', return_value=self.root))
+
+    def test_renderer_configuration_invalidates_bake_and_render_caches(self):
+        def versions():
+            return store.worker_version(), store.presentation_version()
+
+        with patch.dict('os.environ', BI_NODE='', BI_CHROMIUM='', BI_SOFTWARE_GPU='0'):
+            original = versions()
+            for name, value in [('BI_NODE', '/opt/windows-node-wrapper'),
+                                ('BI_CHROMIUM', '/opt/custom-browser'), ('BI_SOFTWARE_GPU', '1')]:
+                with self.subTest(name=name), patch.dict('os.environ', {name:value}):
+                    for previous, changed in zip(original, versions()):
+                        self.assertNotEqual(previous, changed)
+        with patch.dict('os.environ', BI_NODE='/no-such-factory-node'):
+            with self.assertRaisesRegex(RuntimeError, 'BI_NODE'):
+                store.run_worker('--help')
+
+    def test_renumbered_graph_adopts_legacy_mesh_without_conflating_changed_edges(self):
+        n = lambda kind, **pins: {'class_type':kind, 'inputs':pins}
+        first = {'5:10':n('KSampler', seed=42), '5:11':n('Mesh', a=['5:10',0], b=['5:10',0]),
+                 '6':n('BICanonicalizeProxy', model_3d=['5:11',0])}
+        second = {'9:99':n('Mesh', b=['9:98',0], a=['9:98',0]), '9:98':n('KSampler', seed=42),
+                  '8':n('BICanonicalizeProxy', model_3d=['9:99',0])}
+        ref = {'sha256':'a'*64}
+        proxy = nodes.CanonicalizeProxy()
+        old_hash, _, _ = generation.lineage(first,'6',('model_3d',),legacy=True)
+        old_key = store.key('generated-glb-v1',ref['sha256'],old_hash)
+        legacy = self.root/'.stages/native-mesh'/old_key
+        legacy.mkdir(parents=True)
+        (legacy/'source.glb').write_bytes(b'cached native geometry')
+        self.assertEqual(proxy.check_lazy_status(reference=ref,prompt=first,unique_id='6'),[])
+        self.assertEqual(proxy.check_lazy_status(reference=ref,prompt=second,unique_id='8'),[])
+        key, meta = proxy.cached_request(ref,first,'6')
+        self.assertEqual((key,meta),proxy.cached_request(ref,second,'8'))
+        self.assertEqual((legacy.parent/key/'source.glb').read_bytes(), b'cached native geometry')
+        for variation in ('slot','literal','duplicate','root_slot','socket'):
+            changed = copy.deepcopy(second)
+            pins = changed['9:99']['inputs']
+            if variation == 'slot': pins['a'][1] = 1
+            if variation == 'literal': changed['9:98']['inputs']['seed'] = 43
+            if variation == 'duplicate':
+                changed['other'] = copy.deepcopy(changed['9:98'])
+                pins['b'][0] = 'other'
+            if variation == 'root_slot': changed['8']['inputs']['model_3d'][1] = 1
+            if variation == 'socket': pins['c'] = pins.pop('a')
+            with self.subTest(variation=variation):
+                self.assertEqual(proxy.check_lazy_status(reference=ref,prompt=changed,unique_id='8'),['model_3d'])
 
     def test_root_output_slot_invalidates_masks_and_generation_requests(self):
         graph = {'1': {'class_type': 'TwoMasks', 'inputs': {}},
