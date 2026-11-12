@@ -6,7 +6,7 @@ import { join, resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { chromium } from 'playwright';
 import { chromiumOptions } from '../worker/chromium.mjs';
-import { checkCompiled, configureEditGraph, preflight } from '../scripts/run_model_workflow.mjs';
+import { checkCompiled, configureCompactProxy, configureEditGraph, preflight } from '../scripts/run_model_workflow.mjs';
 
 const [origin,inputDir,artifacts]=process.argv.slice(2);
 if(!origin||!inputDir||!artifacts)throw new Error('Usage: node tests/comfy_frontend_smoke.mjs ORIGIN INPUT_DIR OUTPUT_DIR');
@@ -28,8 +28,11 @@ async function freshPage(){
 
 async function compile(name, edit){
   const graph=JSON.parse(await readFile(new URL(name+'.json',resources),'utf8'));
-  const model=name.startsWith('02')?'qwen':'h3';
-  if(edit){
+  const model=name.startsWith('05')?'pixal3d':name.startsWith('02')?'qwen':'h3';
+  if(edit?.compactProxy){
+    configureCompactProxy(graph);
+    name+='-compact';
+  }else if(edit){
     configureEditGraph(graph,model,edit);
     name+='-supplied-glb';
   }
@@ -222,9 +225,12 @@ try{
     }else proof.compiledOnly.push({workflow:name,expandedNodes:Object.keys(prompt).length});
   }
   for(const name of workflowNames.slice(2,4)){
-    const prompt=await compile(name,{mesh:'asymmetric.glb',face:'+Z',size:512});
+    const prompt=await compile(name,{mesh:'asymmetric.glb',face:'+Z',faceSeed:{face:'+Z',seed:321},size:512});
     proof.compiledOnly.push({workflow:name+'-supplied-glb',expandedNodes:Object.keys(prompt).length});
   }
+  const compactName='05_pixal3d_baseline';
+  const compact=await compile(compactName,{compactProxy:true});
+  proof.compiledOnly.push({workflow:compactName+'-compact',expandedNodes:Object.keys(compact).length});
   await writeFile(join(artifacts,'frontend-workflows.json'),JSON.stringify(proof,null,2)+'\n');
   console.log('Frontend workflow proof',JSON.stringify(proof));
 }catch(e){

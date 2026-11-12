@@ -5,11 +5,33 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
-import { configureEditGraph, preflight, workflows, run, inferenceReport, selectFace, verifyOutput, saveSplatOutput, verifySplatOutput } from '../scripts/run_model_workflow.mjs';
+import { configureCompactProxy, configureEditGraph, preflight, workflows, run, inferenceReport, selectFace, verifyOutput, saveSplatOutput, verifySplatOutput } from '../scripts/run_model_workflow.mjs';
 
 const dirs = ['+X', '-X', '+Y', '-Y', '+Z', '-Z'];
 const digest = 'a'.repeat(64);
 const load = name => readFile(new URL('../workflows/' + workflows[name] + '.json', import.meta.url), 'utf8').then(JSON.parse);
+
+test('compact Pixal3D changes only geometry settings across the three workflows', async () => {
+  for (const model of ['pixal3d', 'qwen', 'h3']) {
+    const graph = await load(model);
+    const before = structuredClone(graph);
+    configureCompactProxy(graph);
+    const changed = [];
+    for (const [i, subgraph] of graph.definitions.subgraphs.entries()) {
+      const original = before.definitions.subgraphs[i];
+      assert.deepEqual(subgraph.links, original.links);
+      for (const [j, node] of subgraph.nodes.entries()) {
+        if (JSON.stringify(node) !== JSON.stringify(original.nodes[j])) changed.push(node.type);
+      }
+    }
+    assert.deepEqual(changed.sort(), ['BakeAmbientOcclusion', 'BakeNormalMapFromMesh', 'DecimateMesh',
+      'PrimitiveInt', 'RemeshMesh', 'Trellis2UpsampleStage']);
+    assert.deepEqual(graph.nodes, before.nodes);
+  }
+  for (const model of ['triposplat', 'qwen']) {
+    await assert.rejects(run({model, mesh:'mesh.glb', 'compact-proxy':true}), /requires generated Pixal3D/);
+  }
+});
 
 test('installed dropdowns must contain each requested file, including the Qwen-only LoRA', async () => {
   for (const [name, count] of [['pixal3d', 6], ['h3', 9], ['qwen', 10]]) {
@@ -88,6 +110,27 @@ test('a failed preflight writes evidence without sending a queue request', async
     await new Promise(ok => server.close(ok));
     await rm(output, { recursive: true, force: true });
   }
+});
+
+test('changing one seed keeps five seeds, every sampler link, and the full six-face result', async () => {
+  for (const model of ['qwen', 'h3']) {
+    const graph = await load(model);
+    const before = structuredClone(graph);
+    const faceSeed = { face: '-Y', seed: 321 };
+    configureEditGraph(graph, model, {faceSeed});
+    const changed = graph.nodes.filter((node, i) => JSON.stringify(node) !== JSON.stringify(before.nodes[i]));
+    assert.equal(changed.length, 1);
+    assert.equal(changed[0].type, 'PrimitiveInt');
+    assert.equal(changed[0].widgets_values[0], 321);
+    const target = graph.nodes.find(n => n.type === 'BICachedGeneratedFace' && n.widgets_values[0] === '-Y');
+    assert.equal(graph.links.find(([id]) => id === target.inputs.find(p => p.name === 'seed').link)[1], changed[0].id);
+    assert.deepEqual(graph.links, before.links);
+    assert.deepEqual(graph.definitions, before.definitions);
+    assert.throws(() => configureEditGraph(graph, model, {face:'+Z', faceSeed}), /target the requested/);
+    assert.throws(() => configureEditGraph(graph, model, {faceSeed:{...faceSeed, seed:2**53}}), /safe integer/);
+  }
+  await assert.rejects(run({model:'qwen','face-seed':'-Y:bad'}), /such as/);
+  await assert.rejects(run({model:'pixal3d','face-seed':'+X:300'}), /needs qwen or h3/);
 });
 
 test('one-face run keeps sampler IDs and labels fresh, reused and unobserved stages separately', () => {

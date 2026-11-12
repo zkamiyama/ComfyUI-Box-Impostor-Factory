@@ -17,6 +17,33 @@ const slugs = { '+X': 'px', '-X': 'nx', '+Y': 'py', '-Y': 'ny', '+Z': 'pz', '-Z'
 const sha256 = /^[a-f\d]{64}$/;
 const jsonFile = (path, value) => writeFile(path, JSON.stringify(value, null, 2) + '\n');
 
+// Keep all four Pixal3D sampling stages and the PBR texture bakes. Reduce the
+// sparse cascade, post-processing mesh and UV sizes together for a smaller GPU.
+const compactProxy = {
+  Trellis2UpsampleStage: { target_resolution: 1024 },
+  RemeshMesh: { resolution: 256 },
+  DecimateMesh: { target_face_count: 100_000 },
+  PrimitiveInt: { value: 1024 }, // shared UV unwrap and voxel-to-texture bake size
+  BakeNormalMapFromMesh: { resolution: 1024 },
+  BakeAmbientOcclusion: { resolution: 512, samples: 32 },
+};
+
+export function configureCompactProxy(graph) {
+  const geometry = graph.definitions?.subgraphs.find(s => s.nodes.some(n => n.type === 'Pixal3DConditioning'));
+  assert(geometry, '--compact-proxy requires the Pixal3D geometry subgraph');
+  for (const [type, settings] of Object.entries(compactProxy)) {
+    const nodes = geometry.nodes.filter(n => n.type === type);
+    assert.equal(nodes.length, 1, 'Missing or ambiguous compact proxy node ' + type);
+    const [node] = nodes;
+    // The changed inputs are the leading widgets of these pinned native nodes.
+    Object.keys(settings).forEach((name, index) => {
+      assert(Object.hasOwn(node.widgets_values_named, name));
+      assert.equal(node.widgets_values[index], node.widgets_values_named[name], type + '.' + name);
+      node.widgets_values[index] = node.widgets_values_named[name] = settings[name];
+    });
+  }
+}
+
 function disconnect(graph, pin) {
   if (pin.link === null) return;
   const link = graph.links.find(([id]) => id === pin.link);
@@ -30,11 +57,23 @@ function disconnect(graph, pin) {
 
 // Derive the optional supplied-GLB route from the same editable model subgraph as
 // the full workflow. Keep its node and link IDs so one-face runs can reuse caches.
-export function configureEditGraph(graph, model, { mesh, size, face } = {}) {
+export function configureEditGraph(graph, model, { mesh, size, face, faceSeed } = {}) {
   const qwen = model === 'qwen';
   if (!qwen && model !== 'h3') throw new Error('An appearance workflow needs qwen or h3.');
   const canvases = graph.nodes.filter(n => n.type === 'BIModelCanvas');
   assert.equal(canvases.length, 6);
+  if (faceSeed) {
+    assert(Object.hasOwn(slugs, faceSeed.face) && Number.isSafeInteger(faceSeed.seed) && faceSeed.seed >= 0,
+      '--face-seed expects a direction and a nonnegative safe integer, for example +Z:321.');
+    assert(!face || face === faceSeed.face, '--face-seed must target the requested --face.');
+    const target = graph.nodes.find(n => n.type === 'BICachedGeneratedFace' && n.widgets_values[0] === faceSeed.face);
+    const link = target.inputs.find(pin => pin.name === 'seed').link;
+    const source = graph.links.find(([id]) => id === link)[1];
+    const seed = graph.nodes.find(n => n.id === source);
+    assert.equal(seed.type, 'PrimitiveInt');
+    seed.widgets_values[0] = faceSeed.seed;
+    if (seed.widgets_values_named) seed.widgets_values_named.value = faceSeed.seed;
+  }
   if (size !== undefined) {
     assert(Number.isSafeInteger(size) && size >= 32 && size <= 4096 && size % 32 === 0,
       '--size must be a multiple of 32 from 32 through 4096.');
@@ -157,6 +196,16 @@ export function checkCompiled(prompt, model, report) {
     const camera = nodeId('MoGeGeometryToFOV');
     assert.deepEqual(proxy.inputs.horizontal_fov_degrees, [camera, 0]);
     assert.deepEqual(proxy.inputs.focal_pixels, [camera, 1]);
+    if (report.compactProxy) {
+      for (const [type, settings] of Object.entries(compactProxy)) {
+        if (type === 'PrimitiveInt') continue; // also present in the appearance subgraphs
+        for (const [name, value] of Object.entries(settings)) assert.equal(prompt[nodeId(type)].inputs[name], value);
+      }
+      const uv = prompt[nodeId('UnwrapMesh')].inputs.resolution;
+      assert.deepEqual(prompt[nodeId('BakeTextureFromVoxel')].inputs.texture_size, uv);
+      assert.equal(prompt[uv[0]]?.class_type, 'PrimitiveInt');
+      assert.equal(prompt[uv[0]].inputs.value, compactProxy.PrimitiveInt.value);
+    }
   }
   if (model !== 'pixal3d') {
     const type = model === 'qwen' ? 'TextEncodeQwenImage21' : 'MiniMaxH3ImageConditioning';
@@ -189,7 +238,8 @@ export function checkCompiled(prompt, model, report) {
       assert.deepEqual(matte.inputs.image, image);
       assert.equal(groups[face_id].length, 1);
       assert.deepEqual(prompt[groups[face_id][0]].inputs.seed, seed);
-      assert.equal(prompt[seed[0]]?.inputs?.value, 101 + directions.indexOf(face_id), 'Unexpected face seed');
+      const expected = report.faceSeed?.face === face_id ? report.faceSeed.seed : 101 + directions.indexOf(face_id);
+      assert.equal(prompt[seed[0]]?.inputs?.value, expected, 'Unexpected face seed');
     }
   }
 }
@@ -287,7 +337,7 @@ async function response(url, init) {
   return result;
 }
 
-export function verifyOutput(model, manifest, qa, face, inputMeshSha256) {
+export function verifyOutput(model, manifest, qa, face, inputMeshSha256, faceSeed) {
   assert.equal(manifest.layout, 'box');
   assert.match(manifest.asset_id, sha256);
   const mesh = manifest.provenance?.meshGeneration;
@@ -318,6 +368,7 @@ export function verifyOutput(model, manifest, qa, face, inputMeshSha256) {
     }
     assert.equal(edit?.source, backend);
     assert.equal(edit.provenance?.faceId, dir);
+    if (faceSeed?.face === dir) assert.equal(edit.provenance.recipeSeed, faceSeed.seed, 'Wrong generated face seed');
     referenceSha ??= edit.provenance?.referenceSha256;
     assert.match(referenceSha ?? '', sha256, 'Missing appearance reference digest');
     assert.equal(edit.provenance?.referenceSha256, referenceSha);
@@ -425,8 +476,16 @@ export async function run(opts) {
   if (opts.face && (!directions.includes(opts.face) || opts.model === 'pixal3d')) throw new Error('--face needs qwen, h3 or triposplat and one of +X, -X, +Y, -Y, +Z, -Z.');
   const isSplat = opts.model === 'triposplat';
   const isEdit = opts.model === 'qwen' || opts.model === 'h3';
+  let faceSeed;
+  if (opts['face-seed'] !== undefined) {
+    const match = /^([+-][XYZ]):(\d+)$/.exec(opts['face-seed']);
+    if (!isEdit || !match) throw new Error('--face-seed needs qwen or h3 and a value such as +Z:321.');
+    faceSeed = { face: match[1], seed: Number(match[2]) };
+  }
   const size = opts.size === undefined ? undefined : Number(opts.size);
   if (!isEdit && size !== undefined) throw new Error('--size applies to qwen or h3.');
+  if (opts['compact-proxy'] && (isSplat || opts.mesh !== undefined))
+    throw new Error('--compact-proxy requires generated Pixal3D geometry; omit --mesh.');
   if (opts.model === 'pixal3d' && opts.mesh !== undefined) throw new Error('--mesh applies to qwen, h3 or triposplat.');
   if ((isSplat || opts.mesh !== undefined) && (typeof opts.mesh !== 'string' || !opts.mesh.toLowerCase().endsWith('.glb') ||
       /[\\:\x00]/.test(opts.mesh) || opts.mesh.split('/').some(p => !p || p === '.' || p === '..')))
@@ -442,7 +501,8 @@ export async function run(opts) {
   const dir = await mkdtemp(join(resolve(opts.output), opts.model + '-'));
   console.log('Evidence:', dir);
   const graph = JSON.parse(await readFile(new URL('../workflows/' + name + '.json', import.meta.url), 'utf8'));
-  if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, face: opts.face });
+  if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, face: opts.face, faceSeed });
+  if (opts['compact-proxy']) configureCompactProxy(graph);
   const image = graph.nodes.find(n => n.type === 'LoadImage');
   image.widgets_values[0] = opts.input;
   if (image.widgets_values_named) image.widgets_values_named.image = opts.input;
@@ -453,6 +513,8 @@ export async function run(opts) {
   await jsonFile(join(dir, 'workflow.json'), graph);
   const registry = await (await response(new URL('/object_info', origin))).json();
   const report = preflight(graph, registry, opts.input);
+  if (opts['compact-proxy']) report.compactProxy = true;
+  if (faceSeed) report.faceSeed = faceSeed;
   if (size !== undefined) report.size = size;
   if (isSplat) Object.assign(report, { face: opts.face ?? '+Z', coordinateSpace });
   else if (opts.face) report.face = opts.face;
@@ -512,7 +574,7 @@ export async function run(opts) {
       const summary = { workflow: name, prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
         viewer: viewer.href, inference: inferenceReport(prompt, opts.face, live.traces.get(receipt.prompt_id)),
         ...(meshDigest && { inputMesh: opts.mesh, inputMeshSha256: meshDigest }),
-        ...verifyOutput(opts.model, manifest, qa, opts.face, meshDigest) };
+        ...(faceSeed && { faceSeed }), ...verifyOutput(opts.model, manifest, qa, opts.face, meshDigest, faceSeed) };
       const views = join(dir, 'views');
       await mkdir(views);
       for (const side of opts.face ? [opts.face] : directions) {
@@ -540,9 +602,10 @@ export async function run(opts) {
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const { values } = parseArgs({ options: { model: { type: 'string' }, origin: { type: 'string', default: 'http://127.0.0.1:8188' },
     input: { type: 'string', default: 'reference.png' }, output: { type: 'string', default: '.test-output/models' },
-    face: { type: 'string' }, size: { type: 'string' }, mesh: { type: 'string' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
+    face: { type: 'string' }, 'face-seed': { type: 'string' }, size: { type: 'string' }, mesh: { type: 'string' }, 'compact-proxy': { type: 'boolean' },
+    'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
   if (values.help) {
-    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--output DIR] [--face=+Z] [--size 512] [--run] [--timeout-minutes 180]\nQwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. H3 internally scales reference images to at least 1024. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
+    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--size 512] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 internally scales reference images to at least 1024. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
   } else {
     run(values).catch(error => { console.error(error.message); process.exitCode = 1; });
   }
