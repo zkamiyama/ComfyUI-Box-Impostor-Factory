@@ -1,0 +1,175 @@
+{
+  "source": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/8f492390ddc7a2ae221a1369ef560589cf8c70fb/Models/WaterBottle",
+  "machine": "270-PC WSL2 ComfyUI → BI_NODE Windows Node.js 24.22.1 → headless Microsoft Edge 157.0.4341.46, physical NVIDIA RTX 4080",
+  "workerRuntime": "e25f2d0 renderer overrides",
+  "conditions": "Normal registered nodes through the local ComfyUI /prompt endpoint. Isolated instance used --cpu for Python so the only GPU work in the graph came from the native browser. 256x256 per face, roughness/metalness/AO/emissive, diagonal orthographic output 256x256. Fresh output directory at bake; canonicalization shared between backend runs. Each ZIP was imported with BILoadBox into a separate fresh output directory. Timings include queue polling, Comfy node execution, disk export, preview and render.",
+  "pbrChecks": {
+    "method": "Fourteen interior texels on six faces. CPU sample positions, triangle, barycentrics, UV and dUV derivatives derived from the original pinned GLB, independent of the bake.",
+    "analyticLimit": "The CPU trilinear reference using explicit LOD log2(max footprint) exceeded the original 3.0/255 limit at one AO texel by 0.02094184/255 on both native backends. All remaining probes, normal-angle, emission and color checks met their tolerances.",
+    "hardwareControl": "Using the same source texture and CPU-derived UV gradients in a separate WebGL2 program gives AO 153 with textureGrad on the RTX 4080, exactly matching the baked value. textureLod at the explicit analytic level produces AO 150. Max ORM error vs hardware textureGrad is 1/255 across all fourteen probes for each backend.",
+    "reproduce": [
+      "python tests/check_pbr_bake.py WaterBottle.glb asset-dir --sampler-input probe-input",
+      "node tests/check_pbr_sampler.mjs probe-input"
+    ]
+  },
+  "runs": [
+    {
+      "promptId": "b4413272-f95a-4dae-9646-cfa945ac8e99",
+      "observedSeconds": 16.03,
+      "nodes": [
+        "BICanonicalizeProxy",
+        "BIBakeBox",
+        "BIPackBox",
+        "BIRenderBox",
+        "SaveImage",
+        "BIPreviewBox"
+      ],
+      "assetId": "9a61d8825c0ce1cef50517841bfe8d08e45f48739c0bf9a51db22164411aa91b",
+      "sourceSha256": "b337e526fd6a162013c2984aeec163f5fbb4f717252724dfc3f3458bd51df94b",
+      "backend": "webgpu",
+      "renderAdapter": {
+        "vendor": "nvidia",
+        "architecture": "lovelace",
+        "device": "",
+        "description": "",
+        "isFallbackAdapter": false
+      },
+      "textureSHA256": {
+        "colorMap": "5f7efc59b082c6166e0fa8ecebe8c777d5c70ac5fe91262eb9e8bad1895c7c01",
+        "normalMap": "78ca3d25a7556cfa73afea80b8a4d88b09a31c0053f228381029dafa5f4ed97c",
+        "intervalMap": "97860af3879a7122458b7e5c0faf17d900ec0aab39b1b9ace13ee0cdf7df0ebc",
+        "rangeMap": "461a9f14572e36ecf5257bcf8c018593538acad8bb91b55c889567a14ea7e2af",
+        "materialMap": "256eb1747bcec238fefffbdc6873e412b70ed3a54a2543c3ec9bc3698b2456c8",
+        "emissiveMap": "d1ffb3c2b35bd67406c1f9705864e822809613e0f505f6321c23fc60c20dcd6c"
+      },
+      "renderSize": [
+        256,
+        256
+      ],
+      "foregroundPixels": 11698,
+      "archiveSHA256": "b01483ff61c708b197bbd7d488db88e89b8c6b1f055a983f51b6df974beb23d1",
+      "archiveBytes": 11639165,
+      "zipReload": {
+        "promptId": "f44535a4-5d14-4eb1-a951-0b51e55d7061",
+        "freshOutputDirectory": true,
+        "allRgbaPixelsEqual": true,
+        "rawRgbaSha256": "3404d33035af29401c1b4466f8468ae72fc46b0c18a57a72c338a4c9a5b8eaa7",
+        "foregroundPixels": 11698
+      },
+      "independentAnalyticalProbes": {
+        "backend": "webgpu",
+        "probes": 14,
+        "maxError": {
+          "baseColorLinear": 0.0025292004266769808,
+          "worldNormalDegrees": 1.0643625040860716,
+          "surface8": 3.0209418446562495,
+          "emissiveLinear": 0.0007447733641410131
+        }
+      },
+      "matchedDeviceSourceOrm": {
+        "probes": 14,
+        "largestAbsChannelError8": 1,
+        "borderlineProbe": {
+          "face": "-X",
+          "xy": [
+            78,
+            182
+          ],
+          "bakedORM": [
+            153,
+            191,
+            0
+          ],
+          "gradientORM": [
+            153,
+            192,
+            0
+          ],
+          "explicitLodORM": [
+            150,
+            192,
+            0
+          ],
+          "maxError": 1
+        }
+      }
+    },
+    {
+      "promptId": "a49fc45c-aa8d-410b-8e86-3afcc3b7380d",
+      "observedSeconds": 12.11,
+      "nodes": [
+        "BICanonicalizeProxy",
+        "BIBakeBox",
+        "BIPackBox",
+        "BIRenderBox",
+        "SaveImage",
+        "BIPreviewBox"
+      ],
+      "assetId": "347c6e22b8cbc2e5b7c85004301729d1532008239958e7b46ed2fe2621bfc2cf",
+      "sourceSha256": "b337e526fd6a162013c2984aeec163f5fbb4f717252724dfc3f3458bd51df94b",
+      "backend": "webgl2",
+      "renderAdapter": {
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4080 (0x00002704) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      },
+      "textureSHA256": {
+        "colorMap": "1f54fc81c16e75d132a09ab4e06d087c85608b89f6b29467eb385917ade307c1",
+        "normalMap": "c2a5028785d819d0f4bd057e70f0a1176ce90323e21e5361ab6144c9f588f505",
+        "intervalMap": "57d32d039da26f4ffd318c900ad933c48338c8410c592a1c0ef75b5c99f9d82b",
+        "rangeMap": "461a9f14572e36ecf5257bcf8c018593538acad8bb91b55c889567a14ea7e2af",
+        "materialMap": "08d3994d33c7b1f2c0167bf8243d7607294ff29feccbea76d17a2a8afdcc2f5f",
+        "emissiveMap": "60dbb536d43cd2ab23f7a2a72989b8502242e4db66a58ceb765a230518ad1932"
+      },
+      "renderSize": [
+        256,
+        256
+      ],
+      "foregroundPixels": 11698,
+      "archiveSHA256": "2ff8527c4190e6ee39392fe69d6adbbd85a704f9b4050f300c8e227f89bb15b1",
+      "archiveBytes": 11639102,
+      "zipReload": {
+        "promptId": "6e1fd1ff-2195-434d-ba04-376f3b6e178e",
+        "freshOutputDirectory": true,
+        "allRgbaPixelsEqual": true,
+        "rawRgbaSha256": "f7d1832a00f12a6e12a8284f3925befa92e5a03589d4c3c40b9e7194c57e27e2",
+        "foregroundPixels": 11698
+      },
+      "independentAnalyticalProbes": {
+        "backend": "webgl2",
+        "probes": 14,
+        "maxError": {
+          "baseColorLinear": 0.0025292004266769808,
+          "worldNormalDegrees": 1.0643625040860716,
+          "surface8": 3.0209418446562495,
+          "emissiveLinear": 0.0007447733641410131
+        }
+      },
+      "matchedDeviceSourceOrm": {
+        "probes": 14,
+        "largestAbsChannelError8": 1,
+        "borderlineProbe": {
+          "face": "-X",
+          "xy": [
+            78,
+            182
+          ],
+          "bakedORM": [
+            153,
+            191,
+            0
+          ],
+          "gradientORM": [
+            153,
+            192,
+            0
+          ],
+          "explicitLodORM": [
+            150,
+            192,
+            0
+          ],
+          "maxError": 1
+        }
+      }
+    }
+  ]
+}

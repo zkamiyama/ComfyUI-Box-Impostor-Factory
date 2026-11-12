@@ -105,10 +105,13 @@ def sample(image, uv, lod, srgb=False):
     return at_level(lower) * (1 - (lod - lower)) + at_level(lower + 1) * (lod - lower)
 
 
-def verify(source, directory):
+def verify(source, directory, sampler_input=None):
     geometry, images = water_bottle(source)
     m = json.loads((directory / "manifest.json").read_text())
-    if m["resolution"] != 256 or m["provenance"]["sourceSha256"] != SOURCE_SHA256:
+    provenance = m["provenance"]
+    # ComfyUI canonicalizes first; sourceSha256 then identifies the canonical GLB.
+    original = provenance.get("originalGlbSha256", provenance["sourceSha256"])
+    if m["resolution"] != 256 or original != SOURCE_SHA256:
         raise ValueError("Bake the original WaterBottle.glb at 256px with all four optional maps")
     atlas = {}
     for name in ("colorMap", "normalMap", "materialMap", "emissiveMap"):
@@ -122,6 +125,7 @@ def verify(source, directory):
     np.testing.assert_allclose(transform[:3, :3], np.eye(3) * transform[0, 0])
     world = hom @ transform
     errors = {k: [] for k in ("baseColorLinear", "worldNormalDegrees", "surface8", "emissiveLinear")}
+    probe_inputs, failures = [], []
     for face_id, probes in PROBES.items():
         face = m["faces"][face_id]
         view = np.array(face["viewMatrix"]).reshape(4, 4)
@@ -144,6 +148,10 @@ def verify(source, directory):
             bitangent = normalized(np.cross(normal, tangent)) * np.sign(tangent4[3])
             expected_normal = normalized((tangent_normal * 2 - 1) @ [tangent, bitangent, normal])
             baked = {k: v[(row + 1) * 256 - 1 - y, col * 256 + x].astype(float) for k, v in atlas.items()}
+            if sampler_input is not None:
+                probe_inputs.append({"face": face_id, "xy": [x, y], "uv": uv.tolist(),
+                                     "grad": gradients.tolist(), "lod": float(lod),
+                                     "bakedORM": baked["materialMap"][[2, 0, 1]].astype(int).tolist()})
             assert baked["colorMap"][3] == 1, f"Missing Box coverage at {face_id} ({x}, {y})"
             actual_normal = normalized(baked["normalMap"][:3] * 2 - 1)
             differences = {
@@ -155,8 +163,15 @@ def verify(source, directory):
             for key, tolerance in [("baseColorLinear", .012), ("worldNormalDegrees", 1.5),
                                    ("surface8", 3.), ("emissiveLinear", .012)]:
                 value = differences[key]
-                assert value <= tolerance, f"{face_id} ({x}, {y}) {key}: {value} exceeds {tolerance}"
+                if value > tolerance:
+                    failures.append(f"{face_id} ({x}, {y}) {key}: {value} exceeds {tolerance}")
                 errors[key].append(value)
+    if sampler_input is not None:
+        sampler_input.mkdir(parents=True, exist_ok=True)
+        Image.fromarray(images[1]).save(sampler_input / "orm.png")
+        (sampler_input / "points.json").write_text(json.dumps(probe_inputs), encoding="utf-8")
+    if failures:
+        raise AssertionError("\n".join(failures))
     return {"backend": m["backend"], "probes": sum(map(len, PROBES.values())),
             "maxError": {k: float(max(v)) for k, v in errors.items()}}
 
@@ -165,5 +180,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", type=Path)
     parser.add_argument("asset_directory", type=Path)
+    parser.add_argument("--sampler-input", type=Path,
+                        help="Also emit source ORM pixels and CPU-derived UV gradients for check_pbr_sampler.mjs")
     args = parser.parse_args()
-    print(json.dumps(verify(args.source, args.asset_directory)))
+    print(json.dumps(verify(args.source, args.asset_directory, args.sampler_input)))
