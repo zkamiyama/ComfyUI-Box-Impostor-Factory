@@ -84,7 +84,7 @@ def run(comfy, output):
             render_check = queue({**common,
                 "5": node("BIRenderBox", asset=["2",0], width=96, height=80, view="+Z",
                           projection="orthographic", sampling="reduce_bleeding", backend="webgl2")})
-            assert "5" in render_check or "3" in render_check
+            assert "3" in render_check, "Expected a preview alongside the final IMAGE render"
             first = queue(common)
             viewer_path = first["3"]["box_impostor"][0]
             manifest_path = viewer_path.split("?manifest=",1)[1]

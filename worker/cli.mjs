@@ -74,14 +74,16 @@ async function browserCall(server, method, options) {
       }
       await page.waitForFunction(presentedForeground,1,{timeout:20000});
       if(outputImage) {
-        // Read only the transparent canvas, not its checkerboard HTML parent.
-        const encoded=await page.evaluate(({width,height})=>{
-          const picture=document.createElement('canvas');
-          picture.width=width;picture.height=height;
-          picture.getContext('2d').drawImage(document.querySelector('#canvas'),0,0,width,height);
-          return picture.toDataURL('image/png').split(',')[1];
-        },{width,height});
-        return Buffer.from(encoded,'base64');
+        // Read the composited GPU presentation. With WebGL's non-preserved
+        // drawing buffer, toDataURL/drawImage after frame completion may be blank.
+        await page.evaluate(()=>{
+          const stage=document.querySelector('#stage');
+          stage.classList.remove('checker');
+          stage.style.background='transparent';
+          document.documentElement.style.background='transparent';
+          document.body.style.background='transparent';
+        });
+        return await page.locator('#canvas').screenshot({type:'png',omitBackground:true});
       }
       return await page.locator('#canvas').screenshot({type:'png'});
     }
