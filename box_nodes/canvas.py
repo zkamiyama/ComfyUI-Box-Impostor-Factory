@@ -1,4 +1,5 @@
 """Reversible camera-to-square letterboxing for the two native image-edit graphs."""
+import hashlib
 import numpy as np
 from PIL import Image
 
@@ -83,7 +84,11 @@ class ModelCanvas:
         W, H = (span[i] for i in SPAN_AXES[face_id[1]])
         source_rect = letterbox_rect(reference.shape[1], reference.shape[0], size)
         guide_rect = letterbox_rect(W, H, size)
+        def content_key(image):
+            samples = np.ascontiguousarray(image, dtype='<f4')
+            return store.key(samples.shape, hashlib.sha256(samples).hexdigest())
         canvas = {'version': 1, 'size': size, 'faceId': face_id, 'guideRect': guide_rect,
+                  'guideInputSha256': content_key(guide), 'referenceInputSha256': content_key(reference),
                   'sourceRect': source_rect, 'physicalWidthHeight': [float(W), float(H)],
                   'imageRowOrder': 'top-to-bottom', 'backgroundSRGB': 0.5}
         return torch.from_numpy(place(reference,source_rect,size)), torch.from_numpy(place(guide,guide_rect,size)), canvas

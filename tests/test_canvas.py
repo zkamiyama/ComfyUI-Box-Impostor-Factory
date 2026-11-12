@@ -1,13 +1,31 @@
 import sys
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from box_nodes.canvas import letterbox_rect, place, undo_guide_canvas
+from box_nodes.canvas import ModelCanvas, letterbox_rect, place, undo_guide_canvas
 
 
 class CanvasTests(unittest.TestCase):
+    def test_different_connected_guide_or_reference_changes_generation_identity(self):
+        from types import SimpleNamespace
+        model = ModelCanvas()
+        meta = {'bakeBox': {'min': [0,0,0], 'max': [1,1,1]}}
+        pixels = np.zeros((1,8,8,3), dtype=np.float32)
+        changed = pixels.copy()
+        changed[0, 4, 5, 1] = 1
+        def canvas(ref, guide):
+            return model.prepare(ref, guide, 'a' * 64, '+Z', 32)[2]
+        with patch.dict(sys.modules, torch=SimpleNamespace(from_numpy=lambda a:a)), \
+             patch('box_nodes.store.asset_dir', return_value=Path('.')), patch('box_nodes.store.validate', return_value=meta):
+            original = canvas(pixels, pixels)
+            self.assertEqual(original, canvas(pixels.copy(), pixels.copy()))
+            self.assertNotEqual(original['referenceInputSha256'], canvas(changed,pixels)['referenceInputSha256'])
+            self.assertNotEqual(original['guideInputSha256'], canvas(pixels,changed)['guideInputSha256'])
+            self.assertNotEqual(original['guideInputSha256'], canvas(pixels,pixels.reshape(1,4,16,3))['guideInputSha256'])
+
     def test_non_cubic_top_guide_is_reversible_at_multiple_resolutions(self):
         rect = letterbox_rect(4, 2, 64)
         self.assertEqual(rect, [0, 16, 64, 32])
