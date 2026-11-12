@@ -154,12 +154,30 @@ export function preflight(graph, registry, input) {
     missingNodes: [...missingNodes].sort(), input, inputAvailable, models: [...models.values()] };
 }
 
+const materialTextures = {
+  none: [], material: ['materialMap'], emissive: ['emissiveMap'], 'material+emissive': ['materialMap', 'emissiveMap'],
+};
+
+export function configureMaterialMaps(graph, selection) {
+  assert(Object.hasOwn(materialTextures, selection), 'Unknown material map selection');
+  const bakers = graph.nodes.filter(n => ['BIMakeSixGuides', 'BIBakeBox'].includes(n.type));
+  assert(bakers.length, 'Expected a geometry bake node');
+  for (const n of bakers) {
+    n.widgets_values[2] = selection;
+    if (n.widgets_values_named) n.widgets_values_named.material_maps = selection;
+  }
+}
+
 export function checkCompiled(prompt, model, report) {
   const nodes = Object.values(prompt);
   const byType = type => nodes.filter(n => n.class_type === type);
   assert.deepEqual(byType('LoadImage').map(n => n.inputs.image), [report.input], 'Frontend changed the reference image');
   for (const { name, loader } of report.models)
     assert(byType(loader).some(n => Object.values(n.inputs).includes(name)), 'Frontend lost ' + name);
+  if (report.materialMaps !== undefined) {
+    for (const n of [...byType('BIBakeBox'), ...byType('BIMakeSixGuides')])
+      assert.equal(n.inputs.material_maps, report.materialMaps, 'Frontend changed the PBR bake selection');
+  }
   if (model === 'triposplat') {
     const entry = type => {
       const found = Object.entries(prompt).filter(([,n]) => n.class_type === type);
@@ -519,6 +537,7 @@ export async function run(opts) {
   const graph = JSON.parse(await readFile(new URL('../workflows/' + name + '.json', import.meta.url), 'utf8'));
   if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, face: opts.face, faceSeed, h3ReferenceFirst });
   if (opts['compact-proxy']) configureCompactProxy(graph);
+  if (opts['material-maps'] !== undefined) configureMaterialMaps(graph, opts['material-maps']);
   const image = graph.nodes.find(n => n.type === 'LoadImage');
   image.widgets_values[0] = opts.input;
   if (image.widgets_values_named) image.widgets_values_named.image = opts.input;
@@ -530,6 +549,7 @@ export async function run(opts) {
   const registry = await (await response(new URL('/object_info', origin))).json();
   const report = preflight(graph, registry, opts.input);
   if (opts['compact-proxy']) report.compactProxy = true;
+  if (opts['material-maps'] !== undefined) report.materialMaps = opts['material-maps'];
   if (faceSeed) report.faceSeed = faceSeed;
   if (opts.model === 'h3') report.h3ReferenceFirst = Boolean(h3ReferenceFirst);
   if (size !== undefined) report.size = size;
@@ -588,7 +608,20 @@ export async function run(opts) {
         qa = await (await response(assetURL(manifest.qa, manifestURL))).json();
         await jsonFile(join(dir, 'qa.json'), qa);
       }
-      const summary = { workflow: name, prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
+      const materialSha256 = {};
+      if (report.materialMaps !== undefined) {
+        const expected = materialTextures[report.materialMaps];
+        for (const key of ['materialMap', 'emissiveMap']) {
+          assert.equal(Boolean(manifest.textures[key]), expected.includes(key), 'Unexpected map selection for ' + key);
+          if (!expected.includes(key)) continue;
+          const descriptor = manifest.textures[key];
+          const bytes = await (await response(assetURL(descriptor.path, manifestURL))).arrayBuffer();
+          const digest = createHash('sha256').update(new Uint8Array(bytes)).digest('hex');
+          assert.equal(digest, descriptor.sha256, key + ' digest mismatch');
+          materialSha256[key] = digest;
+        }
+      }
+      const summary = { workflow: name, ...(report.materialMaps !== undefined && {materialSha256}), prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
         viewer: viewer.href, inference: inferenceReport(prompt, opts.face, live.traces.get(receipt.prompt_id)),
         ...(opts.model === 'h3' && { imageOrder: h3ReferenceFirst ? ['reference', 'guide'] : ['guide', 'reference'] }),
         ...(meshDigest && { inputMesh: opts.mesh, inputMeshSha256: meshDigest }),
@@ -621,9 +654,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   const { values } = parseArgs({ options: { model: { type: 'string' }, origin: { type: 'string', default: 'http://127.0.0.1:8188' },
     input: { type: 'string', default: 'reference.png' }, output: { type: 'string', default: '.test-output/models' },
     face: { type: 'string' }, 'face-seed': { type: 'string' }, size: { type: 'string' }, mesh: { type: 'string' }, 'compact-proxy': { type: 'boolean' },
-    'h3-reference-first': { type: 'boolean' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
+    'h3-reference-first': { type: 'boolean' }, 'material-maps': { type: 'string' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
   if (values.help) {
-    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--size 512] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
+    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--material-maps none|material|emissive|material+emissive] [--size 512] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
   } else {
     run(values).catch(error => { console.error(error.message); process.exitCode = 1; });
   }
