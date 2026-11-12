@@ -1,0 +1,195 @@
+{
+  "workflow": "08_triposplat_guide",
+  "object": "CC0 Microsoft Lantern",
+  "inferenceDevice": "270-PC NVIDIA GeForce RTX 4080 16 GB, WSL Ubuntu",
+  "input": {
+    "name": "bi-cc0-lantern-reference.png",
+    "sha256": "bd73c4ba45d3a7d184f131e02b2cfe196f846a002e3a6af85d5b2c14288d91a0",
+    "pixelSize": [
+      640,
+      640
+    ],
+    "sourceGlbSha256": "a79458c4b02d695187a952f23a63b8bf278e7bc3d316a3c2a314f2d6974181f1"
+  },
+  "guideAssetId": "94daf786005abddfd4d4a553e023b35408995346a7bfa442717520a7c4810ac6",
+  "canonicalMeshSha256": "094d4430498ebfee702de821fc6ecbcca23970f10a04228813ed579ebaac41ea",
+  "promptId": "798d123f-b9a8-44b4-a4d8-c2948a750953",
+  "inference": {
+    "state": "sampled",
+    "samplerIds": [
+      "10"
+    ],
+    "observedRunning": [
+      "10"
+    ]
+  },
+  "executionSeconds": 65.776,
+  "gaussians": 262144,
+  "decodedSplatSha256": "ff0ba14dc803bdbc744276a70ce2525d8d113d031b5532ca5b37a43ebe855e5e",
+  "transformedSplatSha256": "0b70c9414715435bad74a758a9015f3c0c3ed7ebb3092be015edbf09a99a884a",
+  "rendererSha256": "6869dcae9739d78f1b86f8d8d21dbbd025f9dd658a1ce052f474db703b382491",
+  "renderer": "Native ComfyUI RenderSplat; identity +Z on CUDA and reused from cache. Other 11 projections in WSL on CPU.",
+  "guidePixels": 256,
+  "fitMethod": "One shared 3D translation and per-axis scale fitted to six silhouettes in canonical_box. All six metrics below are native rerenders.",
+  "transformSplat": {
+    "translate_x": 0.004121842112722081,
+    "translate_y": 0.000004560038677918556,
+    "translate_z": 0.035477981846842366,
+    "rotate_x": 0,
+    "rotate_y": 0,
+    "rotate_z": 0,
+    "scale_x": 1.0034361562566523,
+    "scale_y": 0.9999729525045981,
+    "scale_z": 1.0300633850688432
+  },
+  "faces": {
+    "+X": {
+      "identity": {
+        "iou": 0.4057831175298805,
+        "boundaryP95Px": 39.05124837953327,
+        "meshPixels": 22629,
+        "splatPixels": 22536,
+        "relativeDepth": {
+          "samples": 13037,
+          "status": "measured",
+          "spearman": 0.6042401815907137
+        }
+      },
+      "fitted": {
+        "iou": 0.9584222658584479,
+        "boundaryP95Px": 4,
+        "meshPixels": 22629,
+        "splatPixels": 23249,
+        "relativeDepth": {
+          "samples": 22452,
+          "status": "measured",
+          "spearman": 0.8831584549852206
+        }
+      }
+    },
+    "-X": {
+      "identity": {
+        "iou": 0.4051019771720826,
+        "boundaryP95Px": 39.319206502675,
+        "meshPixels": 22629,
+        "splatPixels": 22427,
+        "relativeDepth": {
+          "samples": 12990,
+          "status": "measured",
+          "spearman": 0.8540246261470615
+        }
+      },
+      "fitted": {
+        "iou": 0.9603341186549582,
+        "boundaryP95Px": 4,
+        "meshPixels": 22629,
+        "splatPixels": 23135,
+        "relativeDepth": {
+          "samples": 22419,
+          "status": "measured",
+          "spearman": 0.9563393794045566
+        }
+      }
+    },
+    "+Y": {
+      "identity": {
+        "iou": 0.22912810215542936,
+        "boundaryP95Px": 103.58571330062848,
+        "meshPixels": 25334,
+        "splatPixels": 13842,
+        "relativeDepth": {
+          "samples": 7303,
+          "status": "measured",
+          "spearman": 0.10276819457556677
+        }
+      },
+      "fitted": {
+        "iou": 0.548094586671878,
+        "boundaryP95Px": 67,
+        "meshPixels": 25334,
+        "splatPixels": 14274,
+        "relativeDepth": {
+          "samples": 14023,
+          "status": "measured",
+          "spearman": 0.7080789279781913
+        }
+      }
+    },
+    "-Y": {
+      "identity": {
+        "iou": 0.41581763541743016,
+        "boundaryP95Px": 135.2368293032634,
+        "meshPixels": 25334,
+        "splatPixels": 13298,
+        "relativeDepth": {
+          "samples": 11346,
+          "status": "measured",
+          "spearman": -0.12834393381285536
+        }
+      },
+      "fitted": {
+        "iou": 0.5607549524255186,
+        "boundaryP95Px": 133.20000000000005,
+        "meshPixels": 25334,
+        "splatPixels": 14690,
+        "relativeDepth": {
+          "samples": 14380,
+          "status": "measured",
+          "spearman": -0.1324352237781203
+        }
+      }
+    },
+    "+Z": {
+      "identity": {
+        "iou": 0.9073098452420152,
+        "boundaryP95Px": 2.8284271247461903,
+        "meshPixels": 11705,
+        "splatPixels": 11465,
+        "relativeDepth": {
+          "samples": 11022,
+          "status": "measured",
+          "spearman": 0.9237675454054045
+        }
+      },
+      "fitted": {
+        "iou": 0.9236122618061309,
+        "boundaryP95Px": 2,
+        "meshPixels": 11705,
+        "splatPixels": 11513,
+        "relativeDepth": {
+          "samples": 11148,
+          "status": "measured",
+          "spearman": 0.9202381383002662
+        }
+      }
+    },
+    "-Z": {
+      "identity": {
+        "iou": 0.907062891010866,
+        "boundaryP95Px": 2.8284271247461903,
+        "meshPixels": 11703,
+        "splatPixels": 11464,
+        "relativeDepth": {
+          "samples": 11019,
+          "status": "measured",
+          "spearman": 0.9355701876354464
+        }
+      },
+      "fitted": {
+        "iou": 0.9237716463667247,
+        "boundaryP95Px": 2,
+        "meshPixels": 11703,
+        "splatPixels": 11515,
+        "relativeDepth": {
+          "samples": 11149,
+          "status": "measured",
+          "spearman": 0.9341752235739661
+        }
+      }
+    }
+  },
+  "meanIoU": {
+    "identity": 0.5450339280879506,
+    "fitted": 0.8124983052972764
+  }
+}
