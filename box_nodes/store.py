@@ -10,6 +10,7 @@ import shutil
 import subprocess
 import tempfile
 import time
+import warnings
 
 REPO = Path(__file__).resolve().parents[1]
 FACES = ('+X', '-X', '+Y', '-Y', '+Z', '-Z')
@@ -91,8 +92,16 @@ def check_interrupted():
 
 
 def worker_version():
-    paths = sorted((REPO / 'worker').glob('*.mjs')) + [REPO / 'package-lock.json', REPO / 'worker' / 'package-lock.json']
+    paths = sorted((REPO / 'worker').glob('*.mjs'))
+    paths += [REPO / 'web' / 'asset_io.mjs', REPO / 'package-lock.json', REPO / 'worker' / 'package-lock.json']
     return key([(str(path.relative_to(REPO)), file_hash(path)) for path in paths if path.is_file() and 'node_modules' not in path.parts])
+
+
+def presentation_version():
+    paths = ('web/viewer.html', 'web/viewer.mjs', 'web/asset_io.mjs',
+             'worker/chromium.mjs', 'worker/cli.mjs', 'worker/server.mjs',
+             'worker/runtime.mjs', 'worker/codec.mjs', 'package-lock.json')
+    return key([(name, file_hash(REPO / name)) for name in paths])
 
 
 def run_worker(*args):
@@ -252,27 +261,42 @@ def copy_thumbnail(image_path, directory):
 
 
 def thumbnail(directory, manifest, sampling='standard'):
-    from PIL import Image
+    from PIL import Image, PngImagePlugin
     if sampling not in ('standard', 'reduce_bleeding'):
         raise ValueError('Unknown Box preview sampling')
     asset_id = manifest['asset_id']
     filename = 'hero.png' if sampling == 'standard' else 'hero-reduce_bleeding.png'
+    identity = key('thumbnail-v3', asset_id, sampling, presentation_version())
     with lock(key('thumbnail-v2', asset_id, sampling)):
         target = directory / 'previews' / filename
+        saved_preview = False
         if target.is_file():
-            with Image.open(target) as image:
-                image.verify()
-            return target
-        with tempfile.TemporaryDirectory(prefix='.thumb-', dir=root()) as tmp:
-            path = Path(tmp) / filename
-            run_worker('thumbnail', '--asset', directory, '--output', path, '--backend', 'auto', '--sampling', sampling)
-            with Image.open(path) as image:
-                image.verify()
-            if sampling == 'standard':
-                return copy_thumbnail(path, directory)
-            target.parent.mkdir(exist_ok=True)
-            with tempfile.TemporaryDirectory(prefix='.hero-', dir=target.parent) as temp:
-                staging = Path(temp) / filename
-                shutil.copyfile(path, staging)
-                os.replace(staging, target)
-            return target
+            try:
+                with Image.open(target) as previous:
+                    recorded = previous.info.get('BoxPresentation')
+                    previous.verify()
+                if recorded == identity:
+                    return target
+                saved_preview = True
+            except (OSError, SyntaxError, ValueError):
+                pass  # A damaged cache entry can be regenerated from the Box.
+        target.parent.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix='.thumb-', dir=directory.parent) as tmp:
+            rendered = Path(tmp) / 'render.png'
+            try:
+                run_worker('thumbnail', '--asset', directory, '--output', rendered,
+                           '--backend', 'auto', '--sampling', sampling)
+            except (OSError, RuntimeError) as exc:
+                if not saved_preview:
+                    raise
+                warnings.warn(f'Using the saved Box preview because thumbnail rendering failed: {exc}',
+                              RuntimeWarning)
+                return target
+            # Store the pixels and their cache identity in one atomically replaced PNG.
+            published = Path(tmp) / filename
+            metadata = PngImagePlugin.PngInfo()
+            metadata.add_text('BoxPresentation', identity)
+            with Image.open(rendered) as image:
+                image.save(published, format='PNG', pnginfo=metadata)
+            os.replace(published, target)
+        return target

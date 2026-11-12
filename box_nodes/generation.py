@@ -68,9 +68,11 @@ def lineage(prompt, node_id, sockets=('image', 'mask')):
         if kind in ('TextEncodeQwenImage21', 'MiniMaxH3ImageConditioning'):
             sampler_settings.append({'conditioning': kind, **{k: literal(v) for k, v in pins.items() if k in ('prompt', 'negative_prompt', 'width', 'height', 'resolution')}})
     pins = prompt[str(node_id)]['inputs']
-    for name in sockets:
-        visit(pins.get(name))
-    return store.key(nodes, model_files, image_inputs), model_files, sampler_settings
+    bindings = {name: pins.get(name) for name in sockets}
+    for value in bindings.values():
+        visit(value)
+    # Two outputs of the same upstream node may contain different images, masks or GLBs.
+    return store.key(bindings, nodes, model_files, image_inputs), model_files, sampler_settings
 
 
 def generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas=None):

@@ -15,6 +15,7 @@ import numpy as np
 from PIL import Image
 
 from check_workflow_types import check_workflows
+from splat_native_smoke import write_splat_fixture, check_splat
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -22,6 +23,7 @@ def run(comfy, output):
     output.mkdir(parents=True, exist_ok=True)
     inputs = output / "input"
     inputs.mkdir(exist_ok=True)
+    write_splat_fixture(inputs)
     fixture = inputs / "asymmetric.glb"
     subprocess.run(["node", str(ROOT / "tests/make_fixture.mjs"), str(fixture)], check=True)
     with socket.socket() as listener:
@@ -103,6 +105,7 @@ def run(comfy, output):
             viewer_path = first["3"]["box_impostor"][0]
             manifest_path = viewer_path.split("?manifest=",1)[1]
             baseline = json.loads(request(manifest_path))
+            check_splat(queue, node, inputs, output, fixture.name, baseline)
             assert len(request(viewer_path)) > 1000
             for rel in ("web/viewer.mjs","worker/runtime.mjs","vendor/three/build/three.webgpu.js"):
                 assert len(request("/box-impostor/" + rel)) > 100

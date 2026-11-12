@@ -14,6 +14,7 @@ from PIL import Image
 from . import faces, store
 from .generation import CachedGeneratedFace, lineage
 from .canvas import ModelCanvas
+from .splat import TripoSplatGuide
 
 CATEGORY = 'Box Impostor'
 BACKENDS = ['auto', 'webgpu', 'webgl2']
@@ -326,7 +327,7 @@ class RenderBox:
             raise ValueError('Unknown Box renderer or sampling')
         directory = store.asset_dir(asset)
         store.validate(directory, asset, check_bytes=False)
-        digest = store.key('render-box-v1', store.worker_version(), asset,
+        digest = store.key('render-box-v1', store.presentation_version(), asset,
                            width, height, view, projection, sampling, backend)
         def write(stage):
             store.run_worker('render', '--asset', directory, '--output', stage / 'render.png',
@@ -516,4 +517,5 @@ def copy_asset(directory, output, manifest):
 
 NODE_CLASS_MAPPINGS = {'BIModelCanvas': ModelCanvas, 'BIReplaceFaces': ReplaceFaces, 'BICachedGeneratedFace': CachedGeneratedFace, 'BIPrepareReference': PrepareReference, 'BICanonicalizeProxy': CanonicalizeProxy, 'BIMakeSixGuides': MakeSixGuides, 'BIFaceImage': FaceImage, 'BIFaceInputs': FaceInputs, 'BIAlignAndValidateFaces': AlignAndValidateFaces, 'BIBakeBox': BakeBox, 'BIPreviewBox': PreviewBox, 'BIRenderBox': RenderBox, 'BISaveBox': SaveBox, 'BILoadBox': LoadBox}
 NODE_CLASS_MAPPINGS['BIPackBox'] = PackBox
+NODE_CLASS_MAPPINGS['BITripoSplatGuide'] = TripoSplatGuide
 NODE_DISPLAY_NAME_MAPPINGS = {name: 'BI ' + name[2:] for name in NODE_CLASS_MAPPINGS}
