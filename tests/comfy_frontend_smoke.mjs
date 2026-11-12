@@ -10,7 +10,7 @@ import { chromiumOptions } from '../worker/chromium.mjs';
 const [origin,inputDir,artifacts]=process.argv.slice(2);
 if(!origin||!inputDir||!artifacts)throw new Error('Usage: node tests/comfy_frontend_smoke.mjs ORIGIN INPUT_DIR OUTPUT_DIR');
 const workflowNames=['01_box_from_glb','04_manual_six_faces','02_box_from_reference_qwen21',
-  '03_box_from_reference_h3','05_pixal3d_baseline','06_replace_saved_face'];
+  '03_box_from_reference_h3','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box'];
 const sides=[['+X','px'],['-X','nx'],['+Y','py'],['-Y','ny'],['+Z','pz'],['-Z','nz']];
 const resources=new URL('../workflows/',import.meta.url);
 const browser=await chromium.launch(chromiumOptions('webgl2'));
@@ -36,6 +36,14 @@ async function compile(name){
   assert.ok(prompt&&Object.keys(prompt).length,'No API prompt for '+name);
   await writeFile(join(artifacts,name+'.api.json'),JSON.stringify(prompt,null,2)+'\n');
   const byType=t=>Object.entries(prompt).filter(([,n])=>n.class_type===t);
+  if(name.startsWith('07')){
+    const [[id,render]]=byType('BIRenderBox');
+    const [[join,rgba]]=byType('JoinImageWithAlpha');
+    assert.equal(render.inputs.sampling,'standard');
+    assert.deepEqual(rgba.inputs,{image:[id,0],alpha:[id,1]});
+    assert.deepEqual(byType('SaveImage')[0][1].inputs.images,[join,0]);
+    return prompt;
+  }
   assert.equal(byType('BIPreviewBox').length,1,'Missing preview output in '+name);
   assert.equal(byType('BISaveBox').length,1,'Missing export output in '+name);
   assert.equal(byType('BIBakeBox').length,name.startsWith('06')?0:1);
@@ -77,6 +85,16 @@ async function queue(prompt){
     const history=(await result.json())[prompt_id];
     if(history){
       if(history.status.status_str!=='success')throw new Error(JSON.stringify(history.status).slice(-6500));
+      const save=Object.keys(prompt).find(k=>prompt[k].class_type==='SaveImage');
+      if(save){
+        const [image]=history.outputs[save].images;
+        const url=new URL('/view',origin);
+        url.search=new URLSearchParams(image).toString();
+        const png=await page.request.get(url.href);
+        assert(png.ok(),'Missing saved transparent PNG');
+        await writeFile(join(artifacts,'rendered-box.png'),await png.body());
+        return {prompt_id};
+      }
       const id=Object.keys(prompt).find(k=>prompt[k].class_type==='BIPreviewBox');
       const viewer=history.outputs[id]?.box_impostor?.[0];
       assert.ok(viewer,'Queued workflow produced no saved Box preview URL');
@@ -121,7 +139,10 @@ try{
       await freshPage();
     }
     const prompt=await compile(name);
-    proof.compiledOnly.push({workflow:name,expandedNodes:Object.keys(prompt).length});
+    if(name.startsWith('07')){
+      const {prompt_id}=await queue(prompt);
+      proof.executed.push({workflow:name,prompt_id,image:'rendered-box.png'});
+    }else proof.compiledOnly.push({workflow:name,expandedNodes:Object.keys(prompt).length});
   }
   await writeFile(join(artifacts,'frontend-workflows.json'),JSON.stringify(proof,null,2)+'\n');
   console.log('Frontend workflow proof',JSON.stringify(proof));

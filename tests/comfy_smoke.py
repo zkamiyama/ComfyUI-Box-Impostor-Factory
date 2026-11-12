@@ -11,6 +11,9 @@ import time
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+import numpy as np
+from PIL import Image
+
 from check_workflow_types import check_workflows
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -83,8 +86,19 @@ def run(comfy, output):
             }
             render_check = queue({**common,
                 "5": node("BIRenderBox", asset=["2",0], width=96, height=80, view="+Z",
-                          projection="orthographic", sampling="reduce_bleeding", backend="webgl2")})
-            assert "3" in render_check, "Expected a preview alongside the final IMAGE render"
+                          projection="orthographic", sampling="reduce_bleeding", backend="webgl2"),
+                "6": node("JoinImageWithAlpha", image=["5", 0], alpha=["5", 1]),
+                "7": node("SaveImage", images=["6", 0], filename_prefix="box-render")})
+            saved, = render_check["7"]["images"]
+            path = output / 'output' / saved['subfolder'] / saved['filename']
+            with Image.open(path) as image:
+                assert image.mode == 'RGBA' and image.size == (96, 80)
+                rgba = np.asarray(image)
+            assert rgba[0, 0, 3] == 0 and rgba[40, 48, 3] == 255
+            captures = output / 'output/box_impostor/.stages/renders'
+            # Compare the actual node outputs after Comfy's mask inversion and SaveImage quantization.
+            assert any(np.abs(rgba.astype(int) - np.asarray(Image.open(p), dtype=int)).max() <= 1
+                       for p in captures.glob('*/render.png') if Image.open(p).size == (96, 80))
             first = queue(common)
             viewer_path = first["3"]["box_impostor"][0]
             manifest_path = viewer_path.split("?manifest=",1)[1]
@@ -115,6 +129,9 @@ def run(comfy, output):
             print(json.dumps({"ok":True,"baseline":baseline["asset_id"],"manual":updated["asset_id"]}))
             subprocess.run(['node', str(ROOT / 'tests/comfy_frontend_smoke.mjs'), origin,
                             str(inputs), str(output / 'frontend')], cwd=ROOT, check=True, timeout=960)
+            with Image.open(output / 'frontend/rendered-box.png') as image:
+                assert image.mode == 'RGBA' and image.size == (512, 512)
+                assert image.getpixel((0, 0))[3] == 0 and image.getpixel((256, 256))[3] == 255
         finally:
             proc.terminate()
             try: proc.wait(timeout=15)

@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const names=[
   '01_box_from_glb','02_box_from_reference_qwen21','03_box_from_reference_h3',
-  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face'
+  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box'
 ];
 const faces=['+X','-X','+Y','-Y','+Z','-Z'];
 const graph = async name => JSON.parse(await readFile(new URL('../workflows/'+name+'.json',import.meta.url),'utf8'));
@@ -50,6 +50,14 @@ function validate(g){
 for(const name of names)test(name+' is a closed, typed native GUI workflow',async()=>{
   const g=await graph(name);
   validate(g);
+  if(name.startsWith('07')){
+    const [render]=nodesOf(g,'BIRenderBox'),[join]=nodesOf(g,'JoinImageWithAlpha');
+    assert.equal(upstream(g,render,'asset').from,nodesOf(g,'BILoadBox')[0].id);
+    assert.deepEqual(upstream(g,join,'alpha'),{from:render.id,slot:1});
+    assert.deepEqual(upstream(g,join,'image'),{from:render.id,slot:0});
+    assert.equal(upstream(g,nodesOf(g,'SaveImage')[0],'images').from,join.id);
+    return;
+  }
   for(const sub of subgraphs(g)){
     validate(sub);
     const instances=nodesOf(g,sub.id);
