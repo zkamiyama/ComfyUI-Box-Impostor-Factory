@@ -6,6 +6,7 @@ import { join, resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { chromium } from 'playwright';
 import { chromiumOptions } from '../worker/chromium.mjs';
+import { preflight } from '../scripts/run_model_workflow.mjs';
 
 const [origin,inputDir,artifacts]=process.argv.slice(2);
 if(!origin||!inputDir||!artifacts)throw new Error('Usage: node tests/comfy_frontend_smoke.mjs ORIGIN INPUT_DIR OUTPUT_DIR');
@@ -63,6 +64,18 @@ async function compile(name){
       }
     }
     assert.equal(byType('BICachedGeneratedFace').length,6);
+    for(const [,n] of byType('BICachedGeneratedFace')){
+      assert.equal(n.inputs.mask_mode,'foreground',name+' '+n.inputs.face_id);
+      const matte=prompt[n.inputs.mask[0]];
+      assert.equal(matte.class_type,'RemoveBackground');
+      assert.deepEqual(matte.inputs.image,n.inputs.image);
+    }
+    const registry=await (await page.request.get(origin+'/object_info')).json();
+    const inventory=preflight(JSON.parse(contents),registry,'reference.png');
+    assert.equal(inventory.inputAvailable,true);
+    assert.deepEqual(inventory.missingNodes,[]);
+    assert.equal(inventory.ready,false,'CPU CI should report absent model weights');
+    await writeFile(join(artifacts,name+'.preflight.json'),JSON.stringify(inventory,null,2));
   }
   if(name.startsWith('02')||name.startsWith('03')||name.startsWith('05')){
     assert.equal(byType('Pixal3DConditioning').length,1,'Pixal geometry subgraph did not expand');

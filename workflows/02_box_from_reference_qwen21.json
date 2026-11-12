@@ -855,9 +855,18 @@
         "qwen_enhanced",
         "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
         101,
+        "fixed",
         "foreground"
       ],
-      "title": "+X · keep generated view"
+      "title": "+X · keep generated view",
+      "widgets_values_named": {
+        "face_id": "+X",
+        "backend": "qwen_enhanced",
+        "recipe": "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
+        "seed": 101,
+        "control_after_generate": "fixed",
+        "mask_mode": "foreground"
+      }
     },
     {
       "id": 18,
@@ -1125,9 +1134,18 @@
         "qwen_enhanced",
         "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
         102,
+        "fixed",
         "foreground"
       ],
-      "title": "-X · keep generated view"
+      "title": "-X · keep generated view",
+      "widgets_values_named": {
+        "face_id": "-X",
+        "backend": "qwen_enhanced",
+        "recipe": "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
+        "seed": 102,
+        "control_after_generate": "fixed",
+        "mask_mode": "foreground"
+      }
     },
     {
       "id": 23,
@@ -1395,9 +1413,18 @@
         "qwen_enhanced",
         "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
         103,
+        "fixed",
         "foreground"
       ],
-      "title": "+Y · keep generated view"
+      "title": "+Y · keep generated view",
+      "widgets_values_named": {
+        "face_id": "+Y",
+        "backend": "qwen_enhanced",
+        "recipe": "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
+        "seed": 103,
+        "control_after_generate": "fixed",
+        "mask_mode": "foreground"
+      }
     },
     {
       "id": 28,
@@ -1665,9 +1692,18 @@
         "qwen_enhanced",
         "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
         104,
+        "fixed",
         "foreground"
       ],
-      "title": "-Y · keep generated view"
+      "title": "-Y · keep generated view",
+      "widgets_values_named": {
+        "face_id": "-Y",
+        "backend": "qwen_enhanced",
+        "recipe": "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
+        "seed": 104,
+        "control_after_generate": "fixed",
+        "mask_mode": "foreground"
+      }
     },
     {
       "id": 33,
@@ -1935,9 +1971,18 @@
         "qwen_enhanced",
         "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
         105,
+        "fixed",
         "foreground"
       ],
-      "title": "+Z · keep generated view"
+      "title": "+Z · keep generated view",
+      "widgets_values_named": {
+        "face_id": "+Z",
+        "backend": "qwen_enhanced",
+        "recipe": "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
+        "seed": 105,
+        "control_after_generate": "fixed",
+        "mask_mode": "foreground"
+      }
     },
     {
       "id": 38,
@@ -2205,9 +2250,18 @@
         "qwen_enhanced",
         "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
         106,
+        "fixed",
         "foreground"
       ],
-      "title": "-Z · keep generated view"
+      "title": "-Z · keep generated view",
+      "widgets_values_named": {
+        "face_id": "-Z",
+        "backend": "qwen_enhanced",
+        "recipe": "{\"model\":\"qwen_image_2.1_int8_convrot.safetensors\",\"clip\":\"qwen3vl_8b_int8_convrot.safetensors\",\"vae\":\"qwen_image_2.1_vae_bf16.safetensors\",\"templateCommit\":\"a8bc07a76478dfada740fa8fa49ac87be1bff519\",\"imageOrder\":[\"reference\",\"guide\"],\"matting\":\"birefnet.safetensors\",\"lora\":\"QI2.1_AnyAngle.safetensors\"}",
+        "seed": 106,
+        "control_after_generate": "fixed",
+        "mask_mode": "foreground"
+      }
     },
     {
       "id": 43,
