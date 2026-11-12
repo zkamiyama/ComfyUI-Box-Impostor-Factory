@@ -378,6 +378,27 @@ class SaveBox:
         return (str(dest / 'manifest.json'),)
 
 
+class PackBox:
+    CATEGORY = CATEGORY
+    OUTPUT_NODE = True
+    FUNCTION = 'pack'
+    RETURN_TYPES = ('STRING',)
+    RETURN_NAMES = ('archive_path',)
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return inputs(asset=('BOX_IMPOSTOR',), name=('STRING', {'default': ''}))
+
+    def pack(self, asset, name=''):
+        from .archive import pack_asset
+        name = name or asset
+        if not NAME.fullmatch(name):
+            raise ValueError('Use an export name containing only letters, digits, _ or -.')
+        directory = store.asset_dir(asset)
+        store.validate(directory, asset, check_bytes=False)
+        return (str(pack_asset(directory, store.contained(export_root(), name + '.box.zip'))),)
+
+
 class LoadBox:
     CATEGORY = CATEGORY
     FUNCTION = 'load'
@@ -396,6 +417,16 @@ class LoadBox:
         if store.ID.fullmatch(source) and store.asset_dir(source).is_dir():
             store.validate(store.asset_dir(source), source)
             return (source,)
+        if source.lower().endswith('.box.zip'):
+            if Path(source).is_absolute():
+                path = Path(source).resolve()
+                if not path.is_relative_to(export_root().resolve()):
+                    raise ValueError('Absolute archive paths must identify a Box export.')
+            else:
+                path = store.contained(export_root(), source)
+                if not path.is_file():
+                    path = input_path(source)
+            return (self.import_archive(path),)
         if Path(source).is_absolute():
             path = Path(source).resolve()
             # BISaveBox emits an absolute manifest path within the export root.
@@ -409,15 +440,48 @@ class LoadBox:
             if path.name != 'manifest.json':
                 raise ValueError('Enter a saved asset ID, export name, or input-relative manifest.json.')
             directory = path.parent
-        manifest = store.validate(directory)
+        return (self.import_directory(directory),)
+
+    def import_archive(self, path):
+        from .archive import unpack_asset
+        digest = store.file_hash(path)
+        receipts = store.root() / '.stages' / 'imported-zips'
+        with store.lock(store.key('imported-zip-v1', digest)):
+            receipt = receipts / digest
+            if receipt.is_file():
+                asset_id = receipt.read_text(encoding='ascii')
+                if store.asset_dir(asset_id).is_dir():
+                    store.validate(store.asset_dir(asset_id), asset_id)
+                    return asset_id
+            receipts.mkdir(parents=True, exist_ok=True)
+            with tempfile.TemporaryDirectory(dir=receipts) as tmp:
+                directory = Path(tmp) / 'asset'
+                manifest = unpack_asset(path, directory)
+                if store.file_hash(path) != digest:
+                    raise ValueError('Box ZIP changed while loading. Retry the import.')
+                asset_id = self.import_directory(directory, manifest, move=True)
+                staged_receipt = Path(tmp) / 'id'
+                staged_receipt.write_text(asset_id, encoding='ascii')
+                os.replace(staged_receipt, receipt)
+        return asset_id
+
+    @staticmethod
+    def import_directory(directory, manifest=None, *, move=False):
+        if manifest is None:
+            manifest = store.validate(directory)
         asset_id = manifest['asset_id']
         if not store.ID.fullmatch(asset_id):
             asset_id = store.key('import-v1', store.file_hash(directory / 'manifest.json'))
         def copy(stage):
-            copy_asset(directory, stage, manifest)
-            manifest['asset_id'] = asset_id
-            (stage / 'manifest.json').write_text(json.dumps(manifest, indent=2, allow_nan=False), encoding='utf-8')
-        return (store.publish(asset_id, copy, expected_manifest={**manifest, 'asset_id': asset_id}),)
+            if move:
+                os.rename(directory, stage)
+            else:
+                copy_asset(directory, stage, manifest)
+                shutil.copyfile(directory / 'manifest.json', stage / 'manifest.json')
+            if asset_id != manifest['asset_id']:
+                (stage / 'manifest.json').write_text(json.dumps({**manifest, 'asset_id': asset_id},
+                                                     indent=2, allow_nan=False), encoding='utf-8')
+        return store.publish(asset_id, copy, expected_manifest={**manifest, 'asset_id': asset_id})
 
 
 def copy_asset(directory, output, manifest):
@@ -451,4 +515,5 @@ def copy_asset(directory, output, manifest):
 
 
 NODE_CLASS_MAPPINGS = {'BIModelCanvas': ModelCanvas, 'BIReplaceFaces': ReplaceFaces, 'BICachedGeneratedFace': CachedGeneratedFace, 'BIPrepareReference': PrepareReference, 'BICanonicalizeProxy': CanonicalizeProxy, 'BIMakeSixGuides': MakeSixGuides, 'BIFaceImage': FaceImage, 'BIFaceInputs': FaceInputs, 'BIAlignAndValidateFaces': AlignAndValidateFaces, 'BIBakeBox': BakeBox, 'BIPreviewBox': PreviewBox, 'BIRenderBox': RenderBox, 'BISaveBox': SaveBox, 'BILoadBox': LoadBox}
+NODE_CLASS_MAPPINGS['BIPackBox'] = PackBox
 NODE_DISPLAY_NAME_MAPPINGS = {name: 'BI ' + name[2:] for name in NODE_CLASS_MAPPINGS}

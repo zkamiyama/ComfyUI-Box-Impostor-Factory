@@ -185,6 +185,21 @@ class NodeTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'digest'):
             nodes.LoadBox().load(self.asset)
 
+    def test_pack_and_reload_after_removing_live_asset(self):
+        import shutil
+        original = (self.base / self.asset / 'manifest.json').read_bytes()
+        location, = nodes.PackBox().pack(self.asset, 'portable')
+        shutil.rmtree(self.base / self.asset)
+        loader = nodes.LoadBox()
+        self.assertEqual(loader.load(location), (self.asset,))
+        self.assertEqual((self.base / self.asset / 'manifest.json').read_bytes(), original)
+        with patch('box_nodes.archive.unpack_asset', side_effect=AssertionError('unnecessary extraction')):
+            self.assertEqual(loader.load('portable.box.zip'), (self.asset,))
+        shutil.rmtree(self.base / self.asset)
+        self.assertEqual(loader.load('portable.box.zip'), (self.asset,))
+        with self.assertRaises(ValueError):
+            loader.load(str(Path(self.tmp.name) / 'outside.box.zip'))
+
     def test_lazy_model_hit_and_prompt_change(self):
         graph={'1':{'class_type':'KSampler','inputs':{'seed':42,'steps':6,'sampler_name':'euler'}},'2':{'class_type':'VAEDecode','inputs':{'samples':['1',0]}},'3':{'class_type':'BICachedGeneratedFace','inputs':{'image':['2',0]}}}
         node=CachedGeneratedFace()

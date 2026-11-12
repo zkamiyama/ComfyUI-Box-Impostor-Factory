@@ -71,6 +71,8 @@ node worker/cli.mjs render --asset .test-output/box --output .test-output/side.p
 
 ComfyUIでは `output/box_impostor/<asset_id>/manifest.json` がアセットの入口になる。GLB、RGBA16Fの幾何マップ、カラー、6方向のガイドと深度をまとめて参照する。`BI BakeBox` の `material_maps` でroughness・metalness・AOやemissiveを選べる。roughness・metalness・AOは上流と同じRGBA8アトラスに保存する。`BI SaveBox` で `output/box_impostor_exports/<name>/` に書き出し、`BI LoadBox` でアセットID・書き出し名・SaveBoxの出力パス・inputからの相対manifestパスを指定する。
 
+Boxを1ファイルで渡すには `BI PackBox` にアセットと書き出し名をつなぐ。`output/box_impostor_exports/<name>.box.zip` に、GLB、manifest、各マップ、ガイド、QAを可逆圧縮する。`BI LoadBox` は書き出したZIPのパスや `input/` に置いたZIPの相対パスも開ける。展開時に各マップを検証し、同じZIPを再度開くときは取り込み済みのアセットを使う。
+
 手動・生成画像の整列では前景輪郭を比較する。採用した面でも元のアトラスのcoverageは保持し、線形RGBだけを合成する。輪郭が基準を満たさない指定面はプロキシのベース色に戻す。結果の `qa/report.json` に方向別の理由と、深度で照合できた共通表面の色差が残る。直方体のように隣接カメラから同じ面がほとんど見えない場合は比較不能として扱う。
 
 保存前後の一致と、元メッシュに対する近似精度は別々に測る。下の比較では、斜めから見た輪郭は近いが、硬い辺を持つ物体のBox内部に隣の面の色が混じる。これは元のBakerで描いた段階から再現する。[18視点での元メッシュとの比較値](docs/verification/proxy-box-r128.json)
