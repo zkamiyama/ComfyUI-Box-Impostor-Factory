@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
-import { preflight, workflows, run, inferenceReport, selectFace, verifyOutput, saveSplatOutput, verifySplatOutput } from '../scripts/run_model_workflow.mjs';
+import { configureEditGraph, preflight, workflows, run, inferenceReport, selectFace, verifyOutput, saveSplatOutput, verifySplatOutput } from '../scripts/run_model_workflow.mjs';
 
 const dirs = ['+X', '-X', '+Y', '-Y', '+Z', '-Z'];
 const digest = 'a'.repeat(64);
@@ -34,6 +34,37 @@ test('installed dropdowns must contain each requested file, including the Qwen-o
       assert.deepEqual(report.models.filter(m => !m.available).map(m => m.name), ['QI2.1_AnyAngle.safetensors']);
     }
   }
+});
+
+test('an existing GLB and one face need only the appearance model, with consistent canvas and native dimensions', async () => {
+  for (const [model, modelCount] of [['qwen', 5], ['h3', 4]]) {
+    const graph = await load(model);
+    const ids = graph.nodes.filter(n => n.type === 'BICachedGeneratedFace').map(n => n.id);
+    configureEditGraph(graph, model, {mesh: 'examples/chair.glb', size: 512, face: '+Z'});
+    const inventory = preflight(graph, {}, 'reference.png');
+    assert.equal(inventory.models.length, modelCount);
+    assert(!inventory.missingNodes.some(kind => kind.includes('Pixal')));
+    assert.equal(graph.definitions.subgraphs.length, 1);
+    const encoder = graph.definitions.subgraphs[0].nodes.find(n => n.type === (model === 'qwen' ? 'TextEncodeQwenImage21' : 'MiniMaxH3ImageConditioning'));
+    assert.deepEqual(encoder.widgets_values.slice(model === 'qwen' ? 2 : 1), model === 'qwen' ? [512] : [512, 512]);
+    const proxy = graph.nodes.find(n => n.type === 'BICanonicalizeProxy');
+    assert.equal(proxy.widgets_values[0], 'examples/chair.glb');
+    assert(proxy.inputs.every(p => p.link == null));
+    const rgb = graph.nodes.find(n => n.type === 'BIPrepareReference').outputs[0];
+    for (const n of graph.nodes.filter(n => n.type === 'BIModelCanvas')) {
+      assert.equal(n.widgets_values[1], 512);
+      assert(rgb.links.includes(n.inputs[0].link));
+    }
+    const collector = graph.nodes.find(n => n.type === 'BIFaceInputs');
+    assert.deepEqual(collector.inputs.filter(p => p.link != null).map(p => p.name), ['pz']);
+    assert.deepEqual(graph.nodes.filter(n => n.type === 'BICachedGeneratedFace').map(n => n.id), ids);
+    for (const [id, source, slot, target, input] of graph.links) {
+      assert(graph.nodes.find(n => n.id === source).outputs[slot].links.includes(id));
+      assert.equal(graph.nodes.find(n => n.id === target).inputs[input].link, id);
+    }
+  }
+  const graph = await load('qwen');
+  for (const size of [-32, 16, 255, 4097, NaN]) assert.throws(() => configureEditGraph(graph, 'qwen', { size }), /multiple of 32/);
 });
 
 test('a failed preflight writes evidence without sending a queue request', async () => {
@@ -104,6 +135,14 @@ test('report distinguishes six fallbacks, accepted edits, and untouched baseline
   assert.equal(one.accepted, 1);
   assert.equal(one.baselineFaces, 5);
   assert.equal(one.fallback, 0);
+  const supplied = structuredClone(manifest);
+  delete supplied.reference;
+  supplied.provenance = { originalGlbSha256: 'b'.repeat(64) };
+  supplied.faces['+X'].edit.reference = 'reference/' + digest + '/source.png';
+  assert.equal(verifyOutput('qwen', supplied, qa, '+X', 'b'.repeat(64)).accepted, 1);
+  assert.throws(() => verifyOutput('qwen', supplied, qa, '+X', digest), /GLB digest/);
+  supplied.faces['+X'].edit.reference = 'wrong.png';
+  assert.throws(() => verifyOutput('qwen', supplied, qa, '+X', 'b'.repeat(64)));
   manifest.faces['+X'].edit.provenance.weights = {};
   assert.throws(() => verifyOutput('qwen', manifest, qa, '+X'), /weight digest/);
 });

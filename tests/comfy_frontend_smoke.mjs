@@ -6,7 +6,7 @@ import { join, resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { chromium } from 'playwright';
 import { chromiumOptions } from '../worker/chromium.mjs';
-import { preflight } from '../scripts/run_model_workflow.mjs';
+import { checkCompiled, configureEditGraph, preflight } from '../scripts/run_model_workflow.mjs';
 
 const [origin,inputDir,artifacts]=process.argv.slice(2);
 if(!origin||!inputDir||!artifacts)throw new Error('Usage: node tests/comfy_frontend_smoke.mjs ORIGIN INPUT_DIR OUTPUT_DIR');
@@ -26,8 +26,14 @@ async function freshPage(){
   await page.waitForFunction(()=>window.app?.extensionManager && window.app?.rootGraph && window.app?.canvas,null,{timeout:120000});
 }
 
-async function compile(name){
-  const filename=name+'.json',contents=await readFile(new URL(filename,resources),'utf8');
+async function compile(name, edit){
+  const graph=JSON.parse(await readFile(new URL(name+'.json',resources),'utf8'));
+  const model=name.startsWith('02')?'qwen':'h3';
+  if(edit){
+    configureEditGraph(graph,model,edit);
+    name+='-supplied-glb';
+  }
+  const contents=JSON.stringify(graph);
   const prompt=await page.evaluate(async ({name,contents})=>{
     const app=window.app;
     // The same file-reader entry point used for a workflow dropped onto the canvas.
@@ -37,6 +43,12 @@ async function compile(name){
   },{name,contents});
   assert.ok(prompt&&Object.keys(prompt).length,'No API prompt for '+name);
   await writeFile(join(artifacts,name+'.api.json'),JSON.stringify(prompt,null,2)+'\n');
+  if(edit){
+    // CPU CI has no model weights. Check the native frontend's expanded edges and
+    // actual encoder dimensions independently of loader filenames.
+    checkCompiled(prompt,model,{...edit,input:'reference.png',models:[]});
+    return prompt;
+  }
   const byType=t=>Object.entries(prompt).filter(([,n])=>n.class_type===t);
   if(name.startsWith('09')){
     const [[id,revision]]=byType('BIRebakeProxyRevision');
@@ -103,9 +115,7 @@ async function compile(name){
     await writeFile(join(artifacts,name+'.preflight.json'),JSON.stringify(inventory,null,2));
   }
   if(name.startsWith('02')||name.startsWith('03')||name.startsWith('05')){
-    assert.equal(byType('Pixal3DConditioning').length,1,'Pixal geometry subgraph did not expand');
-    assert.equal(byType('MeshToFile3D').length,1);
-    assert.equal(byType('LoadImage').length,1);
+    checkCompiled(prompt,name.startsWith('05')?'pixal3d':model,{input:'reference.png',models:[]});
   }
   return prompt;
 }
@@ -206,6 +216,10 @@ try{
       await writeFile(join(artifacts,'geometry-revision.json'),JSON.stringify(qa,null,2));
       proof.executed.push({workflow:name,prompt_id,asset:manifest.asset_id});
     }else proof.compiledOnly.push({workflow:name,expandedNodes:Object.keys(prompt).length});
+  }
+  for(const name of workflowNames.slice(2,4)){
+    const prompt=await compile(name,{mesh:'asymmetric.glb',face:'+Z',size:512});
+    proof.compiledOnly.push({workflow:name+'-supplied-glb',expandedNodes:Object.keys(prompt).length});
   }
   await writeFile(join(artifacts,'frontend-workflows.json'),JSON.stringify(proof,null,2)+'\n');
   console.log('Frontend workflow proof',JSON.stringify(proof));
