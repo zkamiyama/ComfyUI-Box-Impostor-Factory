@@ -1,0 +1,33 @@
+name: Box roundtrip
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  software-webgl2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      BI_SOFTWARE_GPU: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npx playwright install --with-deps chromium --only-shell
+      - run: node tests/make_fixture.mjs .test-output/source.glb
+      - name: Bake and reload in a new Chromium process
+        run: node worker/cli.mjs bake --input .test-output/source.glb --output .test-output/box --backend webgl2 --resolution 128 --maps roughness,metalness,ao --verify --evidence .test-output/evidence
+      - name: Compare mesh and Box in the viewer
+        run: BI_TEST_ASSET=.test-output/box BI_TEST_BACKEND=webgl2 node --test tests/viewer_integration.test.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: box-roundtrip
+          path: .test-output/
+          if-no-files-found: ignore
