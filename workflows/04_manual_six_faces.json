@@ -1,0 +1,1048 @@
+{
+  "id": "8debdb5e-9582-5386-9297-497f2c780a31",
+  "revision": 0,
+  "last_node_id": 19,
+  "last_link_id": 25,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "BICanonicalizeProxy",
+      "pos": [
+        0,
+        0
+      ],
+      "size": [
+        265,
+        89
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model_3d",
+          "type": "FILE_3D_GLB",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_PROXY",
+          "type": "BOX_PROXY",
+          "links": [
+            1,
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BICanonicalizeProxy"
+      },
+      "widgets_values": [
+        "asymmetric.glb"
+      ],
+      "title": "Existing GLB · relative to ComfyUI/input"
+    },
+    {
+      "id": 2,
+      "type": "BIMakeSixGuides",
+      "pos": [
+        335,
+        20
+      ],
+      "size": [
+        265,
+        199
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "proxy",
+          "type": "BOX_PROXY",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "px",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "nx",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "py",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "ny",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "pz",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "nz",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "guides",
+          "type": "BOX_GUIDES",
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIMakeSixGuides"
+      },
+      "widgets_values": [
+        256,
+        "auto"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        1015,
+        50
+      ],
+      "size": [
+        255,
+        260
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "px.png",
+        "image"
+      ],
+      "title": "Manual +X RGBA"
+    },
+    {
+      "id": 4,
+      "type": "BIFaceImage",
+      "pos": [
+        1335,
+        50
+      ],
+      "size": [
+        265,
+        111
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 2
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_FACE",
+          "type": "BOX_FACE",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIFaceImage"
+      },
+      "widgets_values": [
+        "load_image"
+      ],
+      "title": "+X foreground from PNG alpha"
+    },
+    {
+      "id": 5,
+      "type": "LoadImage",
+      "pos": [
+        1015,
+        375
+      ],
+      "size": [
+        255,
+        260
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "nx.png",
+        "image"
+      ],
+      "title": "Manual -X RGBA"
+    },
+    {
+      "id": 6,
+      "type": "BIFaceImage",
+      "pos": [
+        1335,
+        375
+      ],
+      "size": [
+        265,
+        111
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 4
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_FACE",
+          "type": "BOX_FACE",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIFaceImage"
+      },
+      "widgets_values": [
+        "load_image"
+      ],
+      "title": "-X foreground from PNG alpha"
+    },
+    {
+      "id": 7,
+      "type": "LoadImage",
+      "pos": [
+        1015,
+        700
+      ],
+      "size": [
+        255,
+        260
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            6
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "py.png",
+        "image"
+      ],
+      "title": "Manual +Y RGBA"
+    },
+    {
+      "id": 8,
+      "type": "BIFaceImage",
+      "pos": [
+        1335,
+        700
+      ],
+      "size": [
+        265,
+        111
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 6
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_FACE",
+          "type": "BOX_FACE",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIFaceImage"
+      },
+      "widgets_values": [
+        "load_image"
+      ],
+      "title": "+Y foreground from PNG alpha"
+    },
+    {
+      "id": 9,
+      "type": "LoadImage",
+      "pos": [
+        1015,
+        1025
+      ],
+      "size": [
+        255,
+        260
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            8
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ny.png",
+        "image"
+      ],
+      "title": "Manual -Y RGBA"
+    },
+    {
+      "id": 10,
+      "type": "BIFaceImage",
+      "pos": [
+        1335,
+        1025
+      ],
+      "size": [
+        265,
+        111
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 8
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_FACE",
+          "type": "BOX_FACE",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIFaceImage"
+      },
+      "widgets_values": [
+        "load_image"
+      ],
+      "title": "-Y foreground from PNG alpha"
+    },
+    {
+      "id": 11,
+      "type": "LoadImage",
+      "pos": [
+        1015,
+        1350
+      ],
+      "size": [
+        255,
+        260
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            10
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "pz.png",
+        "image"
+      ],
+      "title": "Manual +Z RGBA"
+    },
+    {
+      "id": 12,
+      "type": "BIFaceImage",
+      "pos": [
+        1335,
+        1350
+      ],
+      "size": [
+        265,
+        111
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 10
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_FACE",
+          "type": "BOX_FACE",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIFaceImage"
+      },
+      "widgets_values": [
+        "load_image"
+      ],
+      "title": "+Z foreground from PNG alpha"
+    },
+    {
+      "id": 13,
+      "type": "LoadImage",
+      "pos": [
+        1015,
+        1675
+      ],
+      "size": [
+        255,
+        260
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            12
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "nz.png",
+        "image"
+      ],
+      "title": "Manual -Z RGBA"
+    },
+    {
+      "id": 14,
+      "type": "BIFaceImage",
+      "pos": [
+        1335,
+        1675
+      ],
+      "size": [
+        265,
+        111
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 12
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_FACE",
+          "type": "BOX_FACE",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIFaceImage"
+      },
+      "widgets_values": [
+        "load_image"
+      ],
+      "title": "-Z foreground from PNG alpha"
+    },
+    {
+      "id": 15,
+      "type": "BIFaceInputs",
+      "pos": [
+        1675,
+        55
+      ],
+      "size": [
+        265,
+        177
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "px",
+          "type": "BOX_FACE",
+          "link": 14
+        },
+        {
+          "name": "nx",
+          "type": "BOX_FACE",
+          "link": 15
+        },
+        {
+          "name": "py",
+          "type": "BOX_FACE",
+          "link": 16
+        },
+        {
+          "name": "ny",
+          "type": "BOX_FACE",
+          "link": 17
+        },
+        {
+          "name": "pz",
+          "type": "BOX_FACE",
+          "link": 18
+        },
+        {
+          "name": "nz",
+          "type": "BOX_FACE",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_FACES",
+          "type": "BOX_FACES",
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIFaceInputs"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 16,
+      "type": "BIAlignAndValidateFaces",
+      "pos": [
+        1995,
+        55
+      ],
+      "size": [
+        265,
+        155
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "faces",
+          "type": "BOX_FACES",
+          "link": 20
+        },
+        {
+          "name": "guides",
+          "type": "BOX_GUIDES",
+          "link": 21
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_ALIGNED_FACES",
+          "type": "BOX_ALIGNED_FACES",
+          "links": [
+            23
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIAlignAndValidateFaces"
+      },
+      "widgets_values": [
+        0.85,
+        0.1,
+        0.15
+      ]
+    },
+    {
+      "id": 17,
+      "type": "BIBakeBox",
+      "pos": [
+        2320,
+        55
+      ],
+      "size": [
+        265,
+        133
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "proxy",
+          "type": "BOX_PROXY",
+          "link": 22
+        },
+        {
+          "name": "faces",
+          "type": "BOX_ALIGNED_FACES",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_IMPOSTOR",
+          "type": "BOX_IMPOSTOR",
+          "links": [
+            24,
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIBakeBox"
+      },
+      "widgets_values": [
+        256,
+        "auto"
+      ]
+    },
+    {
+      "id": 18,
+      "type": "BIPreviewBox",
+      "pos": [
+        2660,
+        55
+      ],
+      "size": [
+        265,
+        75
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "BOX_IMPOSTOR",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "viewer_url",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIPreviewBox"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 19,
+      "type": "BISaveBox",
+      "pos": [
+        2660,
+        215
+      ],
+      "size": [
+        265,
+        89
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "BOX_IMPOSTOR",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "manifest_path",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BISaveBox"
+      },
+      "widgets_values": [
+        ""
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "BOX_PROXY"
+    ],
+    [
+      2,
+      3,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      3,
+      1,
+      4,
+      1,
+      "MASK"
+    ],
+    [
+      4,
+      5,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      5,
+      1,
+      6,
+      1,
+      "MASK"
+    ],
+    [
+      6,
+      7,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      7,
+      7,
+      1,
+      8,
+      1,
+      "MASK"
+    ],
+    [
+      8,
+      9,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      9,
+      9,
+      1,
+      10,
+      1,
+      "MASK"
+    ],
+    [
+      10,
+      11,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      11,
+      11,
+      1,
+      12,
+      1,
+      "MASK"
+    ],
+    [
+      12,
+      13,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      13,
+      13,
+      1,
+      14,
+      1,
+      "MASK"
+    ],
+    [
+      14,
+      4,
+      0,
+      15,
+      0,
+      "BOX_FACE"
+    ],
+    [
+      15,
+      6,
+      0,
+      15,
+      1,
+      "BOX_FACE"
+    ],
+    [
+      16,
+      8,
+      0,
+      15,
+      2,
+      "BOX_FACE"
+    ],
+    [
+      17,
+      10,
+      0,
+      15,
+      3,
+      "BOX_FACE"
+    ],
+    [
+      18,
+      12,
+      0,
+      15,
+      4,
+      "BOX_FACE"
+    ],
+    [
+      19,
+      14,
+      0,
+      15,
+      5,
+      "BOX_FACE"
+    ],
+    [
+      20,
+      15,
+      0,
+      16,
+      0,
+      "BOX_FACES"
+    ],
+    [
+      21,
+      2,
+      6,
+      16,
+      1,
+      "BOX_GUIDES"
+    ],
+    [
+      22,
+      1,
+      0,
+      17,
+      0,
+      "BOX_PROXY"
+    ],
+    [
+      23,
+      16,
+      0,
+      17,
+      1,
+      "BOX_ALIGNED_FACES"
+    ],
+    [
+      24,
+      17,
+      0,
+      18,
+      0,
+      "BOX_IMPOSTOR"
+    ],
+    [
+      25,
+      17,
+      0,
+      19,
+      0,
+      "BOX_IMPOSTOR"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.59,
+      "offset": [
+        70,
+        85
+      ]
+    },
+    "boxImpostor": {
+      "officialWorkflowRevision": "a8bc07a76478dfada740fa8fa49ac87be1bff519",
+      "weightsIncluded": false,
+      "status": "graph-validated; model inference requires local weights"
+    }
+  },
+  "version": 0.4
+}

@@ -1,0 +1,201 @@
+{
+  "id": "53189260-1f09-512f-b126-70a756415044",
+  "revision": 0,
+  "last_node_id": 4,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "BICanonicalizeProxy",
+      "pos": [
+        0,
+        0
+      ],
+      "size": [
+        265,
+        89
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model_3d",
+          "type": "FILE_3D_GLB",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_PROXY",
+          "type": "BOX_PROXY",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BICanonicalizeProxy"
+      },
+      "widgets_values": [
+        "asymmetric.glb"
+      ],
+      "title": "Existing GLB · relative to ComfyUI/input"
+    },
+    {
+      "id": 2,
+      "type": "BIBakeBox",
+      "pos": [
+        335,
+        20
+      ],
+      "size": [
+        265,
+        133
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "proxy",
+          "type": "BOX_PROXY",
+          "link": 1
+        },
+        {
+          "name": "faces",
+          "type": "BOX_ALIGNED_FACES",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_IMPOSTOR",
+          "type": "BOX_IMPOSTOR",
+          "links": [
+            2,
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIBakeBox"
+      },
+      "widgets_values": [
+        256,
+        "auto"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "BIPreviewBox",
+      "pos": [
+        675,
+        20
+      ],
+      "size": [
+        265,
+        75
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "BOX_IMPOSTOR",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "viewer_url",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIPreviewBox"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 4,
+      "type": "BISaveBox",
+      "pos": [
+        675,
+        180
+      ],
+      "size": [
+        265,
+        89
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "BOX_IMPOSTOR",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "manifest_path",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BISaveBox"
+      },
+      "widgets_values": [
+        ""
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "BOX_PROXY"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "BOX_IMPOSTOR"
+    ],
+    [
+      3,
+      2,
+      0,
+      4,
+      0,
+      "BOX_IMPOSTOR"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.59,
+      "offset": [
+        70,
+        85
+      ]
+    },
+    "boxImpostor": {
+      "officialWorkflowRevision": "a8bc07a76478dfada740fa8fa49ac87be1bff519",
+      "weightsIncluded": false,
+      "status": "graph-validated; model inference requires local weights"
+    }
+  },
+  "version": 0.4
+}
