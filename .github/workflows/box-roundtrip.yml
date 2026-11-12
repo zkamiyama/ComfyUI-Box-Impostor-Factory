@@ -45,6 +45,14 @@ jobs:
           node tests/make_textured_fixture.mjs .test-output/textured.glb
           node worker/cli.mjs bake --input .test-output/textured.glb --output .test-output/textured --resolution 128 --backend ${{ matrix.backend }} --verify
           python tests/check_textured_bake.py .test-output/textured ${{ matrix.backend }}
+      - name: Verify the CC0 WaterBottle PBR textures against the source GLB
+        run: |
+          source="$RUNNER_TEMP/WaterBottle.glb"
+          asset="$RUNNER_TEMP/waterbottle"
+          curl --fail --location --retry 3 --output "$source" https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/8f492390ddc7a2ae221a1369ef560589cf8c70fb/Models/WaterBottle/glTF-Binary/WaterBottle.glb
+          echo "b337e526fd6a162013c2984aeec163f5fbb4f717252724dfc3f3458bd51df94b  $source" | sha256sum --check
+          node worker/cli.mjs bake --input "$source" --output "$asset" --backend ${{ matrix.backend }} --resolution 256 --maps roughness,metalness,ao,emissive --verify --evidence .test-output/evidence/pbr
+          python tests/check_pbr_bake.py "$source" "$asset" > .test-output/evidence/pbr/source-texels.json
       - name: Render final Box IMAGE with optional anti-bleeding
         run: |
           node worker/cli.mjs render --asset .test-output/box --output .test-output/standard.png --backend ${{ matrix.backend }} --view diagonal --projection orthographic --width 320 --height 256 --sampling standard

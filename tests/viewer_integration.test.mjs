@@ -46,6 +46,15 @@ test('saved Box preview switches proxy, Box and synchronized split view, rotates
     await page.goto(server.origin+'/web/viewer.html?manifest=/asset/manifest.json&backend='+encodeURIComponent(backend));
     await page.waitForFunction(() => /webgpu|webgl2|表示エラー/.test(document.querySelector('#status').textContent));
     assert.equal(await page.locator('#status.error').count(),0,await page.locator('#status').innerText());
+    const manifest=await (await page.request.get(server.origin+'/asset/manifest.json')).json();
+    const img2imgFaces=manifest.faceOrder.filter(id=>{
+      const edit=manifest.faces[id].edit;
+      return edit?.status==='accepted' && edit.provenance?.generator==='comfy-native-checkpoint-img2img';
+    });
+    for(const id of img2imgFaces){
+      const row=page.locator('#faceQA tbody tr').nth(manifest.faceOrder.indexOf(id));
+      assert.match(await row.textContent(),/img2img/);
+    }
     const canvas = page.locator('#canvas');
     await page.selectOption('#mode','proxy');
     await page.selectOption('#mode','both');
@@ -95,6 +104,29 @@ test('saved Box preview switches proxy, Box and synchronized split view, rotates
     await page.waitForFunction(() => !document.querySelector('#status').textContent.includes('色にじみ低減'));
     await page.waitForFunction(presentedForeground,1);
     await page.selectOption('#mode','atlas');
+    for(const [i,property] of ['roughness','metalness','ao'].entries()){
+      const value='materialMap:'+i;
+      assert.equal(await page.locator('#map option[value="'+value+'"]').count(),manifest.maps.includes(property)?1:0);
+      if(!manifest.maps.includes(property)) continue;
+      await page.selectOption('#map',value);
+      await page.waitForFunction(label=>{
+        const img=document.querySelector('#atlas');
+        return img.alt.endsWith(label) && img.complete && img.naturalWidth>0;
+      },['ラフネス','メタルネス','AO'][i]);
+      assert.equal(await page.evaluate(async ({descriptor,channel})=>{
+        const raw=new Uint8Array(await (await fetch('/asset/'+descriptor.path)).arrayBuffer());
+        const canvas=document.createElement('canvas');
+        canvas.width=descriptor.width;canvas.height=descriptor.height;
+        const ctx=canvas.getContext('2d');ctx.drawImage(document.querySelector('#atlas'),0,0);
+        const {data}=ctx.getImageData(0,0,canvas.width,canvas.height);
+        for(let y=0;y<canvas.height;y++) for(let x=0;x<canvas.width;x++){
+          const offset=4*(y*canvas.width+x);
+          const expected=raw[4*((canvas.height-1-y)*canvas.width+x)+channel];
+          if(data[offset]!==expected || data[offset+1]!==expected || data[offset+2]!==expected) return false;
+        }
+        return true;
+      },{descriptor:manifest.textures.materialMap,channel:i}),true);
+    }
     await page.selectOption('#map','intervalMap');
     await page.waitForFunction(() => document.querySelector('#atlas').naturalWidth > 0);
     assert.equal(await page.locator('#atlas').isVisible(),true);

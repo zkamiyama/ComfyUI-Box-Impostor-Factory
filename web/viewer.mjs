@@ -30,7 +30,12 @@ function showFaceDecisions(manifest, url) {
   for (const id of manifest.faceOrder) {
     const edit=manifest.faces[id].edit;
     const row=panel.querySelector('tbody').insertRow();
-    const color=edit?.status==='accepted' ? (sources[edit.source] || edit.source) : 'ベイク時の色';
+    let color='ベイク時の色';
+    if (edit?.status==='accepted') {
+      color=sources[edit.source] || edit.source;
+      if (edit.provenance?.generator==='comfy-native-checkpoint-img2img')
+        color='img2img（'+(edit.provenance.checkpoint || 'チェックポイント')+'）';
+    }
     const reason=edit ? (reasons[edit.reason] || edit.reason) : '画像の指定なし';
     for (const text of [id,color,reason]) row.insertCell().textContent=text;
   }
@@ -42,7 +47,8 @@ function showFaceDecisions(manifest, url) {
   panel.hidden=false;
 }
 
-const geometryChannels={
+const atlasChannels={
+  materialMap:['R ラフネス','G メタルネス','B AO'],
   intervalMap:['R 正側の表面','G 負側の表面（1 − 座標）','B 空隙の始点','A 空隙の終点'],
   rangeMap:['R 占有範囲の下限','G 占有範囲の上限']
 };
@@ -252,8 +258,10 @@ async function run() {
   const previews = new Map();
   for (const name of Object.keys(manifest.textures)) {
     appendOption(el('map'),name,name);
-    for(const [channel,label] of (geometryChannels[name] ?? []).entries())
+    for(const [channel,label] of (atlasChannels[name] ?? []).entries()) {
+      if (name==='materialMap' && !manifest.maps.includes(['roughness','metalness','ao'][channel])) continue;
       appendOption(el('map'),name+':'+channel,name+' · '+label);
+    }
   }
   if (hasBase) appendOption(el('map'),'baseColor','colorMap（ベイク時）');
   for (const face of manifest.faceOrder) {
@@ -278,7 +286,7 @@ async function run() {
         if(el('map').value===name) el('atlas').alt='深度ガイドを読み込めません: '+err.message;
         return;
       }
-    } else if (face && !geometryChannels[kind]) {
+    } else if (kind==='guide' || kind==='view') {
       const item=manifest.faces[face];
       el('atlas').src=assetURL(url,kind==='guide' ? item.guide : item.edit.view).href;
     } else {
