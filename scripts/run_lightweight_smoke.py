@@ -27,6 +27,9 @@ from PIL import Image
 FACES = ('+X', '-X', '+Y', '-Y', '+Z', '-Z')
 SOCKETS = ('px', 'nx', 'py', 'ny', 'pz', 'nz')
 DEFAULT_CHECKPOINT = 'v1-5-pruned-emaonly-fp16.safetensors'
+DEFAULT_PROMPT = 'a cobalt blue ceramic sculpture, detailed painted turquoise and gold patterns, studio product photograph'
+MATERIAL_TEXTURES = {'none': (), 'material': ('materialMap',), 'emissive': ('emissiveMap',),
+                     'material+emissive': ('materialMap', 'emissiveMap')}
 GENERATOR = 'comfy-native-checkpoint-img2img'
 
 
@@ -34,13 +37,14 @@ def node(class_type, **inputs):
     return {'class_type': class_type, 'inputs': inputs}
 
 
-def build_graph(mesh, checkpoint, resolution, steps, seed, denoise, backend):
-    bake = dict(proxy=['1', 0], resolution=resolution, backend=backend)
+def build_graph(mesh, checkpoint, resolution, steps, seed, denoise, backend, *,
+                positive_prompt=DEFAULT_PROMPT, material_maps='none'):
+    bake = dict(proxy=['1', 0], resolution=resolution, backend=backend, material_maps=material_maps)
     graph = {
         '1': node('BICanonicalizeProxy', filename=mesh),
         '2': node('BIMakeSixGuides', **bake),
         '3': node('CheckpointLoaderSimple', ckpt_name=checkpoint),
-        '4': node('CLIPTextEncode', clip=['3', 1], text='a cobalt blue ceramic sculpture, detailed painted turquoise and gold patterns, studio product photograph'),
+        '4': node('CLIPTextEncode', clip=['3', 1], text=positive_prompt),
         '5': node('CLIPTextEncode', clip=['3', 1], text='blurry, low detail, text, watermark'),
         '6': node('BIBakeBox', **bake),
     }
@@ -54,7 +58,8 @@ def build_graph(mesh, checkpoint, resolution, steps, seed, denoise, backend):
                              sampler_name='euler', scheduler='normal', denoise=denoise)
         graph[decode] = node('VAEDecode', samples=[sample, 0], vae=['3', 2])
         provenance = dict(backend='manual_faces', generator=GENERATOR, checkpoint=checkpoint,
-                          face=face, seed=seed + index, steps=steps, denoise=denoise, coverage='guide')
+                          face=face, seed=seed + index, steps=steps, denoise=denoise, coverage='guide',
+                          positive_prompt=positive_prompt)
         graph[capture] = node('BIFaceImage', image=[decode, 0], mask_mode='load_image',
                               mask=[split, 1], provenance=json.dumps(provenance, sort_keys=True))
         captured[socket] = [capture, 0]
@@ -159,18 +164,24 @@ def verify(origin, outputs, directory, args):
         write_json(directory / (name + '-manifest.json'), manifest)
     if tuple(final['faceOrder']) != FACES or final['resolution'] != args.resolution:
         raise ValueError('Unexpected face order or resolution')
-    geometry = {}
-    for key in ('normalMap', 'intervalMap', 'rangeMap'):
+    geometry_keys = ('normalMap', 'intervalMap', 'rangeMap')
+    material_keys = MATERIAL_TEXTURES[args.material_maps]
+    expected_textures = {'colorMap', *geometry_keys, *material_keys}
+    if any(set(m['textures']) != expected_textures for m in (base, final)):
+        raise ValueError(f'Expected baseline and generated textures: {sorted(expected_textures)}')
+    preserved = {}
+    for key in (*geometry_keys, *material_keys):
         descriptor = final['textures'][key]
         if descriptor != base['textures'][key]:
             raise ValueError(f'{key} descriptor differs from baseline')
         checked_blob(origin, asset_dir, descriptor)
         checked_blob(origin, base_dir, descriptor)
-        geometry[key] = descriptor['sha256']
+        preserved[key] = descriptor['sha256']
     for index, (face, slug) in enumerate(zip(FACES, SOCKETS)):
         edit = final['faces'][face]['edit']
         info = edit['provenance']
-        expected = dict(generator=GENERATOR, seed=args.seed + index, face=face, checkpoint=args.checkpoint)
+        expected = dict(generator=GENERATOR, seed=args.seed + index, face=face, checkpoint=args.checkpoint,
+                        positive_prompt=args.positive_prompt)
         if edit['status'] != 'accepted' or any(info.get(k) != v for k, v in expected.items()):
             raise ValueError(f'Generated face {face} was not accepted with the expected provenance')
         (directory / (slug + '.png')).write_bytes(request(origin, asset_dir + edit['view']))
@@ -193,7 +204,8 @@ def verify(origin, outputs, directory, args):
     pixels = int((visible & np.any(a[..., :3] != b[..., :3], axis=-1)).sum())
     if not pixels:
         raise ValueError('No generated color reached the final Box render')
-    return dict(viewer=origin.rstrip('/') + preview, geometrySha256=geometry, colorTexelsChanged=counts,
+    return dict(viewer=origin.rstrip('/') + preview, geometrySha256={k: preserved[k] for k in geometry_keys},
+                materialSha256={k: preserved[k] for k in material_keys}, colorTexelsChanged=counts,
                 renderedPixelsChanged=pixels, renderedPixelsCovered=int(visible.sum()))
 
 
@@ -201,6 +213,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--mesh', required=True, help='GLB path relative to the ComfyUI input directory')
     parser.add_argument('--checkpoint', default=DEFAULT_CHECKPOINT, help='Installed SD 1.x checkpoint name')
+    parser.add_argument('--positive-prompt', default=DEFAULT_PROMPT, help='Appearance prompt used on all six views')
+    parser.add_argument('--material-maps', choices=MATERIAL_TEXTURES, default='none',
+                        help='Bake these PBR maps and verify their bytes survive six-face color editing')
     parser.add_argument('--origin', default='http://127.0.0.1:8188')
     parser.add_argument('--output', type=Path, default=Path('.test-output/lightweight'))
     parser.add_argument('--resolution', type=int, choices=(128, 256, 512), default=256)
@@ -215,10 +230,12 @@ def main():
         parser.error('Check --steps (1..100), --denoise (0..1, nonzero), --seed, and --timeout-minutes')
     args.output.mkdir(parents=True, exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix='run-', dir=args.output))
-    graph = build_graph(args.mesh, args.checkpoint, args.resolution, args.steps, args.seed, args.denoise, args.backend)
+    graph = build_graph(args.mesh, args.checkpoint, args.resolution, args.steps, args.seed, args.denoise, args.backend,
+                        positive_prompt=args.positive_prompt, material_maps=args.material_maps)
     write_json(directory / 'api-prompt.json', graph)
     print(directory.resolve(), flush=True)
-    proof = dict(checkpoint=args.checkpoint, mesh=args.mesh, status='preflight')
+    proof = dict(checkpoint=args.checkpoint, mesh=args.mesh, positivePrompt=args.positive_prompt,
+                 materialMaps=args.material_maps, status='preflight')
     try:
         proof['devices'] = preflight(args.origin, graph, args.checkpoint)
         if args.run:

@@ -15,7 +15,11 @@ from scripts import run_lightweight_smoke as smoke
 
 class LightweightSmokeTests(unittest.TestCase):
     def test_native_graph_samples_all_guides_and_submits_both_box_renders(self):
-        graph = smoke.build_graph('fixture.glb', 'sd.safetensors', 256, 4, 101, .6, 'webgl2')
+        graph = smoke.build_graph('fixture.glb', 'sd.safetensors', 256, 4, 101, .6, 'webgl2',
+                                  positive_prompt='painted lantern', material_maps='material+emissive')
+        self.assertEqual(graph['4']['inputs']['text'], 'painted lantern')
+        for index in ('2', '6', '9'):
+            self.assertEqual(graph[index]['inputs']['material_maps'], 'material+emissive')
         for i, (name, socket) in enumerate(zip(smoke.FACES, smoke.SOCKETS)):
             capture = graph[graph['7']['inputs'][socket][0]]['inputs']
             decoder = graph[capture['image'][0]]
@@ -30,6 +34,7 @@ class LightweightSmokeTests(unittest.TestCase):
             self.assertEqual(sampler['inputs']['seed'], 101 + i)
             self.assertEqual(sampler['inputs']['model'], ['3', 0])
             provenance = json.loads(capture['provenance'])
+            self.assertEqual(provenance['positive_prompt'], 'painted lantern')
             self.assertEqual((provenance['face'], provenance['checkpoint'], provenance['backend']), (name, 'sd.safetensors', 'manual_faces'))
         for index, asset in [('13', '6'), ('16', '9')]:
             join = graph[graph[index]['inputs']['images'][0]]
@@ -86,14 +91,14 @@ class LightweightSmokeTests(unittest.TestCase):
             media[directory + name] = data
             return dict(path=name, sha256=hashlib.sha256(data).hexdigest())
         maps = {}
-        for name in ('normalMap', 'intervalMap', 'rangeMap'):
+        for name in ('normalMap', 'intervalMap', 'rangeMap', 'materialMap', 'emissiveMap'):
             maps[name] = descriptor(base_dir, name, name.encode())
             media[final_dir + name] = name.encode()
         base = dict(textures=dict(maps, colorMap=descriptor(base_dir, 'color', baseline.tobytes())))
         faces = {}
         for i, (face, slug) in enumerate(zip(smoke.FACES, smoke.SOCKETS)):
             faces[face] = dict(edit=dict(status='accepted', view=slug + '.png', provenance=dict(
-                generator=smoke.GENERATOR, seed=i, face=face, checkpoint='model')))
+                generator=smoke.GENERATOR, seed=i, face=face, checkpoint='model', positive_prompt='painted lantern')))
             media[final_dir + slug + '.png'] = b'png'
         final = dict(parentAsset=baseline_id, faceOrder=smoke.FACES, resolution=r, faces=faces,
                      textures=dict(maps, colorMap=descriptor(final_dir, 'color', atlas.tobytes())))
@@ -111,10 +116,16 @@ class LightweightSmokeTests(unittest.TestCase):
             path = '/view?filename=' + n + '&type=output&subfolder='
             media[path] = buffer.getvalue()
             frames.append(path)
-        args = SimpleNamespace(resolution=r, checkpoint='model', seed=0)
+        args = SimpleNamespace(resolution=r, checkpoint='model', seed=0, positive_prompt='painted lantern',
+                               material_maps='material+emissive')
         with tempfile.TemporaryDirectory() as folder, patch.object(smoke, 'request', side_effect=lambda origin, path: media[path]):
             proof = smoke.verify('http://localhost', outputs, Path(folder), args)
             self.assertEqual(proof['renderedPixelsChanged'], r*r)
+            self.assertEqual(set(proof['materialSha256']), {'emissiveMap', 'materialMap'})
+            media[final_dir + 'emissiveMap'] = b'corrupted'
+            with self.assertRaisesRegex(ValueError, 'Digest mismatch: emissiveMap'):
+                smoke.verify('http://localhost', outputs, Path(folder), args)
+            media[final_dir + 'emissiveMap'] = media[base_dir + 'emissiveMap']
             media[frames[1]] = media[frames[0]]
             with self.assertRaisesRegex(ValueError, 'final Box render'):
                 smoke.verify('http://localhost', outputs, Path(folder), args)
