@@ -36,6 +36,13 @@ test('saved Box preview switches proxy, Box and synchronized split view, rotates
     await page.mouse.move(x,y); await page.mouse.down();
     await page.mouse.move(x+30,y+20,{steps:4}); await page.mouse.up();
     await page.selectOption('#mode','box');
+    assert.equal(await page.locator('#sampling').inputValue(),'standard');
+    await page.selectOption('#sampling','reduce_bleeding');
+    await page.waitForFunction(() => document.querySelector('#status').textContent.includes('色にじみ低減'));
+    await page.waitForFunction(presentedForeground,1);
+    await page.selectOption('#sampling','standard');
+    await page.waitForFunction(() => !document.querySelector('#status').textContent.includes('色にじみ低減'));
+    await page.waitForFunction(presentedForeground,1);
     await page.selectOption('#mode','atlas');
     await page.selectOption('#map','intervalMap');
     await page.waitForFunction(() => document.querySelector('#atlas').naturalWidth > 0);

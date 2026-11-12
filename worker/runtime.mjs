@@ -340,7 +340,8 @@ function validateManifest(m) {
   }
 }
 
-export async function restoreBox(manifest,files,renderer) {
+export async function restoreBox(manifest,files,renderer,{sampling='standard'}={}) {
+  if (!['standard','reduce_bleeding'].includes(sampling)) throw error('INVALID_SAMPLING','Unknown Box render sampling mode');
   validateManifest(manifest);
   const box=new THREE.Box3(new THREE.Vector3(...manifest.bakeBox.min),new THREE.Vector3(...manifest.bakeBox.max));
   const size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());
@@ -360,7 +361,9 @@ export async function restoreBox(manifest,files,renderer) {
       if(await sha256(bytes)!==d.sha256) throw error('TEXTURE_HASH','Checksum mismatch for '+name);
       const t=new THREE.DataTexture(decodeRaw(bytes,d.dtype),d.width,d.height,THREE.RGBAFormat,
         d.dtype==='float16'?THREE.HalfFloatType:THREE.UnsignedByteType);
-      t.minFilter=t.magFilter=d.minFilter==='nearest'?THREE.NearestFilter:THREE.LinearFilter;
+      // Presentation-only override. Never rewrite the baked interval map or its manifest.
+      const filter=name==='intervalMap' && sampling==='reduce_bleeding' ? 'nearest' : d.minFilter;
+      t.minFilter=t.magFilter=filter==='nearest'?THREE.NearestFilter:THREE.LinearFilter;
       t.flipY=false;t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping;t.generateMipmaps=false;
       // The stored bytes already carry linear RGB, so use the baker's untagged texture sampling.
       t.colorSpace=THREE.NoColorSpace;t.needsUpdate=true;

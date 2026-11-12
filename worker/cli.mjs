@@ -46,7 +46,7 @@ async function browserCall(server, method, options) {
     page.on('console',m=>{if(m.type()==='error')diagnostics.push(m.text().slice(0,1600));});
     if(method==='thumbnail') {
       await page.setViewportSize({width:680,height:580});
-      await page.goto(server.origin+'/web/viewer.html?manifest=/asset/manifest.json&backend='+options.backend);
+      await page.goto(server.origin+'/web/viewer.html?manifest=/asset/manifest.json&backend='+options.backend+'&sampling='+options.sampling);
       await page.waitForFunction(()=>/webgpu|webgl2|表示エラー/.test(document.querySelector('#status').textContent));
       if(await page.locator('#status.error').count()) throw new Error(await page.locator('#status').innerText());
       await page.waitForFunction(presentedForeground,1,{timeout:20000});
@@ -145,18 +145,19 @@ export async function main(argv) {
   if(!command || ['--help','-h','help'].includes(command)){console.log(usage);return;}
   const opt=parseArgs({args,options:{
     input:{type:'string'},output:{type:'string'},asset:{type:'string'},evidence:{type:'string'},resolution:{type:'string',default:'256'},
-    backend:{type:'string',default:'auto'},maps:{type:'string',default:''},verify:{type:'boolean',default:false},
+    backend:{type:'string',default:'auto'},sampling:{type:'string',default:'standard'},maps:{type:'string',default:''},verify:{type:'boolean',default:false},
     'rotate-x':{type:'string'},'rotate-y':{type:'string'},'rotate-z':{type:'string'},
     'asset-id':{type:'string'},'canonical-meta':{type:'string'},port:{type:'string',default:'8080'},
   }}).values;
   if(command==='thumbnail'){
     if(!opt.asset || !opt.output) throw new Error('thumbnail requires --asset and --output');
+    if(!['standard','reduce_bleeding'].includes(opt.sampling)) throw new Error('Unknown Box preview sampling');
     const dir=resolve(opt.asset), dest=resolve(opt.output);
     await inspectAsset(dir);
     const server=await startServer({assetDir:dir});
     const temp=dest+'.'+randomUUID()+'.tmp';
     try {
-      const png=await browserCall(server,'thumbnail',{backend:opt.backend});
+      const png=await browserCall(server,'thumbnail',{backend:opt.backend,sampling:opt.sampling});
       await mkdir(dirname(dest),{recursive:true}); await writeFile(temp,png); await rename(temp,dest);
       console.log(JSON.stringify({preview:dest}));
     } finally {await server.close(); await rm(temp,{force:true});}

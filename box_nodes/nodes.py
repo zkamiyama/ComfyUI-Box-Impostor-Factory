@@ -280,15 +280,18 @@ class PreviewBox:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return inputs(asset=('BOX_IMPOSTOR',))
+        return {'required': {'asset': ('BOX_IMPOSTOR',)},
+                'optional': {'sampling': (['standard', 'reduce_bleeding'], {'default': 'standard'})}}
 
-    def preview(self, asset):
+    def preview(self, asset, sampling='standard'):
+        if sampling not in ('standard', 'reduce_bleeding'):
+            raise ValueError('Unknown Box preview sampling')
         directory = store.asset_dir(asset)
         manifest = store.validate(directory, asset, check_bytes=False)
-        image_path = store.thumbnail(directory, manifest)
+        image_path = store.thumbnail(directory, manifest, sampling)
         with Image.open(image_path) as image:
             preview = tensor(np.asarray(image.convert('RGB'), np.float32)[None] / 255)
-        url = f'/box-impostor/web/viewer.html?manifest=/box-impostor/assets/{asset}/manifest.json'
+        url = f'/box-impostor/web/viewer.html?manifest=/box-impostor/assets/{asset}/manifest.json&sampling={sampling}'
         return {'ui': {'box_impostor': [url]}, 'result': (url, preview)}
 
 

@@ -251,18 +251,28 @@ def copy_thumbnail(image_path, directory):
     return target
 
 
-def thumbnail(directory, manifest):
+def thumbnail(directory, manifest, sampling='standard'):
     from PIL import Image
+    if sampling not in ('standard', 'reduce_bleeding'):
+        raise ValueError('Unknown Box preview sampling')
     asset_id = manifest['asset_id']
-    with lock(key('thumbnail-v1', asset_id)):
-        target = directory / 'previews' / 'hero.png'
+    filename = 'hero.png' if sampling == 'standard' else 'hero-reduce_bleeding.png'
+    with lock(key('thumbnail-v2', asset_id, sampling)):
+        target = directory / 'previews' / filename
         if target.is_file():
             with Image.open(target) as image:
                 image.verify()
             return target
         with tempfile.TemporaryDirectory(prefix='.thumb-', dir=root()) as tmp:
-            path = Path(tmp) / 'hero.png'
-            run_worker('thumbnail', '--asset', directory, '--output', path, '--backend', 'auto')
+            path = Path(tmp) / filename
+            run_worker('thumbnail', '--asset', directory, '--output', path, '--backend', 'auto', '--sampling', sampling)
             with Image.open(path) as image:
                 image.verify()
-            return copy_thumbnail(path, directory)
+            if sampling == 'standard':
+                return copy_thumbnail(path, directory)
+            target.parent.mkdir(exist_ok=True)
+            with tempfile.TemporaryDirectory(prefix='.hero-', dir=target.parent) as temp:
+                staging = Path(temp) / filename
+                shutil.copyfile(path, staging)
+                os.replace(staging, target)
+            return target

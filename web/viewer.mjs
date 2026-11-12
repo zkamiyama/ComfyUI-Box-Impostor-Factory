@@ -52,13 +52,19 @@ async function run() {
   const manifestURL = params.get('manifest');
   if (!manifestURL) throw new Error('manifest パラメーターにアセットのURLを指定してください');
   const {manifest,files,url} = await readAsset(manifestURL, {proxy:true});
+  const selectedSampling=params.get('sampling') || 'standard';
+  if(!['standard','reduce_bleeding'].includes(selectedSampling)) throw new Error('不明な補間設定です');
+  el('sampling').value=selectedSampling;
+  let currentSampling=selectedSampling;
   const renderer = await makeRenderer(params.get('backend') || 'auto',{canvas:el('canvas'),antialias:true});
-  const [active,proxy] = await Promise.all([
-    restoreBox(manifest,files,renderer), loadProxy(files.get(manifest.proxy).slice().buffer)
+  const [firstActive,proxy] = await Promise.all([
+    restoreBox(manifest,files,renderer,{sampling:currentSampling}), loadProxy(files.get(manifest.proxy).slice().buffer)
   ]);
+  let active=firstActive;
   const hasBase = manifest.baseColor?.sha256 && manifest.baseColor.sha256 !== manifest.textures.colorMap.sha256;
-  const baseline = hasBase ? await restoreBox({...manifest,textures:{
-    ...manifest.textures, colorMap:manifest.baseColor}},files,renderer) : null;
+  const baselineManifest=hasBase ? {...manifest,textures:{
+    ...manifest.textures, colorMap:manifest.baseColor}} : null;
+  let baseline = hasBase ? await restoreBox(baselineManifest,files,renderer,{sampling:currentSampling}) : null;
   el('appearanceLabel').hidden = !hasBase;
   const box = litScene(), mesh = litScene();
   box.scene.add(active.mesh);
@@ -159,6 +165,7 @@ async function run() {
     el('labels').style.display = mode==='both' ? 'flex' : 'none';
     el('mapLabel').hidden = !atlas; el('atlas').hidden = !atlas;
     el('appearanceLabel').hidden = !hasBase || mode==='proxy' || atlas;
+    el('samplingLabel').hidden = mode==='proxy' || atlas;
     help.hidden = atlas;
     if (atlas) selectMap();
     else if (mode==='both') placeCamera(true);
@@ -171,6 +178,44 @@ async function run() {
   el('appearance').onchange = () => {
     active.mesh.visible = el('appearance').value==='active';
     if (baseline) baseline.mesh.visible = !active.mesh.visible;
+  };
+  // Rebuild the display material on demand. WebGL render-target samplers are fixed at
+  // restoration time; changing their properties in place is not portable to WebGPU.
+  let samplingBusy=false;
+  el('sampling').onchange = async () => {
+    if (samplingBusy || el('sampling').value===currentSampling) return;
+    samplingBusy=true;
+    el('sampling').disabled=true;
+    renderer.setAnimationLoop(null);
+    const requested=el('sampling').value;
+    let nextActive, nextBaseline;
+    try {
+      nextActive=await restoreBox(manifest,files,renderer,{sampling:requested});
+      nextBaseline=baselineManifest ? await restoreBox(baselineManifest,files,renderer,{sampling:requested}) : null;
+      box.scene.remove(active.mesh);
+      if (baseline) box.scene.remove(baseline.mesh);
+      active.dispose();
+      baseline?.dispose();
+      active=nextActive;
+      baseline=nextBaseline;
+      box.scene.add(active.mesh);
+      if (baseline) box.scene.add(baseline.mesh);
+      active.mesh.visible=el('appearance').value==='active' || !baseline;
+      if (baseline) baseline.mesh.visible=!active.mesh.visible;
+      currentSampling=requested;
+      const prefix=el('status').textContent.replace(' · 色にじみ低減','');
+      el('status').textContent=prefix+(requested==='reduce_bleeding'?' · 色にじみ低減':'');
+    } catch (err) {
+      nextActive?.dispose();
+      nextBaseline?.dispose();
+      el('sampling').value=currentSampling;
+      console.error('Box sampling update failed:',err);
+      el('status').textContent='補間設定の変更に失敗: '+err.message;
+    } finally {
+      samplingBusy=false;
+      el('sampling').disabled=false;
+      renderer.setAnimationLoop(render);
+    }
   };
   el('mode').onchange=modeChanged;
   el('fit').onclick=() => placeCamera(true);
@@ -186,7 +231,7 @@ async function run() {
   rotateLight(); placeCamera(true); modeChanged();
   const faceReports=Object.values(manifest.faces||{}).map(f=>f.edit?.status);
   const fallback=faceReports.filter(s=>s==='fallback').length;
-  el('status').textContent=[backendName(renderer),manifest.mode,'R='+manifest.resolution,fallback ? '元の色へ戻した面 '+fallback : ''].filter(Boolean).join(' · ');
+  el('status').textContent=[backendName(renderer),manifest.mode,'R='+manifest.resolution,fallback ? '元の色へ戻した面 '+fallback : '',currentSampling==='reduce_bleeding'?'色にじみ低減':''].filter(Boolean).join(' · ');
   let closing=false;
   if (renderer.backend.isWebGPUBackend) renderer.backend.device.lost.then(info => {
     if (closing) return;
