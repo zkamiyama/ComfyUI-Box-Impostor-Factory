@@ -154,12 +154,25 @@ export function preflight(graph, registry, input) {
     missingNodes: [...missingNodes].sort(), input, inputAvailable, models: [...models.values()] };
 }
 
-const materialTextures = {
-  none: [], material: ['materialMap'], emissive: ['emissiveMap'], 'material+emissive': ['materialMap', 'emissiveMap'],
+const materialChannels = {
+  none: [], material: ['roughness', 'metalness', 'ao'], emissive: ['emissive'],
+  'material+emissive': ['roughness', 'metalness', 'ao', 'emissive'],
 };
 
+export function checkedMaterialTextures(selection, manifest) {
+  const requested = materialChannels[selection];
+  assert.deepEqual(manifest.provenance.requestedMaterialMaps, requested, 'PBR bake request changed');
+  // The baker omits emissive for a mesh with no emissive material.
+  const channels = requested.filter(name => name !== 'emissive' || manifest.maps.includes('emissive'));
+  assert.deepEqual(manifest.maps, channels, 'Unexpected baked PBR channels');
+  const expected = {materialMap: channels.includes('roughness'), emissiveMap: channels.includes('emissive')};
+  for (const [key, present] of Object.entries(expected))
+    assert.equal(Boolean(manifest.textures[key]), present, 'Unexpected map selection for ' + key);
+  return Object.keys(expected).filter(key => expected[key]);
+}
+
 export function configureMaterialMaps(graph, selection) {
-  assert(Object.hasOwn(materialTextures, selection), 'Unknown material map selection');
+  assert(Object.hasOwn(materialChannels, selection), 'Unknown material map selection');
   const bakers = graph.nodes.filter(n => ['BIMakeSixGuides', 'BIBakeBox'].includes(n.type));
   assert(bakers.length, 'Expected a geometry bake node');
   for (const n of bakers) {
@@ -610,10 +623,7 @@ export async function run(opts) {
       }
       const materialSha256 = {};
       if (report.materialMaps !== undefined) {
-        const expected = materialTextures[report.materialMaps];
-        for (const key of ['materialMap', 'emissiveMap']) {
-          assert.equal(Boolean(manifest.textures[key]), expected.includes(key), 'Unexpected map selection for ' + key);
-          if (!expected.includes(key)) continue;
+        for (const key of checkedMaterialTextures(report.materialMaps, manifest)) {
           const descriptor = manifest.textures[key];
           const bytes = await (await response(assetURL(descriptor.path, manifestURL))).arrayBuffer();
           const digest = createHash('sha256').update(new Uint8Array(bytes)).digest('hex');
@@ -621,7 +631,7 @@ export async function run(opts) {
           materialSha256[key] = digest;
         }
       }
-      const summary = { workflow: name, ...(report.materialMaps !== undefined && {materialSha256}), prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
+      const summary = { workflow: name, ...(report.materialMaps !== undefined && {materialMaps: report.materialMaps, bakedChannels: manifest.maps, materialSha256}), prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
         viewer: viewer.href, inference: inferenceReport(prompt, opts.face, live.traces.get(receipt.prompt_id)),
         ...(opts.model === 'h3' && { imageOrder: h3ReferenceFirst ? ['reference', 'guide'] : ['guide', 'reference'] }),
         ...(meshDigest && { inputMesh: opts.mesh, inputMeshSha256: meshDigest }),

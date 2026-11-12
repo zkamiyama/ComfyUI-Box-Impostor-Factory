@@ -166,6 +166,10 @@ def verify(origin, outputs, directory, args):
         raise ValueError('Unexpected face order or resolution')
     geometry_keys = ('normalMap', 'intervalMap', 'rangeMap')
     material_keys = MATERIAL_TEXTURES[args.material_maps]
+    if 'emissiveMap' in material_keys and 'emissive' not in base['maps']:
+        material_keys = tuple(key for key in material_keys if key != 'emissiveMap')
+    if final['maps'] != base['maps']:
+        raise ValueError('Baked material channels differ from baseline')
     expected_textures = {'colorMap', *geometry_keys, *material_keys}
     if any(set(m['textures']) != expected_textures for m in (base, final)):
         raise ValueError(f'Expected baseline and generated textures: {sorted(expected_textures)}')

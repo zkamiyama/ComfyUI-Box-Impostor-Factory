@@ -5,11 +5,19 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
-import { configureMaterialMaps, configureCompactProxy, configureEditGraph, preflight, workflows, run, inferenceReport, selectFace, verifyOutput, saveSplatOutput, verifySplatOutput } from '../scripts/run_model_workflow.mjs';
+import { checkedMaterialTextures, configureMaterialMaps, configureCompactProxy, configureEditGraph, preflight, workflows, run, inferenceReport, selectFace, verifyOutput, saveSplatOutput, verifySplatOutput } from '../scripts/run_model_workflow.mjs';
 
 const dirs = ['+X', '-X', '+Y', '-Y', '+Z', '-Z'];
 const digest = 'a'.repeat(64);
 const load = name => readFile(new URL('../workflows/' + workflows[name] + '.json', import.meta.url), 'utf8').then(JSON.parse);
+
+test('a nonemissive mesh retains material channels when emission was also requested', () => {
+  const maps = ['roughness', 'metalness', 'ao'];
+  const manifest = {maps, textures:{materialMap:{}}, provenance:{requestedMaterialMaps:[...maps, 'emissive']}};
+  assert.deepEqual(checkedMaterialTextures('material+emissive', manifest), ['materialMap']);
+  assert.throws(() => checkedMaterialTextures('material+emissive', {...manifest, maps:[]}), /channels/);
+  assert.throws(() => checkedMaterialTextures('material+emissive', {...manifest, textures:{}}), /selection/);
+});
 
 test('guides and final bake request the same selected PBR maps', async () => {
   for (const model of ['pixal3d', 'qwen', 'h3']) {

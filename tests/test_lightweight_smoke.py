@@ -94,13 +94,13 @@ class LightweightSmokeTests(unittest.TestCase):
         for name in ('normalMap', 'intervalMap', 'rangeMap', 'materialMap', 'emissiveMap'):
             maps[name] = descriptor(base_dir, name, name.encode())
             media[final_dir + name] = name.encode()
-        base = dict(textures=dict(maps, colorMap=descriptor(base_dir, 'color', baseline.tobytes())))
+        base = dict(maps=['roughness', 'metalness', 'ao', 'emissive'], textures=dict(maps, colorMap=descriptor(base_dir, 'color', baseline.tobytes())))
         faces = {}
         for i, (face, slug) in enumerate(zip(smoke.FACES, smoke.SOCKETS)):
             faces[face] = dict(edit=dict(status='accepted', view=slug + '.png', provenance=dict(
                 generator=smoke.GENERATOR, seed=i, face=face, checkpoint='model', positive_prompt='painted lantern')))
             media[final_dir + slug + '.png'] = b'png'
-        final = dict(parentAsset=baseline_id, faceOrder=smoke.FACES, resolution=r, faces=faces,
+        final = dict(maps=list(base['maps']), parentAsset=baseline_id, faceOrder=smoke.FACES, resolution=r, faces=faces,
                      textures=dict(maps, colorMap=descriptor(final_dir, 'color', atlas.tobytes())))
         media[base_dir + 'manifest.json'] = json.dumps(base).encode()
         media[final_dir + 'manifest.json'] = json.dumps(final).encode()
@@ -126,6 +126,12 @@ class LightweightSmokeTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'Digest mismatch: emissiveMap'):
                 smoke.verify('http://localhost', outputs, Path(folder), args)
             media[final_dir + 'emissiveMap'] = media[base_dir + 'emissiveMap']
+            for manifest, directory in ((base, base_dir), (final, final_dir)):
+                manifest['maps'].remove('emissive')
+                del manifest['textures']['emissiveMap']
+                media[directory + 'manifest.json'] = json.dumps(manifest).encode()
+            proof = smoke.verify('http://localhost', outputs, Path(folder), args)
+            self.assertEqual(set(proof['materialSha256']), {'materialMap'})
             media[frames[1]] = media[frames[0]]
             with self.assertRaisesRegex(ValueError, 'final Box render'):
                 smoke.verify('http://localhost', outputs, Path(folder), args)
