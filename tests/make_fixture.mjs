@@ -13,7 +13,7 @@ const faces = [
 ];
 const corners = [[-1, -1], [1, -1], [1, 1], [-1, -1], [1, 1], [-1, 1]];
 
-export function makeFixture() {
+export function makeFixtureGeometry(boxes, quads=[]) {
   const positions = [], normals = [], colors = [];
   function box(center, size, tint) {
     for (const [normal, right, up, faceColor] of faces) {
@@ -25,11 +25,13 @@ export function makeFixture() {
       }
     }
   }
-  box([0.45, 0.1, -0.22], [1.6, 0.9, 0.68]);
-  box([1.35, 0.19, -0.12], [0.48, 0.28, 0.32], [0.92, 0.88, 0.85]);
-  box([0.78, 0.57, -0.41], [0.45, 0.05, 0.09], [0.88, 0.9, 0.9]);
-  box([0.59, 0.57, -0.30], [0.07, 0.05, 0.24], [0.88, 0.9, 0.9]);
-  box([0.04, -0.37, -0.10], [0.21, 0.07, 0.11], [0.05, 0.07, 0.1]);
+  for (const [center,size,tint] of boxes) box(center,size,tint);
+  for (const [normal,vertices] of quads) {
+    const color=faces.find(([n])=>n.every((v,i)=>v===normal[i]))[3];
+    for (const i of [0,1,2,0,2,3]) {
+      positions.push(...vertices[i]);normals.push(...normal);colors.push(...color);
+    }
+  }
   const min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
   positions.forEach((value, i) => {
     const axis = i % 3;
@@ -70,6 +72,16 @@ export function makeFixture() {
   binHeader.write('BIN\0', 4);
   return Buffer.concat([header, padded, binHeader, binary]);
 }
+export function makeFixture() {
+  return makeFixtureGeometry([
+    [[0.45, 0.1, -0.22], [1.6, 0.9, 0.68]],
+    [[1.35, 0.19, -0.12], [0.48, 0.28, 0.32], [0.92, 0.88, 0.85]],
+    [[0.78, 0.57, -0.41], [0.45, 0.05, 0.09], [0.88, 0.9, 0.9]],
+    [[0.59, 0.57, -0.30], [0.07, 0.05, 0.24], [0.88, 0.9, 0.9]],
+    [[0.04, -0.37, -0.10], [0.21, 0.07, 0.11], [0.05, 0.07, 0.1]],
+  ]);
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const output = process.argv[2] ?? '.test-output/asymmetric.glb';
   await mkdir(dirname(output), {recursive: true});

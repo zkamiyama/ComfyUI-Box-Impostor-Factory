@@ -71,7 +71,9 @@ ComfyUIでは `output/box_impostor/<asset_id>/manifest.json` がアセットの�
 | three-impostor 0.4.1の標準 | 22.29 / 255 | 0.001716 |
 | intervalMapのみ最近傍補間（比較実験） | 2.10 / 255 | 0.002209 |
 
-配布版は上流の標準設定を使用する。細い形状や空洞のある物体に対する最近傍補間の影響は未測定。[同じ斜視での比較画像](docs/verification/color-fringe-comparison.png) · [18方向の計測値と条件](docs/verification/color-fringe-comparison.json)
+貫通穴を持つ薄い枠でも比較した。最近傍補間で色の平均誤差は22.48から7.84に下がり、最も輪郭が崩れた視点のシルエットIoUは0.825から0.934に上がった（1が完全一致）。穴を見通せた10方向の計6,799画素のうち、標準ではすべて背景のまま、最近傍補間では11画素が物体の色で埋まった。配布版は上流の標準設定を使用する。[色付き直方体の比較画像](docs/verification/color-fringe-comparison.png) · [直方体の18方向の計測値](docs/verification/color-fringe-comparison.json) · [開いた枠の18方向の計測値](docs/verification/open-frame-r128.json)
+
+別のGLBでも、上記のCLIでベイクした後に `node tests/compare_proxy.mjs .test-output/box .test-output/comparison.json webgl2 --compare-interval` を実行すると、同じアセットを使って両方の補間を比較できる。枠のGLBは `node tests/make_open_frame.mjs .test-output/open-frame.glb` で作成できる。
 
 ## テストと設計資料
 

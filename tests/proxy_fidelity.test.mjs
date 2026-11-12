@@ -25,3 +25,20 @@ test('a missing Box silhouette is reported as a miss with no overlap score',()=>
   assert.equal(result.overlapDepthP95,null);
   assert.throws(()=>fidelity(empty,empty),/Empty proxy/);
 });
+test('+Z distinguishes enclosed, filled and leaked hole pixels',()=>{
+  const mk=rows=>{
+    const mask=rows.join('');
+    const color=Buffer.alloc(mask.length*4), depth=Buffer.alloc(mask.length*4,255);
+    for(let i=0;i<mask.length;i++)color[4*i+3]=mask[i]==='#'?255:0;
+    return {id:'+Z',width:rows[0].length,height:rows.length,color:color.toString('base64'),depth:depth.toString('base64')};
+  };
+  const proxy=mk(['.....','.###.','.#.#.','.###.','.....']);
+  const filled=mk(['.....','.###.','.###.','.###.','.....']);
+  const open=mk(['.....','.#.#.','.#.#.','.###.','.....']);
+  for(const [candidate,filledCount,leakedCount] of [[proxy,0,0],[filled,1,0],[open,0,1]]){
+    const metrics=fidelity(proxy,candidate);
+    assert.equal(metrics.holePixels,1);
+    assert.equal(metrics.filledHolePixels,filledCount);
+    assert.equal(metrics.leakedHolePixels,leakedCount);
+  }
+});

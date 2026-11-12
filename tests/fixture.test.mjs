@@ -18,3 +18,23 @@ test('fixture has one embedded buffer, positive face winding and an asymmetric c
     assert.ok(dot > 0, 'winding must agree with outward normal');
   }
 });
+
+test('open frame uses a watertight annulus with no internal caps',async()=>{
+  const {makeOpenFrame}=await import('./make_open_frame.mjs');
+  const glb=makeOpenFrame(), offset=glb.readUInt32LE(12);
+  const doc=JSON.parse(glb.subarray(20,20+offset));
+  const data=glb.subarray(28+offset), count=doc.accessors[0].count;
+  const v=i=>[0,1,2].map(k=>data.readFloatLE(i*12+k*4));
+  const edges=new Map();
+  // The first two boxes form the protruding tab. The remaining mesh is the annulus.
+  for(let i=2*36;i<count;i+=3){
+    const tri=[v(i),v(i+1),v(i+2)].map(point=>point.join(','));
+    for(let j=0;j<3;j++){
+      const a=tri[j],b=tri[(j+1)%3],edge=a<b?a+'|'+b:b+'|'+a;
+      const [uses,balance]=edges.get(edge)||[0,0];
+      edges.set(edge,[uses+1,balance+(a<b?1:-1)]);
+    }
+  }
+  assert.equal(count-72,16*6);
+  for(const [edge,result] of edges)assert.deepEqual(result,[2,0],edge);
+});
