@@ -13,7 +13,7 @@
       ],
       "size": [
         265,
-        89
+        177
       ],
       "flags": {},
       "order": 0,
@@ -22,6 +22,11 @@
         {
           "name": "model_3d",
           "type": "FILE_3D_GLB",
+          "link": null
+        },
+        {
+          "name": "reference",
+          "type": "BOX_REFERENCE",
           "link": null
         }
       ],
@@ -39,7 +44,10 @@
         "Node name for S&R": "BICanonicalizeProxy"
       },
       "widgets_values": [
-        "asymmetric.glb"
+        "asymmetric.glb",
+        0,
+        0,
+        0
       ],
       "title": "Existing GLB · relative to ComfyUI/input"
     },
@@ -766,7 +774,7 @@
       ],
       "size": [
         265,
-        75
+        89
       ],
       "flags": {},
       "order": 17,
@@ -782,6 +790,11 @@
         {
           "name": "viewer_url",
           "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "thumbnail",
+          "type": "IMAGE",
           "links": []
         }
       ],

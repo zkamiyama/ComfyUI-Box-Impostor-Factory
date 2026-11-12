@@ -15,7 +15,7 @@ function base64(bytes) {
   return btoa(binary);
 }
 
-async function snapshot(renderer, mesh, bounds) {
+export async function snapshot(renderer, mesh, bounds) {
   const size = 64; // RGBA8 readback is exactly one 256-byte WebGPU row.
   const scene = new Scene();
   scene.add(mesh, new HemisphereLight(0xf3f5ff, 0xc2bdb5, 1.7));
@@ -90,16 +90,16 @@ export async function reload({backend='auto',verify=true,manifestUrl='/asset/man
   let restored;
   try {
     const {manifest,files} = await readAsset(manifestUrl);
-    restored = await restoreBox(manifest,files);
+    restored = await restoreBox(manifest,files,renderer);
     return {backend:backendName(renderer), snapshot:verify ? await snapshot(renderer,restored.mesh,manifest.bakeBox) : undefined};
   } finally {
     restored?.dispose();
     renderer.dispose();
   }
 }
-export async function canonicalize() {
+export async function canonicalize({rotationDeg=[0,0,0]}={}) {
   const glb = await (await fetchChecked('/job/input.glb')).arrayBuffer();
-  const {bytes,transform,inverseTransform,tightBounds} = await canonicalizeGLB(glb);
+  const {bytes,transform,inverseTransform,tightBounds} = await canonicalizeGLB(glb,{rotationDeg});
   const res = await fetch('/job/files/canonical.glb',{method:'PUT',body:bytes});
   if (!res.ok) throw new Error('Cannot stage canonical GLB (HTTP ' + res.status + ')');
   return {transform,inverseTransform,tightBounds};

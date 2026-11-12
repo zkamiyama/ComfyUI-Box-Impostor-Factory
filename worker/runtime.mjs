@@ -340,7 +340,7 @@ function validateManifest(m) {
   }
 }
 
-export async function restoreBox(manifest,files) {
+export async function restoreBox(manifest,files,renderer) {
   validateManifest(manifest);
   const box=new THREE.Box3(new THREE.Vector3(...manifest.bakeBox.min),new THREE.Vector3(...manifest.bakeBox.max));
   const size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());
@@ -364,7 +364,27 @@ export async function restoreBox(manifest,files) {
       t.flipY=false;t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping;t.generateMipmaps=false;
       // The stored bytes already carry linear RGB, so use the baker's untagged texture sampling.
       t.colorSpace=THREE.NoColorSpace;t.needsUpdate=true;
-      textures.push(t);data[name]=t;
+      if(renderer?.backend?.isWebGLBackend){
+        // The upstream TSL node flips V in the shader for GL render targets. Keep that
+        // same UV arithmetic: a CPU-only row change shifts depth at thin ray boundaries.
+        const row=d.width*4, original=t.image.data;
+        const flipped=new original.constructor(original.length);
+        for(let y=0;y<d.height;y++){
+          flipped.set(original.subarray(y*row,(y+1)*row),(d.height-1-y)*row);
+        }
+        t.image.data=flipped;
+        const rt=new THREE.RenderTarget(d.width,d.height,{type:t.type,depthBuffer:false,
+          minFilter:t.minFilter,magFilter:t.magFilter,generateMipmaps:false});
+        textures.push(rt);
+        try {
+          renderer.initRenderTarget(rt);
+          renderer.copyTextureToTexture(t,rt.texture);
+        } finally {t.dispose();}
+        data[name]=rt.texture;
+      } else {
+        textures.push(t);
+        data[name]=t;
+      }
     }
     material=new ImpostorNodeMaterial(data);
     return {mesh:new THREE.Mesh(geometry,material),dispose};

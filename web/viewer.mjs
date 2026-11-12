@@ -52,13 +52,13 @@ async function run() {
   const manifestURL = params.get('manifest');
   if (!manifestURL) throw new Error('manifest パラメーターにアセットのURLを指定してください');
   const {manifest,files,url} = await readAsset(manifestURL, {proxy:true});
-  const [renderer,active,proxy] = await Promise.all([
-    makeRenderer(params.get('backend') || 'auto',{canvas:el('canvas'),antialias:true}),
-    restoreBox(manifest,files), loadProxy(files.get(manifest.proxy).slice().buffer)
+  const renderer = await makeRenderer(params.get('backend') || 'auto',{canvas:el('canvas'),antialias:true});
+  const [active,proxy] = await Promise.all([
+    restoreBox(manifest,files,renderer), loadProxy(files.get(manifest.proxy).slice().buffer)
   ]);
   const hasBase = manifest.baseColor?.sha256 && manifest.baseColor.sha256 !== manifest.textures.colorMap.sha256;
   const baseline = hasBase ? await restoreBox({...manifest,textures:{
-    ...manifest.textures, colorMap:manifest.baseColor}},files) : null;
+    ...manifest.textures, colorMap:manifest.baseColor}},files,renderer) : null;
   el('appearanceLabel').hidden = !hasBase;
   const box = litScene(), mesh = litScene();
   box.scene.add(active.mesh);

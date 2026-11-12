@@ -26,7 +26,6 @@ class View:
         self.up = np.array(face['up'], dtype=float)
         self.right = np.cross(self.up, self.side)
         self.depth = depths
-        self.extent = None
         if not np.allclose(np.stack([self.right,self.up,self.side]) @ np.stack([self.right,self.up,self.side]).T,
                            np.eye(3), atol=1e-6):
             raise ValueError('Invalid capture axes for '+face_id)

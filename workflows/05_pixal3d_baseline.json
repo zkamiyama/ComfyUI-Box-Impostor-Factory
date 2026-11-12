@@ -233,7 +233,7 @@
       ],
       "size": [
         265,
-        111
+        177
       ],
       "flags": {},
       "order": 5,
@@ -263,7 +263,10 @@
         "Node name for S&R": "BICanonicalizeProxy"
       },
       "widgets_values": [
-        ""
+        "",
+        0,
+        0,
+        0
       ]
     },
     {
@@ -319,7 +322,7 @@
       ],
       "size": [
         265,
-        75
+        89
       ],
       "flags": {},
       "order": 7,
@@ -335,6 +338,11 @@
         {
           "name": "viewer_url",
           "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "thumbnail",
+          "type": "IMAGE",
           "links": []
         }
       ],

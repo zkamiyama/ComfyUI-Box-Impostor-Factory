@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { createHash } from 'node:crypto';
-import { mkdir, mkdtemp, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';
+import { createHash, randomUUID } from 'node:crypto';
+import { copyFile, mkdir, mkdtemp, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { dirname, resolve, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
@@ -11,6 +11,7 @@ import { validateDescriptor } from './codec.mjs';
 const usage = `node worker/cli.mjs bake --input model.glb --output asset-dir [--resolution 256] [--backend auto|webgpu|webgl2] [--maps roughness,metalness,ao,emissive] [--verify]
 node worker/cli.mjs canonicalize --input model.glb --output new-dir
 node worker/cli.mjs preview --asset asset-dir [--port 8080]
+node worker/cli.mjs thumbnail --asset asset-dir --output hero.png
 node worker/cli.mjs inspect --asset asset-dir`;
 const allowedMaps = ['roughness','metalness','ao','emissive'];
 export async function inspectAsset(dir) {
@@ -45,6 +46,14 @@ async function browserCall(server, method, options) {
     const page = await browser.newPage();
     page.on('pageerror',e=>diagnostics.push(String(e)));
     page.on('console',m=>{if(m.type()==='error')diagnostics.push(m.text().slice(0,1600));});
+    if(method==='thumbnail') {
+      await page.setViewportSize({width:680,height:580});
+      await page.goto(server.origin+'/web/viewer.html?manifest=/asset/manifest.json&backend='+options.backend);
+      await page.waitForFunction(()=>/webgpu|webgl2|表示エラー/.test(document.querySelector('#status').textContent));
+      if(await page.locator('#status.error').count()) throw new Error(await page.locator('#status').innerText());
+      await page.evaluate(()=>new Promise(ok=>requestAnimationFrame(()=>requestAnimationFrame(ok))));
+      return await page.locator('#canvas').screenshot({type:'png'});
+    }
     await page.goto(server.origin+'/bridge');
     const result = await page.evaluate(async ({method,options})=>{
       const bridge = await import('/worker/browser_bridge.mjs');
@@ -70,18 +79,33 @@ async function publish(command, opt) {
   const maps = opt.maps ? opt.maps.split(',') : [];
   if (maps.some(m=>!allowedMaps.includes(m)) || new Set(maps).size!==maps.length) throw new Error('Invalid maps');
   const canonicalMeta = opt['canonical-meta'] ? JSON.parse(await readFile(opt['canonical-meta'],'utf8')) : undefined;
-  const config = {source:hash(inputBytes), resolution, backend:opt.backend, maps, canonicalMeta,
-    verify:opt.verify, implementation:'box-0.1.0-1'};
+  if(canonicalMeta?.glbSha256 && canonicalMeta.glbSha256!==hash(inputBytes)) throw new Error('Canonical metadata does not match GLB');
+  const rotationDeg=['x','y','z'].map(axis=>Number(opt['rotate-'+axis] ?? 0));
+  if(!rotationDeg.every(Number.isFinite)) throw new Error('Rotation must use finite degrees');
+  if(command==='bake' && rotationDeg.some(x=>x!==0)) throw new Error('Set rotation on the canonicalize command');
+  const implementation=createHash('sha256');
+  for(const file of ['./runtime.mjs','./codec.mjs','./browser_bridge.mjs','./compare_frames.mjs','./capture_views.mjs','../web/asset_io.mjs','../package-lock.json']) {
+    implementation.update(await readFile(new URL(file,import.meta.url)));
+  }
+  const config = {source:hash(inputBytes), resolution, backend:opt.backend, maps, canonicalMeta, rotationDeg,
+    verify:opt.verify, implementation:implementation.digest('hex')};
   const jobKey = hash(JSON.stringify(config));
   const id = opt['asset-id'] ?? jobKey;
   if (!/^[a-zA-Z0-9_-]{1,100}$/.test(id)) throw new Error('Invalid asset id');
   async function reuse() {
     if (command==='bake') {
       const m=await inspectAsset(target);
-      if(m.provenance?.jobKey===jobKey && m.asset_id===id) return {asset:target, cached:true};
+      if(m.provenance?.jobKey===jobKey && m.asset_id===id) {
+        if(opt.verify && opt.evidence) {
+          await mkdir(opt.evidence,{recursive:true});
+          for(const file of ['roundtrip.json','live-and-reloaded.png'])
+            await copyFile(join(target,'qa',file),join(opt.evidence,file));
+        }
+        return {asset:target,cached:true};
+      }
     } else {
       const m=JSON.parse(await readFile(join(target,'canonical.json'),'utf8'));
-      if(m.sourceSha256===config.source && hash(await readFile(join(target,'canonical.glb')))===m.glbSha256) return {asset:target,cached:true};
+      if(m.jobKey===jobKey && m.sourceSha256===config.source && hash(await readFile(join(target,'canonical.glb')))===m.glbSha256) return {asset:target,cached:true};
     }
     throw new Error('Output exists for different inputs: '+target);
   }
@@ -92,8 +116,8 @@ async function publish(command, opt) {
   try {
     server=await startServer({input,staging:tmp,assetDir:tmp});
     if (command==='canonicalize') {
-      const meta=await browserCall(server,'canonicalize',{});
-      Object.assign(meta,{sourceSha256:config.source,glbSha256:hash(await readFile(join(tmp,'canonical.glb')))});
+      const meta=await browserCall(server,'canonicalize',{rotationDeg});
+      Object.assign(meta,{rotationDeg,jobKey,sourceSha256:config.source,glbSha256:hash(await readFile(join(tmp,'canonical.glb')))});
       await writeFile(join(tmp,'canonical.json'),JSON.stringify(meta,null,2)+'\n');
     } else {
       const opts={resolution,maps,backend:opt.backend,asset_id:id,verify:opt.verify,canonicalMeta};
@@ -107,9 +131,8 @@ async function publish(command, opt) {
         const {compareFrames}=await import('./compare_frames.mjs');
         const report=compareFrames(live.snapshot,again.snapshot);
         if(opt.evidence) await writeEvidence(resolve(opt.evidence),live.snapshot,again.snapshot,report,again.backend);
-        await mkdir(join(tmp,'qa'),{recursive:true});
-        await writeFile(join(tmp,'qa/roundtrip.json'),JSON.stringify(report,null,2)+'\n');
-        if (!report.pass) throw new Error('Roundtrip mismatch: '+JSON.stringify(report).slice(0,1800));
+        await writeEvidence(join(tmp,'qa'),live.snapshot,again.snapshot,report,again.backend);
+        if (!report.pass) throw new Error('Roundtrip mismatch: '+JSON.stringify(report.views.filter(v=>!v.pass)).slice(0,1800));
       }
     }
     try { await rename(tmp,target); } catch(e) {
@@ -125,8 +148,22 @@ export async function main(argv) {
   const opt=parseArgs({args,options:{
     input:{type:'string'},output:{type:'string'},asset:{type:'string'},evidence:{type:'string'},resolution:{type:'string',default:'256'},
     backend:{type:'string',default:'auto'},maps:{type:'string',default:''},verify:{type:'boolean',default:false},
+    'rotate-x':{type:'string'},'rotate-y':{type:'string'},'rotate-z':{type:'string'},
     'asset-id':{type:'string'},'canonical-meta':{type:'string'},port:{type:'string',default:'8080'},
   }}).values;
+  if(command==='thumbnail'){
+    if(!opt.asset || !opt.output) throw new Error('thumbnail requires --asset and --output');
+    const dir=resolve(opt.asset), dest=resolve(opt.output);
+    await inspectAsset(dir);
+    const server=await startServer({assetDir:dir});
+    const temp=dest+'.'+randomUUID()+'.tmp';
+    try {
+      const png=await browserCall(server,'thumbnail',{backend:opt.backend});
+      await mkdir(dirname(dest),{recursive:true}); await writeFile(temp,png); await rename(temp,dest);
+      console.log(JSON.stringify({preview:dest}));
+    } finally {await server.close(); await rm(temp,{force:true});}
+    return;
+  }
   if(command==='preview' || command==='inspect'){
     if(!opt.asset)throw new Error('--asset is required');
     const dir=resolve(opt.asset);

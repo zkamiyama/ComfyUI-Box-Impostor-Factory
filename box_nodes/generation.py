@@ -6,7 +6,7 @@ from . import faces, store
 
 MODES = ('qwen_enhanced', 'h3_enhanced')
 # The connector filenames used by the shipped local workflows. File bytes are part of the request.
-MODEL_INPUTS = {'unet_name': 'diffusion_models', 'clip_name': 'text_encoders', 'vae_name': 'vae', 'lora_name': 'loras', 'ckpt_name': 'checkpoints', 'model_name': 'background_removal'}
+MODEL_INPUTS = {'unet_name': 'diffusion_models', 'clip_name': 'text_encoders', 'vae_name': 'vae', 'lora_name': 'loras', 'ckpt_name': 'checkpoints', 'bg_removal_name': 'background_removal', 'moge_name': 'geometry_estimation', 'clip_vision_name': 'clip_vision'}
 
 
 def fingerprint_file(path):
@@ -18,13 +18,19 @@ def fingerprint_file(path):
     return (faces.cache_dir('file-sha', digest, write) / 'sha256').read_text(encoding='ascii')
 
 
-def lineage(prompt, node_id):
+def lineage(prompt, node_id, sockets=('image', 'mask')):
     """Trace the actual input edges, terminating at already hashed reference and guide nodes."""
     if not isinstance(prompt, dict) or str(node_id) not in prompt:
         raise ValueError('ComfyUI prompt graph is required to cache model output safely.')
     nodes = {}
     model_files = {}
     sampler_settings = []
+    def literal(value):
+        if isinstance(value, list) and len(value) == 2:
+            entry = prompt.get(str(value[0]), {})
+            if entry.get('class_type', '').startswith('Primitive'):
+                return entry.get('inputs', {}).get('value', value)
+        return value
     image_inputs = {}
     def visit(value):
         if not isinstance(value, list) or len(value) != 2 or not isinstance(value[0], (str, int)) or type(value[1]) is not int:
@@ -44,6 +50,8 @@ def lineage(prompt, node_id):
                 visit(pin)
                 continue
             group = MODEL_INPUTS.get(field)
+            if kind == 'LoadMoGeModel' and pin.endswith(('.safetensors', '.pt', '.pth')):
+                group = 'geometry_estimation'
             if group:
                 import folder_paths
                 path = folder_paths.get_full_path(group, pin)
@@ -53,9 +61,12 @@ def lineage(prompt, node_id):
                 import folder_paths
                 image_inputs[pin] = fingerprint_file(folder_paths.get_annotated_filepath(pin))
         if kind in ('KSampler', 'KSamplerAdvanced'):
-            sampler_settings.append({k: v for k, v in pins.items() if k in ('seed', 'noise_seed', 'steps', 'cfg', 'denoise', 'sampler_name', 'scheduler') and not isinstance(v, list)})
+            sampler_settings.append({k: literal(v) for k, v in pins.items() if k in ('seed', 'noise_seed', 'steps', 'cfg', 'denoise', 'sampler_name', 'scheduler')}
+            )
+        if kind in ('TextEncodeQwenImage21', 'MiniMaxH3ImageConditioning'):
+            sampler_settings.append({'conditioning': kind, **{k: literal(v) for k, v in pins.items() if k in ('prompt', 'negative_prompt', 'width', 'height', 'resolution')}})
     pins = prompt[str(node_id)]['inputs']
-    for name in ('image', 'mask'):
+    for name in sockets:
         visit(pins.get(name))
     return store.key(nodes, model_files, image_inputs), model_files, sampler_settings
 

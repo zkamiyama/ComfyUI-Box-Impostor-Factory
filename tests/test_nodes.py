@@ -126,6 +126,37 @@ class NodeTests(unittest.TestCase):
         graph['1']['inputs']['steps']=20
         self.assertEqual(node.check_lazy_status(**kwargs),['image'])
 
+    def test_reference_and_connected_mesh_skip_cached_upstream(self):
+        mat = nodes.PrepareReference()
+        rgb = np.ones((1,8,8,3), np.float32)
+        mask = np.ones((1,8,8), np.float32)
+        graph = {'1': {'class_type': 'MaskFromFixture', 'inputs': {}}, '2': {'class_type': 'BIPrepareReference', 'inputs': {'mask':['1',0]}}, '3': {'class_type': 'NativeMeshFromFixture', 'inputs': {'seed':42}}, '4': {'class_type': 'BICanonicalizeProxy', 'inputs': {'model_3d':['3',0], 'reference':['2',2]}}}
+        with patch.object(nodes, 'tensor', side_effect=lambda a: a):
+            common = dict(image=rgb, mask_mode='foreground', prompt=graph, unique_id='2')
+            self.assertEqual(mat.check_lazy_status(**common), ['mask'])
+            ref = mat.prepare(**common, mask=mask)[2]
+            self.assertEqual(mat.check_lazy_status(**common), [])
+            self.assertEqual(mat.prepare(**common)[2], ref)
+        class NativeGLB:
+            format = 'glb'
+            def get_bytes(self):
+                return b'fixture-bytes'
+        def canonicalize(command, *args):
+            self.assertEqual(command, 'canonicalize')
+            stage = Path(args[args.index('--output') + 1]); stage.mkdir()
+            glb = stage / 'canonical.glb'; glb.write_bytes(b'canonical fixture')
+            (stage / 'canonical.json').write_text(json.dumps({'glbSha256':store.file_hash(glb)}))
+        node = nodes.CanonicalizeProxy()
+        common = dict(reference=ref, prompt=graph, unique_id='4')
+        self.assertEqual(node.check_lazy_status(**common), ['model_3d'])
+        with patch.object(store,'run_worker',side_effect=canonicalize) as run:
+            proxy = node.canonicalize(**common,model_3d=NativeGLB())[0]
+            self.assertEqual(node.check_lazy_status(**common), [])
+            self.assertEqual(nodes.CanonicalizeProxy().canonicalize(**common)[0],proxy)
+            self.assertEqual(run.call_count, 1)
+        graph['3']['inputs']['seed'] = 100
+        self.assertEqual(node.check_lazy_status(**common), ['model_3d'])
+
     def test_confinement(self):
         for bad in ('../proxy.glb','/etc/passwd','C:/Windows/x','a/../b','a\\b','./a'):
             with self.subTest(bad=bad),self.assertRaises(ValueError):

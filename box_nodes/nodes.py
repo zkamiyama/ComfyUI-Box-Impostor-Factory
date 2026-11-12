@@ -1,6 +1,7 @@
 """ComfyUI entry points; assets travel between nodes as immutable identifiers."""
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -11,7 +12,7 @@ import numpy as np
 from PIL import Image
 
 from . import faces, store
-from .generation import CachedGeneratedFace
+from .generation import CachedGeneratedFace, lineage
 
 CATEGORY = 'Box Impostor'
 BACKENDS = ['auto', 'webgpu', 'webgl2']
@@ -45,11 +46,36 @@ class PrepareReference:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return {'required': {'image': ('IMAGE',), 'mask_mode': (['opaque', 'rgba', 'foreground', 'load_image'],)}, 'optional': {'mask': ('MASK',)}}
+        return {'required': {'image': ('IMAGE',), 'mask_mode': (['opaque', 'rgba', 'foreground', 'load_image'],)}, 'optional': {'mask': ('MASK', {'lazy': True})}, 'hidden': {'prompt': 'PROMPT', 'unique_id': 'UNIQUE_ID'}}
 
-    def prepare(self, image, mask_mode, mask=None):
-        rgba = faces.rgba(image, mask_mode, mask)
-        item = faces.save_view(rgba)
+    def request(self, image, mask_mode, prompt, unique_id):
+        if prompt is None or str(unique_id) not in prompt or mask_mode not in ('foreground', 'load_image'):
+            return None
+        if 'mask' not in prompt[str(unique_id)].get('inputs', {}):
+            raise ValueError('Connect a mask or choose an explicit opaque/RGBA reference.')
+        pixels = faces.array(image)
+        graph, _, _ = lineage(prompt, unique_id, sockets=('mask',))
+        return store.key('prepared-reference-v1', pixels.shape, hashlib.sha256(pixels.tobytes()).hexdigest(), mask_mode, graph)
+
+    def check_lazy_status(self, image, mask_mode, mask=None, prompt=None, unique_id=None):
+        digest = self.request(image, mask_mode, prompt, unique_id)
+        if digest is not None and mask is None and not (store.root() / '.stages' / 'prepared' / digest / 'result.json').is_file():
+            return ['mask']
+        return []
+
+    def prepare(self, image, mask_mode, mask=None, prompt=None, unique_id=None):
+        digest = self.request(image, mask_mode, prompt, unique_id)
+        if digest is None:
+            rgba = faces.rgba(image, mask_mode, mask)
+            item = faces.save_view(rgba)
+        else:
+            def write(stage):
+                view = faces.save_view(faces.rgba(image, mask_mode, mask))
+                (stage / 'result.json').write_text(json.dumps({'sha256': view['sha256']}), encoding='utf-8')
+            stage = faces.cache_dir('prepared', digest, write)
+            item = json.loads((stage / 'result.json').read_bytes())
+            item['path'] = str(store.root() / '.stages' / 'faces' / item['sha256'])
+            rgba = np.load(Path(item['path']) / 'source.npy', allow_pickle=False)
         h, w = rgba.shape[:2]
         meta = {**item, 'width': w, 'height': h, 'maskMode': mask_mode, 'sourceToReference': [1, 0, 0, 0, 1, 0, 0, 0, 1]}
         return tensor(rgba[None, ..., :3]), tensor(rgba[None, ..., 3]), meta
@@ -62,37 +88,72 @@ class CanonicalizeProxy:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return {'required': {'filename': ('STRING', {'default': ''})}, 'optional': {'model_3d': ('FILE_3D_GLB',)}}
+        angle = ('FLOAT', {'default': 0., 'min': -360., 'max': 360., 'step': .1})
+        return {'required': {'filename': ('STRING', {'default': ''})}, 'optional': {'model_3d': ('FILE_3D_GLB', {'lazy': True}), 'reference': ('BOX_REFERENCE',), 'rotate_x': angle, 'rotate_y': angle, 'rotate_z': angle}, 'hidden': {'prompt': 'PROMPT', 'unique_id': 'UNIQUE_ID'}}
 
     @classmethod
-    def IS_CHANGED(cls, filename, model_3d=None):
+    def IS_CHANGED(cls, filename, model_3d=None, **kwargs):
         if model_3d is not None:
             return hashlib.sha256(model_3d.get_bytes()).hexdigest() if hasattr(model_3d, 'get_bytes') else float('nan')
         return store.file_hash(input_path(filename)) if filename else ''
 
-    def canonicalize(self, filename='', model_3d=None):
-        if bool(filename) == (model_3d is not None):
-            raise ValueError('Supply exactly one GLB filename inside ComfyUI/input or connect FILE_3D_GLB.')
-        if model_3d is not None:
-            if getattr(model_3d, 'format', '').lower() != 'glb':
-                raise ValueError('Expected a GLB File3D from the textured mesh branch.')
-            raw = model_3d.get_bytes()
-        else:
+    def cached_request(self, reference, prompt, unique_id):
+        lineage_key, weights, _ = lineage(prompt, unique_id, sockets=('model_3d',))
+        digest = store.key('generated-glb-v1', reference['sha256'], lineage_key)
+        return digest, {'backend': 'native_mesh', 'graphSha256': lineage_key, 'weights': weights}
+
+    def check_lazy_status(self, filename='', model_3d=None, reference=None, prompt=None, unique_id=None, **pose):
+        linked = prompt is not None and 'model_3d' in prompt[str(unique_id)]['inputs']
+        if filename and linked:
+            raise ValueError('Choose one source: filename or connected GLB.')
+        if filename or model_3d is not None or not linked:
+            return []
+        if reference is not None:
+            digest, _ = self.cached_request(reference, prompt, unique_id)
+            if (store.root() / '.stages' / 'native-mesh' / digest / 'source.glb').is_file():
+                return []
+        return ['model_3d']
+
+    def canonicalize(self, filename='', model_3d=None, reference=None, rotate_x=0., rotate_y=0., rotate_z=0., prompt=None, unique_id=None):
+        rotation = tuple(float(x) for x in (rotate_x, rotate_y, rotate_z))
+        if not all(math.isfinite(v) and -360. <= v <= 360. for v in rotation):
+            raise ValueError('Rotation angles must be finite degrees in [-360,360].')
+        if filename and model_3d is not None:
+            raise ValueError('Choose one source: filename or connected GLB.')
+        def native_bytes():
+            if model_3d is None or getattr(model_3d, 'format', '').lower() != 'glb':
+                raise ValueError('Supply a GLB inside ComfyUI/input or connect a native FILE_3D_GLB.')
+            return model_3d.get_bytes()
+        provenance = None
+        if reference is not None and not filename:
+            request_key, provenance = self.cached_request(reference, prompt, unique_id)
+            def write_raw(stage):
+                (stage / 'source.glb').write_bytes(native_bytes())
+            raw_dir = faces.cache_dir('native-mesh', request_key, write_raw)
+            raw = (raw_dir / 'source.glb').read_bytes()
+        elif filename:
             src = input_path(filename)
             if src.suffix.lower() != '.glb':
                 raise ValueError('Box input must be a self-contained .glb.')
             raw = src.read_bytes()
-        digest = store.key('canonical-v1', store.worker_version(), hashlib.sha256(raw).hexdigest())
+        else:
+            raw = native_bytes()
+        digest = store.key('canonical-v2', store.worker_version(), hashlib.sha256(raw).hexdigest(), rotation)
         def write(stage):
             raw_path = stage / 'source.glb'
             raw_path.write_bytes(raw)
-            store.run_worker('canonicalize', '--input', raw_path, '--output', stage / 'canonical')
+            options = [v for axis, val in zip('xyz', rotation) if val for v in ('--rotate-' + axis, str(val))]
+            store.run_worker('canonicalize', '--input', raw_path, '--output', stage / 'canonical', *options)
         directory = faces.cache_dir('proxies', digest, write) / 'canonical'
         path = directory / 'canonical.glb'
         metadata = directory / 'canonical.json'
-        if not metadata.is_file() or not path.is_file():
-            raise ValueError('Incomplete canonical proxy. Remove the damaged cached proxy and retry.')
-        return ({'stageKey': digest, 'sha256': store.file_hash(path), 'path': str(path), 'metadata': str(metadata)},)
+        glb_hash = store.file_hash(path)
+        if json.loads(metadata.read_bytes())['glbSha256'] != glb_hash:
+            raise ValueError('Cached canonical GLB digest mismatch.')
+        result = {'stageKey': digest, 'sha256': glb_hash, 'path': str(path), 'metadata': str(metadata), 'rotationDegreesXYZ': rotation}
+        if provenance:
+            result.update(stageKey=store.key(digest, request_key), reference=reference, provenance=provenance)
+        return (result,)
 
 
 class MakeSixGuides:
@@ -182,17 +243,21 @@ class PreviewBox:
     CATEGORY = CATEGORY
     OUTPUT_NODE = True
     FUNCTION = 'preview'
-    RETURN_TYPES = ('STRING',)
-    RETURN_NAMES = ('viewer_url',)
+    RETURN_TYPES = ('STRING', 'IMAGE')
+    RETURN_NAMES = ('viewer_url', 'thumbnail')
 
     @classmethod
     def INPUT_TYPES(cls):
         return inputs(asset=('BOX_IMPOSTOR',))
 
     def preview(self, asset):
-        store.validate(store.asset_dir(asset), asset, check_bytes=False)
+        directory = store.asset_dir(asset)
+        manifest = store.validate(directory, asset, check_bytes=False)
+        image_path = store.thumbnail(directory, manifest)
+        with Image.open(image_path) as image:
+            preview = tensor(np.asarray(image.convert('RGB'), np.float32)[None] / 255)
         url = f'/box-impostor/web/viewer.html?manifest=/box-impostor/assets/{asset}/manifest.json'
-        return {'ui': {'box_impostor': [url]}, 'result': (url,)}
+        return {'ui': {'box_impostor': [url]}, 'result': (url, preview)}
 
 
 class SaveBox:
@@ -219,6 +284,9 @@ class SaveBox:
             if dest.exists():
                 try:
                     store.validate(dest, asset)
+                    hero = source / 'previews' / 'hero.png'
+                    if hero.is_file() and not (dest / 'previews' / 'hero.png').exists():
+                        store.copy_thumbnail(hero, dest)
                 except (ValueError, KeyError, OSError) as exc:
                     raise ValueError('That export name already exists with different or incomplete content.') from exc
             else:

@@ -183,7 +183,7 @@ def compose(baseline, aligned):
     asset_id = store.key('compose-v2', multiview.VERSION, baseline, mode, provenance, {fid: item['key'] for fid, item in aligned['faces'].items()})
     source = store.asset_dir(baseline)
     def write(stage):
-        shutil.copytree(source, stage)
+        shutil.copytree(source, stage, ignore=shutil.ignore_patterns('previews'))
         manifest = store.validate(stage, baseline, check_bytes=False)
         base = manifest['baseColor']
         atlas = np.fromfile(store.contained(stage, base['path']), dtype='<f2').reshape(base['height'], base['width'], 4)

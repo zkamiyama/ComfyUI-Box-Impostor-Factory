@@ -170,8 +170,15 @@ def validate(directory, expected_id=None, check_bytes=True):
                 paths[path] = file_hash(path)
             if paths[path] != digest:
                 raise ValueError('Texture digest mismatch for ' + name)
-    if not contained(directory, manifest['proxy']).is_file():
-        raise ValueError('Missing proxy GLB')
+    proxy_path = contained(directory, manifest['proxy'])
+    if not proxy_path.is_file() or not ID.fullmatch(str(manifest.get('proxySha256', ''))):
+        raise ValueError('Missing proxy GLB or its digest')
+    if check_bytes and file_hash(proxy_path) != manifest['proxySha256']:
+        raise ValueError('Proxy GLB digest mismatch')
+    for name in ('transform', 'inverseTransform'):
+        matrix = manifest.get(name)
+        if not isinstance(matrix, list) or len(matrix) != 16 or not all(isinstance(v, (int, float)) and math.isfinite(v) for v in matrix):
+            raise ValueError('Invalid canonical transform')
     if set(manifest['faces']) != set(FACES):
         raise ValueError('Missing face metadata')
     for face in manifest['faces'].values():
@@ -195,5 +202,49 @@ def publish(asset_id, producer):
 
 
 def baseline(proxy, resolution, backend):
-    asset_id = key('baseline-v1', worker_version(), proxy['stageKey'], proxy['sha256'], resolution, backend)
-    return publish(asset_id, lambda directory: run_worker('bake', '--input', proxy['path'], '--output', directory, '--resolution', resolution, '--backend', backend, '--asset-id', asset_id, '--canonical-meta', proxy['metadata']))
+    asset_id = key('baseline-v2', worker_version(), proxy['stageKey'], proxy['sha256'], resolution, backend)
+    def generate(directory):
+        run_worker('bake', '--input', proxy['path'], '--output', directory, '--resolution', resolution, '--backend', backend, '--asset-id', asset_id, '--canonical-meta', proxy['metadata'])
+        manifest_path = directory / 'manifest.json'
+        manifest = json.loads(manifest_path.read_bytes())
+        canonical = json.loads(Path(proxy['metadata']).read_bytes())
+        manifest['provenance']['originalGlbSha256'] = canonical['sourceSha256']
+        manifest['provenance']['rotationDegreesXYZ'] = proxy.get('rotationDegreesXYZ', (0, 0, 0))
+        if proxy.get('provenance'):
+            manifest['provenance']['meshGeneration'] = proxy['provenance']
+        if proxy.get('reference'):
+            ref = dict(proxy['reference'])
+            source = Path(ref.pop('path'))
+            (directory / 'reference').mkdir(exist_ok=True)
+            for name in ('source.npy', 'source.png'):
+                shutil.copyfile(source / name, directory / 'reference' / name)
+            manifest['reference'] = {**ref, 'image': 'reference/source.png', 'samples': 'reference/source.npy'}
+        manifest_path.write_text(json.dumps(manifest, indent=2, allow_nan=False), encoding='utf-8')
+    return publish(asset_id, generate)
+
+
+def copy_thumbnail(image_path, directory):
+    target = directory / 'previews' / 'hero.png'
+    target.parent.mkdir(exist_ok=True)
+    with tempfile.TemporaryDirectory(dir=target.parent) as tmp:
+        temp = Path(tmp) / 'hero.png'
+        shutil.copyfile(image_path, temp)
+        os.replace(temp, target)
+    return target
+
+
+def thumbnail(directory, manifest):
+    from PIL import Image
+    asset_id = manifest['asset_id']
+    with lock(key('thumbnail-v1', asset_id)):
+        target = directory / 'previews' / 'hero.png'
+        if target.is_file():
+            with Image.open(target) as image:
+                image.verify()
+            return target
+        with tempfile.TemporaryDirectory(prefix='.thumb-', dir=root()) as tmp:
+            path = Path(tmp) / 'hero.png'
+            run_worker('thumbnail', '--asset', directory, '--output', path, '--backend', 'auto')
+            with Image.open(path) as image:
+                image.verify()
+            return copy_thumbnail(path, directory)

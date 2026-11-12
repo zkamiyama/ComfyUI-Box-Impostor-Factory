@@ -11,6 +11,8 @@ import time
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+from check_workflow_types import check_workflows
+
 ROOT = Path(__file__).resolve().parents[1]
 
 def run(comfy, output):
@@ -66,6 +68,9 @@ def run(comfy, output):
                     time.sleep(1)
             else:
                 raise TimeoutError("ComfyUI startup timed out")
+            registry_proof = check_workflows(json.loads(request('/object_info')), ROOT / 'workflows')
+            (output / 'workflow-nodes.json').write_text(json.dumps(registry_proof, indent=2))
+            print('Runtime workflow node checks', json.dumps(registry_proof), flush=True)
             required = ["BICanonicalizeProxy", "BIBakeBox", "BIFaceImage", "BIPreviewBox", "BILoadBox"]
             for name in required:
                 if name not in json.loads(request("/object_info/" + name)):

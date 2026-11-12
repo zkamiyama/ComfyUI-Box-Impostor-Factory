@@ -75,7 +75,7 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
     assert(nodesOf(pixal,'Pixal3DConditioning').length);
     const can=nodesOf(g,'BICanonicalizeProxy')[0];
     assert.equal(upstream(g,can,'model_3d').from,nodesOf(g,pixal.id)[0].id);
-    assert.deepEqual(can.widgets_values,['']);
+    assert.deepEqual(can.widgets_values,['',0,0,0]);
   }
   if(name.startsWith('04')){
     assert.equal(nodesOf(g,'LoadImage').length,6);
@@ -91,7 +91,24 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
   const encoder=nodesOf(sg,isQ?'TextEncodeQwenImage21':'MiniMaxH3ImageConditioning')[0];
   for(const [slot,name] of [['images.image_1',isQ?'reference':'guide'],['images.image_2',isQ?'guide':'reference']]){
     const u=upstream(sg,encoder,slot);
-    assert.equal(u.from,-10);assert.equal(sg.inputs[u.slot].name,name);
+    if(isQ){assert.equal(u.from,-10);assert.equal(sg.inputs[u.slot].name,name);}
+    else{
+      const switchNode=sg.nodes.find(n=>n.id===u.from);
+      assert.equal(switchNode.type,'ComfySwitchNode');
+      assert.equal(sg.inputs[upstream(sg,switchNode,'on_false').slot].name,name);
+      assert.equal(sg.inputs[upstream(sg,switchNode,'on_true').slot].name,name==='guide'?'reference':'guide');
+      assert.equal(sg.inputs[upstream(sg,switchNode,'switch').slot].name,'ref_first');
+    }
+  }
+  if(isH){
+    const selector=nodesOf(g,'PrimitiveBoolean')[0];
+    assert.deepEqual(selector.widgets_values,[false]);
+    assert(gen.every(n=>upstream(g,n,'ref_first').from===selector.id));
+    const promptSwitch=sg.nodes.find(n=>n.id===upstream(sg,encoder,'prompt').from);
+    assert.equal(sg.inputs[upstream(sg,promptSwitch,'switch').slot].name,'ref_first');
+    const prompt=port=>sg.nodes.find(n=>n.id===upstream(sg,promptSwitch,port).from).widgets_values[0];
+    assert.match(prompt('on_false'),/colors and markings from <Picture 2>/);
+    assert.match(prompt('on_true'),/colors and markings from <Picture 1>/);
   }
   const sampler=nodesOf(sg,'KSampler')[0];
   assert.equal(sampler.widgets_values[3],isQ?3:1);
