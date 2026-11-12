@@ -2,7 +2,7 @@ name: ComfyUI native nodes
 on:
   push:
     branches: [main]
-    paths: ['box_nodes/**', '__init__.py', 'worker/**', '.github/workflows/comfy-native.yml', 'tests/comfy_smoke.py', 'tests/check_workflow_types.py', 'tests/test_*.py', 'pyproject.toml', 'requirements.txt', 'workflows/**']
+    paths: ['box_nodes/**', '__init__.py', 'worker/**', '.github/workflows/comfy-native.yml', 'tests/comfy_smoke.py', 'tests/comfy_frontend_smoke.mjs', 'tests/check_workflow_types.py', 'tests/test_*.py', 'pyproject.toml', 'requirements.txt', 'workflows/**']
   workflow_dispatch:
 permissions:
   contents: read
@@ -38,8 +38,16 @@ jobs:
           python -m pip install -r .test-comfy/requirements.txt -r requirements.txt
           ln -s "$GITHUB_WORKSPACE" .test-comfy/custom_nodes/box_impostor_factory
       - run: python -m unittest discover -s tests -p 'test_*.py' -v
-      - name: Queue GLB, export, reload and replace one face
+      - name: Execute registered nodes and shipped frontend workflows
         run: python tests/comfy_smoke.py --comfy .test-comfy --output .test-output/comfy
       - name: Show ComfyUI log on failure
         if: failure()
         run: tail -150 .test-output/comfy/comfy.log || true
+      - name: Save frontend-compiled prompts and execution proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: comfy-frontend-workflows
+          path: .test-output/comfy/frontend/
+          if-no-files-found: ignore
+          retention-days: 7

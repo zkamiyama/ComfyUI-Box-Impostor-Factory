@@ -19,7 +19,7 @@ def run(comfy, output):
     output.mkdir(parents=True, exist_ok=True)
     inputs = output / "input"
     inputs.mkdir(exist_ok=True)
-    fixture = inputs / "box-gate.glb"
+    fixture = inputs / "asymmetric.glb"
     subprocess.run(["node", str(ROOT / "tests/make_fixture.mjs"), str(fixture)], check=True)
     with socket.socket() as listener:
         listener.bind(("127.0.0.1", 0))
@@ -109,6 +109,8 @@ def run(comfy, output):
             for name in ("intervalMap","rangeMap","normalMap"):
                 assert updated["textures"][name] == baseline["textures"][name]
             print(json.dumps({"ok":True,"baseline":baseline["asset_id"],"manual":updated["asset_id"]}))
+            subprocess.run(['node', str(ROOT / 'tests/comfy_frontend_smoke.mjs'), origin,
+                            str(inputs), str(output / 'frontend')], cwd=ROOT, check=True, timeout=960)
         finally:
             proc.terminate()
             try: proc.wait(timeout=15)
