@@ -1,9 +1,14 @@
 import {
-  Vector3, HemisphereLight, DirectionalLight, PerspectiveCamera, OrthographicCamera, Scene, DataUtils
+  Vector3, HemisphereLight, DirectionalLight, PerspectiveCamera, OrthographicCamera, Scene, DataUtils,
+  RenderTarget, DepthTexture, UnsignedIntType, HalfFloatType, MeshBasicNodeMaterial, QuadMesh
 } from 'three/webgpu';
+import {
+  diffuseColor, normalWorld, mrt, texture, uniform, uv, vec4, vec3, clamp,
+  perspectiveDepthToViewZ, orthographicDepthToViewZ, sRGBTransferEOTF
+} from 'three/tsl';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { restoreBox, loadProxy, disposeProxy } from '../worker/runtime.mjs';
-import { assetURL, readAsset, makeRenderer, backendName } from './asset_io.mjs';
+import { assetURL, fetchChecked, readAsset, makeRenderer, backendName } from './asset_io.mjs';
 
 const el = id => document.getElementById(id);
 const directions = {
@@ -37,7 +42,12 @@ function showFaceDecisions(manifest, url) {
   panel.hidden=false;
 }
 
-function texturePreview(name, descriptor, bytes) {
+const geometryChannels={
+  intervalMap:['R 正側の表面','G 負側の表面（1 − 座標）','B 空隙の始点','A 空隙の終点'],
+  rangeMap:['R 占有範囲の下限','G 占有範囲の上限']
+};
+
+function texturePreview(name, descriptor, bytes, channel=null) {
   const {width,height,dtype} = descriptor;
   const samples = new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);
   const byteWidth = dtype === 'uint8' ? 1 : 2;
@@ -53,7 +63,7 @@ function texturePreview(name, descriptor, bytes) {
     const src = 4*((height-1-y)*width+x), dst = 4*(y*width+x);
     const alpha = read(src+3);
     for (let i=0; i<3; i++) {
-      const c = read(src+i);
+      const c = read(src+(channel ?? i));
       image.data[dst+i] = 255*(isColor ? linearToSRGB(alpha > .0001 ? c/alpha : 0) : c);
     }
     image.data[dst+3] = 255 * (isColor || name === 'normalMap' ? alpha : 1);
@@ -67,6 +77,72 @@ function litScene() {
   const sun = new DirectionalLight(0xffffff,2.5);
   scene.add(new HemisphereLight(0xf0f5ff,0xd8ccbc,1.8),sun);
   return {scene,sun};
+}
+
+// The first pass runs the original proxy or impostor material, including alpha discard
+// and ray-marched fragment depth. The second pass only maps its values to display colors.
+function diagnosticPane(radius) {
+  const target=new RenderTarget(1,1,{type:HalfFloatType});
+  target.texture.name='output';
+  target.depthTexture=new DepthTexture(1,1,UnsignedIntType);
+  const albedo=mrt({output:diffuseColor});
+  const normals=mrt({output:vec4(normalWorld.mul(.5).add(.5),diffuseColor.a)});
+  const color=texture(target.texture,uv());
+  const depth=texture(target.depthTexture,uv()).r;
+  const near=uniform(0), far=uniform(1), centerDepth=uniform(0);
+  const perspective=uniform(false,'bool'), viewCenter=new Vector3();
+  const viewZ=perspective.select(perspectiveDepthToViewZ(depth,near,far),orthographicDepthToViewZ(depth,near,far));
+  const brightness=clamp(centerDepth.add(viewZ).div(2*radius).add(.5),0,1);
+  const outputs={
+    albedo:color,
+    normal:vec4(sRGBTransferEOTF(color.rgb),color.a),
+    depth:vec4(sRGBTransferEOTF(vec3(brightness)),color.a)
+  };
+  const material=new MeshBasicNodeMaterial();
+  material.depthWrite=false; material.depthTest=false; material.toneMapped=false;
+  const quad=new QuadMesh(material);
+  return {
+    draw(renderer,scene,camera,mode,w,h,center){
+      const ratio=renderer.getPixelRatio();
+      target.setSize(Math.max(1,Math.floor(w*ratio)),Math.max(1,Math.floor(h*ratio)));
+      const split=renderer.getScissorTest();
+      renderer.setScissorTest(false);
+      renderer.setRenderTarget(target);
+      renderer.setMRT(mode==='normal'?normals:albedo);
+      try { renderer.render(scene,camera); }
+      finally { renderer.setMRT(null); renderer.setRenderTarget(null); renderer.setScissorTest(split); }
+      near.value=camera.near; far.value=camera.far;
+      perspective.value=camera.isPerspectiveCamera===true;
+      centerDepth.value=-camera.worldToLocal(viewCenter.copy(center)).z;
+      if (material.fragmentNode!==outputs[mode]) {
+        material.fragmentNode=outputs[mode]; material.needsUpdate=true;
+      }
+      quad.render(renderer);
+    },
+    dispose(){target.dispose();material.dispose();}
+  };
+}
+
+async function guideDepthPreview(url, face) {
+  const [bytes,guideBlob]=await Promise.all([
+    fetchChecked(assetURL(url,face.depth)).then(r=>r.arrayBuffer()),
+    fetchChecked(assetURL(url,face.guide)).then(r=>r.blob())
+  ]);
+  const guide=await createImageBitmap(guideBlob);
+  const canvas=document.createElement('canvas');
+  canvas.width=guide.width; canvas.height=guide.height;
+  const ctx=canvas.getContext('2d');
+  ctx.drawImage(guide,0,0); guide.close();
+  if(bytes.byteLength!==canvas.width*canvas.height*2) throw Error('深度ガイドのサイズが一致しません');
+  const values=new DataView(bytes), image=ctx.getImageData(0,0,canvas.width,canvas.height);
+  for(let i=0;i<image.data.length;i+=4){
+    const z=DataUtils.fromHalfFloat(values.getUint16(i/2,true));
+    // Early exports store zero at empty pixels. The guide's alpha identifies them.
+    if(!Number.isFinite(z)) image.data[i+3]=0;
+    image.data[i]=image.data[i+1]=image.data[i+2]=255*(1-z);
+  }
+  ctx.putImageData(image,0,0);
+  return canvas.toDataURL();
 }
 
 async function run() {
@@ -99,6 +175,8 @@ async function run() {
   const radius = new Vector3().fromArray(manifest.bakeBox.max).sub(new Vector3().fromArray(manifest.bakeBox.min)).length()/2;
   const stage = el('stage'), help=el('help');
   let camera, controls, width=0, height=0;
+  const diagnostics=[];
+  function releaseDiagnostics(){for(const pane of diagnostics) pane.dispose();diagnostics.length=0;}
 
   function placeCamera(reset=false, newPose=false) {
     const orthographic = el('projection').value === 'orthographic';
@@ -109,7 +187,8 @@ async function run() {
     const paneWidth=el('mode').value === 'both' ? Math.floor(stage.clientWidth/2) : stage.clientWidth;
     const visibleAspect = Math.max(1,paneWidth)/Math.max(stage.clientHeight,1);
     const fitDistance=radius*1.1 / Math.sin(Math.atan(tangent * Math.min(visibleAspect,1)));
-    const distance = !reset && camera ? camera.position.distanceTo(target) : fitDistance;
+    const distance = !reset && camera ? (camera.isOrthographicCamera ?
+      camera.userData.halfHeight/(camera.zoom*tangent) : camera.position.distanceTo(target)) : fitDistance;
     const maxDistance=Math.max(radius*35,fitDistance*1.2,distance);
     const far=Math.max(100*radius,maxDistance+2*radius);
     const direction = !reset && !newPose && oldDirection ? oldDirection : new Vector3(...directions[el('view').value]).normalize();
@@ -141,7 +220,13 @@ async function run() {
     setProjection(w,height);
     renderer.setViewport(left,0,w,height);
     renderer.setScissor(left,0,w,height);
-    renderer.render(scene,camera);
+    const mode=el('shading').value;
+    if(mode==='lit') renderer.render(scene,camera);
+    else {
+      const i=left===0?0:1;
+      const pane=diagnostics[i] ??= diagnosticPane(radius);
+      pane.draw(renderer,scene,camera,mode,w,height,center);
+    }
   }
 
   function render() {
@@ -165,22 +250,40 @@ async function run() {
   }
 
   const previews = new Map();
-  for (const [name] of Object.entries(manifest.textures)) appendOption(el('map'),name,name);
+  for (const name of Object.keys(manifest.textures)) {
+    appendOption(el('map'),name,name);
+    for(const [channel,label] of (geometryChannels[name] ?? []).entries())
+      appendOption(el('map'),name+':'+channel,name+' · '+label);
+  }
   if (hasBase) appendOption(el('map'),'baseColor','colorMap（ベイク時）');
   for (const face of manifest.faceOrder) {
     if (manifest.faces?.[face]?.guide) appendOption(el('map'),'guide:'+face,face+' ガイド');
+    if (manifest.faces?.[face]?.depth && manifest.faces[face].depthEncoding==='linear-axis-0-near-1-far;nan-background')
+      appendOption(el('map'),'depth:'+face,face+' ガイド深度（手前が白）');
     if (manifest.faces?.[face]?.edit?.view) appendOption(el('map'),'view:'+face,face+' 入力画像');
   }
 
-  function selectMap() {
+  async function selectMap() {
     const name=el('map').value;
     const [kind,face] = name.split(':');
-    if (face) {
+    if (kind==='depth') {
+      el('atlas').removeAttribute('src');
+      try {
+        if(!previews.has(name)) previews.set(name,guideDepthPreview(url,manifest.faces[face]));
+        const image=await previews.get(name);
+        if(el('map').value!==name) return;
+        el('atlas').src=image;
+      } catch(err) {
+        previews.delete(name);
+        if(el('map').value===name) el('atlas').alt='深度ガイドを読み込めません: '+err.message;
+        return;
+      }
+    } else if (face && !geometryChannels[kind]) {
       const item=manifest.faces[face];
       el('atlas').src=assetURL(url,kind==='guide' ? item.guide : item.edit.view).href;
     } else {
-      const descriptor = name==='baseColor' ? manifest.baseColor : manifest.textures[name];
-      if (!previews.has(name)) previews.set(name,texturePreview(name,descriptor,files.get(descriptor.path)));
+      const descriptor = kind==='baseColor' ? manifest.baseColor : manifest.textures[kind];
+      if (!previews.has(name)) previews.set(name,texturePreview(kind,descriptor,files.get(descriptor.path),face===undefined?null:Number(face)));
       el('atlas').src=previews.get(name);
     }
     el('atlas').alt=el('map').selectedOptions[0].text;
@@ -192,9 +295,11 @@ async function run() {
     el('mapLabel').hidden = !atlas; el('atlas').hidden = !atlas;
     el('appearanceLabel').hidden = !hasBase || mode==='proxy' || atlas;
     el('samplingLabel').hidden = mode==='proxy' || atlas;
+    el('shadingLabel').hidden = atlas;
+    el('lightLabel').hidden = atlas || el('shading').value!=='lit';
     help.hidden = atlas;
     if (atlas) selectMap();
-    else if (mode==='both') placeCamera(true);
+    releaseDiagnostics();
   }
 
   function rotateLight() {
@@ -244,6 +349,7 @@ async function run() {
     }
   };
   el('mode').onchange=modeChanged;
+  el('shading').onchange=modeChanged;
   el('fit').onclick=() => placeCamera(true);
   el('view').onchange=() => placeCamera(true,true);
   el('projection').onchange=() => placeCamera(false,false);
@@ -276,7 +382,7 @@ async function run() {
   renderer.setAnimationLoop(render);
   window.addEventListener('pagehide',() => {
     closing=true;renderer.setAnimationLoop(null); controls.dispose();
-    active.dispose(); baseline?.dispose();
+    releaseDiagnostics(); active.dispose(); baseline?.dispose();
     disposeProxy(proxy);
     renderer.dispose();
   },{once:true});

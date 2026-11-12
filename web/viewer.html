@@ -34,11 +34,12 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid 
 <label>表示<select id="mode"><option value="box">Box</option><option value="proxy">元のメッシュ</option><option value="both">左右で比較</option><option value="atlas">アトラス・ガイド</option></select></label>
 <label id="appearanceLabel">Boxの色<select id="appearance"><option value="active">採用色</option><option value="base">ベイク時の色</option></select></label>
 <label id="samplingLabel">補間<select id="sampling"><option value="standard">標準（穴・細部優先）</option><option value="reduce_bleeding">色にじみ低減（境界優先）</option></select></label>
+<label id="shadingLabel">描画<select id="shading"><option value="lit">照明あり</option><option value="albedo">色のみ</option><option value="normal">面の法線（ワールド）</option><option value="depth">ヒット深度（手前が白）</option></select></label>
 <label id="mapLabel" hidden>画像<select id="map"></select></label>
 <label>視点<select id="view"><option value="diagonal">斜め</option><option>+X</option><option>-X</option><option>+Y</option><option>-Y</option><option>+Z</option><option>-Z</option></select></label>
 <label>投影<select id="projection"><option value="perspective">透視</option><option value="orthographic">正投影</option></select></label>
 <label>背景<select id="background"><option value="checker">市松</option><option value="#71767a">グレー</option><option value="#111111">黒</option><option value="#ffffff">白</option></select></label>
-<label>照明角度<input type="range" id="light" min="-180" max="180" value="36"></label>
+<label id="lightLabel">照明角度<input type="range" id="light" min="-180" max="180" value="36"></label>
 <button id="fit" type="button">全体表示</button>
 </div>
 <div id="stage" class="checker">
