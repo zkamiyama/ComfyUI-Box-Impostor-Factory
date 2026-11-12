@@ -1,0 +1,162 @@
+{
+  "camera": {
+    "fovDegrees": 36,
+    "sourceFitDistance": 2.211900641953541,
+    "size": 320,
+    "projection": "perspective",
+    "referenceDirection": [
+      0.640762396942007,
+      0.4229031819817246,
+      0.640762396942007
+    ]
+  },
+  "registration": {
+    "referenceFrame": "CC0 canonical world: longest dimension = 1",
+    "method": "Align Pixal3D +Z with the known reference viewing axis and +Y with camera up. Match silhouette height and image bounding-box center in that camera with one uniform scale and two image-plane translations. Set 3D depth midpoint equal to the source midpoint along the viewing axis.",
+    "assumption": "The relative depth midpoint is unknown from the reference. No individual view is registered independently.",
+    "matrixColumnMajor": [
+      0.6891610693764787,
+      2.705116494616138e-17,
+      -0.6891610693764788,
+      0,
+      -0.2914484091372409,
+      0.8831769973855786,
+      -0.2914484091372409,
+      0,
+      0.6245004438393164,
+      0.4121702929339488,
+      0.6245004438393164,
+      0,
+      -0.02688833991130419,
+      0.012585302660665938,
+      -0.02251488075041799,
+      1
+    ],
+    "inputGeometry": "stored canonical generated glTF",
+    "uniformScaleAfterUndoingCanonicalization": 1.0579501255298362,
+    "sourceDepthMidpoint": -0.026333361546461292
+  },
+  "generatedCanonicalGlbSha256": "51d88da5990eafe4a6c180b5e01e84cb23d0e05af38cab9e8887f0915e103780",
+  "views": [
+    {
+      "label": "Reference",
+      "direction": [
+        0.640762396942007,
+        0.4229031819817246,
+        0.640762396942007
+      ],
+      "iou": 0.9244409157072913,
+      "overlapPixels": 6986,
+      "sourceOnlyPixels": 205,
+      "generatedOnlyPixels": 366,
+      "surfaceDepthMAE": 0.01157774771314414,
+      "surfaceDepthP95": 0.02033233642578125
+    },
+    {
+      "label": "Right (+X)",
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "iou": 0.8688563327032136,
+      "overlapPixels": 3677,
+      "sourceOnlyPixels": 77,
+      "generatedOnlyPixels": 478,
+      "surfaceDepthMAE": 0.02568115762047123,
+      "surfaceDepthP95": 0.10238885879516602
+    },
+    {
+      "label": "Left (-X)",
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "iou": 0.8898132741726752,
+      "overlapPixels": 4813,
+      "sourceOnlyPixels": 106,
+      "generatedOnlyPixels": 490,
+      "surfaceDepthMAE": 0.006216860203888618,
+      "surfaceDepthP95": 0.011626720428466797
+    },
+    {
+      "label": "Top (+Y)",
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "iou": 0.8067692307692308,
+      "overlapPixels": 2622,
+      "sourceOnlyPixels": 180,
+      "generatedOnlyPixels": 448,
+      "surfaceDepthMAE": 0.03603392998559342,
+      "surfaceDepthP95": 0.17347562313079834
+    },
+    {
+      "label": "Bottom (-Y)",
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "iou": 0.8205327126971813,
+      "overlapPixels": 3173,
+      "sourceOnlyPixels": 267,
+      "generatedOnlyPixels": 427,
+      "surfaceDepthMAE": 0.012462384310799594,
+      "surfaceDepthP95": 0.03211069107055664
+    },
+    {
+      "label": "Front (+Z)",
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "iou": 0.8552084729856549,
+      "overlapPixels": 6379,
+      "sourceOnlyPixels": 338,
+      "generatedOnlyPixels": 742,
+      "surfaceDepthMAE": 0.008297349988414419,
+      "surfaceDepthP95": 0.022124528884887695
+    },
+    {
+      "label": "Back (-Z)",
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "iou": 0.8538245895074089,
+      "overlapPixels": 6396,
+      "sourceOnlyPixels": 344,
+      "generatedOnlyPixels": 751,
+      "surfaceDepthMAE": 0.007051890197584523,
+      "surfaceDepthP95": 0.02024364471435547
+    },
+    {
+      "label": "Opposite",
+      "direction": [
+        -0.640762396942007,
+        -0.4229031819817246,
+        -0.640762396942007
+      ],
+      "iou": 0.9316344033325166,
+      "overlapPixels": 7604,
+      "sourceOnlyPixels": 219,
+      "generatedOnlyPixels": 339,
+      "surfaceDepthMAE": 0.007395408283341,
+      "surfaceDepthP95": 0.017040252685546875
+    }
+  ],
+  "depthUnits": "Absolute view-space depth error on shared foreground; one unit equals the source mesh longest axis.",
+  "meanNovelIoU": 0.8609484308811259,
+  "sourceGlbSha256": "a79458c4b02d695187a952f23a63b8bf278e7bc3d316a3c2a314f2d6974181f1",
+  "renderer": {
+    "chromiumVersion": "143.0.7499.0",
+    "backend": "webgl2",
+    "softwareGpuRequested": true
+  }
+}
