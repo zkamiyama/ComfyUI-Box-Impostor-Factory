@@ -145,3 +145,24 @@ class FaceMaterialTests(unittest.TestCase):
         self.assertAlmostEqual(float(color[3, 3, 0]), .25, places=3)
         material = faces.tile_view(self.read(applied, 'materialMap'), '+Y')
         np.testing.assert_array_equal(material[3, 3], [64, 64, 128, 128])
+
+    def test_binary_metalness_keeps_one_class_through_soft_weights_and_tile_resizing(self):
+        self.add_baked()
+        self.rgba[1, 2, 3] = .25
+        base = self.compose(self.base, '+X')
+        packed = np.ones((1, 32, 32, 3), 'f4')
+        packed[..., 1] = 0
+        packed[:, :, :15, 1] = 1
+        req = dict(packing='RMA', rma=packed, binaryMetalness=True)
+        out = apply_face_materials(base, {'+X': req})
+        original = self.read(base, 'materialMap')
+        updated = self.read(out, 'materialMap')
+        tile = faces.tile_view(updated, '+X')[::-1]
+        edited = self.rgba[..., 3] >= .5
+        alpha = tile[..., 3]
+        np.testing.assert_array_equal(tile[..., 3], faces.tile_view(original, '+X')[::-1, :, 3])
+        self.assertTrue(np.all((tile[..., 1] == 0)[edited] | (tile[..., 1] == alpha)[edited]))
+        self.assertEqual(tile[1, 1, 1], alpha[1, 1])  # .75 accepted, .5 baked coverage
+        self.assertEqual(tile[3, 5, 1], 0)
+        np.testing.assert_array_equal(tile[..., 1][~edited], faces.tile_view(original, '+X')[::-1, :, 1][~edited])
+        np.testing.assert_array_equal(faces.tile_view(updated, '-X'), faces.tile_view(original, '-X'))

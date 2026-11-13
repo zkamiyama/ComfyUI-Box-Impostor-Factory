@@ -68,7 +68,21 @@ export async function checkWorkflowControls(page, name, initialPrompt) {
   assert.deepEqual(changed(later, rerolled), ['KSampler']);
   assert.equal((await dirty(host)).length, 8);
 
-  const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jQ1sAAAAASUVORK5CYII=', 'base64');
+  async function previews(panel, paths) {
+    const list = panel.locator('.bi-reference-previews figure');
+    await panel.evaluate(async (el) => {
+      await Promise.all([...el.querySelectorAll('.bi-reference-previews img')].map(img => img.decode()));
+    });
+    assert.deepEqual(await list.evaluateAll(figures => figures.map(f => f.dataset.reference)), paths);
+    assert.deepEqual(await list.locator('img').evaluateAll(images => images.map(img => {
+      const params = new URL(img.src).searchParams;
+      if (!img.naturalWidth || !img.naturalHeight) throw Error(img.alt);
+      return [params.get('subfolder'), params.get('filename')].filter(Boolean).join('/');
+    })), paths);
+    assert.deepEqual(await list.locator('figcaption').allTextContents(), paths.map((path, i) =>
+      (i ? 'Secondary ' + i : 'Primary') + ' · ' + path.split('/').pop()));
+  }
+  const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAEklEQVR4nGP4WsMQJbeeAUIBACZ8BTFcSCtrAAAAAElFTkSuQmCC', 'base64');
   const file = suffix => ({name:name+'-'+suffix+'.png', mimeType:'image/png', buffer:png});
   await host.getByLabel('Primary 画像をアップロード').setInputFiles(file('primary'));
   await page.waitForFunction(() => window.app.rootGraph.nodes.find(n => n.type === 'LoadImage')
@@ -83,6 +97,35 @@ export async function checkWorkflowControls(page, name, initialPrompt) {
   assert.match(secondary[0], /-second-a/);
   assert.match(secondary[1], /-second-b/);
 
+  const primary = inputs(uploaded, 'LoadImage')[0].image;
+  await previews(host, [primary, ...secondary]);
+  await host.getByLabel('Primary 画像をアップロード').setInputFiles(file('replacement'));
+  await page.waitForFunction(() => window.app.rootGraph.nodes.find(n => n.type === 'LoadImage')
+    .widgets.find(w => w.name === 'image').value.includes('-replacement'));
+  const replacement = inputs(await compile(), 'LoadImage')[0].image;
+  await previews(host, [replacement, ...secondary]);
+  await host.getByLabel('Primary 画像', {exact:true}).selectOption(primary);
+  await previews(host, [primary, ...secondary]);
+  const pathsField = host.getByLabel('Secondary 画像（最大8枚・1行に1枚）');
+  async function setPaths(paths) {
+    await pathsField.fill(paths.join('\n'));
+    await pathsField.press('Tab');
+  }
+  await setPaths([secondary[1], secondary[0]]);
+  await previews(host, [primary, secondary[1], secondary[0]]);
+  await setPaths([secondary[1]]);
+  await previews(host, [primary, secondary[1]]);
+  await setPaths([]);
+  await previews(host, [primary]);
+  await setPaths(['nonexistent-folder/missing #1.png']);
+  await host.getByText('画像を表示できません').waitFor();
+  assert.equal(await host.locator('.bi-reference-previews img').count(), 1);
+  await setPaths(secondary);
+  await toggleMode();
+  await previews(appPanel, [primary, ...secondary]);
+  await toggleMode();
+  await page.locator('[data-testid="linear-widgets"]').waitFor({state:'hidden'});
+
   // Reopen the same JSON via Comfy's file entry point. Custom camera and graph
   // values must survive independently of which surface the operator used.
   await page.evaluate(async () => {
@@ -95,4 +138,5 @@ export async function checkWorkflowControls(page, name, initialPrompt) {
   assert.deepEqual(await page.evaluate(() => [...window.app.canvas.ds.offset]), [818,118]);
   assert.equal(await host.count(), 1);
   assert.deepEqual(await compile(), uploaded);
+  await previews(host, [primary, ...secondary]);
 }

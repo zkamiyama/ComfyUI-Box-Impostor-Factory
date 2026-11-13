@@ -14,6 +14,17 @@ from test_nodes import fixture
 
 
 class MaterialPipelineTests(unittest.TestCase):
+    def test_registration_keeps_binary_metalness_and_continuous_roughness_and_ao(self):
+        source = np.ones((8, 8, 4), dtype='f4')
+        report = {'tileSize': [8, 8], 'registration': {'scale': 1., 'centerShiftYX': [0., .25]}}
+        maps = np.zeros((1, 8, 8, 3), dtype='f4')
+        maps[:, :, 4:] = 1
+        _, continuous = pipeline.register_estimates(maps, maps, source, report)
+        _, classified = pipeline.register_estimates(maps, maps, source, report, binary_metalness=True)
+        self.assertTrue(np.any((continuous[..., 1] > 0.) & (continuous[..., 1] < 1.)))
+        np.testing.assert_array_equal(classified[..., 1], continuous[..., 1] >= .5)
+        np.testing.assert_array_equal(classified[..., [0, 2]], continuous[..., [0, 2]])
+
     def test_keeps_native_material_detail_above_face_image_resolution(self):
         source = np.ones((16, 16, 4), dtype='f4')
         source[:, :3, 3] = 0

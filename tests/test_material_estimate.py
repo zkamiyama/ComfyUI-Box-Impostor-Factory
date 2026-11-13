@@ -10,7 +10,7 @@ from box_nodes.material_estimate import MaterialEstimate, _qwen_sampling_model
 
 
 class MaterialEstimateTests(unittest.TestCase):
-    def test_each_backend_uses_the_face_first_and_generates_two_distinct_outputs(self):
+    def test_each_backend_estimates_separate_maps_and_packs_scalar_values(self):
         rgba = torch.zeros(1, 32, 64, 4)
         guide = torch.ones(1, 32, 64, 3) * .25
         for backend in ('qwen_enhanced', 'h3_enhanced'):
@@ -21,8 +21,13 @@ class MaterialEstimateTests(unittest.TestCase):
                 native = SimpleNamespace(execute=encoded)
                 sample = Mock(return_value=({},))
                 albedo = torch.ones(1, 32, 64, 3) * .37
-                rma = torch.tensor([.12, .5, .84]).expand_as(albedo)
-                decode = Mock(side_effect=[(albedo,), (rma,)])
+                roughness = torch.tensor([.125, .25, .375]).expand_as(albedo)
+                metalness = torch.zeros_like(albedo)
+                metalness[:, :, 1, :] = .499
+                metalness[:, :, 2, :] = .5
+                metalness[:, :, 3, :] = 1
+                ao = torch.full_like(albedo, .875)
+                decode = Mock(side_effect=[(image,) for image in (albedo, roughness, metalness, ao)])
                 modules = {
                     'nodes': SimpleNamespace(
                         common_ksampler=sample, VAEDecode=lambda: SimpleNamespace(decode=decode),
@@ -34,23 +39,32 @@ class MaterialEstimateTests(unittest.TestCase):
                     output = MaterialEstimate().estimate(
                         rgba, 'model', 'clip', 'vae', backend, (1 << 64) - 1, guide=guide, resolution=0)
                 self.assertTrue(torch.equal(output[0], albedo))
-                self.assertTrue(torch.equal(output[1], rma))
-                color_prompt, data_prompt = [call.args[1] for call in encoded.call_args_list]
+                rma = output[1]
+                self.assertEqual(rma.shape, albedo.shape)
+                self.assertTrue(torch.all(rma[..., 0] == .25))
+                expected_metal = torch.zeros_like(rma[..., 1])
+                expected_metal[:, :, 2:4] = 1
+                self.assertTrue(torch.equal(rma[..., 1], expected_metal))
+                self.assertTrue(torch.all(rma[..., 2] == .875))
+                color_prompt, roughness_prompt, metalness_prompt, ao_prompt = [
+                    call.args[1] for call in encoded.call_args_list]
                 self.assertIn('sRGB base-color', color_prompt)
                 self.assertIn('physically based renderer', color_prompt)
                 self.assertIn('Remove cast shadows', color_prompt)
-                self.assertIn('linear data texture', data_prompt)
-                self.assertIn('roughness in red, metalness in green, and ambient occlusion in blue', data_prompt)
-                self.assertIn('0 for dielectrics', data_prompt)
-                self.assertIn('1 on open surfaces', data_prompt)
-                refs = encoded.call_args.kwargs['images']
-                self.assertTrue(torch.all(refs['image_1'] == 1))
-                self.assertTrue(torch.equal(refs['image_2'], guide))
-                if qwen:
-                    self.assertEqual(encoded.call_args.kwargs['resolution'], 0)
-                else:
-                    self.assertEqual(encoded.call_args.args[2:4], (64, 32))
-                self.assertEqual(sample.call_args_list[1].args[1:4], (0, 24, 3.) if qwen else (0, 6, 1.))
+                self.assertIn('grayscale roughness map', roughness_prompt)
+                self.assertIn('binary black-and-white metalness mask', metalness_prompt)
+                self.assertIn('grayscale ambient occlusion map', ao_prompt)
+                for call in encoded.call_args_list:
+                    refs = call.kwargs['images']
+                    self.assertTrue(torch.all(refs['image_1'] == 1))
+                    self.assertTrue(torch.equal(refs['image_2'], guide))
+                    if qwen:
+                        self.assertEqual(call.kwargs['resolution'], 0)
+                    else:
+                        self.assertEqual(call.args[2:4], (64, 32))
+                expected_sampling = (24, 3.) if qwen else (6, 1.)
+                self.assertEqual([call.args[1:4] for call in sample.call_args_list],
+                                 [(seed, *expected_sampling) for seed in ((1 << 64) - 1, 0, 1, 2)])
 
     def test_batch_cannot_silently_drop_a_face(self):
         with self.assertRaisesRegex(ValueError, 'one RGB or RGBA'):

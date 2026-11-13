@@ -22,6 +22,38 @@ function element(name, text) {
   return el;
 }
 
+function referencePreview(api, path, label, annotated) {
+  // LoadImage accepts Comfy's folder annotations. Secondary paths are literal
+  // file names relative to input, including spaces and URL metacharacters.
+  const suffix = annotated && path.match(/\s*\[(input|output|temp)\]$/);
+  const filePath = suffix ? path.slice(0, suffix.index) : path;
+  const split = filePath.lastIndexOf('/');
+  const filename = filePath.slice(split + 1);
+  const query = new URLSearchParams({filename, type: suffix?.[1] || 'input'});
+  if (split >= 0) query.set('subfolder', filePath.slice(0, split));
+
+  const figure = element('figure');
+  figure.dataset.reference = path;
+  const anchor = element('a');
+  anchor.href = api.apiURL('/view?' + query);
+  anchor.target = '_blank';
+  anchor.rel = 'noopener noreferrer';
+  anchor.title = label + ' · ' + path;
+  const img = element('img');
+  img.alt = label + ' · ' + filename;
+  img.onerror = () => {
+    const message = element('span', '画像を表示できません');
+    message.className = 'bi-reference-missing';
+    anchor.replaceWith(message);
+  };
+  img.src = anchor.href;
+  anchor.append(img);
+  const caption = element('figcaption', label + ' · ' + filename);
+  caption.title = path;
+  figure.append(anchor, caption);
+  return figure;
+}
+
 function addUpload(parent, {multiple, api, app, source, data, write}) {
   if (!parent) return;
   const picker = element('input');
@@ -34,11 +66,20 @@ function addUpload(parent, {multiple, api, app, source, data, write}) {
   group.className = 'bi-reference';
   parent.replaceWith(group);
   group.append(parent, picker);
+  const names = () => String(data.value ?? '').split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+  const paths = multiple ? names().slice(0, 8) : [String(data.value ?? '')].filter(Boolean);
+  if (paths.length) {
+    const gallery = element('div');
+    gallery.className = 'bi-reference-previews';
+    for (const [i, path] of paths.entries()) {
+      gallery.append(referencePreview(api, path, multiple ? 'Secondary ' + (i + 1) : 'Primary', !multiple));
+    }
+    group.append(gallery);
+  }
   picker.onchange = async () => {
     const files = [...picker.files];
     if (!files.length) return;
     const graph = source.graph;
-    const names = () => String(data.value ?? '').split(/\r?\n/).map(s => s.trim()).filter(Boolean);
     picker.setCustomValidity('');
     if (multiple && names().length + files.length > 8) {
       picker.setCustomValidity('Secondary 画像は最大8枚です。');
@@ -206,11 +247,13 @@ export function installWorkflowPanel(app, api) {
     }
     const inputs = element('div');
     inputs.className = 'bi-controls';
-    panel.append(inputs);
+    const references = element('div');
+    references.className = 'bi-reference-inputs';
+    panel.append(references, inputs);
     const image = find('LoadImage');
     const secondary = find('BISecondaryReferences');
-    const primaryField = field(inputs, 'Primary 画像', image, 'image');
-    const secondaryField = field(inputs, 'Secondary 画像（最大8枚・1行に1枚）', secondary, 'paths', {multiline:true});
+    const primaryField = field(references, 'Primary 画像', image, 'image');
+    const secondaryField = field(references, 'Secondary 画像（最大8枚・1行に1枚）', secondary, 'paths', {multiline:true});
     addUpload(primaryField, {multiple:false, api, app, source:image, data:widget(image,'image'), write});
     addUpload(secondaryField, {multiple:true, api, app, source:secondary, data:widget(secondary,'paths'), write});
     const family = widget(find('BICachedGeneratedFace'),'backend')?.value;

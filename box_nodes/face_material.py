@@ -151,6 +151,13 @@ def _surface_overlay(directory, manifest, changed):
         packed, indices, weight = patch
         weight = weight[::-1]
         for index, source_channel in enumerate(indices):
+            if index == 1 and manifest['faces'][face_id]['materialEdit']['surface'].get('binaryMetalness'):
+                # Select one class at the admitted silhouette. The atlas stores
+                # coverage-premultiplied data, so a metal texel's G equals A.
+                selected = weight >= 0.5
+                metal = packed[::-1, :, source_channel] >= 0.5
+                tile[..., index][selected] = np.where(metal[selected], tile[..., 3][selected], 0)
+                continue
             target = packed[::-1, :, source_channel] * coverage * 255
             tile[..., index] = np.rint(original[..., index] * (1 - weight) + target * weight).clip(0, 255).astype('u1')
     out.flush()
@@ -201,6 +208,8 @@ def apply_face_materials(asset, estimates):
         if 'rma' in images:
             record['surface'] = {**details, 'inputSha256': hashlib.sha256(images['rma']).hexdigest(),
                                  'packing': packing, 'channels': list(SURFACE[:len(PACKINGS[packing])])}
+            if request.get('binaryMetalness'):
+                record['surface']['binaryMetalness'] = True
         records[face_id] = record
         requests[face_id] = (images, PACKINGS[packing], np.clip(candidate[..., 3], 0, 1))
     if all(manifest['faces'][fid].get('materialEdit') == rec for fid, rec in records.items()):

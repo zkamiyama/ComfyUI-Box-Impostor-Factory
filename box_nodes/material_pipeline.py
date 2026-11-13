@@ -68,7 +68,7 @@ def load_native(source):
             VAELoader().load_vae(vae)[0])
 
 
-def register_estimates(albedo, rma, original, report):
+def register_estimates(albedo, rma, original, report, *, binary_metalness=False):
     """Replay the accepted crop and registration on both model outputs, including soft edges."""
     def resize_to(array, shape):
         return array if array.shape[:2] == tuple(shape) else faces.resize(array, shape)
@@ -104,7 +104,11 @@ def register_estimates(albedo, rma, original, report):
     np.divide(tile[..., :6], tile[..., 6:], out=tile[..., :6], where=tile[..., 6:] > 0)
     rgb = np.clip(tile[..., :3], 0., 1.)
     srgb = np.where(rgb <= .0031308, 12.92 * rgb, 1.055 * rgb ** (1. / 2.4) - .055)
-    return srgb[None, ...], np.clip(tile[None, ..., 3:6], 0., 1.)
+    surface = np.clip(tile[None, ..., 3:6], 0., 1.)
+    if binary_metalness:
+        # Resizing and registration can mix the two metalness classes.
+        surface[..., 1] = surface[..., 1] >= 0.5
+    return srgb[None, ...], surface
 
 
 class GenerateFaceMaterials:
@@ -148,7 +152,8 @@ class GenerateFaceMaterials:
         recipe = {'provider': source, 'model': model_identity(source), 'seed': material_seed,
                   'implementation': implementation}
         if source != 'marigold':
-            recipe['editResolution'] = edit_resolution
+            recipe.update(editResolution=edit_resolution, surfaceEstimation='separate-grayscale',
+                          metalnessThreshold=0.5)
         else:
             recipe['steps'] = 4
         # Cache lazy loaders only for the lifetime of this execution.
@@ -174,12 +179,14 @@ class GenerateFaceMaterials:
                     else:
                         outputs = material_estimate.MaterialEstimate().estimate(
                             image, *native(source), source + '_enhanced', material_seed, resolution=edit_resolution)
-                    base, rma = register_estimates(*outputs, original, report[fid])
+                    base, rma = register_estimates(*outputs, original, report[fid],
+                                                   binary_metalness=source in NATIVE_MODELS)
                     np.save(stage / 'albedo.npy', base, allow_pickle=False)
                     np.save(stage / 'rma.npy', rma, allow_pickle=False)
 
                 cached = faces.cache_dir('estimated-material', key, write)
                 estimates[fid] = {'provider': source, 'recipe': face_recipe, 'packing': 'RM' if source == 'marigold' else 'RMA',
+                                  'binaryMetalness': source in NATIVE_MODELS,
                                   'albedo': np.load(cached / 'albedo.npy', mmap_mode='r', allow_pickle=False),
                                   'rma': np.load(cached / 'rma.npy', mmap_mode='r', allow_pickle=False)}
         return (face_material.apply_face_materials(asset, estimates),)

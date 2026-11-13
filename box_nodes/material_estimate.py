@@ -14,18 +14,31 @@ _BASE_COLOR = (
     'casts from illumination. Bare metals retain their characteristic reflectance color. '
     'Return a single flat, pixel-aligned texture, with a uniform neutral gray background.'
 )
-_RMA = (
-    'Recover one channel-packed linear data texture for the metallic-roughness workflow of a '
-    'physically based renderer. At each visible pixel encode roughness in red, metalness in green, '
-    'and ambient occlusion in blue. R: smooth polished surface near 0, coarse matte surface near 1. '
-    'G: use 0 for dielectrics including fur, skin, wood, fabric, plastic and paint; use 1 only for '
-    'exposed metal. Specular highlights on a dielectric do not change its metalness. '
-    'B: use 1 on open surfaces, lower only in geometrically occluded crevices. Estimate these values '
-    'from material identity. Keep them consistent across different pigment colors and lighting on '
-    'the same substance. Encode the three scalar fields directly as RGB values, with no gamma '
-    'correction, lighting, source pigment, labels, grid, swatches or extra panels. '
-    'For example, matte exposed dielectric encodes as RGB (0.85, 0, 1), polished exposed metal '
-    'as (0.15, 1, 1). Return one aligned texture.'
+_ROUGHNESS = (
+    'Estimate one grayscale roughness map for a physically based renderer. Brightness at each '
+    'pixel is the linear roughness value: black (0) for mirror-smooth surfaces and white (1) for '
+    'very rough matte surfaces. Infer the microscopic finish of the material. Keep the roughness '
+    'of the same finish consistent across pigment boundaries, highlights and shadows. Rough dark '
+    'fabric can be bright in this map; polished white ceramic can be dark. Fill the background '
+    'white. Return a single flat grayscale texture with equal RGB components and no labels.'
+)
+_METALNESS = (
+    'Estimate one binary black-and-white metalness mask for a physically based renderer. Use '
+    'pure white (1) only on visible exposed metallic surfaces. Use pure black (0) on everything '
+    'else, including the background, fur, skin, feathers, teeth, wood, cloth, plastic, glass and '
+    'ordinary paint covering metal. Identify the substance of each visible surface. Bright fur, '
+    'wet skin and glossy plastic are all black in this mask. If there is no exposed metal, '
+    'return a completely black image. Output only the pixel-aligned two-value mask, without '
+    'gray tones, color, lighting, labels or outlines.'
+)
+_AO = (
+    'Estimate one grayscale ambient occlusion map for a physically based renderer. Brightness '
+    'at each pixel is the fraction of ambient light that can reach that surface. Use white (1) '
+    'for open, unoccluded surfaces and progressively darker gray toward black (0) in tight '
+    'contacts and deep enclosed crevices. Estimate geometric occlusion under diffuse light from '
+    'all directions. Ignore pigment, highlights, directional lighting and cast shadows from the '
+    'reference image. Fill the background white. Return a single flat grayscale texture with '
+    'equal RGB components and no labels.'
 )
 
 
@@ -83,9 +96,9 @@ class MaterialEstimate:
     FUNCTION = 'estimate'
     RETURN_TYPES = ('IMAGE', 'IMAGE')
     RETURN_NAMES = ('base_color', 'rma')
-    DESCRIPTION = ('Estimate aligned base color and roughness/metalness/AO from one generated face '
-                   'with a Qwen-Image-2.1 or MiniMax-H3-Image editing model. Connect its base '
-                   'MODEL, CLIP and VAE. RMA channels store scalar data in R/G/B order.')
+    DESCRIPTION = ('Generate base color and three separate material maps with Qwen-Image-2.1 or '
+                   'MiniMax-H3-Image. Pack grayscale roughness, binary metalness and grayscale '
+                   'ambient occlusion into the R, G and B channels of the RMA output.')
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -133,6 +146,7 @@ class MaterialEstimate:
             references['image_2'] = _reference_image(guide, 'guide')
             instruction += f'Use {guide_label} only as a geometry guide for the same view. '
 
+        import torch
         from nodes import ConditioningZeroOut, VAEDecode, common_ksampler
         if qwen:
             from comfy_extras.nodes_qwen import TextEncodeQwenImage21
@@ -160,4 +174,14 @@ class MaterialEstimate:
                 raise ValueError(f'{backend} produced non-finite material pixels')
             return rgb.clamp(0, 1)
 
-        return render(_BASE_COLOR, seed), render(_RMA, (seed + 1) & _MAX_SEED)
+        albedo = render(_BASE_COLOR, seed)
+
+        def scalar(prompt, offset):
+            # Read decoder values as scalar data; neutral RGB maps retain their exact gray level.
+            rgb = render(prompt, (seed + offset) & _MAX_SEED)
+            return rgb.mean(dim=-1, dtype=torch.float32)
+
+        roughness = scalar(_ROUGHNESS, 1)
+        metalness = (scalar(_METALNESS, 2) >= 0.5).to(roughness.dtype)
+        ao = scalar(_AO, 3)
+        return albedo, torch.stack((roughness, metalness, ao), dim=-1)
