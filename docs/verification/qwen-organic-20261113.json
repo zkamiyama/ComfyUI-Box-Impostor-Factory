@@ -1,0 +1,216 @@
+{
+  "date": "2026-11-13",
+  "device": "270-PC / RTX 4080 16 GB",
+  "scope": "Qwen-Image 2.1 and AnyAngle only. Previously generated Pixal3D meshes reused; no Pixal3D or H3 inference.",
+  "renderer": "ComfyUI CUDA for Qwen; Windows Edge ANGLE SwiftShader for Box bake/reload verification",
+  "recipe": {
+    "workflow": "02_box_from_reference_qwen21",
+    "size": 512,
+    "steps": 24,
+    "cfg": 3,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "image1": "original reference",
+    "image2": "previously rendered proxy guide",
+    "prompt": "Change the camera angle from <image2> to <image1>.",
+    "model": "qwen_image_2.1_int8_convrot.safetensors",
+    "textEncoder": "qwen3vl_8b_int8_convrot.safetensors",
+    "lora": "QI2.1_AnyAngle.safetensors",
+    "loraStrength": 1.0
+  },
+  "input": {
+    "title": "Dog walking sideview grass",
+    "creator": "Editor abcdef",
+    "license": "CC0-1.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dog_walking_sideview_grass.JPG",
+    "input": "bi-cc0-walking-dog.png",
+    "inputSha256": "513d787945bed551cba43c654194fb7f1612562025b021b7dc5883de8ef3caa7"
+  },
+  "stormsongProbe": {
+    "input": "bi-cc0-stormsong.png",
+    "face": "+Z",
+    "inference": "sampled",
+    "iou": 0.748556,
+    "admission": "fallback",
+    "reason": "silhouette-iou",
+    "comment": "Generated a plausible image but rejected from Box due to silhouette mismatch."
+  },
+  "walkingDogProbe": {
+    "face": "+Z",
+    "inference": "sampled",
+    "iou": 0.953856,
+    "admission": "accepted"
+  },
+  "walkingDogSix": {
+    "inputMesh": "bi-cached-walking-dog-pixal3d.glb",
+    "inputMeshSha256": "d7acb14120d52cf5b5cd155f5a0862e7ee3aa1725a56bb52bd00ed7f336fb449",
+    "assetId": "c6ed70818212907cf64dcefde772278663835cb5a9dafa438cc47f47401d7b41",
+    "parentGeometryAsset": "a58e88c2db49bf9dcdf4b49efeddf54be058853a2c6140d65eb27d1190e23cb9",
+    "resolution": 256,
+    "accepted": 6,
+    "fallback": 0,
+    "inferenceStates": {
+      "+X": "sampled",
+      "-X": "sampled",
+      "+Y": "sampled",
+      "-Y": "sampled",
+      "+Z": "reused",
+      "-Z": "sampled"
+    },
+    "faces": {
+      "+X": {
+        "iou": 0.930775,
+        "boundaryP95Px": 6,
+        "status": "accepted"
+      },
+      "-X": {
+        "iou": 0.880085,
+        "boundaryP95Px": 15,
+        "status": "accepted"
+      },
+      "+Y": {
+        "iou": 0.932797,
+        "boundaryP95Px": 4.472,
+        "status": "accepted"
+      },
+      "-Y": {
+        "iou": 0.880304,
+        "boundaryP95Px": 15.329,
+        "status": "accepted"
+      },
+      "+Z": {
+        "iou": 0.953856,
+        "boundaryP95Px": 2.236,
+        "status": "accepted"
+      },
+      "-Z": {
+        "iou": 0.918141,
+        "boundaryP95Px": 4.243,
+        "status": "accepted"
+      }
+    },
+    "savedMaterialProperties": [
+      "roughness",
+      "metalness",
+      "ao"
+    ],
+    "textures": {
+      "colorMap": {
+        "sha256": "566b718e67a93054677b4638381b6ff6ffb25caf7660b3a5778e0957dd709842",
+        "sameAsGeometryBaseline": false
+      },
+      "normalMap": {
+        "sha256": "e52e4c62cd989a2d5e0eccdfcc86a0afde64bc105ee2da9de60f29af49104ae9",
+        "sameAsGeometryBaseline": true
+      },
+      "intervalMap": {
+        "sha256": "03964bb072b95a502c3d238ba408a2680a313f26055815ee4608d5e1f3a2ad4f",
+        "sameAsGeometryBaseline": true
+      },
+      "rangeMap": {
+        "sha256": "23382ca195374726f8b7bef475d1d84fb340af9562729d3f262b8b41e81e747a",
+        "sameAsGeometryBaseline": true
+      },
+      "materialMap": {
+        "sha256": "002fac326da657dfcb67a7dbe72bef8166848446051bf1efe223e7e072f7f92a",
+        "sameAsGeometryBaseline": true
+      }
+    },
+    "sameProxySha256": true,
+    "sameBakeBox": true,
+    "crossView": {
+      "method": "cross-view-v2",
+      "measuredPairs": 12,
+      "worstPair": "+X/-Z",
+      "pairs": {
+        "+X/+Y": {
+          "samples": 2642,
+          "medianLinearRGBMAE": 0.02725,
+          "p95LinearRGBMAE": 0.296565
+        },
+        "+X/-Y": {
+          "samples": 2300,
+          "medianLinearRGBMAE": 0.115087,
+          "p95LinearRGBMAE": 0.364136
+        },
+        "+X/+Z": {
+          "samples": 4298,
+          "medianLinearRGBMAE": 0.014501,
+          "p95LinearRGBMAE": 0.250212
+        },
+        "+X/-Z": {
+          "samples": 1595,
+          "medianLinearRGBMAE": 0.097371,
+          "p95LinearRGBMAE": 0.434001
+        },
+        "-X/+Y": {
+          "samples": 1930,
+          "medianLinearRGBMAE": 0.040999,
+          "p95LinearRGBMAE": 0.411599
+        },
+        "-X/-Y": {
+          "samples": 874,
+          "medianLinearRGBMAE": 0.058482,
+          "p95LinearRGBMAE": 0.260721
+        },
+        "-X/+Z": {
+          "samples": 1429,
+          "medianLinearRGBMAE": 0.031138,
+          "p95LinearRGBMAE": 0.343475
+        },
+        "-X/-Z": {
+          "samples": 3809,
+          "medianLinearRGBMAE": 0.023071,
+          "p95LinearRGBMAE": 0.309831
+        },
+        "+Y/+Z": {
+          "samples": 3772,
+          "medianLinearRGBMAE": 0.01402,
+          "p95LinearRGBMAE": 0.164492
+        },
+        "+Y/-Z": {
+          "samples": 4066,
+          "medianLinearRGBMAE": 0.026204,
+          "p95LinearRGBMAE": 0.130303
+        },
+        "-Y/+Z": {
+          "samples": 4233,
+          "medianLinearRGBMAE": 0.075643,
+          "p95LinearRGBMAE": 0.413184
+        },
+        "-Y/-Z": {
+          "samples": 3194,
+          "medianLinearRGBMAE": 0.046458,
+          "p95LinearRGBMAE": 0.201761
+        }
+      },
+      "caveat": "Silhouette acceptance is not a guarantee of seamless color across all surface pairs."
+    },
+    "archive": {
+      "fileName": "cc0-walking-dog-qwen-six-20261113.box.zip",
+      "bytes": 34914009,
+      "sha256": "445cab92c61025d9b64424b549e7582d39ed573b6695e8f3d0c7343e689622a1",
+      "members": 42,
+      "packedLoadSucceeded": true,
+      "differentProcess18ViewMatch": true,
+      "views": 18,
+      "worstColorLSB": 0,
+      "worstDepthLSB": 0
+    },
+    "visualEvidence": "docs/verification/qwen-organic-dog-views.webp"
+  },
+  "localEvidence": {
+    "directory": "results/native-270/qwen-only-20261113/",
+    "sixOutput": "walking-dog-six/qwen-bonP3t",
+    "archive18View": "walking-dog-six/archive-18view.json"
+  },
+  "instructions": [
+    "Place the previously generated raw Pixal3D mesh in ComfyUI/input as bi-cached-walking-dog-pixal3d.glb.",
+    "node scripts/run_model_workflow.mjs --model qwen --origin http://127.0.0.1:8199 --input bi-cc0-walking-dog.png --mesh bi-cached-walking-dog-pixal3d.glb --size 512 --material-maps material+emissive --pack cc0-walking-dog-qwen-six-20261113 --run"
+  ],
+  "limitations": [
+    "Cross-view color consistency is measured, not corrected.",
+    "Stormsong one-view output fell back to the geometry baseline.",
+    "Qwen base model output licensing applies independently of the CC0 source photo."
+  ]
+}

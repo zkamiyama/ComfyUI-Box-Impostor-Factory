@@ -11,6 +11,7 @@ GLBから6方向の正投影ガイドとthree-impostor互換のBoxアセット�
 | TripoSplatの追加ガイド | RTX 4080で街灯の参照画像から262,144個のガウスを生成。6方向に同じ位置・尺度補正を適用し、元メッシュとの平均輪郭IoUが0.545から0.812に改善した。[6方向の計測結果](docs/verification/cc0-pbr/lantern-triposplat.json) |
 | Pixal3Dの単画像入力 | RTX 4080で同じ街灯の画像1枚を使用。軽量設定は75.71秒、標準設定は135.68秒。元メッシュと比較した未使用7視点の平均IoUはそれぞれ0.861、0.882だった。[軽量版のPBR付きBox](examples/cc0-lantern-pixal3d-compact.box.zip) · [標準版のBox](examples/cc0-lantern-pixal3d-default.box.zip) |
 | Qwen-Image 2.1＋AnyAngle | 街灯の画像から生成した軽量版プロキシを使い、512 pxで6方向を編集した。真上だけseedを変えて6面とも採用。色を更新し、4枚の幾何・材質マップと最終描画の透明度を保持した。[編集済みPBR付きBox](examples/cc0-lantern-pixal3d-qwen-pbr.box.zip) · [比較画像・再現手順](docs/verification/cc0-pbr/README.md) |
+| Qwenによる動物の6面編集 | CC0の歩行犬写真と保存済みPixal3Dメッシュから、Qwenだけで6方向の画像を生成。6面すべてを採用し、法線・区間・占有範囲・材質マップは維持した。ZIP展開後の18視点では色・深度の差が0。ただし面間の色差は残る。別の人物イラストは＋Z面の輪郭が合わず不採用。[6方向の比較](docs/verification/qwen-organic-dog-views.webp) · [計測結果](docs/verification/qwen-organic-20261113.json) · [完成Box](examples/cc0-walking-dog-qwen-six-20261113.box.zip) |
 | MiniMax H3-Image | ワークフロー03をComfyUIの実行グラフに展開し、ガイドと元画像の入力順を切り替えられることを確認した。 |
 
 ## ComfyUIでGLBを開く
