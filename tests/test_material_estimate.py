@@ -34,8 +34,14 @@ class MaterialEstimateTests(unittest.TestCase):
                         rgba, 'model', 'clip', 'vae', backend, (1 << 64) - 1, guide=guide, resolution=0)
                 self.assertTrue(torch.equal(output[0], albedo))
                 self.assertTrue(torch.equal(output[1], rma))
-                self.assertIn('base-color', encoded.call_args_list[0].args[1])
-                self.assertIn('roughness in red', encoded.call_args_list[1].args[1])
+                color_prompt, data_prompt = [call.args[1] for call in encoded.call_args_list]
+                self.assertIn('sRGB base-color', color_prompt)
+                self.assertIn('physically based renderer', color_prompt)
+                self.assertIn('Remove cast shadows', color_prompt)
+                self.assertIn('linear data texture', data_prompt)
+                self.assertIn('roughness in red, metalness in green, and ambient occlusion in blue', data_prompt)
+                self.assertIn('0 for dielectrics', data_prompt)
+                self.assertIn('1 on open surfaces', data_prompt)
                 refs = encoded.call_args.kwargs['images']
                 self.assertTrue(torch.all(refs['image_1'] == 1))
                 self.assertTrue(torch.equal(refs['image_2'], guide))

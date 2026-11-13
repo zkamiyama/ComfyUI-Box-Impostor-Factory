@@ -6,16 +6,25 @@ import math
 BACKENDS = ('qwen_enhanced', 'h3_enhanced')
 _MAX_SEED = (1 << 64) - 1
 _BASE_COLOR = (
-    'Produce a flat, unlit PBR base-color (albedo) map. Preserve the original pigments, '
-    'material boundaries, labels and markings. Remove shadows, highlights, reflections '
-    'and ambient occlusion. Keep colors as sRGB. Output only the aligned texture.'
+    'Recover one sRGB base-color texture for the metallic-roughness workflow of a physically based '
+    'renderer. The renderer will supply lights, environment reflections and shadows at runtime. '
+    'Estimate the intrinsic surface color at each visible point. Keep pigment hues, neutral whites, '
+    'printed markings and fine fibers. Remove cast shadows, ambient occlusion, highlights and color '
+    'casts from illumination. Bare metals retain their characteristic reflectance color. '
+    'Return a single flat, pixel-aligned texture, with a uniform neutral gray background.'
 )
 _RMA = (
-    'Produce a channel-packed PBR data texture. Each pixel independently stores '
-    'roughness in red (0 smooth, 1 rough), metalness in green (0 dielectric, 1 metal), '
-    'and ambient occlusion in blue (1 unoccluded, lower only in crevices). Use flat '
-    'numeric values, not shaded colors. Keep material boundaries aligned to the source. '
-    'Do not include the original colors, captions, legends, panels or swatches.'
+    'Recover one channel-packed linear data texture for the metallic-roughness workflow of a '
+    'physically based renderer. At each visible pixel encode roughness in red, metalness in green, '
+    'and ambient occlusion in blue. R: smooth polished surface near 0, coarse matte surface near 1. '
+    'G: use 0 for dielectrics including fur, skin, wood, fabric, plastic and paint; use 1 only for '
+    'exposed metal. Specular highlights on a dielectric do not change its metalness. '
+    'B: use 1 on open surfaces, lower only in geometrically occluded crevices. Estimate these values '
+    'from material identity. Keep them consistent across different pigment colors and lighting on '
+    'the same substance. Encode the three scalar fields directly as RGB values, with no gamma '
+    'correction, lighting, source pigment, labels, grid, swatches or extra panels. '
+    'For example, matte exposed dielectric encodes as RGB (0.85, 0, 1), polished exposed metal '
+    'as (0.15, 1, 1). Return one aligned texture.'
 )
 
 

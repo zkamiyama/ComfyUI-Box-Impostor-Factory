@@ -268,7 +268,10 @@ test('an existing GLB and one face need only the appearance model, with consiste
   for (const [model, modelCount] of [['qwen', 5], ['h3', 4]]) {
     const graph = await load(model);
     const ids = graph.nodes.filter(n => n.type === 'BICachedGeneratedFace').map(n => n.id);
-    configureEditGraph(graph, model, {mesh: 'examples/chair.glb', size: 512, face: '+Z'});
+    const tiles = graph.nodes.filter(n => ['BIMakeSixGuides', 'BIBakeBox'].includes(n.type));
+    assert.deepEqual(tiles.map(n => n.widgets_values[0]), [2048, 2048]);
+    configureEditGraph(graph, model, {mesh: 'examples/chair.glb', size: 512, boxSize: 256, face: '+Z'});
+    assert.deepEqual(tiles.map(n => n.widgets_values[0]), [256, 256]);
     const inventory = preflight(graph, {}, 'reference.png');
     assert.equal(inventory.models.length, modelCount);
     assert(!inventory.missingNodes.some(kind => kind.includes('Pixal')));
@@ -292,6 +295,7 @@ test('an existing GLB and one face need only the appearance model, with consiste
     }
   }
   const graph = await load('qwen');
+  for (const boxSize of [0, 127, 2056]) assert.throws(() => configureEditGraph(graph, 'qwen', { boxSize }), /--box-size/);
   for (const size of [-32, 16, 255, 4097, NaN]) assert.throws(() => configureEditGraph(graph, 'qwen', { size }), /multiple of 32/);
 });
 

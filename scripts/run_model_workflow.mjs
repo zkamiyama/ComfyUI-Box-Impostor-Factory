@@ -106,7 +106,7 @@ function configureH3Denoiser(graph, selection) {
 
 // Derive the optional supplied-GLB route from the same editable model subgraph as
 // the full workflow. Keep its node and link IDs so one-face runs can reuse caches.
-export function configureEditGraph(graph, model, { mesh, size, face, faceSeed, h3ReferenceFirst, h3Denoiser, secondary } = {}) {
+export function configureEditGraph(graph, model, { mesh, size, boxSize, face, faceSeed, h3ReferenceFirst, h3Denoiser, secondary } = {}) {
   const qwen = model === 'qwen';
   if (!qwen && model !== 'h3') throw new Error('An appearance workflow needs qwen or h3.');
   const canvases = graph.nodes.filter(n => n.type === 'BIModelCanvas');
@@ -140,6 +140,13 @@ export function configureEditGraph(graph, model, { mesh, size, face, faceSeed, h
     assert.equal(seed.type, 'PrimitiveInt');
     seed.widgets_values[0] = faceSeed.seed;
     if (seed.widgets_values_named) seed.widgets_values_named.value = faceSeed.seed;
+  }
+  if (boxSize !== undefined) {
+    assert(Number.isSafeInteger(boxSize) && boxSize >= 8 && boxSize <= 2048 && boxSize % 8 === 0,
+      '--box-size must be a multiple of 8 from 8 through 2048.');
+    for (const type of ['BIMakeSixGuides', 'BIBakeBox']) {
+      graph.nodes.find(node => node.type === type).widgets_values[0] = boxSize;
+    }
   }
   if (size !== undefined) {
     assert(Number.isSafeInteger(size) && size >= 32 && size <= 4096 && size % 32 === 0,
@@ -386,6 +393,10 @@ export function checkCompiled(prompt, model, report) {
         assert.equal(proxy.inputs[pin], undefined, 'Unexpected input on supplied mesh: ' + pin);
       const prepared = Object.keys(prompt).find(id => prompt[id].class_type === 'BIPrepareReference');
       for (const n of canvases) assert.deepEqual(n.inputs.reference, [prepared, 0]);
+    }
+    if (report.boxSize !== undefined) {
+      for (const kind of ['BIMakeSixGuides', 'BIBakeBox'])
+        assert.equal(byType(kind)[0].inputs.resolution, report.boxSize);
     }
     if (report.size !== undefined) {
       for (const n of canvases) assert.equal(n.inputs.size, report.size);
@@ -772,6 +783,8 @@ export async function run(opts) {
     faceSeed = { face: match[1], seed: Number(match[2]) };
   }
   const size = opts.size === undefined ? undefined : Number(opts.size);
+  const boxSize = opts['box-size'] === undefined ? undefined : Number(opts['box-size']);
+  if (!isEdit && boxSize !== undefined) throw new Error('--box-size applies to qwen or h3.');
   if (!isEdit && size !== undefined) throw new Error('--size applies to qwen or h3.');
   if (!isEdit && opts.secondary !== undefined) throw new Error('--secondary applies to qwen or h3.');
   if (opts['compact-proxy'] && (isSplat || opts.mesh !== undefined))
@@ -791,7 +804,7 @@ export async function run(opts) {
   const dir = await mkdtemp(join(resolve(opts.output), opts.model + '-'));
   console.log('Evidence:', dir);
   const graph = JSON.parse(await readFile(new URL('../workflows/' + name + '.json', import.meta.url), 'utf8'));
-  if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, face: opts.face, faceSeed, h3ReferenceFirst, h3Denoiser, secondary: opts.secondary });
+  if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, boxSize, face: opts.face, faceSeed, h3ReferenceFirst, h3Denoiser, secondary: opts.secondary });
   if (opts['depth-source'] !== undefined) {
     assert(isEdit && ['rgb_guided', 'geometry'].includes(opts['depth-source']), '--depth-source needs a reference workflow and geometry or rgb_guided');
     const baker = graph.nodes.find(n => n.type === 'BIBakeBox');
@@ -855,6 +868,7 @@ export async function run(opts) {
     }
   }
   if (size !== undefined) report.size = size;
+  if (boxSize !== undefined) report.boxSize = boxSize;
   if (isSplat) Object.assign(report, { face: opts.face ?? '+Z', coordinateSpace });
   else if (opts.face) report.face = opts.face;
   if (opts.mesh) {
@@ -957,10 +971,10 @@ export async function run(opts) {
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const { values } = parseArgs({ options: { model: { type: 'string' }, origin: { type: 'string', default: 'http://127.0.0.1:8188' },
     input: { type: 'string', default: 'reference.png' }, secondary: { type: 'string', multiple: true }, output: { type: 'string', default: '.test-output/models' },
-    pack: { type: 'string' }, face: { type: 'string' }, 'face-seed': { type: 'string' }, size: { type: 'string' }, mesh: { type: 'string' }, 'compact-proxy': { type: 'boolean' }, 'flat-background': { type: 'boolean' },
+    pack: { type: 'string' }, face: { type: 'string' }, 'face-seed': { type: 'string' }, size: { type: 'string' }, 'box-size': { type: 'string' }, mesh: { type: 'string' }, 'compact-proxy': { type: 'boolean' }, 'flat-background': { type: 'boolean' },
     'h3-reference-first': { type: 'boolean' }, 'h3-denoiser': { type: 'string' }, 'material-maps': { type: 'string' }, 'material-source': { type: 'string' }, 'material-face': { type: 'string' }, 'material-size': { type: 'string' }, 'depth-source': { type: 'string' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
   if (values.help) {
-    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input primary.png] [--secondary side.png ...] [--flat-background] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--h3-denoiser int8|w4a8] [--material-maps none|material|emissive|material+emissive] [--material-source keep|qwen|h3|marigold] [--material-face=+Z] [--material-size 2048] [--depth-source geometry|rgb_guided] [--size 512] [--pack NAME] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to the local INT8 file. An explicit --h3-denoiser selects the official weight for every face and verifies its SHA-256 in the saved output. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. --pack NAME saves NAME.box.zip in the evidence directory and verifies the restored asset ID. --flat-background extracts a closed ink silhouette from a mostly solid backdrop for the input image. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
+    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input primary.png] [--secondary side.png ...] [--flat-background] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--h3-denoiser int8|w4a8] [--material-maps none|material|emissive|material+emissive] [--material-source keep|qwen|h3|marigold] [--material-face=+Z] [--material-size 2048] [--depth-source geometry|rgb_guided] [--size 2048] [--box-size 2048] [--pack NAME] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square image generation canvas, --box-size sets guide and final atlas tile size. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to the local INT8 file. An explicit --h3-denoiser selects the official weight for every face and verifies its SHA-256 in the saved output. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. --pack NAME saves NAME.box.zip in the evidence directory and verifies the restored asset ID. --flat-background extracts a closed ink silhouette from a mostly solid backdrop for the input image. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
   } else {
     run(values).catch(error => { console.error(error.message); process.exitCode = 1; });
   }

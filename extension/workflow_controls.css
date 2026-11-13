@@ -1,0 +1,53 @@
+.bi-workflow-panel {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 10px;
+  box-sizing: border-box;
+  color: var(--input-text, #ddd);
+  background: var(--comfy-menu-bg, #292929);
+  font: 13px/1.35 system-ui, sans-serif;
+}
+.bi-controls, .bi-faces {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
+  gap: 8px;
+}
+.bi-workflow-panel :is(select, input, textarea, button, summary) {
+  font: inherit;
+}
+.bi-workflow-panel :is(select, input, textarea, button) {
+  background: var(--comfy-input-bg, #333);
+  color: var(--input-text, #eee);
+  border: 1px solid var(--border-color, #666);
+  border-radius: 4px;
+  padding: 4px 6px;
+}
+.bi-workflow-panel :is(summary, button) { cursor: pointer; }
+.bi-workflow-panel details[open] { display: grid; gap: 5px; }
+.bi-workflow-panel details label { display: grid; }
+.bi-stage {
+  display: grid;
+  align-content: start;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
+  padding: 7px;
+  border: 1px solid var(--border-color, #666);
+  border-radius: 4px;
+}
+.bi-stage > :nth-child(n+3) { grid-column: 1 / -1; }
+.bi-status { font-size: 12px; }
+.bi-stage[data-dirty="true"] .bi-status { color: var(--warning-color, #e8af56); }
+.bi-stage a { overflow-wrap: anywhere; }
+.bi-workflow-host { box-sizing: border-box; overflow: hidden; }
+
+.bi-reference { min-width: 0; display: grid; align-content: start; gap: 3px; }
+.bi-reference input[type=file] { width: 100%; box-sizing: border-box; font-size: 11px; }
+
+.bi-stage img { display: block; width: 100%; max-height: 120px; object-fit: contain; }

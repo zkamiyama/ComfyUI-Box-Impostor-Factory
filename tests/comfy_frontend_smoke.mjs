@@ -5,6 +5,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { chromium } from 'playwright';
+import { checkWorkflowControls } from './workflow_controls_browser.mjs';
 import { chromiumOptions } from '../worker/chromium.mjs';
 import { checkCompiled, configureCompactProxy, configureEditGraph, preflight } from '../scripts/run_model_workflow.mjs';
 
@@ -174,6 +175,10 @@ async function queue(prompt){
         return {prompt_id};
       }
       const id=Object.keys(prompt).find(k=>prompt[k].class_type==='BIPreviewBox');
+      const thumbnail=history.outputs[id]?.images?.[0];
+      assert.ok(thumbnail, 'App Mode should receive a native Box thumbnail');
+      const image=await page.request.get(origin+'/view?'+new URLSearchParams(thumbnail));
+      assert(image.ok(), 'Box thumbnail must be downloadable in App Mode');
       const viewer=history.outputs[id]?.box_impostor?.[0];
       assert.ok(viewer,'Queued workflow produced no saved Box preview URL');
       const url=new URL(new URL(viewer,origin).searchParams.get('manifest'),origin);
@@ -231,23 +236,7 @@ try{
     }
     const prompt=await compile(name,null,name.startsWith('10')?manual.manifest.asset_id:undefined);
     if (name.startsWith('02') || name.startsWith('03')) {
-      const edits = await page.evaluate(async () => {
-        const tab = window.app.extensionManager.getSidebarTabs().find(t => t.id === 'box-impostor-workflow');
-        const host = document.createElement('div');
-        document.body.append(host);
-        try {
-          tab.render(host);
-          const compiled = () => window.app.graphToPrompt().then(p => p.output);
-          const before = await compiled();
-          [...host.querySelectorAll('button')].find(b => b.textContent.startsWith('+Z のみ')).click();
-          const after = await compiled();
-          const dirty = [...host.querySelectorAll('section')].filter(s => s.textContent.includes('Dirty'));
-          return {dirty: dirty.map(s => s.querySelector('strong').textContent),
-            changed: Object.keys(before).filter(id => JSON.stringify(before[id].inputs) !== JSON.stringify(after[id].inputs))
-              .map(id => after[id].class_type)};
-        } finally { tab.destroy(); host.remove(); }
-      });
-      assert.deepEqual(edits, {dirty: ['+Z','Box Impostor'], changed: ['PrimitiveInt']});
+      await checkWorkflowControls(page, name, prompt);
     }
     if(name.startsWith('10')){
       const {manifest,prompt_id}=await queue(prompt);

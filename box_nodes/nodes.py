@@ -414,7 +414,8 @@ class PreviewBox:
         url = f'/box-impostor/web/viewer.html?manifest=/box-impostor/assets/{asset}/manifest.json'
         if sampling != 'standard':
             url += f'&sampling={sampling}'
-        return {'ui': {'box_impostor': [url]}, 'result': (url, preview)}
+        thumbnail = {'filename': image_path.name, 'subfolder': f'box_impostor/{asset}/previews', 'type': 'output'}
+        return {'ui': {'box_impostor': [url], 'images': [thumbnail]}, 'result': (url, preview)}
 
 
 class RenderBox:
@@ -638,6 +639,20 @@ def copy_asset(directory, output, manifest):
                     shutil.copyfile(path, target)
 
 
+class WorkflowControls:
+    """Canvas controls display native graph widgets and have no execution edges."""
+    CATEGORY = CATEGORY
+    RETURN_TYPES = ()
+    FUNCTION = 'display'
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {'required': {}}
+
+    def display(self):
+        return ()
+
+
 NODE_CLASS_MAPPINGS = {'BIModelCanvas': ModelCanvas, 'BIReplaceFaces': ReplaceFaces, 'BICachedGeneratedFace': CachedGeneratedFace, 'BIPrepareReference': PrepareReference, 'BICanonicalizeProxy': CanonicalizeProxy, 'BIMakeSixGuides': MakeSixGuides, 'BIFaceImage': FaceImage, 'BIFaceInputs': FaceInputs, 'BIAlignAndValidateFaces': AlignAndValidateFaces, 'BIBakeBox': BakeBox, 'BIPreviewBox': PreviewBox, 'BIRenderBox': RenderBox, 'BISaveBox': SaveBox, 'BILoadBox': LoadBox}
 NODE_CLASS_MAPPINGS['BIPackBox'] = PackBox
 NODE_CLASS_MAPPINGS['BITripoSplatGuide'] = TripoSplatGuide
@@ -650,6 +665,7 @@ NODE_CLASS_MAPPINGS.update({
     'BILoadGeneratedFace': BILoadGeneratedFace,
     'BIApplyFaceMaterial': BIApplyFaceMaterial,
     'BIGenerateFaceMaterials': GenerateFaceMaterials,
+    'BIWorkflowControls': WorkflowControls,
     'BISecondaryReferences': SecondaryReferences,
     'BISecondaryReferenceSlots': SecondaryReferenceSlots,
 })

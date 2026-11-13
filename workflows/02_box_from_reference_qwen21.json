@@ -1,7 +1,7 @@
 {
   "id": "6515202e-01f3-575d-8b0f-1518b5993b95",
   "revision": 1,
-  "last_node_id": 49,
+  "last_node_id": 50,
   "last_link_id": 141,
   "nodes": [
     {
@@ -408,7 +408,7 @@
         "Node name for S&R": "BIMakeSixGuides"
       },
       "widgets_values": [
-        256,
+        2048,
         "auto"
       ]
     },
@@ -2497,7 +2497,7 @@
         "Node name for S&R": "BIBakeBox"
       },
       "widgets_values": [
-        256,
+        2048,
         "auto"
       ]
     },
@@ -2658,6 +2658,28 @@
       "widgets_values": [
         ""
       ]
+    },
+    {
+      "id": 50,
+      "type": "BIWorkflowControls",
+      "pos": [
+        -730,
+        0
+      ],
+      "size": [
+        650,
+        640
+      ],
+      "flags": {},
+      "order": 49,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "BIWorkflowControls"
+      },
+      "widgets_values": [],
+      "title": "Box Impostor · ワークフロー操作"
     }
   ],
   "links": [
@@ -3794,16 +3816,27 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.59,
+      "scale": 0.9,
       "offset": [
-        70,
-        85
+        810,
+        100
       ]
     },
     "boxImpostor": {
       "officialWorkflowRevision": "a8bc07a76478dfada740fa8fa49ac87be1bff519",
       "weightsIncluded": false,
       "status": "graph-validated; model inference requires local weights"
+    },
+    "linearData": {
+      "inputs": [
+        [
+          "6515202e-01f3-575d-8b0f-1518b5993b95:50:workflow",
+          "Box Impostor"
+        ]
+      ],
+      "outputs": [
+        "46"
+      ]
     }
   },
   "version": 0.4,

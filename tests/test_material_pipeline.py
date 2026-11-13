@@ -14,6 +14,20 @@ from test_nodes import fixture
 
 
 class MaterialPipelineTests(unittest.TestCase):
+    def test_keeps_native_material_detail_above_face_image_resolution(self):
+        source = np.ones((16, 16, 4), dtype='f4')
+        source[:, :3, 3] = 0
+        crop = {'version': 1, 'size': 16, 'faceId': '+Z', 'guideRect': [0, 4, 16, 8]}
+        report = {'guideCanvas': crop, 'tileSize': [64, 32],
+                  'registration': {'scale': 1., 'centerShiftYX': [0., 0.]}}
+        stripes = np.tile(np.arange(64, dtype='f4') % 2, (1, 64, 1))
+        model = np.repeat(stripes[..., None], 3, axis=-1)
+        base, rma = pipeline.register_estimates(model, 1. - model, source, report)
+        # Every stripe lies well above the source grid's spatial bandwidth.
+        np.testing.assert_allclose(base[:, :, 18:], model[:, 16:48, 18:], atol=1e-6)
+        np.testing.assert_allclose(rma[:, :, 18:], 1. - model[:, 16:48, 18:], atol=1e-6)
+        np.testing.assert_array_equal(rma[:, :, :8], 0.)
+
     def test_reprojects_maps_through_the_same_crop_and_registration_as_appearance(self):
         rng = np.random.default_rng(581)
         source = rng.random((32, 32, 4), dtype='f4')

@@ -22,17 +22,67 @@ function element(name, text) {
   return el;
 }
 
+function addUpload(parent, {multiple, api, app, source, data, write}) {
+  if (!parent) return;
+  const picker = element('input');
+  picker.type = 'file';
+  picker.multiple = multiple;
+  picker.accept = 'image/*';
+  picker.setAttribute('aria-label', multiple ? 'Secondary 画像を追加' : 'Primary 画像をアップロード');
+  // Keep the file input separate from the label's existing form control.
+  const group = element('div');
+  group.className = 'bi-reference';
+  parent.replaceWith(group);
+  group.append(parent, picker);
+  picker.onchange = async () => {
+    const files = [...picker.files];
+    if (!files.length) return;
+    const graph = source.graph;
+    const names = () => String(data.value ?? '').split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+    picker.setCustomValidity('');
+    if (multiple && names().length + files.length > 8) {
+      picker.setCustomValidity('Secondary 画像は最大8枚です。');
+      picker.reportValidity();
+      return;
+    }
+    picker.disabled = true;
+    try {
+      const paths = [];
+      for (const file of files) {
+        const body = new FormData();
+        body.append('image', file);
+        const response = await api.fetchApi('/upload/image', {method:'POST', body});
+        if (!response.ok) throw Error(file.name + ' (HTTP ' + response.status + ')');
+        const result = await response.json();
+        paths.push([result.subfolder, result.name].filter(Boolean).join('/'));
+      }
+      if (source.graph !== graph || graph !== app.rootGraph) return;
+      const value = multiple ? [...names(), ...paths].join('\n') : paths[0];
+      if (!multiple && Array.isArray(data.options?.values) && !data.options.values.includes(value))
+        data.options.values.push(value);
+      write(source, data, value);
+    } catch (error) {
+      picker.disabled = false;
+      picker.setCustomValidity('アップロードエラー · ' + error.message);
+      picker.reportValidity();
+    }
+  };
+}
+
 export function installWorkflowPanel(app, api) {
-  let state, root, snapshot, container, interval, lastDraw = '';
+  let state, root, snapshot, graphId, sidebar, interval;
+  const views = new Map();
   const jobs = new Map();
   function current() {
     const graph = app.rootGraph;
-    const next = graph && inspectWorkflow(graph.serialize());
-    if (root !== graph || !next || !snapshot ||
+    const serialized = graph?.serialize();
+    const next = serialized && inspectWorkflow(serialized);
+    if (root !== graph || graphId !== serialized?.id || !next || !snapshot ||
         JSON.stringify(snapshot.endIds) !== JSON.stringify(next.endIds)) {
       root = graph;
+      graphId = serialized?.id;
       state = next ? new WorkflowStatus(next) : null;
-      lastDraw = '';
+      for (const view of views.values()) view.key = null;
     }
     snapshot = next;
     return state;
@@ -92,18 +142,26 @@ export function installWorkflowPanel(app, api) {
   }
 
   function draw(force = false) {
-    if (!container) return;
+    if (!views.size) return;
     current();
     const statuses = snapshot && Object.fromEntries(Object.keys(snapshot.signatures).map(k => [k, state.stage(k, snapshot)]));
     const key = JSON.stringify([snapshot?.signatures, statuses]);
-    if (!force && (lastDraw === key || container.contains(document.activeElement) &&
-        ['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))) return;
-    lastDraw = key;
-    container.replaceChildren();
+    for (const [container, view] of views) {
+      if (view.node && view.node.graph !== root) continue;
+      if (!force && (view.key === key || container.contains(document.activeElement) &&
+          ['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))) continue;
+      view.key = key;
+      render(container, statuses);
+    }
+  }
+
+  function render(container, statuses) {
+    const previous = container.firstElementChild;
+    const openSettings = previous?.querySelector('details')?.open === true;
+    const scroll = previous?.scrollTop ?? 0;
     const panel = element('div');
     panel.className = 'bi-workflow-panel';
-    panel.style.cssText = 'padding:12px;display:grid;gap:8px;overflow:auto;max-height:100%;box-sizing:border-box';
-    container.append(panel);
+    container.replaceChildren(panel);
     if (!snapshot) {
       panel.append(element('p', 'Qwen または H3 の6面生成テンプレートを開いてください。'));
       return;
@@ -121,6 +179,7 @@ export function installWorkflowPanel(app, api) {
       if (!w) return;
       let values = typeof w.options?.values === 'function' ? w.options.values() : w.options?.values;
       if (accept) values = [...new Set([w.value, ...(Array.isArray(values) ? values : [])])].filter(accept);
+      if (Array.isArray(values) && w.value != null && !values.includes(w.value)) values = [w.value, ...values];
       const tag = Array.isArray(values) ? 'select' : multiline ? 'textarea' : 'input';
       const line = element('label', label);
       line.style.cssText = 'display:grid;gap:3px;min-width:0';
@@ -131,7 +190,9 @@ export function installWorkflowPanel(app, api) {
       }
       if (tag === 'input' && typeof w.value === 'number') {
         input.type = 'number';
-        for (const k of ['min','max','step']) if (w.options?.[k] != null) input[k] = w.options[k];
+        for (const k of ['min','max']) if (w.options?.[k] != null) input[k] = w.options[k];
+        // LiteGraph's legacy step is ten times the actual increment.
+        input.step = w.options?.step2 ?? (w.options?.step ? w.options.step / 10 : 'any');
       }
       input.value = w.value;
       input.onchange = () => {
@@ -141,16 +202,23 @@ export function installWorkflowPanel(app, api) {
         write(node, w, value);
       };
       line.append(input); parent.append(line);
+      return line;
     }
+    const inputs = element('div');
+    inputs.className = 'bi-controls';
+    panel.append(inputs);
     const image = find('LoadImage');
-    field(panel, 'Primary 画像', image, 'image');
-    field(panel, 'Secondary 画像（入力フォルダー内のファイル名を1行ずつ）', find('BISecondaryReferences'), 'paths', {multiline:true});
+    const secondary = find('BISecondaryReferences');
+    const primaryField = field(inputs, 'Primary 画像', image, 'image');
+    const secondaryField = field(inputs, 'Secondary 画像（最大8枚・1行に1枚）', secondary, 'paths', {multiline:true});
+    addUpload(primaryField, {multiple:false, api, app, source:image, data:widget(image,'image'), write});
+    addUpload(secondaryField, {multiple:true, api, app, source:secondary, data:widget(secondary,'paths'), write});
     const family = widget(find('BICachedGeneratedFace'),'backend')?.value;
     const h3 = family === 'h3_enhanced';
     const accepted = h3 ? ['minimax_h3_image_pruned_int8_convrot.safetensors','minimax_h3_image_pruned_w4a8.safetensors']
       : ['qwen_image_2.1_int8_convrot.safetensors'];
     const denoiser = find('UNETLoader');
-    field(panel, h3 ? '画像生成モデル · H3' : '画像生成モデル · Qwen-Image 2.1', denoiser, 'unet_name', {
+    field(inputs, h3 ? '画像生成モデル · H3' : '画像生成モデル · Qwen-Image 2.1', denoiser, 'unet_name', {
       accept: name => accepted.includes(String(name).split(/[\\/]/).pop()),
       update: value => {
         for (const node of all('BICachedGeneratedFace')) {
@@ -162,23 +230,25 @@ export function installWorkflowPanel(app, api) {
         }
       }
     });
-    panel.append(element('small', h3 ? 'Qwen-Image 2.1 はテンプレート 02 で使用します。' : 'H3 はテンプレート 03 で使用します。'));
     const guides = find('BIMakeSixGuides'), bake = find('BIBakeBox');
-    field(panel, 'GLB からベイクするマップ', guides, 'material_maps', {
+    field(inputs, 'GLB からベイクするマップ', guides, 'material_maps', {
       update: value => setWidget(root, bake, widget(bake,'material_maps'), value)
     });
-    field(panel, '深度の作成方法', bake, 'depth_source');
+    field(inputs, '深度の作成方法', bake, 'depth_source');
     const materials = find('BIGenerateFaceMaterials');
-    field(panel, 'PBR マップの作成方法', materials, 'source');
-    field(panel, 'PBR を生成する面', materials, 'face');
+    field(inputs, 'PBR マップの作成方法', materials, 'source');
+    field(inputs, 'PBR を生成する面', materials, 'face');
     const settings = element('details');
-    settings.append(element('summary', 'モデルパラメータ'));
+    settings.open = openSettings;
+    settings.append(element('summary', 'モデルパラメータ・解像度'));
+    field(settings, 'Box とガイドの各面サイズ（px）', bake, 'resolution', {
+      update: value => setWidget(root, guides, widget(guides, 'resolution'), value)
+    });
     field(settings, 'CLIP', find('CLIPLoader'), 'clip_name');
     field(settings, 'VAE', find('VAELoader'), 'vae_name');
     field(settings, 'LoRA', find('LoraLoaderModelOnly'), 'lora_name');
     field(settings, 'マテリアルのシード', materials, 'material_seed');
-    if (['qwen','h3'].includes(widget(materials,'source')?.value))
-      field(settings, 'PBR 編集サイズ', materials, 'edit_resolution');
+    field(settings, 'PBR 推定サイズ（Qwen・H3）', materials, 'edit_resolution');
     const keeper = find('BICachedGeneratedFace');
     const generator = keeper?.getInputNode?.(keeper?.inputs?.findIndex(p => p.name === 'image'));
     const modelNodes = liveNodes(sub(generator));
@@ -224,19 +294,35 @@ export function installWorkflowPanel(app, api) {
         write(node, w, next);
       });
     }
+    const faces = element('div');
+    faces.className = 'bi-faces';
     for (const stage of ['geometry', ...directions, 'box']) {
       const card = element('section');
-      card.style.cssText = 'border-top:1px solid var(--border-color,#7776);padding-top:8px;display:grid;gap:5px';
+      card.className = 'bi-stage';
+      card.dataset.stage = stage;
       const title = element('strong', stageNames[stage] ?? stage);
       const status = statuses[stage];
-      card.append(title, element('span', status.label));
+      const badge = element('span', status.label);
+      badge.className = 'bi-status';
+      card.dataset.dirty = String(status.label.startsWith('Dirty'));
+      card.append(title, badge);
       if (status.message) card.append(element('span', status.message));
       if (stage === 'geometry') {
         if (guideRoot) link(card, 'メッシュ・ベイク結果を見る', '/box-impostor/web/viewer.html?manifest=' + guideRoot + 'manifest.json&mode=proxy');
         retry(card, sampler, widget(sampler,'seed'), '3D のシードを変えて再生成対象にする');
       } else if (stage === 'box') {
         const path = status.output?.box_impostor?.[0];
-        if (typeof path === 'string' && path.startsWith('/box-impostor/web/viewer.html?')) link(card, 'Box ビューアを開く', path);
+        if (typeof path === 'string' && path.startsWith('/box-impostor/web/viewer.html?')) {
+          const viewer = link(card, 'Box ビューアを開く', path);
+          const image = status.output?.images?.[0];
+          if (image?.type === 'output' && /^box_impostor\/[a-f0-9]{64}\/previews$/.test(image.subfolder)
+              && ['hero.png','hero-reduce_bleeding.png'].includes(image.filename)) {
+            const preview = element('img');
+            preview.src = api.apiURL('/view?' + new URLSearchParams(image));
+            preview.alt = 'Box Impostor プレビュー';
+            viewer.prepend(preview);
+          }
+        }
       } else {
         const record = all('BICachedGeneratedFace').find(n => widget(n,'face_id')?.value === stage);
         const seedNode = record?.getInputNode?.(record?.inputs?.findIndex(p => p.name === 'seed'));
@@ -248,18 +334,38 @@ export function installWorkflowPanel(app, api) {
         if (path) {
           const a = link(card, '', path);
           const img = element('img'); img.src = a.href; img.alt = stage + (hexId.test(digest) ? ' 生成画像' : ' ガイド');
-          img.style.cssText = 'width:100%;max-height:100px;object-fit:contain'; a.append(img);
+          a.append(img);
           a.append(element('small', img.alt));
         }
         retry(card, seedNode, seed, stage + ' のみ再生成対象にする');
       }
-      panel.append(card);
+      if (directions.includes(stage)) {
+        if (!faces.parentElement) panel.append(faces);
+        faces.append(card);
+      } else panel.append(card);
+    }
+    panel.scrollTop = scroll;
+  }
+
+  function unmount(el) {
+    views.delete(el);
+    if (!views.size) {
+      clearInterval(interval);
+      interval = undefined;
     }
   }
+  function mount(el, node) {
+    views.set(el, {node, key: null});
+    if (!interval) interval = setInterval(draw, 900);
+    draw(true);
+    return () => unmount(el);
+  }
+
 
   app.extensionManager.registerSidebarTab({
     id: 'box-impostor-workflow', type: 'custom', icon: 'pi pi-box', title: 'Box Impostor', tooltip: 'Box Impostor ワークフロー',
-    render(el) { container = el; lastDraw = ''; clearInterval(interval); draw(true); interval = setInterval(draw, 900); },
-    destroy() { container = null; clearInterval(interval); }
+    render(el) { sidebar?.(); sidebar = mount(el); },
+    destroy() { sidebar?.(); sidebar = null; }
   });
+  return {mount, draw};
 }

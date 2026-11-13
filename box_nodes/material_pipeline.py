@@ -73,20 +73,30 @@ def register_estimates(albedo, rma, original, report):
     def resize_to(array, shape):
         return array if array.shape[:2] == tuple(shape) else faces.resize(array, shape)
 
-    albedo = faces.array(albedo)[0, ..., :3]
-    linear = np.where(albedo <= .04045, albedo / 12.92, ((albedo + .055) / 1.055) ** 2.4)
-    alpha = original[..., 3:4]
-    combined = np.concatenate((resize_to(linear, alpha.shape[:2]) * alpha,
-                               resize_to(faces.array(rma)[0, ..., :3], alpha.shape[:2]) * alpha, alpha), axis=-1)
-    if report.get('guideCanvas'):
-        combined = canvas.undo_guide_canvas(combined, report['guideCanvas'])
+    def crop(array):
+        return canvas.undo_guide_canvas(array, report['guideCanvas']) if report.get('guideCanvas') else array
+
+    albedo = crop(faces.array(albedo)[0, ..., :3])
+    rma = crop(faces.array(rma)[0, ..., :3])
+    if albedo.shape != rma.shape:
+        raise ValueError('Base color and RMA must use the same pixel grid.')
+    source_alpha = crop(original[..., 3:4])
     width, height = report['tileSize']
-    tile = resize_to(combined, (height, width))
+    target = (height, width)
+    # Only coverage comes from the source image. Filter premultiplied maps
+    # straight from their native grid to retain fine detail and avoid edge bleed.
+    alpha = resize_to(source_alpha, albedo.shape[:2])
+    linear = np.where(albedo <= .04045, albedo / 12.92, ((albedo + .055) / 1.055) ** 2.4)
+    tile = np.concatenate((resize_to(linear * alpha, target),
+                           resize_to(rma * alpha, target),
+                           resize_to(alpha, target)), axis=-1)
     reg = report['registration']
     scale = reg['scale']
     shift = np.array(reg['centerShiftYX'])
     if scale != 1 or np.any(shift):
-        center, _ = faces.bounds(tile[..., -1] >= .5)
+        # Reuse the center measured from the accepted image, even if its coverage
+        # crossed a half-pixel boundary on the higher-resolution working grid.
+        center, _ = faces.bounds(resize_to(source_alpha, target)[..., 0] >= .5)
         offset = center - (center + shift) / scale
         tile = np.stack([ndimage.affine_transform(channel, np.eye(2) / scale, offset=offset,
                                                   order=1, mode='constant', cval=0., prefilter=False)
