@@ -39,3 +39,17 @@ class MaterialPreflightTests(unittest.TestCase):
                 self.assertTrue(pipeline.material_availability('marigold')['available'])
                 with patch.object(pipeline, 'find_spec', side_effect=lambda dep: None if dep == 'diffusers' else True):
                     self.assertEqual(pipeline.material_availability('marigold')['missing'], ['Python package diffusers'])
+
+    def test_supermat_requires_optional_nodes_and_its_own_weights(self):
+        net = pipeline.material_supermat
+        registry = {}
+        installed = set()
+        paths = SimpleNamespace(get_full_path=lambda folder, name: name if (folder, name) in installed else None)
+        with patch.dict(sys.modules, {'folder_paths': paths, 'nodes': SimpleNamespace(NODE_CLASS_MAPPINGS=registry)}):
+            missing = pipeline.material_availability('supermat')['missing']
+            for folder, name in net.WEIGHTS:
+                self.assertIn(f'{folder}/{name}', missing)
+            installed.update(net.WEIGHTS)
+            self.assertIn('SuperPBR', pipeline.material_availability('supermat')['missing'][0])
+            registry.update(dict.fromkeys(net.NODES))
+            self.assertTrue(pipeline.material_availability('supermat')['available'])

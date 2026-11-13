@@ -224,17 +224,17 @@ export function preflight(graph, registry, input, packName) {
     ...(packName !== undefined && { pack: packName }) };
 }
 
-const materialSources = ['keep', 'qwen', 'h3', 'marigold'];
+const materialSources = ['keep', 'qwen', 'h3', 'marigold', 'supermat', 'cosmos'];
 
 export function configureFaceMaterials(graph, source = 'keep', face = 'all', size) {
-  assert(materialSources.includes(source), 'Choose material source keep, qwen, h3 or marigold');
+  assert(materialSources.includes(source), 'Choose material source keep, qwen, h3, marigold, supermat or cosmos');
   assert(['all', ...directions].includes(face), 'Choose all or one direction for material estimation');
   const nodes = graph.nodes.filter(n => n.type === 'BIGenerateFaceMaterials');
   assert.equal(nodes.length, 1, 'Face material estimation requires a reference or saved Box workflow');
   nodes[0].widgets_values[0] = source;
   nodes[0].widgets_values[1] = face;
   if (size !== undefined) {
-    assert(['qwen', 'h3'].includes(source), '--material-size requires --material-source qwen or h3.');
+    assert(['qwen', 'h3', 'supermat', 'cosmos'].includes(source), '--material-size requires --material-source qwen, h3, supermat or cosmos.');
     assert(Number.isSafeInteger(size) && size >= 32 && size <= 4096 && size % 32 === 0,
       '--material-size must be a multiple of 32 from 32 through 4096.');
     nodes[0].widgets_values[3] = size;
@@ -816,7 +816,7 @@ export async function run(opts) {
   const materialSize = opts['material-size'] === undefined ? undefined : Number(opts['material-size']);
   if (opts['material-source'] !== undefined || opts['material-face'] !== undefined || materialSize !== undefined) {
     if (opts['material-face'] !== undefined && !materialSources.slice(1).includes(opts['material-source']))
-      throw new Error('--material-face requires --material-source qwen, h3 or marigold.');
+      throw new Error('--material-face requires --material-source qwen, h3, marigold, supermat or cosmos.');
     configureFaceMaterials(graph, opts['material-source'], opts['material-face'], materialSize);
   }
   if (opts['material-maps'] !== undefined) configureMaterialMaps(graph, opts['material-maps']);
@@ -974,7 +974,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     pack: { type: 'string' }, face: { type: 'string' }, 'face-seed': { type: 'string' }, size: { type: 'string' }, 'box-size': { type: 'string' }, mesh: { type: 'string' }, 'compact-proxy': { type: 'boolean' }, 'flat-background': { type: 'boolean' },
     'h3-reference-first': { type: 'boolean' }, 'h3-denoiser': { type: 'string' }, 'material-maps': { type: 'string' }, 'material-source': { type: 'string' }, 'material-face': { type: 'string' }, 'material-size': { type: 'string' }, 'depth-source': { type: 'string' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
   if (values.help) {
-    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input primary.png] [--secondary side.png ...] [--flat-background] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--h3-denoiser int8|w4a8] [--material-maps none|material|emissive|material+emissive] [--material-source keep|qwen|h3|marigold] [--material-face=+Z] [--material-size 2048] [--depth-source geometry|rgb_guided] [--size 2048] [--box-size 2048] [--pack NAME] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square image generation canvas, --box-size sets guide and final atlas tile size. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to the local INT8 file. An explicit --h3-denoiser selects the official weight for every face and verifies its SHA-256 in the saved output. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. --pack NAME saves NAME.box.zip in the evidence directory and verifies the restored asset ID. --flat-background extracts a closed ink silhouette from a mostly solid backdrop for the input image. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
+    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input primary.png] [--secondary side.png ...] [--flat-background] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--h3-denoiser int8|w4a8] [--material-maps none|material|emissive|material+emissive] [--material-source keep|qwen|h3|marigold|supermat|cosmos] [--material-face=+Z] [--material-size 2048] [--depth-source geometry|rgb_guided] [--size 2048] [--box-size 2048] [--pack NAME] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square image generation canvas, --box-size sets guide and final atlas tile size. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to the local INT8 file. An explicit --h3-denoiser selects the official weight for every face and verifies its SHA-256 in the saved output. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. --pack NAME saves NAME.box.zip in the evidence directory and verifies the restored asset ID. --flat-background extracts a closed ink silhouette from a mostly solid backdrop for the input image. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
   } else {
     run(values).catch(error => { console.error(error.message); process.exitCode = 1; });
   }

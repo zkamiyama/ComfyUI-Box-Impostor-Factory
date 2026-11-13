@@ -66,6 +66,26 @@ class MaterialEstimateTests(unittest.TestCase):
                 self.assertEqual([call.args[1:4] for call in sample.call_args_list],
                                  [(seed, *expected_sampling) for seed in ((1 << 64) - 1, 0, 1, 2)])
 
+                # Verify the full no-guide prompts and pass seeds used in the short-prompt trial.
+                decode.side_effect = [(image,) for image in (albedo, roughness, metalness, ao)]
+                encoded.reset_mock()
+                sample.reset_mock()
+                with patch.dict(sys.modules, modules):
+                    MaterialEstimate().estimate(rgba, 'model', 'clip', 'vae', backend, 0,
+                                                resolution=0, prompt_preset='short')
+                source, reference = ('<image1>', '<image2>') if qwen else ('<Picture 1>', '<Picture 2>')
+                prefix = f'Edit {source}. Match its camera, framing, silhouette and position of every feature exactly. '
+                guide_prefix = f'Use {reference} only as a geometry guide for the same view. '
+                self.assertEqual([call.args[1] for call in encoded.call_args_list], [
+                    color_prompt.replace(guide_prefix, ''),
+                    prefix + 'Create a roughness map. Fill the image white. Only make glossy, perfectly smooth material '
+                             'parts darker, using a gray gradient. Matte materials remain white.',
+                    prefix + 'Black image. Paint ONLY the exposed metal parts white. All other parts black. No gray.',
+                    ao_prompt.replace(guide_prefix, ''),
+                ])
+                self.assertEqual([call.args[1:4] for call in sample.call_args_list],
+                                 [(seed, *expected_sampling) for seed in range(4)])
+
     def test_batch_cannot_silently_drop_a_face(self):
         with self.assertRaisesRegex(ValueError, 'one RGB or RGBA'):
             MaterialEstimate().estimate(torch.zeros(2, 32, 32, 3), None, None, None, 'qwen_enhanced', 0)

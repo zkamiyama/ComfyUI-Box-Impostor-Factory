@@ -26,7 +26,7 @@ def register_routes():
     from server import PromptServer
     routes = PromptServer.instance.routes
 
-    @routes.get('/box-impostor/material-providers/{source:keep|qwen|h3|marigold}')
+    @routes.get('/box-impostor/material-providers/{source:keep|qwen|h3|marigold|supermat|cosmos}')
     async def material_provider(request):
         from .material_pipeline import material_availability
         return web.json_response(material_availability(request.match_info['source']), headers={'Cache-Control': 'no-store'})

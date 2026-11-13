@@ -8,7 +8,7 @@ from unittest.mock import patch
 import numpy as np
 
 from box_nodes import archive, faces, store
-from box_nodes.face_material import BILoadGeneratedFace, BIApplyFaceMaterial, apply_face_materials
+from box_nodes.face_material import BILoadGeneratedFace, BIApplyFaceMaterial, BIApplyFaceScalarMaps, apply_face_materials
 from test_nodes import fixture
 
 
@@ -51,6 +51,31 @@ class FaceMaterialTests(unittest.TestCase):
             'rowBytes': 24*4, 'sha256': store.file_hash(p), 'alpha': 'coverage', 'colorSpace': 'data'}
         self.m['maps'] = ['roughness', 'metalness', 'ao']
         (directory / 'manifest.json').write_text(json.dumps(self.m))
+
+    def test_apply_separate_scalar_maps_keeps_ao_and_binary_metal_through_registration(self):
+        self.add_baked()
+        base = self.compose(self.base, '+X')
+        rough = np.full((1, 32, 32, 3), .25, 'f4')
+        metal = np.full_like(rough, .49)
+        metal[:, :, :16] = [0.0, .5, 1.0]  # channel mean equals the inclusive threshold
+        apply = BIApplyFaceScalarMaps().apply
+        child, = apply(base, '+X', rough, metal, provider='cosmos_inverse')
+        before = self.read(base, 'materialMap')
+        updated = self.read(child, 'materialMap')
+        np.testing.assert_array_equal(updated[..., 2:], before[..., 2:])
+        tile = faces.tile_view(updated, '+X')[::-1]
+        self.assertEqual(tile[3, 2, 0], 32)
+        self.assertEqual(tile[3, 2, 1], tile[3, 2, 3])
+        self.assertEqual(tile[3, 5, 1], 0)
+        edited = self.rgba[..., 3] >= .5
+        self.assertTrue(np.all((tile[..., 1] == 0)[edited] | (tile[..., 1] == tile[..., 3])[edited]))
+        np.testing.assert_array_equal(self.read(child, 'colorMap'), self.read(base, 'colorMap'))
+        for fid in store.FACES:
+            if fid != '+X':
+                np.testing.assert_array_equal(faces.tile_view(updated, fid), faces.tile_view(before, fid))
+        self.assertEqual(apply(child, '+X', rough, metal, provider='cosmos_inverse'), (child,))
+        with self.assertRaisesRegex(ValueError, 'same image grid'):
+            apply(base, '+X', rough, self.srgb)
 
     def test_input_immutable_source_masks_gamma_orientation_and_fallback(self):
         base = self.compose(self.base, '+X', '-Z')

@@ -264,3 +264,32 @@ class BIApplyFaceMaterial:
 
     def apply(self, asset, face_id, packing='RM', albedo=None, rma=None, provider='manual'):
         return (apply_face_materials(asset, {face_id: dict(packing=packing, albedo=albedo, rma=rma, provider=provider)}),)
+
+
+class BIApplyFaceScalarMaps:
+    CATEGORY = 'Box Impostor'
+    FUNCTION = 'apply'
+    RETURN_TYPES = ('BOX_IMPOSTOR',)
+    DESCRIPTION = ('Apply separate linear roughness and metallic images to one registered face. '
+                   'Metalness is thresholded before filtering. The baked ambient occlusion is retained.')
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {'required': {'asset': ('BOX_IMPOSTOR',), 'face_id': (list(store.FACES),),
+                             'roughness': ('IMAGE',), 'metallic': ('IMAGE',)},
+                'optional': {'albedo': ('IMAGE',), 'provider': ('STRING', {'default': 'manual'}),
+                             'metal_threshold': ('FLOAT', {'default': .5, 'min': 0., 'max': 1., 'step': .01})}}
+
+    def apply(self, asset, face_id, roughness, metallic, albedo=None, provider='manual', metal_threshold=.5):
+        if not 0 <= metal_threshold <= 1:
+            raise ValueError('Metalness threshold must be in [0, 1].')
+        rough = _image(roughness, 'roughness').mean(axis=-1)
+        metal = _image(metallic, 'metallic').mean(axis=-1)
+        if rough.shape != metal.shape:
+            raise ValueError('Roughness and metallic maps must use the same image grid.')
+        rm = np.zeros((1, *rough.shape, 3), dtype=np.float32)
+        rm[0, ..., 0] = rough
+        rm[0, ..., 1] = metal >= metal_threshold
+        request = {'packing': 'RM', 'rma': rm, 'binaryMetalness': True,
+                   'albedo': albedo, 'provider': provider, 'recipe': {'metalnessThreshold': metal_threshold}}
+        return (apply_face_materials(asset, {face_id: request}),)

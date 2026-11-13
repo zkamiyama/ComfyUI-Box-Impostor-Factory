@@ -81,6 +81,7 @@ class MaterialPipelineTests(unittest.TestCase):
         both, = node.generate(one, 'marigold')
         self.assertEqual(infer.call_count, 2)
         self.assertEqual(node.generate(both, 'marigold'), (both,))
+        self.assertEqual(node.generate(both, 'marigold', prompt_preset='short'), (both,))
         self.assertEqual(infer.call_count, 2)
         self.assertEqual(loader.call_count, 2)
         original[..., 0] = .15
@@ -92,4 +93,32 @@ class MaterialPipelineTests(unittest.TestCase):
         self.assertEqual(infer.call_count, 3)
         manifest = json.loads((root / final / 'manifest.json').read_text())
         self.assertEqual(manifest['maps'], ['roughness', 'metalness'])
+        self.assertNotIn('promptPreset', manifest['faces']['+X']['materialEdit']['surface']['recipe'])
         self.assertEqual(manifest['faces']['-Z']['materialEdit'], parent['faces']['-Z']['materialEdit'])
+
+    def test_generated_materials_record_preset_and_reuse_only_matching_results(self):
+        root = Path(self.enterContext(tempfile.TemporaryDirectory()))
+        self.enterContext(patch.object(store, 'root', return_value=root))
+        self.enterContext(patch.dict(sys.modules, torch=SimpleNamespace(from_numpy=lambda value: value)))
+        self.enterContext(patch.object(pipeline, 'model_identity', return_value='weights-v1'))
+        self.enterContext(patch.object(pipeline, 'load_native', return_value=(None, None, None)))
+        infer = self.enterContext(patch.object(pipeline.material_estimate.MaterialEstimate, 'estimate',
+                                              side_effect=lambda image, *args, **kwargs: (image, image)))
+        node = pipeline.GenerateFaceMaterials()
+        base = 'a' * 64
+        fixture(root / base, base)
+        original = np.zeros((32, 32, 4), dtype='f4')
+        original[4:-4, 4:-4] = (.8, .3, .5, 1)
+        box = faces.compose(base, faces.align({'+X': faces.save_view(original)}, base, .85, .25, .25))
+        for source in ('qwen', 'h3'):
+            with self.subTest(source=source):
+                infer.reset_mock()
+                detailed, = node.generate(box, source, '+X')
+                short, = node.generate(box, source, '+X', prompt_preset='short')
+                self.assertNotEqual(detailed, short)
+                self.assertEqual(node.generate(box, source, '+X', prompt_preset='short'), (short,))
+                self.assertEqual([call.kwargs['prompt_preset'] for call in infer.call_args_list], ['detailed', 'short'])
+                for asset, preset in ((detailed, 'detailed'), (short, 'short')):
+                    manifest = store.validate(root / asset, asset)
+                    recipe = manifest['faces']['+X']['materialEdit']['surface']['recipe']
+                    self.assertEqual(recipe['promptPreset'], preset)

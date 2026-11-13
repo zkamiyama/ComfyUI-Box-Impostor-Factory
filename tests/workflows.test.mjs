@@ -52,7 +52,7 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
   validate(g);
   if(/^(02|03|10)/.test(name)){
     const material=nodesOf(g,'BIGenerateFaceMaterials')[0];
-    assert.deepEqual(material.widgets_values,['keep','all',0,2048]);
+    assert.deepEqual(material.widgets_values,['supermat','all',0,2048]);
     const source=nodesOf(g,name.startsWith('10')?'BILoadBox':'BIBakeBox')[0];
     assert.equal(upstream(g,material,'asset').from,source.id);
     for(const type of ['BIPreviewBox','BISaveBox'])assert.equal(upstream(g,nodesOf(g,type)[0],'asset').from,material.id);

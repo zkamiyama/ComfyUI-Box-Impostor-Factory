@@ -2537,7 +2537,7 @@
         "Node name for S&R": "BIGenerateFaceMaterials"
       },
       "widgets_values": [
-        "keep",
+        "supermat",
         "all",
         0,
         2048

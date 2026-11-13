@@ -63,7 +63,7 @@ async function compile(name, edit, savedAsset){
   if(['02','03','10'].includes(name.slice(0,2))){
     const [[id,material]]=byType('BIGenerateFaceMaterials');
     const [[source]]=byType(name.startsWith('10')?'BILoadBox':'BIBakeBox');
-    assert.deepEqual(material.inputs,{asset:[source,0],source:'keep',face:'all',material_seed:0,edit_resolution:2048});
+    assert.deepEqual(material.inputs,{asset:[source,0],source:'supermat',face:'all',material_seed:0,edit_resolution:2048,supermat_metal_threshold:0.5,prompt_preset:'detailed'});
     for(const type of ['BIPreviewBox','BISaveBox'])assert.deepEqual(byType(type)[0][1].inputs.asset,[id,0]);
     if(name.startsWith('10'))return prompt;
   }

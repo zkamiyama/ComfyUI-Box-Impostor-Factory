@@ -31,6 +31,12 @@ _METALNESS = (
     'return a completely black image. Output only the pixel-aligned two-value mask, without '
     'gray tones, color, lighting, labels or outlines.'
 )
+_SHORT_ROUGHNESS = (
+    'Create a roughness map. Fill the image white. Only make glossy, perfectly smooth material '
+    'parts darker, using a gray gradient. Matte materials remain white.'
+)
+_SHORT_METALNESS = 'Black image. Paint ONLY the exposed metal parts white. All other parts black. No gray.'
+PROMPT_PRESETS = {'detailed': (_ROUGHNESS, _METALNESS), 'short': (_SHORT_ROUGHNESS, _SHORT_METALNESS)}
 _AO = (
     'Estimate one grayscale ambient occlusion map for a physically based renderer. Brightness '
     'at each pixel is the fraction of ambient light that can reach that surface. Use white (1) '
@@ -91,6 +97,12 @@ def _qwen_sampling_model(model, width, height, clip, vae):
     return patched
 
 
+PROMPT_PRESET_INPUT = (list(PROMPT_PRESETS), {
+    'default': 'detailed', 'advanced': True,
+    'tooltip': 'Qwen/H3 prompt wording for roughness and metalness.',
+})
+
+
 class MaterialEstimate:
     CATEGORY = 'Box Impostor'
     FUNCTION = 'estimate'
@@ -119,15 +131,19 @@ class MaterialEstimate:
                                   'tooltip': '-1 selects guidance 3 for Qwen or 1 for H3.'}),
                 'resolution': ('INT', {'default': 2048, 'min': 0, 'max': 4096, 'step': 32,
                                       'tooltip': 'Target area at the face aspect ratio; 0 uses its original size rounded to multiples of 32.'}),
+                'prompt_preset': PROMPT_PRESET_INPUT,
             },
         }
 
     def estimate(self, image, model, clip, vae, backend, seed, guide=None, resolution=2048,
-                 steps=0, cfg=-1.0):
+                 steps=0, cfg=-1.0, prompt_preset='detailed'):
         if backend not in BACKENDS:
             raise ValueError(f'Unknown material estimation backend: {backend}')
         if not 0 <= resolution <= 4096:
             raise ValueError('Material resolution must be between 0 and 4096')
+        if prompt_preset not in PROMPT_PRESETS:
+            raise ValueError(f'Unknown material prompt preset: {prompt_preset}')
+        roughness_prompt, metalness_prompt = PROMPT_PRESETS[prompt_preset]
         source = _reference_image(image, 'image')
         height, width = source.shape[1:3]
         scale = resolution / math.sqrt(width * height) if resolution else 1
@@ -181,7 +197,7 @@ class MaterialEstimate:
             rgb = render(prompt, (seed + offset) & _MAX_SEED)
             return rgb.mean(dim=-1, dtype=torch.float32)
 
-        roughness = scalar(_ROUGHNESS, 1)
-        metalness = (scalar(_METALNESS, 2) >= 0.5).to(roughness.dtype)
+        roughness = scalar(roughness_prompt, 1)
+        metalness = (scalar(metalness_prompt, 2) >= 0.5).to(roughness.dtype)
         ao = scalar(_AO, 3)
         return albedo, torch.stack((roughness, metalness, ao), dim=-1)

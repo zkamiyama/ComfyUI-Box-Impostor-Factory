@@ -116,13 +116,15 @@ bash scripts/verify_cpu_only.sh
 
 ### 生成した面に合わせて材質を推定する
 
-02・03・10の `PBR from generated faces` で `source` を選ぶ。`face` は位置合わせを通過した全方向（`all`）か、`+Z` などの1方向を指定する。
+02・03・10の `PBR from generated faces` で `source` を選ぶ。初期値は `supermat` で、採用済みの面を持つBoxでは推定を実行する。推定を行わないときは `keep` に戻す。SuperPBRのノード・重みが未導入の場合は事前チェックに不足が表示される。`face` は位置合わせを通過した全方向（`all`）か、`+Z` などの1方向を指定する。
 
 | source | ベースカラーと材質の扱い |
 |---|---|
-| `keep`（初期値） | 入力Boxの色と材質を使う。GLBのroughness・metalness・AOをベイクするには、上流のガイドとベイクの `material_maps` を `material` にそろえる。 |
+| `keep`（推定OFF） | 入力Boxの色と材質を使う。GLBのroughness・metalness・AOをベイクするには、上流のガイドとベイクの `material_maps` を `material` にそろえる。 |
 | `qwen` / `h3` | 同じ面画像で画像編集を4回実行し、ベースカラー、粗さ、金属度、AOを1枚ずつ生成する。生成後の各マップはビューアのチャンネル別表示で確認できる。 |
 | `marigold` | Marigold IID Appearanceが色・roughness・metalnessを推定する。AOはGLBからベイクした値を使う。ベイクしていない場合は遮蔽を加えない。 |
+| `supermat`（初期値） | SuperMatが色・roughness・metalnessを推定する。大きい面は512 pxタイル処理。AOはGLBからベイクした値を維持する。金属度の二値化しきい値を詳細設定で調整できる。 |
+| `cosmos` | ComfyUI-MateriaのCosmos DiffusionRendererで色・roughness・metalnessを推定する。推定は長辺512 px、指定タイル解像度に拡大して保存する。AOはGLBから維持する。 |
 
 元の面画像から輪郭と採用時の位置合わせを読み、推定マップをその解像度から直接Boxのタイルに写す。面画像を交換した場合は、その面の推定材質を破棄する。別の面の推定結果は次の実行で再利用できる。Qwen・H3の材質編集は初期値2048で、Marigoldの推定は長辺768画素。結果は指定したBox解像度で保存する。
 

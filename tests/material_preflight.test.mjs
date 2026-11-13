@@ -9,6 +9,10 @@ test('material size changes the selected texture editor independently of face ge
   configureFaceMaterials(graph, 'h3', '+Z', 512);
   const node = graph.nodes.find(n => n.type === 'BIGenerateFaceMaterials');
   assert.deepEqual(node.widgets_values, ['h3', '+Z', 0, 512]);
+  configureFaceMaterials(graph, 'supermat', '-X', 2048);
+  assert.deepEqual(node.widgets_values, ['supermat', '-X', 0, 2048]);
+  configureFaceMaterials(graph, 'cosmos', '+X', 2048);
+  assert.deepEqual(node.widgets_values, ['cosmos', '+X', 0, 2048]);
   assert.throws(() => configureFaceMaterials(graph, 'marigold', '+Z', 512), /material-size requires/);
   assert.throws(() => configureFaceMaterials(graph, 'qwen', '+Z', 63), /multiple of 32/);
 });
@@ -28,12 +32,12 @@ test('preflight includes missing alternate material providers and skips keep', a
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   t.after(() => new Promise(resolve => server.close(resolve)));
   const origin = new URL('http://127.0.0.1:' + server.address().port);
-  for (const [source, ready] of [['keep', true], ['qwen', false], ['marigold', true], ['h3', false]]) {
+  for (const [source, ready] of [['keep', true], ['qwen', false], ['marigold', true], ['supermat', true], ['cosmos', true], ['h3', false]]) {
     const report = {ready: true};
     await preflightFaceMaterials(origin, source, report);
     assert.equal(report.ready, ready);
     if (source === 'qwen') assert.deepEqual(report.materialProvider.missing, ['diffusion_models/absent.safetensors']);
     if (source === 'h3') assert.match(report.materialProvider.missing[0], /Update and restart/);
   }
-  assert.deepEqual(calls, ['qwen', 'marigold', 'h3'].map(source => '/box-impostor/material-providers/' + source));
+  assert.deepEqual(calls, ['qwen', 'marigold', 'supermat', 'cosmos', 'h3'].map(source => '/box-impostor/material-providers/' + source));
 });

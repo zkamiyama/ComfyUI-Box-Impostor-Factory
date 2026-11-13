@@ -292,7 +292,16 @@ export function installWorkflowPanel(app, api) {
     field(settings, 'VAE', find('VAELoader'), 'vae_name');
     field(settings, 'LoRA', find('LoraLoaderModelOnly'), 'lora_name');
     field(settings, 'マテリアルのシード', materials, 'material_seed');
-    field(settings, 'PBR 推定サイズ（Qwen・H3）', materials, 'edit_resolution');
+    const materialSource = widget(materials, 'source')?.value;
+    const pbrSizeLabel = materialSource === 'cosmos'
+      ? 'PBR 出力サイズ（Cosmos の推定は最大512 px）' : 'PBR 推定サイズ（Qwen・H3・SuperMat）';
+    field(settings, pbrSizeLabel, materials, 'edit_resolution');
+    if (materialSource === 'qwen' || materialSource === 'h3') {
+      field(settings, '粗さ・金属度のプロンプト', materials, 'prompt_preset');
+    }
+    if (materialSource === 'supermat') {
+      field(settings, 'SuperMat 金属判定のしきい値', materials, 'supermat_metal_threshold');
+    }
     const keeper = find('BICachedGeneratedFace');
     const generator = keeper?.getInputNode?.(keeper?.inputs?.findIndex(p => p.name === 'image'));
     const modelNodes = liveNodes(sub(generator));

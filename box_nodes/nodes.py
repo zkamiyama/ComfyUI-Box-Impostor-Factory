@@ -21,7 +21,7 @@ from .depth_pipeline import DEPTH_SOURCES, refine_box_depth
 from .revision import RebakeProxyRevision
 from .material_estimate import MaterialEstimate
 from .material_iid import EstimateFaceMaterialIID
-from .face_material import BIApplyFaceMaterial, BILoadGeneratedFace
+from .face_material import BIApplyFaceMaterial, BIApplyFaceScalarMaps, BILoadGeneratedFace
 from .material_pipeline import GenerateFaceMaterials
 from .secondary_references import SecondaryReferences, SecondaryReferenceSlots
 
@@ -664,6 +664,7 @@ NODE_CLASS_MAPPINGS.update({
     'BIEstimateFaceMaterialIID': EstimateFaceMaterialIID,
     'BILoadGeneratedFace': BILoadGeneratedFace,
     'BIApplyFaceMaterial': BIApplyFaceMaterial,
+    'BIApplyFaceScalarMaps': BIApplyFaceScalarMaps,
     'BIGenerateFaceMaterials': GenerateFaceMaterials,
     'BIWorkflowControls': WorkflowControls,
     'BISecondaryReferences': SecondaryReferences,

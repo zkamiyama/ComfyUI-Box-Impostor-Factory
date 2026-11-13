@@ -9,7 +9,7 @@ import numpy as np
 from scipy import ndimage
 
 from . import canvas, faces, generation, store
-from . import face_material, material_estimate, material_iid
+from . import face_material, material_estimate, material_iid, material_supermat, material_cosmos
 
 # Base checkpoints from the two reference workflows, without a view-changing LoRA.
 NATIVE_MODELS = {
@@ -18,7 +18,7 @@ NATIVE_MODELS = {
     'h3': ('minimax_h3_image_pruned_int8_convrot.safetensors', 'qwen3vl_32b_minimax_h3_int8_convrot.safetensors',
            'minimax_h3_image_vae_fp16.safetensors', 'minimax'),
 }
-SOURCES = ['keep', 'qwen', 'h3', 'marigold']
+SOURCES = ['keep', 'qwen', 'h3', 'marigold', 'supermat', 'cosmos']
 MODEL_FOLDERS = ('diffusion_models', 'text_encoders', 'vae')
 
 
@@ -49,10 +49,18 @@ def material_availability(source):
                 required.extend((f'{folder}/config.json', f'{folder}/{stem}{suffix}.safetensors'))
             missing.extend(f'diffusers/{material_iid.CHECKPOINT}/{file}' for file in required
                            if not (checkpoint / file).is_file())
+    if source == 'cosmos':
+        missing.extend(material_cosmos.missing_components())
+    if source == 'supermat':
+        missing.extend(material_supermat.missing_components())
     return {'source': source, 'available': not missing, 'missing': missing}
 
 
 def model_identity(source):
+    if source == 'cosmos':
+        return material_cosmos.checkpoint_identity()
+    if source == 'supermat':
+        return material_supermat.checkpoint_identity()
     if source == 'marigold':
         return material_iid.checkpoint_identity()
     import folder_paths
@@ -117,24 +125,29 @@ class GenerateFaceMaterials:
     RETURN_TYPES = ('BOX_IMPOSTOR',)
     DESCRIPTION = ('Choose a material estimator independently of the face image generator. '
                    'Keep preserves the incoming Box. Qwen and H3 use prompt-based image editing. '
-                   'Marigold IID Appearance requires its own checkpoint and preserves baked AO.')
+                   'SuperMat, Cosmos (Materia) and Marigold IID Appearance estimate color, roughness and metalness and preserve baked AO.')
 
     @classmethod
     def INPUT_TYPES(cls):
         return {'required': {
             'asset': ('BOX_IMPOSTOR',),
-            'source': (SOURCES,),
+            'source': (SOURCES, {'default': 'supermat'}),
             'face': (['all', *store.FACES],),
             'material_seed': ('INT', {'default': 0, 'min': 0, 'max': (1 << 53) - 1}),
             'edit_resolution': ('INT', {'default': 2048, 'min': 32, 'max': 4096, 'step': 32,
-                                        'tooltip': 'Target size for the Qwen/H3 edit. Marigold uses its trained resolution.'}),
+                                        'tooltip': 'Target size for Qwen/H3. SuperMat uses 512 px tiles at larger sizes. Cosmos runs up to 512 px and resizes to the requested target. Marigold uses its trained resolution.'}),
+        }, 'optional': {
+            'supermat_metal_threshold': ('FLOAT', {'default': 0.5, 'min': 0., 'max': 1., 'step': .01,
+                                                   'advanced': True, 'tooltip': 'SuperMat metallic values at or above this cutoff become metal.'}),
+            'prompt_preset': material_estimate.PROMPT_PRESET_INPUT,
         }}
 
     @classmethod
-    def IS_CHANGED(cls, source='keep', **kwargs):
+    def IS_CHANGED(cls, source='supermat', **kwargs):
         return model_identity(source) if source in SOURCES[1:] else source
 
-    def generate(self, asset, source='keep', face='all', material_seed=0, edit_resolution=2048):
+    def generate(self, asset, source='supermat', face='all', material_seed=0, edit_resolution=2048,
+                 supermat_metal_threshold=.5, prompt_preset='detailed'):
         if source not in SOURCES or face not in ('all', *store.FACES):
             raise ValueError('Unknown material estimator or Box face.')
         if source == 'keep':
@@ -146,25 +159,43 @@ class GenerateFaceMaterials:
         if not selected:
             raise ValueError(f'No accepted face image for {face}. Generate and align a face before estimating its material.')
         report = json.loads(store.contained(directory, manifest['qa']).read_bytes())['faces']
-        backend_module = material_iid if source == 'marigold' else material_estimate
+        backend_module = {'marigold': material_iid, 'supermat': material_supermat, 'cosmos': material_cosmos}.get(source, material_estimate)
+        binary = source in NATIVE_MODELS or source in ('cosmos', 'supermat')
         implementation = store.key(*(store.file_hash(Path(filename)) for filename in
                                      (__file__, backend_module.__file__, canvas.__file__, faces.__file__)))
-        recipe = {'provider': source, 'model': model_identity(source), 'seed': material_seed,
-                  'implementation': implementation}
-        if source != 'marigold':
-            recipe.update(editResolution=edit_resolution, surfaceEstimation='separate-grayscale',
-                          metalnessThreshold=0.5)
+        recipe = {'provider': source, 'model': model_identity(source), 'implementation': implementation}
+        if source != 'supermat':
+            recipe['seed'] = material_seed
+        if source == 'supermat':
+            recipe.update(editResolution=edit_resolution, tileSize=material_supermat.TILE,
+                          tileOverlap=material_supermat.OVERLAP, metalnessThreshold=supermat_metal_threshold)
+        elif source == 'cosmos':
+            recipe.update(editResolution=edit_resolution, maxInferenceLongEdge=material_cosmos.MAX_INFERENCE,
+                          steps=material_cosmos.STEPS, guidance=0.0, metalnessThreshold=0.5)
+        elif source in NATIVE_MODELS:
+            if prompt_preset not in material_estimate.PROMPT_PRESETS:
+                raise ValueError(f'Unknown material prompt preset: {prompt_preset}')
+            recipe.update(editResolution=edit_resolution, promptPreset=prompt_preset,
+                          surfaceEstimation='separate-grayscale', metalnessThreshold=0.5)
         else:
             recipe['steps'] = 4
         # Cache lazy loaders only for the lifetime of this execution.
         with ExitStack() as stack:
             native = lru_cache(maxsize=1)(load_native)
             iid = lru_cache(maxsize=1)(lambda: stack.enter_context(material_iid.loaded_estimator()))
+            cosmos = lru_cache(maxsize=1)(material_cosmos.load)
+            supermat = lru_cache(maxsize=1)(material_supermat.load)
             estimates = {}
             for fid in selected:
                 store.check_interrupted()
                 edit = manifest['faces'][fid]['edit']
                 face_recipe = {**recipe, 'alignmentKey': edit['alignmentKey']}
+                if source == 'cosmos':
+                    path = store.contained(directory, edit['view']).parent / 'source.npy'
+                    h, w = np.load(path, mmap_mode='r', allow_pickle=False).shape[:2]
+                    _, _, padded_h, padded_w = material_cosmos.dimensions(h, w, min(edit_resolution, material_cosmos.MAX_INFERENCE))
+                    face_recipe['inferenceWidth'] = padded_w
+                    face_recipe['inferenceHeight'] = padded_h
                 key = store.key('registered-material-v1', fid, face_recipe)
 
                 def write(stage):
@@ -174,19 +205,24 @@ class GenerateFaceMaterials:
                     alpha = original[..., 3:4]
                     rgb = original[..., :3] * alpha + .5 * (1 - alpha)
                     image = torch.from_numpy(rgb[None, ...])
-                    if source == 'marigold':
+                    if source == 'supermat':
+                        outputs = material_supermat.estimate(image, *supermat(), edit_resolution, supermat_metal_threshold)
+                    elif source == 'cosmos':
+                        outputs = material_cosmos.estimate(image, cosmos(), edit_resolution, material_seed)
+                    elif source == 'marigold':
                         outputs = iid()(image, seed=material_seed, steps=4)
                     else:
                         outputs = material_estimate.MaterialEstimate().estimate(
-                            image, *native(source), source + '_enhanced', material_seed, resolution=edit_resolution)
+                            image, *native(source), source + '_enhanced', material_seed,
+                            resolution=edit_resolution, prompt_preset=prompt_preset)
                     base, rma = register_estimates(*outputs, original, report[fid],
-                                                   binary_metalness=source in NATIVE_MODELS)
+                                                   binary_metalness=binary)
                     np.save(stage / 'albedo.npy', base, allow_pickle=False)
                     np.save(stage / 'rma.npy', rma, allow_pickle=False)
 
                 cached = faces.cache_dir('estimated-material', key, write)
-                estimates[fid] = {'provider': source, 'recipe': face_recipe, 'packing': 'RM' if source == 'marigold' else 'RMA',
-                                  'binaryMetalness': source in NATIVE_MODELS,
+                estimates[fid] = {'provider': source, 'recipe': face_recipe, 'packing': 'RMA' if source in NATIVE_MODELS else 'RM',
+                                  'binaryMetalness': binary,
                                   'albedo': np.load(cached / 'albedo.npy', mmap_mode='r', allow_pickle=False),
                                   'rma': np.load(cached / 'rma.npy', mmap_mode='r', allow_pickle=False)}
         return (face_material.apply_face_materials(asset, estimates),)
