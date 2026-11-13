@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import * as THREE from 'three/webgpu';
-import { FACES, compactPixels, decodeRaw, dimensions, encodeRaw, parseGLB, safePath, wrapGLB } from '../worker/codec.mjs';
+import { FACES, compactPixels, decodeRaw, dimensions, encodeRaw, parseGLB, safePath, sha256Fallback, wrapGLB } from '../worker/codec.mjs';
 import { bakeGLB, canonicalizeGLB, disposeProxy, loadProxy, restoreBox } from '../worker/runtime.mjs';
 import { makeFixture } from './make_fixture.mjs';
 
@@ -84,4 +85,16 @@ test('native baker camera setup and odd-sized readback survive serialization and
     const incomplete=structuredClone(manifest);delete incomplete.textures.rangeMap;
     await assert.rejects(restoreBox(incomplete,files),/texture list/);
   } finally {result.live.dispose();}
+});
+
+test('opaque chat frames validate true SHA-256 without SubtleCrypto', () => {
+  const fixture = n => Uint8Array.from({length:n}, (_,i) => (i*97+23)&255);
+  for (const n of [0,1,3,55,56,63,64,65,119,120,127,128,1024,1048576]) {
+    const bytes=fixture(n);
+    const expected=createHash('sha256').update(bytes).digest('hex');
+    assert.equal(sha256Fallback(bytes),expected,'SHA-256 length '+n);
+    const padded=new Uint8Array(n+3).fill(0xff);
+    padded.set(bytes,1);
+    assert.equal(sha256Fallback(padded.subarray(1,n+1)),expected,'byte-offset length '+n);
+  }
 });
