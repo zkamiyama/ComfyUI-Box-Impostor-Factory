@@ -60,6 +60,16 @@ export BI_SOFTWARE_GPU=0
 
 同じシェルからComfyUIを起動する。通常の `BI BakeBox` と `BI RenderBox` がWindows側のワーカーを使う。ベイクしたアダプターはアセットのmanifestで確認できる。[RTX 4080での登録ノードの実測](docs/verification/cc0-pbr/rtx4080-comfy-waterbottle.json)
 
+### ハードウェアGPUを使わずに統合テストを実行する
+
+依存関係をインストールした状態で、リポジトリ直下から次を実行する。Python・JavaScriptの単体テストに続いて、ComfyUIを `--cpu` で起動し、GUIワークフローの読込み、Boxの作成・6面交換・保存・描画・形状更新を検査する。画像生成モデルの推論は実行しない。
+
+```sh
+bash scripts/verify_cpu_only.sh
+```
+
+このスクリプトはCUDAを無効化し、`BI_SOFTWARE_GPU=1` を設定する。WSLではWindows版Node.jsとEdgeを検出し、SwiftShaderで描画する。WSL側のChromiumがWebGL2を初期化できない環境でも試せる。Windows版Edgeが別の場所にある場合は、事前に `BI_CHROMIUM` を設定する。ComfyUIの場所を変更するには `BI_COMFY_DIR`、Pythonを指定するには `BI_PYTHON` を使う。実行証拠は `.test-output/cpu-only/` の実行別ディレクトリに残る。
+
 ## ワークフローと入力
 
 | ファイル | 入力と使い方 |

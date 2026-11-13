@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import test from 'node:test';
@@ -102,4 +102,23 @@ test('legacy guide metadata without checksums is readable, but the guide must ex
   await inspectAsset(dir);
   await rm(join(dir,manifest.faces['+Z'].guide));
   await assert.rejects(inspectAsset(dir),/ENOENT/);
+});
+
+test('symbolic links may not reference files outside the selected Box directory',async t=>{
+  if (process.platform === 'win32') return t.skip('Windows symlink creation needs developer privileges');
+  const {dir,manifest} = await fixture(t);
+  const outside = await mkdtemp(join(tmpdir(),'bi-external-file-'));
+  t.after(() => rm(outside,{recursive:true,force:true}));
+  const file = join(outside,'guide.png');
+  await writeFile(file,png);
+  const member = join(dir,manifest.faces['+Z'].guide);
+  await rm(member);
+  await symlink(file,member);
+  await assert.rejects(inspectAsset(dir),/escapes its directory/);
+});
+
+test('a changed proxy GLB cannot be accepted under the original digest',async t=>{
+  const {dir,manifest} = await fixture(t);
+  await writeFile(join(dir,manifest.proxy),makeFixture().subarray(0,32));
+  await assert.rejects(inspectAsset(dir),/Invalid proxy GLB/);
 });

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import { createHash, randomUUID } from 'node:crypto';
-import { copyFile, mkdir, mkdtemp, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';
-import { dirname, resolve, join } from 'node:path';
+import { createReadStream } from 'node:fs';
+import { copyFile, mkdir, mkdtemp, readFile, realpath, rename, rm, stat, writeFile } from 'node:fs/promises';
+import { dirname, resolve, join, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 import { startServer, relativeFile } from './server.mjs';
@@ -18,7 +19,8 @@ node worker/cli.mjs render --asset asset-dir --output frame.png [--view +Z] [--p
 node worker/cli.mjs inspect --asset asset-dir`;
 const allowedMaps = ['roughness','metalness','ao','emissive'];
 export async function inspectAsset(dir) {
-  const manifest = JSON.parse(await readFile(join(dir,'manifest.json'),'utf8'));
+  const base = await realpath(dir);
+  const manifest = JSON.parse(await readFile(join(base,'manifest.json'),'utf8'));
   const r = manifest.resolution;
   if (manifest.schemaVersion !== 1 || manifest.layout !== 'box' ||
       !Number.isSafeInteger(r) || r < 1 || r > 8192)
@@ -41,18 +43,22 @@ export async function inspectAsset(dir) {
       FACES.some(face => !Object.hasOwn(manifest.faces,face.id)))
     throw new Error('Invalid six-face layout');
 
-  const loaded = new Map();
-  async function member(path) {
-    const name = relativeFile(path);
-    if (!loaded.has(name)) loaded.set(name,await readFile(join(dir,name)));
-    return loaded.get(name);
-  }
   async function verify(path, label, digest, byteLength) {
-    const bytes = await member(path);
-    if ((byteLength !== undefined && bytes.length !== byteLength) ||
-        (digest !== undefined &&
-         (!/^[0-9a-f]{64}$/.test(digest) || hash(bytes) !== digest)))
+    const source = await realpath(join(base,relativeFile(path)));
+    if (!source.startsWith(base+sep)) throw new Error('Asset path escapes its directory: '+path);
+    const entry = await stat(source);
+    if (!entry.isFile() || (byteLength !== undefined && entry.size !== byteLength))
       throw new Error('Invalid ' + label + ': ' + path);
+    if (digest !== undefined) {
+      if (!/^[0-9a-f]{64}$/.test(digest))
+        throw new Error('Invalid ' + label + ': ' + path);
+      // Large RGBA16F atlases must not be held in memory just to validate
+      // a portable Box. Hash each file incrementally and discard the chunks.
+      const checksum = createHash('sha256');
+      for await (const chunk of createReadStream(source)) checksum.update(chunk);
+      if (checksum.digest('hex') !== digest)
+        throw new Error('Invalid ' + label + ': ' + path);
+    }
   }
   const paths = new Set();
   for (const name of expected) {
