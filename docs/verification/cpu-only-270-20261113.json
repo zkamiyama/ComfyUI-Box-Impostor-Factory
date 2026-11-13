@@ -1,0 +1,172 @@
+{
+  "date": "2026-11-13",
+  "device": "270-PC",
+  "platform": "WSL2 Ubuntu",
+  "sourceCommit": "42d1d2c",
+  "mode": "no hardware GPU",
+  "isolation": {
+    "comfyUIFlag": "--cpu",
+    "CUDA_VISIBLE_DEVICES": "-1",
+    "BI_SOFTWARE_GPU": "1",
+    "browser": "Windows Edge with ANGLE SwiftShader"
+  },
+  "runtime": {
+    "python": "3.12.3",
+    "wslNode": "22.23.3",
+    "frontendBrowserVersion": "157.0.4341.46",
+    "renderer": {
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    }
+  },
+  "tests": {
+    "pythonUnittest": {
+      "total": 51,
+      "pass": 50,
+      "skip": 1,
+      "fail": 0
+    },
+    "javascriptNodeTest": {
+      "total": 49,
+      "pass": 46,
+      "fail": 0,
+      "skip": 3
+    },
+    "comfyCpuSmoke": "passed",
+    "workflowRegistryNodeCounts": {
+      "01_box_from_glb.json": 4,
+      "02_box_from_reference_qwen21.json": 80,
+      "03_box_from_reference_h3.json": 85,
+      "04_manual_six_faces.json": 19,
+      "05_pixal3d_baseline.json": 45,
+      "06_replace_saved_face.json": 7,
+      "07_render_saved_box.json": 4,
+      "08_triposplat_guide.json": 19,
+      "09_rebake_proxy_revision.json": 5
+    },
+    "nativeFrontend": {
+      "frontendBrowser": "157.0.4341.46",
+      "executed": [
+        {
+          "workflow": "01_box_from_glb",
+          "prompt_id": "44894b57-cd2e-4493-aeff-b3e35590ef04",
+          "asset": "a3748123b5a2f4da787ee07b51c5e6a303cac197edd48c45bf2f40348c6f33b8"
+        },
+        {
+          "workflow": "04_manual_six_faces",
+          "prompt_id": "e0c6ed4a-15ec-452a-9111-8762539fd7e2",
+          "asset": "0ca729463f43bd871cf200048ec5f87b006393bdfb1c2c0e28aa1158219f7f00",
+          "acceptedFaces": 6
+        },
+        {
+          "workflow": "07_render_saved_box",
+          "prompt_id": "148a2c6a-e529-41a3-8684-58b1ddbe1b80",
+          "image": "rendered-box.png"
+        },
+        {
+          "workflow": "09_rebake_proxy_revision",
+          "prompt_id": "2aa81983-62a3-495f-bd47-d80a31508ff1",
+          "asset": "e53415f9b9d173b6422966c2f1c6f89e6f6a41bc693fc7000100946f45a5826b"
+        }
+      ],
+      "compiledOnly": [
+        {
+          "workflow": "02_box_from_reference_qwen21",
+          "expandedNodes": 95
+        },
+        {
+          "workflow": "03_box_from_reference_h3",
+          "expandedNodes": 130
+        },
+        {
+          "workflow": "05_pixal3d_baseline",
+          "expandedNodes": 45
+        },
+        {
+          "workflow": "06_replace_saved_face",
+          "expandedNodes": 7
+        },
+        {
+          "workflow": "08_triposplat_guide",
+          "expandedNodes": 19
+        },
+        {
+          "workflow": "02_box_from_reference_qwen21-supplied-glb",
+          "expandedNodes": 58
+        },
+        {
+          "workflow": "03_box_from_reference_h3-supplied-glb",
+          "expandedNodes": 93
+        },
+        {
+          "workflow": "05_pixal3d_baseline-compact",
+          "expandedNodes": 45
+        }
+      ]
+    },
+    "transparentPng": {
+      "size": [
+        512,
+        512
+      ],
+      "format": "RGBA",
+      "cornerAlpha": 0,
+      "centerAlpha": 255
+    }
+  },
+  "portableArchives": [
+    {
+      "file": "cc0-wolf-pixal3d-pbr.box.zip",
+      "sha256": "e6ea1b28043b2fae964c62c68ecf30bbbae0a3e4fc981444deea7fc9d21effd1",
+      "bytes": 36434444,
+      "memberCount": 23,
+      "assetId": "4516195bf5f1a00c328e9379942860c2874d8511ad0b4f855c60f7c7dec6065c",
+      "faceCount": 6,
+      "maps": [
+        "roughness",
+        "metalness",
+        "ao"
+      ],
+      "offlineUnpackAndInspect": "passed"
+    },
+    {
+      "file": "cc0-character-pixal3d-pbr.box.zip",
+      "sha256": "9590ef579f2d486b1aa6d12d36020a062747fb834cf170f74dd2d4af9620624a",
+      "bytes": 37269563,
+      "memberCount": 23,
+      "assetId": "3b167517efeb7670f3b1750462dbb0c0287f866aab606eb1f5ee15f0257c1bcb",
+      "faceCount": 6,
+      "maps": [
+        "roughness",
+        "metalness",
+        "ao"
+      ],
+      "offlineUnpackAndInspect": "passed"
+    },
+    {
+      "file": "cc0-lantern-pixal3d-qwen-pbr.box.zip",
+      "sha256": "bc5f44709bfa2e9c0f26f7d095890076563c53c76c91ce2358d9b58bbd9dff79",
+      "bytes": 21289906,
+      "memberCount": 43,
+      "assetId": "9b198df9dc8a8fcbedfa69c110881936bae3101d9278ae81b978bab600c045fa",
+      "faceCount": 6,
+      "maps": [
+        "roughness",
+        "metalness",
+        "ao"
+      ],
+      "offlineUnpackAndInspect": "passed"
+    }
+  ],
+  "evidenceDirectory": ".test-output/cpu-only/20261113T013344Z-390309",
+  "inferenceNotRun": [
+    "Pixal3D model sampling",
+    "Qwen-Image model sampling",
+    "H3 model sampling",
+    "TripoSplat model inference"
+  ],
+  "commands": [
+    "bash scripts/verify_cpu_only.sh",
+    "python -m box_nodes.archive unpack SOURCE.box.zip TEMP_DIR",
+    "node worker/cli.mjs inspect --asset TEMP_DIR"
+  ]
+}

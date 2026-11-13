@@ -68,7 +68,7 @@ export BI_SOFTWARE_GPU=0
 bash scripts/verify_cpu_only.sh
 ```
 
-このスクリプトはCUDAを無効化し、`BI_SOFTWARE_GPU=1` を設定する。WSLではWindows版Node.jsとEdgeを検出し、SwiftShaderで描画する。WSL側のChromiumがWebGL2を初期化できない環境でも試せる。Windows版Edgeが別の場所にある場合は、事前に `BI_CHROMIUM` を設定する。ComfyUIの場所を変更するには `BI_COMFY_DIR`、Pythonを指定するには `BI_PYTHON` を使う。実行証拠は `.test-output/cpu-only/` の実行別ディレクトリに残る。
+このスクリプトはCUDAを無効化し、`BI_SOFTWARE_GPU=1` を設定する。WSLではWindows版Node.jsとEdgeを検出し、SwiftShaderで描画する。WSL側のChromiumがWebGL2を初期化できない環境でも試せる。Windows版Edgeが別の場所にある場合は、事前に `BI_CHROMIUM` を設定する。ComfyUIの場所を変更するには `BI_COMFY_DIR`、Pythonを指定するには `BI_PYTHON` を使う。実行証拠は `.test-output/cpu-only/` の実行別ディレクトリに残る。[270-PCのCPU-only検証記録（2026年11月13日）](docs/verification/cpu-only-270-20261113.json) に実行結果と既存配布ZIPの検査結果を記載した。
 
 ## ワークフローと入力
 
