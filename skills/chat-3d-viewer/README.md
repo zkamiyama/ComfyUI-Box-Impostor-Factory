@@ -8,7 +8,7 @@ The viewer has camera presets, orbit/pan/zoom, screenshot export, model hierarch
 
 ## Install in a coding agent
 
-For eligible ChatGPT workspaces, open **Plugins → Skills → Create → Upload from your computer** and choose the packaged Skill ZIP. Availability is controlled by the workspace and plan. Or copy this `chat-3d-viewer` folder to your coding agent's Skills directory, such as `~/.agents/skills/chat-3d-viewer` (Codex) or `~/.claude/skills/chat-3d-viewer` (Claude Code). In ChatGPT, make the files available to the agent through a suitable workspace or file-enabled environment. **Publishing the Skill makes it reusable, but does not automatically install it for every ChatGPT user.**
+The public repository includes a ready-to-upload [Skill ZIP](../chat-3d-viewer.zip). For eligible ChatGPT workspaces, open **Plugins → Skills → Create → Upload from your computer** and choose the packaged Skill ZIP. Availability is controlled by the workspace and plan. Or copy this `chat-3d-viewer` folder to your coding agent's Skills directory, such as `~/.agents/skills/chat-3d-viewer` (Codex) or `~/.claude/skills/chat-3d-viewer` (Claude Code). In ChatGPT, make the files available to the agent through a suitable workspace or file-enabled environment. **Publishing the Skill makes it reusable, but does not automatically install it for every ChatGPT user.**
 
 ## Build a viewer
 
