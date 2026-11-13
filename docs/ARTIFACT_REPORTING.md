@@ -28,4 +28,4 @@ BI_SOFTWARE_GPU=1 BI_CHROMIUM='C:\Program Files (x86)\Microsoft\Edge\Application
   scripts/wsl-windows-node.sh tests/chat_viewer_smoke.mjs .test-output/chat-preview.png
 ```
 
-テストは公開ZIPの取得から復元までを行い、元GLBとの比較、視点切替、透視・正投影を確認する。単体テストや従来のComfyUI統合テストを置き換えるものではない。
+テストは公開ZIPの取得から復元までを行い、元GLBとの比較、視点切替、透視・正投影を確認する。同じコマンドの末尾に `--opaque` を追加すると、URLを持たない埋め込み画面を模した `about:blank` で復元とSHA-256検証を試せる。単体テストや従来のComfyUI統合テストを置き換えるものではない。

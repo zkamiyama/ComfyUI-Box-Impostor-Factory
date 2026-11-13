@@ -8,25 +8,17 @@ const output=resolve(process.argv[2] ?? '.test-output/chat-preview.png');
 await mkdir(dirname(output),{recursive:true});
 const server=await startServer();
 const browser=await chromium.launch(chromiumOptions('webgl2'));
-const errors=[],requests=[];
+const errors=[];
 let monitor;
 try {
  const page=await browser.newPage({viewport:{width:1100,height:740},deviceScaleFactor:1});
- if(process.env.BI_CHAT_CDN_TEST==='1'){
-   await page.route('**/web/chat_viewer.html',async route=>{
-     const res=await route.fetch();
-     const body=(await res.text()).replace('src="./chat_loader.mjs"',
-       'src="https://cdn.jsdelivr.net/gh/zkamiyama/ComfyUI-Box-Impostor-Factory@ff8d2cc/web/chat_loader.mjs"');
-     await route.fulfill({response:res,body});
-   });
- }
  page.on('pageerror',e=>{errors.push('PAGE '+e.message);console.error('PAGEERROR',e.message);});
  page.on('console',m=>{if(m.type()==='error'){errors.push('CONSOLE '+m.text().slice(0,800));console.error('CONSOLE',m.text().slice(0,800));}});
  page.on('requestfailed',req=>{errors.push('FAILED '+req.url()+' '+req.failure());console.error('REQUESTFAILED',req.url(),req.failure());});
  page.on('response',r=>{if(r.status()>=400)console.log('HTTP',r.status(),r.url());});
  if(process.env.BI_CHAT_OPAQUE_TEST==='1' || process.argv.includes('--opaque')){
    const source=await readFile(new URL('../web/chat_viewer.html',import.meta.url),'utf8');
-   const revision=process.env.BI_CHAT_REMOTE_REV || 'ef0c2a1';
+   const revision=process.env.BI_CHAT_REMOTE_REV || '4165831';
    const html=source.replace('src="./chat_loader.mjs"',
      `src="https://cdn.jsdelivr.net/gh/zkamiyama/ComfyUI-Box-Impostor-Factory@${revision}/web/chat_loader.mjs"`);
    await page.setContent(html,{waitUntil:'domcontentloaded'});
