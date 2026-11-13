@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 import { startServer, relativeFile } from './server.mjs';
 import { writeEvidence } from './evidence.mjs';
-import { validateDescriptor } from './codec.mjs';
+import { FACES, MATERIAL_PROPERTIES, validateDescriptor } from './codec.mjs';
 
 import { chromiumOptions, presentedForeground } from './chromium.mjs';
 
@@ -19,18 +19,64 @@ node worker/cli.mjs inspect --asset asset-dir`;
 const allowedMaps = ['roughness','metalness','ao','emissive'];
 export async function inspectAsset(dir) {
   const manifest = JSON.parse(await readFile(join(dir,'manifest.json'),'utf8'));
+  const r = manifest.resolution;
   if (manifest.schemaVersion !== 1 || manifest.layout !== 'box' ||
-      !Number.isInteger(manifest.resolution) || manifest.resolution <= 0) throw new Error('Unsupported Box manifest');
-  for (const name of ['colorMap','normalMap','intervalMap','rangeMap']) {
-    if (!manifest.textures?.[name]) throw new Error('Missing ' + name);
+      !Number.isSafeInteger(r) || r < 1 || r > 8192)
+    throw new Error('Unsupported Box manifest');
+  const maps = manifest.maps;
+  if (!Array.isArray(maps) || new Set(maps).size !== maps.length ||
+      maps.some(name => !MATERIAL_PROPERTIES.includes(name)))
+    throw new Error('Invalid material map list');
+  const expected = ['colorMap','normalMap','intervalMap','rangeMap'];
+  if (maps.some(name => name !== 'emissive')) expected.push('materialMap');
+  if (maps.includes('emissive')) expected.push('emissiveMap');
+  const textures = manifest.textures;
+  if (!textures || Object.keys(textures).length !== expected.length ||
+      expected.some(name => !Object.hasOwn(textures,name)) || !manifest.baseColor)
+    throw new Error('Inconsistent texture list');
+  if (!Array.isArray(manifest.faceOrder) ||
+      manifest.faceOrder.length !== FACES.length ||
+      FACES.some((face,i) => manifest.faceOrder[i] !== face.id) ||
+      !manifest.faces || Object.keys(manifest.faces).length !== FACES.length ||
+      FACES.some(face => !Object.hasOwn(manifest.faces,face.id)))
+    throw new Error('Invalid six-face layout');
+
+  const loaded = new Map();
+  async function member(path) {
+    const name = relativeFile(path);
+    if (!loaded.has(name)) loaded.set(name,await readFile(join(dir,name)));
+    return loaded.get(name);
   }
-  for (const [name,desc] of [...Object.entries(manifest.textures), ...(manifest.baseColor ? [['colorMap',manifest.baseColor]] : [])]) {
-    validateDescriptor(desc,name,manifest.resolution);
-    const bytes = await readFile(join(dir,relativeFile(desc.path)));
-    if (bytes.length !== desc.byteLength || hash(bytes) !== desc.sha256) throw new Error('Invalid texture: '+desc.path);
+  async function verify(path, label, digest, byteLength) {
+    const bytes = await member(path);
+    if ((byteLength !== undefined && bytes.length !== byteLength) ||
+        (digest !== undefined &&
+         (!/^[0-9a-f]{64}$/.test(digest) || hash(bytes) !== digest)))
+      throw new Error('Invalid ' + label + ': ' + path);
   }
-  const proxy=await readFile(join(dir,relativeFile(manifest.proxy)));
-  if(hash(proxy)!==manifest.proxySha256) throw new Error('Invalid proxy checksum');
+  const paths = new Set();
+  for (const name of expected) {
+    const desc = textures[name];
+    validateDescriptor(desc,name,r);
+    if (paths.has(desc.path)) throw new Error('Duplicate texture path: ' + desc.path);
+    paths.add(desc.path);
+    await verify(desc.path,name,desc.sha256,desc.byteLength);
+  }
+  validateDescriptor(manifest.baseColor,'colorMap',r);
+  await verify(manifest.baseColor.path,'baseColor',manifest.baseColor.sha256,manifest.baseColor.byteLength);
+  await verify(manifest.proxy,'proxy GLB',manifest.proxySha256);
+  for (const face of FACES) {
+    const info = manifest.faces[face.id];
+    if (!info || !info.guide) throw new Error('Missing guide for ' + face.id);
+    await verify(info.guide,'guide '+face.id,info.guideSha256);
+    if (info.depth) await verify(info.depth,'depth '+face.id,info.depthSha256,r*r*2);
+    else if (info.depthSha256) throw new Error('Missing depth for ' + face.id);
+  }
+  if (manifest.reference?.camera) {
+    const camera = manifest.reference.camera;
+    if (!camera.image || !camera.sha256) throw new Error('Invalid reference camera image');
+    await verify(camera.image,'reference camera',camera.sha256);
+  }
   return manifest;
 }
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -157,6 +203,13 @@ async function publish(command, opt) {
       const live=await browserCall(server,'bake',opts);
       const manifest=live.manifest;
       manifest.provenance={...manifest.provenance,jobKey,sourceSha256:config.source};
+      // Include checksums for the six guides and their optional depth sidecars,
+      // even for standalone CLI exports that never pass through Python nodes.
+      for (const {id} of FACES) {
+        const face = manifest.faces[id];
+        face.guideSha256 = hash(await readFile(join(tmp,relativeFile(face.guide))));
+        if (face.depth) face.depthSha256 = hash(await readFile(join(tmp,relativeFile(face.depth))));
+      }
       await writeFile(join(tmp,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
       await inspectAsset(tmp);
       if (opt.verify) {
