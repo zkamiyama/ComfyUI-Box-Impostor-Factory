@@ -225,6 +225,7 @@ export function installWorkflowPanel(app, api) {
       const line = element('label', label);
       line.style.cssText = 'display:grid;gap:3px;min-width:0';
       const input = element(tag);
+      input.setAttribute('aria-label', label);
       input.style.cssText = 'max-width:100%;min-width:0;padding:4px';
       if (tag === 'select') for (const option of values) {
         const item = element('option', String(option)); item.value = String(option); input.append(item);
