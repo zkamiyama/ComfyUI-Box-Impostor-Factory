@@ -1,0 +1,420 @@
+{
+  "commit": "0a92cc465860028e526b7998858df93138fdd1a9",
+  "device": "RTX 4080 (16 GiB), 270-PC",
+  "scope": "One dog, +Z. No ground-truth roughness or AO. Four prompts, seed offsets 0, 1, 2, 3.",
+  "h3": {
+    "model": "h3",
+    "source": "c6ed70818212907cf64dcefde772278663835cb5a9dafa438cc47f47401d7b41",
+    "face": "+Z",
+    "registered_face_px": 256,
+    "generated_px": 2048,
+    "method": "Identical masks for historical direct-packed and separate native 2048 estimates. Opaque uses baked coverage >= 0.99. Light fur uses two-pixel erosion of opaque generated and baked intersection, all source sRGB > 0.5, max-min < 0.12. RMA were unpremultiplied before measurement. Values are predictions on a single dog without ground-truth maps. Historical assets used the previous registration implementation.",
+    "packed": {
+      "opaque": {
+        "pixels": 28490,
+        "mean_rma": [
+          0.3404634628602473,
+          0.45674561444224077,
+          0.45691395445614685
+        ],
+        "median_rma": [
+          0.17843137681484222,
+          0.3607843220233917,
+          0.30588236451148987
+        ],
+        "fraction_metalness_above_half": 0.4098280098280098,
+        "fraction_exact_binary_metalness": 0.04485784485784486,
+        "base_color_mean_srgb": [
+          0.3168164490330122,
+          0.30831979300094586,
+          0.29166670080194423
+        ]
+      },
+      "light_fur": {
+        "pixels": 1002,
+        "mean_rma": [
+          0.13765019218682753,
+          0.24248366500483362,
+          0.8121521692191382
+        ],
+        "median_rma": [
+          0.0784313753247261,
+          0.18431372940540314,
+          0.9843137264251709
+        ],
+        "fraction_metalness_above_half": 0.07385229540918163,
+        "fraction_exact_binary_metalness": 0.04291417165668663,
+        "base_color_mean_srgb": [
+          0.7074512836343038,
+          0.70076821104971,
+          0.6856338262201069
+        ]
+      },
+      "opaque_edited": {
+        "pixels": 28030,
+        "mean_rma": [
+          0.33174456410286757,
+          0.46330375038633936,
+          0.45059383608283865
+        ],
+        "median_rma": [
+          0.1764705926179886,
+          0.37254902720451355,
+          0.2823529541492462
+        ],
+        "fraction_metalness_above_half": 0.4165536924723511,
+        "fraction_exact_binary_metalness": 0.0423118087763111,
+        "base_color_mean_srgb": [
+          0.31309306047034946,
+          0.3045783119142203,
+          0.28793770269183944
+        ]
+      },
+      "admitted_covered_pixels": 28030,
+      "admitted_nonbinary_metal_texels": 26844,
+      "asset": "827be7f2573b34ebc847cbc71091e670d3fa9b4cba3d8c5bac80c52c53fce14f"
+    },
+    "separate": {
+      "opaque": {
+        "pixels": 28490,
+        "mean_rma": [
+          0.24745346346735056,
+          0.40403650403650404,
+          0.5737862051940575
+        ],
+        "median_rma": [
+          0.12156862765550613,
+          0,
+          0.5960784554481506
+        ],
+        "fraction_metalness_above_half": 0.40403650403650404,
+        "fraction_exact_binary_metalness": 1,
+        "base_color_mean_srgb": [
+          0.3159124726408609,
+          0.30745944689310645,
+          0.2908412190198255
+        ]
+      },
+      "light_fur": {
+        "pixels": 1002,
+        "mean_rma": [
+          0.6558177884660676,
+          1,
+          0.8098391510960748
+        ],
+        "median_rma": [
+          0.7137255072593689,
+          1,
+          0.9333333373069763
+        ],
+        "fraction_metalness_above_half": 1,
+        "fraction_exact_binary_metalness": 1,
+        "base_color_mean_srgb": [
+          0.707756816210623,
+          0.7010859350065985,
+          0.6859514817089853
+        ]
+      },
+      "opaque_edited": {
+        "pixels": 28030,
+        "mean_rma": [
+          0.2359674912802124,
+          0.41066714234748486,
+          0.5688827923306338
+        ],
+        "median_rma": [
+          0.11764705926179886,
+          0,
+          0.5921568870544434
+        ],
+        "fraction_metalness_above_half": 0.41066714234748486,
+        "fraction_exact_binary_metalness": 1,
+        "base_color_mean_srgb": [
+          0.31219560553910986,
+          0.3037229100919526,
+          0.2871148598779691
+        ]
+      },
+      "admitted_covered_pixels": 28030,
+      "admitted_nonbinary_metal_texels": 0,
+      "asset": "0c2b9135ae1387bf87a93f34806b61abdd5b9777534928d3ea034784974ba7e6"
+    },
+    "separate_native": {
+      "roughness": {
+        "raw_mean_gray": 0.22343891859054565,
+        "raw_gray_percentiles_p01_p25_p50_p75_p99": [
+          0,
+          0.009150327183306217,
+          0.0954248383641243,
+          0.35947713255882263,
+          0.9633986949920654
+        ],
+        "raw_mean_max_minus_min_rgb": 0.008346165530383587,
+        "raw_fraction_gray_ge_0_5": 0.1814406406547839
+      },
+      "metalness": {
+        "raw_mean_gray": 0.4408537745475769,
+        "raw_gray_percentiles_p01_p25_p50_p75_p99": [
+          0,
+          0.019607843831181526,
+          0.2705882489681244,
+          0.9908496737480164,
+          1
+        ],
+        "raw_mean_max_minus_min_rgb": 0.007529353257268667,
+        "raw_fraction_gray_ge_0_5": 0.4094556629396901,
+        "native_binary_values": [
+          0,
+          255
+        ],
+        "native_foreground_metal_fraction": 0.40945944752607893
+      },
+      "ao": {
+        "raw_mean_gray": 0.5658236742019653,
+        "raw_gray_percentiles_p01_p25_p50_p75_p99": [
+          0,
+          0.40784314274787903,
+          0.5908496975898743,
+          0.746405303478241,
+          1
+        ],
+        "raw_mean_max_minus_min_rgb": 0.00897067692130804,
+        "raw_fraction_gray_ge_0_5": 0.645441024159538
+      }
+    },
+    "packed_native": {
+      "opaque_mean_rma": [
+        0.32710881621849736,
+        0.46918126685331235,
+        0.4464423261821978
+      ],
+      "opaque_fraction_metalness_above_half": 0.4244300097516176,
+      "native_albedo_rgb8_absolute_error_mean": 0,
+      "native_albedo_rgb8_absolute_error_max": 0
+    },
+    "native_source_opaque_pixels": 792689,
+    "source_px": 512,
+    "native_method": "Opaque input alpha >= 0.99 after bilinear resizing 512 to 2048. Raw scalar values are arithmetic means from RGB8 PNG snapshots and may differ by 1 LSB from the packed tensor.",
+    "run": {
+      "key": "h3-separate-2048",
+      "model": "h3",
+      "input_asset": "c6ed70818212907cf64dcefde772278663835cb5a9dafa438cc47f47401d7b41",
+      "asset_id": "0c2b9135ae1387bf87a93f34806b61abdd5b9777534928d3ea034784974ba7e6",
+      "alias": "pbr-dog-h3-separate-2048",
+      "face": "+Z",
+      "seeds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "native": {
+        "albedo_sha256": "36ec1fb2b606830998aedafd094b938e0675958c16dda8be9ca12858e040365a",
+        "rma_sha256": "5b0cbcad844fbc464f8fdce631ce8721fb0230a35455abdb7487138bd8acb9c4",
+        "roughness_sha256": "4af18b6bae2a2bf251d143165afd50f8495330ff292a15305584793dde90a5a7",
+        "metalness_sha256": "f1ed1ccb05bd7835b391b5925bb5211e7a20328d648b73e7a135ca4a35384d00",
+        "ao_sha256": "2e67cb8fa63562f4051b5b7c99c9385594180b69403913395bd51a9fb00ca7ea",
+        "metalness_values": [
+          0,
+          1
+        ],
+        "shape": [
+          2048,
+          2048
+        ]
+      },
+      "raw_decode_sha256": {
+        "albedo": "36ec1fb2b606830998aedafd094b938e0675958c16dda8be9ca12858e040365a",
+        "roughness": "09ede5a3b69474e218bf5c10f587e933dc755a7863e8fb10f838f1e385a797d7",
+        "metalness": "bc7c99c465a3d71369c6407cbec80927aa233ab4ec59ab68615a49c2fadeb407",
+        "ao": "725f41854596b3360b231f671a46a46ded953268a999bd8aa61c7036fb298606"
+      },
+      "seconds": 893.97,
+      "unchanged": {
+        "five_other_colors_and_materials": true,
+        "all_alpha": true,
+        "normal_interval_range": true
+      },
+      "implementation_sha256": {
+        "material_estimate": "6114529320492234b112aefefc67359d6521517f23db609dbf0286595b7cc531",
+        "material_pipeline": "d874270e0aaecffa6ba61ea3ac2644bf65f82032e95cd06a82347b89a6f097fd",
+        "face_material": "57debc1b29a0857473f62178c8d2c5a5ac2f575dbacd59b86a5bec4bb7fa2dec"
+      }
+    },
+    "phases": [
+      {
+        "elapsed": 0,
+        "stage": "start",
+        "model": "h3",
+        "source": "c6ed70818212907cf64dcefde772278663835cb5a9dafa438cc47f47401d7b41"
+      },
+      {
+        "elapsed": 297.61,
+        "stage": "decode",
+        "field": "albedo",
+        "shape": [
+          2048,
+          2048,
+          3
+        ],
+        "sha256": "36ec1fb2b606830998aedafd094b938e0675958c16dda8be9ca12858e040365a"
+      },
+      {
+        "elapsed": 494.52,
+        "stage": "decode",
+        "field": "roughness",
+        "shape": [
+          2048,
+          2048,
+          3
+        ],
+        "sha256": "09ede5a3b69474e218bf5c10f587e933dc755a7863e8fb10f838f1e385a797d7"
+      },
+      {
+        "elapsed": 694.74,
+        "stage": "decode",
+        "field": "metalness",
+        "shape": [
+          2048,
+          2048,
+          3
+        ],
+        "sha256": "bc7c99c465a3d71369c6407cbec80927aa233ab4ec59ab68615a49c2fadeb407"
+      },
+      {
+        "elapsed": 890.62,
+        "stage": "decode",
+        "field": "ao",
+        "shape": [
+          2048,
+          2048,
+          3
+        ],
+        "sha256": "725f41854596b3360b231f671a46a46ded953268a999bd8aa61c7036fb298606"
+      },
+      {
+        "elapsed": 893.19,
+        "stage": "packed",
+        "albedo_sha256": "36ec1fb2b606830998aedafd094b938e0675958c16dda8be9ca12858e040365a",
+        "rma_sha256": "5b0cbcad844fbc464f8fdce631ce8721fb0230a35455abdb7487138bd8acb9c4",
+        "roughness_sha256": "4af18b6bae2a2bf251d143165afd50f8495330ff292a15305584793dde90a5a7",
+        "metalness_sha256": "f1ed1ccb05bd7835b391b5925bb5211e7a20328d648b73e7a135ca4a35384d00",
+        "ao_sha256": "2e67cb8fa63562f4051b5b7c99c9385594180b69403913395bd51a9fb00ca7ea",
+        "metalness_values": [
+          0,
+          1
+        ],
+        "shape": [
+          2048,
+          2048
+        ]
+      },
+      {
+        "elapsed": 893.97,
+        "stage": "complete",
+        "id": "0c2b9135ae1387bf87a93f34806b61abdd5b9777534928d3ea034784974ba7e6",
+        "seconds": 893.97
+      }
+    ]
+  },
+  "h3RawLuma": {
+    "source_pixels": 792689,
+    "luma_percentile_25_75": [
+      0.09583637118339539,
+      0.35638585686683655
+    ],
+    "provider": "h3",
+    "stats": {
+      "roughness": {
+        "rank_corr_srgb_luma": 0.5984741722319967,
+        "dark_quartile_mean": 0.06373825669288635,
+        "bright_quartile_mean": 0.4831988513469696
+      },
+      "metalness": {
+        "rank_corr_srgb_luma": 0.8309393726108402,
+        "dark_quartile_mean": 0.0009133433923125267,
+        "bright_quartile_mean": 0.9995004534721375
+      },
+      "ao": {
+        "rank_corr_srgb_luma": 0.3368525855881137,
+        "dark_quartile_mean": 0.46083226799964905,
+        "bright_quartile_mean": 0.6018041968345642
+      }
+    }
+  },
+  "h3Box2048": {
+    "provider": "h3",
+    "derivedAsset": "1f9d3c4da9e1a52032368b5ef8e68f1516bf968253fd9406a1aad76105d2327b",
+    "acceptedFaceAsset": "fde312ca196a230ff8df749677f836feb8d6dd5c9aa97ac899c9e64758f34385",
+    "intermediateFormat": "8-bit model output PNG",
+    "nativeSize": [
+      2048,
+      2048
+    ],
+    "sourceSize": [
+      512,
+      512
+    ],
+    "tileSize": [
+      2048,
+      2048
+    ],
+    "decodedPngSha256": {
+      "albedo": "36ec1fb2b606830998aedafd094b938e0675958c16dda8be9ca12858e040365a",
+      "rma": "5b0cbcad844fbc464f8fdce631ce8721fb0230a35455abdb7487138bd8acb9c4"
+    },
+    "geometryEqual": true,
+    "otherFiveTilesEqual": true,
+    "allAlphaEqual": true,
+    "classifiedPixels": 1793183,
+    "binaryClassVerified": true,
+    "admittedOpaquePixels": 1793183,
+    "metalOpaquePixels": 746315,
+    "textures": {
+      "colorMap": {
+        "width": 6144,
+        "height": 4096,
+        "sha256": "75db600d0782945cf35f74adcc8ae58aa2e11daf5e26a4294eeb8de773ae5f92"
+      },
+      "normalMap": {
+        "width": 6144,
+        "height": 4096,
+        "sha256": "b48647772a5b5b87bc80ff7b2d00a8739318bbef05d50f4afdb89ae488bd40f7"
+      },
+      "intervalMap": {
+        "width": 6144,
+        "height": 2048,
+        "sha256": "83b214d88237353a92f13cb8d356d5606ce87175984ac0dee7ac63ffddfa7b77"
+      },
+      "rangeMap": {
+        "width": 768,
+        "height": 256,
+        "sha256": "d447b4f56bf8bd4a730ebd38b27ba7413dce739623222c9f23a10ca4d714b165"
+      },
+      "materialMap": {
+        "width": 6144,
+        "height": 4096,
+        "sha256": "44bf17bd9c3ada87263732e3e969f9821cda643d072781279b73dbc29b54b9be"
+      }
+    }
+  },
+  "qwenRawMetalness": {
+    "model": "qwen",
+    "sourceSize": [
+      512,
+      512
+    ],
+    "decodeSize": [
+      2048,
+      2048
+    ],
+    "metalnessSeed": 2,
+    "rawMetalnessDecodeSHA256": "2cd53e4b08a682291c60cd03af4de788f5830d68f3534c2c969524ae5d7e2633",
+    "region": "Original dog +Z alpha >= .99 resized with bilinear sampling to 2048 square (same mask as H3)",
+    "pixelCount": 792689,
+    "threshold": 0.5,
+    "fractionAtOrAboveThresholdRgb8": 0.6063,
+    "meanGrayRgb8": 0.593,
+    "measurements": "Rounded values from the pre-threshold RGB8 output, before registration to the Box."
+  }
+}
