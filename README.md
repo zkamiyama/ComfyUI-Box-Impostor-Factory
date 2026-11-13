@@ -14,6 +14,20 @@ GLBから6方向の正投影ガイドとthree-impostor互換のBoxアセット�
 | Qwenによる動物の6面編集 | CC0の歩行犬写真と保存済みPixal3Dメッシュから、Qwenだけで6方向の画像を生成。6面すべてを採用し、法線・区間・占有範囲・材質マップは維持した。ZIP展開後の18視点では色・深度の差が0。ただし面間の色差は残る。別の人物イラストは＋Z面の輪郭が合わず不採用。[6方向の比較](docs/verification/qwen-organic-dog-views.webp) · [計測結果](docs/verification/qwen-organic-20261113.json) · [完成Box](examples/cc0-walking-dog-qwen-six-20261113.box.zip) |
 | MiniMax H3-Image | ワークフロー03をComfyUIの実行グラフに展開し、ガイドと元画像の入力順を切り替えられることを確認した。 |
 
+## チャット向けThree.jsプレビュー
+
+[チャット向けビューア](web/chat_viewer.html) は、公開済みの `.box.zip` をブラウザへ取得し、ZIP内のカラー・法線・区間・占有範囲のrawテクスチャとGLBを読み込む。描画には本リポジトリの `restoreBox` と `three-impostor` を使う。6面画像を箱に貼る代替表示ではない。ComfyUIサーバーやGPU推論は不要だが、ブラウザのWebGL2と公開ファイルへの通信は必要となる。
+
+使用例は歩行犬のQwen 6面Box。初回表示では約35MBのZIPを取得する。回転・ズーム、元メッシュとBoxの左右比較、正面6方向、生成色とベース色、法線・深度・アトラスの表示を利用できる。読み込めない環境では静的な実機描画画像を表示する。
+
+```sh
+# 270-PCのWSLでWindows Edge／SwiftShaderを使用する
+BI_SOFTWARE_GPU=1 BI_CHROMIUM='C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe' \
+  scripts/wsl-windows-node.sh tests/chat_viewer_smoke.mjs .test-output/chat-preview.png
+```
+
+次回以降の最終アセット報告にも、同じチャット内プレビューに新しいZIPの公開URLを渡して使う。成功数や画質の根拠は[成果物の報告形式](docs/ARTIFACT_REPORTING.md)に従って添える。WebGL2が使えないチャット画面では静止画像とZIPへのリンクを併記し、実際の3D表示が動いたと断定しない。
+
 ## ComfyUIでGLBを開く
 
 Node.js 22以上、ComfyUIを実行するPython 3.11以上を使用する。以下の `python` はComfyUIと同じ環境の実行ファイルを指す。Windowsのポータブル版では同梱のPythonを指定する。
