@@ -1,6 +1,11 @@
 import { sha256 } from '../worker/codec.mjs';
 import { WebGPURenderer } from 'three/webgpu';
 
+// Used only by the self-contained chat viewer. The ordinary ComfyUI asset
+// viewer retains strict same-origin HTTP access and receives no shared ZIP.
+const VIRTUAL_BASE = 'https://box-impostor.chat.invalid/assets/';
+const virtualZip = () => globalThis.__BI_CHAT_BOX__;
+
 export async function makeRenderer(backend = 'auto', options = {}) {
   if (!['auto','webgpu','webgl','webgl2'].includes(backend)) throw new Error('Unknown graphics backend: ' + backend);
   const renderer = new WebGPURenderer({ antialias:false, alpha:true, ...options,
@@ -16,6 +21,19 @@ export async function makeRenderer(backend = 'auto', options = {}) {
 export function backendName(renderer) { return renderer.backend.isWebGPUBackend ? 'webgpu' : 'webgl2'; }
 
 export async function fetchChecked(url) {
+  const virtual = virtualZip();
+  if (virtual) {
+    const uri = new URL(String(url), VIRTUAL_BASE);
+    if (uri.href.startsWith(VIRTUAL_BASE)) {
+      const path = uri.pathname.slice(new URL(VIRTUAL_BASE).pathname.length);
+      const file = virtual.zip.file(path);
+      if (!file) throw new Error('Missing Box ZIP member: '+path);
+      const raw = await file.async('uint8array');
+      const type = path.endsWith('.json') ? 'application/json' : path.endsWith('.png') ? 'image/png' :
+        path.endsWith('.glb') ? 'model/gltf-binary' : 'application/octet-stream';
+      return new Response(new Blob([raw],{type}),{status:200,headers:{'Content-Type':type}});
+    }
+  }
   const res = await fetch(url, {cache:'no-store', mode:'same-origin'});
   if (!res.ok) throw new Error('HTTP ' + res.status + ' loading ' + new URL(url, location.href).pathname);
   return res;
@@ -24,13 +42,14 @@ export async function fetchChecked(url) {
 export function assetURL(manifestURL, path) {
   if (typeof path !== 'string' || !path || path.split('/').some(part => !part || part === '.' || part === '..') ||
       /[\\:%?#]/.test(path)) throw new Error('Invalid asset member path');
-  return new URL(path, manifestURL);
+  return new URL(path, virtualZip() ? VIRTUAL_BASE+'manifest.json' : manifestURL);
 }
 
 export async function readAsset(manifestLocation, {proxy = false} = {}) {
-  const url = new URL(manifestLocation, location.href);
-  if (url.origin !== location.origin) throw new Error('The asset manifest must be on this server');
-  const manifest = await (await fetchChecked(url)).json();
+  const virtual = virtualZip();
+  const url = virtual ? new URL(VIRTUAL_BASE+'manifest.json') : new URL(manifestLocation, location.href);
+  if (!virtual && url.origin !== location.origin) throw new Error('The asset manifest must be on this server');
+  const manifest = virtual ? virtual.manifest : await (await fetchChecked(url)).json();
   const metadata = Object.values(manifest.textures);
   const paths = metadata.map(m => m.path);
   if (manifest.baseColor?.path) paths.push(manifest.baseColor.path);

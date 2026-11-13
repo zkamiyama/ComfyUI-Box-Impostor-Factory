@@ -74,7 +74,7 @@ function showFaceDecisions(manifest, url) {
     const reason=edit ? (reasons[edit.reason] || edit.reason) : '画像の指定なし';
     for (const text of [id,color,reason]) row.insertCell().textContent=text;
   }
-  if (manifest.qa) {
+  if (manifest.qa && !globalThis.__BI_CHAT_BOX__) {
     const report=panel.querySelector('a');
     report.href=assetURL(url,manifest.qa).href;
     report.target='_blank'; report.rel='noopener'; report.hidden=false;
@@ -188,7 +188,7 @@ async function guideDepthPreview(url, face) {
 
 async function run() {
   const params = new URLSearchParams(location.search);
-  const manifestURL = params.get('manifest');
+  const manifestURL = params.get('manifest') || (globalThis.__BI_CHAT_BOX__ ? 'chat:manifest' : null);
   if (!manifestURL) throw new Error('manifest パラメーターにアセットのURLを指定してください');
   const {manifest,files,url} = await readAsset(manifestURL, {proxy:true});
   showFaceDecisions(manifest,url);
@@ -196,7 +196,7 @@ async function run() {
   if(!['standard','reduce_bleeding'].includes(selectedSampling)) throw new Error('不明な補間設定です');
   el('sampling').value=selectedSampling;
   let currentSampling=selectedSampling;
-  const renderer = await makeRenderer(params.get('backend') || 'auto',{canvas:el('canvas'),antialias:true});
+  const renderer = await makeRenderer(params.get('backend') || (globalThis.__BI_CHAT_BOX__ ? 'webgl2' : 'auto'),{canvas:el('canvas'),antialias:true});
   const [firstActive,proxy] = await Promise.all([
     restoreBox(manifest,files,renderer,{sampling:currentSampling}), loadProxy(files.get(manifest.proxy).slice().buffer)
   ]);
@@ -307,6 +307,7 @@ async function run() {
   }
 
   const previews = new Map();
+  const retainedBlobURLs=[];
   for (const name of Object.keys(manifest.textures)) {
     appendOption(el('map'),name,name);
     for(const [channel,label] of (atlasChannels[name] ?? []).entries()) {
@@ -339,7 +340,17 @@ async function run() {
       }
     } else if (kind==='guide' || kind==='view') {
       const item=manifest.faces[face];
-      el('atlas').src=assetURL(url,kind==='guide' ? item.guide : item.edit.view).href;
+      const path=kind==='guide' ? item.guide : item.edit.view;
+      if(globalThis.__BI_CHAT_BOX__) {
+        if(!previews.has(name)) {
+          const entry=globalThis.__BI_CHAT_BOX__.zip.file(path);
+          if(!entry) throw new Error('Missing ZIP image '+path);
+          const bytes=await entry.async('uint8array');
+          const objectURL=URL.createObjectURL(new Blob([bytes],{type:'image/png'}));
+          previews.set(name,objectURL);retainedBlobURLs.push(objectURL);
+        }
+        el('atlas').src=previews.get(name);
+      } else el('atlas').src=assetURL(url,path).href;
     } else {
       const descriptor = kind==='baseColor' ? manifest.baseColor : manifest.textures[kind];
       if (!previews.has(name)) previews.set(name,texturePreview(kind,descriptor,files.get(descriptor.path),face===undefined?null:Number(face)));
@@ -451,6 +462,7 @@ async function run() {
     closing=true;renderer.setAnimationLoop(null); controls.dispose();
     releaseDiagnostics(); active.dispose(); baseline?.dispose();
     disposeProxy(proxy);
+    for(const url of retainedBlobURLs) URL.revokeObjectURL(url);
     renderer.dispose();
   },{once:true});
 }

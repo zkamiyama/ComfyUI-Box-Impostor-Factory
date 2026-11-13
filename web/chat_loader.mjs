@@ -68,25 +68,10 @@ try {
   const manifest=JSON.parse(await zip.file('manifest.json').async('string'));
   if(manifest.schemaVersion!==1 || manifest.layout!=='box') throw Error('Box形式が正しくありません');
   if(manifest.faceOrder?.length!==6) throw Error('6面のデータがありません');
-  const realFetch=window.fetch.bind(window);
-  const root='/__bi_chat_asset__/';
-  window.fetch=async(input, options)=>{
-    const requestURL=typeof input==='string'?input:input?.url ?? String(input);
-    const url=new URL(requestURL,location.href);
-    if(url.origin!==location.origin || !url.pathname.startsWith(root))
-      return realFetch(input, options);
-    const relative=decodeURIComponent(url.pathname.slice(root.length));
-    rejectMember(relative);
-    const file=zip.file(relative);
-    if(!file) return new Response('Missing archive member',{status:404});
-    const raw=await file.async('uint8array');
-    const mime=relative.endsWith('.json')?'application/json':relative.endsWith('.png')?'image/png':
-      relative.endsWith('.glb')?'model/gltf-binary':'application/octet-stream';
-    return new Response(new Blob([raw],{type:mime}),{status:200,headers:{'Content-Type':mime}});
-  };
-  // viewer.mjs obtains its manifest from location.search and checks every raw
-  // texture checksum before constructing the actual impostor shader.
-  history.replaceState(null,'',location.pathname+'?manifest='+root+'manifest.json&backend=webgl2');
+  // Pass the decoded archive directly to the existing loader. This also
+  // works in opaque-origin chat frames (about:srcdoc/data:) without history
+  // rewriting, a service worker, or virtual HTTP request interception.
+  window.__BI_CHAT_BOX__={zip,manifest};
   say('Three.jsでBoxを構築中…');
   await import('./viewer.mjs');
   // The original viewer initializes asynchronously and writes the selected

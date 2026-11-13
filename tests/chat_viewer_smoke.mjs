@@ -12,6 +12,14 @@ const errors=[],requests=[];
 let monitor;
 try {
  const page=await browser.newPage({viewport:{width:1100,height:740},deviceScaleFactor:1});
+ if(process.env.BI_CHAT_CDN_TEST==='1'){
+   await page.route('**/web/chat_viewer.html',async route=>{
+     const res=await route.fetch();
+     const body=(await res.text()).replace('src="./chat_loader.mjs"',
+       'src="https://cdn.jsdelivr.net/gh/zkamiyama/ComfyUI-Box-Impostor-Factory@ff8d2cc/web/chat_loader.mjs"');
+     await route.fulfill({response:res,body});
+   });
+ }
  page.on('pageerror',e=>{errors.push('PAGE '+e.message);console.error('PAGEERROR',e.message);});
  page.on('console',m=>{if(m.type()==='error'){errors.push('CONSOLE '+m.text().slice(0,800));console.error('CONSOLE',m.text().slice(0,800));}});
  page.on('requestfailed',req=>{errors.push('FAILED '+req.url()+' '+req.failure());console.error('REQUESTFAILED',req.url(),req.failure());});
@@ -35,7 +43,14 @@ try {
  await page.locator('#canvas').screenshot({path:output.replace(/\.png$/,'.initial.png')});
  await page.locator('#mode').selectOption('both');
  await page.waitForFunction(presentedForeground,2,{timeout:40000});
+ await page.locator('#mode').selectOption('atlas');
+ await page.locator('#map').selectOption('guide:+X');
+ await page.waitForFunction(()=>{const im=document.querySelector('#atlas');return im.complete && im.naturalWidth>0;});
+ await page.locator('#map').selectOption('depth:+X');
+ await page.waitForFunction(()=>{const im=document.querySelector('#atlas');return im.complete && im.naturalWidth>0;});
  await page.locator('#mode').selectOption('box');
+ await page.locator('#appearance').selectOption('base');
+ await page.locator('#appearance').selectOption('active');
  await page.locator('#view').selectOption('-X');
  await page.locator('#projection').selectOption('orthographic');
  await page.locator('#canvas').screenshot({path:output});
