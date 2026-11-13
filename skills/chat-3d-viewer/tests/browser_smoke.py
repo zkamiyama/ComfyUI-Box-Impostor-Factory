@@ -1,10 +1,14 @@
 from pathlib import Path
+import os
 from playwright.sync_api import sync_playwright
 base=Path(__file__).parents[1]/'examples'
-for name in ['material_study.inspector.html','box_surface.inspector.html']:
+for name in ['material_study.inspector.html','walking_dog_sample.inspector.html']:
     html=base/name
     with sync_playwright() as p:
-        browser=p.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox','--disable-dev-shm-usage'])
+        options={'headless':True,'args':['--no-sandbox','--disable-dev-shm-usage']}
+        if os.environ.get('CHROME_BIN'):
+            options['executable_path']=os.environ['CHROME_BIN']
+        browser=p.chromium.launch(**options)
         page=browser.new_page(viewport={'width':1440,'height':900},device_scale_factor=1)
         errs=[]
         page.on('pageerror',lambda err: errs.append('PAGE '+str(err)))
