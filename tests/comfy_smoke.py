@@ -138,7 +138,10 @@ def run(comfy, output):
             for name in ("intervalMap","rangeMap","normalMap"):
                 assert updated["textures"][name] == baseline["textures"][name]
             print(json.dumps({"ok":True,"baseline":baseline["asset_id"],"manual":updated["asset_id"]}))
-            subprocess.run(['node', str(ROOT / 'tests/comfy_frontend_smoke.mjs'), origin,
+            # The frontend browser must use the same CPU/software renderer as
+            # the Box worker (e.g. Windows Edge from a WSL ComfyUI process).
+            browser_node = os.environ.get('BI_NODE') or 'node'
+            subprocess.run([browser_node, str(ROOT / 'tests/comfy_frontend_smoke.mjs'), origin,
                             str(inputs), str(output / 'frontend')], cwd=ROOT, check=True, timeout=960)
             # The actual frontend independently numbers Pixal3D nodes for each containing workflow.
             sys.path.insert(0, str(ROOT))

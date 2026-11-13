@@ -118,7 +118,10 @@ async function compile(name, edit){
     const inventory=preflight(JSON.parse(contents),registry,'reference.png');
     assert.equal(inventory.inputAvailable,true);
     assert.deepEqual(inventory.missingNodes,[]);
-    assert.equal(inventory.ready,false,'CPU CI should report absent model weights');
+    // Native CPU CI has no model weights, but GPU-equipped developer machines
+    // may have them installed. Never queue any inference in this smoke test.
+    assert.equal(inventory.ready,inventory.models.every(m=>m.available),
+      'preflight must reflect installed model inventory');
     await writeFile(join(artifacts,name+'.preflight.json'),JSON.stringify(inventory,null,2));
   }
   if(name.startsWith('02')||name.startsWith('03')||name.startsWith('05')){
