@@ -11,7 +11,8 @@ import { checkCompiled, configureCompactProxy, configureEditGraph, preflight } f
 const [origin,inputDir,artifacts]=process.argv.slice(2);
 if(!origin||!inputDir||!artifacts)throw new Error('Usage: node tests/comfy_frontend_smoke.mjs ORIGIN INPUT_DIR OUTPUT_DIR');
 const workflowNames=['01_box_from_glb','04_manual_six_faces','02_box_from_reference_qwen21',
-  '03_box_from_reference_h3','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision'];
+  '03_box_from_reference_h3','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision',
+  '10_material_from_saved_box'];
 const sides=[['+X','px'],['-X','nx'],['+Y','py'],['-Y','ny'],['+Z','pz'],['-Z','nz']];
 const resources=new URL('../workflows/',import.meta.url);
 const browser=await chromium.launch(chromiumOptions('webgl2'));
@@ -26,7 +27,7 @@ async function freshPage(){
   await page.waitForFunction(()=>window.app?.extensionManager && window.app?.rootGraph && window.app?.canvas,null,{timeout:120000});
 }
 
-async function compile(name, edit){
+async function compile(name, edit, savedAsset){
   const graph=JSON.parse(await readFile(new URL(name+'.json',resources),'utf8'));
   const model=name.startsWith('05')?'pixal3d':name.startsWith('02')?'qwen':'h3';
   if(edit?.compactProxy){
@@ -36,6 +37,7 @@ async function compile(name, edit){
     configureEditGraph(graph,model,edit);
     name+='-supplied-glb';
   }
+  if(savedAsset)graph.nodes.find(n=>n.type==='BILoadBox').widgets_values[0]=savedAsset;
   const contents=JSON.stringify(graph);
   const prompt=await page.evaluate(async ({name,contents})=>{
     const app=window.app;
@@ -57,6 +59,13 @@ async function compile(name, edit){
     assert.deepEqual([n.inputs.min_iou,n.inputs.max_shift,n.inputs.max_scale_change],
       [0.85,0.10,0.15],name+' must preserve the shipped alignment thresholds');
   }
+  if(['02','03','10'].includes(name.slice(0,2))){
+    const [[id,material]]=byType('BIGenerateFaceMaterials');
+    const [[source]]=byType(name.startsWith('10')?'BILoadBox':'BIBakeBox');
+    assert.deepEqual(material.inputs,{asset:[source,0],source:'keep',face:'all',material_seed:0,edit_resolution:2048});
+    for(const type of ['BIPreviewBox','BISaveBox'])assert.deepEqual(byType(type)[0][1].inputs.asset,[id,0]);
+    if(name.startsWith('10'))return prompt;
+  }
   if(name.startsWith('09')){
     const [[id,revision]]=byType('BIRebakeProxyRevision');
     assert.deepEqual(revision.inputs.asset,[byType('BILoadBox')[0][0],0]);
@@ -70,6 +79,9 @@ async function compile(name, edit){
     const [[cache,cached]]=byType('BICachedTripoSplat');
     const [[align,transform]]=byType('TransformSplat');
     const [[guide,render]]=byType('BITripoSplatGuide');
+    const [[file,serialized]]=byType('SplatToFile3D');
+    assert.deepEqual(serialized.inputs,{splat:[align,0],format:'ply'});
+    assert.deepEqual(byType('PreviewGaussianSplat')[0][1].inputs.model_3d,[file,0]);
     assert.equal(decoder.inputs.num_gaussians,262144);
     assert.deepEqual(cached.inputs,{reference:[ref,2],splat:[decode,0]});
     assert.deepEqual(transform.inputs.splat,[cache,0]);
@@ -102,13 +114,21 @@ async function compile(name, edit){
   if(name.startsWith('02')||name.startsWith('03')){
     const encoder=name.startsWith('02')?'TextEncodeQwenImage21':'MiniMaxH3ImageConditioning';
     assert.equal(byType(encoder).length,6,'Six native view encoders must survive subgraph expansion');
+    const [[secondary]]=byType('BISecondaryReferences');
     for(const [,n] of byType(encoder)){
       for(const port of ['images.image_1','images.image_2','vae','clip']){
         assert(Array.isArray(n.inputs[port]),name+' missing '+encoder+'.'+port);
       }
+      for(let slot=0;slot<8;slot++){
+        const [split,output]=n.inputs['images.image_'+(slot+3)];
+        assert.equal(output,slot);
+        assert.equal(prompt[split].class_type,'BISecondaryReferenceSlots');
+        assert.deepEqual(prompt[split].inputs.references,[secondary,0]);
+      }
     }
     assert.equal(byType('BICachedGeneratedFace').length,6);
     for(const [,n] of byType('BICachedGeneratedFace')){
+      assert.deepEqual(n.inputs.secondary,[secondary,0]);
       assert.equal(n.inputs.mask_mode,'foreground',name+' '+n.inputs.face_id);
       const matte=prompt[n.inputs.mask[0]];
       assert.equal(matte.class_type,'RemoveBackground');
@@ -209,8 +229,31 @@ try{
       await writeFile(join(inputDir,'reference.png'),await readFile(join(inputDir,'px.png')));
       await freshPage();
     }
-    const prompt=await compile(name);
-    if(name.startsWith('07')){
+    const prompt=await compile(name,null,name.startsWith('10')?manual.manifest.asset_id:undefined);
+    if (name.startsWith('02') || name.startsWith('03')) {
+      const edits = await page.evaluate(async () => {
+        const tab = window.app.extensionManager.getSidebarTabs().find(t => t.id === 'box-impostor-workflow');
+        const host = document.createElement('div');
+        document.body.append(host);
+        try {
+          tab.render(host);
+          const compiled = () => window.app.graphToPrompt().then(p => p.output);
+          const before = await compiled();
+          [...host.querySelectorAll('button')].find(b => b.textContent.startsWith('+Z のみ')).click();
+          const after = await compiled();
+          const dirty = [...host.querySelectorAll('section')].filter(s => s.textContent.includes('Dirty'));
+          return {dirty: dirty.map(s => s.querySelector('strong').textContent),
+            changed: Object.keys(before).filter(id => JSON.stringify(before[id].inputs) !== JSON.stringify(after[id].inputs))
+              .map(id => after[id].class_type)};
+        } finally { tab.destroy(); host.remove(); }
+      });
+      assert.deepEqual(edits, {dirty: ['+Z','Box Impostor'], changed: ['PrimitiveInt']});
+    }
+    if(name.startsWith('10')){
+      const {manifest,prompt_id}=await queue(prompt);
+      assert.equal(manifest.asset_id,manual.manifest.asset_id);
+      proof.executed.push({workflow:name,prompt_id,asset:manifest.asset_id});
+    }else if(name.startsWith('07')){
       const {prompt_id}=await queue(prompt);
       proof.executed.push({workflow:name,prompt_id,image:'rendered-box.png'});
     }else if(name.startsWith('09')){

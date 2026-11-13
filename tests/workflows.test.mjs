@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const names=[
   '01_box_from_glb','02_box_from_reference_qwen21','03_box_from_reference_h3',
-  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision'
+  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision','10_material_from_saved_box'
 ];
 const faces=['+X','-X','+Y','-Y','+Z','-Z'];
 const graph = async name => JSON.parse(await readFile(new URL('../workflows/'+name+'.json',import.meta.url),'utf8'));
@@ -50,6 +50,14 @@ function validate(g){
 for(const name of names)test(name+' is a closed, typed native GUI workflow',async()=>{
   const g=await graph(name);
   validate(g);
+  if(/^(02|03|10)/.test(name)){
+    const material=nodesOf(g,'BIGenerateFaceMaterials')[0];
+    assert.deepEqual(material.widgets_values,['keep','all',0,2048]);
+    const source=nodesOf(g,name.startsWith('10')?'BILoadBox':'BIBakeBox')[0];
+    assert.equal(upstream(g,material,'asset').from,source.id);
+    for(const type of ['BIPreviewBox','BISaveBox'])assert.equal(upstream(g,nodesOf(g,type)[0],'asset').from,material.id);
+    if(name.startsWith('10'))return;
+  }
   if(name.startsWith('09')){
     const [rev]=nodesOf(g,'BIRebakeProxyRevision');
     assert.equal(upstream(g,rev,'asset').from,nodesOf(g,'BILoadBox')[0].id);
@@ -63,14 +71,17 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
     const cond=one('TripoSplatConditioning'),sample=one('KSampler');
     const decoder=one('VAEDecodeTripoSplat'),cache=one('BICachedTripoSplat');
     const align=one('TransformSplat'),guide=one('BITripoSplatGuide');
+    const file=one('SplatToFile3D'), orbit=one('PreviewGaussianSplat');
     for(const [node,input,source,slot] of [
       [crop,'image',ref,0],[crop,'mask',ref,1],[cond,'image',crop,0],
       [sample,'latent_image',cond,2],[decoder,'samples',sample,0],
       [cache,'reference',ref,2],[cache,'splat',decoder,0],[align,'splat',cache,0],
       [guide,'splat',align,0],[guide,'guides',one('BIMakeSixGuides'),6],
-      [one('PreviewImage'),'images',guide,0],[one('PreviewAny'),'source',guide,2]
+      [one('PreviewImage'),'images',guide,0],[one('PreviewAny'),'source',guide,2],
+      [file,'splat',align,0],[orbit,'model_3d',file,0]
     ])assert.deepEqual(upstream(g,node,input),{from:source.id,slot});
     assert.deepEqual(guide.widgets_values,['+Z','canonical_box']);
+    assert.deepEqual(file.widgets_values,['ply']);
     return;
   }
   if(name.startsWith('07')){
@@ -133,6 +144,13 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
   const shared=(port)=>new Set(gen.map(n=>JSON.stringify(upstream(g,n,port)))).size;
   assert.equal(shared('model'),1);assert.equal(shared('vae'),1);assert.equal(shared('clip'),1);
   const encoder=nodesOf(sg,isQ?'TextEncodeQwenImage21':'MiniMaxH3ImageConditioning')[0];
+  const [secondary]=nodesOf(g,'BISecondaryReferences');
+  assert.deepEqual(secondary.widgets_values,['']);
+  assert(gen.every(n=>upstream(g,n,'secondary').from===secondary.id));
+  const [slots]=nodesOf(sg,'BISecondaryReferenceSlots');
+  assert.equal(sg.inputs[upstream(sg,slots,'references').slot].name,'secondary');
+  for(let i=0;i<8;i++)assert.deepEqual(upstream(sg,encoder,'images.image_'+(i+3)),{from:slots.id,slot:i});
+  assert(nodesOf(g,'BICachedGeneratedFace').every(n=>upstream(g,n,'secondary').from===secondary.id));
   for(const [slot,name] of [['images.image_1',isQ?'reference':'guide'],['images.image_2',isQ?'guide':'reference']]){
     const u=upstream(sg,encoder,slot);
     if(isQ){assert.equal(u.from,-10);assert.equal(sg.inputs[u.slot].name,name);}
@@ -170,7 +188,7 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
     assert.equal(upstream(g,generator,'reference').from,canvas.id);
     assert.equal(upstream(g,generator,'reference').slot,0);
     assert.equal(upstream(g,canvas,'guide').slot,i);
-    assert.deepEqual(canvas.widgets_values,[faces[i],isQ?1024:2048]);
+    assert.deepEqual(canvas.widgets_values,[faces[i],2048]);
     assert.equal(upstream(g,n,'canvas').from,canvas.id);
     assert.deepEqual(upstream(g,generator,'seed'),upstream(g,n,'seed'));
     const mask=g.nodes.find(z=>z.id===upstream(g,n,'mask').from);

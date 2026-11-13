@@ -106,7 +106,7 @@ def run(comfy, output):
             viewer_path = first["3"]["box_impostor"][0]
             manifest_path = viewer_path.split("?manifest=",1)[1]
             baseline = json.loads(request(manifest_path))
-            check_splat(queue, node, inputs, output, fixture.name, baseline)
+            check_splat(queue, node, inputs, output, fixture.name, baseline, request)
             assert len(request(viewer_path)) > 1000
             zipped = queue({
                 '1': node('BILoadBox', source='fixture'),

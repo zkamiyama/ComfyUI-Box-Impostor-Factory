@@ -25,7 +25,7 @@ def write_splat_fixture(inputs):
     Image.new('RGBA', (32, 32), (255, 255, 255, 255)).save(inputs / 'splat-viewport.png')
 
 
-def check_splat(queue, node, inputs, output, fixture_name, manifest):
+def check_splat(queue, node, inputs, output, fixture_name, manifest, request):
     r = manifest['resolution']
     png = 'splat-viewport.png'
     prompt = {
@@ -36,12 +36,24 @@ def check_splat(queue, node, inputs, output, fixture_name, manifest):
         '4': node('File3DToSplat', model_3d=['3', 6]),
     }
     faces = list(manifest['faceOrder'])
+    prompt['17'] = node('TransformSplat', splat=['4', 0], translate_x=.1, translate_y=0., translate_z=0.,
+                        rotate_x=0., rotate_y=0., rotate_z=0., scale_x=1., scale_y=1., scale_z=1.)
+    prompt['18'] = node('SplatToFile3D', splat=['17', 0], format='ply')
+    prompt['19'] = node('PreviewGaussianSplat', model_3d=['18', 0], viewport_state='', width=512, height=512)
     for i, face_id in enumerate(faces):
         guide, save = str(2*i+5), str(2*i+6)
         prompt[guide] = node('BITripoSplatGuide', splat=['4', 0], guides=['2', 6],
                              face_id=face_id, coordinate_space='canonical_box')
         prompt[save] = node('SaveImage', images=[guide, 0], filename_prefix='native-splat/' + str(i))
     outputs = queue(prompt)
+    from urllib.parse import urlencode
+    preview = outputs['19']['3d'][0]
+    assert preview['type'] == 'temp' and preview['filename'].endswith('.ply')
+    header, payload = request('/view?' + urlencode(preview)).split(b'end_header\n', 1)
+    assert b'element vertex 2\n' in header and b'property float f_dc_0' in header
+    count = len([line for line in header.splitlines() if line.startswith(b'property float ')])
+    xyz = np.frombuffer(payload, '<f4').reshape(2, count)[:, :3]
+    np.testing.assert_allclose(xyz, POINTS * [1, -1, -1] + [.1, 0, 0], atol=2e-6)
     reports = []
     for i, face_id in enumerate(faces):
         path = outputs[str(2*i+6)]['images'][0]

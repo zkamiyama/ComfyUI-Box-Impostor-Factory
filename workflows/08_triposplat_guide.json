@@ -597,7 +597,8 @@
           "name": "splat",
           "type": "SPLAT",
           "links": [
-            19
+            19,
+            24
           ]
         }
       ],
@@ -847,6 +848,143 @@
       },
       "widgets_values": [],
       "title": "Compare with mesh silhouette and relative depth"
+    },
+    {
+      "id": 20,
+      "type": "SplatToFile3D",
+      "pos": [
+        2350,
+        950
+      ],
+      "size": [
+        270,
+        104
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "splat",
+          "type": "SPLAT",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model_3d",
+          "type": "FILE_3D_SPLAT_ANY",
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SplatToFile3D"
+      },
+      "widgets_values": [
+        "ply"
+      ],
+      "title": "Serialize aligned 3DGS"
+    },
+    {
+      "id": 21,
+      "type": "PreviewGaussianSplat",
+      "pos": [
+        2690,
+        950
+      ],
+      "size": [
+        460,
+        470
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model_3d",
+          "type": "FILE_3D_SPLAT_ANY,FILE_3D_PLY,FILE_3D_SPLAT,FILE_3D_SPZ,FILE_3D_KSPLAT",
+          "link": 25
+        },
+        {
+          "name": "model_3d_info",
+          "type": "LOAD3D_MODEL_INFO",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "camera_info",
+          "type": "LOAD3D_CAMERA",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "viewport_state",
+          "type": "LOAD_3D",
+          "link": null,
+          "widget": {
+            "name": "viewport_state"
+          }
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model_3d",
+          "type": "FILE_3D_SPLAT_ANY",
+          "links": []
+        },
+        {
+          "name": "model_3d_info",
+          "type": "LOAD3D_MODEL_INFO",
+          "links": []
+        },
+        {
+          "name": "camera_info",
+          "type": "LOAD3D_CAMERA",
+          "links": []
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewGaussianSplat"
+      },
+      "widgets_values": [
+        "",
+        1024,
+        1024
+      ],
+      "title": "Orbit aligned 3DGS",
+      "widgets_values_named": {
+        "viewport_state": "",
+        "width": 1024,
+        "height": 1024
+      }
     }
   ],
   "links": [
@@ -1033,6 +1171,22 @@
       19,
       0,
       "STRING"
+    ],
+    [
+      24,
+      14,
+      0,
+      20,
+      0,
+      "SPLAT"
+    ],
+    [
+      25,
+      20,
+      0,
+      21,
+      0,
+      "FILE_3D_SPLAT_ANY"
     ]
   ],
   "groups": [],
@@ -1047,6 +1201,6 @@
     }
   },
   "version": 0.4,
-  "last_node_id": 19,
-  "last_link_id": 23
+  "last_node_id": 21,
+  "last_link_id": 25
 }

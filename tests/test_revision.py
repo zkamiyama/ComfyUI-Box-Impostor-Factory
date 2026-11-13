@@ -70,7 +70,11 @@ class RevisionTests(unittest.TestCase):
         data[..., 3] = 0
         data[1:7, 1:7, 3] = 1
         manual = faces.compose(self.key, faces.align({'+Z': faces.save_view(data)}, self.key, .99, .1, .1))
-        parent_map = store.validate(store.asset_dir(manual), manual)['textures']['colorMap']
+        from box_nodes.face_material import apply_face_materials
+        manual = apply_face_materials(manual, {'+Z': {'rma': data[None, ..., :3], 'packing': 'RM'}})
+        parent = store.validate(store.asset_dir(manual), manual)
+        self.assertEqual(parent['maps'], ['roughness', 'metalness'])
+        parent_map = parent['textures']['colorMap']
         with patch.object(store, 'baseline', return_value=self.baked_key) as bake:
             revised, report = RebakeProxyRevision().revise(manual, self.proxy, 'webgl2')
             bake.assert_called_once_with(self.proxy, 8, 'webgl2', ())

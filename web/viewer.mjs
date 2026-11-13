@@ -438,6 +438,7 @@ async function run() {
     stage.style.backgroundColor = value==='checker' ? '' : value;
   };
   el('light').oninput=rotateLight;
+  if (params.get('mode') === 'proxy') el('mode').value = 'proxy';
   rotateLight(); placeCamera(true); modeChanged();
   const faceReports=Object.values(manifest.faces||{}).map(f=>f.edit?.status);
   const fallback=faceReports.filter(s=>s==='fallback').length;

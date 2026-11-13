@@ -1,0 +1,70 @@
+import json
+from contextlib import nullcontext
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import Mock, patch
+
+import numpy as np
+
+from box_nodes import canvas, faces, material_pipeline as pipeline, store
+from test_nodes import fixture
+
+
+class MaterialPipelineTests(unittest.TestCase):
+    def test_reprojects_maps_through_the_same_crop_and_registration_as_appearance(self):
+        rng = np.random.default_rng(581)
+        source = rng.random((32, 32, 4), dtype='f4')
+        source[..., 3] = 0
+        source[9:20, 6:24, 3] = 1
+        crop = {'version': 1, 'size': 32, 'faceId': '+X', 'guideRect': [0, 4, 32, 24]}
+        guide = np.zeros((24, 24), 'f4')
+        guide[8:20, 8:22] = 1
+        aligned, report = faces.align_one(canvas.undo_guide_canvas(source, crop), guide, 0, 1, 1)
+        self.assertEqual(report['status'], 'accepted')
+        self.assertNotEqual(report['registration']['centerShiftYX'], [0, 0])
+        report['guideCanvas'] = crop
+        albedo, _ = pipeline.register_estimates(source[None], source[None], source, report)
+        linear = np.where(albedo[0] <= .04045, albedo[0] / 12.92, ((albedo[0] + .055) / 1.055) ** 2.4)
+        mask = aligned[..., 3] > 0
+        np.testing.assert_allclose(linear[mask], aligned[..., :3][mask], atol=1e-6)
+
+    def test_batch_reuses_single_face_and_replacement_invalidates_just_that_face(self):
+        root = Path(self.enterContext(tempfile.TemporaryDirectory()))
+        self.enterContext(patch.object(store, 'root', return_value=root))
+        self.enterContext(patch.dict(sys.modules, torch=SimpleNamespace(from_numpy=lambda value: value)))
+        identity = self.enterContext(patch.object(pipeline, 'model_identity', return_value='weights-v1'))
+        node = pipeline.GenerateFaceMaterials()
+        base = 'a' * 64
+        fixture(root / base, base)
+        self.assertEqual(node.generate(base, 'keep'), (base,))
+        identity.assert_not_called()
+        with self.assertRaisesRegex(ValueError, 'No accepted'):
+            node.generate(base, 'marigold', '+X')
+        original = np.zeros((32, 32, 4), dtype='f4')
+        original[4:-4, 4:-4] = (.8, .3, .5, 1)
+        ref = faces.save_view(original)
+        box = faces.compose(base, faces.align(dict.fromkeys(('+X', '-Z'), ref), base, .85, .25, .25))
+        infer = Mock(side_effect=lambda image, **kw: (image, image))
+        loader = self.enterContext(patch.object(pipeline.material_iid, 'loaded_estimator', create=True,
+                                                side_effect=lambda: nullcontext(infer)))
+        one, = node.generate(box, 'marigold', '+X')
+        self.assertEqual(infer.call_count, 1)
+        self.assertEqual(infer.call_args.args[0].shape, (1, 32, 32, 3))
+        both, = node.generate(one, 'marigold')
+        self.assertEqual(infer.call_count, 2)
+        self.assertEqual(node.generate(both, 'marigold'), (both,))
+        self.assertEqual(infer.call_count, 2)
+        self.assertEqual(loader.call_count, 2)
+        original[..., 0] = .15
+        changed = faces.compose(both, faces.align({'+X': faces.save_view(original)}, both, .85, .25, .25))
+        parent = store.validate(root / changed, changed)
+        self.assertNotIn('materialEdit', parent['faces']['+X'])
+        self.assertEqual(parent['faces']['-Z']['materialEdit']['albedo']['provider'], 'marigold')
+        final, = node.generate(changed, 'marigold')
+        self.assertEqual(infer.call_count, 3)
+        manifest = json.loads((root / final / 'manifest.json').read_text())
+        self.assertEqual(manifest['maps'], ['roughness', 'metalness'])
+        self.assertEqual(manifest['faces']['-Z']['materialEdit'], parent['faces']['-Z']['materialEdit'])

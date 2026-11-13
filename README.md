@@ -94,16 +94,41 @@ bash scripts/verify_cpu_only.sh
 | ファイル | 入力と使い方 |
 |---|---|
 | [01　GLBからBox](workflows/01_box_from_glb.json) | 外部リソースを内包するGLB。モデルの重みは不要。 |
-| [02　参照画像からQwen](workflows/02_box_from_reference_qwen21.json) | 元画像を1枚指定する。Pixal3Dのテクスチャ付きGLBと6面ガイドを作り、元画像と各ガイドをQwen＋AnyAngleへ接続する。 |
+| [02　参照画像からQwen](workflows/02_box_from_reference_qwen21.json) | Primaryを1枚指定する。Pixal3Dはこの画像からGLBと6面ガイドを作る。Qwenの各面にはPrimaryとガイドに加えてSecondaryも渡せる。 |
 | [03　参照画像からH3](workflows/03_box_from_reference_h3.json) | H3専用の分岐を使用する。共有の切り替えで、ガイドを編集する条件と元画像を編集する条件を比較できる。同じ面・seedで試す。 |
 | [04　手動6面](workflows/04_manual_six_faces.json) | `input/` のGLBと `px.png, nx.png, py.png, ny.png, pz.png, nz.png` を指定する。前景アルファのあるPNGを使う。1面だけを適用するときは、ほかの入力枝を `BI FaceInputs` から外す。 |
 | [05　Pixal3DからBox](workflows/05_pixal3d_baseline.json) | 参照画像から得たプロキシのベース色を使う。画像編集モデルを読み込まずに形状とカメラを確認できる。 |
 | [06　保存済みBoxの1面を交換](workflows/06_replace_saved_face.json) | 現在のアセットIDまたは書き出し名と、交換したい面のPNGを指定する。初期接続は＋X。別の面に差すときは `BI FaceInputs` の接続先を変える。他の5面の色と幾何マップを保持する。 |
 | [07　保存済みBoxを透過PNGにする](workflows/07_render_saved_box.json) | 先頭の `BI LoadBox` に自分のアセットIDまたは書き出し名を指定する。初期値は `fixture`。標準ノードで `IMAGE` と `MASK` を結合し、`output/BoxImpostor/` に透過PNGを保存する。 |
-| [08　TripoSplatの追加ガイド](workflows/08_triposplat_guide.json) | 同じ物体の参照画像とGLBを指定し、位置を合わせたスプラットを選んだ面に投影する。デコードしたガウスのパラメータを保存し、別の面から見るときも再利用する。 |
+| [08　TripoSplatの追加ガイド](workflows/08_triposplat_guide.json) | 同じ物体の参照画像とGLBを指定し、位置を合わせたスプラットを選んだ面に投影する。位置合わせ後の3DGSを `Preview Splat` で回転して確認できる。デコードしたガウスのパラメータは別の面から見るときも再利用する。 |
 | [09　修正GLBで形状を更新](workflows/09_rebake_proxy_revision.json) | 元のアセットIDまたは書き出し名と、同じ原点・単位・軸で編集したGLBを指定する。初期値は `fixture` と `corrected.glb`。新しいBoxと、修正前後の計測結果を出力する。 |
+| [10　保存済みBoxの材質を推定](workflows/10_material_from_saved_box.json) | 生成した面を含むBoxのアセットIDまたは書き出し名を指定する。`PBR from generated faces` で推定方法と対象面を選ぶ。 |
+
+02・03では `BI SecondaryReferences` に `ComfyUI/input/` からの相対パスを1行に1枚、最大8枚入力する。Secondaryは外観用で、未指定でも実行できる。6面の生成サイズは両テンプレートとも初期値が2048×2048。出力するBoxの1面の解像度は別に指定する。
 
 02・03・05のモデルファイル名は各ローダーに設定済み。必要な重みと配置は公式テンプレートに従う。Qwenの第1画像は元画像、第2画像はガイド。LoRAはモデル側だけに適用する。H3では第1画像が編集対象になる。ガイドは余白を加えてモデルの正方形入力へ収める。生成後は同じ変換を逆にたどり、ガイドの画角に戻す。面別seedを変更すると、その面の生成からやり直せる。[Pixal3D](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/3d_pixal3d_trellis2_image_to_model.json) · [Qwen](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/image_qwen_image_2_1_image_edit.json) · [AnyAngle](https://huggingface.co/lilylilith/QI_2.1_AnyAngle) · [H3](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/image_minimax_h3_image_edit.json)
+
+ComfyUIのサイドバーで「Box Impostor」を開くと、元画像、補助画像、モデル、材質の設定と6方向のプレビューが並ぶ。再生成したい面のボタンでその面のseedを変え、通常のキューで実行する。入力や3D生成のseedを変えると、更新が必要な処理に `Dirty` と表示される。
+
+`BI BakeBox` の `depth_source` は初期値が `geometry`。メッシュの座標を6方向から直接サンプリングする。`rgb_guided` を選ぶと、採用した面画像の色と元の深度を使い、色の境界や深度の段差をまたがない範囲で表面を平滑化する。補正した頂点から法線・区間・占有範囲をベイクし直し、6面を再度位置合わせする。この処理が変更できるのは既存メッシュの表面で、画像にだけ描かれた穴やパーツを追加する機能はない。
+
+### 生成した面に合わせて材質を推定する
+
+02・03・10の `PBR from generated faces` で `source` を選ぶ。`face` は位置合わせを通過した全方向（`all`）か、`+Z` などの1方向を指定する。
+
+| source | ベースカラーと材質の扱い |
+|---|---|
+| `keep`（初期値） | 入力Boxの色と材質を使う。GLBのroughness・metalness・AOをベイクするには、上流のガイドとベイクの `material_maps` を `material` にそろえる。 |
+| `qwen` / `h3` | 各モデルの画像編集を2回実行し、照明を除いた色と、roughness・metalness・AOの3チャンネル画像を生成する。出力の確認にはビューアの材質マップ表示を使う。 |
+| `marigold` | Marigold IID Appearanceが色・roughness・metalnessを推定する。AOはGLBからベイクした値を使う。ベイクしていない場合は遮蔽を加えない。 |
+
+元の生成画像を読み込み、採用時と同じ切り抜きと位置合わせをマップにも適用する。面画像を交換した場合は、その面の推定材質を破棄する。別の面の推定結果は次の実行で再利用できる。Qwen・H3の材質編集は初期値2048で、Marigoldの推定は長辺768画素。結果は指定したBox解像度で保存する。
+
+CLIでは `--material-source qwen --material-size 512` のように材質編集の解像度を指定できる。実行前のチェックに、選択した材質モデルの不足ファイルと追加Pythonパッケージが表示される。
+
+歩行犬の＋Z面を256角で出力した実機比較では、Qwenは白い毛の一部をピンクに変え、H3では暗い帯が出た。Marigoldは白い毛の色を保ったものの、金属度を高めに推定した。保存したマップはビューアでチャンネル別に確認できる。[元画像と推定マップの比較](docs/verification/walking-dog-material-estimates.png)
+
+Marigoldを使うにはComfyUIのPython環境に `diffusers`、`transformers`、`accelerate` を入れ、モデル一式を `ComfyUI/models/diffusers/marigold-iid-appearance-v1-1/` に置く。モデル直下に `model_index.json` が必要になる。[公式モデルカード](https://huggingface.co/prs-eth/marigold-iid-appearance-v1-1)
 
 ## BoxをIMAGEとしてレンダリング
 

@@ -66,7 +66,7 @@ def check_workflows(registry, directory):
                     options = spec[1] if len(spec) > 1 and isinstance(spec[1], dict) else {}
                     # For example IO.Color.Input is a socketless widget. The official
                     # Pixal graph stores background='#000000' in widgets_values_named.
-                    if options.get('socketless') or t in ('COLOR', 'COLORS'):
+                    if options.get('socketless') or t in ('COLOR', 'COLORS', 'LOAD_3D'):
                         named = node.get('widgets_values_named') or {}
                         if k not in named and 'default' not in options:
                             problems.append(f'{where} lacks widget value/default for {k}')

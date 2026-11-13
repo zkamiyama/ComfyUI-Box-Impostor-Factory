@@ -26,6 +26,21 @@ def register_routes():
     from server import PromptServer
     routes = PromptServer.instance.routes
 
+    @routes.get('/box-impostor/material-providers/{source:keep|qwen|h3|marigold}')
+    async def material_provider(request):
+        from .material_pipeline import material_availability
+        return web.json_response(material_availability(request.match_info['source']), headers={'Cache-Control': 'no-store'})
+
+    @routes.get('/box-impostor/face-previews/{digest}.png')
+    async def face_preview(request):
+        digest = request.match_info['digest']
+        if not store.ID.fullmatch(digest):
+            raise web.HTTPNotFound()
+        path = store.contained(store.root() / '.stages' / 'faces', digest + '/source.png')
+        if not path.is_file():
+            raise web.HTTPNotFound()
+        return web.FileResponse(path, headers={'Content-Type': 'image/png', 'X-Content-Type-Options': 'nosniff'})
+
     @routes.get('/box-impostor/assets/{asset_id}/{relative:.+}')
     async def asset(request):
         try:

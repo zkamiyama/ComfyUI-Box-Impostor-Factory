@@ -1,8 +1,8 @@
 {
   "id": "87001b0a-bb1a-594c-be9a-b7f2bec268ea",
-  "revision": 0,
-  "last_node_id": 46,
-  "last_link_id": 132,
+  "revision": 1,
+  "last_node_id": 48,
+  "last_link_id": 145,
   "nodes": [
     {
       "id": 1,
@@ -40,7 +40,8 @@
       "widgets_values": [
         "reference.png",
         "image"
-      ]
+      ],
+      "title": "Primary reference"
     },
     {
       "id": 2,
@@ -652,7 +653,7 @@
       ],
       "size": [
         265,
-        199
+        221
       ],
       "flags": {},
       "order": 12,
@@ -692,6 +693,11 @@
           "name": "ref_first",
           "type": "BOOLEAN",
           "link": 19
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 134
         }
       ],
       "outputs": [
@@ -794,7 +800,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 15,
@@ -832,6 +838,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 27
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 135
         }
       ],
       "outputs": [
@@ -936,7 +947,7 @@
       ],
       "size": [
         265,
-        199
+        221
       ],
       "flags": {},
       "order": 17,
@@ -976,6 +987,11 @@
           "name": "ref_first",
           "type": "BOOLEAN",
           "link": 37
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 136
         }
       ],
       "outputs": [
@@ -1078,7 +1094,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 20,
@@ -1116,6 +1132,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 45
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 137
         }
       ],
       "outputs": [
@@ -1220,7 +1241,7 @@
       ],
       "size": [
         265,
-        199
+        221
       ],
       "flags": {},
       "order": 22,
@@ -1260,6 +1281,11 @@
           "name": "ref_first",
           "type": "BOOLEAN",
           "link": 55
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 138
         }
       ],
       "outputs": [
@@ -1362,7 +1388,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 25,
@@ -1400,6 +1426,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 63
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 139
         }
       ],
       "outputs": [
@@ -1504,7 +1535,7 @@
       ],
       "size": [
         265,
-        199
+        221
       ],
       "flags": {},
       "order": 27,
@@ -1544,6 +1575,11 @@
           "name": "ref_first",
           "type": "BOOLEAN",
           "link": 73
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 140
         }
       ],
       "outputs": [
@@ -1646,7 +1682,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 30,
@@ -1684,6 +1720,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 81
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 141
         }
       ],
       "outputs": [
@@ -1788,7 +1829,7 @@
       ],
       "size": [
         265,
-        199
+        221
       ],
       "flags": {},
       "order": 32,
@@ -1828,6 +1869,11 @@
           "name": "ref_first",
           "type": "BOOLEAN",
           "link": 91
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 142
         }
       ],
       "outputs": [
@@ -1930,7 +1976,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 35,
@@ -1968,6 +2014,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 99
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 143
         }
       ],
       "outputs": [
@@ -2072,7 +2123,7 @@
       ],
       "size": [
         265,
-        199
+        221
       ],
       "flags": {},
       "order": 37,
@@ -2112,6 +2163,11 @@
           "name": "ref_first",
           "type": "BOOLEAN",
           "link": 109
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 144
         }
       ],
       "outputs": [
@@ -2214,7 +2270,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 40,
@@ -2252,6 +2308,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 117
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 145
         }
       ],
       "outputs": [
@@ -2419,8 +2480,7 @@
           "name": "BOX_IMPOSTOR",
           "type": "BOX_IMPOSTOR",
           "links": [
-            128,
-            129
+            133
           ]
         }
       ],
@@ -2433,10 +2493,52 @@
       ]
     },
     {
+      "id": 47,
+      "type": "BIGenerateFaceMaterials",
+      "title": "PBR from generated faces",
+      "pos": [
+        4595,
+        55
+      ],
+      "size": [
+        295,
+        164
+      ],
+      "flags": {},
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "BOX_IMPOSTOR",
+          "link": 133
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_IMPOSTOR",
+          "type": "BOX_IMPOSTOR",
+          "links": [
+            128,
+            129
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIGenerateFaceMaterials"
+      },
+      "widgets_values": [
+        "keep",
+        "all",
+        0,
+        2048
+      ]
+    },
+    {
       "id": 45,
       "type": "BIPreviewBox",
       "pos": [
-        4595,
+        4945,
         55
       ],
       "size": [
@@ -2444,7 +2546,7 @@
         89
       ],
       "flags": {},
-      "order": 44,
+      "order": 45,
       "mode": 0,
       "inputs": [
         {
@@ -2474,7 +2576,7 @@
       "id": 46,
       "type": "BISaveBox",
       "pos": [
-        4595,
+        4945,
         215
       ],
       "size": [
@@ -2482,7 +2584,7 @@
         89
       ],
       "flags": {},
-      "order": 45,
+      "order": 46,
       "mode": 0,
       "inputs": [
         {
@@ -2500,6 +2602,49 @@
       ],
       "properties": {
         "Node name for S&R": "BISaveBox"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 48,
+      "type": "BISecondaryReferences",
+      "title": "Secondary appearance references (optional)",
+      "pos": [
+        0,
+        620
+      ],
+      "size": [
+        315,
+        142
+      ],
+      "flags": {},
+      "order": 47,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BOX_SECONDARY_REFERENCES",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "links": [
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BISecondaryReferences"
       },
       "widgets_values": [
         ""
@@ -3525,7 +3670,7 @@
     ],
     [
       128,
-      44,
+      47,
       0,
       45,
       0,
@@ -3533,7 +3678,7 @@
     ],
     [
       129,
-      44,
+      47,
       0,
       46,
       0,
@@ -3562,6 +3707,110 @@
       6,
       4,
       "FLOAT"
+    ],
+    [
+      133,
+      44,
+      0,
+      47,
+      0,
+      "BOX_IMPOSTOR"
+    ],
+    [
+      134,
+      48,
+      0,
+      13,
+      7,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      135,
+      48,
+      0,
+      16,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      136,
+      48,
+      0,
+      18,
+      7,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      137,
+      48,
+      0,
+      21,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      138,
+      48,
+      0,
+      23,
+      7,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      139,
+      48,
+      0,
+      26,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      140,
+      48,
+      0,
+      28,
+      7,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      141,
+      48,
+      0,
+      31,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      142,
+      48,
+      0,
+      33,
+      7,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      143,
+      48,
+      0,
+      36,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      144,
+      48,
+      0,
+      38,
+      7,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      145,
+      48,
+      0,
+      41,
+      6,
+      "BOX_SECONDARY_REFERENCES"
     ]
   ],
   "groups": [],
@@ -6220,8 +6469,8 @@
         "version": 1,
         "state": {
           "lastGroupId": 0,
-          "lastNodeId": 9,
-          "lastLinkId": 23,
+          "lastNodeId": 10,
+          "lastLinkId": 32,
           "lastRerouteId": 0
         },
         "revision": 0,
@@ -6233,7 +6482,7 @@
             -1140,
             -10,
             210,
-            228
+            252
           ]
         },
         "outputNode": {
@@ -6334,6 +6583,18 @@
               -930,
               158
             ]
+          },
+          {
+            "name": "secondary",
+            "type": "BOX_SECONDARY_REFERENCES",
+            "linkIds": [
+              24
+            ],
+            "id": "e9448564-e448-56cd-8777-23ab59dd3558",
+            "pos": [
+              -930,
+              182
+            ]
           }
         ],
         "outputs": [
@@ -6361,7 +6622,7 @@
             ],
             "size": [
               415,
-              220
+              396
             ],
             "flags": {},
             "order": 0,
@@ -6394,6 +6655,46 @@
                 "widget": {
                   "name": "prompt"
                 }
+              },
+              {
+                "name": "images.image_3",
+                "type": "IMAGE",
+                "link": 25
+              },
+              {
+                "name": "images.image_4",
+                "type": "IMAGE",
+                "link": 26
+              },
+              {
+                "name": "images.image_5",
+                "type": "IMAGE",
+                "link": 27
+              },
+              {
+                "name": "images.image_6",
+                "type": "IMAGE",
+                "link": 28
+              },
+              {
+                "name": "images.image_7",
+                "type": "IMAGE",
+                "link": 29
+              },
+              {
+                "name": "images.image_8",
+                "type": "IMAGE",
+                "link": 30
+              },
+              {
+                "name": "images.image_9",
+                "type": "IMAGE",
+                "link": 31
+              },
+              {
+                "name": "images.image_10",
+                "type": "IMAGE",
+                "link": 32
               }
             ],
             "outputs": [
@@ -6779,6 +7080,91 @@
               "Node name for S&R": "VAEDecode"
             },
             "widgets_values": []
+          },
+          {
+            "id": 10,
+            "type": "BISecondaryReferenceSlots",
+            "title": "Secondary image slots 3–10",
+            "pos": [
+              -600,
+              560
+            ],
+            "size": [
+              280,
+              193
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "references",
+                "type": "BOX_SECONDARY_REFERENCES",
+                "link": 24
+              }
+            ],
+            "outputs": [
+              {
+                "name": "image_3",
+                "type": "IMAGE",
+                "links": [
+                  25
+                ]
+              },
+              {
+                "name": "image_4",
+                "type": "IMAGE",
+                "links": [
+                  26
+                ]
+              },
+              {
+                "name": "image_5",
+                "type": "IMAGE",
+                "links": [
+                  27
+                ]
+              },
+              {
+                "name": "image_6",
+                "type": "IMAGE",
+                "links": [
+                  28
+                ]
+              },
+              {
+                "name": "image_7",
+                "type": "IMAGE",
+                "links": [
+                  29
+                ]
+              },
+              {
+                "name": "image_8",
+                "type": "IMAGE",
+                "links": [
+                  30
+                ]
+              },
+              {
+                "name": "image_9",
+                "type": "IMAGE",
+                "links": [
+                  31
+                ]
+              },
+              {
+                "name": "image_10",
+                "type": "IMAGE",
+                "links": [
+                  32
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "BISecondaryReferenceSlots"
+            },
+            "widgets_values": []
           }
         ],
         "groups": [],
@@ -6965,6 +7351,78 @@
             "origin_slot": 0,
             "target_id": -20,
             "target_slot": 0,
+            "type": "IMAGE"
+          },
+          {
+            "id": 24,
+            "origin_id": -10,
+            "origin_slot": 7,
+            "target_id": 10,
+            "target_slot": 0,
+            "type": "BOX_SECONDARY_REFERENCES"
+          },
+          {
+            "id": 25,
+            "origin_id": 10,
+            "origin_slot": 0,
+            "target_id": 1,
+            "target_slot": 5,
+            "type": "IMAGE"
+          },
+          {
+            "id": 26,
+            "origin_id": 10,
+            "origin_slot": 1,
+            "target_id": 1,
+            "target_slot": 6,
+            "type": "IMAGE"
+          },
+          {
+            "id": 27,
+            "origin_id": 10,
+            "origin_slot": 2,
+            "target_id": 1,
+            "target_slot": 7,
+            "type": "IMAGE"
+          },
+          {
+            "id": 28,
+            "origin_id": 10,
+            "origin_slot": 3,
+            "target_id": 1,
+            "target_slot": 8,
+            "type": "IMAGE"
+          },
+          {
+            "id": 29,
+            "origin_id": 10,
+            "origin_slot": 4,
+            "target_id": 1,
+            "target_slot": 9,
+            "type": "IMAGE"
+          },
+          {
+            "id": 30,
+            "origin_id": 10,
+            "origin_slot": 5,
+            "target_id": 1,
+            "target_slot": 10,
+            "type": "IMAGE"
+          },
+          {
+            "id": 31,
+            "origin_id": 10,
+            "origin_slot": 6,
+            "target_id": 1,
+            "target_slot": 11,
+            "type": "IMAGE"
+          },
+          {
+            "id": 32,
+            "origin_id": 10,
+            "origin_slot": 7,
+            "target_id": 1,
+            "target_slot": 12,
             "type": "IMAGE"
           }
         ],

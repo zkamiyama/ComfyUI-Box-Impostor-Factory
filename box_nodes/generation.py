@@ -131,7 +131,7 @@ def lineage(prompt, node_id, sockets=('image', 'mask'), *, legacy=False):
 
 
 @migrate_stage('generated', 'result.json')
-def generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas=None, *, legacy=False):
+def generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas=None, secondary=None, *, legacy=False):
     if face_id not in store.FACES or backend not in MODES:
         raise ValueError('Unknown face or model backend.')
     recipe_data = json.loads(recipe or '{}')
@@ -146,21 +146,23 @@ def generation_request(guides, reference, face_id, backend, recipe, seed, mask_m
         if canvas.get('faceId') != face_id:
             raise ValueError('Generated image and canvas refer to different faces.')
         source['canvas'] = canvas
+    if secondary and secondary['sha256']:
+        source['secondaryReferenceSha256'] = secondary['sha256']
     digest = store.key('generated-face-v2', source)
     return digest, source
 
 
 class CachedGeneratedFace:
     CATEGORY = 'Box Impostor'
-    FUNCTION = 'resolve'
+    FUNCTION = 'resolve_with_preview'
     RETURN_TYPES = ('BOX_FACE',)
 
     @classmethod
     def INPUT_TYPES(cls):
-        return {'required': {'guides': ('BOX_GUIDES',), 'reference': ('BOX_REFERENCE',), 'face_id': (list(store.FACES),), 'backend': (list(MODES),), 'recipe': ('STRING', {'default': '{}', 'multiline': True}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 0xffffffffffffffff}), 'mask_mode': (faces.MASK_MODES,), 'image': ('IMAGE', {'lazy': True})}, 'optional': {'mask': ('MASK', {'lazy': True}), 'canvas': ('BOX_CANVAS',)}, 'hidden': {'prompt': 'PROMPT', 'unique_id': 'UNIQUE_ID'}}
+        return {'required': {'guides': ('BOX_GUIDES',), 'reference': ('BOX_REFERENCE',), 'face_id': (list(store.FACES),), 'backend': (list(MODES),), 'recipe': ('STRING', {'default': '{}', 'multiline': True}), 'seed': ('INT', {'default': 0, 'min': 0, 'max': 0xffffffffffffffff}), 'mask_mode': (faces.MASK_MODES,), 'image': ('IMAGE', {'lazy': True})}, 'optional': {'mask': ('MASK', {'lazy': True}), 'canvas': ('BOX_CANVAS',), 'secondary': ('BOX_SECONDARY_REFERENCES',)}, 'hidden': {'prompt': 'PROMPT', 'unique_id': 'UNIQUE_ID'}}
 
-    def check_lazy_status(self, guides, reference, face_id, backend, recipe, seed, mask_mode, image=None, mask=None, prompt=None, unique_id=None, canvas=None):
-        digest, _ = generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas)
+    def check_lazy_status(self, guides, reference, face_id, backend, recipe, seed, mask_mode, image=None, mask=None, prompt=None, unique_id=None, canvas=None, secondary=None):
+        digest, _ = generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas, secondary)
         if (store.root() / '.stages' / 'generated' / digest / 'result.json').is_file():
             return []
         missing = ['image'] if image is None else []
@@ -170,8 +172,8 @@ class CachedGeneratedFace:
             missing.append('mask')
         return missing
 
-    def resolve(self, guides, reference, face_id, backend, recipe, seed, mask_mode, image=None, mask=None, prompt=None, unique_id=None, canvas=None):
-        digest, source = generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas)
+    def resolve(self, guides, reference, face_id, backend, recipe, seed, mask_mode, image=None, mask=None, prompt=None, unique_id=None, canvas=None, secondary=None):
+        digest, source = generation_request(guides, reference, face_id, backend, recipe, seed, mask_mode, prompt, unique_id, canvas, secondary)
         def write(stage):
             if image is None:
                 raise ValueError('Missing generated image after cache miss.')
@@ -188,3 +190,7 @@ class CachedGeneratedFace:
         if not (Path(item['path']) / 'source.npy').is_file():
             raise ValueError('Generated image cache payload is missing.')
         return (item,)
+
+    def resolve_with_preview(self, **kwargs):
+        result = self.resolve(**kwargs)
+        return {'ui': {'box_face': [result[0]['sha256']]}, 'result': result}

@@ -70,9 +70,9 @@ class ModelCanvas:
     def INPUT_TYPES(cls):
         return {'required': {'reference': ('IMAGE',), 'guide': ('IMAGE',), 'guides': ('BOX_GUIDES',),
                              'face_id': (list(store.FACES),),
-                             'size': ('INT', {'default': 1024, 'min': 32, 'max': 4096, 'step': 32})}}
+                             'size': ('INT', {'default': 2048, 'min': 32, 'max': 4096, 'step': 32})}}
 
-    def prepare(self, reference, guide, guides, face_id, size=1024):
+    def prepare(self, reference, guide, guides, face_id, size=2048):
         import torch
         if face_id not in store.FACES or type(size) is not int or size % 32 or not 32 <= size <= 4096:
             raise ValueError('Expected a valid face and a model canvas size divisible by 32.')

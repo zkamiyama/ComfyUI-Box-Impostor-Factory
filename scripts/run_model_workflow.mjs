@@ -106,11 +106,18 @@ function configureH3Denoiser(graph, selection) {
 
 // Derive the optional supplied-GLB route from the same editable model subgraph as
 // the full workflow. Keep its node and link IDs so one-face runs can reuse caches.
-export function configureEditGraph(graph, model, { mesh, size, face, faceSeed, h3ReferenceFirst, h3Denoiser } = {}) {
+export function configureEditGraph(graph, model, { mesh, size, face, faceSeed, h3ReferenceFirst, h3Denoiser, secondary } = {}) {
   const qwen = model === 'qwen';
   if (!qwen && model !== 'h3') throw new Error('An appearance workflow needs qwen or h3.');
   const canvases = graph.nodes.filter(n => n.type === 'BIModelCanvas');
   assert.equal(canvases.length, 6);
+  if (secondary !== undefined) {
+    assert(Array.isArray(secondary) && secondary.length <= 8 &&
+      secondary.every(name => typeof name === 'string' && !/[\\:\x00\r\n]/.test(name) &&
+        name.split('/').every(part => part && part !== '.' && part !== '..') && name.trim() === name),
+      'Use --secondary once per input image, up to 8 times.');
+    graph.nodes.find(n => n.type === 'BISecondaryReferences').widgets_values[0] = secondary.join('\n');
+  }
   if (h3Denoiser !== undefined) {
     assert.equal(model, 'h3', '--h3-denoiser needs h3.');
     configureH3Denoiser(graph, h3Denoiser);
@@ -210,6 +217,40 @@ export function preflight(graph, registry, input, packName) {
     ...(packName !== undefined && { pack: packName }) };
 }
 
+const materialSources = ['keep', 'qwen', 'h3', 'marigold'];
+
+export function configureFaceMaterials(graph, source = 'keep', face = 'all', size) {
+  assert(materialSources.includes(source), 'Choose material source keep, qwen, h3 or marigold');
+  assert(['all', ...directions].includes(face), 'Choose all or one direction for material estimation');
+  const nodes = graph.nodes.filter(n => n.type === 'BIGenerateFaceMaterials');
+  assert.equal(nodes.length, 1, 'Face material estimation requires a reference or saved Box workflow');
+  nodes[0].widgets_values[0] = source;
+  nodes[0].widgets_values[1] = face;
+  if (size !== undefined) {
+    assert(['qwen', 'h3'].includes(source), '--material-size requires --material-source qwen or h3.');
+    assert(Number.isSafeInteger(size) && size >= 32 && size <= 4096 && size % 32 === 0,
+      '--material-size must be a multiple of 32 from 32 through 4096.');
+    nodes[0].widgets_values[3] = size;
+  }
+}
+
+export async function preflightFaceMaterials(origin, source, report) {
+  if (source === 'keep') return;
+  const url = new URL('/box-impostor/material-providers/' + source, origin);
+  const res = await fetch(url, { signal: AbortSignal.timeout(60_000) });
+  if (res.status === 404) {
+    report.materialProvider = { source, available: false, missing: ['Update and restart Box Impostor Factory to check material model availability.'] };
+  } else {
+    if (!res.ok) throw new Error('Could not check material estimator ' + source + ' (HTTP ' + res.status + ').');
+    const status = await res.json();
+    assert(status.source === source && typeof status.available === 'boolean' &&
+      Array.isArray(status.missing) && status.missing.every(item => typeof item === 'string') &&
+      status.available === (status.missing.length === 0), 'Invalid material provider status from ComfyUI.');
+    report.materialProvider = status;
+  }
+  report.ready &&= report.materialProvider.available;
+}
+
 const materialChannels = {
   none: [], material: ['roughness', 'metalness', 'ao'], emissive: ['emissive'],
   'material+emissive': ['roughness', 'metalness', 'ao', 'emissive'],
@@ -219,7 +260,10 @@ export function checkedMaterialTextures(selection, manifest) {
   const requested = materialChannels[selection];
   assert.deepEqual(manifest.provenance.requestedMaterialMaps, requested, 'PBR bake request changed');
   // The baker omits emissive for a mesh with no emissive material.
-  const channels = requested.filter(name => name !== 'emissive' || manifest.maps.includes('emissive'));
+  const estimated = Object.values(manifest.faces ?? {}).flatMap(face => face.materialEdit?.surface?.channels ?? []);
+  const active = new Set([...requested, ...estimated]);
+  const channels = materialChannels['material+emissive'].filter(name => active.has(name)
+    && (name !== 'emissive' || manifest.maps.includes('emissive')));
   assert.deepEqual(manifest.maps, channels, 'Unexpected baked PBR channels');
   const expected = {materialMap: channels.includes('roughness'), emissiveMap: channels.includes('emissive')};
   for (const [key, present] of Object.entries(expected))
@@ -252,6 +296,14 @@ export function checkCompiled(prompt, model, report) {
     for (const n of [...byType('BIBakeBox'), ...byType('BIMakeSixGuides')])
       assert.equal(n.inputs.material_maps, report.materialMaps, 'Frontend changed the PBR bake selection');
   }
+  if (report.depthSource !== undefined)
+    assert.equal(byType('BIBakeBox')[0]?.inputs.depth_source, report.depthSource);
+  if (report.materialSource !== undefined) {
+    const [material] = byType('BIGenerateFaceMaterials');
+    assert.equal(material?.inputs.source, report.materialSource);
+    assert.equal(material.inputs.face, report.materialFace);
+    if (report.materialSize !== undefined) assert.equal(material.inputs.edit_resolution, report.materialSize);
+  }
   if (model === 'triposplat') {
     const entry = type => {
       const found = Object.entries(prompt).filter(([,n]) => n.class_type === type);
@@ -271,6 +323,10 @@ export function checkCompiled(prompt, model, report) {
     const [transform, aligned] = entry('TransformSplat');
     assert.deepEqual(aligned.inputs.splat, [cache, 0]);
     const [guide, rendered] = entry('BITripoSplatGuide');
+    const [file, serialized] = entry('SplatToFile3D');
+    assert.deepEqual(serialized.inputs.splat, [transform, 0]);
+    assert.equal(serialized.inputs.format, 'ply');
+    assert.deepEqual(entry('PreviewGaussianSplat')[1].inputs.model_3d, [file, 0]);
     assert.deepEqual(rendered.inputs.splat, [transform, 0]);
     assert.deepEqual(rendered.inputs.guides, [entry('BIMakeSixGuides')[0], 6]);
     assert.deepEqual(entry('PreviewImage')[1].inputs.images, [guide, 0]);
@@ -495,7 +551,9 @@ export function verifyOutput(model, manifest, qa, face, inputMeshSha256, faceSee
     assert.match(referenceSha ?? '', sha256, 'Missing appearance reference digest');
     assert.equal(edit.provenance?.referenceSha256, referenceSha);
     if (inputMeshSha256) assert.equal(edit.reference, 'reference/' + referenceSha + '/source.png');
-    assert.equal(edit.provenance?.guideSha256, manifest.faces[dir].guideSha256);
+    const guide = manifest.provenance?.depthRefinement
+      ? edit.provenance?.depthRefinementSourceGuideSha256 : manifest.faces[dir].guideSha256;
+    assert.equal(edit.provenance?.guideSha256, guide);
     const weight = edit.provenance.recipe.model;
     assert(Object.entries(edit.provenance.weights).some(([k, hash]) => k === 'diffusion_models/' + weight &&
       sha256.test(hash)), 'Missing appearance-model weight digest on ' + dir);
@@ -522,8 +580,8 @@ function assetURL(value, base) {
   return url;
 }
 
-function inputMeshURL(origin, mesh) {
-  const parts = mesh.split('/');
+function inputFileURL(origin, path) {
+  const parts = path.split('/');
   const filename = parts.pop();
   const url = new URL('/view', origin);
   url.search = new URLSearchParams({type: 'input', subfolder: parts.join('/'), filename});
@@ -531,14 +589,14 @@ function inputMeshURL(origin, mesh) {
 }
 
 async function inputMeshSha256(origin, mesh) {
-  const result = await response(inputMeshURL(origin, mesh));
+  const result = await response(inputFileURL(origin, mesh));
   const hash = createHash('sha256');
   for await (const chunk of result.body) hash.update(chunk);
   return hash.digest('hex');
 }
 
 async function inputMeshAvailable(origin, mesh) {
-  const result = await fetch(inputMeshURL(origin, mesh), {headers: {Range: 'bytes=0-11'}, signal: AbortSignal.timeout(60_000)});
+  const result = await fetch(inputFileURL(origin, mesh), {headers: {Range: 'bytes=0-11'}, signal: AbortSignal.timeout(60_000)});
   if (result.status === 404) return false;
   if (!result.ok) throw new Error('Mesh lookup failed: HTTP ' + result.status);
   const head = Buffer.alloc(12);
@@ -715,6 +773,7 @@ export async function run(opts) {
   }
   const size = opts.size === undefined ? undefined : Number(opts.size);
   if (!isEdit && size !== undefined) throw new Error('--size applies to qwen or h3.');
+  if (!isEdit && opts.secondary !== undefined) throw new Error('--secondary applies to qwen or h3.');
   if (opts['compact-proxy'] && (isSplat || opts.mesh !== undefined))
     throw new Error('--compact-proxy requires generated Pixal3D geometry; omit --mesh.');
   if (opts.model === 'pixal3d' && opts.mesh !== undefined) throw new Error('--mesh applies to qwen, h3 or triposplat.');
@@ -732,9 +791,21 @@ export async function run(opts) {
   const dir = await mkdtemp(join(resolve(opts.output), opts.model + '-'));
   console.log('Evidence:', dir);
   const graph = JSON.parse(await readFile(new URL('../workflows/' + name + '.json', import.meta.url), 'utf8'));
-  if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, face: opts.face, faceSeed, h3ReferenceFirst, h3Denoiser });
+  if (isEdit) configureEditGraph(graph, opts.model, { mesh: opts.mesh, size, face: opts.face, faceSeed, h3ReferenceFirst, h3Denoiser, secondary: opts.secondary });
+  if (opts['depth-source'] !== undefined) {
+    assert(isEdit && ['rgb_guided', 'geometry'].includes(opts['depth-source']), '--depth-source needs a reference workflow and geometry or rgb_guided');
+    const baker = graph.nodes.find(n => n.type === 'BIBakeBox');
+    baker.widgets_values[2] ??= 'none';
+    baker.widgets_values[3] = opts['depth-source'];
+  }
   if (opts['compact-proxy']) configureCompactProxy(graph);
   if (opts['flat-background']) configureFlatBackground(graph);
+  const materialSize = opts['material-size'] === undefined ? undefined : Number(opts['material-size']);
+  if (opts['material-source'] !== undefined || opts['material-face'] !== undefined || materialSize !== undefined) {
+    if (opts['material-face'] !== undefined && !materialSources.slice(1).includes(opts['material-source']))
+      throw new Error('--material-face requires --material-source qwen, h3 or marigold.');
+    configureFaceMaterials(graph, opts['material-source'], opts['material-face'], materialSize);
+  }
   if (opts['material-maps'] !== undefined) configureMaterialMaps(graph, opts['material-maps']);
   const image = graph.nodes.find(n => n.type === 'LoadImage');
   image.widgets_values[0] = opts.input;
@@ -746,11 +817,32 @@ export async function run(opts) {
   await jsonFile(join(dir, 'workflow.json'), graph);
   const registry = await (await response(new URL('/object_info', origin))).json();
   const report = preflight(graph, registry, opts.input, opts.pack);
+  if (opts.secondary?.length) {
+    report.secondary = opts.secondary;
+    const missing = [];
+    for (const path of opts.secondary) {
+      // LoadImage's combo may list only top-level inputs; secondary images also accept subfolders.
+      if (comboHas(registry.LoadImage?.input?.required?.image, path)) continue;
+      const result = await fetch(inputFileURL(origin, path), { method: 'HEAD', signal: AbortSignal.timeout(60_000) });
+      if (!result.ok) missing.push(path);
+    }
+    if (missing.length) {
+      report.ready = false;
+      report.missingSecondary = missing;
+    }
+  }
   if (opts['flat-background']) {
     report.flatBackground = true;
     if (!comboHas(registry.BIPrepareReference?.input?.required?.mask_mode, 'flat_background'))
       throw new Error('Update the Box Impostor nodes and restart ComfyUI to use --flat-background.');
   }
+  if (opts['material-source'] !== undefined) {
+    report.materialSource = opts['material-source'];
+    report.materialFace = opts['material-face'] ?? 'all';
+    if (materialSize !== undefined) report.materialSize = materialSize;
+    await preflightFaceMaterials(origin, report.materialSource, report);
+  }
+  if (opts['depth-source'] !== undefined) report.depthSource = opts['depth-source'];
   if (opts['compact-proxy']) report.compactProxy = true;
   if (opts['material-maps'] !== undefined) report.materialMaps = opts['material-maps'];
   if (faceSeed) report.faceSeed = faceSeed;
@@ -774,6 +866,8 @@ export async function run(opts) {
     const missing = [...report.missingNodes, ...report.models.filter(m => !m.available).map(m => (m.directory ?? m.loader) + '/' + m.name)];
     if (opts.mesh && !report.meshAvailable) missing.push('input/' + opts.mesh + ' (GLB v2)');
     if (!report.inputAvailable) missing.push('input/' + opts.input);
+    for (const name of report.missingSecondary ?? []) missing.push('input/' + name);
+    missing.push(...(report.materialProvider?.missing ?? []));
     throw new Error('Missing on this ComfyUI server:\n' + missing.join('\n'));
   }
   if (!opts.run) { console.log('Preflight passed.'); return; }
@@ -807,6 +901,16 @@ export async function run(opts) {
       qa = await (await response(assetURL(manifest.qa, manifestURL))).json();
       await jsonFile(join(dir, 'qa.json'), qa);
     }
+    const estimatedFaces = [];
+    if (report.materialSource && report.materialSource !== 'keep') {
+      for (const [id, entry] of Object.entries(manifest.faces)) {
+        if (entry.edit?.status !== 'accepted' || !['all', id].includes(report.materialFace)) continue;
+        assert.equal(entry.materialEdit?.surface?.provider, report.materialSource);
+        assert.equal(entry.materialEdit?.albedo?.provider, report.materialSource);
+        estimatedFaces.push(id);
+      }
+      assert(estimatedFaces.length, 'No requested material estimates were saved');
+    }
     const materialSha256 = {};
     if (report.materialMaps !== undefined) {
       for (const key of checkedMaterialTextures(report.materialMaps, manifest)) {
@@ -819,7 +923,7 @@ export async function run(opts) {
     }
     if (report.flatBackground && !opts.mesh)
       assert.equal(manifest.reference.maskMode, 'flat_background', 'Saved Box has the wrong input matte');
-    const summary = { workflow: name, ...(report.flatBackground && {referenceMask: 'flat_background'}), ...(report.materialMaps !== undefined && {materialMaps: report.materialMaps, bakedChannels: manifest.maps, materialSha256}), prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
+    const summary = { workflow: name, ...(report.materialSource && {materialSource: report.materialSource, estimatedFaces}), ...(report.flatBackground && {referenceMask: 'flat_background'}), ...(report.materialMaps !== undefined && {materialMaps: report.materialMaps, bakedChannels: manifest.maps, materialSha256}), prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
       viewer: viewer.href, inference: inferenceReport(prompt, opts.face, live.traces.get(receipt.prompt_id)),
       ...(opts.model === 'h3' && { imageOrder: h3ReferenceFirst ? ['reference', 'guide'] : ['guide', 'reference'] }),
       ...(meshDigest && { inputMesh: opts.mesh, inputMeshSha256: meshDigest }),
@@ -852,11 +956,11 @@ export async function run(opts) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const { values } = parseArgs({ options: { model: { type: 'string' }, origin: { type: 'string', default: 'http://127.0.0.1:8188' },
-    input: { type: 'string', default: 'reference.png' }, output: { type: 'string', default: '.test-output/models' },
+    input: { type: 'string', default: 'reference.png' }, secondary: { type: 'string', multiple: true }, output: { type: 'string', default: '.test-output/models' },
     pack: { type: 'string' }, face: { type: 'string' }, 'face-seed': { type: 'string' }, size: { type: 'string' }, mesh: { type: 'string' }, 'compact-proxy': { type: 'boolean' }, 'flat-background': { type: 'boolean' },
-    'h3-reference-first': { type: 'boolean' }, 'h3-denoiser': { type: 'string' }, 'material-maps': { type: 'string' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
+    'h3-reference-first': { type: 'boolean' }, 'h3-denoiser': { type: 'string' }, 'material-maps': { type: 'string' }, 'material-source': { type: 'string' }, 'material-face': { type: 'string' }, 'material-size': { type: 'string' }, 'depth-source': { type: 'string' }, 'coordinate-space': { type: 'string' }, run: { type: 'boolean', default: false }, 'timeout-minutes': { type: 'string', default: '180' }, help: { type: 'boolean' } } });
   if (values.help) {
-    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input reference.png] [--flat-background] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--h3-denoiser int8|w4a8] [--material-maps none|material|emissive|material+emissive] [--size 512] [--pack NAME] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to the local INT8 file. An explicit --h3-denoiser selects the official weight for every face and verifies its SHA-256 in the saved output. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. --pack NAME saves NAME.box.zip in the evidence directory and verifies the restored asset ID. --flat-background extracts a closed ink silhouette from a mostly solid backdrop for the input image. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
+    console.log('node scripts/run_model_workflow.mjs --model pixal3d|qwen|h3|triposplat [--mesh matching.glb | --compact-proxy] [--coordinate-space canonical_box|source_glb] [--origin URL] [--input primary.png] [--secondary side.png ...] [--flat-background] [--output DIR] [--face=+Z] [--face-seed=+Z:321] [--h3-reference-first] [--h3-denoiser int8|w4a8] [--material-maps none|material|emissive|material+emissive] [--material-source keep|qwen|h3|marigold] [--material-face=+Z] [--material-size 2048] [--depth-source geometry|rgb_guided] [--size 512] [--pack NAME] [--run] [--timeout-minutes 180]\n--compact-proxy reduces the Pixal3D cascade to 1024, remesh grid to 256, face target to 100k, UV/normal maps to 1024, and AO to 512 with 32 samples. Qwen/H3: --mesh skips Pixal3D, --size sets the square model canvas and output. --face-seed changes a single seed while keeping all six generated faces connected unless --face is supplied. H3 defaults to the local INT8 file. An explicit --h3-denoiser selects the official weight for every face and verifies its SHA-256 in the saved output. H3 defaults to guide first. --h3-reference-first uses the reference as image_1; H3 internally scales reference images to at least 1024. --pack NAME saves NAME.box.zip in the evidence directory and verifies the restored asset ID. --flat-background extracts a closed ink silhouette from a mostly solid backdrop for the input image. Place inputs in ComfyUI/input. Default: check installed models and input, without queuing.');
   } else {
     run(values).catch(error => { console.error(error.message); process.exitCode = 1; });
   }

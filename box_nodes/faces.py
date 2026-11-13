@@ -244,11 +244,13 @@ def compose(baseline, aligned):
     provenance = {fid: item['source'].get('provenance', {}) for fid, item in aligned['faces'].items()}
     models = {item.get('backend', 'manual_faces') for item in provenance.values()}
     mode = next(iter(models)) if len(models) == 1 else 'manual_faces'
-    asset_id = store.key('compose-v4', multiview.VERSION, baseline, mode, provenance, {fid: item['key'] for fid, item in aligned['faces'].items()})
+    asset_id = store.key('compose-v5', multiview.VERSION, baseline, mode, provenance, {fid: item['key'] for fid, item in aligned['faces'].items()})
     source = store.asset_dir(baseline)
     def write(stage):
         shutil.copytree(source, stage, ignore=shutil.ignore_patterns('previews'))
         manifest = store.validate(stage, baseline, check_bytes=False)
+        from .face_material import clear_replaced_materials, qa_face_keys
+        clear_replaced_materials(stage, manifest, aligned['faces'])
         base = manifest['baseColor']
         shape = (base['height'], base['width'], 4)
         backup = np.memmap(store.contained(stage, base['path']), dtype='<f2', mode='r', shape=shape)
@@ -278,6 +280,8 @@ def compose(baseline, aligned):
                 shutil.copyfile(measured, view / 'aligned.npy')
             reports[face_id] = report
             manifest['faces'][face_id]['edit'] = {'status': report['status'], 'reason': report['reason'], 'source': provenance[face_id].get('backend', 'manual_faces'), 'alignmentKey': item['key'], 'provenance': provenance[face_id], 'view': rel + '/source.png'}
+            if report['status'] == 'accepted':
+                manifest['faces'][face_id]['edit']['alignedSha256'] = store.file_hash(view / 'aligned.npy')
             ref = item['source'].get('reference')
             if ref:
                 if not store.ID.fullmatch(ref['sha256']):
@@ -300,9 +304,7 @@ def compose(baseline, aligned):
         effective_mode = next(iter(active_modes), 'geometry_baseline') if len(active_modes) <= 1 else 'manual_faces'
         manifest.update(asset_id=asset_id, parentAsset=baseline, geometryAsset=manifest.get('geometryAsset', manifest.get('parentAsset', baseline)), mode=effective_mode, qa='qa/report.json')
         (stage / 'qa').mkdir(exist_ok=True)
-        face_keys = {fid: manifest['faces'][fid].get('edit', {}).get('alignmentKey', current['sha256']) if report['status'] == 'accepted' else 'baseline'
-                     for fid, report in reports.items()}
-        cross_view = multiview.evaluate_pairs(stage, manifest, face_keys=face_keys, cache=cache_dir)
+        cross_view = multiview.evaluate_pairs(stage, manifest, face_keys=qa_face_keys(manifest), cache=cache_dir)
         (stage / 'qa/report.json').write_text(json.dumps({'faces': reports, 'crossView': cross_view}, indent=2, allow_nan=False), encoding='utf-8')
         (stage / 'manifest.json').write_text(json.dumps(manifest, indent=2, allow_nan=False), encoding='utf-8')
     return store.publish(asset_id, write)

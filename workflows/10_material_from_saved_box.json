@@ -1,0 +1,192 @@
+{
+  "id": "d2bb3531-7531-4f93-936e-d006298ffb5d",
+  "revision": 0,
+  "last_node_id": 4,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "BILoadBox",
+      "pos": [
+        0,
+        40
+      ],
+      "size": [
+        255,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BOX_IMPOSTOR",
+          "type": "BOX_IMPOSTOR",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BILoadBox"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "BIGenerateFaceMaterials",
+      "title": "PBR from generated faces",
+      "pos": [
+        310,
+        40
+      ],
+      "size": [
+        295,
+        164
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "BOX_IMPOSTOR",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_IMPOSTOR",
+          "type": "BOX_IMPOSTOR",
+          "links": [
+            2,
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIGenerateFaceMaterials"
+      },
+      "widgets_values": [
+        "keep",
+        "all",
+        0,
+        2048
+      ]
+    },
+    {
+      "id": 3,
+      "type": "BIPreviewBox",
+      "pos": [
+        665,
+        40
+      ],
+      "size": [
+        265,
+        89
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "BOX_IMPOSTOR",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "viewer_url",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "thumbnail",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIPreviewBox"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 4,
+      "type": "BISaveBox",
+      "pos": [
+        665,
+        210
+      ],
+      "size": [
+        265,
+        89
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "BOX_IMPOSTOR",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "manifest_path",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BISaveBox"
+      },
+      "widgets_values": [
+        ""
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "BOX_IMPOSTOR"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "BOX_IMPOSTOR"
+    ],
+    [
+      3,
+      2,
+      0,
+      4,
+      0,
+      "BOX_IMPOSTOR"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1,
+      "offset": [
+        85,
+        90
+      ]
+    }
+  },
+  "version": 0.4
+}

@@ -11,6 +11,19 @@ const dirs = ['+X', '-X', '+Y', '-Y', '+Z', '-Z'];
 const digest = 'a'.repeat(64);
 const load = name => readFile(new URL('../workflows/' + workflows[name] + '.json', import.meta.url), 'utf8').then(JSON.parse);
 
+test('secondary filenames retain their order independently of the primary and geometry', async () => {
+  for (const model of ['qwen', 'h3']) {
+    const graph = await load(model);
+    const geometry = graph.definitions.subgraphs.find(g => g.name.startsWith('Pixal3D'));
+    const geometryBefore = JSON.stringify(geometry);
+    configureEditGraph(graph, model, {secondary: ['references/side.png', 'back view.png']});
+    assert.deepEqual(graph.nodes.find(n => n.type === 'BISecondaryReferences').widgets_values,
+      ['references/side.png\nback view.png']);
+    assert.equal(JSON.stringify(geometry), geometryBefore);
+    assert.throws(() => configureEditGraph(graph, model, {secondary: Array(9).fill('side.png')}), /8/);
+  }
+});
+
 test('flat input background keeps the appearance mattes and drops unused model dependencies', async () => {
   for (const model of ['pixal3d', 'triposplat', 'qwen', 'h3']) {
     const graph = await load(model);

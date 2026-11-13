@@ -1,8 +1,8 @@
 {
   "id": "6515202e-01f3-575d-8b0f-1518b5993b95",
-  "revision": 0,
-  "last_node_id": 47,
-  "last_link_id": 128,
+  "revision": 1,
+  "last_node_id": 49,
+  "last_link_id": 141,
   "nodes": [
     {
       "id": 1,
@@ -40,7 +40,8 @@
       "widgets_values": [
         "reference.png",
         "image"
-      ]
+      ],
+      "title": "Primary reference"
     },
     {
       "id": 2,
@@ -678,7 +679,7 @@
       },
       "widgets_values": [
         "+X",
-        1024
+        2048
       ],
       "title": "+X · geometric canvas"
     },
@@ -691,7 +692,7 @@
       ],
       "size": [
         265,
-        177
+        199
       ],
       "flags": {},
       "order": 13,
@@ -726,6 +727,11 @@
           "name": "seed",
           "type": "INT",
           "link": 20
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 130
         }
       ],
       "outputs": [
@@ -828,7 +834,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 16,
@@ -866,6 +872,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 28
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 131
         }
       ],
       "outputs": [
@@ -957,7 +968,7 @@
       },
       "widgets_values": [
         "-X",
-        1024
+        2048
       ],
       "title": "-X · geometric canvas"
     },
@@ -970,7 +981,7 @@
       ],
       "size": [
         265,
-        177
+        199
       ],
       "flags": {},
       "order": 18,
@@ -1005,6 +1016,11 @@
           "name": "seed",
           "type": "INT",
           "link": 37
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 132
         }
       ],
       "outputs": [
@@ -1107,7 +1123,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 21,
@@ -1145,6 +1161,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 45
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 133
         }
       ],
       "outputs": [
@@ -1236,7 +1257,7 @@
       },
       "widgets_values": [
         "+Y",
-        1024
+        2048
       ],
       "title": "+Y · geometric canvas"
     },
@@ -1249,7 +1270,7 @@
       ],
       "size": [
         265,
-        177
+        199
       ],
       "flags": {},
       "order": 23,
@@ -1284,6 +1305,11 @@
           "name": "seed",
           "type": "INT",
           "link": 54
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 134
         }
       ],
       "outputs": [
@@ -1386,7 +1412,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 26,
@@ -1424,6 +1450,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 62
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 135
         }
       ],
       "outputs": [
@@ -1515,7 +1546,7 @@
       },
       "widgets_values": [
         "-Y",
-        1024
+        2048
       ],
       "title": "-Y · geometric canvas"
     },
@@ -1528,7 +1559,7 @@
       ],
       "size": [
         265,
-        177
+        199
       ],
       "flags": {},
       "order": 28,
@@ -1563,6 +1594,11 @@
           "name": "seed",
           "type": "INT",
           "link": 71
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 136
         }
       ],
       "outputs": [
@@ -1665,7 +1701,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 31,
@@ -1703,6 +1739,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 79
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 137
         }
       ],
       "outputs": [
@@ -1794,7 +1835,7 @@
       },
       "widgets_values": [
         "+Z",
-        1024
+        2048
       ],
       "title": "+Z · geometric canvas"
     },
@@ -1807,7 +1848,7 @@
       ],
       "size": [
         265,
-        177
+        199
       ],
       "flags": {},
       "order": 33,
@@ -1842,6 +1883,11 @@
           "name": "seed",
           "type": "INT",
           "link": 88
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 138
         }
       ],
       "outputs": [
@@ -1944,7 +1990,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 36,
@@ -1982,6 +2028,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 96
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 139
         }
       ],
       "outputs": [
@@ -2073,7 +2124,7 @@
       },
       "widgets_values": [
         "-Z",
-        1024
+        2048
       ],
       "title": "-Z · geometric canvas"
     },
@@ -2086,7 +2137,7 @@
       ],
       "size": [
         265,
-        177
+        199
       ],
       "flags": {},
       "order": 38,
@@ -2121,6 +2172,11 @@
           "name": "seed",
           "type": "INT",
           "link": 105
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 140
         }
       ],
       "outputs": [
@@ -2223,7 +2279,7 @@
       ],
       "size": [
         330,
-        240
+        262
       ],
       "flags": {},
       "order": 41,
@@ -2261,6 +2317,11 @@
           "name": "canvas",
           "type": "BOX_CANVAS",
           "link": 113
+        },
+        {
+          "name": "secondary",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "link": 141
         }
       ],
       "outputs": [
@@ -2428,8 +2489,7 @@
           "name": "BOX_IMPOSTOR",
           "type": "BOX_IMPOSTOR",
           "links": [
-            124,
-            125
+            129
           ]
         }
       ],
@@ -2442,10 +2502,52 @@
       ]
     },
     {
+      "id": 48,
+      "type": "BIGenerateFaceMaterials",
+      "title": "PBR from generated faces",
+      "pos": [
+        4595,
+        55
+      ],
+      "size": [
+        295,
+        164
+      ],
+      "flags": {},
+      "order": 45,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "BOX_IMPOSTOR",
+          "link": 129
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOX_IMPOSTOR",
+          "type": "BOX_IMPOSTOR",
+          "links": [
+            124,
+            125
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BIGenerateFaceMaterials"
+      },
+      "widgets_values": [
+        "keep",
+        "all",
+        0,
+        2048
+      ]
+    },
+    {
       "id": 46,
       "type": "BIPreviewBox",
       "pos": [
-        4595,
+        4945,
         55
       ],
       "size": [
@@ -2453,7 +2555,7 @@
         89
       ],
       "flags": {},
-      "order": 45,
+      "order": 46,
       "mode": 0,
       "inputs": [
         {
@@ -2483,7 +2585,7 @@
       "id": 47,
       "type": "BISaveBox",
       "pos": [
-        4595,
+        4945,
         215
       ],
       "size": [
@@ -2491,7 +2593,7 @@
         89
       ],
       "flags": {},
-      "order": 46,
+      "order": 47,
       "mode": 0,
       "inputs": [
         {
@@ -2509,6 +2611,49 @@
       ],
       "properties": {
         "Node name for S&R": "BISaveBox"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 49,
+      "type": "BISecondaryReferences",
+      "title": "Secondary appearance references (optional)",
+      "pos": [
+        0,
+        620
+      ],
+      "size": [
+        315,
+        142
+      ],
+      "flags": {},
+      "order": 48,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BOX_SECONDARY_REFERENCES",
+          "type": "BOX_SECONDARY_REFERENCES",
+          "links": [
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BISecondaryReferences"
       },
       "widgets_values": [
         ""
@@ -3502,7 +3647,7 @@
     ],
     [
       124,
-      45,
+      48,
       0,
       46,
       0,
@@ -3510,7 +3655,7 @@
     ],
     [
       125,
-      45,
+      48,
       0,
       47,
       0,
@@ -3539,6 +3684,110 @@
       6,
       4,
       "FLOAT"
+    ],
+    [
+      129,
+      45,
+      0,
+      48,
+      0,
+      "BOX_IMPOSTOR"
+    ],
+    [
+      130,
+      49,
+      0,
+      14,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      131,
+      49,
+      0,
+      17,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      132,
+      49,
+      0,
+      19,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      133,
+      49,
+      0,
+      22,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      134,
+      49,
+      0,
+      24,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      135,
+      49,
+      0,
+      27,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      136,
+      49,
+      0,
+      29,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      137,
+      49,
+      0,
+      32,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      138,
+      49,
+      0,
+      34,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      139,
+      49,
+      0,
+      37,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      140,
+      49,
+      0,
+      39,
+      6,
+      "BOX_SECONDARY_REFERENCES"
+    ],
+    [
+      141,
+      49,
+      0,
+      42,
+      6,
+      "BOX_SECONDARY_REFERENCES"
     ]
   ],
   "groups": [],
@@ -6197,8 +6446,8 @@
         "version": 1,
         "state": {
           "lastGroupId": 0,
-          "lastNodeId": 3,
-          "lastLinkId": 12,
+          "lastNodeId": 4,
+          "lastLinkId": 21,
           "lastRerouteId": 0
         },
         "revision": 0,
@@ -6210,7 +6459,7 @@
             -320,
             0,
             210,
-            204
+            228
           ]
         },
         "outputNode": {
@@ -6295,6 +6544,18 @@
               -110,
               144
             ]
+          },
+          {
+            "name": "secondary",
+            "type": "BOX_SECONDARY_REFERENCES",
+            "linkIds": [
+              13
+            ],
+            "id": "581794e2-1938-5cc6-8972-b9145ecf4757",
+            "pos": [
+              -110,
+              168
+            ]
           }
         ],
         "outputs": [
@@ -6322,7 +6583,7 @@
             ],
             "size": [
               415,
-              215
+              391
             ],
             "flags": {},
             "order": 0,
@@ -6347,6 +6608,46 @@
                 "name": "images.image_2",
                 "type": "IMAGE",
                 "link": 4
+              },
+              {
+                "name": "images.image_3",
+                "type": "IMAGE",
+                "link": 14
+              },
+              {
+                "name": "images.image_4",
+                "type": "IMAGE",
+                "link": 15
+              },
+              {
+                "name": "images.image_5",
+                "type": "IMAGE",
+                "link": 16
+              },
+              {
+                "name": "images.image_6",
+                "type": "IMAGE",
+                "link": 17
+              },
+              {
+                "name": "images.image_7",
+                "type": "IMAGE",
+                "link": 18
+              },
+              {
+                "name": "images.image_8",
+                "type": "IMAGE",
+                "link": 19
+              },
+              {
+                "name": "images.image_9",
+                "type": "IMAGE",
+                "link": 20
+              },
+              {
+                "name": "images.image_10",
+                "type": "IMAGE",
+                "link": 21
               }
             ],
             "outputs": [
@@ -6378,7 +6679,7 @@
             "widgets_values": [
               "Change the camera angle from <image2> to <image1>.",
               "",
-              1024
+              2048
             ]
           },
           {
@@ -6486,6 +6787,91 @@
               "Node name for S&R": "VAEDecode"
             },
             "widgets_values": []
+          },
+          {
+            "id": 4,
+            "type": "BISecondaryReferenceSlots",
+            "title": "Secondary image slots 3–10",
+            "pos": [
+              -600,
+              560
+            ],
+            "size": [
+              280,
+              193
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "references",
+                "type": "BOX_SECONDARY_REFERENCES",
+                "link": 13
+              }
+            ],
+            "outputs": [
+              {
+                "name": "image_3",
+                "type": "IMAGE",
+                "links": [
+                  14
+                ]
+              },
+              {
+                "name": "image_4",
+                "type": "IMAGE",
+                "links": [
+                  15
+                ]
+              },
+              {
+                "name": "image_5",
+                "type": "IMAGE",
+                "links": [
+                  16
+                ]
+              },
+              {
+                "name": "image_6",
+                "type": "IMAGE",
+                "links": [
+                  17
+                ]
+              },
+              {
+                "name": "image_7",
+                "type": "IMAGE",
+                "links": [
+                  18
+                ]
+              },
+              {
+                "name": "image_8",
+                "type": "IMAGE",
+                "links": [
+                  19
+                ]
+              },
+              {
+                "name": "image_9",
+                "type": "IMAGE",
+                "links": [
+                  20
+                ]
+              },
+              {
+                "name": "image_10",
+                "type": "IMAGE",
+                "links": [
+                  21
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "BISecondaryReferenceSlots"
+            },
+            "widgets_values": []
           }
         ],
         "groups": [],
@@ -6584,6 +6970,78 @@
             "origin_slot": 0,
             "target_id": -20,
             "target_slot": 0,
+            "type": "IMAGE"
+          },
+          {
+            "id": 13,
+            "origin_id": -10,
+            "origin_slot": 6,
+            "target_id": 4,
+            "target_slot": 0,
+            "type": "BOX_SECONDARY_REFERENCES"
+          },
+          {
+            "id": 14,
+            "origin_id": 4,
+            "origin_slot": 0,
+            "target_id": 1,
+            "target_slot": 4,
+            "type": "IMAGE"
+          },
+          {
+            "id": 15,
+            "origin_id": 4,
+            "origin_slot": 1,
+            "target_id": 1,
+            "target_slot": 5,
+            "type": "IMAGE"
+          },
+          {
+            "id": 16,
+            "origin_id": 4,
+            "origin_slot": 2,
+            "target_id": 1,
+            "target_slot": 6,
+            "type": "IMAGE"
+          },
+          {
+            "id": 17,
+            "origin_id": 4,
+            "origin_slot": 3,
+            "target_id": 1,
+            "target_slot": 7,
+            "type": "IMAGE"
+          },
+          {
+            "id": 18,
+            "origin_id": 4,
+            "origin_slot": 4,
+            "target_id": 1,
+            "target_slot": 8,
+            "type": "IMAGE"
+          },
+          {
+            "id": 19,
+            "origin_id": 4,
+            "origin_slot": 5,
+            "target_id": 1,
+            "target_slot": 9,
+            "type": "IMAGE"
+          },
+          {
+            "id": 20,
+            "origin_id": 4,
+            "origin_slot": 6,
+            "target_id": 1,
+            "target_slot": 10,
+            "type": "IMAGE"
+          },
+          {
+            "id": 21,
+            "origin_id": 4,
+            "origin_slot": 7,
+            "target_id": 1,
+            "target_slot": 11,
             "type": "IMAGE"
           }
         ],

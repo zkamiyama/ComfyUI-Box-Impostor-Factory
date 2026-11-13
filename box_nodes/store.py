@@ -166,8 +166,19 @@ def validate(directory, expected_id=None, check_bytes=True):
         raise ValueError('Invalid material map list')
     if ('emissive' in material_properties) != ('emissiveMap' in textures) or bool(set(material_properties) - {'emissive'}) != ('materialMap' in textures):
         raise ValueError('Material map list does not match texture payloads')
+    descriptors = [*textures.items(), ('colorMap', manifest['baseColor'])]
+    if 'faceMaterialBase' in manifest:
+        base = manifest['faceMaterialBase']
+        original = base['maps']
+        desc = base['materialMap']
+        if (not isinstance(original, list) or len(set(original)) != len(original)
+                or not set(original) <= set(material_properties)
+                or bool(set(original) - {'emissive'}) != (desc is not None)):
+            raise ValueError('Invalid original baked material map record')
+        if desc is not None:
+            descriptors.append(('materialMap', desc))
     paths = {}
-    for name, spec in [*textures.items(), ('colorMap', manifest['baseColor'])]:
+    for name, spec in descriptors:
         if name not in (*REQUIRED_MAPS, 'materialMap', 'emissiveMap'):
             raise ValueError('Unsupported texture ' + name)
         wh = (3 * r, 2 * r)

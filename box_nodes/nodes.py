@@ -17,7 +17,13 @@ from .canvas import ModelCanvas
 from .splat import TripoSplatGuide
 from .splat_cache import CachedTripoSplat
 from .silhouette import InspectFaceSilhouette
+from .depth_pipeline import DEPTH_SOURCES, refine_box_depth
 from .revision import RebakeProxyRevision
+from .material_estimate import MaterialEstimate
+from .material_iid import EstimateFaceMaterialIID
+from .face_material import BIApplyFaceMaterial, BILoadGeneratedFace
+from .material_pipeline import GenerateFaceMaterials
+from .secondary_references import SecondaryReferences, SecondaryReferenceSlots
 
 CATEGORY = 'Box Impostor'
 BACKENDS = ['auto', 'webgpu', 'webgl2']
@@ -253,7 +259,7 @@ class CanonicalizeProxy:
 
 class MakeSixGuides:
     CATEGORY = CATEGORY
-    FUNCTION = 'guides'
+    FUNCTION = 'guides_with_preview'
     RETURN_TYPES = ('IMAGE',) * 6 + ('BOX_GUIDES',)
     RETURN_NAMES = tuple(faces.SLUGS.values()) + ('guides',)
 
@@ -270,6 +276,14 @@ class MakeSixGuides:
             with Image.open(store.contained(directory, manifest['faces'][face_id]['guide'])) as image:
                 result.append(tensor(np.asarray(image.convert('RGBA'), dtype=np.float32)[None] / 255))
         return (*result, asset)
+
+    def guides_with_preview(self, **kwargs):
+        result = self.guides(**kwargs)
+        asset = result[-1]
+        manifest = store.validate(store.asset_dir(asset), asset, check_bytes=False)
+        images = {face: '/box-impostor/assets/' + asset + '/' + entry['guide']
+                  for face, entry in manifest['faces'].items()}
+        return {'ui': {'box_guides': [asset], 'box_guide_images': [images]}, 'result': result}
 
 
 class FaceImage:
@@ -328,9 +342,9 @@ class BakeBox:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return {'required': {'proxy': ('BOX_PROXY',), 'resolution': RESOLUTION, 'backend': (BACKENDS,)}, 'optional': {'faces': ('BOX_ALIGNED_FACES',), 'material_maps': (list(store.MATERIAL_OPTIONS),)}}
+        return {'required': {'proxy': ('BOX_PROXY',), 'resolution': RESOLUTION, 'backend': (BACKENDS,)}, 'optional': {'faces': ('BOX_ALIGNED_FACES',), 'material_maps': (list(store.MATERIAL_OPTIONS),), 'depth_source': (DEPTH_SOURCES,)}}
 
-    def bake(self, proxy, resolution, backend, faces=None, material_maps='none'):
+    def bake(self, proxy, resolution, backend, faces=None, material_maps='none', depth_source='geometry'):
         asset = store.baseline(proxy, resolution, backend, material_maps)
         if faces:
             from .faces import compose
@@ -349,6 +363,10 @@ class BakeBox:
                     raise ValueError('Supplied faces were aligned to incompatible proxy captures.')
                 faces = {**faces, 'baseline': asset}
             asset = compose(asset, faces)
+        if depth_source not in DEPTH_SOURCES:
+            raise ValueError('Unknown Box depth source.')
+        if depth_source == 'rgb_guided':
+            asset = refine_box_depth(asset, backend)
         return (asset,)
 
 
@@ -626,4 +644,13 @@ NODE_CLASS_MAPPINGS['BITripoSplatGuide'] = TripoSplatGuide
 NODE_CLASS_MAPPINGS['BICachedTripoSplat'] = CachedTripoSplat
 NODE_CLASS_MAPPINGS['BIInspectFaceSilhouette'] = InspectFaceSilhouette
 NODE_CLASS_MAPPINGS['BIRebakeProxyRevision'] = RebakeProxyRevision
+NODE_CLASS_MAPPINGS.update({
+    'BIMaterialEstimate': MaterialEstimate,
+    'BIEstimateFaceMaterialIID': EstimateFaceMaterialIID,
+    'BILoadGeneratedFace': BILoadGeneratedFace,
+    'BIApplyFaceMaterial': BIApplyFaceMaterial,
+    'BIGenerateFaceMaterials': GenerateFaceMaterials,
+    'BISecondaryReferences': SecondaryReferences,
+    'BISecondaryReferenceSlots': SecondaryReferenceSlots,
+})
 NODE_DISPLAY_NAME_MAPPINGS = {name: 'BI ' + name[2:] for name in NODE_CLASS_MAPPINGS}

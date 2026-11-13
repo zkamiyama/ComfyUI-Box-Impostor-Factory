@@ -132,7 +132,10 @@ class RebakeProxyRevision:
             raise ValueError('Corrected proxy file digest mismatch.')
         if old['proxySha256'] == new_hash:
             return asset, json.dumps({'status': 'unchanged-proxy', 'assetId': asset, 'proxySha256': new_hash})
-        baked_id = store.baseline(corrected_proxy, old['resolution'], backend, tuple(old['maps']))
+        # A fresh GLB bake inherits the geometry bake selection, not channels inferred from RGB.
+        original_maps = old.get('provenance', {}).get('requestedMaterialMaps',
+                        old.get('faceMaterialBase', {}).get('maps', old['maps']))
+        baked_id = store.baseline(corrected_proxy, old['resolution'], backend, tuple(original_maps))
         baked_root = store.asset_dir(baked_id)
         revision_id = store.key('proxy-revision-v1', asset, old['proxySha256'], baked_id, new_hash)
 
@@ -148,6 +151,8 @@ class RebakeProxyRevision:
             new.update(asset_id=revision_id, parentAsset=asset, geometryAsset=baked_id, qa='qa/geometry-revision.json')
             new.setdefault('provenance', {})['geometryRevision'] = {
                 k: v for k, v in report.items() if k in ('originalAsset', 'bakedGeometryAsset', 'originalProxySha256', 'correctedProxySha256')}
+            if corrected_proxy.get('depthRefinement'):
+                new['provenance']['depthRefinement'] = corrected_proxy['depthRefinement']
             (stage / 'qa').mkdir(exist_ok=True)
             (stage / new['qa']).write_text(json.dumps(report, indent=2, allow_nan=False), encoding='utf-8')
             (stage / 'manifest.json').write_text(json.dumps(new, indent=2, allow_nan=False), encoding='utf-8')

@@ -1,8 +1,10 @@
 import { app } from "../../scripts/app.js";
 import { api } from "../../scripts/api.js";
+import { installWorkflowPanel } from './workflow_panel.js';
 
 app.registerExtension({
   name: "BoxImpostor.Viewer",
+  setup() { installWorkflowPanel(app, api); },
   async beforeRegisterNodeDef(type, data) {
     if (data.name !== "BIPreviewBox" && data.display_name !== "BI PreviewBox") return;
     const original = type.prototype.onExecuted;
