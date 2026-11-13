@@ -126,7 +126,13 @@ bash scripts/verify_cpu_only.sh
 
 Qwen・H3には、実行時に再照明するPBRレンダラーで使うことを明示する。ベースカラーは影・反射・色かぶりを除いたsRGB、Boxの材質マップはR＝roughness、G＝metalness、B＝AOの線形値を指定する。CLIでは `--size 2048 --material-source qwen --material-size 2048 --box-size 512` のように、推定を2Kで行い最終Boxだけを小さくできる。実行前のチェックに、選択した材質モデルの不足ファイルと追加Pythonパッケージが表示される。
 
-歩行犬の＋Z面を256角で出力した実機比較では、Qwenは白い毛の一部をピンクに変え、H3では暗い帯が出た。Marigoldは白い毛の色を保ったものの、金属度を高めに推定した。保存したマップはビューアでチャンネル別に確認できる。[元画像と推定マップの比較](docs/verification/walking-dog-material-estimates.png)
+旧プロンプトで歩行犬の＋Z面を256角に推定した実機比較では、Qwenは白い毛の一部をピンクに変え、H3では暗い帯が出た。Marigoldは白い毛の色を保ったものの、金属度を高めに推定した。保存したマップはビューアでチャンネル別に確認できる。[元画像と推定マップの比較](docs/verification/walking-dog-material-estimates.png)
+
+同じ犬の＋Z面（元画像512 px）で、PBRの用途を明記したQwenとH3を各2048 pxで実行した。RTX 4080（16 GB）でベースカラーとRMAの2枚を作るのに、Qwenは28分32秒、H3は8分34秒かかった。
+
+Qwenでは、白い毛の平均R−Gが旧256 pxで+0.328、旧2048 pxで+0.031、新256 pxで+0.008、新2048 pxで+0.009だった。尾先の細かい毛筋は新2048 pxで描き足された。H3では旧・新どちらの指示でも256 pxで横帯が出て、2048 pxで解消した。旧2048 pxは毛色を平坦な領域に分け、新2048 pxは毛の模様を残した。
+
+平均金属度は不透明な28,490画素でQwenが0.502、H3が0.457となり、毛の一部に強い金属反射が出た。両方の結果を2048 pxの＋Zタイルに適用し、残り5面・透明度・幾何マップを保持したまま、Three.jsのビューアで光源角度を変えて描画した。[尾先の細部](docs/verification/qwen-pbr-tail-detail.webp) · [2K Boxの再照明](docs/verification/pbr-box-relighting.webp) · [プロンプト・解像度別の全マップ](docs/verification/pbr-prompt-resolution-dog.webp) · [機材・条件・前景の計測値](docs/verification/pbr-prompt-resolution.json)
 
 Marigoldを使うにはComfyUIのPython環境に `diffusers`、`transformers`、`accelerate` を入れ、モデル一式を `ComfyUI/models/diffusers/marigold-iid-appearance-v1-1/` に置く。モデル直下に `model_index.json` が必要になる。[公式モデルカード](https://huggingface.co/prs-eth/marigold-iid-appearance-v1-1)
 

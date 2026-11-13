@@ -1,0 +1,405 @@
+{
+  "date": "2026-11-13",
+  "scope": "One accepted Qwen-generated walking-dog +Z face. Native decoded material grid 256 or 2048 square. Prompt A/B, roughness/metalness/AO, and face-local runtime registration. No ground-truth PBR dataset.",
+  "device": "270-PC, NVIDIA GeForce RTX 4080 (16 GiB), WSL2, 31 GiB host memory",
+  "comfyui": "0.45.0 (c5751c81abe131202eea9e4c66d000589013dd0b)",
+  "frontend": "1.59.1",
+  "input": {
+    "generated_face_px": 512,
+    "source_box": "c6ed70818212907cf64dcefde772278663835cb5a9dafa438cc47f47401d7b41",
+    "original_photo": "https://commons.wikimedia.org/wiki/File:Dog_walking_sideview_grass.JPG"
+  },
+  "recipes": {
+    "qwen": {
+      "model": "qwen_image_2.1_int8_convrot.safetensors",
+      "clip": "qwen3vl_8b_int8_convrot.safetensors",
+      "vae": "qwen_image_2.1_vae_bf16.safetensors",
+      "steps": 24,
+      "cfg": 3,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed_base_color": 0,
+      "seed_rma": 1
+    },
+    "h3": {
+      "model": "minimax_h3_image_pruned_int8_convrot.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "steps": 6,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed_base_color": 0,
+      "seed_rma": 1
+    }
+  },
+  "prompts": {
+    "legacy": "2dedc770b9bb68d3c1b0257936a21026f5e6a81f:box_nodes/material_estimate.py",
+    "physical": "96f89d8729baf264a73e5442c4dbeb655e1cbf31:box_nodes/material_estimate.py"
+  },
+  "execution_notes": {
+    "registration": "A/B comparison atlases use the same frozen registration; the independent native 2K registration tests use the new implementation. The extra 2K bake uses quantized 8-bit copies of the native decodes.",
+    "qwen_2k": "Full spatial attention, lossless CPU KV cache and token-wise FFN chunking. PBR-instruction run used an instrumented driver. Old-prompt run used the shipped clone-local memory patch. Times include both texture passes, registration and export.",
+    "h3": "The reference encoder resizes the 512 px input to 1024 square. The new-prompt 256 control reuses the exact saved 2K prompt and reference conditioning; output latent, noise and sampling use the 256 grid."
+  },
+  "registered_256_tiles": {
+    "method": "Registered +Z 256x256 tile. Opaque coverage >=0.99. Light fur subset uses opacity >=0.99 also on aligned reference, two-pixel binary erosion, all source sRGB channels >0.50 and max-min <0.12. Test evaluates tint, not ground-truth albedo.",
+    "packing": [
+      "roughness",
+      "metalness",
+      "ambient occlusion"
+    ],
+    "per_condition": {
+      "input": {
+        "id": "c6ed70818212907cf64dcefde772278663835cb5a9dafa438cc47f47401d7b41",
+        "opaque": 28490,
+        "light_fur_pixels": 1002,
+        "light_fur_mean_srgb": [
+          0.6753016710281372,
+          0.7023609280586243,
+          0.7308131456375122
+        ],
+        "light_fur_mean_red_minus_green_srgb": -0.027058281004428864,
+        "light_fur_mean_chroma_srgb": 0.0677805170416832,
+        "light_fur_mean_metalness": 0.0,
+        "opaque_mean_rma": [
+          0.9999725818634033,
+          0.0,
+          0.9599967002868652
+        ],
+        "opaque_fraction_metalness_above_half": 0.0
+      },
+      "qwen-legacy-256": {
+        "id": "6d94832272d46265227360348e87dc49ae7f81ea64b944ff9bc10453142e3ff8",
+        "opaque": 28490,
+        "light_fur_pixels": 1002,
+        "light_fur_mean_srgb": [
+          0.830568790435791,
+          0.5023619532585144,
+          0.578097939491272
+        ],
+        "light_fur_mean_red_minus_green_srgb": 0.3282071053981781,
+        "light_fur_mean_chroma_srgb": 0.3287666141986847,
+        "light_fur_mean_metalness": 0.513009250164032,
+        "opaque_mean_rma": [
+          0.4601927101612091,
+          0.5671765804290771,
+          0.9003353118896484
+        ],
+        "opaque_fraction_metalness_above_half": 0.6302562302562302
+      },
+      "h3-legacy-256": {
+        "id": "eda47c16d8d646eeb459ef41625019f4e31f3d5397cae14b40e1147bd3c9e600",
+        "opaque": 28490,
+        "light_fur_pixels": 1002,
+        "light_fur_mean_srgb": [
+          0.527421772480011,
+          0.5244773030281067,
+          0.515177309513092
+        ],
+        "light_fur_mean_red_minus_green_srgb": 0.002944763982668519,
+        "light_fur_mean_chroma_srgb": 0.012730567716062069,
+        "light_fur_mean_metalness": 0.4989863634109497,
+        "opaque_mean_rma": [
+          0.32778656482696533,
+          0.3398021161556244,
+          0.37646740674972534
+        ],
+        "opaque_fraction_metalness_above_half": 0.07262197262197262
+      },
+      "h3-legacy-2048": {
+        "id": "611bcfaaa6b44a8b6319c6caeec389ff854c98afaaf7ed51a08666e6f3f7b989",
+        "opaque": 28490,
+        "light_fur_pixels": 1002,
+        "light_fur_mean_srgb": [
+          0.9214038848876953,
+          0.920871913433075,
+          0.9112570285797119
+        ],
+        "light_fur_mean_red_minus_green_srgb": 0.0005314138834364712,
+        "light_fur_mean_chroma_srgb": 0.013454699888825417,
+        "light_fur_mean_metalness": 0.30693909525871277,
+        "opaque_mean_rma": [
+          0.2841677963733673,
+          0.556073784828186,
+          0.44769951701164246
+        ],
+        "opaque_fraction_metalness_above_half": 0.5007371007371008,
+        "seconds": 487.4,
+        "estimator_script_sha256": "f9598050eef1d6c36a148bcd23abf1c98bf76df721f14b0f5c5a8cbe4f5d7bcb",
+        "other_five_tiles_equal": true,
+        "geometry_equal": true
+      },
+      "h3-physical-2048": {
+        "id": "827be7f2573b34ebc847cbc71091e670d3fa9b4cba3d8c5bac80c52c53fce14f",
+        "opaque": 28490,
+        "light_fur_pixels": 1002,
+        "light_fur_mean_srgb": [
+          0.7074520587921143,
+          0.700768768787384,
+          0.685633659362793
+        ],
+        "light_fur_mean_red_minus_green_srgb": 0.006683072540909052,
+        "light_fur_mean_chroma_srgb": 0.029642218723893166,
+        "light_fur_mean_metalness": 0.24248367547988892,
+        "opaque_mean_rma": [
+          0.34045299887657166,
+          0.45674070715904236,
+          0.4569035470485687
+        ],
+        "opaque_fraction_metalness_above_half": 0.4098280098280098,
+        "seconds": 514.07,
+        "estimator_script_sha256": "42d1a7b270aab8e47600da9f433a81c348158fbd27e922fa4cf9bc6c83ff0e20",
+        "other_five_tiles_equal": true,
+        "geometry_equal": true
+      },
+      "h3-physical-256": {
+        "id": "a2d47a62a2cbfe29695dd1d362c4bf2f201c6cb7235372fc9f13a1204d141d75",
+        "opaque": 28490,
+        "light_fur_pixels": 1002,
+        "light_fur_mean_srgb": [
+          0.538733184337616,
+          0.5357897281646729,
+          0.5245956778526306
+        ],
+        "light_fur_mean_red_minus_green_srgb": 0.0029436261393129826,
+        "light_fur_mean_chroma_srgb": 0.019177300855517387,
+        "light_fur_mean_metalness": 0.48670899868011475,
+        "opaque_mean_rma": [
+          0.33225613832473755,
+          0.32268422842025757,
+          0.3438945710659027
+        ],
+        "opaque_fraction_metalness_above_half": 0.04594594594594595,
+        "seconds": 147.32,
+        "estimator_script_sha256": "42d1a7b270aab8e47600da9f433a81c348158fbd27e922fa4cf9bc6c83ff0e20",
+        "timing_note": "Reused identical cached image/text conditioning from the 2K run.",
+        "other_five_tiles_equal": true,
+        "geometry_equal": true
+      },
+      "qwen-legacy-2048": {
+        "id": "aa5e7dcdcdd7db2e438ff52cae3b0014efd12d615dc96a51e7c5130a2a35e5a6",
+        "opaque": 28490,
+        "light_fur_pixels": 1002,
+        "light_fur_mean_srgb": [
+          0.8689125180244446,
+          0.8374956846237183,
+          0.8522915840148926
+        ],
+        "light_fur_mean_red_minus_green_srgb": 0.03141570836305618,
+        "light_fur_mean_chroma_srgb": 0.054256923496723175,
+        "light_fur_mean_metalness": 0.3444914221763611,
+        "opaque_mean_rma": [
+          0.3392391800880432,
+          0.6153454184532166,
+          0.4197390377521515
+        ],
+        "opaque_fraction_metalness_above_half": 0.6558090558090558,
+        "seconds": 1503.99,
+        "estimator_script_sha256": "f9598050eef1d6c36a148bcd23abf1c98bf76df721f14b0f5c5a8cbe4f5d7bcb",
+        "other_five_tiles_equal": true,
+        "geometry_equal": true
+      },
+      "qwen-physical-2048": {
+        "id": "61959fbf0fb8e787d3b64b89444dcb2eb07ad7ea8b347a1073a8787e1f75914f",
+        "opaque": 28490,
+        "light_fur_pixels": 1002,
+        "light_fur_mean_srgb": [
+          0.8227232098579407,
+          0.8132425546646118,
+          0.8168820142745972
+        ],
+        "light_fur_mean_red_minus_green_srgb": 0.009480129927396774,
+        "light_fur_mean_chroma_srgb": 0.042673639953136444,
+        "light_fur_mean_metalness": 0.3279206454753876,
+        "opaque_mean_rma": [
+          0.4571990668773651,
+          0.5019658803939819,
+          0.5442303419113159
+        ],
+        "opaque_fraction_metalness_above_half": 0.5756054756054756,
+        "seconds": 1712.23,
+        "estimator_script_sha256": "42d1a7b270aab8e47600da9f433a81c348158fbd27e922fa4cf9bc6c83ff0e20",
+        "other_five_tiles_equal": true,
+        "geometry_equal": true
+      },
+      "qwen-physical-256": {
+        "id": "f100183a0eec6ca37f85aedbc6e312f15b1a104cb253b1762296a52de68adc4d",
+        "opaque": 28490,
+        "light_fur_pixels": 1002,
+        "light_fur_mean_srgb": [
+          0.927034318447113,
+          0.9189327359199524,
+          0.9171282052993774
+        ],
+        "light_fur_mean_red_minus_green_srgb": 0.008101380430161953,
+        "light_fur_mean_chroma_srgb": 0.011841780506074429,
+        "light_fur_mean_metalness": 0.6775038242340088,
+        "opaque_mean_rma": [
+          0.40125200152397156,
+          0.5888805985450745,
+          0.4666193127632141
+        ],
+        "opaque_fraction_metalness_above_half": 0.6062478062478063,
+        "seconds": 97.04,
+        "estimator_script_sha256": "42d1a7b270aab8e47600da9f433a81c348158fbd27e922fa4cf9bc6c83ff0e20",
+        "other_five_tiles_equal": true,
+        "geometry_equal": true
+      }
+    }
+  },
+  "native_2048_tiles": {
+    "qwen": {
+      "provider": "qwen",
+      "nativeSize": [
+        2048,
+        2048
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "tileSize": [
+        2048,
+        2048
+      ],
+      "geometryEqual": true,
+      "otherFiveTilesEqual": true,
+      "allAlphaEqual": true,
+      "derivedAsset": "658f393a47c8675f3e7c67dfc21821fb33371e297ce03a68caa48c91c9c1dda3",
+      "captureAsset": "930f5022867771e55b028eb64bf99dc965237af32d7ec31b8de2cc1e21aff1a3",
+      "acceptedFaceAsset": "fde312ca196a230ff8df749677f836feb8d6dd5c9aa97ac899c9e64758f34385",
+      "iou": 0.9536137901987228,
+      "decodedPngSha256": {
+        "albedo": "7f62c8ad1d01a65baffd4f42b6aa8324b51823781f31ad4a5cb017d0f48faea2",
+        "rma": "112d6672cbf4fa0f20fcbad18482687095e53001de96adc7f9612460e513e23e"
+      },
+      "textures": {
+        "colorMap": {
+          "width": 6144,
+          "height": 4096,
+          "sha256": "5d0885f96fa065e46b32bf25181db6471a9092a1d7bffc5fc76f252e511d3f39"
+        },
+        "normalMap": {
+          "width": 6144,
+          "height": 4096,
+          "sha256": "b48647772a5b5b87bc80ff7b2d00a8739318bbef05d50f4afdb89ae488bd40f7"
+        },
+        "intervalMap": {
+          "width": 6144,
+          "height": 2048,
+          "sha256": "83b214d88237353a92f13cb8d356d5606ce87175984ac0dee7ac63ffddfa7b77"
+        },
+        "rangeMap": {
+          "width": 768,
+          "height": 256,
+          "sha256": "d447b4f56bf8bd4a730ebd38b27ba7413dce739623222c9f23a10ca4d714b165"
+        },
+        "materialMap": {
+          "width": 6144,
+          "height": 4096,
+          "sha256": "0dced37c744316357e2474e239145b04bcadb5c8e2c543ea608d397517135428"
+        }
+      },
+      "relight": {
+        "viewer": "three-impostor / WebGL2, 270-PC Windows Edge with SwiftShader",
+        "view": "+Z orthographic",
+        "light_azimuth_deg": [
+          36,
+          156
+        ]
+      }
+    },
+    "h3": {
+      "provider": "h3",
+      "nativeSize": [
+        2048,
+        2048
+      ],
+      "sourceSize": [
+        512,
+        512
+      ],
+      "tileSize": [
+        2048,
+        2048
+      ],
+      "geometryEqual": true,
+      "otherFiveTilesEqual": true,
+      "allAlphaEqual": true,
+      "derivedAsset": "79867f2ea427a8e5b1b5432f3bdd66076832c4b29677ad29b5d02a4f2b0fe502",
+      "captureAsset": "930f5022867771e55b028eb64bf99dc965237af32d7ec31b8de2cc1e21aff1a3",
+      "acceptedFaceAsset": "fde312ca196a230ff8df749677f836feb8d6dd5c9aa97ac899c9e64758f34385",
+      "iou": 0.9536137901987228,
+      "decodedPngSha256": {
+        "albedo": "36ec1fb2b606830998aedafd094b938e0675958c16dda8be9ca12858e040365a",
+        "rma": "db382450399f552cbe084ec5fd1fa4db900b96892b11b220ed6e613b1bd2887f"
+      },
+      "textures": {
+        "colorMap": {
+          "width": 6144,
+          "height": 4096,
+          "sha256": "75db600d0782945cf35f74adcc8ae58aa2e11daf5e26a4294eeb8de773ae5f92"
+        },
+        "normalMap": {
+          "width": 6144,
+          "height": 4096,
+          "sha256": "b48647772a5b5b87bc80ff7b2d00a8739318bbef05d50f4afdb89ae488bd40f7"
+        },
+        "intervalMap": {
+          "width": 6144,
+          "height": 2048,
+          "sha256": "83b214d88237353a92f13cb8d356d5606ce87175984ac0dee7ac63ffddfa7b77"
+        },
+        "rangeMap": {
+          "width": 768,
+          "height": 256,
+          "sha256": "d447b4f56bf8bd4a730ebd38b27ba7413dce739623222c9f23a10ca4d714b165"
+        },
+        "materialMap": {
+          "width": 6144,
+          "height": 4096,
+          "sha256": "b796074473f88201933774597fdc2b3772534b74f5b546c385af52b9f3974b0a"
+        }
+      },
+      "relight": {
+        "viewer": "three-impostor / WebGL2, 270-PC Windows Edge with SwiftShader",
+        "view": "+Z orthographic",
+        "light_azimuth_deg": [
+          36,
+          156
+        ]
+      }
+    }
+  },
+  "registration_detail_test": {
+    "input_face_px": [
+      512,
+      512
+    ],
+    "model_map_px": [
+      2048,
+      2048
+    ],
+    "registered_tile_px": [
+      2048,
+      2048
+    ],
+    "pattern": "Alternating one-pixel vertical stripes across the native grid",
+    "base_color_max_abs_error": 5.960464477539063e-08,
+    "rma_max_abs_error": 0.0
+  },
+  "gui_verification": {
+    "real_browser": "Windows Edge 157.0.4341.46 on 270-PC",
+    "templates": [
+      "02",
+      "03"
+    ],
+    "default_box_face_px": 2048,
+    "app_and_graph_dirty_on_Z_retry": [
+      "+Z",
+      "box"
+    ],
+    "screenshot_fixture": "272 px baked Box from the existing Pixal3D walking dog GLB, no new AI face inference."
+  }
+}
