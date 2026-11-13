@@ -28,6 +28,10 @@ BI_SOFTWARE_GPU=1 BI_CHROMIUM='C:\Program Files (x86)\Microsoft\Edge\Application
 
 次回以降の最終アセット報告にも、同じチャット内プレビューに新しいZIPの公開URLを渡して使う。成功数や画質の根拠は[成果物の報告形式](docs/ARTIFACT_REPORTING.md)に従って添える。WebGL2が使えないチャット画面では静止画像とZIPへのリンクを併記し、実際の3D表示が動いたと断定しない。
 
+## 汎用3D Inspector Skill
+
+汎用3DモデルビューアとChatGPT向けSkillは [3D-Inspector-skills](https://github.com/zkamiyama/3D-Inspector-skills) に分離しました。完成したBox Impostorを [Three.jsとthree-impostorによるネイティブ描画](https://github.com/zkamiyama/3D-Inspector-skills/blob/main/docs/verification/native-box-20261113.md) で確認できます。このリポジトリのComfyUIノード、ベイカー、既存のブラウザプレビューは従来どおり残しています。
+
 ## ComfyUIでGLBを開く
 
 Node.js 22以上、ComfyUIを実行するPython 3.11以上を使用する。以下の `python` はComfyUIと同じ環境の実行ファイルを指す。Windowsのポータブル版では同梱のPythonを指定する。
