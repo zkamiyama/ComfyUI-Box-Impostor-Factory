@@ -108,7 +108,9 @@ bash scripts/verify_cpu_only.sh
 
 02・03・05のモデルファイル名は各ローダーに設定済み。必要な重みと配置は公式テンプレートに従う。Qwenの第1画像は元画像、第2画像はガイド。LoRAはモデル側だけに適用する。H3では第1画像が編集対象になる。ガイドは余白を加えてモデルの正方形入力へ収める。生成後は同じ変換を逆にたどり、ガイドの画角に戻す。面別seedを変更すると、その面の生成からやり直せる。[Pixal3D](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/3d_pixal3d_trellis2_image_to_model.json) · [Qwen](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/image_qwen_image_2_1_image_edit.json) · [AnyAngle](https://huggingface.co/lilylilith/QI_2.1_AnyAngle) · [H3](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/image_minimax_h3_image_edit.json)
 
-02・03を開くと、グラフの先頭にBox Impostorの操作ノードが表示される。Primary、Secondary、モデル、深度・材質の設定と6方向の途中結果をここで確認できる。直したい面のボタンでその面のseedを変え、ComfyUIの「Run」で実行する。入力や3D生成のseedを変えると、更新が必要な処理に `Dirty` と表示される。App Modeでは右の入力欄に同じ操作パネルが並ぶ。通常グラフではノードの幅を広げて6面を見比べられる。[6方向のガイドとBoxの操作画面](docs/verification/workflow-controls-graph.webp) · [App Modeの入力と出力](docs/verification/workflow-controls-app.webp)
+02・03を開くと、グラフの先頭にBox Impostorの操作ノードが表示される。Primary画像を選ぶかアップロードすると、入力欄の下にサムネイルが出る。Secondary画像は入力順に番号が付き、追加・並べ替え・削除に合わせて表示が変わる。サムネイルをクリックすると元画像が開く。App ModeとBox Impostorサイドバーからも同じ画像を確認できる。[最上位ノードの入力画像](docs/verification/workflow-inputs-graph.webp) · [App Modeの入力画像](docs/verification/workflow-inputs-app.webp)
+
+その下にはモデル、深度・材質の設定と6方向の途中結果が並ぶ。直したい面のボタンでその面のseedを変え、ComfyUIの「Run」で実行する。入力や3D生成のseedを変えると、更新が必要な処理に `Dirty` と表示される。通常グラフではノードの幅を広げて6面を見比べられる。[6方向のガイドとBoxの操作画面](docs/verification/workflow-controls-graph.webp) · [App Modeの入力と出力](docs/verification/workflow-controls-app.webp)
 
 `BI BakeBox` の `depth_source` は初期値が `geometry`。メッシュの座標を6方向から直接サンプリングする。`rgb_guided` を選ぶと、採用した面画像の色と元の深度を使い、色の境界や深度の段差をまたがない範囲で表面を平滑化する。補正した頂点から法線・区間・占有範囲をベイクし直し、6面を再度位置合わせする。この処理が変更できるのは既存メッシュの表面で、画像にだけ描かれた穴やパーツを追加する機能はない。
 
@@ -119,16 +121,25 @@ bash scripts/verify_cpu_only.sh
 | source | ベースカラーと材質の扱い |
 |---|---|
 | `keep`（初期値） | 入力Boxの色と材質を使う。GLBのroughness・metalness・AOをベイクするには、上流のガイドとベイクの `material_maps` を `material` にそろえる。 |
-| `qwen` / `h3` | 各モデルの画像編集を2回実行し、照明を除いた色と、roughness・metalness・AOの3チャンネル画像を生成する。出力の確認にはビューアの材質マップ表示を使う。 |
+| `qwen` / `h3` | 同じ面画像で画像編集を4回実行し、ベースカラー、粗さ、金属度、AOを1枚ずつ生成する。生成後の各マップはビューアのチャンネル別表示で確認できる。 |
 | `marigold` | Marigold IID Appearanceが色・roughness・metalnessを推定する。AOはGLBからベイクした値を使う。ベイクしていない場合は遮蔽を加えない。 |
 
 元の面画像から輪郭と採用時の位置合わせを読み、推定マップをその解像度から直接Boxのタイルに写す。面画像を交換した場合は、その面の推定材質を破棄する。別の面の推定結果は次の実行で再利用できる。Qwen・H3の材質編集は初期値2048で、Marigoldの推定は長辺768画素。結果は指定したBox解像度で保存する。
 
-Qwen・H3には、実行時に再照明するPBRレンダラーで使うことを明示する。ベースカラーは影・反射・色かぶりを除いたsRGB、Boxの材質マップはR＝roughness、G＝metalness、B＝AOの線形値を指定する。CLIでは `--size 2048 --material-source qwen --material-size 2048 --box-size 512` のように、推定を2Kで行い最終Boxだけを小さくできる。実行前のチェックに、選択した材質モデルの不足ファイルと追加Pythonパッケージが表示される。
+Qwen・H3には各マップをPBRレンダラーの再照明に使うと明記し、用途ごとに指示を分ける。
+
+| モデルに生成させる画像 | 出力値の意味 |
+|---|---|
+| ベースカラー | 影やハイライトを除いた表面の色。sRGBで出力する。 |
+| 粗さ | グレースケール。黒は鏡面のように滑らか、白は粗い表面を表す。 |
+| 金属度 | 白黒のマスク。露出した金属だけを白、毛・布・樹脂・塗装などを黒とする。 |
+| AO（環境遮蔽） | グレースケール。開けた面を白、隙間や接触部など環境光が届きにくい部分を暗くする。 |
+
+コードで各材質画像のRGBを平均し、金属度だけは0.5以上を1、未満を0にする。最後に粗さ・金属度・AOをBoxのR・G・Bに格納する。Boxの解像度に合わせて拡縮・位置合わせしたあとも金属度を再び二値化する。CLIでは `--size 2048 --material-source qwen --material-size 2048 --box-size 512` のように、推定を2Kで行い最終Boxだけを小さくできる。実行前のチェックに、選択した材質モデルの不足ファイルと追加Pythonパッケージが表示される。
 
 旧プロンプトで歩行犬の＋Z面を256角に推定した実機比較では、Qwenは白い毛の一部をピンクに変え、H3では暗い帯が出た。Marigoldは白い毛の色を保ったものの、金属度を高めに推定した。保存したマップはビューアでチャンネル別に確認できる。[元画像と推定マップの比較](docs/verification/walking-dog-material-estimates.png)
 
-同じ犬の＋Z面（元画像512 px）で、PBRの用途を明記したQwenとH3を各2048 pxで実行した。RTX 4080（16 GB）でベースカラーとRMAの2枚を作るのに、Qwenは28分32秒、H3は8分34秒かかった。
+以前の方式では、モデルにRMAの3チャンネルをまとめて描かせていた。同じ犬の＋Z面（元画像512 px）でPBRの用途を明記し、各2048 pxでベースカラーとRMAの2枚を作るのに、RTX 4080（16 GB）でQwenは28分32秒、H3は8分34秒かかった。
 
 Qwenでは、白い毛の平均R−Gが旧256 pxで+0.328、旧2048 pxで+0.031、新256 pxで+0.008、新2048 pxで+0.009だった。尾先の細かい毛筋は新2048 pxで描き足された。H3では旧・新どちらの指示でも256 pxで横帯が出て、2048 pxで解消した。旧2048 pxは毛色を平坦な領域に分け、新2048 pxは毛の模様を残した。
 
