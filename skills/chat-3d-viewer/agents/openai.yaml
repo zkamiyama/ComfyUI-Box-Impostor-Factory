@@ -1,0 +1,3 @@
+display_name: "Chat 3D Inspector"
+short_description: "Offline model viewer with mesh and texture inspection"
+default_prompt: "Build an interactive, self-contained 3D inspector for my uploaded model. Include geometry statistics and materials/textures and render it here if supported."
