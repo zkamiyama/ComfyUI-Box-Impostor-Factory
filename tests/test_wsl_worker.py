@@ -35,3 +35,17 @@ class WslWorkerTests(unittest.TestCase):
                                             check=True, capture_output=True, text=True)
                     self.assertEqual(json.loads(result.stdout),
                                      [expected, transformed, 'BI_CHROMIUM:BI_SOFTWARE_GPU:USER_CONFIG/pl', '0'])
+
+                    # systemd --user can omit Windows PATH; an explicit binary path must work.
+                    wslpath_only = folder / 'wslpath_only'
+                    wslpath_only.mkdir(exist_ok=True)
+                    shutil.copyfile(folder/'wslpath', wslpath_only/'wslpath')
+                    (wslpath_only/'wslpath').chmod(0o755)
+                    without_windows_path = str(wslpath_only) + ':' + env['PATH'].replace(directory + ':', '', 1)
+                    result = subprocess.run([SCRIPT, *args],
+                                            env={**env, 'PATH': without_windows_path,
+                                                 'BI_WINDOWS_NODE': str(folder/'node.exe'),
+                                                 'BI_CHROMIUM': browser},
+                                            check=True, capture_output=True, text=True)
+                    self.assertEqual(json.loads(result.stdout),
+                                     [expected, transformed, 'BI_CHROMIUM:BI_SOFTWARE_GPU:USER_CONFIG/pl', '0'])

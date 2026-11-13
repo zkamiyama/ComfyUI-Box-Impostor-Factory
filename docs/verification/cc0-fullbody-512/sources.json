@@ -1,0 +1,69 @@
+{
+  "license": "CC0 1.0 / Public Domain dedication (as declared on each original image page; model/personality rights are separate)",
+  "final_tile_resolution": [
+    512,
+    512
+  ],
+  "subjects": [
+    {
+      "id": "woman-grey-dress",
+      "media": "photograph",
+      "title": "Woman Full Body",
+      "credit": "Petr Kratochvil",
+      "url": "https://www.publicdomainpictures.net/en/view-image.php?image=379764&picture=woman-full-body",
+      "image_url": "https://www.publicdomainpictures.net/pictures/380000/velka/woman-full-body-1611151929rdv.jpg",
+      "note": "white background, hands on hips, shoes and hair fully visible; author states a model release was obtained",
+      "image": "inputs/woman-grey-dress.jpg",
+      "size": [
+        1280,
+        1920
+      ],
+      "sha256": "665421e6f5b279922c1ae42069f535d9a03660fa68e2a8032cfb1dd328a981a5"
+    },
+    {
+      "id": "woman-outdoors",
+      "media": "photograph",
+      "title": "Woman Full Length Fashion Style",
+      "credit": "Victoria Borodinova",
+      "url": "https://www.publicdomainpictures.net/ru/view-image.php?image=412001&picture=zensina-v-polnyj-rost-fesn-stil",
+      "image_url": "https://www.publicdomainpictures.net/pictures/420000/velka/woman-full-length-fashion-style-1631691213y5g.jpg",
+      "note": "outdoor setting, red top and boots, one arm raised, background segmentation needed",
+      "image": "inputs/woman-outdoors.jpg",
+      "size": [
+        1254,
+        1920
+      ],
+      "sha256": "4cc0da29aa6242720981b7b78b1561e7db5c10e32c6e212ad18e1dbe21adb88a"
+    },
+    {
+      "id": "man-black-suit",
+      "media": "illustration",
+      "title": "Gentleman",
+      "credit": "mohamed mahmoud hassan",
+      "url": "https://www.publicdomainpictures.net/en/view-image.php?image=238049&picture=gentleman",
+      "image_url": "https://www.publicdomainpictures.net/pictures/240000/velka/gentleman.jpg",
+      "note": "flat illustration of man in black suit on pale-yellow background, arms and crossed legs",
+      "image": "inputs/man-black-suit.jpg",
+      "size": [
+        1280,
+        1920
+      ],
+      "sha256": "f9ef6d0ae2b116da0fb10c2ee8f1f39bb6b950cb997a4c10afa4442509703f79"
+    },
+    {
+      "id": "man-repair",
+      "media": "illustration",
+      "title": "Fix Man",
+      "credit": "mohamed mahmoud hassan",
+      "url": "https://www.publicdomainpictures.net/en/view-image.php?image=238400&picture=fix-man",
+      "image_url": "https://www.publicdomainpictures.net/pictures/240000/velka/fix-man.jpg",
+      "note": "flat illustration of person next to an appliance; appliance is a segmentation distractor",
+      "image": "inputs/man-repair.jpg",
+      "size": [
+        1445,
+        1920
+      ],
+      "sha256": "cc79b0816f5b856320a3f3763e5a0e56ee13ce78eddc716f301722025c67ef0b"
+    }
+  ]
+}
