@@ -32,6 +32,16 @@ for (const name of ['02_box_from_reference_qwen21','03_box_from_reference_h3']) 
   });
 }
 
+test('presentation-only widget sockets do not dirty successfully completed stages', async () => {
+  const graph = await load();
+  const submitted = inspectWorkflow(graph);
+  for (const node of graph.nodes) {
+    node.inputs ??= [];
+    node.inputs.push({name:'widget-socket', link:null});
+  }
+  assert.deepEqual(inspectWorkflow(graph).signatures, submitted.signatures);
+});
+
 test('partial runs, late outputs, cached nodes, edits in flight, failures and retries', async () => {
   const graph = await load();
   const a = inspectWorkflow(graph);

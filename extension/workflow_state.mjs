@@ -9,7 +9,9 @@ function edges(graph) {
 
 function settings(node, links) {
   return [node.type, node.mode ?? 0, node.widgets_values ?? [],
-    (node.inputs ?? []).map(pin => [pin.name, links.get(pin.link) ?? null])];
+    // Live serialization may add unconnected widget sockets that graphToPrompt()
+    // drops. Widget values above and actual connections determine the result.
+    (node.inputs ?? []).filter(pin => links.has(pin.link)).map(pin => [pin.name, links.get(pin.link)])];
 }
 
 export function inspectWorkflow(graph) {

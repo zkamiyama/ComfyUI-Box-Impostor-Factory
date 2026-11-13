@@ -1,6 +1,7 @@
 """Image-conditioned material estimation for one accepted Box face."""
 
 import math
+from functools import partial
 
 
 BACKENDS = ('qwen_enhanced', 'h3_enhanced')
@@ -38,6 +39,43 @@ def _reference_image(image, name):
         alpha = image[..., 3:4]
         rgb = rgb * alpha + 1 - alpha
     return rgb
+
+
+def _chunked_mlp(forward, tokens):
+    """Bound the row-wise feed-forward workspace while keeping the entire attention sequence."""
+    if tokens.shape[1] <= 1024:
+        return forward(tokens)
+    output = tokens.new_empty(tokens.shape)
+    for start in range(0, tokens.shape[1], 1024):
+        batch = slice(start, start + 1024)
+        output[:, batch] = forward(tokens[:, batch])
+    return output
+
+
+def _qwen_sampling_model(model, width, height, clip, vae):
+    """Keep a 2K edit within the dedicated memory of a 16 GiB CUDA device."""
+    if width * height < 2048 ** 2 or getattr(getattr(model, 'load_device', None), 'type', None) != 'cuda':
+        return model
+    from comfy import model_management as memory
+    if memory.get_total_memory(model.load_device) > 16 * 1024 ** 3:
+        return model
+    from comfy.ldm.qwen_image21.model import QwenImage21Transformer2DModel
+    denoiser = model.get_model_object('diffusion_model')
+    if not isinstance(denoiser, QwenImage21Transformer2DModel):
+        return model
+
+    patched = model.clone()
+    for index in range(len(denoiser.transformer_blocks)):
+        path = f'diffusion_model.transformer_blocks.{index}.img_mlp.forward'
+        patched.add_object_patch(path, partial(_chunked_mlp, model.get_model_object(path)))
+    cache = patched.model_options['transformer_options'].setdefault('qwen_image21_cache', {})
+    if cache.get('device', 'auto') == 'auto':
+        cache['device'] = 'cpu'
+    # Both conditioning outputs already exist. Release only these two loaders.
+    for patcher in (clip.patcher, vae.patcher):
+        memory.unload_model_and_clones(patcher)
+    memory.soft_empty_cache()
+    return patched
 
 
 class MaterialEstimate:
@@ -106,11 +144,13 @@ class MaterialEstimate:
             if qwen:
                 positive, negative, latent = TextEncodeQwenImage21.execute(
                     clip, prompt, '', vae=vae, resolution=resolution, images=references).result
+                sampler_model = _qwen_sampling_model(model, width, height, clip, vae)
             else:
                 positive, latent = MiniMaxH3ImageConditioning.execute(
                     clip, prompt, width, height, vae=vae, images=references).result
                 negative, = ConditioningZeroOut().zero_out(positive)
-            samples, = common_ksampler(model, run_seed, sampling_steps, guidance, 'euler', 'simple',
+                sampler_model = model
+            samples, = common_ksampler(sampler_model, run_seed, sampling_steps, guidance, 'euler', 'simple',
                                        positive, negative, latent)
             decoded, = VAEDecode().decode(vae, samples)
             if decoded.shape[:3] != (1, height, width) or decoded.shape[-1] < 3:
