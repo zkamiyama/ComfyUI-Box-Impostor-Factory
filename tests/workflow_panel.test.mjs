@@ -39,6 +39,12 @@ test('presentation-only widget sockets do not dirty successfully completed stage
     node.inputs ??= [];
     node.inputs.push({name:'widget-socket', link:null});
   }
+  const preview = graph.nodes.find(n => n.type === 'BIPreviewBox');
+  preview.widgets_values = ['standard'];
+  const withSampling = inspectWorkflow(graph);
+  preview.widgets_values.push(null);
+  assert.deepEqual(inspectWorkflow(graph).signatures, withSampling.signatures);
+  preview.widgets_values = [];
   assert.deepEqual(inspectWorkflow(graph).signatures, submitted.signatures);
 });
 

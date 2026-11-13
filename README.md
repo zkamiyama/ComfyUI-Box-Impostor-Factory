@@ -108,7 +108,7 @@ bash scripts/verify_cpu_only.sh
 
 02・03・05のモデルファイル名は各ローダーに設定済み。必要な重みと配置は公式テンプレートに従う。Qwenの第1画像は元画像、第2画像はガイド。LoRAはモデル側だけに適用する。H3では第1画像が編集対象になる。ガイドは余白を加えてモデルの正方形入力へ収める。生成後は同じ変換を逆にたどり、ガイドの画角に戻す。面別seedを変更すると、その面の生成からやり直せる。[Pixal3D](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/3d_pixal3d_trellis2_image_to_model.json) · [Qwen](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/image_qwen_image_2_1_image_edit.json) · [AnyAngle](https://huggingface.co/lilylilith/QI_2.1_AnyAngle) · [H3](https://github.com/Comfy-Org/workflow_templates/blob/a8bc07a76478dfada740fa8fa49ac87be1bff519/templates/image_minimax_h3_image_edit.json)
 
-02・03を開くと、グラフの先頭にBox Impostorの操作ノードが表示される。Primary、Secondary、モデル、深度・材質の設定と6方向の途中結果をここで確認できる。直したい面のボタンでその面のseedを変え、ComfyUIの「Run」で実行する。入力や3D生成のseedを変えると、更新が必要な処理に `Dirty` と表示される。App Modeでは右の入力欄に同じ操作パネルが並ぶ。通常グラフではノードの幅を広げて6面を見比べられる。
+02・03を開くと、グラフの先頭にBox Impostorの操作ノードが表示される。Primary、Secondary、モデル、深度・材質の設定と6方向の途中結果をここで確認できる。直したい面のボタンでその面のseedを変え、ComfyUIの「Run」で実行する。入力や3D生成のseedを変えると、更新が必要な処理に `Dirty` と表示される。App Modeでは右の入力欄に同じ操作パネルが並ぶ。通常グラフではノードの幅を広げて6面を見比べられる。[6方向のガイドとBoxの操作画面](docs/verification/workflow-controls-graph.webp) · [App Modeの入力と出力](docs/verification/workflow-controls-app.webp)
 
 `BI BakeBox` の `depth_source` は初期値が `geometry`。メッシュの座標を6方向から直接サンプリングする。`rgb_guided` を選ぶと、採用した面画像の色と元の深度を使い、色の境界や深度の段差をまたがない範囲で表面を平滑化する。補正した頂点から法線・区間・占有範囲をベイクし直し、6面を再度位置合わせする。この処理が変更できるのは既存メッシュの表面で、画像にだけ描かれた穴やパーツを追加する機能はない。
 

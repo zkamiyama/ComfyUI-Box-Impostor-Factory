@@ -54,7 +54,7 @@ def _chunked_mlp(forward, tokens):
 
 def _qwen_sampling_model(model, width, height, clip, vae):
     """Keep a 2K edit within the dedicated memory of a 16 GiB CUDA device."""
-    if width * height < 2048 ** 2 or getattr(getattr(model, 'load_device', None), 'type', None) != 'cuda':
+    if width * height < 2048 ** 2 or model.load_device.type != 'cuda':
         return model
     from comfy import model_management as memory
     if memory.get_total_memory(model.load_device) > 16 * 1024 ** 3:
