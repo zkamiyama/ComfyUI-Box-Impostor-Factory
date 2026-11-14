@@ -923,7 +923,12 @@ export async function run(opts) {
         assert.equal(entry.materialEdit?.albedo?.provider, report.materialSource);
         estimatedFaces.push(id);
       }
-      assert(estimatedFaces.length, 'No requested material estimates were saved');
+      const acceptedRequested = Object.entries(manifest.faces)
+        .filter(([id, entry]) => ['all', id].includes(report.materialFace)
+          && entry.edit?.status === 'accepted')
+        .map(([id]) => id);
+      assert.deepEqual([...estimatedFaces].sort(), acceptedRequested.sort(),
+        'Material estimates must cover all requested accepted faces');
     }
     const materialSha256 = {};
     if (report.materialMaps !== undefined) {
@@ -937,7 +942,8 @@ export async function run(opts) {
     }
     if (report.flatBackground && !opts.mesh)
       assert.equal(manifest.reference.maskMode, 'flat_background', 'Saved Box has the wrong input matte');
-    const summary = { workflow: name, ...(report.materialSource && {materialSource: report.materialSource, estimatedFaces}), ...(report.flatBackground && {referenceMask: 'flat_background'}), ...(report.materialMaps !== undefined && {materialMaps: report.materialMaps, bakedChannels: manifest.maps, materialSha256}), prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
+    const summary = { workflow: name, ...(report.materialSource && {materialSource: report.materialSource, estimatedFaces,
+      ...(estimatedFaces.length === 0 && report.materialSource !== 'keep' && {materialStatus: 'skipped-no-accepted-faces'})}), ...(report.flatBackground && {referenceMask: 'flat_background'}), ...(report.materialMaps !== undefined && {materialMaps: report.materialMaps, bakedChannels: manifest.maps, materialSha256}), prompt_id: receipt.prompt_id, asset_id: manifest.asset_id,
       viewer: viewer.href, inference: inferenceReport(prompt, opts.face, live.traces.get(receipt.prompt_id)),
       ...(opts.model === 'h3' && { imageOrder: h3ReferenceFirst ? ['reference', 'guide'] : ['guide', 'reference'] }),
       ...(meshDigest && { inputMesh: opts.mesh, inputMeshSha256: meshDigest }),

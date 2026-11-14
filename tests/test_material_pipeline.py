@@ -66,8 +66,9 @@ class MaterialPipelineTests(unittest.TestCase):
         fixture(root / base, base)
         self.assertEqual(node.generate(base, 'keep'), (base,))
         identity.assert_not_called()
-        with self.assertRaisesRegex(ValueError, 'No accepted'):
-            node.generate(base, 'marigold', '+X')
+        # When the requested edit was rejected, preserve the geometry Box.
+        self.assertEqual(node.generate(base, 'marigold', '+X'), (base,))
+        self.assertEqual(node.generate(base, 'supermat', '+X'), (base,))
         original = np.zeros((32, 32, 4), dtype='f4')
         original[4:-4, 4:-4] = (.8, .3, .5, 1)
         ref = faces.save_view(original)

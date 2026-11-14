@@ -157,7 +157,9 @@ class GenerateFaceMaterials:
         selected = [fid for fid in store.FACES if face in ('all', fid)
                     and manifest['faces'][fid].get('edit', {}).get('status') == 'accepted']
         if not selected:
-            raise ValueError(f'No accepted face image for {face}. Generate and align a face before estimating its material.')
+            # Geometry fallback is a valid Box: an edited face can fail silhouette QA.
+            # The default SuperMat route must not prevent exporting that Box.
+            return (asset,)
         report = json.loads(store.contained(directory, manifest['qa']).read_bytes())['faces']
         backend_module = {'marigold': material_iid, 'supermat': material_supermat, 'cosmos': material_cosmos}.get(source, material_estimate)
         binary = source in NATIVE_MODELS or source in ('cosmos', 'supermat')

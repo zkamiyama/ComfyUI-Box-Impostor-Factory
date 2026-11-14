@@ -1,0 +1,99 @@
+{
+  "status": "box_valid",
+  "pipeline_status": "failed_material_after_rejected_face",
+  "pipeline_error": "No accepted face image for +Z. Generate and align a face before estimating its material.\n",
+  "source_file": "inputs/woman-outdoors.jpg",
+  "asset_id": "0fcea941319c52fd8c3ab96004f6143c19cfdbe31d52f3e9154da89f5c2a7f03",
+  "tile_size": [
+    512,
+    512
+  ],
+  "atlases": {
+    "colorMap": [
+      1536,
+      1024
+    ],
+    "normalMap": [
+      1536,
+      1024
+    ],
+    "intervalMap": [
+      1536,
+      512
+    ],
+    "rangeMap": [
+      192,
+      64
+    ]
+  },
+  "available_maps": [],
+  "six_faces": 6,
+  "qa": {
+    "+Z": {
+      "status": "fallback",
+      "reason": "silhouette-iou",
+      "iou": 0.7129,
+      "boundary_p95_px": 19.7
+    },
+    "-Z": {
+      "status": "baseline",
+      "reason": "not-supplied",
+      "iou": 0,
+      "boundary_p95_px": 0
+    },
+    "+X": {
+      "status": "baseline",
+      "reason": "not-supplied",
+      "iou": 0,
+      "boundary_p95_px": 0
+    },
+    "-X": {
+      "status": "baseline",
+      "reason": "not-supplied",
+      "iou": 0,
+      "boundary_p95_px": 0
+    },
+    "+Y": {
+      "status": "baseline",
+      "reason": "not-supplied",
+      "iou": 0,
+      "boundary_p95_px": 0
+    },
+    "-Y": {
+      "status": "baseline",
+      "reason": "not-supplied",
+      "iou": 0,
+      "boundary_p95_px": 0
+    }
+  },
+  "face_status": {
+    "+Z": "fallback",
+    "-Z": "not_edited",
+    "+X": "not_edited",
+    "-X": "not_edited",
+    "+Y": "not_edited",
+    "-Y": "not_edited"
+  },
+  "coverage_percent": {
+    "+Z": 35.39,
+    "-Z": 35.39,
+    "+X": 34.91,
+    "-X": 34.91,
+    "+Y": 31.52,
+    "-Y": 31.52
+  },
+  "face_aspect_ratio": {
+    "+Z": 0.3894,
+    "-Z": 0.3894,
+    "+X": 0.4284,
+    "-X": 0.4284,
+    "+Y": 0.9088,
+    "-Y": 0.9088
+  },
+  "supermat_faces": [],
+  "accepted_faces": [],
+  "material_metal_fraction": {},
+  "packed": true,
+  "result_file": "/tmp/bi-person-h3-outdoors/h3-qwGHfN/status.json",
+  "viewer": null
+}
