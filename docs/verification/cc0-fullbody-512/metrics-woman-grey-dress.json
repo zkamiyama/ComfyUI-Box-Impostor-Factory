@@ -1,0 +1,123 @@
+{
+  "status": "passed",
+  "source_file": "inputs/woman-grey-dress.jpg",
+  "asset_id": "4a8ccaf59bda137a8e34c8eb03833a4c9d91f93b4846fd68ece1e981b9b8c6c0",
+  "tile_size": [
+    512,
+    512
+  ],
+  "atlases": {
+    "colorMap": [
+      1536,
+      1024
+    ],
+    "normalMap": [
+      1536,
+      1024
+    ],
+    "intervalMap": [
+      1536,
+      512
+    ],
+    "rangeMap": [
+      192,
+      64
+    ],
+    "materialMap": [
+      1536,
+      1024
+    ]
+  },
+  "available_maps": [
+    "roughness",
+    "metalness"
+  ],
+  "six_faces": 6,
+  "qa": {
+    "+Z": {
+      "status": "fallback",
+      "reason": "silhouette-iou",
+      "iou": 0.7706,
+      "boundary_p95_px": 18.97
+    },
+    "-Z": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "iou": 0.987,
+      "boundary_p95_px": 1.41
+    },
+    "+X": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "iou": 0.9867,
+      "boundary_p95_px": 2
+    },
+    "-X": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "iou": 0.9828,
+      "boundary_p95_px": 2
+    },
+    "+Y": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "iou": 0.9953,
+      "boundary_p95_px": 1
+    },
+    "-Y": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "iou": 0.9936,
+      "boundary_p95_px": 1
+    }
+  },
+  "face_status": {
+    "+Z": "fallback",
+    "-Z": "accepted",
+    "+X": "accepted",
+    "-X": "accepted",
+    "+Y": "accepted",
+    "-Y": "accepted"
+  },
+  "coverage_percent": {
+    "+Z": 32.88,
+    "-Z": 32.88,
+    "+X": 37.07,
+    "-X": 37.07,
+    "+Y": 34.67,
+    "-Y": 34.67
+  },
+  "face_aspect_ratio": {
+    "+Z": 0.3838,
+    "-Z": 0.3838,
+    "+X": 0.3667,
+    "-X": 0.3667,
+    "+Y": 1.0468,
+    "-Y": 1.0468
+  },
+  "supermat_faces": [
+    "-Z",
+    "+X",
+    "-X",
+    "+Y",
+    "-Y"
+  ],
+  "accepted_faces": [
+    "-Z",
+    "+X",
+    "-X",
+    "+Y",
+    "-Y"
+  ],
+  "material_metal_fraction": {
+    "+Z": 0.0,
+    "-Z": 0.11158,
+    "+X": 0.11502,
+    "-X": 0.50706,
+    "+Y": 0.3595,
+    "-Y": 0.0331
+  },
+  "packed": false,
+  "result_file": "/tmp/bi-person-h3-smoke/h3-fprkFK/result.json",
+  "viewer": "http://127.0.0.1:8201/box-impostor/web/viewer.html?manifest=/box-impostor/assets/4a8ccaf59bda137a8e34c8eb03833a4c9d91f93b4846fd68ece1e981b9b8c6c0/manifest.json"
+}
