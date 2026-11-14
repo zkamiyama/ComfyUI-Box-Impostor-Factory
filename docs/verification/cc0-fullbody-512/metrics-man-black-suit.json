@@ -1,0 +1,117 @@
+{
+  "status": "box_valid",
+  "pipeline_status": "completed",
+  "pipeline_error": null,
+  "source_file": "inputs/man-black-suit.jpg",
+  "asset_id": "b042e858812436cb2bbae0740fc6dfbc69555de525156d4b6af625701a06450c",
+  "tile_size": [
+    512,
+    512
+  ],
+  "atlases": {
+    "colorMap": [
+      1536,
+      1024
+    ],
+    "normalMap": [
+      1536,
+      1024
+    ],
+    "intervalMap": [
+      1536,
+      512
+    ],
+    "rangeMap": [
+      192,
+      64
+    ],
+    "materialMap": [
+      1536,
+      1024
+    ]
+  },
+  "available_maps": [
+    "roughness",
+    "metalness"
+  ],
+  "six_faces": 6,
+  "qa": {
+    "+Z": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "iou": 0.8992,
+      "boundary_p95_px": 52.33
+    },
+    "-Z": {
+      "status": "baseline",
+      "reason": "not-supplied",
+      "iou": 0,
+      "boundary_p95_px": 0
+    },
+    "+X": {
+      "status": "baseline",
+      "reason": "not-supplied",
+      "iou": 0,
+      "boundary_p95_px": 0
+    },
+    "-X": {
+      "status": "baseline",
+      "reason": "not-supplied",
+      "iou": 0,
+      "boundary_p95_px": 0
+    },
+    "+Y": {
+      "status": "baseline",
+      "reason": "not-supplied",
+      "iou": 0,
+      "boundary_p95_px": 0
+    },
+    "-Y": {
+      "status": "baseline",
+      "reason": "not-supplied",
+      "iou": 0,
+      "boundary_p95_px": 0
+    }
+  },
+  "face_status": {
+    "+Z": "accepted",
+    "-Z": "not_edited",
+    "+X": "not_edited",
+    "-X": "not_edited",
+    "+Y": "not_edited",
+    "-Y": "not_edited"
+  },
+  "coverage_percent": {
+    "+Z": 44.71,
+    "-Z": 44.71,
+    "+X": 35.1,
+    "-X": 35.1,
+    "+Y": 42.22,
+    "-Y": 42.22
+  },
+  "face_aspect_ratio": {
+    "+Z": 0.3746,
+    "-Z": 0.3746,
+    "+X": 0.3533,
+    "-X": 0.3533,
+    "+Y": 1.0604,
+    "-Y": 1.0604
+  },
+  "supermat_faces": [
+    "+Z"
+  ],
+  "accepted_faces": [
+    "+Z"
+  ],
+  "material_metal_fraction": {
+    "+Z": 8e-05,
+    "-Z": 0.0,
+    "+X": 0.0,
+    "-X": 0.0,
+    "+Y": 0.0,
+    "-Y": 0.0
+  },
+  "packed": true,
+  "result_file": "/tmp/bi-person-h3-suit/h3-k3XFpH/result.json",
+  "viewer": "http://127.0.0.1:8201/box-impostor/web/viewer.html?manifest=/box-impostor/assets/b042e858812436cb2bbae0740fc6dfbc69555de525156d4b6af625701a06450c/manifest.json"
+}

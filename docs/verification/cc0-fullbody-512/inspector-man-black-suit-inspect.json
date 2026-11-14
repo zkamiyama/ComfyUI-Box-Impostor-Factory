@@ -1,0 +1,29 @@
+{
+  "html": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/cc0-fullbody-512/man-black-suit-512-3d-inspector.html",
+  "cases": {
+    "iso": {
+      "path": "/tmp/cc0-human-512/inspector-man-black-suit-iso.png",
+      "ok": true
+    },
+    "front": {
+      "path": "/tmp/cc0-human-512/inspector-man-black-suit-front.png",
+      "ok": true
+    },
+    "back": {
+      "path": "/tmp/cc0-human-512/inspector-man-black-suit-back.png",
+      "ok": true
+    },
+    "left": {
+      "path": "/tmp/cc0-human-512/inspector-man-black-suit-left.png",
+      "ok": true
+    },
+    "right": {
+      "path": "/tmp/cc0-human-512/inspector-man-black-suit-right.png",
+      "ok": true
+    }
+  },
+  "errors": [],
+  "title": "man-black-suit-512 — 3D-Inspector",
+  "details": "Bounds\nGrid\nDetails\n−X\nX\n−Y\nY\n−Z\nZ\nPersp\nIso\nFit\nman-black-suit-512\nBox impostor ZIP · Native ray-marched Box\nThree.js / WebGL2\n·\nNative Box\nDetails\nMaterials\nTextures\n24\nVertices\n12\nTriangles\n1\nMeshes\n1\nMaterials\nAsset properties\nFormat\nBox impostor ZIP\nDimensions\n0.39 × 1.04 × 0.367\nSource vertices\n52,666\nSource triangles\n89,192\nTexture maps\n12\nUnit\nbake unit\nScene hierarchy\nBox ray-march volume\n12 bounds triangles",
+  "canvasCount": 2
+}

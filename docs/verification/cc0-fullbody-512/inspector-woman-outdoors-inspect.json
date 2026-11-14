@@ -1,0 +1,13 @@
+{
+  "html": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/cc0-fullbody-512/woman-outdoors-512-3d-inspector.html",
+  "cases": {
+    "iso": {
+      "path": "/tmp/cc0-human-512/inspector-woman-outdoors-iso.png",
+      "ok": true
+    }
+  },
+  "errors": [],
+  "title": "woman-outdoors-512 — 3D-Inspector",
+  "details": "Bounds\nGrid\nDetails\n−X\nX\n−Y\nY\n−Z\nZ\nPersp\nIso\nFit\nwoman-outdoors-512\nBox impostor ZIP · Native ray-marched Box\nThree.js / WebGL2\n·\nNative Box\nDetails\nMaterials\nTextures\n24\nVertices\n12\nTriangles\n1\nMeshes\n1\nMaterials\nAsset properties\nFormat\nBox impostor ZIP\nDimensions\n0.405 × 1.04 × 0.446\nSource vertices\n63,049\nSource triangles\n100,000\nTexture maps\n10\nUnit\nbake unit\nScene hierarchy\nBox ray-march volume\n12 bounds triangles",
+  "canvasCount": 2
+}
