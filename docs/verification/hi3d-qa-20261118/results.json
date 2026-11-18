@@ -1,0 +1,122 @@
+{
+  "date": "2026-11-18",
+  "model": "hi3d-official/Hi3Dv1.0",
+  "source_revision": "13657ad",
+  "method": "Refine coarse Pixal3D GLB using source RGBA; standalone inference, original Box workflow unchanged",
+  "mesh_extraction_resolution": 512,
+  "final_box_face_resolution_px": [
+    512,
+    512
+  ],
+  "backend": "RTX 4080 16GB / Python 3.10.19 / PyTorch 2.5.0+cu124 / CUDA 12.4 / FlashAttention 2.7.4 / spconv-cu120 2.3.6",
+  "measurements": {
+    "grey_dress": {
+      "pixal3d_vertices": 49522,
+      "pixal3d_triangles": 81180,
+      "hi3d": {
+        "date": "2026-11-18",
+        "model": "hi3d-official/Hi3Dv1.0",
+        "case": "woman-grey-dress",
+        "resolution": 512,
+        "steps": 25,
+        "offload": false,
+        "torch": "2.5.0+cu124",
+        "cuda": "12.4",
+        "gpu": "NVIDIA GeForce RTX 4080",
+        "status": "success",
+        "faces": 351640,
+        "vertices": 175808,
+        "bounds": [
+          [
+            -0.3148302397428953,
+            -0.9581445275140835,
+            -0.3315018297933407
+          ],
+          [
+            0.31345826011799305,
+            0.7891160343660918,
+            0.2540135052442978
+          ]
+        ],
+        "output": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/evaluation/woman-grey-512-25steps.glb",
+        "seconds": 46.49,
+        "gpu_max_allocated_mb": 6605.73
+      }
+    },
+    "black_suit": {
+      "pixal3d_vertices": 52666,
+      "pixal3d_triangles": 89192,
+      "hi3d": {
+        "date": "2026-11-18",
+        "model": "hi3d-official/Hi3Dv1.0",
+        "case": "man-black-suit",
+        "resolution": 512,
+        "steps": 25,
+        "offload": false,
+        "torch": "2.5.0+cu124",
+        "cuda": "12.4",
+        "gpu": "NVIDIA GeForce RTX 4080",
+        "status": "success",
+        "faces": 398948,
+        "vertices": 199455,
+        "bounds": [
+          [
+            -0.3113347321293755,
+            -0.9558755679131279,
+            -0.33030482905546327
+          ],
+          [
+            0.30840737579155547,
+            0.8201455667643652,
+            0.25643971320307885
+          ]
+        ],
+        "output": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/evaluation/man-suit-512-25steps.glb",
+        "seconds": 47.64,
+        "gpu_max_allocated_mb": 6649.68
+      }
+    }
+  },
+  "qa_ablation": [
+    {
+      "subject": "woman-grey-dress",
+      "face": "+Z",
+      "iou": 0.7706333575204727,
+      "boundary_p95_px": 18.973665961010276,
+      "accepted_default_085": false,
+      "accepted_test_070": true,
+      "conclusion": "Changing the accept threshold does not change geometry depth or fix oblique-view melt."
+    },
+    {
+      "subject": "woman-outdoors",
+      "face": "+Z",
+      "iou": 0.7128914701102895,
+      "boundary_p95_px": 19.70405743352316,
+      "accepted_default_085": false,
+      "accepted_test_070": true
+    }
+  ],
+  "geometry_findings": {
+    "pixal3d_grey_components": 144,
+    "hi3d_grey_components": 1,
+    "grey_normal_angle_deg_p95": {
+      "pixal3d": 10.83,
+      "hi3d": 19.07
+    },
+    "grey_normal_angle_deg_p99": {
+      "pixal3d": 18.6,
+      "hi3d": 42.16
+    },
+    "black_and_white_stipple_in_hi3d_lit_render": true,
+    "explicit_vertex_normals_fixed_stipple": false,
+    "four_laplacian_smoothing_iterations_fixed_stipple": false,
+    "unlit_silhouette_still_present": true
+  },
+  "known_limitations": [
+    "Hi3D outputs geometry without PBR or color",
+    "Hi3D normalizes coordinates and must be realigned before Box rebaking",
+    "Hi3D 1024 and 1536 not evaluated",
+    "Hi3D mesh has visual roughness in current 3D-Inspector lit shader",
+    "2 samples do not establish general quality"
+  ]
+}
