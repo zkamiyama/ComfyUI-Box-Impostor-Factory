@@ -44,3 +44,5 @@ Hi3Dの出力にはテクスチャ・材質・頂点色がなく、座標も正�
 Hi3Dのコードと重みは一般的なMIT・Apache-2.0ではなく、[Hi3D Open License Agreement Version 1.0](https://github.com/hi3d-official/Hi3Dv1.0/blob/main/LICENSE)の対象である。商用利用は条件付きで認められ、表示・配布上の通知義務と、利用規模に応じた追加ライセンス申請条件がある。依存物のライセンスは別途確認する。
 
 機械的な計測値と検証条件は[`results.json`](results.json)を参照。二つの3D-Inspector HTMLはモデルを内包する元の生成物を改変せずコピーしている。
+
+**追試（2026-11-18）：** 平滑化では人物の「溶けた」ディテールを修復できない。元BoxとHi3D 512・1024段階を比較した結果、顔の視覚品質は改善していない。輪郭IoUだけではこの劣化を検出できない。比較画像と制約は[ディテール欠損の追試](DETAIL_LOSS_FOLLOWUP.md)を参照。

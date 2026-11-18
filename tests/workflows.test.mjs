@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const names=[
   '01_box_from_glb','02_box_from_reference_qwen21','03_box_from_reference_h3',
-  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision','10_material_from_saved_box'
+  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision','10_material_from_saved_box','11_hi3d_512_fullbody_experiment'
 ];
 const faces=['+X','-X','+Y','-Y','+Z','-Z'];
 const graph = async name => JSON.parse(await readFile(new URL('../workflows/'+name+'.json',import.meta.url),'utf8'));
@@ -57,6 +57,22 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
     assert.equal(upstream(g,material,'asset').from,source.id);
     for(const type of ['BIPreviewBox','BISaveBox'])assert.equal(upstream(g,nodesOf(g,type)[0],'asset').from,material.id);
     if(name.startsWith('10'))return;
+  }
+  if(name.startsWith('11')){
+    const [hi3d]=nodesOf(g,'BIHi3DRefineProxy');
+    const [canonical]=nodesOf(g,'BICanonicalizeProxy');
+    const [bake]=nodesOf(g,'BIBakeBox');
+    assert.ok(hi3d && canonical && bake,'Hi3D trial requires canonical mesh and Box baker');
+    assert.deepEqual(upstream(g,hi3d,'proxy'),{from:canonical.id,slot:0});
+    assert.deepEqual(upstream(g,bake,'proxy'),{from:hi3d.id,slot:0});
+    assert.deepEqual(hi3d.widgets_values,['hi3d_512',25,'none','',false]);
+    assert.equal(bake.widgets_values[0],512,'Hi3D experiment always bakes six 512px faces');
+    const [material]=nodesOf(g,'BIGenerateFaceMaterials');
+    assert.ok(material,'Material estimation should remain enabled in photo workflows');
+    assert.deepEqual(material.widgets_values,['supermat','all',0,2048]);
+    assert.deepEqual(upstream(g,material,'asset'),{from:bake.id,slot:0});
+    for(const type of ['BIPreviewBox','BISaveBox'])
+      assert.deepEqual(upstream(g,nodesOf(g,type)[0],'asset'),{from:material.id,slot:0});
   }
   if(name.startsWith('09')){
     const [rev]=nodesOf(g,'BIRebakeProxyRevision');
