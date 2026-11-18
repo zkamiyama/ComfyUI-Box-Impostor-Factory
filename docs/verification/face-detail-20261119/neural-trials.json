@@ -1,0 +1,178 @@
+{
+  "0.04": {
+    "asset": "cbb86e9b656653e18d1a2c5af1ad4700b22f41a7191ffeaca82f0dea25a97425",
+    "metrics": {
+      "method": "moge2_detail_v2",
+      "model": "MoGe-2 ViT-L native",
+      "faces": {
+        "+X": {
+          "validPixels": 385599,
+          "changedPixels": 385213,
+          "predictorDepthSpan": 0.489898,
+          "peakAbsDelta": 0.004,
+          "p95AbsDelta": 0.00268,
+          "deltaStd": 0.001115,
+          "status": "predicted",
+          "postPairP95": 0.001444
+        },
+        "-X": {
+          "validPixels": 385446,
+          "changedPixels": 384965,
+          "predictorDepthSpan": 0.3908,
+          "peakAbsDelta": 0.004,
+          "p95AbsDelta": 0.004,
+          "deltaStd": 0.00151,
+          "status": "predicted",
+          "postPairP95": 0.002369
+        },
+        "+Y": {
+          "validPixels": 361737,
+          "changedPixels": 361213,
+          "predictorDepthSpan": 1.300595,
+          "peakAbsDelta": 0.004,
+          "p95AbsDelta": 0.002152,
+          "deltaStd": 0.000897,
+          "status": "predicted",
+          "postPairP95": 0.001019
+        },
+        "-Y": {
+          "validPixels": 362092,
+          "changedPixels": 361738,
+          "predictorDepthSpan": 1.270388,
+          "peakAbsDelta": 0.004,
+          "p95AbsDelta": 0.004,
+          "deltaStd": 0.001501,
+          "status": "predicted",
+          "postPairP95": 0.002184
+        },
+        "+Z": {
+          "validPixels": 323022,
+          "changedPixels": 322752,
+          "predictorDepthSpan": 0.45799,
+          "peakAbsDelta": 0.004,
+          "p95AbsDelta": 0.003036,
+          "deltaStd": 0.001265,
+          "status": "predicted",
+          "postPairP95": 0.001593
+        },
+        "-Z": {
+          "validPixels": 341392,
+          "changedPixels": 340889,
+          "predictorDepthSpan": 0.618814,
+          "peakAbsDelta": 0.004,
+          "p95AbsDelta": 0.002236,
+          "deltaStd": 0.000973,
+          "status": "predicted",
+          "postPairP95": 0.001054
+        }
+      },
+      "mesh": {
+        "uniquePositions": 40588,
+        "vertices": 49522,
+        "triangles": 81180,
+        "originalDegenerateTriangles": 0,
+        "stepScale": 0.25,
+        "maxDisplacement": 0.0045190883059514275,
+        "meanDisplacement": 0.0006612702554575182,
+        "movedVertices": 39798,
+        "localBacktracking": true,
+        "attenuatedVertices": 89,
+        "meanStepScale": 0.9988851384645708,
+        "medianStepScale": 1.0,
+        "fullStrengthVertices": 40499,
+        "localAttenuationSteps": 92
+      },
+      "strength": 0.04,
+      "sigma": 20.0,
+      "maxDelta": 0.004
+    }
+  },
+  "0.08": {
+    "asset": "0ad43a72ca2f94421879321d8450767a0badd3eada36af274ca89d4013c72d4f",
+    "metrics": {
+      "method": "moge2_detail_v2",
+      "model": "MoGe-2 ViT-L native",
+      "faces": {
+        "+X": {
+          "validPixels": 385599,
+          "changedPixels": 385401,
+          "predictorDepthSpan": 0.489898,
+          "peakAbsDelta": 0.008,
+          "p95AbsDelta": 0.00536,
+          "deltaStd": 0.002229,
+          "status": "predicted",
+          "postPairP95": 0.002887
+        },
+        "-X": {
+          "validPixels": 385446,
+          "changedPixels": 385202,
+          "predictorDepthSpan": 0.3908,
+          "peakAbsDelta": 0.008,
+          "p95AbsDelta": 0.008,
+          "deltaStd": 0.00302,
+          "status": "predicted",
+          "postPairP95": 0.004739
+        },
+        "+Y": {
+          "validPixels": 361737,
+          "changedPixels": 361477,
+          "predictorDepthSpan": 1.300595,
+          "peakAbsDelta": 0.008,
+          "p95AbsDelta": 0.004304,
+          "deltaStd": 0.001794,
+          "status": "predicted",
+          "postPairP95": 0.002038
+        },
+        "-Y": {
+          "validPixels": 362092,
+          "changedPixels": 361922,
+          "predictorDepthSpan": 1.270388,
+          "peakAbsDelta": 0.008,
+          "p95AbsDelta": 0.008,
+          "deltaStd": 0.003001,
+          "status": "predicted",
+          "postPairP95": 0.004367
+        },
+        "+Z": {
+          "validPixels": 323022,
+          "changedPixels": 322883,
+          "predictorDepthSpan": 0.45799,
+          "peakAbsDelta": 0.008,
+          "p95AbsDelta": 0.006071,
+          "deltaStd": 0.00253,
+          "status": "predicted",
+          "postPairP95": 0.003187
+        },
+        "-Z": {
+          "validPixels": 341392,
+          "changedPixels": 341139,
+          "predictorDepthSpan": 0.618814,
+          "peakAbsDelta": 0.008,
+          "p95AbsDelta": 0.004472,
+          "deltaStd": 0.001947,
+          "status": "predicted",
+          "postPairP95": 0.002108
+        }
+      },
+      "mesh": {
+        "uniquePositions": 40588,
+        "vertices": 49522,
+        "triangles": 81180,
+        "originalDegenerateTriangles": 0,
+        "stepScale": 0.125,
+        "maxDisplacement": 0.009038185725823452,
+        "meanDisplacement": 0.0012761797672531808,
+        "movedVertices": 39798,
+        "localBacktracking": true,
+        "attenuatedVertices": 975,
+        "meanStepScale": 0.986609342662856,
+        "medianStepScale": 1.0,
+        "fullStrengthVertices": 39613,
+        "localAttenuationSteps": 1213
+      },
+      "strength": 0.08,
+      "sigma": 20.0,
+      "maxDelta": 0.008
+    }
+  }
+}

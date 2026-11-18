@@ -1,0 +1,138 @@
+{
+  "4a8ccaf59bda137a8e34c8eb03833a4c9d91f93b4846fd68ece1e981b9b8c6c0": {
+    "frontEditStatus": "fallback",
+    "frontReport": {
+      "before": {
+        "iou": 0.7175996607294317,
+        "boundaryP95Px": 22.627416997969522
+      },
+      "status": "fallback",
+      "sourceSize": [
+        393,
+        1024
+      ],
+      "tileSize": [
+        512,
+        512
+      ],
+      "registration": {
+        "scale": 1.056487347611608,
+        "centerShiftYX": [
+          -0.5,
+          -1.0
+        ]
+      },
+      "after": {
+        "iou": 0.7706333575204727,
+        "boundaryP95Px": 18.973665961010276
+      },
+      "reason": "silhouette-iou",
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "guideCanvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "+Z",
+        "guideRect": [
+          315,
+          0,
+          393,
+          1024
+        ],
+        "guideInputSha256": "36828d858d33729e55d38758aec74552620944ee1040fdc6b9e5c2549fcd76cd",
+        "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3991927041107743,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "thresholds": {
+        "minIoU": 0.85,
+        "maxShiftFraction": 0.1,
+        "maxScaleChange": 0.15
+      }
+    },
+    "differentValues": 0,
+    "maximumDifference": 0.0,
+    "frontSHA256": "576791adde32848c3ff3bcbca3e12907c1d7700550e689f0b066194a0e5a4a14",
+    "frontHasMaterialEdit": false
+  },
+  "943fb3409590729532ac598c68ae50780940687ae52161e9aa5cb3e348349ecc": {
+    "frontEditStatus": "fallback",
+    "frontReport": {
+      "before": {
+        "iou": 0.7167318209118785,
+        "boundaryP95Px": 23.0
+      },
+      "status": "fallback",
+      "sourceSize": [
+        393,
+        1024
+      ],
+      "tileSize": [
+        512,
+        512
+      ],
+      "registration": {
+        "scale": 1.056487347611608,
+        "centerShiftYX": [
+          -0.5,
+          -1.0
+        ]
+      },
+      "after": {
+        "iou": 0.7760724775576056,
+        "boundaryP95Px": 19.097105616132534
+      },
+      "reason": "silhouette-iou",
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "guideCanvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "+Z",
+        "guideRect": [
+          315,
+          0,
+          393,
+          1024
+        ],
+        "guideInputSha256": "36828d858d33729e55d38758aec74552620944ee1040fdc6b9e5c2549fcd76cd",
+        "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3991927041107743,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "thresholds": {
+        "minIoU": 0.85,
+        "maxShiftFraction": 0.1,
+        "maxScaleChange": 0.15
+      }
+    },
+    "differentValues": 0,
+    "maximumDifference": 0.0,
+    "frontSHA256": "576791adde32848c3ff3bcbca3e12907c1d7700550e689f0b066194a0e5a4a14",
+    "frontHasMaterialEdit": false
+  }
+}

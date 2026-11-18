@@ -1,0 +1,223 @@
+{
+  "viewers": {
+    "original": {
+      "assetID": "4a8ccaf59bda137a8e34c8eb03833a4c9d91f93b4846fd68ece1e981b9b8c6c0",
+      "resolution": 512,
+      "previewType": "native-box",
+      "nativeMapSHA256Verified": {
+        "colorMap": true,
+        "normalMap": true,
+        "intervalMap": true,
+        "rangeMap": true,
+        "materialMap": true
+      },
+      "sourceHTML": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/cc0-fullbody-512/woman-grey-dress-512-3d-inspector.html",
+      "htmlBytes": 18632710,
+      "htmlSHA256": "db8f1b66f5a87514bbaba12dac8381203af3a38f373bb88ad0654a3234664ad9"
+    },
+    "512": {
+      "assetID": "77cb3973214fbef0a54257982a516cc8e4eb7481357a48477f2f42d956c86b70",
+      "resolution": 512,
+      "previewType": "native-box",
+      "nativeMapSHA256Verified": {
+        "colorMap": true,
+        "normalMap": true,
+        "intervalMap": true,
+        "rangeMap": true
+      },
+      "sourceHTML": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/deliverables/woman-detail-512-3d-inspector.html",
+      "htmlBytes": 18415662,
+      "htmlSHA256": "9e02617e3169877f4ce8e99261c854e61e880f50801ea1fa0605ccff333014ce",
+      "repositoryHTML": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/face-detail-20261119/woman-detail-512-3d-inspector.html",
+      "officialGenerator": "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+      "outputModified": false
+    },
+    "1024": {
+      "assetID": "1b8a756f88c84570b17ab582caa55291f29df99b9e1a4800be00b8ab99a57c52",
+      "resolution": 1024,
+      "previewType": "native-box",
+      "nativeMapSHA256Verified": {
+        "colorMap": true,
+        "normalMap": true,
+        "intervalMap": true,
+        "rangeMap": true
+      },
+      "sourceHTML": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/deliverables/woman-detail-1024-3d-inspector.html",
+      "htmlBytes": 59162022,
+      "htmlSHA256": "54acea6a4113366ecb454967cc37bd00dd327599ccd2c272e866787c9b17978e",
+      "repositoryHTML": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/face-detail-20261119/woman-detail-1024-3d-inspector.html",
+      "officialGenerator": "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+      "outputModified": false
+    }
+  },
+  "runtimeExport1024": {
+    "asset": "1b8a756f88c84570b17ab582caa55291f29df99b9e1a4800be00b8ab99a57c52",
+    "archive": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/deliverables/woman-detail-1024-runtime.box.zip",
+    "archiveBytes": 66298494,
+    "archiveSHA256": "0c1c4e6baf4b31b5ec9ec6ae5aaca86c163ddc06d82cd3dc1bda46a9b820cf5c",
+    "expandedBytes": 243878534,
+    "manifestUnchanged": true,
+    "members": [
+      {
+        "path": "geometry/proxy.glb",
+        "bytes": 4866800,
+        "sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3"
+      },
+      {
+        "path": "guides/nx.depth16f.bin",
+        "bytes": 2097152,
+        "sha256": "9b5aa3019c55b805987197f4e37d3f0ee5253933f56e8c831fec7f77e6bfb1a3"
+      },
+      {
+        "path": "guides/nx.png",
+        "bytes": 720741,
+        "sha256": "f454565cac3f7389312bc533e89630bc5f693dfc2761a5e8b1471cebddd74493"
+      },
+      {
+        "path": "guides/ny.depth16f.bin",
+        "bytes": 2097152,
+        "sha256": "a30d5eb71b1f377a9e329fd0a6b62c8ba1b42d53b51f51ab80e5cfbf913f1f46"
+      },
+      {
+        "path": "guides/ny.png",
+        "bytes": 639371,
+        "sha256": "71ed1fc6ac2906ce646cdabd4bfe55e06c487e35a22f18ad2e3e017644d1c1af"
+      },
+      {
+        "path": "guides/nz.depth16f.bin",
+        "bytes": 2097152,
+        "sha256": "8bd60ffe2d409e6008646e39eeac5c71c795d90911bdf8dedabcad393785caf6"
+      },
+      {
+        "path": "guides/nz.png",
+        "bytes": 681971,
+        "sha256": "465ae47fa84fb0365aa5e5de2cec69bb00d817b662dfed27a0ba5963ffa6d0a4"
+      },
+      {
+        "path": "guides/px.depth16f.bin",
+        "bytes": 2097152,
+        "sha256": "bb00640a7dd63f35f00302eb7e7f5a109b8335d9a1245eaa4eefba8af88fbe68"
+      },
+      {
+        "path": "guides/px.png",
+        "bytes": 728567,
+        "sha256": "7ce58a37e34c6fdd21d696ec82317e10f671315107ff89d6159fcd9f47445afa"
+      },
+      {
+        "path": "guides/py.depth16f.bin",
+        "bytes": 2097152,
+        "sha256": "815d79e32ccce74f86393401159873e687503b10969a613b25581174c6f2679b"
+      },
+      {
+        "path": "guides/py.png",
+        "bytes": 673853,
+        "sha256": "6ff4b5953e588418c5a7cd7104153cbbf39275252f3692fb22ae91788afcbc6d"
+      },
+      {
+        "path": "guides/pz.depth16f.bin",
+        "bytes": 2097152,
+        "sha256": "dced7fafa239fd945cd15fd41b6551e2ab238141dfed3620429a329c2653d274"
+      },
+      {
+        "path": "guides/pz.png",
+        "bytes": 687994,
+        "sha256": "79702ba86e19d6a1bae5f105f86d1e2d6fba3fcad7d2e28d1d58088916225211"
+      },
+      {
+        "path": "manifest.json",
+        "bytes": 34497,
+        "sha256": "ee9bfa9998063f39b5b008ef9965d21a8a72eeeb36026bdc5cb0dd30f04c7f46"
+      },
+      {
+        "path": "maps/color.rgba16f.bin",
+        "bytes": 50331648,
+        "sha256": "b47e63868278e0e2eeda1a0a0460770a910e6536da54e4a7d8b00c08a7a6b0ee"
+      },
+      {
+        "path": "maps/interval.rgba16f.bin",
+        "bytes": 25165824,
+        "sha256": "2f7cfafef8635afd0babc9ccf3bcbce121ccb57d4ffcb8b6291dbce668ec9089"
+      },
+      {
+        "path": "maps/range.rgba16f.bin",
+        "bytes": 393216,
+        "sha256": "06f75bba54198bf24359b8c21f771ab810726535f2ac94220d959bd2fe4eaf1a"
+      },
+      {
+        "path": "maps/reprojected_color.rgba16f.bin",
+        "bytes": 50331648,
+        "sha256": "b403ad69978cfeaac13231a6e3efde11cc25429e26f6a9cdd6ad3ecd182164fa"
+      },
+      {
+        "path": "maps/reprojected_normal.rgba16f.bin",
+        "bytes": 50331648,
+        "sha256": "247b739c7cf048bb806bb46d722f758a5dcde07ee871abb17c32360a35fb5842"
+      },
+      {
+        "path": "qa/report.json",
+        "bytes": 17871,
+        "sha256": "7edd7148e40110be885613d860b4e559e843c840fbc09d3808a8c993d2840643"
+      },
+      {
+        "path": "reference/cropped.png",
+        "bytes": 270164,
+        "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+      },
+      {
+        "path": "reference/source.npy",
+        "bytes": 39321728,
+        "sha256": "1a3e1b1b401039697b8fb52d44fe4f8b2db15451c00f79314994131c9ec2ae4d"
+      },
+      {
+        "path": "reference/source.png",
+        "bytes": 1439532,
+        "sha256": "e60d982c5b2e296a4d9c9e756da2b22c8341232f5e9df7e835bbb4730ed7e34c"
+      },
+      {
+        "path": "views/nx/source.png",
+        "bytes": 1067773,
+        "sha256": "d9ab8f32bfef072ab5435b205d349124c8458cfe5537e51de10409c65498a26f"
+      },
+      {
+        "path": "views/ny/source.png",
+        "bytes": 804796,
+        "sha256": "d61ef3de6c46d41299c998d687e86e6adda97d7df2a673dd528d4da19761bf8b"
+      },
+      {
+        "path": "views/nz/source.png",
+        "bytes": 571922,
+        "sha256": "56b7d825c8bbe8c6217d9f936bea2cd4936f195b391e8d32cbb1515441ccad98"
+      },
+      {
+        "path": "views/px/source.png",
+        "bytes": 577313,
+        "sha256": "3a25f5afeb8e9406498f3e4cfec2fa62ea7a6a6123bfa0c15da4e1c7b5504a33"
+      },
+      {
+        "path": "views/py/source.png",
+        "bytes": 1127431,
+        "sha256": "056d368cb1931f04df07365698cd11047547fbf8fc94c07d644f1eaae99fe2bf"
+      },
+      {
+        "path": "views/pz/source.png",
+        "bytes": 509314,
+        "sha256": "f7a953ce7b18ff5dd3db693a0349957efaa083ad79a34fddb1497f944a0ddcc7"
+      }
+    ],
+    "purpose": "Native Box runtime export with all existing relative file references from manifest and its referenced JSON. Full authoring ZIP is separately preserved."
+  },
+  "fullAuthoringArchives": {
+    "512": {
+      "path": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/deliverables/woman-detail-512.box.zip",
+      "bytes": 106489930,
+      "sha256": "42748f317ebb2034e1fea5ebfa11510e91cb2d394fd01db0203efdc1a031b751",
+      "kind": "full authoring archive; preserved unchanged"
+    },
+    "1024": {
+      "path": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/deliverables/woman-detail-1024.box.zip",
+      "bytes": 209806473,
+      "sha256": "ba548ac628e65d5001d6f4fc6d1d916cc362b9a56da77802a5b6dfa1fc3bee23",
+      "kind": "full authoring archive; preserved unchanged"
+    }
+  }
+}

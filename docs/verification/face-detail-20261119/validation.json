@@ -1,0 +1,253 @@
+{
+  "checkedAtUTC": "2026-11-18T16:31:47.428191+00:00",
+  "workingDirectory": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory",
+  "checks": [
+    {
+      "name": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "environment": {},
+      "exitCode": 0
+    },
+    {
+      "name": "python",
+      "argv": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*.py"
+      ],
+      "environment": {
+        "PYTHONPATH": ".:tests"
+      },
+      "exitCode": 0,
+      "tests": 106,
+      "seconds": 2.207,
+      "skipped": 1,
+      "passed": 105,
+      "skipReasons": [
+        "test_splat_cache.NativeTypeTests.test_native_ply_round_trip_when_comfy_checkout_is_present: Pinned ComfyUI checkout is available in the native integration CI job."
+      ]
+    },
+    {
+      "name": "workflows",
+      "argv": [
+        "node",
+        "--test",
+        "tests/workflows.test.mjs",
+        "tests/workflow_panel.test.mjs"
+      ],
+      "environment": {},
+      "exitCode": 0,
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0
+    }
+  ],
+  "scope": "CPU Python regression and typed workflow/panel tests; no GPU inference or live browser interaction in this gate.",
+  "productionPipeline": {
+    "record": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/production-pipeline.json",
+    "verification": "Read production records and independently validate both actual asset manifests with store.validate(check_bytes=True).",
+    "results": {
+      "512": {
+        "assetId": "f060701ae896b60dc22eb3a813970af999b15748526aead0bbabf307e95e9ad1",
+        "manifestResolution": 512,
+        "textureHashesValidated": true,
+        "allFacesAccepted": true,
+        "faces": {
+          "+X": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.9866197183098592,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          },
+          "-X": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.9827561621511509,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          },
+          "+Y": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.9952407645552368,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          },
+          "-Y": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.993485270569655,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          },
+          "+Z": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.8884114511786362,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          },
+          "-Z": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.98699934188498,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          }
+        },
+        "viewConsistency": {
+          "method": "visible-material-reprojection-v1",
+          "anchor": "+Z",
+          "depthToleranceTexels": 2.0,
+          "normalizedDepthTolerance": 0.0044062500000000004,
+          "minimumInterpolatedCoverage": 0.9999,
+          "channels": [
+            "colorMap",
+            "normalMap",
+            "materialMap"
+          ],
+          "faces": {
+            "+X": {
+              "coveredPixels": 97181,
+              "reprojectedPixels": 25753
+            },
+            "-X": {
+              "coveredPixels": 97178,
+              "reprojectedPixels": 45863
+            },
+            "+Y": {
+              "coveredPixels": 90882,
+              "reprojectedPixels": 17611
+            },
+            "-Y": {
+              "coveredPixels": 90881,
+              "reprojectedPixels": 46372
+            }
+          },
+          "preserved": [
+            "geometry",
+            "intervalMap",
+            "rangeMap",
+            "coverage",
+            "anchor",
+            "oppositeFace"
+          ]
+        }
+      },
+      "1024": {
+        "assetId": "881a042a463f56572908d51b382c4ba2516e9c38da197e93026a353a1d28b52f",
+        "manifestResolution": 1024,
+        "textureHashesValidated": true,
+        "allFacesAccepted": true,
+        "faces": {
+          "+X": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.9873660197079862,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          },
+          "-X": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.9836936994330127,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          },
+          "+Y": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.9947559411149051,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          },
+          "-Y": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.9931875627100616,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          },
+          "+Z": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.8886490109153634,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          },
+          "-Z": {
+            "status": "accepted",
+            "reason": "silhouette-passed",
+            "iou": 0.9863243325899232,
+            "materialProvider": "supermat",
+            "detailStrength": 0.75
+          }
+        },
+        "viewConsistency": {
+          "method": "visible-material-reprojection-v1",
+          "anchor": "+Z",
+          "depthToleranceTexels": 2.0,
+          "normalizedDepthTolerance": 0.002453125,
+          "minimumInterpolatedCoverage": 0.9999,
+          "channels": [
+            "colorMap",
+            "normalMap",
+            "materialMap"
+          ],
+          "faces": {
+            "+X": {
+              "coveredPixels": 388748,
+              "reprojectedPixels": 108330
+            },
+            "-X": {
+              "coveredPixels": 388751,
+              "reprojectedPixels": 188743
+            },
+            "+Y": {
+              "coveredPixels": 363489,
+              "reprojectedPixels": 74719
+            },
+            "-Y": {
+              "coveredPixels": 363489,
+              "reprojectedPixels": 189577
+            }
+          },
+          "preserved": [
+            "geometry",
+            "intervalMap",
+            "rangeMap",
+            "coverage",
+            "anchor",
+            "oppositeFace"
+          ]
+        }
+      }
+    }
+  },
+  "sourceReview": {
+    "files": [
+      "box_nodes/faces.py",
+      "box_nodes/material_pipeline.py",
+      "extension/workflow_panel.js",
+      "workflows/13_box_from_reference_h3_detail_1024.json"
+    ],
+    "additionalConcreteApiOrCacheRegressionsFound": false,
+    "notes": [
+      "New node arguments are optional and appended; shipped existing workflow defaults remain unchanged.",
+      "Detail and consistency parameters affect material application without changing native inference cache parameters.",
+      "Legacy material registration reports retain their old sampling path.",
+      "New 1024 workflow widget order matches runtime INPUT_TYPES; generation dimensions participate in graph cache identity."
+    ]
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "reference": "cameraWeight^4 diagnostic, exact+Z implies pz-only; nativegeometry, sourceH3tile",
+  "roi": {
+    "face": [
+      484,
+      180,
+      543,
+      245
+    ],
+    "head": [
+      470,
+      133,
+      567,
+      276
+    ],
+    "neck": [
+      485,
+      241,
+      543,
+      272
+    ]
+  },
+  "variants": {
+    "all6native": {
+      "face": {
+        "meanAbsoluteSRGB255": 26.04650152107779,
+        "p95": 97.66666666666667,
+        "changedGT8": 2088,
+        "pixels": 3835
+      },
+      "head": {
+        "meanAbsoluteSRGB255": 23.801157407407405,
+        "p95": 84.66666666666667,
+        "changedGT8": 6751,
+        "pixels": 11520
+      },
+      "neck": {
+        "meanAbsoluteSRGB255": 26.55469039673711,
+        "p95": 88.0,
+        "changedGT8": 1015,
+        "pixels": 1798
+      }
+    },
+    "v1": {
+      "face": {
+        "meanAbsoluteSRGB255": 12.777748804867448,
+        "p95": 70.0,
+        "changedGT8": 1046,
+        "pixels": 3835
+      },
+      "head": {
+        "meanAbsoluteSRGB255": 11.865769675925925,
+        "p95": 62.0,
+        "changedGT8": 3342,
+        "pixels": 11520
+      },
+      "neck": {
+        "meanAbsoluteSRGB255": 13.261216166110492,
+        "p95": 72.33333333333333,
+        "changedGT8": 519,
+        "pixels": 1798
+      }
+    },
+    "v2": {
+      "face": {
+        "meanAbsoluteSRGB255": 2.332898739678401,
+        "p95": 9.333333333333334,
+        "changedGT8": 216,
+        "pixels": 3835
+      },
+      "head": {
+        "meanAbsoluteSRGB255": 2.130179398148148,
+        "p95": 7.666666666666667,
+        "changedGT8": 542,
+        "pixels": 11520
+      },
+      "neck": {
+        "meanAbsoluteSRGB255": 1.0706340378197998,
+        "p95": 3.0499999999999545,
+        "changedGT8": 44,
+        "pixels": 1798
+      }
+    },
+    "v3": {
+      "face": {
+        "meanAbsoluteSRGB255": 0.8796175575836592,
+        "p95": 2.6666666666666665,
+        "changedGT8": 30,
+        "pixels": 3835
+      },
+      "head": {
+        "meanAbsoluteSRGB255": 1.1806423611111112,
+        "p95": 4.333333333333333,
+        "changedGT8": 193,
+        "pixels": 11520
+      },
+      "neck": {
+        "meanAbsoluteSRGB255": 0.40934371523915464,
+        "p95": 1.6666666666666667,
+        "changedGT8": 4,
+        "pixels": 1798
+      }
+    }
+  }
+}

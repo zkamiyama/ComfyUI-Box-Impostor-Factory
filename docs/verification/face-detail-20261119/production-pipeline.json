@@ -1,0 +1,282 @@
+{
+  "1024": {
+    "input": "91eccb2e8a3c9958caecc89fff743fec3e26dc34b1808aadf5f182624180b006",
+    "asset": "881a042a463f56572908d51b382c4ba2516e9c38da197e93026a353a1d28b52f",
+    "elapsedSeconds": 33.26135501899989,
+    "node": "BIGenerateFaceMaterials",
+    "source": "supermat",
+    "editResolution": 1024,
+    "detailStrength": 0.75,
+    "viewConsistency": {
+      "method": "visible-material-reprojection-v1",
+      "anchor": "+Z",
+      "depthToleranceTexels": 2.0,
+      "normalizedDepthTolerance": 0.002453125,
+      "minimumInterpolatedCoverage": 0.9999,
+      "channels": [
+        "colorMap",
+        "normalMap",
+        "materialMap"
+      ],
+      "faces": {
+        "+X": {
+          "coveredPixels": 388748,
+          "reprojectedPixels": 108330
+        },
+        "-X": {
+          "coveredPixels": 388751,
+          "reprojectedPixels": 188743
+        },
+        "+Y": {
+          "coveredPixels": 363489,
+          "reprojectedPixels": 74719
+        },
+        "-Y": {
+          "coveredPixels": 363489,
+          "reprojectedPixels": 189577
+        }
+      },
+      "preserved": [
+        "geometry",
+        "intervalMap",
+        "rangeMap",
+        "coverage",
+        "anchor",
+        "oppositeFace"
+      ]
+    },
+    "textures": {
+      "colorMap": {
+        "path": "maps/reprojected_color.rgba16f.bin",
+        "width": 3072,
+        "height": 2048,
+        "channels": 4,
+        "dtype": "float16",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 24576,
+        "byteLength": 50331648,
+        "sha256": "d07559f44f1af3abfc2bbb34e0f007a452eae69a8f5ee9be82749e109a081f44",
+        "minFilter": "linear",
+        "magFilter": "linear",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "linear-srgb",
+        "alpha": "premultiplied-coverage"
+      },
+      "normalMap": {
+        "path": "maps/reprojected_normal.rgba16f.bin",
+        "width": 3072,
+        "height": 2048,
+        "channels": 4,
+        "dtype": "float16",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 24576,
+        "byteLength": 50331648,
+        "sha256": "247b739c7cf048bb806bb46d722f758a5dcde07ee871abb17c32360a35fb5842",
+        "minFilter": "linear",
+        "magFilter": "linear",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "data",
+        "alpha": "coverage"
+      },
+      "intervalMap": {
+        "path": "maps/interval.rgba16f.bin",
+        "width": 3072,
+        "height": 1024,
+        "channels": 4,
+        "dtype": "float16",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 24576,
+        "byteLength": 25165824,
+        "sha256": "2f7cfafef8635afd0babc9ccf3bcbce121ccb57d4ffcb8b6291dbce668ec9089",
+        "minFilter": "linear",
+        "magFilter": "linear",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "data",
+        "alpha": "gap-end"
+      },
+      "rangeMap": {
+        "path": "maps/range.rgba16f.bin",
+        "width": 384,
+        "height": 128,
+        "channels": 4,
+        "dtype": "float16",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 3072,
+        "byteLength": 393216,
+        "sha256": "06f75bba54198bf24359b8c21f771ab810726535f2ac94220d959bd2fe4eaf1a",
+        "minFilter": "nearest",
+        "magFilter": "nearest",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "data",
+        "alpha": "constant-one"
+      },
+      "materialMap": {
+        "path": "maps/reprojected_material.rgba8.bin",
+        "width": 3072,
+        "height": 2048,
+        "channels": 4,
+        "dtype": "uint8",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 12288,
+        "byteLength": 25165824,
+        "sha256": "c27b9f0ca5024bbfd8ef23a7e9ddb05bd5f80bd4c40835ececd1cf506dedaa25",
+        "minFilter": "linear",
+        "magFilter": "linear",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "data",
+        "alpha": "coverage"
+      }
+    },
+    "allFacesAccepted": true
+  },
+  "512": {
+    "input": "2dd128ae1625a504fc2028fb678a48aea2e41612df33a737c10cd0f422daff3c",
+    "asset": "f060701ae896b60dc22eb3a813970af999b15748526aead0bbabf307e95e9ad1",
+    "elapsedSeconds": 18.216318434999266,
+    "node": "BIGenerateFaceMaterials",
+    "source": "supermat",
+    "editResolution": 512,
+    "detailStrength": 0.75,
+    "viewConsistency": {
+      "method": "visible-material-reprojection-v1",
+      "anchor": "+Z",
+      "depthToleranceTexels": 2.0,
+      "normalizedDepthTolerance": 0.0044062500000000004,
+      "minimumInterpolatedCoverage": 0.9999,
+      "channels": [
+        "colorMap",
+        "normalMap",
+        "materialMap"
+      ],
+      "faces": {
+        "+X": {
+          "coveredPixels": 97181,
+          "reprojectedPixels": 25753
+        },
+        "-X": {
+          "coveredPixels": 97178,
+          "reprojectedPixels": 45863
+        },
+        "+Y": {
+          "coveredPixels": 90882,
+          "reprojectedPixels": 17611
+        },
+        "-Y": {
+          "coveredPixels": 90881,
+          "reprojectedPixels": 46372
+        }
+      },
+      "preserved": [
+        "geometry",
+        "intervalMap",
+        "rangeMap",
+        "coverage",
+        "anchor",
+        "oppositeFace"
+      ]
+    },
+    "textures": {
+      "colorMap": {
+        "path": "maps/reprojected_color.rgba16f.bin",
+        "width": 1536,
+        "height": 1024,
+        "channels": 4,
+        "dtype": "float16",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 12288,
+        "byteLength": 12582912,
+        "sha256": "54711e07d1de9029f2e71f3fac6fa8a340e6a9396e06120ce1c770b86e860817",
+        "minFilter": "linear",
+        "magFilter": "linear",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "linear-srgb",
+        "alpha": "premultiplied-coverage"
+      },
+      "normalMap": {
+        "path": "maps/reprojected_normal.rgba16f.bin",
+        "width": 1536,
+        "height": 1024,
+        "channels": 4,
+        "dtype": "float16",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 12288,
+        "byteLength": 12582912,
+        "sha256": "47ccdb2feac7afa60686634533f2173791039bdced69dec40ef710a03def65de",
+        "minFilter": "linear",
+        "magFilter": "linear",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "data",
+        "alpha": "coverage"
+      },
+      "intervalMap": {
+        "path": "maps/interval.rgba16f.bin",
+        "width": 1536,
+        "height": 512,
+        "channels": 4,
+        "dtype": "float16",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 12288,
+        "byteLength": 6291456,
+        "sha256": "333a3681f1f8ba495c2eeccd238aa2655f4f429e9a5cce9844ef68a9507c51a1",
+        "minFilter": "linear",
+        "magFilter": "linear",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "data",
+        "alpha": "gap-end"
+      },
+      "rangeMap": {
+        "path": "maps/range.rgba16f.bin",
+        "width": 192,
+        "height": 64,
+        "channels": 4,
+        "dtype": "float16",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 1536,
+        "byteLength": 98304,
+        "sha256": "095803332c13b0abf2661d7c2a4e2b67f5a669d77c801d186039577688267e5d",
+        "minFilter": "nearest",
+        "magFilter": "nearest",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "data",
+        "alpha": "constant-one"
+      },
+      "materialMap": {
+        "path": "maps/reprojected_material.rgba8.bin",
+        "width": 1536,
+        "height": 1024,
+        "channels": 4,
+        "dtype": "uint8",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 6144,
+        "byteLength": 6291456,
+        "sha256": "a638142fe9cabd7f00e130445acad0cd96b86d011dc235d394b71644ce3e9d63",
+        "minFilter": "linear",
+        "magFilter": "linear",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "data",
+        "alpha": "coverage"
+      }
+    },
+    "allFacesAccepted": true
+  }
+}

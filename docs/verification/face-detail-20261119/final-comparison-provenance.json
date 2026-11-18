@@ -1,0 +1,424 @@
+{
+  "method": "native Box renderer; unmodified standard shader",
+  "projection": "orthographic",
+  "canvasPixels": [
+    1024,
+    1024
+  ],
+  "deviceScaleFactor": 1,
+  "camera": "explicit front (+Z) or diagonal, then fit after setting 1024 x 1024 stage",
+  "faceCrop": {
+    "xyxy": [
+      440,
+      120,
+      600,
+      300
+    ],
+    "displaySize": [
+      400,
+      450
+    ],
+    "resampling": "nearest",
+    "scale": 2.5
+  },
+  "bodyCrop": {
+    "xyxy": [
+      240,
+      100,
+      800,
+      940
+    ],
+    "displaySize": [
+      196,
+      294
+    ],
+    "resampling": "Lanczos downsampling"
+  },
+  "sharpening": false,
+  "generatedImageSubstitution": false,
+  "cases": [
+    {
+      "label": "Before / 512 px per face",
+      "assetId": "4a8ccaf59bda137a8e34c8eb03833a4c9d91f93b4846fd68ece1e981b9b8c6c0",
+      "resolution": 512,
+      "manifestSHA256": "b66ccee430ba0e2ada33ae40b3163452b7791effeafea1d98d52e61013393dbd",
+      "proxySHA256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+      "bakeBox": {
+        "min": [
+          -0.19959635205538714,
+          -0.52,
+          -0.19067711655172312
+        ],
+        "max": [
+          0.19959635205538714,
+          0.52,
+          0.19067711655172312
+        ]
+      },
+      "frontEditStatus": "fallback",
+      "textureSHA256": {
+        "colorMap": "91d14458f6b810b19436ce08466affd64c18d515927cacd28e640155f6599114",
+        "normalMap": "71ac4517a81501923433a5b9040fdd8e3ead0ffe7cc914af45ae46dc36a9440a",
+        "intervalMap": "1fec3ba98488be9551e834e2a7e8e9a6499c9889d420c27d41dab1943ab0ac74",
+        "rangeMap": "883eb2507db489441403449131561bd401c7ea7eb110d8d8fc90c0376bd5105b",
+        "materialMap": "c916bb44d2f3e01c0c64bd674566e2e81e6a51f8569be73e401ab5673123f1e1"
+      },
+      "renders": [
+        {
+          "view": "front",
+          "shading": "lit",
+          "path": "native/before-front/standard-lit.png",
+          "sha256": "35c7f773e16f3864a11b643cdd052566d2af6ca11fef786f9f6e5066e6999ab8",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/4a8ccaf59bda137a8e34c8eb03833a4c9d91f93b4846fd68ece1e981b9b8c6c0",
+            "view": "+Z",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "front_weight",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "front_only",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "camera_weight",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              }
+            ]
+          }
+        },
+        {
+          "view": "front",
+          "shading": "albedo",
+          "path": "native/before-front/standard-albedo.png",
+          "sha256": "159df09d136e266f0b2394b9398b78dd1928347c8273f443edc4e4526470e513",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/4a8ccaf59bda137a8e34c8eb03833a4c9d91f93b4846fd68ece1e981b9b8c6c0",
+            "view": "+Z",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "front_weight",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "front_only",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "camera_weight",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              }
+            ]
+          }
+        },
+        {
+          "view": "diagonal",
+          "shading": "lit",
+          "path": "native/before-diagonal/standard-lit.png",
+          "sha256": "478a8b513a8f68e686fe6cde0864663bd023326cb9c57b1a9486bfa14edb9e12",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/4a8ccaf59bda137a8e34c8eb03833a4c9d91f93b4846fd68ece1e981b9b8c6c0",
+            "view": "diagonal",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "front_weight",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "front_only",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "camera_weight",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              }
+            ]
+          }
+        },
+        {
+          "view": "diagonal",
+          "shading": "albedo",
+          "path": "native/before-diagonal/standard-albedo.png",
+          "sha256": "d0f0202a33187c1eab48241a0c2619138c97c968d765afb6b45c1e5f43bc5e0f",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/4a8ccaf59bda137a8e34c8eb03833a4c9d91f93b4846fd68ece1e981b9b8c6c0",
+            "view": "diagonal",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "front_weight",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "front_only",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              },
+              {
+                "variant": "camera_weight",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512 \u00b7 \u5143\u306e\u8272\u3078\u623b\u3057\u305f\u9762 1"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Fixed / 512 px per face",
+      "assetId": "77cb3973214fbef0a54257982a516cc8e4eb7481357a48477f2f42d956c86b70",
+      "resolution": 512,
+      "manifestSHA256": "a2612f1983735bcdd3629beb99445d940aa4c4771389191578343a7f8a855323",
+      "proxySHA256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+      "bakeBox": {
+        "min": [
+          -0.19959635205538714,
+          -0.52,
+          -0.19067711655172312
+        ],
+        "max": [
+          0.19959635205538714,
+          0.52,
+          0.19067711655172312
+        ]
+      },
+      "frontEditStatus": "accepted",
+      "textureSHA256": {
+        "colorMap": "b84f545591df1117cd52a05523d7dbab096e67c32ae123804c55349f65915501",
+        "normalMap": "47ccdb2feac7afa60686634533f2173791039bdced69dec40ef710a03def65de",
+        "intervalMap": "333a3681f1f8ba495c2eeccd238aa2655f4f429e9a5cce9844ef68a9507c51a1",
+        "rangeMap": "095803332c13b0abf2661d7c2a4e2b67f5a669d77c801d186039577688267e5d"
+      },
+      "renders": [
+        {
+          "view": "front",
+          "shading": "lit",
+          "path": "native/fixed-512-front/standard-lit.png",
+          "sha256": "1744cc73dc7a69b2b10b7d80daee5e589bd546d7189fa8c0f5646cfd151bb432",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/77cb3973214fbef0a54257982a516cc8e4eb7481357a48477f2f42d956c86b70",
+            "view": "+Z",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512"
+              }
+            ]
+          }
+        },
+        {
+          "view": "front",
+          "shading": "albedo",
+          "path": "native/fixed-512-front/standard-albedo.png",
+          "sha256": "6724d9cb4fdbcf015989cad1d624607d05ad5d1a9f49a95a03352adbf3c1bf0f",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/77cb3973214fbef0a54257982a516cc8e4eb7481357a48477f2f42d956c86b70",
+            "view": "+Z",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512"
+              }
+            ]
+          }
+        },
+        {
+          "view": "diagonal",
+          "shading": "lit",
+          "path": "native/fixed-512-diagonal/standard-lit.png",
+          "sha256": "ca1ba1c6b0c1988b24d20645e4fd63ec87a3dca023d3f3adcfd21cae5b938fba",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/77cb3973214fbef0a54257982a516cc8e4eb7481357a48477f2f42d956c86b70",
+            "view": "diagonal",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512"
+              }
+            ]
+          }
+        },
+        {
+          "view": "diagonal",
+          "shading": "albedo",
+          "path": "native/fixed-512-diagonal/standard-albedo.png",
+          "sha256": "9937c2e103b905eb6db970160bda356573d2be37f3b0f9bbc43955ed50c38958",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/77cb3973214fbef0a54257982a516cc8e4eb7481357a48477f2f42d956c86b70",
+            "view": "diagonal",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=512"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Fixed / 1024 px per face",
+      "assetId": "1b8a756f88c84570b17ab582caa55291f29df99b9e1a4800be00b8ab99a57c52",
+      "resolution": 1024,
+      "manifestSHA256": "ee9bfa9998063f39b5b008ef9965d21a8a72eeeb36026bdc5cb0dd30f04c7f46",
+      "proxySHA256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+      "bakeBox": {
+        "min": [
+          -0.19959635205538714,
+          -0.52,
+          -0.19067711655172312
+        ],
+        "max": [
+          0.19959635205538714,
+          0.52,
+          0.19067711655172312
+        ]
+      },
+      "frontEditStatus": "accepted",
+      "textureSHA256": {
+        "colorMap": "b403ad69978cfeaac13231a6e3efde11cc25429e26f6a9cdd6ad3ecd182164fa",
+        "normalMap": "247b739c7cf048bb806bb46d722f758a5dcde07ee871abb17c32360a35fb5842",
+        "intervalMap": "2f7cfafef8635afd0babc9ccf3bcbce121ccb57d4ffcb8b6291dbce668ec9089",
+        "rangeMap": "06f75bba54198bf24359b8c21f771ab810726535f2ac94220d959bd2fe4eaf1a"
+      },
+      "renders": [
+        {
+          "view": "front",
+          "shading": "lit",
+          "path": "native/fixed-1024-front/standard-lit.png",
+          "sha256": "43c9b3e4a4d22b1fab2eeac1e12954258e3c64cdb9eceba2f36df50cc223935a",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/1b8a756f88c84570b17ab582caa55291f29df99b9e1a4800be00b8ab99a57c52",
+            "view": "+Z",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=1024"
+              }
+            ]
+          }
+        },
+        {
+          "view": "front",
+          "shading": "albedo",
+          "path": "native/fixed-1024-front/standard-albedo.png",
+          "sha256": "b72294d14000477355ee804af6bfb4c05245ef0d1b418426358b4b01675c7c9d",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/1b8a756f88c84570b17ab582caa55291f29df99b9e1a4800be00b8ab99a57c52",
+            "view": "+Z",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=1024"
+              }
+            ]
+          }
+        },
+        {
+          "view": "diagonal",
+          "shading": "lit",
+          "path": "native/fixed-1024-diagonal/standard-lit.png",
+          "sha256": "e4295e58b81192e55dd561ae38f18e18720d13b13fe5c78e4505d0ef2e91befa",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/1b8a756f88c84570b17ab582caa55291f29df99b9e1a4800be00b8ab99a57c52",
+            "view": "diagonal",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=1024"
+              }
+            ]
+          }
+        },
+        {
+          "view": "diagonal",
+          "shading": "albedo",
+          "path": "native/fixed-1024-diagonal/standard-albedo.png",
+          "sha256": "0a684f2bbda25f7689a08fc480c12b151f7f9026b31abce1b998c753364a8e99",
+          "renderEvidence": {
+            "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/1b8a756f88c84570b17ab582caa55291f29df99b9e1a4800be00b8ab99a57c52",
+            "view": "diagonal",
+            "width": 1024,
+            "height": 1024,
+            "variants": [
+              {
+                "variant": "standard",
+                "errors": [],
+                "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=1024"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "sameProxy": true,
+  "sameBakeBox": true,
+  "outputSHA256": "ddb45d6b2bc762b9a22c8289f536e6ea09970971f727c0b31b77b71018fc5771",
+  "sourceCodeSHA256": {
+    "docs/verification/face-detail-20261119/build_final_comparison.py": "6feb9e7c6f2b5b0bb58922e975c677dcfcc794734597ea336afece4e53a9752c",
+    "docs/verification/face-detail-20261119/capture_native.mjs": "234adfbd6012e25e61ffcf7209b54dbaf2a16321dfc56217c583018392f76010",
+    "web/viewer.html": "043798d09f36becb3378d20dde19c6411b10fa65ff19582d7293a2944a336752",
+    "worker/chromium.mjs": "f6f7f7659c8eaf807b37d959f870c3323c05a29d53ad9bda5fcea0a7e62d3195",
+    "node_modules/three-impostor/Impostor.js": "0a46901bc6cf53385244160429e07a02ad8606c17acadfd302bbcbaf8b53e907"
+  }
+}

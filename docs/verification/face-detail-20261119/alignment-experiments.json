@@ -1,0 +1,901 @@
+{
+  "original": "4a8ccaf59bda137a8e34c8eb03833a4c9d91f93b4846fd68ece1e981b9b8c6c0",
+  "baselines": {
+    "512": "c1da3359f2e4fb3b3b51344c4755d8e660715301114e7b59e76a3219c78a56e7",
+    "1024": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9"
+  },
+  "aligned": {
+    "512": {
+      "asset": "2dd128ae1625a504fc2028fb678a48aea2e41612df33a737c10cd0f422daff3c",
+      "faces": {
+        "+X": {
+          "before": {
+            "iou": 0.9866197183098592,
+            "boundaryP95Px": 2.0
+          },
+          "status": "accepted",
+          "sourceSize": [
+            375,
+            1024
+          ],
+          "tileSize": [
+            512,
+            512
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            255.5,
+            255.5
+          ],
+          "sampling": "source-affine-v1",
+          "boundingBoxRegistration": {
+            "scale": 0.9979720674331664,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ],
+            "scores": {
+              "iou": 0.9866018920992073,
+              "boundaryP95Px": 2.0
+            }
+          },
+          "after": {
+            "iou": 0.9866197183098592,
+            "boundaryP95Px": 2.0
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "+X",
+            "guideRect": [
+              324,
+              0,
+              375,
+              1024
+            ],
+            "guideInputSha256": "d2ee0712e158b5e32a67e383f4aae21625350294e3256913b3df838629691c09",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.38135423310344624,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "-X": {
+          "before": {
+            "iou": 0.9769476249222582,
+            "boundaryP95Px": 2.23606797749979
+          },
+          "status": "accepted",
+          "sourceSize": [
+            375,
+            1024
+          ],
+          "tileSize": [
+            512,
+            512
+          ],
+          "registration": {
+            "scale": 1.004051943415592,
+            "centerShiftYX": [
+              0.0,
+              -2.0
+            ]
+          },
+          "registrationCenterYX": [
+            255.5,
+            257.5
+          ],
+          "sampling": "source-affine-v1",
+          "after": {
+            "iou": 0.9827561621511509,
+            "boundaryP95Px": 2.0
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "-X",
+            "guideRect": [
+              324,
+              0,
+              375,
+              1024
+            ],
+            "guideInputSha256": "c010b2f7dc1871de44afa5d9fd29771607f48e9ed9fd09588fee382211f51f58",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.38135423310344624,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "+Y": {
+          "before": {
+            "iou": 0.9952407645552368,
+            "boundaryP95Px": 1.0
+          },
+          "status": "accepted",
+          "sourceSize": [
+            1024,
+            978
+          ],
+          "tileSize": [
+            512,
+            512
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            255.5,
+            255.5
+          ],
+          "sampling": "source-affine-v1",
+          "after": {
+            "iou": 0.9952407645552368,
+            "boundaryP95Px": 1.0
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "+Y",
+            "guideRect": [
+              0,
+              23,
+              1024,
+              978
+            ],
+            "guideInputSha256": "e13e57bc135a47c923f59d80282adb54fad497289b2a78d99a9355fbcd1f56a3",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3991927041107743,
+              0.38135423310344624
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "-Y": {
+          "before": {
+            "iou": 0.993485270569655,
+            "boundaryP95Px": 1.0
+          },
+          "status": "accepted",
+          "sourceSize": [
+            1024,
+            978
+          ],
+          "tileSize": [
+            512,
+            512
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            254.0,
+            255.0
+          ],
+          "sampling": "source-affine-v1",
+          "boundingBoxRegistration": {
+            "scale": 0.9956616052060737,
+            "centerShiftYX": [
+              1.5,
+              0.5
+            ],
+            "scores": {
+              "iou": 0.977953151813919,
+              "boundaryP95Px": 2.8284271247461903
+            }
+          },
+          "after": {
+            "iou": 0.993485270569655,
+            "boundaryP95Px": 1.0
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "-Y",
+            "guideRect": [
+              0,
+              23,
+              1024,
+              978
+            ],
+            "guideInputSha256": "fad3a5eda64562d9d9843bb08c68d999a85af9cf23930460eae353e0b40ecef9",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3991927041107743,
+              0.38135423310344624
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "+Z": {
+          "before": {
+            "iou": 0.7175814505783442,
+            "boundaryP95Px": 22.627416997969522
+          },
+          "status": "accepted",
+          "sourceSize": [
+            393,
+            1024
+          ],
+          "tileSize": [
+            512,
+            512
+          ],
+          "registration": {
+            "scale": 1.0637296687458764,
+            "centerShiftYX": [
+              -10.99813971208161,
+              10.927863446436234
+            ]
+          },
+          "registrationCenterYX": [
+            256.0,
+            256.5
+          ],
+          "sampling": "source-affine-v1",
+          "initialRegistration": {
+            "scale": 1.056487347611608,
+            "centerShiftYX": [
+              -0.5,
+              -1.0
+            ],
+            "scores": {
+              "iou": 0.7705759184011941,
+              "boundaryP95Px": 18.973665961010276
+            }
+          },
+          "registrationMethod": "silhouette-similarity",
+          "after": {
+            "iou": 0.8884114511786362,
+            "boundaryP95Px": 13.0
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "+Z",
+            "guideRect": [
+              315,
+              0,
+              393,
+              1024
+            ],
+            "guideInputSha256": "36828d858d33729e55d38758aec74552620944ee1040fdc6b9e5c2549fcd76cd",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3991927041107743,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "-Z": {
+          "before": {
+            "iou": 0.98699934188498,
+            "boundaryP95Px": 1.4142135623730951
+          },
+          "status": "accepted",
+          "sourceSize": [
+            393,
+            1024
+          ],
+          "tileSize": [
+            512,
+            512
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            255.5,
+            255.0
+          ],
+          "sampling": "source-affine-v1",
+          "boundingBoxRegistration": {
+            "scale": 1.001013815724083,
+            "centerShiftYX": [
+              0.0,
+              0.5
+            ],
+            "scores": {
+              "iou": 0.9828943733308776,
+              "boundaryP95Px": 2.0
+            }
+          },
+          "after": {
+            "iou": 0.98699934188498,
+            "boundaryP95Px": 1.4142135623730951
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "-Z",
+            "guideRect": [
+              315,
+              0,
+              393,
+              1024
+            ],
+            "guideInputSha256": "d9ee47a4740f53ba7c92f0b9bdd0f14c0f0f9ca15b943c4ec7f926c30fad2c51",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3991927041107743,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        }
+      }
+    },
+    "1024": {
+      "asset": "91eccb2e8a3c9958caecc89fff743fec3e26dc34b1808aadf5f182624180b006",
+      "faces": {
+        "+X": {
+          "before": {
+            "iou": 0.9864455987101252,
+            "boundaryP95Px": 3.1622776601683795
+          },
+          "status": "accepted",
+          "sourceSize": [
+            375,
+            1024
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 0.9980038908147013,
+            "centerShiftYX": [
+              0.5,
+              -0.5
+            ]
+          },
+          "registrationCenterYX": [
+            511.0,
+            512.0
+          ],
+          "sampling": "source-affine-v1",
+          "after": {
+            "iou": 0.9873660197079862,
+            "boundaryP95Px": 3.0
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "+X",
+            "guideRect": [
+              324,
+              0,
+              375,
+              1024
+            ],
+            "guideInputSha256": "d2ee0712e158b5e32a67e383f4aae21625350294e3256913b3df838629691c09",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.38135423310344624,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "-X": {
+          "before": {
+            "iou": 0.9768372439174827,
+            "boundaryP95Px": 5.0
+          },
+          "status": "accepted",
+          "sourceSize": [
+            375,
+            1024
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 1.0035906372586991,
+            "centerShiftYX": [
+              0.5,
+              -4.0
+            ]
+          },
+          "registrationCenterYX": [
+            511.0,
+            515.5
+          ],
+          "sampling": "source-affine-v1",
+          "after": {
+            "iou": 0.9836936994330127,
+            "boundaryP95Px": 3.605551275463989
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "-X",
+            "guideRect": [
+              324,
+              0,
+              375,
+              1024
+            ],
+            "guideInputSha256": "c010b2f7dc1871de44afa5d9fd29771607f48e9ed9fd09588fee382211f51f58",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.38135423310344624,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "+Y": {
+          "before": {
+            "iou": 0.9947559411149051,
+            "boundaryP95Px": 1.4142135623730951
+          },
+          "status": "accepted",
+          "sourceSize": [
+            1024,
+            978
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            511.0,
+            511.0
+          ],
+          "sampling": "source-affine-v1",
+          "boundingBoxRegistration": {
+            "scale": 1.002183393130874,
+            "centerShiftYX": [
+              0.5,
+              0.5
+            ],
+            "scores": {
+              "iou": 0.9933357620048043,
+              "boundaryP95Px": 2.0
+            }
+          },
+          "after": {
+            "iou": 0.9947559411149051,
+            "boundaryP95Px": 1.4142135623730951
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "+Y",
+            "guideRect": [
+              0,
+              23,
+              1024,
+              978
+            ],
+            "guideInputSha256": "e13e57bc135a47c923f59d80282adb54fad497289b2a78d99a9355fbcd1f56a3",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3991927041107743,
+              0.38135423310344624
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "-Y": {
+          "before": {
+            "iou": 0.9931875627100616,
+            "boundaryP95Px": 2.0
+          },
+          "status": "accepted",
+          "sourceSize": [
+            1024,
+            978
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            508.5,
+            510.5
+          ],
+          "sampling": "source-affine-v1",
+          "boundingBoxRegistration": {
+            "scale": 0.9967462039045553,
+            "centerShiftYX": [
+              3.0,
+              1.0
+            ],
+            "scores": {
+              "iou": 0.9787693601590318,
+              "boundaryP95Px": 4.47213595499958
+            }
+          },
+          "after": {
+            "iou": 0.9931875627100616,
+            "boundaryP95Px": 2.0
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "-Y",
+            "guideRect": [
+              0,
+              23,
+              1024,
+              978
+            ],
+            "guideInputSha256": "fad3a5eda64562d9d9843bb08c68d999a85af9cf23930460eae353e0b40ecef9",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3991927041107743,
+              0.38135423310344624
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "+Z": {
+          "before": {
+            "iou": 0.717696856289409,
+            "boundaryP95Px": 45.09988913511872
+          },
+          "status": "accepted",
+          "sourceSize": [
+            393,
+            1024
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 1.064011954290704,
+            "centerShiftYX": [
+              -22.08954674509675,
+              21.954544043003484
+            ]
+          },
+          "registrationCenterYX": [
+            512.0,
+            513.5
+          ],
+          "sampling": "source-affine-v1",
+          "initialRegistration": {
+            "scale": 1.0570379915312196,
+            "centerShiftYX": [
+              -0.5,
+              -2.0
+            ],
+            "scores": {
+              "iou": 0.7689843446758959,
+              "boundaryP95Px": 38.01315561749642
+            }
+          },
+          "registrationMethod": "silhouette-similarity",
+          "after": {
+            "iou": 0.8886490109153634,
+            "boundaryP95Px": 25.942243542145693
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "+Z",
+            "guideRect": [
+              315,
+              0,
+              393,
+              1024
+            ],
+            "guideInputSha256": "36828d858d33729e55d38758aec74552620944ee1040fdc6b9e5c2549fcd76cd",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3991927041107743,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "-Z": {
+          "before": {
+            "iou": 0.9863243325899232,
+            "boundaryP95Px": 2.8284271247461903
+          },
+          "status": "accepted",
+          "sourceSize": [
+            393,
+            1024
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            511.0,
+            510.5
+          ],
+          "sampling": "source-affine-v1",
+          "boundingBoxRegistration": {
+            "scale": 1.0014821156028106,
+            "centerShiftYX": [
+              0.5,
+              1.0
+            ],
+            "scores": {
+              "iou": 0.9832515376250669,
+              "boundaryP95Px": 3.1622776601683795
+            }
+          },
+          "after": {
+            "iou": 0.9863243325899232,
+            "boundaryP95Px": 2.8284271247461903
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "-Z",
+            "guideRect": [
+              315,
+              0,
+              393,
+              1024
+            ],
+            "guideInputSha256": "d9ee47a4740f53ba7c92f0b9bdd0f14c0f0f9ca15b943c4ec7f926c30fad2c51",
+            "referenceInputSha256": "d1a1f21eb166cba1b9db87cd34f5f9a53d020e5d4b3bf473369f03f721c8f936",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3991927041107743,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        }
+      }
+    }
+  }
+}

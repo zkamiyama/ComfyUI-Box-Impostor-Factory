@@ -1,0 +1,39 @@
+{
+  "input": "91eccb2e8a3c9958caecc89fff743fec3e26dc34b1808aadf5f182624180b006",
+  "supermat": "14f5ed39f16da7748ff285e65c3047e0f6eee5c03c67ba97b9a5c84db8f2a4f7",
+  "h3_rgb_supermat_rm": "9aeeb86efe5d0291b5956ed06c8ff3626335d645b708c5e23c8e04f8cd42879a",
+  "inferenceResolution": 1024,
+  "seconds": 85.05710554122925,
+  "faces": {
+    "+X": {
+      "supermatMeanAbsRGB": 0.11820010095834732,
+      "h3RestoredMeanAbsRGB": 1.3225476713785156e-08,
+      "h3RestoredMaxAbsRGB": 0.0003178715705871582
+    },
+    "-X": {
+      "supermatMeanAbsRGB": 0.1511765569448471,
+      "h3RestoredMeanAbsRGB": 1.4559543792813656e-08,
+      "h3RestoredMaxAbsRGB": 0.0003114938735961914
+    },
+    "+Y": {
+      "supermatMeanAbsRGB": 0.07212906330823898,
+      "h3RestoredMeanAbsRGB": 1.1280083533904417e-08,
+      "h3RestoredMaxAbsRGB": 0.0002681612968444824
+    },
+    "-Y": {
+      "supermatMeanAbsRGB": 0.10819946229457855,
+      "h3RestoredMeanAbsRGB": 1.1493568763398798e-08,
+      "h3RestoredMaxAbsRGB": 0.0002752542495727539
+    },
+    "+Z": {
+      "supermatMeanAbsRGB": 0.07206659018993378,
+      "h3RestoredMeanAbsRGB": 1.0491167934389978e-08,
+      "h3RestoredMaxAbsRGB": 0.00024080276489257812
+    },
+    "-Z": {
+      "supermatMeanAbsRGB": 0.16108198463916779,
+      "h3RestoredMeanAbsRGB": 1.2162926665837404e-08,
+      "h3RestoredMaxAbsRGB": 0.0003095269203186035
+    }
+  }
+}

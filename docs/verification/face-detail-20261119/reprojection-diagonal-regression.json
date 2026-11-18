@@ -1,0 +1,52 @@
+{
+  "description": "Existing actual native-render diagnostic captures; identical source geometry/material inputs except cross-view reprojection, +Z anchor. No rerender or shader modifications.",
+  "sources": [
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/results/face-renderer-diagnostic/improved-1024-diagonal/standard-albedo.png",
+      "sha256": "031a200aca809d9500fe3947263cea5974d5088237cd5ab71e68e1b538722bf4",
+      "renderEvidence": {
+        "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/91eccb2e8a3c9958caecc89fff743fec3e26dc34b1808aadf5f182624180b006",
+        "view": "diagonal",
+        "width": 1024,
+        "height": 1024,
+        "variants": [
+          {
+            "variant": "standard",
+            "errors": [],
+            "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=1024"
+          },
+          {
+            "variant": "camera_weight",
+            "errors": [],
+            "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=1024"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/results/face-renderer-diagnostic/reconciled-visible-1024-diagonal/standard-albedo.png",
+      "sha256": "0a684f2bbda25f7689a08fc480c12b151f7f9026b31abce1b998c753364a8e99",
+      "renderEvidence": {
+        "asset": "/home/dev/Projects/box-impostor-lab/results/face-renderer-diagnostic/reconciled-visible-1024",
+        "view": "diagonal",
+        "width": 1024,
+        "height": 1024,
+        "variants": [
+          {
+            "variant": "standard",
+            "errors": [],
+            "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=1024"
+          }
+        ]
+      }
+    }
+  ],
+  "crop": [
+    390,
+    175,
+    565,
+    390
+  ],
+  "displayScale": 3,
+  "resampling": "nearest"
+}

@@ -1,0 +1,84 @@
+{
+  "crop": [
+    380,
+    60,
+    670,
+    300
+  ],
+  "displayScale": 1.5,
+  "resampling": "nearest; exact screenshot pixels",
+  "sources": [
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/original512-front.png",
+      "copy": "inspector-original512-front.png",
+      "sha256": "3ba3acd0993e8c2e6a33e42a3407049a95eaecd64571ab41f92f0809274a15ba",
+      "bytes": 149951
+    },
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/original512-iso.png",
+      "copy": "inspector-original512-iso.png",
+      "sha256": "24c3732e26139cb7384c46e6154e3bc9835fe6c98a97bbad62005d9a760a11dd",
+      "bytes": 130196
+    },
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/original512-left.png",
+      "copy": "inspector-original512-left.png",
+      "sha256": "d1f73bd4c07a5125eb80540c2f47acabd6d2eb637e9205d4dda4de85b8d7f572",
+      "bytes": 127796
+    },
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/original512-right.png",
+      "copy": "inspector-original512-right.png",
+      "sha256": "0cc76ae114cde2acbc214455795b2e158081ff002b9b4a4f978de4bbf4600b2c",
+      "bytes": 142467
+    },
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/final512-front.png",
+      "copy": "inspector-final512-front.png",
+      "sha256": "5511ca59e1efb6d79e6767c377ae3f3e99dd24df2b9cfcf27501d3bd08b0eb3f",
+      "bytes": 159600
+    },
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/final512-iso.png",
+      "copy": "inspector-final512-iso.png",
+      "sha256": "638ecdc60b3d644f1c20f733b6eb53f7945ff9eddf558dafb3767ec7dc88e9b5",
+      "bytes": 138715
+    },
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/final512-left.png",
+      "copy": "inspector-final512-left.png",
+      "sha256": "7c1eb28b647991320b9c3cb295e88c1f1321a92649dc0d22276c6df0079799fa",
+      "bytes": 156122
+    },
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/final512-right.png",
+      "copy": "inspector-final512-right.png",
+      "sha256": "1870ce7fcfb36bf746c560e7c873c186f94e7a9a86d863c5ff6e91fe75c6084f",
+      "bytes": 160229
+    },
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/final1024-front.png",
+      "copy": "inspector-final1024-front.png",
+      "sha256": "b587c694f6541289d0b479a6e6cfa9b0aad303d0f05fed657ddc3b0a54c5ca8c",
+      "bytes": 170206
+    },
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/final1024-iso.png",
+      "copy": "inspector-final1024-iso.png",
+      "sha256": "cf008b36edcf39453aac8cfeb24f716fa20f2a62fa1d360bc12d96b9d5ceab80",
+      "bytes": 143964
+    },
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/final1024-left.png",
+      "copy": "inspector-final1024-left.png",
+      "sha256": "22b8867619db1849e946b6375efb4ca08214bac5a1245521e122951cb8f597dd",
+      "bytes": 165806
+    },
+    {
+      "source": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/viewer-qa/final1024-right.png",
+      "copy": "inspector-final1024-right.png",
+      "sha256": "5acae23cbb648ff055e49c9689ebac07b08b3a51678f0beb155ed634fbc25f47",
+      "bytes": 170522
+    }
+  ]
+}

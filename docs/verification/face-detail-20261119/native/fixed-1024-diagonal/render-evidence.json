@@ -1,0 +1,13 @@
+{
+  "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/1b8a756f88c84570b17ab582caa55291f29df99b9e1a4800be00b8ab99a57c52",
+  "view": "diagonal",
+  "width": 1024,
+  "height": 1024,
+  "variants": [
+    {
+      "variant": "standard",
+      "errors": [],
+      "status": "webgl2 · h3_enhanced · R=1024"
+    }
+  ]
+}

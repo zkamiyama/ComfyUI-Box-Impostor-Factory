@@ -1,0 +1,70 @@
+{
+  "comparison": "Actual native +Z front albedo render, SuperMat HF + view consistency versus whole-object dielectric control",
+  "parentAsset": "cd62ce229de054d2cabb6cc997a2389cd9be2c50bf54619ff978189876df7d90",
+  "controlAsset": "1abcfa7d82eadcc9e24e420e42e1444ee8f324d853fdebc095875d1a9c3cde4e",
+  "parameterChanges": {
+    "roughnessFloor": 0.6,
+    "metalness": 0,
+    "scope": "whole-object diagnostic",
+    "unchanged": [
+      "color",
+      "normal",
+      "geometry",
+      "depth"
+    ]
+  },
+  "imageShape": [
+    1024,
+    1024,
+    4
+  ],
+  "maxAbsolutePixelDifference": 0,
+  "meanAbsolutePixelDifference": 0.0,
+  "differentChannelValues": 0,
+  "images": [
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/results/face-renderer-diagnostic/production-pbrhf1024-front/standard-albedo.png",
+      "sha256": "2102b5c2d857f1b15181baa92e38674c5d9978facb9c007e8c40cc11b5f9210a",
+      "bytes": 167333
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/results/face-renderer-diagnostic/hf-dielectric-control-front/standard-albedo.png",
+      "sha256": "2102b5c2d857f1b15181baa92e38674c5d9978facb9c007e8c40cc11b5f9210a",
+      "bytes": 167333
+    }
+  ],
+  "renderEvidence": [
+    {
+      "asset": "/home/dev/Projects/box-impostor-lab/ComfyUI/output/box_impostor/cd62ce229de054d2cabb6cc997a2389cd9be2c50bf54619ff978189876df7d90",
+      "view": "+Z",
+      "width": 1024,
+      "height": 1024,
+      "variants": [
+        {
+          "variant": "standard",
+          "errors": [],
+          "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=1024"
+        }
+      ]
+    },
+    {
+      "asset": "/home/dev/Projects/box-impostor-lab/results/face-renderer-diagnostic/hf-dielectric-control",
+      "view": "+Z",
+      "width": 1024,
+      "height": 1024,
+      "variants": [
+        {
+          "variant": "standard",
+          "errors": [],
+          "status": "webgl2 \u00b7 h3_enhanced \u00b7 R=1024"
+        }
+      ]
+    }
+  ],
+  "unchangedTextureHashes": {
+    "colorMap": true,
+    "normalMap": true,
+    "intervalMap": true,
+    "rangeMap": true
+  }
+}

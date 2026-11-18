@@ -1,0 +1,269 @@
+{
+  "codeCommit": "a833b9056e6174292ba35754456993db3270dbde",
+  "files": {
+    "README.md": {
+      "bytes": 12477,
+      "sha256": "d6efa410a11f16d6a2a121f24e167b24b99626d8e8434b1c2411b92b8fbdfd8d"
+    },
+    "alignment-experiments.json": {
+      "bytes": 23670,
+      "sha256": "c832d0350f9f75eb74856deb97d6a6414f22e6ca463e1d6a698ce72de1a6facb"
+    },
+    "all-angle-limitations.webp": {
+      "bytes": 215688,
+      "sha256": "d4d09076f69096049bf0d1759a5c8c0524f8e8d4ebf733d60e432b588b77081c"
+    },
+    "build_final_comparison.py": {
+      "bytes": 6104,
+      "sha256": "6feb9e7c6f2b5b0bb58922e975c677dcfcc794734597ea336afece4e53a9752c"
+    },
+    "capture_native.mjs": {
+      "bytes": 2586,
+      "sha256": "234adfbd6012e25e61ffcf7209b54dbaf2a16321dfc56217c583018392f76010"
+    },
+    "diagnosis-stages.webp": {
+      "bytes": 115322,
+      "sha256": "d85e8c952b07507d00be93bf9a9d6ebb2741f4db02bf998bba1b6875d89aa19b"
+    },
+    "export-provenance.json": {
+      "bytes": 8535,
+      "sha256": "8033bf01f9bd9a181d3ca09eb3f92e3afb74af20c543acbf5044295332b090c9"
+    },
+    "final-comparison-provenance.json": {
+      "bytes": 16243,
+      "sha256": "cf5d6ea49ca5ee7a8e82ab7542d0bc9c4128a2da6908f1806efa6dca42920782"
+    },
+    "final-comparison.webp": {
+      "bytes": 293294,
+      "sha256": "ddb45d6b2bc762b9a22c8289f536e6ea09970971f727c0b31b77b71018fc5771"
+    },
+    "inspector-angle-heads.webp": {
+      "bytes": 358562,
+      "sha256": "b55cebd5627cbd3dfe8d8db8b160b68350bc3e58213cfcd74533c61ae872beee"
+    },
+    "inspector-final1024-front.png": {
+      "bytes": 170206,
+      "sha256": "b587c694f6541289d0b479a6e6cfa9b0aad303d0f05fed657ddc3b0a54c5ca8c"
+    },
+    "inspector-final1024-iso.png": {
+      "bytes": 143964,
+      "sha256": "cf008b36edcf39453aac8cfeb24f716fa20f2a62fa1d360bc12d96b9d5ceab80"
+    },
+    "inspector-final1024-left.png": {
+      "bytes": 165806,
+      "sha256": "22b8867619db1849e946b6375efb4ca08214bac5a1245521e122951cb8f597dd"
+    },
+    "inspector-final1024-qa.json": {
+      "bytes": 1485,
+      "sha256": "867ece14354eca1f99e51de837f1dbc199e1756052d88cedd84a6bf857fec9c0"
+    },
+    "inspector-final1024-right.png": {
+      "bytes": 170522,
+      "sha256": "5acae23cbb648ff055e49c9689ebac07b08b3a51678f0beb155ed634fbc25f47"
+    },
+    "inspector-final512-front.png": {
+      "bytes": 159600,
+      "sha256": "5511ca59e1efb6d79e6767c377ae3f3e99dd24df2b9cfcf27501d3bd08b0eb3f"
+    },
+    "inspector-final512-iso.png": {
+      "bytes": 138715,
+      "sha256": "638ecdc60b3d644f1c20f733b6eb53f7945ff9eddf558dafb3767ec7dc88e9b5"
+    },
+    "inspector-final512-left.png": {
+      "bytes": 156122,
+      "sha256": "7c1eb28b647991320b9c3cb295e88c1f1321a92649dc0d22276c6df0079799fa"
+    },
+    "inspector-final512-qa.json": {
+      "bytes": 1461,
+      "sha256": "d7dd7368ea92a1466500be7dd55690f21a085dcdbe68e6f62cd3379537dfb947"
+    },
+    "inspector-final512-right.png": {
+      "bytes": 160229,
+      "sha256": "1870ce7fcfb36bf746c560e7c873c186f94e7a9a86d863c5ff6e91fe75c6084f"
+    },
+    "inspector-original512-front.png": {
+      "bytes": 149951,
+      "sha256": "3ba3acd0993e8c2e6a33e42a3407049a95eaecd64571ab41f92f0809274a15ba"
+    },
+    "inspector-original512-iso.png": {
+      "bytes": 130196,
+      "sha256": "24c3732e26139cb7384c46e6154e3bc9835fe6c98a97bbad62005d9a760a11dd"
+    },
+    "inspector-original512-left.png": {
+      "bytes": 127796,
+      "sha256": "d1f73bd4c07a5125eb80540c2f47acabd6d2eb637e9205d4dda4de85b8d7f572"
+    },
+    "inspector-original512-qa.json": {
+      "bytes": 1523,
+      "sha256": "8100a9b374222fe51866fc51d12d82c73ed82d447545330df4a266171ab49ec7"
+    },
+    "inspector-original512-right.png": {
+      "bytes": 142467,
+      "sha256": "0cc76ae114cde2acbc214455795b2e158081ff002b9b4a4f978de4bbf4600b2c"
+    },
+    "inspector-qa-sources.json": {
+      "bytes": 3498,
+      "sha256": "ac386acabe485120e80dfa01606dc180a237d3933a5cd59a46788c33305096c8"
+    },
+    "material-detail-control.json": {
+      "bytes": 1864,
+      "sha256": "202f9feb2a5861e961dbf316ac0efa133f257917f1d05102eaef0b4b9e864d2c"
+    },
+    "material-render-comparison.webp": {
+      "bytes": 63176,
+      "sha256": "ecffa60ee0aeab6385b62ce8fad50d7f55605d53eaba130060aabdb127fce0ae"
+    },
+    "material-resolution.webp": {
+      "bytes": 205270,
+      "sha256": "4d92d07f417b3804e3a2dcd96bd0b29a88e1fac7cd7ecbe8b3a9565af7a96fcd"
+    },
+    "material-shading-control.json": {
+      "bytes": 2075,
+      "sha256": "742b3271a6e21b6df7a0b27800eaaa64dd909f6e1fd9abe53f59266423e96419"
+    },
+    "material-shading-control.webp": {
+      "bytes": 64382,
+      "sha256": "dc0f0649d32d2b6cbee5d864b4844af76874a286508d2d2bcecf2f529a0b56a9"
+    },
+    "material1024.json": {
+      "bytes": 1374,
+      "sha256": "bde53485a68ee3dd74c442d79f98fd5c3c93ad3ab192f2615cec2f89c42a7018"
+    },
+    "material512-on1024.json": {
+      "bytes": 1374,
+      "sha256": "7e3c7ee6c91c6f10bbb1f1ed05da8d1aeda191591c016526b886887fd2d6304d"
+    },
+    "native/before-diagonal/render-evidence.json": {
+      "bytes": 797,
+      "sha256": "498ddc4993b32cbcacc573c4fcbb1927efc5ecea22c3d46ce5c1aaa4d0ea5377"
+    },
+    "native/before-diagonal/standard-albedo.png": {
+      "bytes": 124592,
+      "sha256": "d0f0202a33187c1eab48241a0c2619138c97c968d765afb6b45c1e5f43bc5e0f"
+    },
+    "native/before-diagonal/standard-lit.png": {
+      "bytes": 125575,
+      "sha256": "478a8b513a8f68e686fe6cde0864663bd023326cb9c57b1a9486bfa14edb9e12"
+    },
+    "native/before-front/render-evidence.json": {
+      "bytes": 791,
+      "sha256": "12594ae4c9162386204f0eecfbe76fe9b6666d2ef8602c92cff48e21b27d40c3"
+    },
+    "native/before-front/standard-albedo.png": {
+      "bytes": 149820,
+      "sha256": "159df09d136e266f0b2394b9398b78dd1928347c8273f443edc4e4526470e513"
+    },
+    "native/before-front/standard-lit.png": {
+      "bytes": 145997,
+      "sha256": "35c7f773e16f3864a11b643cdd052566d2af6ca11fef786f9f6e5066e6999ab8"
+    },
+    "native/fixed-1024-diagonal/render-evidence.json": {
+      "bytes": 334,
+      "sha256": "e446217f0ea9c319c1051996ff6cdf22d4b2ef61cf73704eebf7f574a715a569"
+    },
+    "native/fixed-1024-diagonal/standard-albedo.png": {
+      "bytes": 157903,
+      "sha256": "0a684f2bbda25f7689a08fc480c12b151f7f9026b31abce1b998c753364a8e99"
+    },
+    "native/fixed-1024-diagonal/standard-lit.png": {
+      "bytes": 153849,
+      "sha256": "e4295e58b81192e55dd561ae38f18e18720d13b13fe5c78e4505d0ef2e91befa"
+    },
+    "native/fixed-1024-front/render-evidence.json": {
+      "bytes": 328,
+      "sha256": "f4fca452643fad69edc52ee6a8d9f686b1c498ae34e989cc2edc1023555b11e3"
+    },
+    "native/fixed-1024-front/standard-albedo.png": {
+      "bytes": 188340,
+      "sha256": "b72294d14000477355ee804af6bfb4c05245ef0d1b418426358b4b01675c7c9d"
+    },
+    "native/fixed-1024-front/standard-lit.png": {
+      "bytes": 178906,
+      "sha256": "43c9b3e4a4d22b1fab2eeac1e12954258e3c64cdb9eceba2f36df50cc223935a"
+    },
+    "native/fixed-512-diagonal/render-evidence.json": {
+      "bytes": 333,
+      "sha256": "b88db46adf4ee72fc64360083a7abe86c95fce29285709a95e429185f12daa1b"
+    },
+    "native/fixed-512-diagonal/standard-albedo.png": {
+      "bytes": 145111,
+      "sha256": "9937c2e103b905eb6db970160bda356573d2be37f3b0f9bbc43955ed50c38958"
+    },
+    "native/fixed-512-diagonal/standard-lit.png": {
+      "bytes": 141665,
+      "sha256": "ca1ba1c6b0c1988b24d20645e4fd63ec87a3dca023d3f3adcfd21cae5b938fba"
+    },
+    "native/fixed-512-front/render-evidence.json": {
+      "bytes": 327,
+      "sha256": "5921f1839f77914274ecdfbd3944437a5f90a4e5e4ddc9af3a8062ba93eae757"
+    },
+    "native/fixed-512-front/standard-albedo.png": {
+      "bytes": 167186,
+      "sha256": "6724d9cb4fdbcf015989cad1d624607d05ad5d1a9f49a95a03352adbf3c1bf0f"
+    },
+    "native/fixed-512-front/standard-lit.png": {
+      "bytes": 160189,
+      "sha256": "1744cc73dc7a69b2b10b7d80daee5e589bd546d7189fa8c0f5646cfd151bb432"
+    },
+    "native-face-weights.json": {
+      "bytes": 2123,
+      "sha256": "5ca0099efd991a02bf0b77f01710920445aadb672d974a9c7c12847730d8f315"
+    },
+    "neural-depth-comparison.webp": {
+      "bytes": 76658,
+      "sha256": "1879caa8b2d38a1ece1adc30999bdeed424d5204003e6d4375b465d5324f714b"
+    },
+    "neural-trials.json": {
+      "bytes": 5279,
+      "sha256": "f411a724a357a2f2075b0c8151c748fc1fc242cf7b39d7e2be27e7519d64244d"
+    },
+    "neural_trials.py": {
+      "bytes": 1528,
+      "sha256": "ea1196592167168ade5a316b863b887ab3f671ad84141a93ba8a9b166f297f01"
+    },
+    "production-pipeline.json": {
+      "bytes": 8344,
+      "sha256": "2a61063f9bfc16807ea867c1775695e51cd35510c388d462900ebb8b0b52dd73"
+    },
+    "production_pipeline.py": {
+      "bytes": 1774,
+      "sha256": "3915c89ab83af346ab894d67711c5f07107e519910c199ff57bb9af8c1984833"
+    },
+    "reprojection-diagonal-regression.json": {
+      "bytes": 1774,
+      "sha256": "6ec003c427dd5f880e510f676dd017c3515e5b6e85d17d131af6a2c0cab70e36"
+    },
+    "reprojection-diagonal-regression.webp": {
+      "bytes": 67342,
+      "sha256": "3e7a7ef82558bdc0ad5f2ae4c08d891f4e237ffefb9d2afc74bff963e1ffb31c"
+    },
+    "reprojection-front-fidelity.json": {
+      "bytes": 2294,
+      "sha256": "9a7f9b1af8c72b6c8b824dcaa80334f9a8da7c9423a524d1a45d03949bbbdf8b"
+    },
+    "reprojection-variants.webp": {
+      "bytes": 115726,
+      "sha256": "f03cedfd3d96070d15d76589734fa88ab1e24f4e836ed709531ba272029d542e"
+    },
+    "root-cause.json": {
+      "bytes": 3302,
+      "sha256": "0deda0f9235e5172664e8271fdcac728d0cf3875cdb1ec8a7893513c45ab573c"
+    },
+    "run.py": {
+      "bytes": 3930,
+      "sha256": "6221657447063a8427fe47300ae5a7c555e0b0d64da9c3489f58b6bf972f4403"
+    },
+    "validation.json": {
+      "bytes": 7725,
+      "sha256": "5b5d867fc13c0a5dd660a6c248945013942642cf6501421d32194282d165d37b"
+    },
+    "woman-detail-1024-3d-inspector.html": {
+      "bytes": 59162022,
+      "sha256": "54acea6a4113366ecb454967cc37bd00dd327599ccd2c272e866787c9b17978e"
+    },
+    "woman-detail-512-3d-inspector.html": {
+      "bytes": 18415662,
+      "sha256": "9e02617e3169877f4ce8e99261c854e61e880f50801ea1fa0605ccff333014ce"
+    }
+  }
+}

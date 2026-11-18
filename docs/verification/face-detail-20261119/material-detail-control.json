@@ -1,0 +1,67 @@
+{
+  "source": "91eccb2e8a3c9958caecc89fff743fec3e26dc34b1808aadf5f182624180b006",
+  "supermat": "14f5ed39f16da7748ff285e65c3047e0f6eee5c03c67ba97b9a5c84db8f2a4f7",
+  "detailControl": "50232d0164e7c83306dbed7d340ce1b54cf634c41cdb5a3c6d7d8f4a35226939",
+  "metrics": {
+    "+X": {
+      "lowFrequencyLumaMeanAbsChange": 0.0025303825286532777,
+      "lowFrequencyLumaP95AbsChange": 0.007660707138110567,
+      "gainMin": 0.6666666666666666,
+      "gainMax": 1.5,
+      "sigmaYX": [
+        3.0,
+        8.181369784752508
+      ]
+    },
+    "-X": {
+      "lowFrequencyLumaMeanAbsChange": 0.0026547341062986953,
+      "lowFrequencyLumaP95AbsChange": 0.008595347081472035,
+      "gainMin": 0.6666666666666666,
+      "gainMax": 1.5,
+      "sigmaYX": [
+        3.0,
+        8.181369784752508
+      ]
+    },
+    "+Y": {
+      "lowFrequencyLumaMeanAbsChange": 0.0027625289252662167,
+      "lowFrequencyLumaP95AbsChange": 0.009030186297218386,
+      "gainMin": 0.6666666666666666,
+      "gainMax": 1.5,
+      "sigmaYX": [
+        3.0,
+        2.86594090405236
+      ]
+    },
+    "-Y": {
+      "lowFrequencyLumaMeanAbsChange": 0.0020362120426757136,
+      "lowFrequencyLumaP95AbsChange": 0.008734928213070162,
+      "gainMin": 0.6666666666666666,
+      "gainMax": 1.5,
+      "sigmaYX": [
+        3.0,
+        2.86594090405236
+      ]
+    },
+    "+Z": {
+      "lowFrequencyLumaMeanAbsChange": 0.004197290261873194,
+      "lowFrequencyLumaP95AbsChange": 0.012675473670152175,
+      "gainMin": 0.6666666666666666,
+      "gainMax": 1.5,
+      "sigmaYX": [
+        3.0,
+        7.815774105766756
+      ]
+    },
+    "-Z": {
+      "lowFrequencyLumaMeanAbsChange": 0.0016045052149084445,
+      "lowFrequencyLumaP95AbsChange": 0.004635411273426144,
+      "gainMin": 0.6666666666666666,
+      "gainMax": 1.5,
+      "sigmaYX": [
+        3.0,
+        7.815774105766756
+      ]
+    }
+  }
+}
