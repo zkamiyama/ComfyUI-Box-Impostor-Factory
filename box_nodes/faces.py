@@ -8,7 +8,7 @@ import tempfile
 
 import numpy as np
 from PIL import Image
-from scipy import ndimage
+from scipy import ndimage, optimize
 
 from . import store, multiview
 
@@ -124,6 +124,63 @@ def scores(got, want):
     return {'iou': iou, 'boundaryP95Px': float(np.percentile(distances, 95))}
 
 
+def register_samples(data, shape, center, scale, shift, source_box=None):
+    """Resample premultiplied samples once, with the crop and similarity transform combined."""
+    if source_box is not None and all(v == round(v) for v in source_box):
+        x0, y0, x1, y1 = map(int, source_box)
+        if 0 <= x0 < x1 <= data.shape[1] and 0 <= y0 < y1 <= data.shape[0]:
+            data = data[y0:y1, x0:x1]
+            source_box = None
+    if source_box is None:
+        source_box = (0., 0., data.shape[1], data.shape[0])
+    x0, y0, x1, y1 = source_box
+    extent = np.array([y1 - y0, x1 - x0])
+    ratio = extent / shape
+    offset = np.asarray(center) - (np.asarray(center) + shift) / scale
+    low = np.array([y0, x0]) + ratio * (offset + .5 - .5 / scale)
+    high = low + extent / scale
+    before = np.maximum(0, np.ceil(-low)).astype(int)
+    after = np.maximum(0, np.ceil(high - data.shape[:2])).astype(int)
+    if np.any(before) or np.any(after):
+        data = np.pad(data, ((before[0], after[0]), (before[1], after[1]), (0, 0)))
+    low, high = low + before, high + before
+    box = (float(low[1]), float(low[0]), float(high[1]), float(high[0]))
+    return np.stack([np.asarray(Image.fromarray(channel.astype(np.float32)).resize(
+        (shape[1], shape[0]), Image.Resampling.BILINEAR, box=box))
+        for channel in np.moveaxis(data, -1, 0)], axis=-1)
+
+
+def silhouette_registration(alpha, guide, center, registration, max_shift, max_scale_change):
+    """Fit a uniform scale and translation to all foreground pixels, not just the bounds."""
+    shape = np.array(guide.shape)
+    small = np.maximum(1, np.rint(shape * min(1., 128 / max(shape))).astype(int))
+    moving = resize(alpha[..., None], small)
+    fixed = resize(guide[..., None], small)[..., 0]
+    small_center = (np.asarray(center) + .5) * small / shape - .5
+
+    def loss(parameters):
+        scale, dy, dx = parameters
+        warped = register_samples(moving, small, small_center, scale, np.array([dy, dx]) * small)[..., 0]
+        return 1 - float(np.minimum(warped, fixed).sum() / max(np.maximum(warped, fixed).sum(), 1e-12))
+
+    initial = np.array([registration['scale'], *(np.array(registration['centerShiftYX']) / shape)])
+    limits = np.array([(max(.25, 1 - max_scale_change), 1 + max_scale_change),
+                       (-max_shift, max_shift), (-max_shift, max_shift)])
+    start = np.clip(initial, limits[:, 0], limits[:, 1])
+    radius = np.array([.15, .1, .1])
+    local = np.stack((np.maximum(limits[:, 0], start - radius),
+                      np.minimum(limits[:, 1], start + radius)), axis=-1)
+    best, best_loss = start, loss(start)
+    # The full-canvas objective has flat regions when silhouettes do not overlap.
+    # Search near the measured placement as well as across the configured bounds.
+    for bounds in (local, limits):
+        result = optimize.minimize(loss, start, method='Powell', bounds=bounds,
+                                   options={'maxiter': 20, 'xtol': 1e-4, 'ftol': 1e-5})
+        if result.fun < best_loss:
+            best, best_loss = result.x, float(result.fun)
+    return {'scale': float(best[0]), 'centerShiftYX': (best[1:] * shape).tolist()}
+
+
 def align_one(source, guide, min_iou, max_shift, max_scale_change):
     h, w = guide.shape
     source = source.copy()
@@ -144,11 +201,12 @@ def align_one(source, guide, min_iou, max_shift, max_scale_change):
     scale = float(np.dot(extent, target_extent) / np.dot(extent, extent))
     displacement = target_center - center
     report['registration'] = {'scale': scale, 'centerShiftYX': displacement.tolist()}
+    report['registrationCenterYX'] = center.tolist()
+    report['sampling'] = 'source-affine-v1'
     if np.max(np.abs(displacement) / [h, w]) > max_shift or abs(scale - 1) > max_scale_change:
         return None, {**report, 'reason': 'transform-limit'}
     if scale != 1 or np.any(displacement):
-        offset = center - target_center / scale
-        aligned = np.stack([ndimage.affine_transform(channel, np.eye(2) / scale, offset=offset, output_shape=(h, w), order=1, mode='constant', cval=0., prefilter=False) for channel in np.moveaxis(moving, -1, 0)], axis=-1)
+        aligned = register_samples(source, (h, w), center, scale, displacement)
         after = scores(aligned[..., 3] >= .5, fixed)
         # A small protrusion can bias the bounding box even when the object
         # already matches the camera. Keep the higher-IoU registration.
@@ -158,6 +216,17 @@ def align_one(source, guide, min_iou, max_shift, max_scale_change):
             aligned, after = moving, before
     else:
         aligned, after = moving, before
+    if after['iou'] < .98 and (max_shift > 0 or max_scale_change > 0):
+        registration = silhouette_registration(moving[..., 3], guide, center, report['registration'],
+                                               max_shift, max_scale_change)
+        refined = register_samples(source, (h, w), center, registration['scale'],
+                                   np.array(registration['centerShiftYX']))
+        refined_score = scores(refined[..., 3] >= .5, fixed)
+        if refined_score['iou'] > after['iou'] + .01:
+            report['initialRegistration'] = {**report['registration'], 'scores': after}
+            report['registration'] = registration
+            report['registrationMethod'] = 'silhouette-similarity'
+            aligned, after = refined, refined_score
     report['after'] = after
     if after['iou'] < min_iou:
         return None, {**report, 'reason': 'silhouette-iou'}
@@ -177,7 +246,7 @@ def align(faces, guide_id, min_iou, max_shift, max_scale_change):
         canvas = source.get('provenance', {}).get('canvas')
         if canvas is not None and canvas.get('faceId') != face_id:
             raise ValueError('Generation canvas belongs to a different face.')
-        measurement = store.key('face-measure-v3', source['sha256'], face_id, store.file_hash(guide_path), canvas)
+        measurement = store.key('face-measure-v5', source['sha256'], face_id, store.file_hash(guide_path), canvas)
         def measure(stage):
             data = np.load(Path(source['path']) / 'source.npy', allow_pickle=False)
             original_size = [data.shape[1], data.shape[0]]
@@ -200,17 +269,20 @@ def align(faces, guide_id, min_iou, max_shift, max_scale_change):
                 np.save(stage / 'aligned.npy', result, allow_pickle=False)
             (stage / 'report.json').write_text(json.dumps(report, allow_nan=False), encoding='utf-8')
         measured = cache_dir('measure', measurement, measure)
-        digest = store.key('admission-v2', measurement, min_iou, max_shift, max_scale_change)
+        digest = store.key('admission-v3', measurement, min_iou, max_shift, max_scale_change)
         def decide(stage):
             report = json.loads((measured / 'report.json').read_bytes())
             report['thresholds'] = {'minIoU': min_iou, 'maxShiftFraction': max_shift, 'maxScaleChange': max_scale_change}
             if report['status'] == 'accepted':
                 # Retain the configured bound on foreground displacement and scale
                 # even when leaving the pixels in place wins the IoU comparison.
-                reg = report.get('boundingBoxRegistration', report['registration'])
+                registrations = [report['registration']]
+                if 'boundingBoxRegistration' in report:
+                    registrations.append(report['boundingBoxRegistration'])
                 w, h = report['tileSize']
-                dy, dx = reg['centerShiftYX']
-                if max(abs(dx)/w, abs(dy)/h) > max_shift or abs(reg['scale'] - 1) > max_scale_change:
+                outside = any(max(abs(reg['centerShiftYX'][0])/h, abs(reg['centerShiftYX'][1])/w) > max_shift
+                              or abs(reg['scale'] - 1) > max_scale_change for reg in registrations)
+                if outside:
                     report.update(status='fallback', reason='transform-limit')
                 elif report['after']['iou'] < min_iou:
                     report.update(status='fallback', reason='silhouette-iou')

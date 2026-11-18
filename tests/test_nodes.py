@@ -21,7 +21,7 @@ def fixture(directory, asset_id, r=8):
     map_dir.mkdir()
     tex = {}
     for name in store.REQUIRED_MAPS:
-        wh = ((3, 1) if name == 'rangeMap' else (3*r, r if name == 'intervalMap' else 2*r))
+        wh = ((3*((r+7)//8), (r+7)//8) if name == 'rangeMap' else (3*r, r if name == 'intervalMap' else 2*r))
         wh = tuple(map(int, wh))
         a = np.zeros((wh[1], wh[0], 4), dtype='<f2')
         a[..., 3] = .5
@@ -193,6 +193,50 @@ class NodeTests(unittest.TestCase):
         self.assertEqual(report['registration'], {'scale':1., 'centerShiftYX':[0.,0.]})
         np.testing.assert_array_equal(candidate[...,3], source[...,3])
         self.assertEqual(faces.align_one(source,guide,.85,.01,.15)[1]['reason'], 'transform-limit')
+
+    def test_similarity_recovers_foreground_hidden_by_outlier_bounds_in_composed_box(self):
+        asset = 'b' * 64
+        fixture(self.base / asset, asset, r=128)
+        guide = np.zeros((128, 128, 4), dtype=np.uint8)
+        guide[16:112, 40:80, 3] = 255
+        Image.fromarray(guide).save(self.base / asset / 'guides/pz.png')
+        source = np.zeros((128, 128, 4), dtype=np.float32)
+        source[16:112, 48:88] = (.8, .3, .1, 1.)
+        source[16, 10, 3] = 1.  # A tiny protrusion makes the bounding-box translation point the wrong way.
+        supplied = {'+Z': faces.save_view(source)}
+        aligned = faces.align(supplied, asset, .95, .1, .2)
+        output = faces.compose(asset, aligned)
+        directory = store.asset_dir(output)
+        manifest = store.validate(directory, output)
+        report = json.loads((directory / manifest['qa']).read_bytes())['faces']['+Z']
+        self.assertEqual(manifest['faces']['+Z']['edit']['status'], 'accepted')
+        self.assertLess(report['before']['iou'], .7)
+        self.assertGreater(report['after']['iou'], .99)
+        self.assertEqual(report['registrationMethod'], 'silhouette-similarity')
+        self.assertAlmostEqual(report['registration']['centerShiftYX'][1], -8., places=2)
+        self.assertTrue((directory / 'views/pz/aligned.npy').is_file())
+        color = np.fromfile(directory / manifest['textures']['colorMap']['path'], '<f2').reshape(256, 384, 4)
+        base = np.fromfile(directory / manifest['baseColor']['path'], '<f2').reshape(256, 384, 4)
+        self.assertFalse(np.array_equal(faces.tile_view(color, '+Z'), faces.tile_view(base, '+Z')))
+        for fid in store.FACES:
+            if fid != '+Z':
+                np.testing.assert_array_equal(faces.tile_view(color, fid), faces.tile_view(base, fid))
+        stricter = faces.align(supplied, asset, .95, .05, .2)
+        strict_report = json.loads((Path(stricter['faces']['+Z']['directory']) / 'report.json').read_bytes())
+        self.assertEqual(strict_report['reason'], 'transform-limit')
+
+    def test_unrelated_silhouette_is_rejected_after_similarity_search(self):
+        guide = np.zeros((128, 128), dtype=np.float32)
+        guide[16:112, 16:112] = 1
+        source = np.zeros((128, 128, 4), dtype=np.float32)
+        source[16:112, 58:70, 3] = 1
+        source[58:70, 16:112, 3] = 1
+        candidate, report = faces.align_one(source, guide, .85, .1, .15)
+        self.assertIsNone(candidate)
+        self.assertEqual(report['reason'], 'silhouette-iou')
+        self.assertLess(report['after']['iou'], .85)
+        self.assertTrue(np.isfinite(report['registration']['scale']))
+        self.assertTrue(np.isfinite(report['registration']['centerShiftYX']).all())
 
     def test_load_save_and_corruption(self):
         node=nodes.SaveBox()

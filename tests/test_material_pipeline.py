@@ -14,6 +14,16 @@ from test_nodes import fixture
 
 
 class MaterialPipelineTests(unittest.TestCase):
+    def test_front_consistency_runs_when_materials_are_kept(self):
+        node = pipeline.GenerateFaceMaterials()
+        with patch.object(pipeline.view_reproject, 'reconcile_views', return_value='consistent') as reconcile:
+            self.assertEqual(node.generate('asset', 'keep'), ('asset',))
+            reconcile.assert_not_called()
+            self.assertEqual(node.generate('asset', 'keep', view_consistency='front'), ('consistent',))
+            reconcile.assert_called_once_with('asset')
+        with self.assertRaises(ValueError):
+            node.generate('asset', 'keep', view_consistency='unknown')
+
     def test_registration_keeps_binary_metalness_and_continuous_roughness_and_ao(self):
         source = np.ones((8, 8, 4), dtype='f4')
         report = {'tileSize': [8, 8], 'registration': {'scale': 1., 'centerShiftYX': [0., .25]}}
@@ -56,6 +66,25 @@ class MaterialPipelineTests(unittest.TestCase):
         mask = aligned[..., 3] > 0
         np.testing.assert_allclose(linear[mask], aligned[..., :3][mask], atol=1e-6)
 
+    def test_half_pixel_material_crop_stays_registered_from_512_to_1024(self):
+        source = np.ones((1024, 1024, 4), dtype='f4')
+        coordinates = (np.arange(512, dtype='f4') + .5) / 512
+        x, y = np.meshgrid(coordinates, coordinates)
+        linear = np.stack((x, y, np.full_like(x, .5)), axis=-1)
+        srgb = np.where(linear <= .0031308, linear * 12.92, 1.055 * linear ** (1 / 2.4) - .055)
+        report = {'tileSize': [1024, 1024], 'sampling': 'source-affine-v1',
+                  'registrationCenterYX': [511.5, 511.5],
+                  'registration': {'scale': 1., 'centerShiftYX': [0., 0.]},
+                  'guideCanvas': {'version': 1, 'size': 1024, 'faceId': '+Z',
+                                  'guideRect': [315, 0, 393, 1024]}}
+        albedo, surface = pipeline.register_estimates(srgb[None], linear[None], source, report)
+        restored = np.where(albedo[0] <= .04045, albedo[0] / 12.92,
+                            ((albedo[0] + .055) / 1.055) ** 2.4)
+        expected_x = (315 + (np.arange(1024, dtype='f4') + .5) * 393 / 1024) / 1024
+        # A rounded 158..354 crop at 512px shifts the left edge by one source pixel.
+        np.testing.assert_allclose(restored[512, :, 0], expected_x, atol=2e-7)
+        np.testing.assert_allclose(surface[0, 512, :, 0], expected_x, atol=2e-7)
+
     def test_batch_reuses_single_face_and_replacement_invalidates_just_that_face(self):
         root = Path(self.enterContext(tempfile.TemporaryDirectory()))
         self.enterContext(patch.object(store, 'root', return_value=root))
@@ -85,6 +114,16 @@ class MaterialPipelineTests(unittest.TestCase):
         self.assertEqual(node.generate(both, 'marigold', prompt_preset='short'), (both,))
         self.assertEqual(infer.call_count, 2)
         self.assertEqual(loader.call_count, 2)
+        detailed, = node.generate(both, 'marigold', detail_strength=.75)
+        self.assertNotEqual(detailed, both)
+        self.assertEqual(node.generate(both, 'marigold', detail_strength=.75), (detailed,))
+        self.assertEqual(infer.call_count, 2, 'Detail strength must reuse cached material inference.')
+        detailed_manifest = store.validate(root / detailed, detailed)
+        self.assertEqual(detailed_manifest['faces']['+X']['materialEdit']['albedo']['recipe']['detailStrength'], .75)
+        with patch.object(pipeline.view_reproject, 'reconcile_views', return_value='consistent') as reconcile:
+            self.assertEqual(node.generate(both, 'marigold', view_consistency='front'), ('consistent',))
+            reconcile.assert_called_once_with(both)
+        self.assertEqual(infer.call_count, 2, 'View consistency must reuse cached material inference.')
         original[..., 0] = .15
         changed = faces.compose(both, faces.align({'+X': faces.save_view(original)}, both, .85, .25, .25))
         parent = store.validate(root / changed, changed)

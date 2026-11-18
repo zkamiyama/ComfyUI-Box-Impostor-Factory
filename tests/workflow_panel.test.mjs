@@ -11,7 +11,7 @@ function changed(before, after) {
   return Object.keys(before.signatures).filter(k => before.signatures[k] !== after.signatures[k]);
 }
 
-for (const name of ['02_box_from_reference_qwen21','03_box_from_reference_h3']) {
+for (const name of ['02_box_from_reference_qwen21','03_box_from_reference_h3','13_box_from_reference_h3_detail_1024']) {
   test(name + ' follows actual links for primary, secondary, mesh, per-face, and material edits', async () => {
     const graph = await load(name);
     const baseline = inspectWorkflow(graph);
@@ -29,6 +29,12 @@ for (const name of ['02_box_from_reference_qwen21','03_box_from_reference_h3']) 
     check(g => g.definitions.subgraphs[0].nodes.find(n => n.type === 'KSampler').widgets_values[0]++, all);
     check(g => g.nodes.find(n => n.title === '-Y seed').widgets_values[0]++, ['-Y','box']);
     check(g => g.nodes.find(n => n.type === 'BIGenerateFaceMaterials').widgets_values[0] = 'qwen', ['box']);
+    if(name.startsWith('13')){
+      check(g => g.nodes.find(n => n.type === 'BIGenerateFaceMaterials').widgets_values[6] = 'none', ['box']);
+      check(g => g.nodes.find(n => n.type === 'BIGenerateFaceMaterials').widgets_values[7] = .25, ['box']);
+      check(g => g.definitions.subgraphs.find(s => s.name.startsWith('GenerateView')).nodes
+        .find(n => n.type === 'MiniMaxH3ImageConditioning').widgets_values[1] = 2048, [...directions, 'box']);
+    }
   });
 }
 

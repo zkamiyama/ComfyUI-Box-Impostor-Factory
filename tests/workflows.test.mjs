@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const names=[
   '01_box_from_glb','02_box_from_reference_qwen21','03_box_from_reference_h3',
-  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision','10_material_from_saved_box','11_hi3d_512_fullbody_experiment','12_box_from_reference_h3_ai_depth'
+  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision','10_material_from_saved_box','11_hi3d_512_fullbody_experiment','12_box_from_reference_h3_ai_depth','13_box_from_reference_h3_detail_1024'
 ];
 const faces=['+X','-X','+Y','-Y','+Z','-Z'];
 const graph = async name => JSON.parse(await readFile(new URL('../workflows/'+name+'.json',import.meta.url),'utf8'));
@@ -85,6 +85,20 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
     assert.deepEqual(detail.widgets_values,['moge2_detail','auto']);
     assert.deepEqual(material.widgets_values,['supermat','all',0,2048]);
   }
+  if(name.startsWith('13')){
+    const [guides]=nodesOf(g,'BIMakeSixGuides');
+    const [bake]=nodesOf(g,'BIBakeBox');
+    const [material]=nodesOf(g,'BIGenerateFaceMaterials');
+    assert.equal(guides.widgets_values[0],1024);
+    assert.deepEqual(bake.widgets_values,[1024,'auto','none','geometry']);
+    assert.deepEqual(material.widgets_values,['supermat','all',0,1024,.5,'detailed','front',.75]);
+    assert.equal(nodesOf(g,'BINeuralDepthDetail').length,0,'Validated detail preset preserves baked geometry');
+    assert.deepEqual(upstream(g,material,'asset'),{from:bake.id,slot:0});
+    for(const type of ['BIPreviewBox','BISaveBox'])
+      assert.deepEqual(upstream(g,nodesOf(g,type)[0],'asset'),{from:material.id,slot:0});
+    const generation=subgraphs(g).find(s=>s.name.startsWith('GenerateView'));
+    assert.deepEqual(nodesOf(generation,'MiniMaxH3ImageConditioning')[0].widgets_values.slice(1),[1024,1024]);
+  }
   if(name.startsWith('09')){
     const [rev]=nodesOf(g,'BIRebakeProxyRevision');
     assert.equal(upstream(g,rev,'asset').from,nodesOf(g,'BILoadBox')[0].id);
@@ -163,7 +177,7 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
     assert.deepEqual(align.widgets_values,[.85,.1,.15]);
     assert.equal(upstream(g,nodesOf(g,'BIBakeBox')[0],'faces').from,align.id);
   }
-  const isQ=name.startsWith('02'),isH=name.startsWith('03');
+  const isQ=name.startsWith('02'),isH=name.startsWith('03')||name.startsWith('13');
   if(!isQ&&!isH)return;
   const sg=subgraphs(g).find(z=>z.name.startsWith('GenerateView'));
   const gen=nodesOf(g,sg.id);
@@ -215,7 +229,7 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
     assert.equal(upstream(g,generator,'reference').from,canvas.id);
     assert.equal(upstream(g,generator,'reference').slot,0);
     assert.equal(upstream(g,canvas,'guide').slot,i);
-    assert.deepEqual(canvas.widgets_values,[faces[i],2048]);
+    assert.deepEqual(canvas.widgets_values,[faces[i],name.startsWith('13')?1024:2048]);
     assert.equal(upstream(g,n,'canvas').from,canvas.id);
     assert.deepEqual(upstream(g,generator,'seed'),upstream(g,n,'seed'));
     const mask=g.nodes.find(z=>z.id===upstream(g,n,'mask').from);

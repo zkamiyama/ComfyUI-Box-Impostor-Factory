@@ -9,7 +9,7 @@ import numpy as np
 from scipy import ndimage
 
 from . import canvas, faces, generation, store
-from . import face_material, material_estimate, material_iid, material_supermat, material_cosmos
+from . import face_material, material_estimate, material_iid, material_supermat, material_cosmos, material_detail, view_reproject
 
 # Base checkpoints from the two reference workflows, without a view-changing LoRA.
 NATIVE_MODELS = {
@@ -84,31 +84,41 @@ def register_estimates(albedo, rma, original, report, *, binary_metalness=False)
     def crop(array):
         return canvas.undo_guide_canvas(array, report['guideCanvas']) if report.get('guideCanvas') else array
 
-    albedo = crop(faces.array(albedo)[0, ..., :3])
-    rma = crop(faces.array(rma)[0, ..., :3])
+    albedo = faces.array(albedo)[0, ..., :3]
+    rma = faces.array(rma)[0, ..., :3]
     if albedo.shape != rma.shape:
         raise ValueError('Base color and RMA must use the same pixel grid.')
     source_alpha = crop(original[..., 3:4])
     width, height = report['tileSize']
     target = (height, width)
-    # Only coverage comes from the source image. Filter premultiplied maps
-    # straight from their native grid to retain fine detail and avoid edge bleed.
-    alpha = resize_to(source_alpha, albedo.shape[:2])
-    linear = np.where(albedo <= .04045, albedo / 12.92, ((albedo + .055) / 1.055) ** 2.4)
-    tile = np.concatenate((resize_to(linear * alpha, target),
-                           resize_to(rma * alpha, target),
-                           resize_to(alpha, target)), axis=-1)
     reg = report['registration']
     scale = reg['scale']
     shift = np.array(reg['centerShiftYX'])
-    if scale != 1 or np.any(shift):
-        # Reuse the center measured from the accepted image, even if its coverage
-        # crossed a half-pixel boundary on the higher-resolution working grid.
-        center, _ = faces.bounds(resize_to(source_alpha, target)[..., 0] >= .5)
-        offset = center - (center + shift) / scale
-        tile = np.stack([ndimage.affine_transform(channel, np.eye(2) / scale, offset=offset,
-                                                  order=1, mode='constant', cval=0., prefilter=False)
-                         for channel in np.moveaxis(tile, -1, 0)], axis=-1)
+    if report.get('sampling') == 'source-affine-v1':
+        # A model's smaller grid may put the guide rectangle on half pixels.
+        # Keep that crop fractional and combine it with the final registration.
+        box = None
+        if report.get('guideCanvas'):
+            meta = report['guideCanvas']
+            x, y, w, h = meta['guideRect']
+            sy, sx = np.array(albedo.shape[:2]) / meta['size']
+            box = (x * sx, y * sy, (x + w) * sx, (y + h) * sy)
+        alpha = resize_to(original[..., 3:4], albedo.shape[:2])
+        linear = np.where(albedo <= .04045, albedo / 12.92, ((albedo + .055) / 1.055) ** 2.4)
+        tile = faces.register_samples(np.concatenate((linear * alpha, rma * alpha, alpha), axis=-1),
+                                      target, report['registrationCenterYX'], scale, shift, source_box=box)
+    else:
+        albedo, rma = crop(albedo), crop(rma)
+        alpha = resize_to(source_alpha, albedo.shape[:2])
+        linear = np.where(albedo <= .04045, albedo / 12.92, ((albedo + .055) / 1.055) ** 2.4)
+        tile = np.concatenate((resize_to(linear * alpha, target),
+                               resize_to(rma * alpha, target), resize_to(alpha, target)), axis=-1)
+        if scale != 1 or np.any(shift):
+            center, _ = faces.bounds(resize_to(source_alpha, target)[..., 0] >= .5)
+            offset = center - (center + shift) / scale
+            tile = np.stack([ndimage.affine_transform(channel, np.eye(2) / scale, offset=offset,
+                                                      order=1, mode='constant', cval=0., prefilter=False)
+                             for channel in np.moveaxis(tile, -1, 0)], axis=-1)
     np.divide(tile[..., :6], tile[..., 6:], out=tile[..., :6], where=tile[..., 6:] > 0)
     rgb = np.clip(tile[..., :3], 0., 1.)
     srgb = np.where(rgb <= .0031308, 12.92 * rgb, 1.055 * rgb ** (1. / 2.4) - .055)
@@ -140,6 +150,10 @@ class GenerateFaceMaterials:
             'supermat_metal_threshold': ('FLOAT', {'default': 0.5, 'min': 0., 'max': 1., 'step': .01,
                                                    'advanced': True, 'tooltip': 'SuperMat metallic values at or above this cutoff become metal.'}),
             'prompt_preset': material_estimate.PROMPT_PRESET_INPUT,
+            'view_consistency': (['none', 'front'], {'default': 'none',
+                                                   'tooltip': 'Use the accepted front appearance on matching visible surfaces in the other views.'}),
+            'detail_strength': ('FLOAT', {'default': 0., 'min': 0., 'max': 1., 'step': .05,
+                                          'tooltip': 'Restore fine generated texture detail after material estimation.'}),
         }}
 
     @classmethod
@@ -147,11 +161,13 @@ class GenerateFaceMaterials:
         return model_identity(source) if source in SOURCES[1:] else source
 
     def generate(self, asset, source='supermat', face='all', material_seed=0, edit_resolution=2048,
-                 supermat_metal_threshold=.5, prompt_preset='detailed'):
+                 supermat_metal_threshold=.5, prompt_preset='detailed', view_consistency='none', detail_strength=0.):
         if source not in SOURCES or face not in ('all', *store.FACES):
             raise ValueError('Unknown material estimator or Box face.')
+        if view_consistency not in ('none', 'front') or not 0 <= detail_strength <= 1:
+            raise ValueError('Choose none or front for view consistency and a detail strength in [0,1].')
         if source == 'keep':
-            return (asset,)
+            return (view_reproject.reconcile_views(asset) if view_consistency == 'front' else asset,)
         directory = store.asset_dir(asset)
         manifest = store.validate(directory, asset, check_bytes=False)
         selected = [fid for fid in store.FACES if face in ('all', fid)
@@ -159,7 +175,7 @@ class GenerateFaceMaterials:
         if not selected:
             # Geometry fallback is a valid Box: an edited face can fail silhouette QA.
             # The default SuperMat route must not prevent exporting that Box.
-            return (asset,)
+            return (view_reproject.reconcile_views(asset) if view_consistency == 'front' else asset,)
         report = json.loads(store.contained(directory, manifest['qa']).read_bytes())['faces']
         backend_module = {'marigold': material_iid, 'supermat': material_supermat, 'cosmos': material_cosmos}.get(source, material_estimate)
         binary = source in NATIVE_MODELS or source in ('cosmos', 'supermat')
@@ -223,8 +239,16 @@ class GenerateFaceMaterials:
                     np.save(stage / 'rma.npy', rma, allow_pickle=False)
 
                 cached = faces.cache_dir('estimated-material', key, write)
+                albedo = np.load(cached / 'albedo.npy', mmap_mode='r', allow_pickle=False)
+                if detail_strength > 0:
+                    candidate, _ = face_material.accepted_view(directory, manifest, fid)
+                    span = np.array(manifest['bakeBox']['max']) - manifest['bakeBox']['min']
+                    width_axis, height_axis = canvas.SPAN_AXES[fid[1]]
+                    albedo = material_detail.restore_detail(albedo, candidate, span[width_axis] / span[height_axis], detail_strength)
+                    face_recipe = {**face_recipe, 'detailStrength': detail_strength, 'detailMethod': material_detail.METHOD,
+                                   'detailImplementation': store.file_hash(Path(material_detail.__file__))}
                 estimates[fid] = {'provider': source, 'recipe': face_recipe, 'packing': 'RMA' if source in NATIVE_MODELS else 'RM',
-                                  'binaryMetalness': binary,
-                                  'albedo': np.load(cached / 'albedo.npy', mmap_mode='r', allow_pickle=False),
+                                  'binaryMetalness': binary, 'albedo': albedo,
                                   'rma': np.load(cached / 'rma.npy', mmap_mode='r', allow_pickle=False)}
-        return (face_material.apply_face_materials(asset, estimates),)
+        result = face_material.apply_face_materials(asset, estimates)
+        return (view_reproject.reconcile_views(result) if view_consistency == 'front' else result,)

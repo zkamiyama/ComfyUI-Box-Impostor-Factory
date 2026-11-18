@@ -17,10 +17,11 @@ from PIL import Image
 from scipy import ndimage
 
 from . import depth_mesh, faces, store
+from .canvas import undo_guide_canvas
 from .depth_pipeline import bound_paired_depth, vertex_displacements
 from .revision import DEPTH_ENCODING, RebakeProxyRevision, matrix
 
-METHOD = 'moge2_detail_v1'
+METHOD = 'moge2_detail_v2'
 FACE_SIZES = faces.SLUGS
 
 
@@ -31,9 +32,9 @@ def _resize2d(array, shape, *, order=1):
                       dtype=np.float32)
 
 
-def project_prediction(full, canvas, resolution):
-    """Invert the actual H3 guide letterbox and crop to one Box tile."""
-    if full.ndim!=2 or not np.isfinite(full[np.isfinite(full)]).all():
+def project_prediction(full, canvas, resolution, report=None):
+    """Replay the accepted RGB canvas and registration on predicted depth."""
+    if full.ndim!=2 or np.isinf(full).any():
         raise ValueError('Neural depth has invalid samples')
     if canvas is None:
         raise ValueError('Neural detail requires recorded generated-face guide canvas')
@@ -48,8 +49,24 @@ def project_prediction(full, canvas, resolution):
         raise ValueError('Empty generated depth crop')
     valid=np.isfinite(crop)
     values=np.where(valid,crop,0)
-    weighted=_resize2d(values,(resolution,resolution))
-    coverage=_resize2d(valid.astype(np.float32),(resolution,resolution))
+    if report is None:
+        weighted=_resize2d(values,(resolution,resolution))
+        coverage=_resize2d(valid.astype(np.float32),(resolution,resolution))
+    else:
+        reg=report['registration']
+        samples=np.stack((values,valid.astype(np.float32)),axis=-1)
+        if report.get('sampling')=='source-affine-v1':
+            registered=faces.register_samples(samples,(resolution,resolution),
+                report['registrationCenterYX'],reg['scale'],np.array(reg['centerShiftYX']))
+        else:
+            registered=faces.resize(samples,(resolution,resolution))
+            center=np.asarray(report['registrationCenterYX'])
+            shift=np.asarray(reg['centerShiftYX'])
+            offset=center-(center+shift)/reg['scale']
+            registered=np.stack([ndimage.affine_transform(channel,np.eye(2)/reg['scale'],
+                offset=offset,order=1,mode='constant',cval=0.,prefilter=False)
+                for channel in np.moveaxis(registered,-1,0)],axis=-1)
+        weighted,coverage=registered[...,0],registered[...,1]
     return np.divide(weighted,coverage,out=np.full_like(weighted,np.nan),where=coverage>.98)
 
 
@@ -57,7 +74,7 @@ def neural_detail_delta(coarse, model, alpha, *, max_delta=.025, sigma=10.,
                         strength=.24, margin=4):
     """High-pass neural depth, normalized with the predictor's own depth span.
 
-    The original coarse depth remains the anchor. Silhouette/holes never move.
+    The original coarse depth remains the anchor. Detail fades toward silhouette edges.
     Output is signed axial depth in the baker's normalized 0-near/1-far units.
     """
     z=np.asarray(coarse,dtype=np.float32)
@@ -103,9 +120,13 @@ def deformation_from_predictions(asset, prediction_dir, *, strength=.24, sigma=1
     p=Path(prediction_dir)
     pairs=[]
     metrics={}
+    qa=json.loads(store.contained(directory,original['qa']).read_bytes())['faces']
     for fid in store.FACES:
         info=original['faces'][fid]
         edit=info.get('edit') or {}
+        if edit.get('status')!='accepted':
+            metrics[fid]={'status':'skipped','reason':'generated-face-not-accepted'}
+            continue
         canvas=edit.get('provenance',{}).get('canvas')
         name=FACE_SIZES[fid]
         prediction=p/(name+'.npy')
@@ -118,7 +139,15 @@ def deformation_from_predictions(asset, prediction_dir, *, strength=.24, sigma=1
         with Image.open(store.contained(directory,info['guide'])) as im:
             alpha=np.asarray(im.getchannel('A'),dtype=np.float32)/255.
         raw=np.load(prediction,allow_pickle=False)
-        predicted=project_prediction(raw,canvas,r)
+        registration=dict(qa[fid])
+        if 'registrationCenterYX' not in registration:
+            source=np.load(store.contained(directory,edit['view']).with_suffix('.npy'),allow_pickle=False)
+            source_alpha=undo_guide_canvas(source,canvas)[...,3:4]
+            center,_=faces.bounds(faces.resize(source_alpha,(r,r))[...,0]>=.5)
+            registration['registrationCenterYX']=center.tolist()
+        predicted=project_prediction(raw,canvas,r,registration)
+        accepted=np.load(store.contained(directory,edit['view']).parent/'aligned.npy',allow_pickle=False)
+        alpha=np.minimum(alpha,accepted[...,3])
         delta,stat=neural_detail_delta(z,predicted,alpha,strength=strength,sigma=sigma,
                                        max_delta=max_delta)
         other=original['faces'][('+' if fid[0]=='-' else '-')+fid[1]]
@@ -189,7 +218,7 @@ def freeze_original_appearance(original_id, rebaked_id):
         projectionB=matrix(b['projectionMatrix'])
         if not np.allclose(projectionA[:2],projectionB[:2],rtol=0,atol=1e-7):
             raise ValueError('Cannot preserve appearance after an XY projection change')
-    key=store.key('neural-preserved-appearance-v1',original_id,rebaked_id,
+    key=store.key('neural-preserved-appearance-v2',original_id,rebaked_id,
                   original['textures'],original['baseColor'])
     def write(stage):
         shutil.copytree(after_dir,stage,ignore=shutil.ignore_patterns('previews'))
@@ -215,6 +244,17 @@ def freeze_original_appearance(original_id, rebaked_id):
                 m['faces'][fid]['edit']=old_edit
             else:
                 m['faces'][fid].pop('edit',None)
+        # The frozen texture uses the original alignment, so retain its actual samples and QA.
+        if (original_dir/'views').is_dir():
+            shutil.copytree(original_dir/'views',stage/'views',dirs_exist_ok=True)
+        if original.get('qa'):
+            old_qa=store.contained(original_dir,original['qa'])
+            target=store.contained(stage,original['qa'])
+            if target.is_file():
+                shutil.copyfile(target,stage/'qa/rebaked-geometry.json')
+            target.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copyfile(old_qa,target)
+            m['qa']=original['qa']
         m['asset_id']=key
         m['parentAsset']=rebaked_id
         m.setdefault('provenance',{})['appearancePreservation']={
@@ -235,10 +275,10 @@ def rebake_with_neural_depth(asset, prediction_dir,backend='auto', *,
                                              sigma=sigma,max_delta=max_delta)
     if hashlib.sha256(data).hexdigest()==manifest['proxySha256']:
         raise ValueError('Neural depth produced no mesh deformation')
-    cache=store.key(METHOD,manifest['proxySha256'],strength,sigma,max_delta,
+    cache=store.key(METHOD,asset,manifest['proxySha256'],strength,sigma,max_delta,
         [(fid,store.file_hash(Path(prediction_dir)/(FACE_SIZES[fid]+'.npy')))
          for fid in store.FACES if (Path(prediction_dir)/(FACE_SIZES[fid]+'.npy')).is_file()],
-        store.file_hash(Path(__file__)),store.file_hash(Path(depth_mesh.__file__)))
+        store.file_hash(Path(__file__)),store.file_hash(Path(depth_mesh.__file__)),store.file_hash(Path(faces.__file__)))
     def write(stage):
         output=stage/'proxy.glb'
         output.write_bytes(data)

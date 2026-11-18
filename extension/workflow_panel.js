@@ -296,6 +296,8 @@ export function installWorkflowPanel(app, api) {
     const pbrSizeLabel = materialSource === 'cosmos'
       ? 'PBR 出力サイズ（Cosmos の推定は最大512 px）' : 'PBR 推定サイズ（Qwen・H3・SuperMat）';
     field(settings, pbrSizeLabel, materials, 'edit_resolution');
+    field(settings, 'View consistency', materials, 'view_consistency');
+    field(settings, 'Generated detail strength', materials, 'detail_strength');
     if (materialSource === 'qwen' || materialSource === 'h3') {
       field(settings, '粗さ・金属度のプロンプト', materials, 'prompt_preset');
     }

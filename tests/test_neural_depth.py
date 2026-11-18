@@ -44,6 +44,16 @@ class NeuralDepthTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             project_prediction(raw,None,8)
 
+    def test_predicted_depth_tracks_accepted_rgb_translation(self):
+        y,x=np.mgrid[:64,:64]
+        raw=np.exp(-((x-30)**2+(y-24)**2)/8).astype('f4')
+        raw[:4]=np.nan
+        report={'sampling':'source-affine-v1','registrationCenterYX':[31.5,31.5],
+                'registration':{'scale':1.,'centerShiftYX':[5.,-3.]}}
+        projected=project_prediction(raw,{'guideRect':[0,0,64,64],'size':64},64,report)
+        self.assertEqual(np.unravel_index(np.nanargmax(projected),projected.shape),(29,27))
+        self.assertTrue(np.isnan(projected[:9]).all())
+
     def test_moge_box_node_is_opt_in(self):
         box='a'*64
         node=NeuralDepthDetail()
@@ -67,6 +77,17 @@ class NeuralDepthTests(unittest.TestCase):
         z.tofile(new_dir/'guides/pz.depth16f.bin')
         newer['proxySha256']=store.file_hash(new_dir/'geometry/proxy.glb')
         newer['faces']['+Z']['depthSha256']=store.file_hash(new_dir/'guides/pz.depth16f.bin')
+        # Frozen appearance must carry its own accepted source samples and registration.
+        (old_dir/'views/pz').mkdir(parents=True)
+        (new_dir/'views/pz').mkdir(parents=True)
+        np.save(old_dir/'views/pz/aligned.npy',np.full((8,8,4),.25,dtype='f4'))
+        np.save(new_dir/'views/pz/aligned.npy',np.full((8,8,4),.75,dtype='f4'))
+        (old_dir/'qa').mkdir(exist_ok=True)
+        (new_dir/'qa').mkdir(exist_ok=True)
+        (old_dir/'qa/report.json').write_text('{"registration":"original"}')
+        (new_dir/'qa/report.json').write_text('{"registration":"rebaked"}')
+        old['qa']=newer['qa']='qa/report.json'
+        (old_dir/'manifest.json').write_text(json.dumps(old))
         # Validate the source fixture. The patch preserves the original normals/colors.
         (new_dir/'manifest.json').write_text(json.dumps(newer))
         result=freeze_original_appearance(before,after)
@@ -77,6 +98,12 @@ class NeuralDepthTests(unittest.TestCase):
         self.assertEqual(new['textures']['normalMap']['sha256'],old['textures']['normalMap']['sha256'])
         self.assertEqual(new['faces']['+Z']['depthSha256'],newer['faces']['+Z']['depthSha256'])
         self.assertIn('appearancePreservation',new['provenance'])
+        np.testing.assert_array_equal(np.load(self.root/result/'views/pz/aligned.npy'),
+                                      np.load(old_dir/'views/pz/aligned.npy'))
+        self.assertEqual((self.root/result/'qa/report.json').read_text(),
+                         (old_dir/'qa/report.json').read_text())
+        self.assertEqual(json.loads((self.root/result/'qa/rebaked-geometry.json').read_text()),
+                         {'registration':'rebaked'})
 
 
 if __name__=='__main__':unittest.main()
