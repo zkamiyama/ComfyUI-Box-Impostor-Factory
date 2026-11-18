@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const names=[
   '01_box_from_glb','02_box_from_reference_qwen21','03_box_from_reference_h3',
-  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision','10_material_from_saved_box','11_hi3d_512_fullbody_experiment'
+  '04_manual_six_faces','05_pixal3d_baseline','06_replace_saved_face','07_render_saved_box','08_triposplat_guide','09_rebake_proxy_revision','10_material_from_saved_box','11_hi3d_512_fullbody_experiment','12_box_from_reference_h3_ai_depth'
 ];
 const faces=['+X','-X','+Y','-Y','+Z','-Z'];
 const graph = async name => JSON.parse(await readFile(new URL('../workflows/'+name+'.json',import.meta.url),'utf8'));
@@ -73,6 +73,17 @@ for(const name of names)test(name+' is a closed, typed native GUI workflow',asyn
     assert.deepEqual(upstream(g,material,'asset'),{from:bake.id,slot:0});
     for(const type of ['BIPreviewBox','BISaveBox'])
       assert.deepEqual(upstream(g,nodesOf(g,type)[0],'asset'),{from:material.id,slot:0});
+  }
+  if(name.startsWith('12')){
+    const [bake]=nodesOf(g,'BIBakeBox');
+    const [detail]=nodesOf(g,'BINeuralDepthDetail');
+    const [material]=nodesOf(g,'BIGenerateFaceMaterials');
+    assert.ok(bake && detail && material);
+    assert.equal(bake.widgets_values[0],512);
+    assert.deepEqual(upstream(g,detail,'asset'),{from:bake.id,slot:0});
+    assert.deepEqual(upstream(g,material,'asset'),{from:detail.id,slot:0});
+    assert.deepEqual(detail.widgets_values,['moge2_detail','auto']);
+    assert.deepEqual(material.widgets_values,['supermat','all',0,2048]);
   }
   if(name.startsWith('09')){
     const [rev]=nodesOf(g,'BIRebakeProxyRevision');

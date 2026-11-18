@@ -19,6 +19,7 @@ from .splat_cache import CachedTripoSplat
 from .silhouette import InspectFaceSilhouette
 from .depth_pipeline import DEPTH_SOURCES, refine_box_depth
 from .hi3d_refine import RefineProxyHi3D
+from .neural_depth import NeuralDepthDetail
 from .revision import RebakeProxyRevision
 from .material_estimate import MaterialEstimate
 from .material_iid import EstimateFaceMaterialIID
@@ -368,6 +369,9 @@ class BakeBox:
             raise ValueError('Unknown Box depth source.')
         if depth_source == 'rgb_guided':
             asset = refine_box_depth(asset, backend)
+        elif depth_source == 'moge2_detail':
+            from .neural_depth import infer_and_rebake
+            asset = infer_and_rebake(asset, backend)
         return (asset,)
 
 
@@ -661,6 +665,7 @@ NODE_CLASS_MAPPINGS['BICachedTripoSplat'] = CachedTripoSplat
 NODE_CLASS_MAPPINGS['BIInspectFaceSilhouette'] = InspectFaceSilhouette
 NODE_CLASS_MAPPINGS['BIRebakeProxyRevision'] = RebakeProxyRevision
 NODE_CLASS_MAPPINGS['BIHi3DRefineProxy'] = RefineProxyHi3D
+NODE_CLASS_MAPPINGS['BINeuralDepthDetail'] = NeuralDepthDetail
 NODE_CLASS_MAPPINGS.update({
     'BIMaterialEstimate': MaterialEstimate,
     'BIEstimateFaceMaterialIID': EstimateFaceMaterialIID,

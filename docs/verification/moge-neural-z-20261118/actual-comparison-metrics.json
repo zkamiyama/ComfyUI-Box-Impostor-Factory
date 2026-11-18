@@ -1,0 +1,23 @@
+{
+  "front": {
+    "foreground_iou": 0.9847159077928309,
+    "mean_rgb_abs_difference": 2.864902941826019,
+    "pixels_changed_over_8": 3420,
+    "total_pixels": 589824,
+    "foreground_pixels": 43771
+  },
+  "side": {
+    "foreground_iou": 0.9832013022246338,
+    "mean_rgb_abs_difference": 2.3572870320130224,
+    "pixels_changed_over_8": 2545,
+    "total_pixels": 589824,
+    "foreground_pixels": 46075
+  },
+  "back": {
+    "foreground_iou": 0.9777783210287,
+    "mean_rgb_abs_difference": 2.272486513795857,
+    "pixels_changed_over_8": 1842,
+    "total_pixels": 589824,
+    "foreground_pixels": 40906
+  }
+}

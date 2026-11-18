@@ -11,7 +11,7 @@ from . import faces, store
 from .revision import DEPTH_ENCODING, RebakeProxyRevision, matrix
 
 
-DEPTH_SOURCES = ['geometry', 'rgb_guided']
+DEPTH_SOURCES = ['geometry', 'rgb_guided', 'moge2_detail']
 
 
 def bound_paired_depth(delta, front, opposite, face_id):

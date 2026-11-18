@@ -152,8 +152,12 @@ def _write_attribute(doc, binary, prim, name, data):
     accessors.append(desc)
 
 
-def deform_glb(data, displacement_callback):
-    """Move exact coincident vertices together in canonical scene coordinates and backtrack foldovers."""
+def deform_glb(data, displacement_callback, *, local_backtracking=False):
+    """Move exact coincident vertices together, rejecting triangle foldovers.
+
+    With local_backtracking, reduce only displacements near inverted triangles,
+    preserving safe AI-generated detail elsewhere rather than scaling all vertices.
+    """
     doc, original = _decode(data)
     primitives = list(_primitives(doc, original))
     if not primitives:
@@ -182,20 +186,31 @@ def deform_glb(data, displacement_callback):
         raise ValueError('Cannot deform a mesh containing only degenerate triangles.')
     # Test the final float32 positions after converting back to the original
     # local coordinate system; triangles can collapse at storage precision.
-    scale = 1.
-    for _ in range(25):
+    scale = np.ones(len(unique), dtype='f8') if local_backtracking else 1.
+    backtracks = 0
+    for _ in range(85 if local_backtracking else 25):
         changed = []
         crosses = []
         for i, (_, xyz, tri, transform) in enumerate(primitives):
-            delta = displacements[inverse[offsets[i]:offsets[i+1]]] * scale
+            factor = scale[inverse[offsets[i]:offsets[i+1]], None] if local_backtracking else scale
+            delta = displacements[inverse[offsets[i]:offsets[i+1]]] * factor
             moved = (xyz + np.linalg.solve(transform[:3, :3], delta.T).T).astype('<f4')
             changed.append(moved)
             local_edges = moved[tri].astype('f8') @ transform[:3, :3].T
             crosses.append(np.cross(local_edges[:,1]-local_edges[:,0], local_edges[:,2]-local_edges[:,0]))
         dot = np.einsum('ij,ij->i', old, np.concatenate(crosses))
-        if np.all(dot[valid] > area2[valid] * 1e-7):
+        bad = valid & ~(dot > area2 * 1e-7)
+        if not bad.any():
             break
-        scale *= .5
+        if local_backtracking:
+            # Interpenetrating faces are attenuated locally; unchanged vertices
+            # and distant folds retain their own displacement. Shared vertices
+            # cannot tear because duplicates are tracked by world position.
+            touched = np.unique(triangles[bad].reshape(-1))
+            scale[touched] *= .5
+            backtracks += int(len(touched))
+        else:
+            scale *= .5
     else:
         raise ValueError('Depth deformation would fold or collapse a triangle at float32 precision.')
     # Report the movements that survived conversion to the GLB accessor precision.
@@ -229,6 +244,12 @@ def deform_glb(data, displacement_callback):
                 tangent = np.column_stack((_unit(tangent), tangents[:, 3]))
                 _write_attribute(doc, binary, primitive, 'TANGENT', tangent)
         _write_attribute(doc, binary, primitive, 'POSITION', moved)
-    stats.update(stepScale=scale, maxDisplacement=float(actual.max()),
+    stats.update(stepScale=float(scale.min()) if local_backtracking else scale,
+                 maxDisplacement=float(actual.max()),
                  meanDisplacement=float(actual.mean()), movedVertices=int(np.count_nonzero(actual)))
+    if local_backtracking:
+        stats.update(localBacktracking=True,attenuatedVertices=int(np.sum(scale < 1.)),
+                     meanStepScale=float(np.mean(scale)),medianStepScale=float(np.median(scale)),
+                     fullStrengthVertices=int(np.sum(scale == 1.)),
+                     localAttenuationSteps=backtracks)
     return _encode(doc, binary), stats
