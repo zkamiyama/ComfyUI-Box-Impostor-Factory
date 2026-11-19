@@ -1,0 +1,342 @@
+{
+  "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "note": "Native square tile is non-isotropic in world units; H3 conditioning uses physical-aspect letterboxing and registration inverts it. No new generation or asset mutation.",
+  "faces": {
+    "+X": {
+      "physicalWidthHeight": [
+        0.3745910310745239,
+        1.04
+      ],
+      "worldPixelPitchXY": [
+        0.00036581155378371475,
+        0.001015625
+      ],
+      "squareDisplayXStretchRelativeToY": 2.7763611878712995,
+      "preparedCanvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "+X",
+        "guideRect": [
+          327,
+          0,
+          369,
+          1024
+        ],
+        "guideInputSha256": "383151f7ff1091eeb4c5c59851f562f46b53d07626adee23aea43202605a9ccc",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3745910310745239,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "canvasProvenanceEqual": true,
+      "sourceSize": [
+        369,
+        1024
+      ],
+      "tileSize": [
+        1024,
+        1024
+      ],
+      "registration": {
+        "scale": 1.0,
+        "centerShiftYX": [
+          0.0,
+          0.0
+        ]
+      },
+      "sampling": "source-affine-v1",
+      "alignmentStatus": "accepted",
+      "silhouetteIoU": 0.9822779749359579
+    },
+    "-X": {
+      "physicalWidthHeight": [
+        0.3745910310745239,
+        1.04
+      ],
+      "worldPixelPitchXY": [
+        0.00036581155378371475,
+        0.001015625
+      ],
+      "squareDisplayXStretchRelativeToY": 2.7763611878712995,
+      "preparedCanvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "-X",
+        "guideRect": [
+          327,
+          0,
+          369,
+          1024
+        ],
+        "guideInputSha256": "13704276405f23fb67ee35f2bf2db0a7645004431613bea44d25e8048d35f7d9",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3745910310745239,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "canvasProvenanceEqual": true,
+      "sourceSize": [
+        369,
+        1024
+      ],
+      "tileSize": [
+        1024,
+        1024
+      ],
+      "registration": {
+        "scale": 1.0,
+        "centerShiftYX": [
+          0.0,
+          0.0
+        ]
+      },
+      "sampling": "source-affine-v1",
+      "alignmentStatus": "accepted",
+      "silhouetteIoU": 0.9861383487503192
+    },
+    "+Y": {
+      "physicalWidthHeight": [
+        0.3993621253967285,
+        0.3745910310745239
+      ],
+      "worldPixelPitchXY": [
+        0.00039000207558274267,
+        0.00036581155378371475
+      ],
+      "squareDisplayXStretchRelativeToY": 0.937973351134395,
+      "preparedCanvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "+Y",
+        "guideRect": [
+          0,
+          32,
+          1024,
+          960
+        ],
+        "guideInputSha256": "e2a783b6e3eb103d393aad1ec636b31dbca79c84fff8bace3bf7ad43e558785e",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3993621253967285,
+          0.3745910310745239
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "canvasProvenanceEqual": true,
+      "sourceSize": [
+        1024,
+        960
+      ],
+      "tileSize": [
+        1024,
+        1024
+      ],
+      "registration": {
+        "scale": 1.0,
+        "centerShiftYX": [
+          0.0,
+          0.0
+        ]
+      },
+      "sampling": "source-affine-v1",
+      "alignmentStatus": "accepted",
+      "silhouetteIoU": 0.9924306005163498
+    },
+    "-Y": {
+      "physicalWidthHeight": [
+        0.3993621253967285,
+        0.3745910310745239
+      ],
+      "worldPixelPitchXY": [
+        0.00039000207558274267,
+        0.00036581155378371475
+      ],
+      "squareDisplayXStretchRelativeToY": 0.937973351134395,
+      "preparedCanvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "-Y",
+        "guideRect": [
+          0,
+          32,
+          1024,
+          960
+        ],
+        "guideInputSha256": "9ae0c39e6aa7dcc4fb389f771e3488e28c47dfe69ccb800643d384ccfb847a34",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3993621253967285,
+          0.3745910310745239
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "canvasProvenanceEqual": true,
+      "sourceSize": [
+        1024,
+        960
+      ],
+      "tileSize": [
+        1024,
+        1024
+      ],
+      "registration": {
+        "scale": 1.0,
+        "centerShiftYX": [
+          0.0,
+          0.0
+        ]
+      },
+      "sampling": "source-affine-v1",
+      "alignmentStatus": "accepted",
+      "silhouetteIoU": 0.9757033481589691
+    },
+    "+Z": {
+      "physicalWidthHeight": [
+        0.3993621253967285,
+        1.04
+      ],
+      "worldPixelPitchXY": [
+        0.00039000207558274267,
+        0.001015625
+      ],
+      "squareDisplayXStretchRelativeToY": 2.6041528073471123,
+      "preparedCanvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "+Z",
+        "guideRect": [
+          315,
+          0,
+          393,
+          1024
+        ],
+        "guideInputSha256": "cbcf6b5c68a7c87f7987bd2874f124a8940aa3356f557534f9c2bb03f1e0d978",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3993621253967285,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "canvasProvenanceEqual": true,
+      "sourceSize": [
+        393,
+        1024
+      ],
+      "tileSize": [
+        1024,
+        1024
+      ],
+      "registration": {
+        "scale": 1.0,
+        "centerShiftYX": [
+          0.0,
+          0.0
+        ]
+      },
+      "sampling": "source-affine-v1",
+      "alignmentStatus": "accepted",
+      "silhouetteIoU": 0.972648452831879
+    },
+    "-Z": {
+      "physicalWidthHeight": [
+        0.3993621253967285,
+        1.04
+      ],
+      "worldPixelPitchXY": [
+        0.00039000207558274267,
+        0.001015625
+      ],
+      "squareDisplayXStretchRelativeToY": 2.6041528073471123,
+      "preparedCanvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "-Z",
+        "guideRect": [
+          315,
+          0,
+          393,
+          1024
+        ],
+        "guideInputSha256": "1c44d9caeba6af12fdbf4d344d8957c73a8661da2aa17619d671adbd063a1ef2",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3993621253967285,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "canvasProvenanceEqual": true,
+      "sourceSize": [
+        393,
+        1024
+      ],
+      "tileSize": [
+        1024,
+        1024
+      ],
+      "registration": {
+        "scale": 1.0005070198299253,
+        "centerShiftYX": [
+          0.0,
+          -0.5
+        ]
+      },
+      "sampling": "source-affine-v1",
+      "alignmentStatus": "accepted",
+      "silhouetteIoU": 0.988862733186524
+    }
+  },
+  "codeReferences": {
+    "capture": "worker/runtime.mjs:179-212",
+    "conditioning": "scripts/run_geometry_ab.py:115-158",
+    "canvas": "box_nodes/canvas.py:11-18,46-61",
+    "registration": "box_nodes/faces.py:246-267"
+  }
+}

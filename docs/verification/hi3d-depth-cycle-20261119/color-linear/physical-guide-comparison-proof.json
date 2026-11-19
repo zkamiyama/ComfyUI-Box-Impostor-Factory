@@ -1,0 +1,98 @@
+{
+  "sourceBaseline": "f6a5d91901f6745980cf73315bdacecc7e9db216b88784018cc7f8093d9dd404",
+  "assetId": "306bc1e7ed13b3badbe32b3ff2da0b56f41e885f8038e06b4fb1b759b24be334",
+  "face": "+Z",
+  "captureFrustum": [
+    -0.19968106269836425,
+    0.19968106269836425,
+    -0.52,
+    0.52,
+    0.052000000000000005,
+    0.530591031074524
+  ],
+  "physicalWidthHeight": [
+    0.3993621253967285,
+    1.04
+  ],
+  "physicalWidthOverHeight": 0.38400204365070045,
+  "nativeTileSize": [
+    1024,
+    1024
+  ],
+  "originalComparisonsPreserved": true,
+  "backgroundRGB": [
+    32,
+    35,
+    39
+  ],
+  "comparisons": [
+    {
+      "kind": "face",
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/color-linear/B-color-linear-front-face-physical.webp",
+      "sha256": "4756e5d0028bb1f71ca31318f39ed961365461298e82addfea6575982f464e27",
+      "bytes": 125702,
+      "sourceCropXYXY": [
+        290,
+        20,
+        733,
+        315
+      ],
+      "sourceCropSize": [
+        443,
+        295
+      ],
+      "displayViewSize": [
+        340,
+        590
+      ],
+      "boardSize": [
+        716,
+        682
+      ],
+      "pixelScaleXY": [
+        0.7674943566591422,
+        2.0
+      ],
+      "resampling": "nearest",
+      "colorCorrection": "none",
+      "sourceGuides": [
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/f6a5d91901f6745980cf73315bdacecc7e9db216b88784018cc7f8093d9dd404/guides/pz.png",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/306bc1e7ed13b3badbe32b3ff2da0b56f41e885f8038e06b4fb1b759b24be334/guides/pz.png"
+      ]
+    },
+    {
+      "kind": "fullbody",
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/color-linear/B-color-linear-front-fullbody-physical.webp",
+      "sha256": "76ee352fdf3a6dfaa1c838c73e2922ebc90b65481c95256e71d8188044e9fe7f",
+      "bytes": 234156,
+      "sourceCropXYXY": [
+        0,
+        0,
+        1024,
+        1024
+      ],
+      "sourceCropSize": [
+        1024,
+        1024
+      ],
+      "displayViewSize": [
+        393,
+        1024
+      ],
+      "boardSize": [
+        822,
+        1116
+      ],
+      "pixelScaleXY": [
+        0.3837890625,
+        1.0
+      ],
+      "resampling": "nearest",
+      "colorCorrection": "none",
+      "sourceGuides": [
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/f6a5d91901f6745980cf73315bdacecc7e9db216b88784018cc7f8093d9dd404/guides/pz.png",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/306bc1e7ed13b3badbe32b3ff2da0b56f41e885f8038e06b4fb1b759b24be334/guides/pz.png"
+      ]
+    }
+  ]
+}
