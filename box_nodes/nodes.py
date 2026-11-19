@@ -407,19 +407,24 @@ class PreviewBox:
     @classmethod
     def INPUT_TYPES(cls):
         return {'required': {'asset': ('BOX_IMPOSTOR',)},
-                'optional': {'sampling': (['standard', 'reduce_bleeding'], {'default': 'standard'})}}
+                'optional': {'sampling': (['standard', 'reduce_bleeding'], {'default': 'standard'}),
+                             'shading': (['lit', 'rgb'], {'default': 'lit', 'tooltip': 'lit: 照明あり / rgb: RGB視差（生成RGBを再照明せず表示）'})}}
 
-    def preview(self, asset, sampling='standard'):
+    def preview(self, asset, sampling='standard', shading='lit'):
         if sampling not in ('standard', 'reduce_bleeding'):
             raise ValueError('Unknown Box preview sampling')
+        if shading not in ('lit', 'rgb'):
+            raise ValueError('Unknown Box preview shading')
         directory = store.asset_dir(asset)
         manifest = store.validate(directory, asset, check_bytes=False)
-        image_path = store.thumbnail(directory, manifest, sampling)
+        image_path = store.thumbnail(directory, manifest, sampling, shading)
         with Image.open(image_path) as image:
             preview = tensor(np.asarray(image.convert('RGB'), np.float32)[None] / 255)
         url = f'/box-impostor/web/viewer.html?manifest=/box-impostor/assets/{asset}/manifest.json'
         if sampling != 'standard':
             url += f'&sampling={sampling}'
+        if shading != 'lit':
+            url += f'&shading={shading}'
         thumbnail = {'filename': image_path.name, 'subfolder': f'box_impostor/{asset}/previews', 'type': 'output'}
         return {'ui': {'box_impostor': [url], 'images': [thumbnail]}, 'result': (url, preview)}
 
@@ -439,14 +444,16 @@ class RenderBox:
     @classmethod
     def INPUT_TYPES(cls):
         size = ('INT', {'default': 512, 'min': 64, 'max': 2048, 'step': 8})
-        return inputs(asset=('BOX_IMPOSTOR',), width=size, height=size,
-                      view=(['diagonal', '+X', '-X', '+Y', '-Y', '+Z', '-Z'],),
-                      projection=(['orthographic', 'perspective'],),
-                      sampling=(['standard', 'reduce_bleeding'],),
-                      backend=(BACKENDS,))
+        result = inputs(asset=('BOX_IMPOSTOR',), width=size, height=size,
+                        view=(['diagonal', '+X', '-X', '+Y', '-Y', '+Z', '-Z'],),
+                        projection=(['orthographic', 'perspective'],),
+                        sampling=(['standard', 'reduce_bleeding'],),
+                        backend=(BACKENDS,))
+        result['optional'] = {'shading': (['lit', 'rgb'], {'default': 'lit', 'tooltip': 'lit: 照明あり / rgb: RGB視差（生成RGBを再照明せず表示）'})}
+        return result
 
     def render(self, asset, width=512, height=512, view='diagonal',
-               projection='orthographic', sampling='standard', backend='auto'):
+               projection='orthographic', sampling='standard', backend='auto', shading='lit'):
         if type(width) is not int or type(height) is not int or not (64 <= width <= 2048 and 64 <= height <= 2048):
             raise ValueError('Render width and height must be between 64 and 2048 pixels.')
         if view not in ('diagonal', '+X', '-X', '+Y', '-Y', '+Z', '-Z'):
@@ -455,14 +462,17 @@ class RenderBox:
             raise ValueError('Unknown Box projection')
         if sampling not in ('standard', 'reduce_bleeding') or backend not in BACKENDS:
             raise ValueError('Unknown Box renderer or sampling')
+        if shading not in ('lit', 'rgb'):
+            raise ValueError('Unknown Box render shading')
         directory = store.asset_dir(asset)
         store.validate(directory, asset, check_bytes=False)
-        digest = store.key('render-box-v1', store.presentation_version(), asset,
-                           width, height, view, projection, sampling, backend)
+        digest = store.key('render-box-v2', store.presentation_version(), asset,
+                           width, height, view, projection, sampling, backend, shading)
         def write(stage):
             store.run_worker('render', '--asset', directory, '--output', stage / 'render.png',
                              '--width', width, '--height', height, '--view', view,
-                             '--projection', projection, '--sampling', sampling, '--backend', backend)
+                             '--projection', projection, '--sampling', sampling, '--backend', backend,
+                             '--shading', shading)
         stage = faces.cache_dir('renders', digest, write)
         with Image.open(stage / 'render.png') as image:
             pixels = np.asarray(image.convert('RGBA'), dtype=np.float32) / 255

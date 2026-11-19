@@ -100,7 +100,10 @@ def renderer_environment():
 
 
 def worker_version():
-    paths = sorted((REPO / 'worker').glob('*.mjs'))
+    # RGB selection is presentation-only. Tuning it must not regenerate the
+    # geometry/AI stages whose inputs and native baked maps are unchanged.
+    paths = sorted(path for path in (REPO / 'worker').glob('*.mjs')
+                   if path.name != 'parallax_material.mjs')
     paths += [REPO / 'web' / 'asset_io.mjs', REPO / 'package-lock.json', REPO / 'worker' / 'package-lock.json']
     return key(renderer_environment(), [(str(path.relative_to(REPO)), file_hash(path)) for path in paths if path.is_file() and 'node_modules' not in path.parts])
 
@@ -108,7 +111,7 @@ def worker_version():
 def presentation_version():
     paths = ('web/viewer.html', 'web/viewer.mjs', 'web/asset_io.mjs',
              'worker/chromium.mjs', 'worker/cli.mjs', 'worker/server.mjs',
-             'worker/runtime.mjs', 'worker/codec.mjs', 'package-lock.json')
+             'worker/runtime.mjs', 'worker/codec.mjs', 'worker/parallax_material.mjs', 'package-lock.json')
     return key(renderer_environment(), [(name, file_hash(REPO / name)) for name in paths])
 
 
@@ -295,14 +298,17 @@ def copy_thumbnail(image_path, directory):
     return target
 
 
-def thumbnail(directory, manifest, sampling='standard'):
+def thumbnail(directory, manifest, sampling='standard', shading='lit'):
     from PIL import Image, PngImagePlugin
     if sampling not in ('standard', 'reduce_bleeding'):
         raise ValueError('Unknown Box preview sampling')
+    if shading not in ('lit', 'rgb'):
+        raise ValueError('Unknown Box preview shading')
     asset_id = manifest['asset_id']
-    filename = 'hero.png' if sampling == 'standard' else 'hero-reduce_bleeding.png'
-    identity = key('thumbnail-v3', asset_id, sampling, presentation_version())
-    with lock(key('thumbnail-v2', asset_id, sampling)):
+    suffix = ('' if shading == 'lit' else '-rgb') + ('' if sampling == 'standard' else '-reduce_bleeding')
+    filename = 'hero' + suffix + '.png'
+    identity = key('thumbnail-v4', asset_id, sampling, shading, presentation_version())
+    with lock(key('thumbnail-v4', asset_id, sampling, shading)):
         target = directory / 'previews' / filename
         saved_preview = False
         if target.is_file():
@@ -320,7 +326,7 @@ def thumbnail(directory, manifest, sampling='standard'):
             rendered = Path(tmp) / 'render.png'
             try:
                 run_worker('thumbnail', '--asset', directory, '--output', rendered,
-                           '--backend', 'auto', '--sampling', sampling)
+                           '--backend', 'auto', '--sampling', sampling, '--shading', shading)
             except (OSError, RuntimeError) as exc:
                 if not saved_preview:
                     raise
@@ -331,6 +337,7 @@ def thumbnail(directory, manifest, sampling='standard'):
             published = Path(tmp) / filename
             metadata = PngImagePlugin.PngInfo()
             metadata.add_text('BoxPresentation', identity)
+            metadata.add_text('BoxShading', shading)
             with Image.open(rendered) as image:
                 image.save(published, format='PNG', pnginfo=metadata)
             os.replace(published, target)

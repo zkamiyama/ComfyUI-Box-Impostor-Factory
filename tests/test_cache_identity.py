@@ -100,7 +100,7 @@ class CacheIdentityTests(unittest.TestCase):
         with patch.object(store, 'REPO', repo):
             baked = store.worker_version()
             rendered = store.presentation_version()
-            for name in ('web/viewer.html', 'web/viewer.mjs'):
+            for name in ('web/viewer.html', 'web/viewer.mjs', 'worker/parallax_material.mjs'):
                 with self.subTest(file=name):
                     with (repo / name).open('a') as out:
                         out.write('\n')
@@ -135,7 +135,7 @@ class CacheIdentityTests(unittest.TestCase):
                 with Image.open(old) as image:
                     self.assertEqual(image.size, (64, 64))
                     self.assertEqual(image.info['BoxPresentation'],
-                                     store.key('thumbnail-v3', self.asset, 'standard', revision))
+                                     store.key('thumbnail-v4', self.asset, 'standard', 'lit', revision))
             previous_bytes = old.read_bytes()
             version.return_value = 'unavailable'
             worker.side_effect = RuntimeError('renderer unavailable')
@@ -144,6 +144,41 @@ class CacheIdentityTests(unittest.TestCase):
             self.assertEqual(old.read_bytes(), previous_bytes)
             with self.assertRaisesRegex(RuntimeError, 'renderer unavailable'):
                 store.thumbnail(self.directory, self.manifest, 'reduce_bleeding')
+
+    def test_rgb_preview_cache_keeps_its_own_pixels_url_and_fallback(self):
+        original_maps = {name: store.file_hash(self.directory / descriptor['path'])
+                         for name, descriptor in self.manifest['textures'].items()}
+
+        def draw(command, *args):
+            shading = args[args.index('--shading') + 1]
+            path = Path(args[args.index('--output') + 1])
+            Image.new('RGBA', (64, 64), '#124578' if shading == 'lit' else '#e2b188').save(path)
+
+        with patch.object(store, 'run_worker', side_effect=draw) as worker, \
+                patch.object(nodes, 'tensor', side_effect=lambda data: data):
+            preview = nodes.PreviewBox()
+            old = preview.preview(self.asset)
+            explicit_old = preview.preview(self.asset, shading='lit')
+            self.assertEqual(worker.call_count, 1, 'Legacy and explicit lit inputs must share the preview')
+            np.testing.assert_array_equal(old['result'][1], explicit_old['result'][1])
+            rgb = preview.preview(self.asset, shading='rgb')
+            self.assertEqual(worker.call_count, 2)
+            self.assertIn('&shading=rgb', rgb['result'][0])
+            self.assertNotIn('&shading=', old['result'][0])
+            self.assertEqual(old['ui']['images'][0]['filename'], 'hero.png')
+            self.assertEqual(rgb['ui']['images'][0]['filename'], 'hero-rgb.png')
+            self.assertFalse(np.array_equal(old['result'][1], rgb['result'][1]))
+            preview.preview(self.asset, shading='rgb')
+            self.assertEqual(worker.call_count, 2)
+            with Image.open(self.directory / 'previews/hero-rgb.png') as image:
+                self.assertEqual(image.info['BoxShading'], 'rgb')
+
+            # A failed RGB request must never be satisfied by a saved lit PNG.
+            worker.side_effect = RuntimeError('renderer unavailable')
+            with self.assertRaisesRegex(RuntimeError, 'renderer unavailable'):
+                store.thumbnail(self.directory, self.manifest, 'reduce_bleeding', 'rgb')
+        for name, descriptor in self.manifest['textures'].items():
+            self.assertEqual(store.file_hash(self.directory / descriptor['path']), original_maps[name])
 
 
 if __name__ == '__main__':

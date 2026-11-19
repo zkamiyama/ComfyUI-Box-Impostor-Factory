@@ -195,10 +195,14 @@ async function run() {
   const selectedSampling=params.get('sampling') || 'standard';
   if(!['standard','reduce_bleeding'].includes(selectedSampling)) throw new Error('不明な補間設定です');
   el('sampling').value=selectedSampling;
+  const selectedShading=params.get('shading') || 'lit';
+  if(!['lit','rgb','albedo','normal','depth'].includes(selectedShading)) throw new Error('不明な描画設定です');
+  el('shading').value=selectedShading;
+  const selectedColorMode=selectedShading==='rgb'?'rgb':'surface';
   let currentSampling=selectedSampling;
   const renderer = await makeRenderer(params.get('backend') || (globalThis.__BI_CHAT_BOX__ ? 'webgl2' : 'auto'),{canvas:el('canvas'),antialias:true});
   const [firstActive,proxy] = await Promise.all([
-    restoreBox(manifest,files,renderer,{sampling:currentSampling}), loadProxy(files.get(manifest.proxy).slice().buffer)
+    restoreBox(manifest,files,renderer,{sampling:currentSampling,colorMode:selectedColorMode}), loadProxy(files.get(manifest.proxy).slice().buffer)
   ]);
   let referenceCamera;
   try { referenceCamera=await prepareReferenceCamera(manifest,url); }
@@ -211,7 +215,7 @@ async function run() {
   const hasBase = manifest.baseColor?.sha256 && manifest.baseColor.sha256 !== manifest.textures.colorMap.sha256;
   const baselineManifest=hasBase ? {...manifest,textures:{
     ...manifest.textures, colorMap:manifest.baseColor}} : null;
-  let baseline = hasBase ? await restoreBox(baselineManifest,files,renderer,{sampling:currentSampling}) : null;
+  let baseline = hasBase ? await restoreBox(baselineManifest,files,renderer,{sampling:currentSampling,colorMode:selectedColorMode}) : null;
   el('appearanceLabel').hidden = !hasBase;
   const box = litScene(), mesh = litScene();
   box.scene.add(active.mesh);
@@ -273,7 +277,9 @@ async function run() {
     else {
       const i=left===0?0:1;
       const pane=diagnostics[i] ??= diagnosticPane(radius);
-      pane.draw(renderer,scene,paneCamera,mode,w,height,center);
+      // The proxy has no view-dependent RGB selection. In RGB mode show its
+      // unlit color alongside the Box's selected RGB, using one output curve.
+      pane.draw(renderer,scene,paneCamera,mode==='rgb'?'albedo':mode,w,height,center);
     }
   }
 
@@ -360,6 +366,9 @@ async function run() {
   }
 
   function modeChanged() {
+    const colorMode=el('shading').value==='rgb'?'rgb':'surface';
+    active.setColorMode(colorMode);
+    baseline?.setColorMode(colorMode);
     const mode = el('mode').value, atlas = mode==='atlas';
     const reference=mode==='reference-box' || mode==='reference-proxy';
     const proxyOnly=mode==='proxy' || mode==='reference-proxy';
@@ -399,8 +408,9 @@ async function run() {
     const requested=el('sampling').value;
     let nextActive, nextBaseline;
     try {
-      nextActive=await restoreBox(manifest,files,renderer,{sampling:requested});
-      nextBaseline=baselineManifest ? await restoreBox(baselineManifest,files,renderer,{sampling:requested}) : null;
+      const colorMode=el('shading').value==='rgb'?'rgb':'surface';
+      nextActive=await restoreBox(manifest,files,renderer,{sampling:requested,colorMode});
+      nextBaseline=baselineManifest ? await restoreBox(baselineManifest,files,renderer,{sampling:requested,colorMode}) : null;
       box.scene.remove(active.mesh);
       if (baseline) box.scene.remove(baseline.mesh);
       active.dispose();
@@ -411,6 +421,8 @@ async function run() {
       if (baseline) box.scene.add(baseline.mesh);
       active.mesh.visible=el('appearance').value==='active' || !baseline;
       if (baseline) baseline.mesh.visible=!active.mesh.visible;
+      // A user may change the shading selector while textures are restoring.
+      modeChanged();
       currentSampling=requested;
       const prefix=el('status').textContent.replace(' · 色にじみ低減','');
       el('status').textContent=prefix+(requested==='reduce_bleeding'?' · 色にじみ低減':'');

@@ -50,6 +50,14 @@ test('presentation-only widget sockets do not dirty successfully completed stage
   const withSampling = inspectWorkflow(graph);
   preview.widgets_values.push(null);
   assert.deepEqual(inspectWorkflow(graph).signatures, withSampling.signatures);
+  preview.widgets_values = ['standard','lit'];
+  assert.deepEqual(inspectWorkflow(graph).signatures, withSampling.signatures);
+  preview.widgets_values = ['standard','rgb'];
+  const withRGB = inspectWorkflow(graph);
+  assert.deepEqual(changed(withSampling,withRGB),['box'],
+    'RGB rendering updates only the final preview, not geometry or generated RGB stages');
+  preview.widgets_values.push(null);
+  assert.deepEqual(inspectWorkflow(graph).signatures, withRGB.signatures);
   preview.widgets_values = [];
   assert.deepEqual(inspectWorkflow(graph).signatures, submitted.signatures);
 });

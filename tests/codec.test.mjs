@@ -72,13 +72,36 @@ test('native baker camera setup and odd-sized readback survive serialization and
     assert.equal(manifest.textures.rangeMap.minFilter,'nearest');
     assert.equal(manifest.baseColor.sha256,manifest.textures.colorMap.sha256);
     const restored=await restoreBox(manifest,files);
+    let textureDisposals=0;
     try{
       const info=restored.mesh.material.impostor;
       assert.deepEqual(info.box.min.toArray(),result.live.mesh.material.impostor.box.min.toArray());
       assert.equal(info.materialMap.type,THREE.UnsignedByteType);
       assert.equal(info.rangeMap.minFilter,THREE.NearestFilter);
       assert.equal(info.colorMap.image.data[0],0x3c00);
+      info.colorMap.addEventListener('dispose',()=>textureDisposals++);
+      const surface=restored.mesh.material;
+      let surfaceDisposals=0,rgbDisposals=0;
+      surface.addEventListener('dispose',()=>surfaceDisposals++);
+      restored.setColorMode('rgb');
+      const rgb=restored.mesh.material;
+      rgb.addEventListener('dispose',()=>rgbDisposals++);
+      assert.equal(restored.colorMode,'rgb');
+      assert.equal(surfaceDisposals,1);
+      assert.equal(rgb.impostor,info,'Color-mode switches must reuse the original map objects');
+      assert.equal(rgb.steps,surface.steps,'Color selection must not shorten native traversal');
+      restored.setColorMode('rgb');
+      assert.equal(restored.mesh.material,rgb,'Repeated selection must not recreate the material');
+      restored.setColorMode('surface');
+      assert.equal(rgbDisposals,1);
+      assert.equal(restored.colorMode,'surface');
+      assert.equal(restored.mesh.material.impostor,info);
+      assert.equal(textureDisposals,0,'Material switches must not dispose shared textures');
+      assert.throws(()=>restored.setColorMode('invalid'),/color mode/);
+      assert.equal(restored.colorMode,'surface');
     } finally {restored.dispose();}
+    assert.equal(textureDisposals,1,'The Box owns and disposes its textures once');
+    assert.throws(()=>restored.setColorMode('rgb'),/disposed/);
     const damaged=Uint8Array.from(files.get(manifest.textures.intervalMap.path));damaged[0]^=1;
     const corrupted=new Map(files).set(manifest.textures.intervalMap.path,damaged);
     await assert.rejects(restoreBox(manifest,corrupted),/Checksum mismatch/);

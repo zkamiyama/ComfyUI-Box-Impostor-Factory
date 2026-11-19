@@ -67,7 +67,9 @@ class NodeTests(unittest.TestCase):
             image[12:66, 20:80, :3] = (40, 120, 220)
             image[12:66, 20:80, 3] = 255
             Image.fromarray(image, mode='RGBA').save(args[args.index('--output') + 1])
-        with patch.object(store, 'run_worker', side_effect=fake_worker), patch.object(store, 'worker_version', return_value='unit-test-render'):
+        with patch.object(store, 'run_worker', side_effect=fake_worker), \
+                patch.object(store, 'worker_version', return_value='unit-test-render'), \
+                patch.object(nodes, 'tensor', side_effect=lambda data: data):
             rendered, mask = nodes.RenderBox().render(self.asset, 96, 80, '+Z',
                                                        'orthographic', 'reduce_bleeding', 'webgl2')
             self.assertEqual(tuple(rendered.shape), (1, 80, 96, 3))
@@ -83,10 +85,29 @@ class NodeTests(unittest.TestCase):
             self.assertEqual(len(calls), 2, 'Sampling choice must be part of the cache key')
             self.assertIn('--sampling', calls[0])
             self.assertIn('reduce_bleeding', calls[0])
+            self.assertEqual(calls[0][calls[0].index('--shading') + 1], 'lit')
+            nodes.RenderBox().render(self.asset, 96, 80, '+Z',
+                                     'orthographic', 'standard', 'webgl2', shading='lit')
+            self.assertEqual(len(calls), 2, 'Legacy omitted shading must equal explicit lit')
+            nodes.RenderBox().render(self.asset, 96, 80, '+Z',
+                                     'orthographic', 'standard', 'webgl2', shading='rgb')
+            self.assertEqual(len(calls), 3, 'RGB and lit must not reuse each other’s PNG')
+            self.assertEqual(calls[2][calls[2].index('--shading') + 1], 'rgb')
+            self.assertNotEqual(calls[1][calls[1].index('--output') + 1],
+                                calls[2][calls[2].index('--output') + 1])
+            nodes.RenderBox().render(self.asset, 96, 80, '+Z',
+                                     'orthographic', 'standard', 'webgl2', shading='rgb')
+            self.assertEqual(len(calls), 3)
         with self.assertRaises(ValueError):
             nodes.RenderBox().render(self.asset, 8, 80)
         with self.assertRaises(ValueError):
             nodes.RenderBox().render(self.asset, 96, 80, sampling='invalid')
+        with self.assertRaises(ValueError):
+            nodes.RenderBox().render(self.asset, 96, 80, shading='invalid')
+        for cls in (nodes.RenderBox, nodes.PreviewBox):
+            schema = cls.INPUT_TYPES()
+            self.assertNotIn('shading', schema['required'])
+            self.assertEqual(schema['optional']['shading'][1]['default'], 'lit')
 
     def test_foreground_conventions_and_placeholder(self):
         image = np.zeros((1,8,8,3), dtype=np.float32)

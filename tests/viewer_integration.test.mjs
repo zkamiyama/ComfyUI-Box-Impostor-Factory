@@ -65,7 +65,7 @@ test('saved Box preview switches proxy, Box and synchronized split view, rotates
     // both succeed when a headless WebGPU device cannot allocate a swapchain image.
     await page.waitForFunction(presentedForeground,2);
     const diagnostics={};
-    for(const mode of ['albedo','normal','depth']) {
+    for(const mode of ['albedo','rgb','normal','depth']) {
       await page.selectOption('#shading',mode);
       assert.equal(await page.locator('#lightLabel').isVisible(),false);
       diagnostics[mode]=await (await page.waitForFunction(inspectDiagnostic,mode)).jsonValue();
@@ -76,6 +76,9 @@ test('saved Box preview switches proxy, Box and synchronized split view, rotates
     });
     await page.selectOption('#shading','albedo');
     assert.deepEqual(await (await page.waitForFunction(inspectDiagnostic,'albedo')).jsonValue(),diagnostics.albedo);
+    await page.selectOption('#shading','rgb');
+    assert.deepEqual(await (await page.waitForFunction(inspectDiagnostic,'rgb')).jsonValue(),diagnostics.rgb,
+      'RGB parallax must ignore scene-light changes');
     await page.selectOption('#shading','lit');
     await page.selectOption('#view','+Y');
     await page.selectOption('#projection','orthographic');
@@ -98,6 +101,7 @@ test('saved Box preview switches proxy, Box and synchronized split view, rotates
     for(const i of [0,1]) for(const j of [0,1,2,3])
       assert.ok(Math.abs(projected[i].bounds[j]-coverage[i].bounds[j])<=1,'preserve zoom on projection round trip');
     await page.selectOption('#mode','box');
+    await page.selectOption('#shading','rgb');
     assert.equal(await page.locator('#sampling').inputValue(),'standard');
     await page.selectOption('#sampling','reduce_bleeding');
     await page.waitForFunction(() => document.querySelector('#status').textContent.includes('色にじみ低減'));
@@ -105,6 +109,8 @@ test('saved Box preview switches proxy, Box and synchronized split view, rotates
     await page.selectOption('#sampling','standard');
     await page.waitForFunction(() => !document.querySelector('#status').textContent.includes('色にじみ低減'));
     await page.waitForFunction(presentedForeground,1);
+    assert.equal(await page.locator('#shading').inputValue(),'rgb','RGB mode survives sampler restoration');
+    await page.selectOption('#shading','lit');
     await page.selectOption('#mode','atlas');
     for(const [i,property] of ['roughness','metalness','ao'].entries()){
       const value='materialMap:'+i;

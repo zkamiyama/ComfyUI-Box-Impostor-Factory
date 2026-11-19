@@ -8,7 +8,9 @@ from . import store
 
 
 def visible_members(m):
-    members = {'manifest.json', 'previews/hero.png', m['proxy'], m['baseColor']['path']}
+    members = {'manifest.json', 'previews/hero.png', 'previews/hero-reduce_bleeding.png',
+               'previews/hero-rgb.png', 'previews/hero-rgb-reduce_bleeding.png',
+               m['proxy'], m['baseColor']['path']}
     members.update(d['path'] for d in m['textures'].values())
     for face in m['faces'].values():
         members.add(face['guide'])

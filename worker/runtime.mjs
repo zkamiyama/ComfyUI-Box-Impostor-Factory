@@ -2,6 +2,7 @@ import * as THREE from 'three/webgpu';
 import { diffuseColor, mrt, positionWorld, vec3, vec4 } from 'three/tsl';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { ImpostorBaker, ImpostorNodeMaterial } from 'three-impostor';
+import { createParallaxMaterial, RGB_PARALLAX_PRESET } from './parallax_material.mjs';
 import {
   FACES, MAP_TYPES, MATERIAL_PROPERTIES, compactPixels, decodeRaw, dimensions, encodeRaw,
   parseGLB, safePath, sha256, validateDescriptor, wrapGLB,
@@ -350,8 +351,9 @@ function validateManifest(m) {
   }
 }
 
-export async function restoreBox(manifest,files,renderer,{sampling='standard'}={}) {
+export async function restoreBox(manifest,files,renderer,{sampling='standard',colorMode='surface'}={}) {
   if (!['standard','reduce_bleeding'].includes(sampling)) throw error('INVALID_SAMPLING','Unknown Box render sampling mode');
+  if (!['surface','rgb'].includes(colorMode)) throw error('INVALID_COLOR_MODE','Unknown Box color mode');
   validateManifest(manifest);
   const box=new THREE.Box3(new THREE.Vector3(...manifest.bakeBox.min),new THREE.Vector3(...manifest.bakeBox.max));
   const size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());
@@ -399,7 +401,16 @@ export async function restoreBox(manifest,files,renderer,{sampling='standard'}={
         data[name]=t;
       }
     }
-    material=createBoxMaterial(data);
-    return {mesh:new THREE.Mesh(geometry,material),dispose};
+    const displayMaterial=mode=>mode==='rgb' ? createParallaxMaterial(data,RGB_PARALLAX_PRESET) : createBoxMaterial(data);
+    material=displayMaterial(colorMode);
+    const mesh=new THREE.Mesh(geometry,material);
+    return {mesh,dispose,get colorMode(){return colorMode;},setColorMode(next){
+      if (!['surface','rgb'].includes(next)) throw error('INVALID_COLOR_MODE','Unknown Box color mode');
+      if (disposed) throw error('DISPOSED_BOX','Cannot change a disposed Box');
+      if (next===colorMode) return;
+      const replacement=displayMaterial(next),previous=material;
+      material=replacement;mesh.material=replacement;colorMode=next;
+      previous.dispose();
+    }};
   } catch(cause){dispose();throw cause;}
 }

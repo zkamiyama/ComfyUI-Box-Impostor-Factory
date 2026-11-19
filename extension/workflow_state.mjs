@@ -10,7 +10,8 @@ function edges(graph) {
 function settings(node, links) {
   const values = node.widgets_values ?? [];
   // Comfy appends UI-only thumbnail/buttons after BIPreviewBox executes.
-  const saved = node.type === 'BIPreviewBox' ? values.slice(0, 1) : values;
+  const saved = node.type === 'BIPreviewBox'
+    ? [...values.slice(0, 1), ...(values[1] === 'rgb' ? ['rgb'] : [])] : values;
   return [node.type, node.mode ?? 0, saved,
     // Live serialization may add unconnected widget sockets that graphToPrompt()
     // drops. Widget values above and actual connections determine the result.

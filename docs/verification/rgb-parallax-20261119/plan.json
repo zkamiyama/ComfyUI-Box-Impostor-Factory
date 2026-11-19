@@ -1,0 +1,88 @@
+{
+  "experiment": "rgb-parallax-20261119",
+  "goal": "Preserve generated RGB appearance while producing natural parallax under camera movement.",
+  "inputRoles": {
+    "H": "Primary saved Hi3D geometry and composed six-view color atlas.",
+    "F": "Control with prior B geometry and the same original source RGB files."
+  },
+  "inputs": {
+    "F": {
+      "manifestSHA256": "0d0f647aade499ac0069a5f5211e4f8dab65f71a0dd444d56c835e09a2b21afe",
+      "resolution": 1024,
+      "bakeBox": {
+        "min": [
+          -0.19968106269836425,
+          -0.52,
+          -0.18729551553726195
+        ],
+        "max": [
+          0.19968106269836425,
+          0.52,
+          0.18729551553726195
+        ]
+      },
+      "nativeMapSHA256": {
+        "colorMap": "647ec74f534bfb8de476663261f257a1d912179a4351d4f33e9f256fc1338ece",
+        "normalMap": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+        "intervalMap": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+        "rangeMap": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9"
+      }
+    },
+    "H": {
+      "manifestSHA256": "38c8833d2ac6ea26aeb7c3875861a31a607a66779d10ce988a5058f8ce310316",
+      "resolution": 1024,
+      "bakeBox": {
+        "min": [
+          -0.20011742830276488,
+          -0.52,
+          -0.1892812293767929
+        ],
+        "max": [
+          0.20011742830276488,
+          0.52,
+          0.1892812293767929
+        ]
+      },
+      "nativeMapSHA256": {
+        "colorMap": "294be4e4f13d8af6f8f991bf0b70923f9bbbbd7db2693e742476c896bb8834b3",
+        "normalMap": "8ae1080205c3a04921de75cd5e79d25f07be42e2f742f754a64f177aff7a5102",
+        "intervalMap": "bfab6910865a1a2e5c9d0c2b46a1be9a4a4fcb18b4f13b810a2ec852f39c415c",
+        "rangeMap": "751a06fc022bbeb77197f1d11b42cf1cab771c96b79bde14a9c97b31a3637669"
+      }
+    }
+  },
+  "fixed": [
+    "Original generated source images",
+    "Native color, normal, interval and range map bytes",
+    "Native ray intersection and fragment depth",
+    "Camera poses, viewport and RGB output curve within each comparison"
+  ],
+  "variables": [
+    "Additional lighting disabled",
+    "Normal-independent color selection",
+    "Camera-axis selection versus blending",
+    "Depth-based source-view confidence",
+    "Camera weight sharpness and depth tolerance"
+  ],
+  "firstComparisons": [
+    "native",
+    "camera-single",
+    "camera-blend",
+    "camera-depth"
+  ],
+  "evaluation": [
+    "Independent front-view RGB reference sampled from the captured asset color atlas",
+    "Alpha and depth equivalence across color-selection variants",
+    "Matched head and body contact sheets at several angles",
+    "Actual animated orbit with view transitions",
+    "Depth-based reprojection on mutually visible surfaces; report coverage and limits"
+  ],
+  "limits": [
+    "Color reprojection consistency is not measured human anatomy or ground-truth view synthesis.",
+    "An orthographic front frame alone does not validate rotating views.",
+    "H aligned atlas and original F source RGB are distinct references.",
+    "The official 3D-Inspector HTML is not modified to implement these renderer variants."
+  ],
+  "newAIInference": false,
+  "status": "in-progress"
+}
