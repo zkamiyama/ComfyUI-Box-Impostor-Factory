@@ -1,6 +1,6 @@
 import {
   Vector3, Matrix4, HemisphereLight, DirectionalLight, PerspectiveCamera, OrthographicCamera, Scene, DataUtils,
-  RenderTarget, DepthTexture, UnsignedIntType, HalfFloatType, MeshBasicNodeMaterial, QuadMesh
+  RenderTarget, DepthTexture, UnsignedIntType, HalfFloatType, MeshBasicNodeMaterial, QuadMesh, NoToneMapping
 } from 'three/webgpu';
 import {
   diffuseColor, normalWorld, mrt, texture, uniform, uv, vec4, vec3, clamp,
@@ -196,9 +196,12 @@ async function run() {
   if(!['standard','reduce_bleeding'].includes(selectedSampling)) throw new Error('不明な補間設定です');
   el('sampling').value=selectedSampling;
   let currentSampling=selectedSampling;
+  const lighting=params.get('lighting') || 'lit';
+  if(!['lit','unlit'].includes(lighting)) throw new Error('不明な Box 照明設定です');
   const renderer = await makeRenderer(params.get('backend') || (globalThis.__BI_CHAT_BOX__ ? 'webgl2' : 'auto'),{canvas:el('canvas'),antialias:true});
+  const defaultToneMapping=renderer.toneMapping;
   const [firstActive,proxy] = await Promise.all([
-    restoreBox(manifest,files,renderer,{sampling:currentSampling}), loadProxy(files.get(manifest.proxy).slice().buffer)
+    restoreBox(manifest,files,renderer,{sampling:currentSampling,lighting}), loadProxy(files.get(manifest.proxy).slice().buffer)
   ]);
   let referenceCamera;
   try { referenceCamera=await prepareReferenceCamera(manifest,url); }
@@ -211,7 +214,7 @@ async function run() {
   const hasBase = manifest.baseColor?.sha256 && manifest.baseColor.sha256 !== manifest.textures.colorMap.sha256;
   const baselineManifest=hasBase ? {...manifest,textures:{
     ...manifest.textures, colorMap:manifest.baseColor}} : null;
-  let baseline = hasBase ? await restoreBox(baselineManifest,files,renderer,{sampling:currentSampling}) : null;
+  let baseline = hasBase ? await restoreBox(baselineManifest,files,renderer,{sampling:currentSampling,lighting}) : null;
   el('appearanceLabel').hidden = !hasBase;
   const box = litScene(), mesh = litScene();
   box.scene.add(active.mesh);
@@ -269,12 +272,16 @@ async function run() {
     renderer.setViewport(left,0,w,height);
     renderer.setScissor(left,0,w,height);
     const mode=el('shading').value;
-    if(mode==='lit') renderer.render(scene,paneCamera);
-    else {
-      const i=left===0?0:1;
-      const pane=diagnostics[i] ??= diagnosticPane(radius);
-      pane.draw(renderer,scene,paneCamera,mode,w,height,center);
-    }
+    const previousToneMapping=renderer.toneMapping;
+    renderer.toneMapping=scene===box.scene && lighting==='unlit' ? NoToneMapping : defaultToneMapping;
+    try {
+      if(mode==='lit') renderer.render(scene,paneCamera);
+      else {
+        const i=left===0?0:1;
+        const pane=diagnostics[i] ??= diagnosticPane(radius);
+        pane.draw(renderer,scene,paneCamera,mode,w,height,center);
+      }
+    } finally {renderer.toneMapping=previousToneMapping;}
   }
 
   function render() {
@@ -374,7 +381,9 @@ async function run() {
     el('appearanceLabel').hidden = !hasBase || proxyOnly || atlas;
     el('samplingLabel').hidden = proxyOnly || atlas;
     el('shadingLabel').hidden = atlas;
-    el('lightLabel').hidden = atlas || el('shading').value!=='lit';
+    const onlyUnlitBox=lighting==='unlit' && !proxyOnly && mode!=='both';
+    el('shading').querySelector('[value=lit]').textContent=lighting==='unlit' && !proxyOnly ? 'Box：照明なし' : '照明あり';
+    el('lightLabel').hidden = atlas || el('shading').value!=='lit' || onlyUnlitBox;
     help.hidden = atlas || reference;
     if (atlas) selectMap();
     releaseDiagnostics();
@@ -399,8 +408,8 @@ async function run() {
     const requested=el('sampling').value;
     let nextActive, nextBaseline;
     try {
-      nextActive=await restoreBox(manifest,files,renderer,{sampling:requested});
-      nextBaseline=baselineManifest ? await restoreBox(baselineManifest,files,renderer,{sampling:requested}) : null;
+      nextActive=await restoreBox(manifest,files,renderer,{sampling:requested,lighting});
+      nextBaseline=baselineManifest ? await restoreBox(baselineManifest,files,renderer,{sampling:requested,lighting}) : null;
       box.scene.remove(active.mesh);
       if (baseline) box.scene.remove(baseline.mesh);
       active.dispose();
@@ -442,7 +451,7 @@ async function run() {
   rotateLight(); placeCamera(true); modeChanged();
   const faceReports=Object.values(manifest.faces||{}).map(f=>f.edit?.status);
   const fallback=faceReports.filter(s=>s==='fallback').length;
-  el('status').textContent=[backendName(renderer),manifest.mode,'R='+manifest.resolution,fallback ? '元の色へ戻した面 '+fallback : '',currentSampling==='reduce_bleeding'?'色にじみ低減':''].filter(Boolean).join(' · ');
+  el('status').textContent=[backendName(renderer),manifest.mode,'R='+manifest.resolution,lighting==='unlit'?'Box 照明なし':'',fallback ? '元の色へ戻した面 '+fallback : '',currentSampling==='reduce_bleeding'?'色にじみ低減':''].filter(Boolean).join(' · ');
   let closing=false;
   if (renderer.backend.isWebGPUBackend) renderer.backend.device.lost.then(info => {
     if (closing) return;

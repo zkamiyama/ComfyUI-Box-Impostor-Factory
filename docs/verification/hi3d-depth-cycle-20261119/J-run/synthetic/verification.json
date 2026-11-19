@@ -1,0 +1,29 @@
+{
+  "method": "native-box-unlit-synthetic-v1",
+  "processId": 2107,
+  "exitCode": 0,
+  "runtimeSeconds": 5.55,
+  "files": {
+    "synthetic-report.json": {
+      "bytes": 1392,
+      "sha256": "4c09a17c65148c555f432a2ba3531d2990b5f85754d64268e0eea8fc6c9331cd"
+    },
+    "synthetic.png": {
+      "bytes": 79683,
+      "sha256": "4dfeca4bdc8d30c1ac63620322f0acbe08b8e1ebcd71f5d215a4cb273cdbda39"
+    }
+  },
+  "codeSha256": {
+    "worker/box_display_material.mjs": "451111ce808f71b0ca6300ddd5f17254bac082b5aabb747de5486a943218505c",
+    "worker/runtime.mjs": "563b0b1b16c82bda852b4450fa9c809aef707601d847102fc3b3343d019b396e",
+    "web/viewer.mjs": "26b590ca83dc72b1ccab263e76177d7ab2dffa08f02dc517d64b8615ec186d6a",
+    "worker/cli.mjs": "113884a669bb01a5f40ffa524d931c1f994d1c36919b590173517edd847dc649",
+    "tests/check_box_display.mjs": "b3288208043905cb03fbaab25517c6d0dc3b6fa0e3041ed3ac198b8921d888f3"
+  },
+  "browserProcessesAfter": [],
+  "browserClosed": true,
+  "depthComparison": "24-bit encoded native depth buffer",
+  "normalComparison": "RGBA8 linear native-normal diagnostic pass",
+  "colorComparison": "ordinary single-output sRGB render target; median interior RGB against analytic transfer function",
+  "sourceAssetModified": false
+}

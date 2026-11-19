@@ -1,0 +1,58 @@
+{
+  "backend": "webgl2",
+  "resolution": 64,
+  "size": 160,
+  "lighting": "unlit",
+  "sampling": "native",
+  "views": [
+    {
+      "degrees": 0,
+      "foreground": 10973,
+      "background": 14627,
+      "interior": 10534,
+      "nativeVsDefaultMaxByteDelta": 0,
+      "unlitSilhouetteMaxByteDelta": 0,
+      "unlitNormalMaxByteDelta": 0,
+      "unlitDepthMaxByteDelta": 0,
+      "changedLightingUnlitMaxByteDelta": 0,
+      "litVsUnlitMaxByteDelta": 155,
+      "expectedSRGB": [
+        117.64581302261261,
+        155.47646195204456,
+        220.58571707668372
+      ],
+      "medianSRGB": [
+        118,
+        155,
+        221
+      ],
+      "maxSRGBError": 0.4764619520445592,
+      "nativeDepthRangeWorld": 0.35851679197053843
+    },
+    {
+      "degrees": 30,
+      "foreground": 11310,
+      "background": 14290,
+      "interior": 10866,
+      "nativeVsDefaultMaxByteDelta": 0,
+      "unlitSilhouetteMaxByteDelta": 0,
+      "unlitNormalMaxByteDelta": 0,
+      "unlitDepthMaxByteDelta": 0,
+      "changedLightingUnlitMaxByteDelta": 0,
+      "litVsUnlitMaxByteDelta": 151,
+      "expectedSRGB": [
+        117.64581302261261,
+        155.47646195204456,
+        220.58571707668372
+      ],
+      "medianSRGB": [
+        118,
+        155,
+        221
+      ],
+      "maxSRGBError": 0.4764619520445592,
+      "nativeDepthRangeWorld": 0.5167513082475248
+    }
+  ],
+  "diagnostics": []
+}

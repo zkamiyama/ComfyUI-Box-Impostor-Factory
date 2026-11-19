@@ -1,0 +1,10 @@
+{
+  "stage": "J-native-unlit",
+  "baseStage": "F",
+  "baseAsset": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "change": "Display lighting and tone mapping disabled; native six-view color selection unchanged",
+  "sameGeometryAndAllTextureBytes": true,
+  "originalGeneratedHtml": "I-native-unlit.inspector.html",
+  "originalHtmlSha256": "2fd2f8910ee1dd9f097fd3dc91ec6bb772574f3592be7d7b919aa9306e901d0e",
+  "namingNote": "The earlier internal I-native-unlit filename predates discovery of the separately committed I-head-local experiment. This display experiment is J. No I-head-local data were changed."
+}

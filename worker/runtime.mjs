@@ -1,7 +1,8 @@
 import * as THREE from 'three/webgpu';
 import { diffuseColor, mrt, positionWorld, vec3, vec4 } from 'three/tsl';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { ImpostorBaker, ImpostorNodeMaterial } from 'three-impostor';
+import { ImpostorBaker } from 'three-impostor';
+import { createBoxDisplayMaterial } from './box_display_material.mjs';
 import {
   FACES, MAP_TYPES, MATERIAL_PROPERTIES, compactPixels, decodeRaw, dimensions, encodeRaw,
   parseGLB, safePath, sha256, validateDescriptor, wrapGLB,
@@ -259,8 +260,8 @@ async function describeTexture(name,texture,resolution,renderer,backend) {
     alpha:name==='colorMap'?'premultiplied-coverage':name==='intervalMap'?'gap-end':name==='rangeMap'?'constant-one':'coverage'}};
 }
 
-export function createBoxMaterial(data) {
-  const material=new ImpostorNodeMaterial(data);
+export function createBoxMaterial(data,{lighting='lit'}={}) {
+  const material=createBoxDisplayMaterial(data,{lighting});
   // A ray can cross sqrt(3)*R texels diagonally. Occupied steps advance 1.5 texels
   // and empty steps cross one of at most 3*R/8 cell boundaries. Leave room for
   // the first and last cells. The shader still exits at the first hit or box exit.
@@ -350,8 +351,9 @@ function validateManifest(m) {
   }
 }
 
-export async function restoreBox(manifest,files,renderer,{sampling='standard'}={}) {
+export async function restoreBox(manifest,files,renderer,{sampling='standard',lighting='lit'}={}) {
   if (!['standard','reduce_bleeding'].includes(sampling)) throw error('INVALID_SAMPLING','Unknown Box render sampling mode');
+  if (!['lit','unlit'].includes(lighting)) throw error('INVALID_LIGHTING','Unknown Box display lighting');
   validateManifest(manifest);
   const box=new THREE.Box3(new THREE.Vector3(...manifest.bakeBox.min),new THREE.Vector3(...manifest.bakeBox.max));
   const size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());
@@ -399,7 +401,7 @@ export async function restoreBox(manifest,files,renderer,{sampling='standard'}={
         data[name]=t;
       }
     }
-    material=createBoxMaterial(data);
+    material=createBoxMaterial(data,{lighting});
     return {mesh:new THREE.Mesh(geometry,material),dispose};
   } catch(cause){dispose();throw cause;}
 }

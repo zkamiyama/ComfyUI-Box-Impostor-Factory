@@ -1,0 +1,29 @@
+{
+  "method": "official-inspector-opt-in-rgb-runtime-v1",
+  "baselineSource": {
+    "native-runtime.cdn.mjs": "ac0f29cd15b3bf9f3b6a95c216a34e39637474ca8c8b5613c51b94d2e10b7ff9",
+    "native-runtime.bundle.js": "4e24d6ee46962c3bb8a6dd5236467f40b13d3519fb3e7f4224c36ca4f693c7aa"
+  },
+  "dependencies": {
+    "three": "0.186.0",
+    "three-impostor": "0.4.1"
+  },
+  "helperSha256": "451111ce808f71b0ca6300ddd5f17254bac082b5aabb747de5486a943218505c",
+  "builderSha256": "ca9b5f8e9ae3f90b158fbe387948ee1d52296f8db0039707d94babb14d0a448b",
+  "outputs": {
+    "native-rgb-runtime.bundle.js": {
+      "bytes": 1102544,
+      "sha256": "042ccaa98a694dc38fb3c1121af09c48e78e63adb2b2c3f7f5beaf18ffad0a6e"
+    },
+    "native-rgb-runtime.cdn.mjs": {
+      "bytes": 8973,
+      "sha256": "95c9ea8f84c5292e57262af7ae846245d22390d676e106de4e06f61920840d09"
+    }
+  },
+  "baselineRuntimesUnchanged": true,
+  "generatedHtmlPostprocessing": false,
+  "changes": [
+    "native material uses shared display helper",
+    "unlit renderer disables tone mapping"
+  ]
+}

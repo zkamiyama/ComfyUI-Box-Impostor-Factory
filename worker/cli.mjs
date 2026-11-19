@@ -13,9 +13,9 @@ import { chromiumOptions, presentedForeground } from './chromium.mjs';
 
 const usage = `node worker/cli.mjs bake --input model.glb --output asset-dir [--resolution 256] [--backend auto|webgpu|webgl2] [--maps roughness,metalness,ao,emissive] [--verify]
 node worker/cli.mjs canonicalize --input model.glb --output new-dir
-node worker/cli.mjs preview --asset asset-dir [--port 8080]
-node worker/cli.mjs thumbnail --asset asset-dir --output hero.png [--sampling standard|reduce_bleeding]
-node worker/cli.mjs render --asset asset-dir --output frame.png [--view +Z] [--projection orthographic|perspective] [--width 512] [--height 512] [--sampling standard|reduce_bleeding]
+node worker/cli.mjs preview --asset asset-dir [--port 8080] [--lighting lit|unlit]
+node worker/cli.mjs thumbnail --asset asset-dir --output hero.png [--sampling standard|reduce_bleeding] [--lighting lit|unlit]
+node worker/cli.mjs render --asset asset-dir --output frame.png [--view +Z] [--projection orthographic|perspective] [--width 512] [--height 512] [--sampling standard|reduce_bleeding] [--lighting lit|unlit]
 node worker/cli.mjs inspect --asset asset-dir`;
 const allowedMaps = ['roughness','metalness','ao','emissive'];
 export async function inspectAsset(dir) {
@@ -102,7 +102,7 @@ async function browserCall(server, method, options) {
       const width=outputImage?options.width:680;
       const height=outputImage?options.height:580;
       await page.setViewportSize({width:Math.max(width,680),height:Math.max(height,580)});
-      await page.goto(server.origin+'/web/viewer.html?manifest=/asset/manifest.json&backend='+options.backend+'&sampling='+options.sampling);
+      await page.goto(server.origin+'/web/viewer.html?manifest=/asset/manifest.json&backend='+options.backend+'&sampling='+options.sampling+'&lighting='+options.lighting);
       await page.waitForFunction(()=>/webgpu|webgl2|表示エラー/.test(document.querySelector('#status').textContent));
       if(await page.locator('#status.error').count()) throw new Error(await page.locator('#status').innerText());
       if(outputImage) {
@@ -239,12 +239,14 @@ export async function main(argv) {
   if(!command || ['--help','-h','help'].includes(command)){console.log(usage);return;}
   const opt=parseArgs({args,options:{
     input:{type:'string'},output:{type:'string'},asset:{type:'string'},evidence:{type:'string'},resolution:{type:'string',default:'256'},
-    backend:{type:'string',default:'auto'},sampling:{type:'string',default:'standard'},maps:{type:'string',default:''},verify:{type:'boolean',default:false},
+    backend:{type:'string',default:'auto'},sampling:{type:'string',default:'standard'},lighting:{type:'string',default:'lit'},maps:{type:'string',default:''},verify:{type:'boolean',default:false},
     width:{type:'string',default:'512'},height:{type:'string',default:'512'},view:{type:'string',default:'diagonal'},
     projection:{type:'string',default:'orthographic'},
     'rotate-x':{type:'string'},'rotate-y':{type:'string'},'rotate-z':{type:'string'},
     'asset-id':{type:'string'},'canonical-meta':{type:'string'},port:{type:'string',default:'8080'},
   }}).values;
+  if(['thumbnail','render','preview'].includes(command) && !['lit','unlit'].includes(opt.lighting))
+    throw new Error('Unknown Box display lighting');
   if(command==='thumbnail'){
     if(!opt.asset || !opt.output) throw new Error('thumbnail requires --asset and --output');
     if(!['standard','reduce_bleeding'].includes(opt.sampling)) throw new Error('Unknown Box preview sampling');
@@ -253,9 +255,9 @@ export async function main(argv) {
     const server=await startServer({assetDir:dir});
     const temp=dest+'.'+randomUUID()+'.tmp';
     try {
-      const png=await browserCall(server,'thumbnail',{backend:opt.backend,sampling:opt.sampling});
+      const png=await browserCall(server,'thumbnail',{backend:opt.backend,sampling:opt.sampling,lighting:opt.lighting});
       await mkdir(dirname(dest),{recursive:true}); await writeFile(temp,png); await rename(temp,dest);
-      console.log(JSON.stringify({preview:dest}));
+      console.log(JSON.stringify({preview:dest,lighting:opt.lighting}));
     } finally {await server.close(); await rm(temp,{force:true});}
     return;
   }
@@ -272,10 +274,10 @@ export async function main(argv) {
     const server=await startServer({assetDir:dir});
     const temp=dest+'.'+randomUUID()+'.tmp';
     try {
-      const png=await browserCall(server,'render',{backend:opt.backend,sampling:opt.sampling,
+      const png=await browserCall(server,'render',{backend:opt.backend,sampling:opt.sampling,lighting:opt.lighting,
         width,height,view:opt.view,projection:opt.projection});
       await mkdir(dirname(dest),{recursive:true}); await writeFile(temp,png); await rename(temp,dest);
-      console.log(JSON.stringify({render:dest,width,height,view:opt.view,sampling:opt.sampling}));
+      console.log(JSON.stringify({render:dest,width,height,view:opt.view,sampling:opt.sampling,lighting:opt.lighting}));
     } finally {await server.close(); await rm(temp,{force:true});}
     return;
   }
@@ -285,7 +287,7 @@ export async function main(argv) {
     const manifest=await inspectAsset(dir);
     if(command==='inspect'){console.log(JSON.stringify({asset_id:manifest.asset_id,maps:Object.keys(manifest.textures)}));return;}
     const server=await startServer({assetDir:dir,port:Number(opt.port)});
-    console.log(server.origin+'/web/viewer.html?manifest=/asset/manifest.json');return;
+    console.log(server.origin+'/web/viewer.html?manifest=/asset/manifest.json'+(opt.lighting==='unlit'?'&lighting=unlit':''));return;
   }
   if(!['bake','canonicalize'].includes(command))throw new Error(usage);
   console.log(JSON.stringify(await publish(command,opt)));
