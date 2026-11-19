@@ -1,0 +1,48 @@
+{
+  "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+  "hi3d_input": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/.stages/hi3d-refine/939bf71cab3adc54abbb9aa770917b685058470cf5f4c3d4bf7c192ca952d9ac/hi3d-raw.glb",
+  "source_sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+  "hi3d_sha256": "1f5cdd2eab59199d0c289e7ac9b218edf39232c5dc6b0ed943a7f5e5e0e1c364",
+  "smooth_iterations": 0,
+  "scale": 0.6279206758924942,
+  "source_extents": [
+    0.359193,
+    1.0,
+    0.341354
+  ],
+  "refined_extents": [
+    0.359362,
+    1.0,
+    0.334591
+  ],
+  "extent_ratio": [
+    1.000472,
+    1.0,
+    0.980187
+  ],
+  "nearest_dist_p50_p95": [
+    0.002918,
+    0.007377
+  ],
+  "vertices": 499920,
+  "faces": 1000000,
+  "has_vertex_color": true,
+  "color_transfer_version": "linear-rgba-f32-v2",
+  "color_space": "linear RGBA; texture RGB decoded before interpolation; vertex RGB already linear",
+  "color_attribute": "FLOAT32 COLOR_0",
+  "normal_policy": "retain existing cached normals only; never compute or add normals",
+  "output_sha256": "411d924f8fd1170522a08f1998d24d28641a4445834c1a876d5f84b5d3a8a2bd",
+  "inheritedInference": {
+    "status": "success",
+    "model": "hi3d-official/Hi3Dv1.0",
+    "resolution": 1024,
+    "steps": 25,
+    "source_faces": 81180,
+    "output_faces": 1000000,
+    "output_vertices": 499920,
+    "elapsed_s": 196.69,
+    "torch_cuda": "12.4",
+    "gpu": "NVIDIA GeForce RTX 4080",
+    "gpu_max_allocated_mib": 1717.26
+  }
+}

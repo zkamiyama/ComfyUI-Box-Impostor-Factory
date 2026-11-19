@@ -1,0 +1,13 @@
+{
+  "sourceBaseline": "f6a5d91901f6745980cf73315bdacecc7e9db216b88784018cc7f8093d9dd404",
+  "assetId": "306bc1e7ed13b3badbe32b3ff2da0b56f41e885f8038e06b4fb1b759b24be334",
+  "assetDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/306bc1e7ed13b3badbe32b3ff2da0b56f41e885f8038e06b4fb1b759b24be334",
+  "proxySha256": "411d924f8fd1170522a08f1998d24d28641a4445834c1a876d5f84b5d3a8a2bd",
+  "canonicalMetadataSha256": "85e515b6fe4a3eb4807c4f4491d86bbc81ccc93f378ef9ba8716d26a32ab7d55",
+  "resolution": 1024,
+  "backend": "webgl2",
+  "maps": [],
+  "elapsedSeconds": 9.178703204999692,
+  "newInference": false,
+  "colorTransferVersion": "linear-rgba-f32-v2"
+}

@@ -1,0 +1,413 @@
+{
+  "kind": "Actual native mesh rebake depth comparison; no raw MoGe prediction",
+  "assets": {
+    "B": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "manifestSHA256": "650893815ec21de1994ee47eb78469f157be43ee6aa8282bf7d45ee94d4bca0e"
+    },
+    "C": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+      "assetId": "1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+      "manifestSHA256": "9187bae012c757fc7bf0b7c3e8d9c906a2069844d65d8c3ac743faa049d300ce"
+    }
+  },
+  "bakeBox": {
+    "min": [
+      -0.19968106269836425,
+      -0.52,
+      -0.18729551553726195
+    ],
+    "max": [
+      0.19968106269836425,
+      0.52,
+      0.18729551553726195
+    ]
+  },
+  "canonicalHeight": 1.0,
+  "cameraAndBakeBoxIdentical": true,
+  "encoding": "little-endian float16 normalized axis depth d, 0=near box face, 1=opposite box face; NaN background",
+  "worldDepthFormula": "inwardDepthWorld = d * dot(abs(side), bakeBox.max - bakeBox.min)",
+  "differenceFormula": "C minus B inward axis depth on B/C common valid mask; positive means deeper, not surface motion toward the camera",
+  "mask": "guide RGBA alpha > 250 and finite depth; same rule for B/C",
+  "colorScales": "Each face uses one shared B/C range [0, axis span] in canonical bake units. Every difference panel uses the same fixed +/-0.02 * B height range.",
+  "differenceClipping": "Clipped values use endpoint colors and are counted per face; no independent per-image normalization.",
+  "units": "Canonical bake units, not measured meters. Mask/point differences are changes, not ground-truth errors.",
+  "display": "Grayscale depth and blue-white-orange signed difference; nearest-neighbor sampling with physical aspect restored; no sharpening.",
+  "coverageLegend": {
+    "common": [
+      103,
+      115,
+      131
+    ],
+    "BOnly": [
+      239,
+      151,
+      56
+    ],
+    "COnly": [
+      45,
+      205,
+      222
+    ]
+  },
+  "faces": {
+    "+Z": {
+      "sources": {
+        "B": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/pz.png",
+          "guideSHA256": "bfd452808ef40f9cdcef5303cdac1b9ed6944e2b9d2a27c57ecc6af6a712938b",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/pz.depth16f.bin",
+          "depthSHA256": "37c88c19a782486c63df03dfddaf4dc88d3307351e8523fcf4846b4a2da85eba",
+          "validPixels": 354198
+        },
+        "C": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/pz.png",
+          "guideSHA256": "962811f5c3d4bbb0c1e154f1f8ffcaf481407e7da016170bfc24e259b508891b",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/pz.depth16f.bin",
+          "depthSHA256": "8e7e92394b88efb186f88dfdb8d12e48a94b95ef3f050a08944ff04c4213790d",
+          "validPixels": 361942
+        }
+      },
+      "side": [
+        0,
+        0,
+        1
+      ],
+      "depthRangeWorld": [
+        0,
+        0.3745910310745239
+      ],
+      "guidePlaneWorldWidthHeight": [
+        0.3993621253967285,
+        1.04
+      ],
+      "commonPixels": 351688,
+      "bOnlyPixels": 2510,
+      "cOnlyPixels": 10254,
+      "geometryMaskIoU": 0.9649775553433648,
+      "absoluteWorldDepthDifferenceQuantiles": {
+        "p50": 0.0007316172122955322,
+        "p95": 0.0064017027616500854,
+        "p99": 0.026478584147989856,
+        "max": 0.128216952085495
+      },
+      "signedWorldDepthDifferenceMean": -0.00019182800315320492,
+      "deltaDisplayRangeWorld": [
+        -0.02,
+        0.02
+      ],
+      "deltaClippedCommonPixels": 4000,
+      "deltaClippedCommonFraction": 0.011373717613339097
+    },
+    "+X": {
+      "sources": {
+        "B": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/px.png",
+          "guideSHA256": "0ca0b8734be19b620752c45358ad0f0f4fb3b0bc3a281ad4ae78d6b65d3acd98",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/px.depth16f.bin",
+          "depthSHA256": "19b42b42e4374f9d7e39f29c521dca6872d49bc6a875a65b03fb191875f1df9d",
+          "validPixels": 401248
+        },
+        "C": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/px.png",
+          "guideSHA256": "71814e784f65bc22c7ed5939037300d06a2422cb256261a492f2f0a1cec67b3d",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/px.depth16f.bin",
+          "depthSHA256": "6addb2c0622014b3b5e00cdc131b549c8e515b6930a5dbce3e67517c31b5bce5",
+          "validPixels": 405988
+        }
+      },
+      "side": [
+        1,
+        0,
+        0
+      ],
+      "depthRangeWorld": [
+        0,
+        0.3993621253967285
+      ],
+      "guidePlaneWorldWidthHeight": [
+        0.3745910310745239,
+        1.04
+      ],
+      "commonPixels": 398998,
+      "bOnlyPixels": 2250,
+      "cOnlyPixels": 6990,
+      "geometryMaskIoU": 0.9773661442589862,
+      "absoluteWorldDepthDifferenceQuantiles": {
+        "p50": 0.0007800012826919556,
+        "p95": 0.005947530269622803,
+        "p99": 0.01248006522655487,
+        "max": 0.152442067861557
+      },
+      "signedWorldDepthDifferenceMean": 0.00010371879034209996,
+      "deltaDisplayRangeWorld": [
+        -0.02,
+        0.02
+      ],
+      "deltaClippedCommonPixels": 1853,
+      "deltaClippedCommonFraction": 0.004644133554554158
+    },
+    "-X": {
+      "sources": {
+        "B": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/nx.png",
+          "guideSHA256": "94d5ed93ad618fc49112c87a83943a241607240d48fcbc7757f04e6ac5c017e0",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/nx.depth16f.bin",
+          "depthSHA256": "529ce8a13bec9396cc6777db0ac94413f44d4da853d0dc754e2b9e160a3d52c2",
+          "validPixels": 401250
+        },
+        "C": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/nx.png",
+          "guideSHA256": "0e148d051af24bba8b8721632bec34fcccf6b64b9d4aef06f316cd2f5335cc08",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/nx.depth16f.bin",
+          "depthSHA256": "f3f89ac6b0403934dd2d901f563bdb7db3adc532cdf264203b5a476a29aecb10",
+          "validPixels": 405984
+        }
+      },
+      "side": [
+        -1,
+        0,
+        0
+      ],
+      "depthRangeWorld": [
+        0,
+        0.3993621253967285
+      ],
+      "guidePlaneWorldWidthHeight": [
+        0.3745910310745239,
+        1.04
+      ],
+      "commonPixels": 398994,
+      "bOnlyPixels": 2256,
+      "cOnlyPixels": 6990,
+      "geometryMaskIoU": 0.9773515579071135,
+      "absoluteWorldDepthDifferenceQuantiles": {
+        "p50": 0.0007800087332725525,
+        "p95": 0.006240040063858032,
+        "p99": 0.016965091228485107,
+        "max": 0.14732329547405243
+      },
+      "signedWorldDepthDifferenceMean": -9.358516399515793e-05,
+      "deltaDisplayRangeWorld": [
+        -0.02,
+        0.02
+      ],
+      "deltaClippedCommonPixels": 3535,
+      "deltaClippedCommonFraction": 0.008859782352616832
+    },
+    "+Y": {
+      "sources": {
+        "B": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/py.png",
+          "guideSHA256": "ade131beb8c3b043057543beaed2d7e61d56e76c898a32005fe3fbc7d371b219",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/py.depth16f.bin",
+          "depthSHA256": "397dc6c03ce8e62320bd341cfb7eb569d947e7474aaffd821da9a614aaecb340",
+          "validPixels": 374041
+        },
+        "C": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/py.png",
+          "guideSHA256": "b58f927d4b5fe700dcc3041992e343743ad2256cadaecacc57a54ce5a7a00afe",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/py.depth16f.bin",
+          "depthSHA256": "d71321f7a0dc70534adfdbc44c5d035319619ad92d33930fbaaeac1ccfb04a7d",
+          "validPixels": 377346
+        }
+      },
+      "side": [
+        0,
+        1,
+        0
+      ],
+      "depthRangeWorld": [
+        0,
+        1.04
+      ],
+      "guidePlaneWorldWidthHeight": [
+        0.3993621253967285,
+        0.3745910310745239
+      ],
+      "commonPixels": 370245,
+      "bOnlyPixels": 3796,
+      "cOnlyPixels": 7101,
+      "geometryMaskIoU": 0.9714096058686789,
+      "absoluteWorldDepthDifferenceQuantiles": {
+        "p50": 0.0008886754512786865,
+        "p95": 0.010410159826278687,
+        "p99": 0.12657226622104645,
+        "max": 0.47074219584465027
+      },
+      "signedWorldDepthDifferenceMean": -0.0021068709902465343,
+      "deltaDisplayRangeWorld": [
+        -0.02,
+        0.02
+      ],
+      "deltaClippedCommonPixels": 10190,
+      "deltaClippedCommonFraction": 0.027522316304068928
+    },
+    "-Y": {
+      "sources": {
+        "B": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/ny.png",
+          "guideSHA256": "b9b026a8eaa6ffaabf1df430fd537b31cf3ac5ed6e1669caf01c74edfead3767",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/ny.depth16f.bin",
+          "depthSHA256": "41ae99a122edba3d51d45a4dccf6701c56b2b693cfae6d999c006a1721159ea8",
+          "validPixels": 374040
+        },
+        "C": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/ny.png",
+          "guideSHA256": "377fd666a00a46c61d32cae817546e16b90be4dd956b957748104242009f21b1",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/ny.depth16f.bin",
+          "depthSHA256": "8cd5c17dddf221caf4ecc4310c9e4aad29fa6384c538334b6c561a540cafd823",
+          "validPixels": 377338
+        }
+      },
+      "side": [
+        0,
+        -1,
+        0
+      ],
+      "depthRangeWorld": [
+        0,
+        1.04
+      ],
+      "guidePlaneWorldWidthHeight": [
+        0.3993621253967285,
+        0.3745910310745239
+      ],
+      "commonPixels": 370244,
+      "bOnlyPixels": 3796,
+      "cOnlyPixels": 7094,
+      "geometryMaskIoU": 0.9714273720003989,
+      "absoluteWorldDepthDifferenceQuantiles": {
+        "p50": 0.001396477222442627,
+        "p95": 0.023232422210276125,
+        "p99": 0.23867186903953552,
+        "max": 0.5679882764816284
+      },
+      "signedWorldDepthDifferenceMean": -0.003556388895958662,
+      "deltaDisplayRangeWorld": [
+        -0.02,
+        0.02
+      ],
+      "deltaClippedCommonPixels": 20184,
+      "deltaClippedCommonFraction": 0.05451540065470339
+    },
+    "-Z": {
+      "sources": {
+        "B": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/nz.png",
+          "guideSHA256": "fedff27b10e63f2120c3ed2dda7c8fe1b30c46d4bb193e832f01805ada7db205",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/guides/nz.depth16f.bin",
+          "depthSHA256": "930ad6f9c465757262b9e3ad710704c016bc1e16f8921838c69c826efe22065d",
+          "validPixels": 354195
+        },
+        "C": {
+          "guidePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/nz.png",
+          "guideSHA256": "dd1eb42003aa7ded42fc9ffdb34589f29548058ce318abf38c9d246e281875d0",
+          "depthPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/guides/nz.depth16f.bin",
+          "depthSHA256": "e9deac518723f809463bf49236ea066456ab7876d4f0ad55159450d12ca786ba",
+          "validPixels": 361942
+        }
+      },
+      "side": [
+        0,
+        0,
+        -1
+      ],
+      "depthRangeWorld": [
+        0,
+        0.3745910310745239
+      ],
+      "guidePlaneWorldWidthHeight": [
+        0.3993621253967285,
+        1.04
+      ],
+      "commonPixels": 351688,
+      "bOnlyPixels": 2507,
+      "cOnlyPixels": 10254,
+      "geometryMaskIoU": 0.9649854986568766,
+      "absoluteWorldDepthDifferenceQuantiles": {
+        "p50": 0.0005487203598022461,
+        "p95": 0.005578629672527313,
+        "p99": 0.03914184868335724,
+        "max": 0.11898020654916763
+      },
+      "signedWorldDepthDifferenceMean": -0.000541084329597652,
+      "deltaDisplayRangeWorld": [
+        -0.02,
+        0.02
+      ],
+      "deltaClippedCommonPixels": 4961,
+      "deltaClippedCommonFraction": 0.014106253269943813
+    }
+  },
+  "outputs": {
+    "B-C-depth-front.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-C-depth-front.webp",
+      "sha256": "53f4aa5b9f36f05927c7a2e7c6923292c166fdb3e2da73858aa87d02c53bdf23",
+      "bytes": 77738,
+      "size": [
+        1240,
+        660
+      ],
+      "losslessPixelsEqual": true,
+      "pngPath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/depth-evidence/B-C-depth-front.png",
+      "pngSHA256": "09518cf90ef96fdc527d6fea24b2ffa39a64b0ab805bc7482953c283f7f29057"
+    },
+    "B-C-depth-six-view.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-C-depth-six-view.webp",
+      "sha256": "6fe5e3a52218f478b08cd86b08f1bc111b1797d0ddaa0d2ab6a8be935bd53772",
+      "bytes": 192916,
+      "size": [
+        1250,
+        2130
+      ],
+      "losslessPixelsEqual": true,
+      "pngPath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/depth-evidence/B-C-depth-six-view.png",
+      "pngSHA256": "88bb27b8c73c5681a872cfe9538015c3c8439f4e9185cefbbe0388dd76ed0df2"
+    }
+  },
+  "frontHead": {
+    "sourceWorldROI": [
+      [
+        -0.06190345578729607,
+        0.3100160773953314,
+        -0.024992582091377752
+      ],
+      [
+        0.07604182008052954,
+        0.51,
+        0.18067711655172314
+      ]
+    ],
+    "worldROIAfterTopPadding": [
+      [
+        -0.06190345578729607,
+        0.3100160773953314,
+        -0.024992582091377752
+      ],
+      [
+        0.07604182008052954,
+        0.52,
+        0.18067711655172314
+      ]
+    ],
+    "nativeGuideCrop": [
+      353,
+      0,
+      707,
+      207
+    ],
+    "cropDefinition": "A world head region, expanded upward to shared bakeBox top for both stages",
+    "sourceROIProofSHA256": "aaa864bdead10ddd8f9afd85f46d77e922c96f5e11236ec3bd12cc9c4af64401",
+    "physicalWidthHeight": [
+      0.1380607347562909,
+      0.210234375
+    ],
+    "deltaClippedFraction": 0.009048711326241262
+  },
+  "script": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/build_depth_comparison.py",
+    "sha256": "435c38aca38aabdecd4c77dffcbbaae2b3bd2947ed7fb0556abd66de09961f33"
+  }
+}

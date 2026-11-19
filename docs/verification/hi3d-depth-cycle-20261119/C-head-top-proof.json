@@ -1,0 +1,126 @@
+{
+  "purpose": "Read-only check that the C flat head top is present in geometry, not a panel crop.",
+  "stages": {
+    "B": {
+      "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "proxyPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/geometry/proxy.glb",
+      "proxySHA256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+      "sourceBounds": {
+        "min": [
+          -0.17968106269836426,
+          -0.5,
+          -0.16729551553726196
+        ],
+        "max": [
+          0.17968106269836426,
+          0.5,
+          0.16729551553726196
+        ]
+      },
+      "actualPositionBounds": [
+        [
+          -0.17968106269836426,
+          -0.5,
+          -0.16729551553726196
+        ],
+        [
+          0.17968106269836426,
+          0.5,
+          0.16729551553726196
+        ]
+      ],
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/capture.json",
+      "captureSHA256": "c0efa87471cff7b192f15aba74aaea478f932bbaae18a7c429a079e41c25732b",
+      "imagePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/lit-front.png",
+      "imageSHA256": "8400ca4fa74716b5be7e3caf667d33c495254fb093d56d29c626ae4123ad314d",
+      "imageSize": [
+        1024,
+        1024
+      ],
+      "mask": "alpha > 250",
+      "headCropTopPixel": 115,
+      "firstOpaqueRow": 123,
+      "topPaddingPixels": 8,
+      "firstFiveOpaqueRowCounts": {
+        "123": 8,
+        "124": 17,
+        "125": 24,
+        "126": 33,
+        "127": 39
+      },
+      "boundaryVertexTolerance": 5e-08,
+      "verticesNearMaxBoundsXYZ": [
+        1,
+        1,
+        1
+      ],
+      "verticesNearMinBoundsXYZ": [
+        1,
+        1,
+        1
+      ]
+    },
+    "C": {
+      "assetId": "1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+      "proxyPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/geometry/proxy.glb",
+      "proxySHA256": "86f657dddf2ef5d25e3b8859d61e2750d4ac84ac0de6622bed5dda13acefb1f2",
+      "sourceBounds": {
+        "min": [
+          -0.17968106269836426,
+          -0.5,
+          -0.16729551553726196
+        ],
+        "max": [
+          0.17968106269836426,
+          0.5,
+          0.16729551553726196
+        ]
+      },
+      "actualPositionBounds": [
+        [
+          -0.17968106269836426,
+          -0.5,
+          -0.16729551553726196
+        ],
+        [
+          0.17968106269836426,
+          0.5,
+          0.16729551553726196
+        ]
+      ],
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-clay/capture.json",
+      "captureSHA256": "89594a6cb576d616a748c56e0ad83e449bb39f35de25d18699b89479edbd4659",
+      "imagePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-clay/lit-front.png",
+      "imageSHA256": "aff4e3b1b9d9873bb7e2eb96151aa15a6ca411694af4726163f97e3645340603",
+      "imageSize": [
+        1024,
+        1024
+      ],
+      "mask": "alpha > 250",
+      "headCropTopPixel": 115,
+      "firstOpaqueRow": 123,
+      "topPaddingPixels": 8,
+      "firstFiveOpaqueRowCounts": {
+        "123": 50,
+        "124": 51,
+        "125": 51,
+        "126": 50,
+        "127": 50
+      },
+      "boundaryVertexTolerance": 5e-08,
+      "verticesNearMaxBoundsXYZ": [
+        1,
+        3221,
+        1
+      ],
+      "verticesNearMinBoundsXYZ": [
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "conclusion": "The C flat head top exists inside the actual geometry and the full native frame. The shared evidence crop starts above the first opaque row and does not produce this plateau.",
+  "causalLimit": "Counts and images establish the plateau. Bounds-clamp implementation is audited separately; this file does not infer its cause.",
+  "scriptSHA256": "ecb52f588ace5da323c72767e14539f67eb160635cb5da1f196f9969abb05828"
+}
