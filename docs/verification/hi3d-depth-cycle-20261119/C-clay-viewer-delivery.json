@@ -1,0 +1,27 @@
+{
+  "source": "C-clay.inspector.html",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-clay.inspector.html",
+  "htmlBytes": 23813617,
+  "htmlSHA256": "008d901389e723644958b4afc3ea539a43a0ae70901139ee4cdad3155bc95dd9",
+  "gzip": "C-clay.inspector.html.gz",
+  "gzipSourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-clay.inspector.html.gz",
+  "gzipBytes": 17391712,
+  "gzipSHA256": "73e87e2439b68294c73cd57104a74822f8a0a6a7445a70b3db08dfa67d224664",
+  "officialViewerUnmodified": true,
+  "asset": "1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+  "decompressedSHA256": "008d901389e723644958b4afc3ea539a43a0ae70901139ee4cdad3155bc95dd9",
+  "decompressedBytes": 23813617,
+  "roundTripByteIdentityVerified": true,
+  "deliveryCopySHA256Verified": true,
+  "delivery": "Lossless gzip packaging; decompress to recover exact official HTML",
+  "packaging": {
+    "compressionLevel": 9,
+    "mtime": 0,
+    "rawHTMLCopiedToRepo": false
+  },
+  "captureStageState": "Three.js PBR",
+  "repoFilesystemFreeAfter": 419016704,
+  "artifactKind": "Full-triangle geometry-only uniform-gray diagnostic; exact official Inspector HTML",
+  "sourceTriangles": 1000000,
+  "viewerPayloadTriangles": 1000000
+}
