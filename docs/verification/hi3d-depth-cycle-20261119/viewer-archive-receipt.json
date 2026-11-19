@@ -25,6 +25,16 @@
       "name": "F.inspector.html.gz",
       "sha256": "01fd51a852588da87511cb9d2b94c4bea4f5753d3c819847eba55dbfe2d6094f",
       "bytes": 46045286
+    },
+    {
+      "name": "H.inspector.html.gz",
+      "sha256": "3775a3d9d4bf81ebb3225ea1290f602b857c591d86c54d179834b8f6094e3bc9",
+      "bytes": 45791014
+    },
+    {
+      "name": "H-clay.inspector.html.gz",
+      "sha256": "15c5ef7a60ed0e036be9822c2adc0115824bd6279465e4eaafc293dbff3036f4",
+      "bytes": 17295971
     }
   ]
 }
