@@ -4,8 +4,8 @@ import {
 } from 'three/tsl';
 import { ImpostorNodeMaterial } from 'three-impostor';
 
-// Pinned three-impostor 0.4.1 Box projection convention. These functions only
-// locate colour samples; the upstream interval/range raymarch is unchanged.
+// Pinned three-impostor 0.4.2 Box projection convention. These functions only
+// locate colour samples; the upstream interval/distance raymarch is unchanged.
 const SIDES=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
 const VIEW_UV=[p=>vec2(p.z.oneMinus(),p.y),p=>vec2(p.z,p.y),
   p=>vec2(p.x,p.z.oneMinus()),p=>vec2(p.x,p.z),

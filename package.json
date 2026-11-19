@@ -14,7 +14,7 @@
   "dependencies": {
     "playwright": "1.57.0",
     "three": "0.186.0",
-    "three-impostor": "0.4.1"
+    "three-impostor": "0.4.2"
   },
   "devDependencies": {
     "esbuild": "0.28.2"

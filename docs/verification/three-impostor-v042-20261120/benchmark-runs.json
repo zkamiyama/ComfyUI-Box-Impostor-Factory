@@ -1,0 +1,130 @@
+{
+  "runs": [
+    {
+      "command": [
+        "node",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/three-impostor-v042-20261120/capture_inspector_version_yaw.mjs",
+        "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-1/Q2-v041",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "45",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-1/Q2-v041/control.json"
+      ],
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-1/Q2-v041/capture.log",
+      "logSHA256": "0bb4c8b4729664728e109bec9cba2eed0fd976a3536d3119af883f148a317548",
+      "elapsedSecondsIncludingBrowserStartup": 15.951114026000141,
+      "exitCode": 0,
+      "case": "Q2-v041",
+      "family": "Q2",
+      "packageVersion": "0.4.1",
+      "trial": 1,
+      "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-1/Q2-v041/capture.json",
+      "captureJSONSHA256": "332bfbdc92b00472ffbbdafd356fac7384b5b5fe5ca4b1f3d1d629a11ceff600"
+    },
+    {
+      "command": [
+        "node",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/three-impostor-v042-20261120/capture_inspector_version_yaw.mjs",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v042.inspector.html",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-1/Q2-v042",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "45",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-1/Q2-v042/control.json"
+      ],
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-1/Q2-v042/capture.log",
+      "logSHA256": "320f2123d8bfb74788b36f032d5da23ff1baab4fa684f75a0cba275887af3c1b",
+      "elapsedSecondsIncludingBrowserStartup": 11.378383687999303,
+      "exitCode": 0,
+      "case": "Q2-v042",
+      "family": "Q2",
+      "packageVersion": "0.4.2",
+      "trial": 1,
+      "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-1/Q2-v042/capture.json",
+      "captureJSONSHA256": "78a86bbd72c609cf4adfcf708eb531dae806b5aefc8e6d2d8f962ddb25aade61"
+    },
+    {
+      "command": [
+        "node",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/three-impostor-v042-20261120/capture_inspector_version_yaw.mjs",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v042.inspector.html",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-2/Q2-v042",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "45",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-2/Q2-v042/control.json"
+      ],
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-2/Q2-v042/capture.log",
+      "logSHA256": "35323e3885b8959dc43f9c28f9f745750eb1823f56c995e4d9eb7c6320df7421",
+      "elapsedSecondsIncludingBrowserStartup": 11.468466697000622,
+      "exitCode": 0,
+      "case": "Q2-v042",
+      "family": "Q2",
+      "packageVersion": "0.4.2",
+      "trial": 2,
+      "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-2/Q2-v042/capture.json",
+      "captureJSONSHA256": "75906a4f8644296a7dda73db4d306f25a18293f0d6172bfa43c1c9894e64a936"
+    },
+    {
+      "command": [
+        "node",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/three-impostor-v042-20261120/capture_inspector_version_yaw.mjs",
+        "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-2/Q2-v041",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "45",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-2/Q2-v041/control.json"
+      ],
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-2/Q2-v041/capture.log",
+      "logSHA256": "4bdf2cba0147035f83da5ef244fcbb2a6cb5abb1d79722d1874bc6e5ebceba57",
+      "elapsedSecondsIncludingBrowserStartup": 16.050891367000077,
+      "exitCode": 0,
+      "case": "Q2-v041",
+      "family": "Q2",
+      "packageVersion": "0.4.1",
+      "trial": 2,
+      "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-2/Q2-v041/capture.json",
+      "captureJSONSHA256": "08f6806c768ca2b47b26bb10558031827b3fc61128429f24ac827567a38b021f"
+    },
+    {
+      "command": [
+        "node",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/three-impostor-v042-20261120/capture_inspector_version_yaw.mjs",
+        "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-3/Q2-v041",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "45",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-3/Q2-v041/control.json"
+      ],
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-3/Q2-v041/capture.log",
+      "logSHA256": "e031ee59ee9a3d345f426d90f85a61db31bfb26de8b3ca830b63fb3f5ab0be3f",
+      "elapsedSecondsIncludingBrowserStartup": 16.492412362998948,
+      "exitCode": 0,
+      "case": "Q2-v041",
+      "family": "Q2",
+      "packageVersion": "0.4.1",
+      "trial": 3,
+      "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-3/Q2-v041/capture.json",
+      "captureJSONSHA256": "6bf624579fac9546c1fc60d007aa593c0f6e1e7d0bc2bc21f32cfd4404703133"
+    },
+    {
+      "command": [
+        "node",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/three-impostor-v042-20261120/capture_inspector_version_yaw.mjs",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v042.inspector.html",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-3/Q2-v042",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "45",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-3/Q2-v042/control.json"
+      ],
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-3/Q2-v042/capture.log",
+      "logSHA256": "cad030e39df7599d9e5f90c6cbcbf19be410f3b7539247e873dab03c825bfb4c",
+      "elapsedSecondsIncludingBrowserStartup": 11.09033563400044,
+      "exitCode": 0,
+      "case": "Q2-v042",
+      "family": "Q2",
+      "packageVersion": "0.4.2",
+      "trial": 3,
+      "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-3/Q2-v042/capture.json",
+      "captureJSONSHA256": "213ae013b7bb734e98b8441f7cc8329a7e72886714f6229f6e2401f4b31931d0"
+    }
+  ]
+}

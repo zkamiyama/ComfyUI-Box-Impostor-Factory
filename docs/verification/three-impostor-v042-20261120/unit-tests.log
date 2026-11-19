@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: default display preserves the native material and Factory ray budget
+ok 1 - default display preserves the native material and Factory ray budget
+  ---
+  duration_ms: 1.611926
+  type: 'test'
+  ...
+# Subtest: unknown display options fail before asset I/O or browser launch
+ok 2 - unknown display options fail before asset I/O or browser launch
+  ---
+  duration_ms: 1.29415
+  type: 'test'
+  ...
+# Subtest: view colour modes get separate shader programs while native stays the original class
+ok 3 - view colour modes get separate shader programs while native stays the original class
+  ---
+  duration_ms: 0.904788
+  type: 'test'
+  ...
+# Subtest: WebGPU padded half-float rows and WebGL bottom-up rows pack to identical bit patterns
+ok 4 - WebGPU padded half-float rows and WebGL bottom-up rows pack to identical bit patterns
+  ---
+  duration_ms: 1.050363
+  type: 'test'
+  ...
+# Subtest: GLB external resources and nonportable map paths are rejected
+ok 5 - GLB external resources and nonportable map paths are rejected
+  ---
+  duration_ms: 1.257139
+  type: 'test'
+  ...
+# Subtest: canonical GLB carries the transform below its root; transforms and binary chunk survive rotation
+ok 6 - canonical GLB carries the transform below its root; transforms and binary chunk survive rotation
+  ---
+  duration_ms: 6.049126
+  type: 'test'
+  ...
+# Subtest: native baker camera setup and odd-sized readback survive serialization and reconstruction
+ok 7 - native baker camera setup and odd-sized readback survive serialization and reconstruction
+  ---
+  duration_ms: 17.4322
+  type: 'test'
+  ...
+# Subtest: opaque chat frames validate true SHA-256 without SubtleCrypto
+ok 8 - opaque chat frames validate true SHA-256 without SubtleCrypto
+  ---
+  duration_ms: 56.967802
+  type: 'test'
+  ...
+# Subtest: matches the six-pass 26-neighbour oracle, including non-8 resolution and unused tiles
+ok 9 - matches the six-pass 26-neighbour oracle, including non-8 resolution and unused tiles
+  ---
+  duration_ms: 23.255679
+  type: 'test'
+  ...
+# Subtest: single occupied cell yields capped Chebyshev distance throughout the valid volume
+ok 10 - single occupied cell yields capped Chebyshev distance throughout the valid volume
+  ---
+  duration_ms: 1.705559
+  type: 'test'
+  ...
+# Subtest: all empty cells keep distance seven; full cells keep zero, including R41
+ok 11 - all empty cells keep distance seven; full cells keep zero, including R41
+  ---
+  duration_ms: 0.598668
+  type: 'test'
+  ...
+# Subtest: float32 half-value boundaries reproduce shader arithmetic, not a double precision simplification
+ok 12 - float32 half-value boundaries reproduce shader arithmetic, not a double precision simplification
+  ---
+  duration_ms: 3.772983
+  type: 'test'
+  ...
+# Subtest: half decoding handles subnormal, signed zero, finite extrema, infinity, and NaN like Three half conversion
+ok 13 - half decoding handles subnormal, signed zero, finite extrema, infinity, and NaN like Three half conversion
+  ---
+  duration_ms: 0.373722
+  type: 'test'
+  ...
+# Subtest: keeps input bytes immutable and accepts a Uint16Array subview
+ok 14 - keeps input bytes immutable and accepts a Uint16Array subview
+  ---
+  duration_ms: 0.217584
+  type: 'test'
+  ...
+# Subtest: rejects malformed input instead of silently making a distance cache
+ok 15 - rejects malformed input instead of silently making a distance cache
+  ---
+  duration_ms: 0.558954
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 177.059093

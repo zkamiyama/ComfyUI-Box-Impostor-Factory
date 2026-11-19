@@ -1,0 +1,271 @@
+{
+  "status": "pass",
+  "backend": "webgl2",
+  "resolutions": [
+    41,
+    64,
+    96
+  ],
+  "startedAt": "2026-11-19T16:08:15.151Z",
+  "cases": [
+    {
+      "resolution": 41,
+      "threeRevision": "186",
+      "versions": {
+        "three": "186",
+        "baker": "0.4.2",
+        "bakerCommit": "df6caf4f459f58cf424df32af07c4aed0de4905c"
+      },
+      "schemaVersion": 1,
+      "savedTextureNames": [
+        "colorMap",
+        "normalMap",
+        "intervalMap",
+        "rangeMap",
+        "materialMap"
+      ],
+      "distance": {
+        "cells": 6,
+        "columns": 3,
+        "rows": 2,
+        "width": 18,
+        "height": 12,
+        "paddingSlices": 0,
+        "occupiedCells": 84,
+        "emptyCells": 132,
+        "histogram": [
+          84,
+          120,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nativeVsRestored": {
+          "comparedCells": 216,
+          "differingCells": 0,
+          "maxDistanceDelta": 0,
+          "firstDifferences": []
+        },
+        "nativeVsCPUBuffer": {
+          "comparedCells": 216,
+          "differingCells": 0,
+          "maxDistanceDelta": 0,
+          "firstDifferences": []
+        },
+        "restoredVsCPUBuffer": {
+          "comparedCells": 216,
+          "differingCells": 0,
+          "maxDistanceDelta": 0,
+          "firstDifferences": []
+        }
+      },
+      "render": {
+        "size": 192,
+        "steps": 128,
+        "foreground": 7213,
+        "background": 29651,
+        "nativeDepthRangeWorld": 0.8075079326336344,
+        "rgb": {
+          "pixels": 36864,
+          "differingPixels": 0,
+          "differingChannels": 0,
+          "maxByteDelta": 0,
+          "meanAbsoluteByteDelta": 0
+        },
+        "alpha": {
+          "pixels": 36864,
+          "differingPixels": 0,
+          "differingChannels": 0,
+          "maxByteDelta": 0,
+          "meanAbsoluteByteDelta": 0
+        },
+        "depth": {
+          "pixels": 36864,
+          "differingPixels": 0,
+          "maxCodeDelta": 0,
+          "maxNormalizedDelta": 0
+        }
+      }
+    },
+    {
+      "resolution": 64,
+      "threeRevision": "186",
+      "versions": {
+        "three": "186",
+        "baker": "0.4.2",
+        "bakerCommit": "df6caf4f459f58cf424df32af07c4aed0de4905c"
+      },
+      "schemaVersion": 1,
+      "savedTextureNames": [
+        "colorMap",
+        "normalMap",
+        "intervalMap",
+        "rangeMap",
+        "materialMap"
+      ],
+      "distance": {
+        "cells": 8,
+        "columns": 3,
+        "rows": 3,
+        "width": 24,
+        "height": 24,
+        "paddingSlices": 1,
+        "occupiedCells": 183,
+        "emptyCells": 329,
+        "histogram": [
+          183,
+          256,
+          73,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nativeVsRestored": {
+          "comparedCells": 512,
+          "differingCells": 0,
+          "maxDistanceDelta": 0,
+          "firstDifferences": []
+        },
+        "nativeVsCPUBuffer": {
+          "comparedCells": 512,
+          "differingCells": 0,
+          "maxDistanceDelta": 0,
+          "firstDifferences": []
+        },
+        "restoredVsCPUBuffer": {
+          "comparedCells": 512,
+          "differingCells": 0,
+          "maxDistanceDelta": 0,
+          "firstDifferences": []
+        }
+      },
+      "render": {
+        "size": 192,
+        "steps": 128,
+        "foreground": 7401,
+        "background": 29463,
+        "nativeDepthRangeWorld": 0.8189019035638513,
+        "rgb": {
+          "pixels": 36864,
+          "differingPixels": 0,
+          "differingChannels": 0,
+          "maxByteDelta": 0,
+          "meanAbsoluteByteDelta": 0
+        },
+        "alpha": {
+          "pixels": 36864,
+          "differingPixels": 0,
+          "differingChannels": 0,
+          "maxByteDelta": 0,
+          "meanAbsoluteByteDelta": 0
+        },
+        "depth": {
+          "pixels": 36864,
+          "differingPixels": 0,
+          "maxCodeDelta": 0,
+          "maxNormalizedDelta": 0
+        }
+      }
+    },
+    {
+      "resolution": 96,
+      "threeRevision": "186",
+      "versions": {
+        "three": "186",
+        "baker": "0.4.2",
+        "bakerCommit": "df6caf4f459f58cf424df32af07c4aed0de4905c"
+      },
+      "schemaVersion": 1,
+      "savedTextureNames": [
+        "colorMap",
+        "normalMap",
+        "intervalMap",
+        "rangeMap",
+        "materialMap"
+      ],
+      "distance": {
+        "cells": 12,
+        "columns": 4,
+        "rows": 3,
+        "width": 48,
+        "height": 36,
+        "paddingSlices": 0,
+        "occupiedCells": 529,
+        "emptyCells": 1199,
+        "histogram": [
+          529,
+          540,
+          505,
+          154,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nativeVsRestored": {
+          "comparedCells": 1728,
+          "differingCells": 0,
+          "maxDistanceDelta": 0,
+          "firstDifferences": []
+        },
+        "nativeVsCPUBuffer": {
+          "comparedCells": 1728,
+          "differingCells": 0,
+          "maxDistanceDelta": 0,
+          "firstDifferences": []
+        },
+        "restoredVsCPUBuffer": {
+          "comparedCells": 1728,
+          "differingCells": 0,
+          "maxDistanceDelta": 0,
+          "firstDifferences": []
+        }
+      },
+      "render": {
+        "size": 192,
+        "steps": 192,
+        "foreground": 7521,
+        "background": 29343,
+        "nativeDepthRangeWorld": 0.8087152486273795,
+        "rgb": {
+          "pixels": 36864,
+          "differingPixels": 0,
+          "differingChannels": 0,
+          "maxByteDelta": 0,
+          "meanAbsoluteByteDelta": 0
+        },
+        "alpha": {
+          "pixels": 36864,
+          "differingPixels": 0,
+          "differingChannels": 0,
+          "maxByteDelta": 0,
+          "meanAbsoluteByteDelta": 0
+        },
+        "depth": {
+          "pixels": 36864,
+          "differingPixels": 0,
+          "maxCodeDelta": 0,
+          "maxNormalizedDelta": 0
+        }
+      }
+    }
+  ],
+  "diagnostics": [],
+  "contract": "native 0.4.2 bake -> schema 1 bytes -> CPU distance cache -> restore",
+  "readback": "R8 sampled through the same TSL quad into RGBA8; valid grid cells only",
+  "camera": {
+    "yawDegrees": 45,
+    "pitchDegrees": 0,
+    "projection": "orthographic"
+  },
+  "browserVersion": "158.0.8127.18",
+  "actualBackend": "webgl2",
+  "threeRevision": "186",
+  "failures": [],
+  "finishedAt": "2026-11-19T16:08:19.382Z"
+}

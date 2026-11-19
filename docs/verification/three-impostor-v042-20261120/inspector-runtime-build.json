@@ -1,0 +1,57 @@
+{
+  "method": "official-inspector-three-impostor-0.4.2-runtime",
+  "baselineSource": {
+    "path": "inspector_native_entry.mjs",
+    "sha256": "ac0f29cd15b3bf9f3b6a95c216a34e39637474ca8c8b5613c51b94d2e10b7ff9",
+    "origin": "3D-Inspector skills/3d-inspector/assets/native-runtime.cdn.mjs before the 0.4.2 upgrade"
+  },
+  "dependencies": {
+    "three": "0.186.0",
+    "three-impostor": "0.4.2",
+    "esbuild": "0.28.2"
+  },
+  "upstreamSHA256": "18d82ffce940ec996c41e8c61018d38f5a0503cbabe06e69cd2f2c5bf7abcc56",
+  "helpers": {
+    "distance_map.mjs": "1ffdac87eaaa525643db246c606cfc2c1e94d1f554118d4cb09e1e4a98fd038c",
+    "distance_texture.mjs": "e4c3f4cddf8c9d16e5e59a71f543886938e4c8ec66427a3906c9fddf8dba6e38",
+    "box_display_material.mjs": "79160edac4f75fb2493efb5cfeda26be7d8703a08262688d83b6b32e8a35ec24"
+  },
+  "builderSHA256": "e556748d8a95024797275dfac85d0a3034d00ff42a60e66efbe1db5d287a5695",
+  "outputs": {
+    "native-runtime.bundle.js": {
+      "bytes": 1104201,
+      "sha256": "816e1189846b507ec4e446d2e07211530f3664352b255760b671ea0a6d145603"
+    },
+    "native-runtime.cdn.mjs": {
+      "bytes": 10599,
+      "sha256": "5c7d7d7ec74360c469e382e727b75e13980f120e568cc51e05f2caa26d2321e5"
+    },
+    "native-rgb-runtime.bundle.js": {
+      "bytes": 1108312,
+      "sha256": "5f0d745c744df730321523d0f3740af5275a7e1ab11e2a0642625904265abc33"
+    },
+    "native-rgb-runtime.cdn.mjs": {
+      "bytes": 14944,
+      "sha256": "9af684a2a8b83af54d627d97b840dbe316c81c5064c84d4f9844a1602457c9b7"
+    }
+  },
+  "colorSamplingOptions": [
+    "native",
+    "view",
+    "dominant",
+    "view-fade",
+    "view-soft",
+    "view-feather"
+  ],
+  "distanceMap": {
+    "derivation": "Original decoded RGBA16F rangeMap; increasingShaderV; before WebGL2 row flip",
+    "storage": "Runtime-only R8 DataTexture, nearest, NoColorSpace, disposed with the Box",
+    "legacyAssetBytesChanged": false
+  },
+  "generatedHtmlPostprocessing": false,
+  "changes": [
+    "Both native and native-rgb profiles use pinned three-impostor 0.4.2",
+    "Legacy Box assets derive the required distance field once at restore time",
+    "Existing native depth step budget and opt-in RGB display options are preserved"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "runs": [
+    {
+      "command": [
+        "node",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/three-impostor-v042-20261120/capture_inspector_version_yaw.mjs",
+        "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.inspector.html",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/F-v041",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "0,30,45,60",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/F-v041/control.json"
+      ],
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/F-v041/capture.log",
+      "logSHA256": "0d584b241aba04259a3ddd958e0f1cfb85ab6cd73f3fab29c41f3865fbe00411",
+      "elapsedSecondsIncludingBrowserStartup": 14.466130417999011,
+      "exitCode": 0,
+      "case": "F-v041",
+      "family": "F",
+      "packageVersion": "0.4.1",
+      "trial": 1,
+      "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/F-v041/capture.json",
+      "captureJSONSHA256": "3ff898594405067a0c3ee2d6295110cf548706eb27e593ded4ced7805c0099ce"
+    },
+    {
+      "command": [
+        "node",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/three-impostor-v042-20261120/capture_inspector_version_yaw.mjs",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-v042.inspector.html",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/F-v042",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "0,30,45,60",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/F-v042/control.json"
+      ],
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/F-v042/capture.log",
+      "logSHA256": "3162989e6fe3be6e924f6988abe4e190bb22a86f2c7e46faed77cc0b5a7fa4bd",
+      "elapsedSecondsIncludingBrowserStartup": 11.522102580000137,
+      "exitCode": 0,
+      "case": "F-v042",
+      "family": "F",
+      "packageVersion": "0.4.2",
+      "trial": 1,
+      "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/F-v042/capture.json",
+      "captureJSONSHA256": "78b173343659ac366742d938cdd4653a125be8dce6c8a27454233b033b65484d"
+    },
+    {
+      "command": [
+        "node",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/three-impostor-v042-20261120/capture_inspector_version_yaw.mjs",
+        "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/Q2-v041",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "0,30,45,60",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/Q2-v041/control.json"
+      ],
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/Q2-v041/capture.log",
+      "logSHA256": "5a4834843056c02ef445bb35f78f031d768d06770bca1b37215fdc23f59f790e",
+      "elapsedSecondsIncludingBrowserStartup": 14.45590276799885,
+      "exitCode": 0,
+      "case": "Q2-v041",
+      "family": "Q2",
+      "packageVersion": "0.4.1",
+      "trial": 1,
+      "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/Q2-v041/capture.json",
+      "captureJSONSHA256": "805fff6211faf5704bf2c8528e8731d71b3724f15ebadef2e772a60ad04cb3ce"
+    },
+    {
+      "command": [
+        "node",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/three-impostor-v042-20261120/capture_inspector_version_yaw.mjs",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v042.inspector.html",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/Q2-v042",
+        "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "0,30,45,60",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/Q2-v042/control.json"
+      ],
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/Q2-v042/capture.log",
+      "logSHA256": "669b71bbea108d17fce4f83a9438e314d0d87f30329e9c09851ad73e227b6eeb",
+      "elapsedSecondsIncludingBrowserStartup": 10.874874049999562,
+      "exitCode": 0,
+      "case": "Q2-v042",
+      "family": "Q2",
+      "packageVersion": "0.4.2",
+      "trial": 1,
+      "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/captures/Q2-v042/capture.json",
+      "captureJSONSHA256": "b885960bbbe24ee0c333748183b72a56426f7fd34a290a09efdc49bc441e9421"
+    }
+  ]
+}

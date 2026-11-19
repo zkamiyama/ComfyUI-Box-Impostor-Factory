@@ -1,0 +1,339 @@
+{
+  "config": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/capture-config.json",
+  "configSHA256": "c6d9b28555e7be848f63a52e6319c6ddcfb876bf3cee05b1d44f6136603cf721",
+  "scriptSHA256": "2038f82cfc6d1f51b5afccd3d740e4c0d025cec9c37d4c4c24ecdab837861cae",
+  "cases": {
+    "F-v041": {
+      "name": "F-v041",
+      "family": "F",
+      "packageVersion": "0.4.1",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.inspector.html",
+      "htmlSHA256": "1a9b97db6662cf726276bb9849d0750281f003c4064d23b25d1c9a00ee6e11e0",
+      "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "payload": {
+        "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+        "bounds": {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        },
+        "geometryAndFallbackColorSHA256": "4a2abf17929ab9f27a0e9ccb418b2a2d92ed3262c44b2f12260aea10b817090e",
+        "display": {
+          "lighting": "unlit",
+          "sampling": "native",
+          "colorSampling": "view"
+        },
+        "maps": {
+          "colorMap": {
+            "sha256": "647ec74f534bfb8de476663261f257a1d912179a4351d4f33e9f256fc1338ece",
+            "bytes": 50331648,
+            "width": 3072,
+            "height": 2048,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "normalMap": {
+            "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+            "bytes": 50331648,
+            "width": 3072,
+            "height": 2048,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "intervalMap": {
+            "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+            "bytes": 25165824,
+            "width": 3072,
+            "height": 1024,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "rangeMap": {
+            "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+            "bytes": 393216,
+            "width": 384,
+            "height": 128,
+            "channels": 4,
+            "dtype": "float16"
+          }
+        },
+        "resolution": 1024,
+        "embeddedScripts": [
+          {
+            "attributes": "",
+            "sha256": "2c99aef29eafa58427f15a5e82399f74364507fffbbe502d923be24d8dcd66c6"
+          },
+          {
+            "attributes": "",
+            "sha256": "5ad9826903abac0a769e1aa0136a26042ef733b2746856a71657480ecdc5ceaa"
+          }
+        ]
+      },
+      "control": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-v041-control.json"
+    },
+    "F-v042": {
+      "name": "F-v042",
+      "family": "F",
+      "packageVersion": "0.4.2",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-v042.inspector.html",
+      "htmlSHA256": "2c9341b1620003c01a982c9c2525e48a60bd68bea2998a4a8482897968688867",
+      "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "payload": {
+        "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+        "bounds": {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        },
+        "geometryAndFallbackColorSHA256": "4a2abf17929ab9f27a0e9ccb418b2a2d92ed3262c44b2f12260aea10b817090e",
+        "display": {
+          "lighting": "unlit",
+          "sampling": "native",
+          "colorSampling": "view"
+        },
+        "maps": {
+          "colorMap": {
+            "sha256": "647ec74f534bfb8de476663261f257a1d912179a4351d4f33e9f256fc1338ece",
+            "bytes": 50331648,
+            "width": 3072,
+            "height": 2048,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "normalMap": {
+            "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+            "bytes": 50331648,
+            "width": 3072,
+            "height": 2048,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "intervalMap": {
+            "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+            "bytes": 25165824,
+            "width": 3072,
+            "height": 1024,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "rangeMap": {
+            "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+            "bytes": 393216,
+            "width": 384,
+            "height": 128,
+            "channels": 4,
+            "dtype": "float16"
+          }
+        },
+        "resolution": 1024,
+        "embeddedScripts": [
+          {
+            "attributes": "",
+            "sha256": "5f0d745c744df730321523d0f3740af5275a7e1ab11e2a0642625904265abc33"
+          },
+          {
+            "attributes": "",
+            "sha256": "5ad9826903abac0a769e1aa0136a26042ef733b2746856a71657480ecdc5ceaa"
+          }
+        ]
+      },
+      "control": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-v042-control.json"
+    },
+    "Q2-v041": {
+      "name": "Q2-v041",
+      "family": "Q2",
+      "packageVersion": "0.4.1",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html",
+      "htmlSHA256": "b1ebcba77a31898b76e108adf796bc9e7c16f07cc0b26a2af8dbf95ff218c80a",
+      "assetId": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+      "payload": {
+        "assetId": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+        "bounds": {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        },
+        "geometryAndFallbackColorSHA256": "9d83860aef2fbe2a5ac0388643e0e636b4fc4f9ef6f29ee50f2c9ac0f336a9c9",
+        "display": {
+          "lighting": "unlit",
+          "sampling": "native",
+          "colorSampling": "view"
+        },
+        "maps": {
+          "colorMap": {
+            "sha256": "2a202a96c699acc18d34bf70aad2e8377b7a33d6b4fe28946e99453655608f13",
+            "bytes": 50331648,
+            "width": 3072,
+            "height": 2048,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "normalMap": {
+            "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+            "bytes": 50331648,
+            "width": 3072,
+            "height": 2048,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "intervalMap": {
+            "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+            "bytes": 25165824,
+            "width": 3072,
+            "height": 1024,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "rangeMap": {
+            "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+            "bytes": 393216,
+            "width": 384,
+            "height": 128,
+            "channels": 4,
+            "dtype": "float16"
+          }
+        },
+        "resolution": 1024,
+        "embeddedScripts": [
+          {
+            "attributes": "",
+            "sha256": "2c99aef29eafa58427f15a5e82399f74364507fffbbe502d923be24d8dcd66c6"
+          },
+          {
+            "attributes": "",
+            "sha256": "5ad9826903abac0a769e1aa0136a26042ef733b2746856a71657480ecdc5ceaa"
+          }
+        ]
+      },
+      "control": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v041-control.json"
+    },
+    "Q2-v042": {
+      "name": "Q2-v042",
+      "family": "Q2",
+      "packageVersion": "0.4.2",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v042.inspector.html",
+      "htmlSHA256": "0634958c32fd753899cffe6c9f3c25c7454be471e96ecbab8ee58a054f39f83c",
+      "assetId": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+      "payload": {
+        "assetId": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+        "bounds": {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        },
+        "geometryAndFallbackColorSHA256": "9d83860aef2fbe2a5ac0388643e0e636b4fc4f9ef6f29ee50f2c9ac0f336a9c9",
+        "display": {
+          "lighting": "unlit",
+          "sampling": "native",
+          "colorSampling": "view"
+        },
+        "maps": {
+          "colorMap": {
+            "sha256": "2a202a96c699acc18d34bf70aad2e8377b7a33d6b4fe28946e99453655608f13",
+            "bytes": 50331648,
+            "width": 3072,
+            "height": 2048,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "normalMap": {
+            "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+            "bytes": 50331648,
+            "width": 3072,
+            "height": 2048,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "intervalMap": {
+            "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+            "bytes": 25165824,
+            "width": 3072,
+            "height": 1024,
+            "channels": 4,
+            "dtype": "float16"
+          },
+          "rangeMap": {
+            "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+            "bytes": 393216,
+            "width": 384,
+            "height": 128,
+            "channels": 4,
+            "dtype": "float16"
+          }
+        },
+        "resolution": 1024,
+        "embeddedScripts": [
+          {
+            "attributes": "",
+            "sha256": "5f0d745c744df730321523d0f3740af5275a7e1ab11e2a0642625904265abc33"
+          },
+          {
+            "attributes": "",
+            "sha256": "5ad9826903abac0a769e1aa0136a26042ef733b2746856a71657480ecdc5ceaa"
+          }
+        ]
+      },
+      "control": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v042-control.json"
+    }
+  },
+  "inputChecks": {
+    "F-v041": {
+      "legacyMapsByteIdentical": true,
+      "geometryAndFallbackColorsIdentical": true,
+      "newMaps": [],
+      "distanceDerivationReceipt": null,
+      "runtimeDiffersFrom041": false
+    },
+    "F-v042": {
+      "legacyMapsByteIdentical": true,
+      "geometryAndFallbackColorsIdentical": true,
+      "newMaps": [],
+      "distanceDerivationReceipt": null,
+      "runtimeDiffersFrom041": true
+    },
+    "Q2-v041": {
+      "legacyMapsByteIdentical": true,
+      "geometryAndFallbackColorsIdentical": true,
+      "newMaps": [],
+      "distanceDerivationReceipt": null,
+      "runtimeDiffersFrom041": false
+    },
+    "Q2-v042": {
+      "legacyMapsByteIdentical": true,
+      "geometryAndFallbackColorsIdentical": true,
+      "newMaps": [],
+      "distanceDerivationReceipt": null,
+      "runtimeDiffersFrom041": true
+    }
+  },
+  "backend": "WebGL2 / CPU SwiftShader",
+  "hitDepth": "Not observed by the existing official snapshot API; output alpha and RGB are measured."
+}

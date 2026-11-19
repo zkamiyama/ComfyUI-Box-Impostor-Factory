@@ -1,0 +1,326 @@
+{
+  "files": [
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/capture-config.json",
+      "bytes": 2273,
+      "sha256": "c6d9b28555e7be848f63a52e6319c6ddcfb876bf3cee05b1d44f6136603cf721"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/viewer-builds.json",
+      "bytes": 2834,
+      "sha256": "d43066b5be239e816e87a538d98a1336e7cd14ee148b4af9ffbfc1b7c1e2fb8b"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/prepared-captures.json",
+      "bytes": 11577,
+      "sha256": "e7c7c40e07c34d1f557bf0ec716a5860713e315814e4140c10bb347dd706830a"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/visual-runs.json",
+      "bytes": 5278,
+      "sha256": "f2e06e32962aa940b5c4b237657de73f42d951bbfe9628adeca00d39322162ce"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark-runs.json",
+      "bytes": 8106,
+      "sha256": "b00a97a950685b54c1972e718bf187d8c954bd1a611ac73f553a120e10d61375"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/version-comparison.json",
+      "bytes": 44637,
+      "sha256": "15501d0d01027723405b6a5d02b0f48d8be8631b54b894233d2244b1616f0973"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/distance_map_1024_cpu_receipt.json",
+      "bytes": 1399,
+      "sha256": "b58478927d6c0db880d4e15fc73b9a73dead97e055daf6c2873e3e374d118e92"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/inspector-runtime-build.json",
+      "bytes": 2198,
+      "sha256": "ac2fc3b6e851de553921d8cd24b4a842fc21c723d27d1f15be64398b4ed8397f"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/inspector-git-receipt.json",
+      "bytes": 898,
+      "sha256": "28d770b6ec6904056f01465778e77ad86b5f07a426a9a0da6bd88776b7c4488a"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/unit-tests.log",
+      "bytes": 3543,
+      "sha256": "eee67c677282c8cd414eac08f8c83df340ea5a63ef1d564c1d58c4d30985c136"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v041/capture.json",
+      "bytes": 19182,
+      "sha256": "3ff898594405067a0c3ee2d6295110cf548706eb27e593ded4ced7805c0099ce"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v041/capture.log",
+      "bytes": 576,
+      "sha256": "0d584b241aba04259a3ddd958e0f1cfb85ab6cd73f3fab29c41f3865fbe00411"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v041/control.json",
+      "bytes": 267,
+      "sha256": "d62fe8fff1803195624bfc1d9f456e88f8c8472c7ec8a80787c1b8d0db8cce40"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v041/yaw-p0_000.png",
+      "bytes": 257203,
+      "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v041/yaw-p30_000.png",
+      "bytes": 239954,
+      "sha256": "8e9c9c9115fd5386a07f7787456db7207f7c82b93eafe58a1f48091e8ac325fd"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v041/yaw-p45_000.png",
+      "bytes": 229037,
+      "sha256": "c2ca5b4b6dd23e23d5f76710faca3d2637f535298bf9b5c0b2a125740d31abe8"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v041/yaw-p60_000.png",
+      "bytes": 228344,
+      "sha256": "46a57d002ce6ee4c4ca8ab893fc974962859aeea4ef205ca49ceb140f4d68641"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v042/capture.json",
+      "bytes": 19188,
+      "sha256": "78b173343659ac366742d938cdd4653a125be8dce6c8a27454233b033b65484d"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v042/capture.log",
+      "bytes": 576,
+      "sha256": "3162989e6fe3be6e924f6988abe4e190bb22a86f2c7e46faed77cc0b5a7fa4bd"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v042/control.json",
+      "bytes": 267,
+      "sha256": "79f4356a81bd9ee3b8b95c5c7ec42dae6b5855ca964fb90c102d04fcb1c3969c"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v042/yaw-p0_000.png",
+      "bytes": 257203,
+      "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v042/yaw-p30_000.png",
+      "bytes": 239932,
+      "sha256": "9a83e61e173daafb27459f523a02551b044fdf3fcb9dd67d6e07f3cf84f06ae7"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v042/yaw-p45_000.png",
+      "bytes": 229037,
+      "sha256": "c2ca5b4b6dd23e23d5f76710faca3d2637f535298bf9b5c0b2a125740d31abe8"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/F-v042/yaw-p60_000.png",
+      "bytes": 228303,
+      "sha256": "6aaf62ede8b2086c71cee524a4450861b5aa68bad3c385999ffcd5f6c9181bd5"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v041/capture.json",
+      "bytes": 19194,
+      "sha256": "805fff6211faf5704bf2c8528e8731d71b3724f15ebadef2e772a60ad04cb3ce"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v041/capture.log",
+      "bytes": 581,
+      "sha256": "5a4834843056c02ef445bb35f78f031d768d06770bca1b37215fdc23f59f790e"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v041/control.json",
+      "bytes": 267,
+      "sha256": "3c829ff90945c40c5b3bb8cb7e6885abdbdf76982a122e62d859c6adfd2c0cc5"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v041/yaw-p0_000.png",
+      "bytes": 257833,
+      "sha256": "8f7c6c5ab138d54acda60b2fc4d8d531ca0df4373e9a428a1ef48d688850e408"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v041/yaw-p30_000.png",
+      "bytes": 237239,
+      "sha256": "964f7095bb247a0283af5bea19d10f6014b0e174043fac1a042e6aea7ff8d9d0"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v041/yaw-p45_000.png",
+      "bytes": 222082,
+      "sha256": "4cbe4f84e89087d74efb58ea70df267415f0fcb6256cbb6d587c2aaca7f61d31"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v041/yaw-p60_000.png",
+      "bytes": 216454,
+      "sha256": "6bff13b83ac85fef30ba7c2ef31ec2c6f2f963b2cd89f4c3da69f2b57de115d7"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v042/capture.json",
+      "bytes": 19194,
+      "sha256": "b885960bbbe24ee0c333748183b72a56426f7fd34a290a09efdc49bc441e9421"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v042/capture.log",
+      "bytes": 581,
+      "sha256": "669b71bbea108d17fce4f83a9438e314d0d87f30329e9c09851ad73e227b6eeb"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v042/control.json",
+      "bytes": 267,
+      "sha256": "ce49d9dd7a56bb8df40d2fda0870507ac1d99c028e70418c419e0fc94820cc0c"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v042/yaw-p0_000.png",
+      "bytes": 257833,
+      "sha256": "8f7c6c5ab138d54acda60b2fc4d8d531ca0df4373e9a428a1ef48d688850e408"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v042/yaw-p30_000.png",
+      "bytes": 237268,
+      "sha256": "ffce8615547def1d52ef10cab05c37f9e528b335ea7858c09a43c019017dfb34"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v042/yaw-p45_000.png",
+      "bytes": 222033,
+      "sha256": "2c23d3466d3e26375ef433882ed51802b061964379817cfbe0e277d81b2469b8"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/captures/Q2-v042/yaw-p60_000.png",
+      "bytes": 216404,
+      "sha256": "fc27344ccd81021444a27674f3b1d729409eefcfd4752d68fcbded1593cef805"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-1/Q2-v041/capture.json",
+      "bytes": 14815,
+      "sha256": "332bfbdc92b00472ffbbdafd356fac7384b5b5fe5ca4b1f3d1d629a11ceff600"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-1/Q2-v041/capture.log",
+      "bytes": 230,
+      "sha256": "0bb4c8b4729664728e109bec9cba2eed0fd976a3536d3119af883f148a317548"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-1/Q2-v041/control.json",
+      "bytes": 354,
+      "sha256": "a6d2e90ae83b72e7b25182c27421b8cdd52b00f85b87eb2b6375cb12b09f5d23"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-1/Q2-v042/capture.json",
+      "bytes": 14745,
+      "sha256": "78a86bbd72c609cf4adfcf708eb531dae806b5aefc8e6d2d8f962ddb25aade61"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-1/Q2-v042/capture.log",
+      "bytes": 230,
+      "sha256": "320f2123d8bfb74788b36f032d5da23ff1baab4fa684f75a0cba275887af3c1b"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-1/Q2-v042/control.json",
+      "bytes": 354,
+      "sha256": "cc0d46843498a13217e8bb55a5b85484b5b65f8559414745aaebef998ddd4578"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-2/Q2-v041/capture.json",
+      "bytes": 14837,
+      "sha256": "08f6806c768ca2b47b26bb10558031827b3fc61128429f24ac827567a38b021f"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-2/Q2-v041/capture.log",
+      "bytes": 230,
+      "sha256": "4bdf2cba0147035f83da5ef244fcbb2a6cb5abb1d79722d1874bc6e5ebceba57"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-2/Q2-v041/control.json",
+      "bytes": 354,
+      "sha256": "a6d2e90ae83b72e7b25182c27421b8cdd52b00f85b87eb2b6375cb12b09f5d23"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-2/Q2-v042/capture.json",
+      "bytes": 14819,
+      "sha256": "75906a4f8644296a7dda73db4d306f25a18293f0d6172bfa43c1c9894e64a936"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-2/Q2-v042/capture.log",
+      "bytes": 230,
+      "sha256": "35323e3885b8959dc43f9c28f9f745750eb1823f56c995e4d9eb7c6320df7421"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-2/Q2-v042/control.json",
+      "bytes": 354,
+      "sha256": "cc0d46843498a13217e8bb55a5b85484b5b65f8559414745aaebef998ddd4578"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-3/Q2-v041/capture.json",
+      "bytes": 14854,
+      "sha256": "6bf624579fac9546c1fc60d007aa593c0f6e1e7d0bc2bc21f32cfd4404703133"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-3/Q2-v041/capture.log",
+      "bytes": 230,
+      "sha256": "e031ee59ee9a3d345f426d90f85a61db31bfb26de8b3ca830b63fb3f5ab0be3f"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-3/Q2-v041/control.json",
+      "bytes": 354,
+      "sha256": "a6d2e90ae83b72e7b25182c27421b8cdd52b00f85b87eb2b6375cb12b09f5d23"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-3/Q2-v042/capture.json",
+      "bytes": 14833,
+      "sha256": "213ae013b7bb734e98b8441f7cc8329a7e72886714f6229f6e2401f4b31931d0"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-3/Q2-v042/capture.log",
+      "bytes": 230,
+      "sha256": "cad030e39df7599d9e5f90c6cbcbf19be410f3b7539247e873dab03c825bfb4c"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/benchmark/trial-3/Q2-v042/control.json",
+      "bytes": 354,
+      "sha256": "cc0d46843498a13217e8bb55a5b85484b5b65f8559414745aaebef998ddd4578"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/gpu-distance-fixture/distance-map-r41.png",
+      "bytes": 28312,
+      "sha256": "45bd7205898bb825dd4f97e146b9d4aaea0d22c84f9bd0c1bc36ba4a33267523"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/gpu-distance-fixture/distance-map-r64.png",
+      "bytes": 27993,
+      "sha256": "a3889b4d7f1a193e2ff6b08ef39d4c4410beb2772dabd9bd2f9250f21ece7e29"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/gpu-distance-fixture/distance-map-r96.png",
+      "bytes": 26975,
+      "sha256": "14984384b8926a84a7aec2f2812a85381a3a773d7830cd5e55e83d662f97b7d7"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/gpu-distance-fixture/distance-map-report.json",
+      "bytes": 6488,
+      "sha256": "f59a19e73a084d7d47e9112d84d0c8dea6791d74382f652db3be9a17f65fb1a1"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/gpu-distance-fixture-webgpu/distance-map-r41.png",
+      "bytes": 27967,
+      "sha256": "135856d0c5b93193581002a02cd44b3964dcd21c9f10a3f4ea49026b6bff3ece"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/gpu-distance-fixture-webgpu/distance-map-r64.png",
+      "bytes": 28233,
+      "sha256": "fa9bc991a3f8dc9d4821a7ecf1478851250aa1c50ab096034afba0e6bd3685d1"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/gpu-distance-fixture-webgpu/distance-map-r96.png",
+      "bytes": 26951,
+      "sha256": "66664cb362e16340f1542dc8a952e6c6fcd37e5519d2e31f42a1be8959bb83df"
+    },
+    {
+      "path": "docs/verification/three-impostor-v042-20261120/gpu-distance-fixture-webgpu/distance-map-report.json",
+      "bytes": 6488,
+      "sha256": "d3ef31fadfeed2d087c1c69bafdb9a8a70c9bc534a6e90d3d78a2176d60f6419"
+    }
+  ],
+  "comparisonBoards": "Saved separately; regenerated by compare_version_captures.py",
+  "viewerArchiveCommit": "43555805e07fd5b45844286bf595c29c549d12c4"
+}

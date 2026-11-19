@@ -1,0 +1,56 @@
+{
+  "builds": [
+    {
+      "family": "F",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+        "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.box.zip",
+        "--box-lighting",
+        "unlit",
+        "--box-color-sampling",
+        "view",
+        "--title",
+        "F / three-impostor 0.4.2",
+        "-o",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-v042.inspector.html"
+      ],
+      "elapsedSeconds": 15.742996397000752,
+      "sourceZIP": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.box.zip",
+      "sourceZIPSHA256": "4878c363c4932e76ec9c5035abfa46d2b928ca4c16ab8d073a124912fa1273ce",
+      "sourceAssetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-viewer-build.log",
+      "logSHA256": "784312be557003f4049d5713b8d8a25e6b43d9c1221e7e72a9820b51450b4ebb",
+      "outputHTML": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-v042.inspector.html",
+      "outputHTMLSHA256": "2c9341b1620003c01a982c9c2525e48a60bd68bea2998a4a8482897968688867",
+      "viewPySHA256": "ac5582e709b88c5d02aad2c999147237f077f3dc56850c8d8e139abaec947ada",
+      "officialHTMLPostprocessed": false
+    },
+    {
+      "family": "Q2",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+        "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.box.zip",
+        "--box-lighting",
+        "unlit",
+        "--box-color-sampling",
+        "view",
+        "--title",
+        "Q2 / three-impostor 0.4.2",
+        "-o",
+        "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v042.inspector.html"
+      ],
+      "elapsedSeconds": 15.195537912000873,
+      "sourceZIP": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.box.zip",
+      "sourceZIPSHA256": "2fa9fb690dc38289dab48fc20df00096a7bb8e35325ed9ab15cf9db741805c56",
+      "sourceAssetId": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+      "log": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-viewer-build.log",
+      "logSHA256": "f8dbe2a28ab99821383969b7fd4d01413c44b6bfb9691d57e50d64295fa60897",
+      "outputHTML": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v042.inspector.html",
+      "outputHTMLSHA256": "0634958c32fd753899cffe6c9f3c25c7454be471e96ecbab8ee58a054f39f83c",
+      "viewPySHA256": "ac5582e709b88c5d02aad2c999147237f077f3dc56850c8d8e139abaec947ada",
+      "officialHTMLPostprocessed": false
+    }
+  ]
+}

@@ -1,0 +1,646 @@
+{
+  "html": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html",
+  "htmlSHA256": "b1ebcba77a31898b76e108adf796bc9e7c16f07cc0b26a2af8dbf95ff218c80a",
+  "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+  "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+  "assetId": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+  "sourceBounds": {
+    "min": [
+      -0.19968106269836425,
+      -0.52,
+      -0.18729551553726195
+    ],
+    "max": [
+      0.19968106269836425,
+      0.52,
+      0.18729551553726195
+    ]
+  },
+  "referenceBounds": {
+    "min": [
+      -0.19959635205538714,
+      -0.52,
+      -0.19067711655172312
+    ],
+    "max": [
+      0.19959635205538714,
+      0.52,
+      0.19067711655172312
+    ]
+  },
+  "triangleCounts": {
+    "expected": null,
+    "meshPayload": 19320,
+    "sourceOriginal": {
+      "vertices": 499920,
+      "triangles": 1000000
+    }
+  },
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "fovBeforeOrthographic": 40,
+    "fitFormula": "radius * 1.05 / sin(20deg)",
+    "sourceRadius": 0.5876666886430749,
+    "referenceRadius": 0.5887244402352406,
+    "perspectiveWheelDeltaY": 3.505915677124107,
+    "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001,
+    "wheelProtocolDeltaY": 4.4876070731820406,
+    "pans": [
+      {
+        "view": "front",
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "view": "right",
+        "dx": 0,
+        "dy": 0
+      }
+    ]
+  },
+  "lighting": {
+    "viewerDefaults": true,
+    "studio": "neutral where supported",
+    "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+    "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+  },
+  "modes": {},
+  "errors": [],
+  "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "hardwareGPUUsed": false,
+  "browserVersion": "158.0.8127.18",
+  "viewport": {
+    "width": 800,
+    "height": 800
+  },
+  "canvasRect": {
+    "x": 0,
+    "y": 0,
+    "width": 800,
+    "height": 800
+  },
+  "devicePixelRatio": 1.2800099849700928,
+  "canvasPixels": [
+    1024,
+    1024
+  ],
+  "backend": "Three.js / WebGL2",
+  "stageState": "Native Box",
+  "publicAPI": {
+    "keys": [
+      "draw",
+      "fit",
+      "view",
+      "projection",
+      "basis",
+      "orbit",
+      "setVisible",
+      "dispose",
+      "isBox",
+      "gltfInspector",
+      "backend",
+      "isWebGL2",
+      "getRenderer"
+    ],
+    "backend": "WebGL2",
+    "isBox": true,
+    "orbit": "function b(T,S){h.rotateLeft(T),h.rotateUp(S)}",
+    "factoryCalls": 1,
+    "scene": {
+      "bounds": {
+        "min": [
+          -0.19968106269836425,
+          -0.52,
+          -0.18729551553726195
+        ],
+        "max": [
+          0.19968106269836425,
+          0.52,
+          0.18729551553726195
+        ]
+      },
+      "center": [
+        0,
+        0,
+        0
+      ],
+      "radius": 0.5876666886430749,
+      "assetId": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e"
+    },
+    "errors": []
+  },
+  "display": {
+    "lighting": "unlit",
+    "sampling": "native",
+    "colorSampling": "view"
+  },
+  "displayControl": {
+    "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-2/Q2-v041/control.json",
+    "sha256": "a6d2e90ae83b72e7b25182c27421b8cdd52b00f85b87eb2b6375cb12b09f5d23"
+  },
+  "rotation": {
+    "method": "Actual Playwright mouse drag through unchanged official OrbitControls",
+    "angleSource": "Read-only renderer camera.matrixWorld column Z; atan2(x,z); pitch asin(y)",
+    "calibrationPixels": 20,
+    "calibrationStart": {
+      "camera": {
+        "type": "OrthographicCamera",
+        "position": [
+          0,
+          1.1067015951122633e-16,
+          1.8073808642341482
+        ],
+        "quaternion": [
+          -3.061616997868383e-17,
+          0,
+          0,
+          1
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ],
+        "matrixWorld": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          -6.123233995736766e-17,
+          0,
+          0,
+          6.123233995736766e-17,
+          1,
+          0,
+          0,
+          1.1067015951122633e-16,
+          1.8073808642341482,
+          1
+        ],
+        "matrixWorldInverse": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          6.123233995736766e-17,
+          0,
+          0,
+          -6.123233995736766e-17,
+          1,
+          0,
+          0,
+          0,
+          -1.8073808642341482,
+          1
+        ],
+        "projectionMatrix": [
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          -0.02836098400471992,
+          0,
+          0,
+          0,
+          -1.0000166668055568,
+          1
+        ],
+        "projectionMatrixInverse": [
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          -35.259707485240185,
+          0,
+          0,
+          0,
+          -35.26029515192882,
+          1
+        ],
+        "near": 0.000587666688643075,
+        "far": 70.520002637169,
+        "left": -0.6578328365635542,
+        "right": 0.6578328365635542,
+        "top": 0.6578328365635542,
+        "bottom": -0.6578328365635542,
+        "zoom": 1,
+        "canvasPixels": [
+          1024,
+          1024
+        ]
+      },
+      "yawDegrees": 0,
+      "pitchDegrees": 3.5083546492674384e-15,
+      "radialDistance": 1.8073808642341482
+    },
+    "calibrationEnd": {
+      "camera": {
+        "type": "OrthographicCamera",
+        "position": [
+          -0.28273665862041913,
+          1.1067015951122633e-16,
+          1.785129006618832
+        ],
+        "quaternion": [
+          -3.052179054426972e-17,
+          -0.07845909572784496,
+          -2.4021170111775272e-18,
+          0.9969173337331279
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ],
+        "matrixWorld": [
+          0.9876883405951378,
+          0,
+          0.15643446504023087,
+          0,
+          9.578848344392363e-18,
+          1,
+          -6.04784682432498e-17,
+          0,
+          -0.15643446504023087,
+          6.123233995736764e-17,
+          0.9876883405951378,
+          0,
+          -0.28273665862041913,
+          1.1067015951122633e-16,
+          1.785129006618832,
+          1
+        ],
+        "matrixWorldInverse": [
+          0.9876883405951378,
+          9.57884834439236e-18,
+          -0.15643446504023087,
+          0,
+          -1.5407439555097887e-33,
+          1,
+          6.123233995736765e-17,
+          0,
+          0.15643446504023087,
+          -6.047846824324978e-17,
+          0.9876883405951378,
+          0,
+          9.954634845864802e-50,
+          -4.966089672815904e-32,
+          -1.8073808642341482,
+          1
+        ],
+        "projectionMatrix": [
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          -0.02836098400471992,
+          0,
+          0,
+          0,
+          -1.0000166668055568,
+          1
+        ],
+        "projectionMatrixInverse": [
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          -35.259707485240185,
+          0,
+          0,
+          0,
+          -35.26029515192882,
+          1
+        ],
+        "near": 0.000587666688643075,
+        "far": 70.520002637169,
+        "left": -0.6578328365635542,
+        "right": 0.6578328365635542,
+        "top": 0.6578328365635542,
+        "bottom": -0.6578328365635542,
+        "zoom": 1,
+        "canvasPixels": [
+          1024,
+          1024
+        ]
+      },
+      "yawDegrees": -9,
+      "pitchDegrees": 3.5083546492674368e-15,
+      "radialDistance": 1.8073808642341482
+    },
+    "degreesPerPixel": -0.45,
+    "generatedFrames": false,
+    "interpolation": "None"
+  },
+  "yawFrames": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/benchmark/trial-2/Q2-v041/yaw-p45_000.png",
+      "sha256": "4cbe4f84e89087d74efb58ea70df267415f0fcb6256cbb6d587c2aaca7f61d31",
+      "requestedYawDegrees": 45,
+      "actualYawDegrees": 45.00000000000001,
+      "actualPitchDegrees": 3.5083546492674388e-15,
+      "radialDistance": 1.8073808642341485,
+      "actualCamera": {
+        "type": "OrthographicCamera",
+        "position": [
+          1.278011265286769,
+          1.1067015951122633e-16,
+          1.278011265286769
+        ],
+        "quaternion": [
+          -2.828565280719251e-17,
+          0.3826834323650898,
+          1.1716301013315748e-17,
+          0.9238795325112867
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ],
+        "matrixWorld": [
+          0.7071067811865475,
+          0,
+          -0.7071067811865476,
+          0,
+          -4.329780281177467e-17,
+          1,
+          -4.329780281177467e-17,
+          0,
+          0.7071067811865476,
+          6.123233995736767e-17,
+          0.7071067811865475,
+          0,
+          1.278011265286769,
+          1.1067015951122633e-16,
+          1.278011265286769,
+          1
+        ],
+        "matrixWorldInverse": [
+          0.7071067811865475,
+          -4.3297802811774677e-17,
+          0.7071067811865476,
+          0,
+          -6.162975822039155e-33,
+          1,
+          6.123233995736767e-17,
+          0,
+          -0.7071067811865476,
+          -4.329780281177467e-17,
+          0.7071067811865475,
+          0,
+          2.220446049250313e-16,
+          8.715763992105246e-33,
+          -1.8073808642341482,
+          1
+        ],
+        "projectionMatrix": [
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          -0.02836098400471992,
+          0,
+          0,
+          0,
+          -1.0000166668055568,
+          1
+        ],
+        "projectionMatrixInverse": [
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          -35.259707485240185,
+          0,
+          0,
+          0,
+          -35.26029515192882,
+          1
+        ],
+        "near": 0.000587666688643075,
+        "far": 70.520002637169,
+        "left": -0.6578328365635542,
+        "right": 0.6578328365635542,
+        "top": 0.6578328365635542,
+        "bottom": -0.6578328365635542,
+        "zoom": 1,
+        "canvasPixels": [
+          1024,
+          1024
+        ]
+      },
+      "mouseDragsCSSPixels": [
+        -100
+      ]
+    }
+  ],
+  "benchmark": {
+    "angle": 45,
+    "warmupFrames": 8,
+    "measuredFrames": 30,
+    "samplesMilliseconds": [
+      0.09999999962747097,
+      0.19999999925494194,
+      0,
+      0.10000000149011612,
+      0.09999999962747097,
+      0.09999999962747097,
+      0.09999999962747097,
+      0.09999999962747097,
+      0.10000000149011612,
+      0.09999999962747097,
+      0.09999999962747097,
+      0.09999999962747097,
+      0.09999999962747097,
+      0.10000000149011612,
+      0.09999999962747097,
+      0,
+      0.09999999962747097,
+      0.09999999962747097,
+      0.09999999962747097,
+      0.2000000011175871,
+      0,
+      0.19999999925494194,
+      0.09999999962747097,
+      0.10000000149011612,
+      0.09999999962747097,
+      0.09999999962747097,
+      0.09999999962747097,
+      0.09999999962747097,
+      0.10000000149011612,
+      0
+    ],
+    "method": "Official api.draw() then WebGL2 gl.finish(), measured with performance.now()",
+    "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "hardwareGPUUsed": false,
+    "canvasPixels": [
+      1024,
+      1024
+    ],
+    "camera": {
+      "type": "OrthographicCamera",
+      "position": [
+        1.278011265286769,
+        1.1067015951122633e-16,
+        1.278011265286769
+      ],
+      "quaternion": [
+        -2.828565280719251e-17,
+        0.3826834323650898,
+        1.1716301013315748e-17,
+        0.9238795325112867
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "matrixWorld": [
+        0.7071067811865475,
+        0,
+        -0.7071067811865476,
+        0,
+        -4.329780281177467e-17,
+        1,
+        -4.329780281177467e-17,
+        0,
+        0.7071067811865476,
+        6.123233995736767e-17,
+        0.7071067811865475,
+        0,
+        1.278011265286769,
+        1.1067015951122633e-16,
+        1.278011265286769,
+        1
+      ],
+      "matrixWorldInverse": [
+        0.7071067811865475,
+        -4.3297802811774677e-17,
+        0.7071067811865476,
+        0,
+        -6.162975822039155e-33,
+        1,
+        6.123233995736767e-17,
+        0,
+        -0.7071067811865476,
+        -4.329780281177467e-17,
+        0.7071067811865475,
+        0,
+        2.220446049250313e-16,
+        8.715763992105246e-33,
+        -1.8073808642341482,
+        1
+      ],
+      "projectionMatrix": [
+        1.5201430278608303,
+        0,
+        0,
+        0,
+        0,
+        1.5201430278608303,
+        0,
+        0,
+        0,
+        0,
+        -0.02836098400471992,
+        0,
+        0,
+        0,
+        -1.0000166668055568,
+        1
+      ],
+      "projectionMatrixInverse": [
+        0.6578328365635543,
+        0,
+        0,
+        0,
+        0,
+        0.6578328365635543,
+        0,
+        0,
+        0,
+        0,
+        -35.259707485240185,
+        0,
+        0,
+        0,
+        -35.26029515192882,
+        1
+      ],
+      "near": 0.000587666688643075,
+      "far": 70.520002637169,
+      "left": -0.6578328365635542,
+      "right": 0.6578328365635542,
+      "top": 0.6578328365635542,
+      "bottom": -0.6578328365635542,
+      "zoom": 1,
+      "canvasPixels": [
+        1024,
+        1024
+      ]
+    },
+    "excludes": [
+      "HTML loading",
+      "initial shader compilation",
+      "the 8 warmup frames"
+    ],
+    "scope": "CPU SwiftShader synchronized draw latency; not RTX GPU performance"
+  }
+}

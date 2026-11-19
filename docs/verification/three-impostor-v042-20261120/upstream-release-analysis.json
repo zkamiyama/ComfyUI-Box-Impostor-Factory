@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-11-19T16:01:35.829526+00:00",
+  "comparison_basis": "published npm tarball files",
+  "versions": {
+    "0.4.1": {
+      "gitHead": "f111540a1f55abdd9ba19a20bd6166e2b4270caa",
+      "source_sha256": "0a46901bc6cf53385244160429e07a02ad8606c17acadfd302bbcbaf8b53e907",
+      "tarball_sha256": "d42cccecf9e280ea69f218600574a5135f60e54d04a1e8283b7bacb45464dd24",
+      "npm_integrity": "sha512-0ZiolgR+tGYzoqF8SG56YvgF2khJ3su/6qcYMXW6EjyzoJ7NU8RedFIYq+XOyoN4DqlGmn9C9X5hWJhyvuDw7Q==",
+      "npm_shasum": "39f5141291f5f8312562b6962e33a91c32df6079",
+      "published_at": "2026-11-11T02:32:08.064Z",
+      "three_peer": ">=0.186.0",
+      "three_dev": "^0.186.1"
+    },
+    "0.4.2": {
+      "gitHead": "df6caf4f459f58cf424df32af07c4aed0de4905c",
+      "source_sha256": "18d82ffce940ec996c41e8c61018d38f5a0503cbabe06e69cd2f2c5bf7abcc56",
+      "tarball_sha256": "39c8480971655326c015f35634e365dcbf900284da4eb0bf11d6668ebf9140c2",
+      "npm_integrity": "sha512-aVEk+kEHuUvwdxmGeII7z1MadCOYhDtjvFJUfD8YwhvVtHhdL/Q1Ti94IcIwGbuTlCjajJSrqlnVNBt5oPMauw==",
+      "npm_shasum": "a9d43c2b7a44d775670dd6ab91bd601d14441e15",
+      "published_at": "2026-11-15T23:45:12.139Z",
+      "three_peer": ">=0.186.0",
+      "three_dev": "^0.186.1"
+    }
+  },
+  "checks": {
+    "npm_041_githead_source_matches_tarball": true,
+    "npm_042_githead_source_matches_tarball": true,
+    "version_041_commit_source_matches_tarball": true,
+    "_setupSpace_byte_identical": true,
+    "_setupOctahedral_byte_identical": true,
+    "local_pinned_matches_tarball": true
+  },
+  "renderer_compatibility": {
+    "old_asset_requires_derived_distanceMap": true,
+    "distanceMap_derived_from": [
+      "rangeMap",
+      "resolution"
+    ],
+    "mesh_rebake_inherently_required": false,
+    "AI_regeneration_inherently_required": false,
+    "new_extra_orientation_API": false,
+    "performance_measured_by_this_task": false,
+    "images_rendered_by_this_task": false
+  },
+  "correction": "The intermediate stale-gitHead inference was withdrawn; immutable gitHead source matches the published package. GitHub three-dot compare history is not the released-file delta.",
+  "runtime_checks": [
+    "same original image/depth maps, Three version, step budget and cameras",
+    "old serialized asset restored with derived distanceMap",
+    "fresh bake followed by save/load",
+    "valid-cell CPU/GPU cache comparison; unused padding excluded unless reproduced",
+    "WebGL2 and WebGPU texture sampling and disposal",
+    "image delta measured; no strict pixel-identity assumption"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "repo": "https://github.com/zkamiyama/3D-Inspector-skills",
+  "branch": "main",
+  "commit": "11a49959698d9713dd0c0a6ddf523dcdfdfe02c9",
+  "remoteHead": "11a49959698d9713dd0c0a6ddf523dcdfdfe02c9",
+  "paths": [
+    "skills/3d-inspector/assets/native-runtime.bundle.js",
+    "skills/3d-inspector/assets/native-runtime.cdn.mjs",
+    "skills/3d-inspector/assets/native-rgb-runtime.bundle.js",
+    "skills/3d-inspector/assets/native-rgb-runtime.cdn.mjs",
+    "skills/3d-inspector/scripts/build_viewer.py"
+  ],
+  "commitOutput": "[main 11a4995] Update native Box rendering to three-impostor 0.4.2\n 5 files changed, 370 insertions(+), 370 deletions(-)\n",
+  "pushOutput": "",
+  "statusAfter": "?? skills/3d-inspector/scripts/__pycache__/\n",
+  "rebuildOutputsIdentical": true,
+  "whitespaceCheck": "Source and CDN modules passed. esbuild bundle template literals retain upstream shader whitespace."
+}

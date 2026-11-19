@@ -3,12 +3,13 @@ import { diffuseColor, mrt, positionWorld, vec3, vec4 } from 'three/tsl';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { ImpostorBaker } from 'three-impostor';
 import { createBoxDisplayMaterial } from './box_display_material.mjs';
+import { createDistanceTexture } from './distance_texture.mjs';
 import {
   FACES, MAP_TYPES, MATERIAL_PROPERTIES, compactPixels, decodeRaw, dimensions, encodeRaw,
   parseGLB, safePath, sha256, validateDescriptor, wrapGLB,
 } from './codec.mjs';
 
-const PIN = '4d525ca3aecc5ed2009d6bd9b8c6d6c289248768';
+const PIN = 'df6caf4f459f58cf424df32af07c4aed0de4905c';
 const REQUIRED = ['colorMap', 'normalMap', 'intervalMap', 'rangeMap'];
 const CORE_EXTENSIONS = new Set([
   'KHR_lights_punctual','KHR_materials_anisotropy','KHR_materials_clearcoat',
@@ -310,7 +311,7 @@ export async function bakeGLB(data,options={}) {
           proxy:'geometry/proxy.glb',proxySha256:proxyHash,tightBounds,bakeBox:bounds(baked.box),
           transform:canonical.transform,inverseTransform:canonical.inverseTransform,
           faceOrder:FACES.map(f=>f.id),faces,maps:[...baked.maps],textures,baseColor:{...textures.colorMap},
-          backend,versions:{three:THREE.REVISION,baker:'0.4.1',bakerCommit:PIN},coordinateSystem:'right-handed-y-up'};
+          backend,versions:{three:THREE.REVISION,baker:'0.4.2',bakerCommit:PIN},coordinateSystem:'right-handed-y-up'};
         material=createBoxMaterial(baked);
         const mesh=new THREE.Mesh(baked.geometry,material);
         if(options.beforeDispose) await options.beforeDispose({mesh,renderer,manifest,files});
@@ -402,6 +403,11 @@ export async function restoreBox(manifest,files,renderer,{sampling='standard',li
         data[name]=t;
       }
     }
+    // The 0.4.2 empty-space cache is derived from the existing range atlas.
+    // Keep schema 1 and its saved RGB/depth bytes unchanged.
+    const range=manifest.textures.rangeMap;
+    data.distanceMap=createDistanceTexture(decodeRaw(files.get(range.path),range.dtype),manifest.resolution);
+    textures.push(data.distanceMap);
     material=createBoxMaterial(data,{lighting,colorSampling});
     return {mesh:new THREE.Mesh(geometry,material),dispose};
   } catch(cause){dispose();throw cause;}

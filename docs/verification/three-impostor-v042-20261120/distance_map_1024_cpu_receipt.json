@@ -1,0 +1,57 @@
+{
+  "kind": "CPU distance-map construction and analytic validation",
+  "createdAt": "2026-11-19T16:09:37.105Z",
+  "environment": {
+    "node": "v24.22.3",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "module": {
+    "path": "work/three-impostor-v042/distance_map.mjs",
+    "sha256": "1ffdac87eaaa525643db246c606cfc2c1e94d1f554118d4cb09e1e4a98fd038c"
+  },
+  "input": {
+    "resolution": 1024,
+    "cells": 128,
+    "rangeWidth": 384,
+    "rangeHeight": 128,
+    "channels": 4,
+    "dtype": "float16",
+    "rowOrder": "increasingShaderV",
+    "constantRGBA": [
+      0.25,
+      0.75,
+      0,
+      1
+    ],
+    "sha256": "9062322945291a4652a02cea89049538384fc36de0304dc01ee985394e1b4463"
+  },
+  "output": {
+    "width": 1536,
+    "height": 1408,
+    "byteLength": 2162688,
+    "format": "R8",
+    "rowOrder": "increasingShaderV",
+    "sha256": "523f8ed3d10a9079d4dc5fb0e7d49577460a2dfc4d8c633c8dbb88ea2b78d7db"
+  },
+  "validation": {
+    "method": "All valid cells compared to capped Chebyshev distance from occupied cell cube [31,96]^3",
+    "validCells": 2097152,
+    "mismatches": 0,
+    "histogram": [
+      287496,
+      26936,
+      28568,
+      30248,
+      31976,
+      33752,
+      35576,
+      1622600
+    ]
+  },
+  "timing": {
+    "elapsedMs": 227.29986499999998,
+    "runs": 1,
+    "scope": "Synchronous buildDistanceMap call only; excludes verification, not GPU/frame timing"
+  }
+}

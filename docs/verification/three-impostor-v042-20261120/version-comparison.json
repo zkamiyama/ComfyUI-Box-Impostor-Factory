@@ -1,0 +1,1372 @@
+{
+  "kind": "Compare unchanged official Inspector snapshots from three-impostor 0.4.1 and 0.4.2.",
+  "preparedCapturesSHA256": "e7c7c40e07c34d1f557bf0ec716a5860713e315814e4140c10bb347dd706830a",
+  "visualRunsSHA256": "f2e06e32962aa940b5c4b237657de73f42d951bbfe9628adeca00d39322162ce",
+  "scriptSHA256": "d7ca67078efba29e46c00dd9d327feb01b123bfdba1386e2d693d78e3d9f2506",
+  "inputChecks": {
+    "F-v041": {
+      "legacyMapsByteIdentical": true,
+      "geometryAndFallbackColorsIdentical": true,
+      "newMaps": [],
+      "distanceDerivationReceipt": null,
+      "runtimeDiffersFrom041": false
+    },
+    "F-v042": {
+      "legacyMapsByteIdentical": true,
+      "geometryAndFallbackColorsIdentical": true,
+      "newMaps": [],
+      "distanceDerivationReceipt": null,
+      "runtimeDiffersFrom041": true
+    },
+    "Q2-v041": {
+      "legacyMapsByteIdentical": true,
+      "geometryAndFallbackColorsIdentical": true,
+      "newMaps": [],
+      "distanceDerivationReceipt": null,
+      "runtimeDiffersFrom041": false
+    },
+    "Q2-v042": {
+      "legacyMapsByteIdentical": true,
+      "geometryAndFallbackColorsIdentical": true,
+      "newMaps": [],
+      "distanceDerivationReceipt": null,
+      "runtimeDiffersFrom041": true
+    }
+  },
+  "anglesDegrees": [
+    0,
+    30,
+    45,
+    60
+  ],
+  "regions": {
+    "head": [
+      378,
+      115,
+      654,
+      271
+    ],
+    "faceDetail": [
+      435,
+      155,
+      486,
+      231
+    ],
+    "legs": [
+      388,
+      550,
+      644,
+      940
+    ]
+  },
+  "backend": "WebGL2 / CPU SwiftShader",
+  "metrics": {
+    "F": {
+      "0": {
+        "maxCameraMatrixDifference": {
+          "matrixWorld": 0.0,
+          "projectionMatrix": 0.0
+        },
+        "fullFrame": {
+          "rgbaByteIdentical": true,
+          "rgbaChangedPixels": 0,
+          "alpha": {
+            "byteIdentical": true,
+            "changedPixels": 0,
+            "maxAbsoluteByteDifference": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "oldForegroundPixels": 84895,
+            "newForegroundPixels": 84895,
+            "newlyCoveredPixels": 0,
+            "newlyEmptyPixels": 0,
+            "nonzeroCoverageIoU": 1.0
+          },
+          "rgbOnForegroundUnion": {
+            "pixels": 84895,
+            "changedPixels": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "maxAbsoluteByteDifference": 0
+          },
+          "rgbOnOpaqueIntersection": {
+            "pixels": 84895,
+            "changedPixels": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "maxAbsoluteByteDifference": 0
+          }
+        },
+        "regions": {
+          "head": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 16176,
+              "newForegroundPixels": 16176,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 16176,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 16176,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "faceDetail": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 1626,
+              "newForegroundPixels": 1626,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 1626,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 1626,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "legs": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 22812,
+              "newForegroundPixels": 22812,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 22812,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 22812,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          }
+        }
+      },
+      "30": {
+        "maxCameraMatrixDifference": {
+          "matrixWorld": 0.0,
+          "projectionMatrix": 0.0
+        },
+        "fullFrame": {
+          "rgbaByteIdentical": false,
+          "rgbaChangedPixels": 3,
+          "alpha": {
+            "byteIdentical": true,
+            "changedPixels": 0,
+            "maxAbsoluteByteDifference": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "oldForegroundPixels": 79805,
+            "newForegroundPixels": 79805,
+            "newlyCoveredPixels": 0,
+            "newlyEmptyPixels": 0,
+            "nonzeroCoverageIoU": 1.0
+          },
+          "rgbOnForegroundUnion": {
+            "pixels": 79805,
+            "changedPixels": 3,
+            "meanAbsoluteByteDifference": 2.923793413111125e-05,
+            "maxAbsoluteByteDifference": 1
+          },
+          "rgbOnOpaqueIntersection": {
+            "pixels": 79805,
+            "changedPixels": 3,
+            "meanAbsoluteByteDifference": 2.923793413111125e-05,
+            "maxAbsoluteByteDifference": 1
+          }
+        },
+        "regions": {
+          "head": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 13120,
+              "newForegroundPixels": 13120,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 13120,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 13120,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "faceDetail": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 3792,
+              "newForegroundPixels": 3792,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 3792,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 3792,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "legs": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 31530,
+              "newForegroundPixels": 31530,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 31530,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 31530,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          }
+        }
+      },
+      "45": {
+        "maxCameraMatrixDifference": {
+          "matrixWorld": 0.0,
+          "projectionMatrix": 0.0
+        },
+        "fullFrame": {
+          "rgbaByteIdentical": true,
+          "rgbaChangedPixels": 0,
+          "alpha": {
+            "byteIdentical": true,
+            "changedPixels": 0,
+            "maxAbsoluteByteDifference": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "oldForegroundPixels": 77572,
+            "newForegroundPixels": 77572,
+            "newlyCoveredPixels": 0,
+            "newlyEmptyPixels": 0,
+            "nonzeroCoverageIoU": 1.0
+          },
+          "rgbOnForegroundUnion": {
+            "pixels": 77572,
+            "changedPixels": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "maxAbsoluteByteDifference": 0
+          },
+          "rgbOnOpaqueIntersection": {
+            "pixels": 77572,
+            "changedPixels": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "maxAbsoluteByteDifference": 0
+          }
+        },
+        "regions": {
+          "head": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 12404,
+              "newForegroundPixels": 12404,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 12404,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 12404,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "faceDetail": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 3874,
+              "newForegroundPixels": 3874,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 3874,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 3874,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "legs": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 33805,
+              "newForegroundPixels": 33805,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 33805,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 33805,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          }
+        }
+      },
+      "60": {
+        "maxCameraMatrixDifference": {
+          "matrixWorld": 0.0,
+          "projectionMatrix": 0.0
+        },
+        "fullFrame": {
+          "rgbaByteIdentical": false,
+          "rgbaChangedPixels": 8,
+          "alpha": {
+            "byteIdentical": true,
+            "changedPixels": 0,
+            "maxAbsoluteByteDifference": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "oldForegroundPixels": 77609,
+            "newForegroundPixels": 77609,
+            "newlyCoveredPixels": 0,
+            "newlyEmptyPixels": 0,
+            "nonzeroCoverageIoU": 1.0
+          },
+          "rgbOnForegroundUnion": {
+            "pixels": 77609,
+            "changedPixels": 8,
+            "meanAbsoluteByteDifference": 3.8655310595420634e-05,
+            "maxAbsoluteByteDifference": 1
+          },
+          "rgbOnOpaqueIntersection": {
+            "pixels": 77609,
+            "changedPixels": 8,
+            "meanAbsoluteByteDifference": 3.8655310595420634e-05,
+            "maxAbsoluteByteDifference": 1
+          }
+        },
+        "regions": {
+          "head": {
+            "rgbaByteIdentical": false,
+            "rgbaChangedPixels": 3,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 12544,
+              "newForegroundPixels": 12544,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 12544,
+              "changedPixels": 3,
+              "meanAbsoluteByteDifference": 0.00010629251700680272,
+              "maxAbsoluteByteDifference": 1
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 12544,
+              "changedPixels": 3,
+              "meanAbsoluteByteDifference": 0.00010629251700680272,
+              "maxAbsoluteByteDifference": 1
+            }
+          },
+          "faceDetail": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 3875,
+              "newForegroundPixels": 3875,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 3875,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 3875,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "legs": {
+            "rgbaByteIdentical": false,
+            "rgbaChangedPixels": 1,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 34177,
+              "newForegroundPixels": 34177,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 34177,
+              "changedPixels": 1,
+              "meanAbsoluteByteDifference": 9.753147828461636e-06,
+              "maxAbsoluteByteDifference": 1
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 34177,
+              "changedPixels": 1,
+              "meanAbsoluteByteDifference": 9.753147828461636e-06,
+              "maxAbsoluteByteDifference": 1
+            }
+          }
+        }
+      }
+    },
+    "Q2": {
+      "0": {
+        "maxCameraMatrixDifference": {
+          "matrixWorld": 0.0,
+          "projectionMatrix": 0.0
+        },
+        "fullFrame": {
+          "rgbaByteIdentical": true,
+          "rgbaChangedPixels": 0,
+          "alpha": {
+            "byteIdentical": true,
+            "changedPixels": 0,
+            "maxAbsoluteByteDifference": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "oldForegroundPixels": 84895,
+            "newForegroundPixels": 84895,
+            "newlyCoveredPixels": 0,
+            "newlyEmptyPixels": 0,
+            "nonzeroCoverageIoU": 1.0
+          },
+          "rgbOnForegroundUnion": {
+            "pixels": 84895,
+            "changedPixels": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "maxAbsoluteByteDifference": 0
+          },
+          "rgbOnOpaqueIntersection": {
+            "pixels": 84895,
+            "changedPixels": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "maxAbsoluteByteDifference": 0
+          }
+        },
+        "regions": {
+          "head": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 16176,
+              "newForegroundPixels": 16176,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 16176,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 16176,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "faceDetail": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 1626,
+              "newForegroundPixels": 1626,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 1626,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 1626,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "legs": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 22812,
+              "newForegroundPixels": 22812,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 22812,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 22812,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          }
+        }
+      },
+      "30": {
+        "maxCameraMatrixDifference": {
+          "matrixWorld": 0.0,
+          "projectionMatrix": 0.0
+        },
+        "fullFrame": {
+          "rgbaByteIdentical": false,
+          "rgbaChangedPixels": 3,
+          "alpha": {
+            "byteIdentical": true,
+            "changedPixels": 0,
+            "maxAbsoluteByteDifference": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "oldForegroundPixels": 79805,
+            "newForegroundPixels": 79805,
+            "newlyCoveredPixels": 0,
+            "newlyEmptyPixels": 0,
+            "nonzeroCoverageIoU": 1.0
+          },
+          "rgbOnForegroundUnion": {
+            "pixels": 79805,
+            "changedPixels": 3,
+            "meanAbsoluteByteDifference": 3.341478186412714e-05,
+            "maxAbsoluteByteDifference": 2
+          },
+          "rgbOnOpaqueIntersection": {
+            "pixels": 79805,
+            "changedPixels": 3,
+            "meanAbsoluteByteDifference": 3.341478186412714e-05,
+            "maxAbsoluteByteDifference": 2
+          }
+        },
+        "regions": {
+          "head": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 13120,
+              "newForegroundPixels": 13120,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 13120,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 13120,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "faceDetail": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 3792,
+              "newForegroundPixels": 3792,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 3792,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 3792,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "legs": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 31530,
+              "newForegroundPixels": 31530,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 31530,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 31530,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          }
+        }
+      },
+      "45": {
+        "maxCameraMatrixDifference": {
+          "matrixWorld": 0.0,
+          "projectionMatrix": 0.0
+        },
+        "fullFrame": {
+          "rgbaByteIdentical": false,
+          "rgbaChangedPixels": 4,
+          "alpha": {
+            "byteIdentical": true,
+            "changedPixels": 0,
+            "maxAbsoluteByteDifference": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "oldForegroundPixels": 77572,
+            "newForegroundPixels": 77572,
+            "newlyCoveredPixels": 0,
+            "newlyEmptyPixels": 0,
+            "nonzeroCoverageIoU": 1.0
+          },
+          "rgbOnForegroundUnion": {
+            "pixels": 77572,
+            "changedPixels": 4,
+            "meanAbsoluteByteDifference": 1.7188332559858367e-05,
+            "maxAbsoluteByteDifference": 1
+          },
+          "rgbOnOpaqueIntersection": {
+            "pixels": 77572,
+            "changedPixels": 4,
+            "meanAbsoluteByteDifference": 1.7188332559858367e-05,
+            "maxAbsoluteByteDifference": 1
+          }
+        },
+        "regions": {
+          "head": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 12404,
+              "newForegroundPixels": 12404,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 12404,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 12404,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "faceDetail": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 3874,
+              "newForegroundPixels": 3874,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 3874,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 3874,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "legs": {
+            "rgbaByteIdentical": false,
+            "rgbaChangedPixels": 4,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 33805,
+              "newForegroundPixels": 33805,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 33805,
+              "changedPixels": 4,
+              "meanAbsoluteByteDifference": 3.944189715525317e-05,
+              "maxAbsoluteByteDifference": 1
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 33805,
+              "changedPixels": 4,
+              "meanAbsoluteByteDifference": 3.944189715525317e-05,
+              "maxAbsoluteByteDifference": 1
+            }
+          }
+        }
+      },
+      "60": {
+        "maxCameraMatrixDifference": {
+          "matrixWorld": 0.0,
+          "projectionMatrix": 0.0
+        },
+        "fullFrame": {
+          "rgbaByteIdentical": false,
+          "rgbaChangedPixels": 6,
+          "alpha": {
+            "byteIdentical": true,
+            "changedPixels": 0,
+            "maxAbsoluteByteDifference": 0,
+            "meanAbsoluteByteDifference": 0.0,
+            "oldForegroundPixels": 77609,
+            "newForegroundPixels": 77609,
+            "newlyCoveredPixels": 0,
+            "newlyEmptyPixels": 0,
+            "nonzeroCoverageIoU": 1.0
+          },
+          "rgbOnForegroundUnion": {
+            "pixels": 77609,
+            "changedPixels": 6,
+            "meanAbsoluteByteDifference": 2.5770207063613755e-05,
+            "maxAbsoluteByteDifference": 1
+          },
+          "rgbOnOpaqueIntersection": {
+            "pixels": 77609,
+            "changedPixels": 6,
+            "meanAbsoluteByteDifference": 2.5770207063613755e-05,
+            "maxAbsoluteByteDifference": 1
+          }
+        },
+        "regions": {
+          "head": {
+            "rgbaByteIdentical": false,
+            "rgbaChangedPixels": 4,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 12544,
+              "newForegroundPixels": 12544,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 12544,
+              "changedPixels": 4,
+              "meanAbsoluteByteDifference": 0.00010629251700680272,
+              "maxAbsoluteByteDifference": 1
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 12544,
+              "changedPixels": 4,
+              "meanAbsoluteByteDifference": 0.00010629251700680272,
+              "maxAbsoluteByteDifference": 1
+            }
+          },
+          "faceDetail": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 3875,
+              "newForegroundPixels": 3875,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 3875,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 3875,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          },
+          "legs": {
+            "rgbaByteIdentical": true,
+            "rgbaChangedPixels": 0,
+            "alpha": {
+              "byteIdentical": true,
+              "changedPixels": 0,
+              "maxAbsoluteByteDifference": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "oldForegroundPixels": 34177,
+              "newForegroundPixels": 34177,
+              "newlyCoveredPixels": 0,
+              "newlyEmptyPixels": 0,
+              "nonzeroCoverageIoU": 1.0
+            },
+            "rgbOnForegroundUnion": {
+              "pixels": 34177,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            },
+            "rgbOnOpaqueIntersection": {
+              "pixels": 34177,
+              "changedPixels": 0,
+              "meanAbsoluteByteDifference": 0.0,
+              "maxAbsoluteByteDifference": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "hitDepth": "Unavailable through the official snapshot API; alpha coverage is observed, not ray-hit depth.",
+  "interpretation": "Pixel differences quantify renderer-version effects. They are not a perceptual-quality or 3D-accuracy score.",
+  "processing": "Original RGBA snapshots are unchanged. Boards use fixed crops, nearest-neighbor scaling and a solid alpha-composited background only. Difference PNGs contain absolute alpha-byte deltas.",
+  "benchmark": {
+    "measured": false,
+    "attempted": true,
+    "reason": "30 of 180 per-draw durations were 0 ms; the remaining samples are quantized near 0.1 ms. This probe cannot resolve a defensible frame-rendering speed comparison.",
+    "method": "8 warmup draws then 30 official api.draw() + WebGL2 gl.finish() draws per trial; 3 interleaved version pairs",
+    "scope": "Attempted CPU SwiftShader timing; not accepted as frame-rendering or GPU performance",
+    "speedupReported": false,
+    "trials": [
+      {
+        "family": "Q2",
+        "version": "0.4.1",
+        "trial": 1,
+        "medianMilliseconds": 0.10000000149011612,
+        "p95Milliseconds": 0.254999999888241,
+        "zeroDurationSamples": 5,
+        "samplesMilliseconds": [
+          0.19999999925494194,
+          0.30000000074505806,
+          0.2999999988824129,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.0,
+          0.09999999962747097,
+          0.19999999925494194,
+          0.10000000149011612,
+          0.19999999925494194,
+          0.09999999962747097,
+          0.2000000011175871,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.0,
+          0.2000000011175871,
+          0.0,
+          0.19999999925494194,
+          0.19999999925494194,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.19999999925494194,
+          0.2000000011175871,
+          0.0,
+          0.19999999925494194,
+          0.09999999962747097,
+          0.2000000011175871,
+          0.0
+        ]
+      },
+      {
+        "family": "Q2",
+        "version": "0.4.2",
+        "trial": 1,
+        "medianMilliseconds": 0.09999999962747097,
+        "p95Milliseconds": 0.2000000011175871,
+        "zeroDurationSamples": 9,
+        "samplesMilliseconds": [
+          0.09999999962747097,
+          0.19999999925494194,
+          0.0,
+          0.2000000011175871,
+          0.0,
+          0.19999999925494194,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.0,
+          0.19999999925494194,
+          0.2000000011175871,
+          0.0,
+          0.09999999962747097,
+          0.0,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.0,
+          0.10000000149011612,
+          0.0,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.0,
+          0.09999999962747097,
+          0.2000000011175871,
+          0.0,
+          0.09999999962747097,
+          0.09999999962747097
+        ]
+      },
+      {
+        "family": "Q2",
+        "version": "0.4.2",
+        "trial": 2,
+        "medianMilliseconds": 0.09999999962747097,
+        "p95Milliseconds": 0.15500000026077004,
+        "zeroDurationSamples": 5,
+        "samplesMilliseconds": [
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.0,
+          0.19999999925494194,
+          0.09999999962747097,
+          0.0,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.0,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.0,
+          0.2000000011175871,
+          0.0,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097
+        ]
+      },
+      {
+        "family": "Q2",
+        "version": "0.4.1",
+        "trial": 2,
+        "medianMilliseconds": 0.09999999962747097,
+        "p95Milliseconds": 0.19999999925494194,
+        "zeroDurationSamples": 4,
+        "samplesMilliseconds": [
+          0.09999999962747097,
+          0.19999999925494194,
+          0.0,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.0,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.2000000011175871,
+          0.0,
+          0.19999999925494194,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.0
+        ]
+      },
+      {
+        "family": "Q2",
+        "version": "0.4.1",
+        "trial": 3,
+        "medianMilliseconds": 0.09999999962747097,
+        "p95Milliseconds": 0.20000000027939677,
+        "zeroDurationSamples": 3,
+        "samplesMilliseconds": [
+          0.19999999925494194,
+          0.09999999962747097,
+          0.2000000011175871,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.19999999925494194,
+          0.2000000011175871,
+          0.19999999925494194,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.0,
+          0.19999999925494194,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.0,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.0,
+          0.09999999962747097
+        ]
+      },
+      {
+        "family": "Q2",
+        "version": "0.4.2",
+        "trial": 3,
+        "medianMilliseconds": 0.10000000055879354,
+        "p95Milliseconds": 0.2000000011175871,
+        "zeroDurationSamples": 4,
+        "samplesMilliseconds": [
+          0.09999999962747097,
+          0.2000000011175871,
+          0.19999999925494194,
+          0.09999999962747097,
+          0.2000000011175871,
+          0.0,
+          0.09999999962747097,
+          0.19999999925494194,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.19999999925494194,
+          0.2000000011175871,
+          0.09999999962747097,
+          0.19999999925494194,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.19999999925494194,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.10000000149011612,
+          0.09999999962747097,
+          0.09999999962747097,
+          0.19999999925494194,
+          0.0,
+          0.2000000011175871,
+          0.0,
+          0.19999999925494194,
+          0.09999999962747097,
+          0.0,
+          0.2000000011175871
+        ]
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-yaw-0-alpha-absolute-difference.png",
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-yaw-30-alpha-absolute-difference.png",
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-yaw-45-alpha-absolute-difference.png",
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-yaw-60-alpha-absolute-difference.png",
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-v041-v042-head.png",
+      "sha256": "d53aefa87265366b22a5910b4cf35657817600bb83c6cf2fad7ee2bca40a7e17",
+      "size": [
+        1176,
+        1596
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-v041-v042-face45.png",
+      "sha256": "bbdd46ceab37a5e94050c6e29b361b3721de904b9e49985f9e31f9329b54ef4e",
+      "size": [
+        684,
+        630
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-v041-v042-legs.png",
+      "sha256": "e745ffe99158629f88f3d928da4971404b3e1544fe0363a1fbc19f2b900c6fa6",
+      "size": [
+        672,
+        1012
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-yaw-0-alpha-absolute-difference.png",
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-yaw-30-alpha-absolute-difference.png",
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-yaw-45-alpha-absolute-difference.png",
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-yaw-60-alpha-absolute-difference.png",
+      "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v041-v042-head.png",
+      "sha256": "c22368901ce158c0987fc898093f728ddd29f498b362e2080bff4abed9de01dd",
+      "size": [
+        1176,
+        1596
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v041-v042-face45.png",
+      "sha256": "a70afc0da9e1b736885f8d604ff18f10b6f4aa0b26429b837e29c05eeef1fd3b",
+      "size": [
+        684,
+        630
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v041-v042-legs.png",
+      "sha256": "302deffe0926cf1721486393e54c5c3f1bb3fbc5712a41d760cb367cbaff5060",
+      "size": [
+        672,
+        1012
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/45-degree-comparison.png",
+      "sha256": "cfc93f36e957514f0ff4a64e580565aa731e0141b4305ce39edeec293e5acdc2",
+      "size": [
+        1176,
+        856
+      ]
+    }
+  ]
+}

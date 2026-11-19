@@ -1,0 +1,52 @@
+{
+  "output": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120",
+  "captureScript": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/three-impostor-v042-20261120/capture_inspector_version_yaw.mjs",
+  "captureScriptSHA256": "2e9bb524648f8d9ee3f41953314c81c069767f2ad03c3238226ce342f0f632f2",
+  "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+  "cwd": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory",
+  "angles": [
+    0,
+    30,
+    45,
+    60
+  ],
+  "display": {
+    "lighting": "unlit",
+    "sampling": "native",
+    "colorSampling": "view"
+  },
+  "cases": [
+    {
+      "name": "F-v041",
+      "family": "F",
+      "packageVersion": "0.4.1",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.inspector.html",
+      "htmlSHA256": "1a9b97db6662cf726276bb9849d0750281f003c4064d23b25d1c9a00ee6e11e0",
+      "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920"
+    },
+    {
+      "name": "F-v042",
+      "family": "F",
+      "packageVersion": "0.4.2",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/F-v042.inspector.html",
+      "htmlSHA256": "2c9341b1620003c01a982c9c2525e48a60bd68bea2998a4a8482897968688867",
+      "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920"
+    },
+    {
+      "name": "Q2-v041",
+      "family": "Q2",
+      "packageVersion": "0.4.1",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html",
+      "htmlSHA256": "b1ebcba77a31898b76e108adf796bc9e7c16f07cc0b26a2af8dbf95ff218c80a",
+      "assetId": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e"
+    },
+    {
+      "name": "Q2-v042",
+      "family": "Q2",
+      "packageVersion": "0.4.2",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/three-impostor-v042-20261120/Q2-v042.inspector.html",
+      "htmlSHA256": "0634958c32fd753899cffe6c9f3c25c7454be471e96ecbab8ee58a054f39f83c",
+      "assetId": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e"
+    }
+  ]
+}

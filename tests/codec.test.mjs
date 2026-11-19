@@ -77,6 +77,11 @@ test('native baker camera setup and odd-sized readback survive serialization and
       assert.deepEqual(info.box.min.toArray(),result.live.mesh.material.impostor.box.min.toArray());
       assert.equal(info.materialMap.type,THREE.UnsignedByteType);
       assert.equal(info.rangeMap.minFilter,THREE.NearestFilter);
+      assert.equal(info.distanceMap.type,THREE.UnsignedByteType);
+      assert.equal(info.distanceMap.format,THREE.RedFormat);
+      assert.equal(info.distanceMap.minFilter,THREE.NearestFilter);
+      assert.deepEqual([info.distanceMap.image.width,info.distanceMap.image.height],[18,12]);
+      assert.equal(manifest.textures.distanceMap,undefined);
       assert.equal(info.colorMap.image.data[0],0x3c00);
     } finally {restored.dispose();}
     const damaged=Uint8Array.from(files.get(manifest.textures.intervalMap.path));damaged[0]^=1;
