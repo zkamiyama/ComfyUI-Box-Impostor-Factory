@@ -1,0 +1,281 @@
+{
+  "stage": "metadata-and-small-cpu-only",
+  "gpuInference": false,
+  "nativeBake": false,
+  "actualBReplay": false,
+  "tests": {
+    "cameraRebase": 7,
+    "runnerAndLegacyTinyMesh": 3,
+    "allPassed": true
+  },
+  "externalCwdHelpPassed": true,
+  "planCommand": [
+    "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/run_geometry_h_reference.py",
+    "--run",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119",
+    "--work",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H",
+    "--appearance",
+    "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+    "--stage",
+    "plan"
+  ],
+  "plan": {
+    "method": "hi3d-generated-front-reference-with-frozen-f-appearance-v1",
+    "sourceAppearance": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+    "referenceSourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+    "comparison": "F to H; F six source RGB retained, Hi3D reference/geometry changed",
+    "sourceB": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+    "coarseAsset": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+    "coarseMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+    "coarseSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "reference": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/source.png",
+    "referencePngSha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+    "referenceEqualsBFront": true,
+    "referenceCanvas": {
+      "version": 1,
+      "size": 1024,
+      "faceId": "+Z",
+      "guideRect": [
+        315,
+        0,
+        393,
+        1024
+      ],
+      "guideInputSha256": "cbcf6b5c68a7c87f7987bd2874f124a8940aa3356f557534f9c2bb03f1e0d978",
+      "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+      "sourceRect": [
+        0,
+        0,
+        1024,
+        1024
+      ],
+      "physicalWidthHeight": [
+        0.3993621253967285,
+        1.04
+      ],
+      "imageRowOrder": "top-to-bottom",
+      "backgroundSRGB": 0.5
+    },
+    "sourceTransform": [
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0.010881411855650119,
+      0.02839508237150308,
+      0.013759666322433382,
+      1
+    ],
+    "sourceInverseTransform": [
+      0.8947335481643676,
+      0,
+      0,
+      0,
+      0,
+      0.8947335481643676,
+      0,
+      0,
+      0,
+      0,
+      0.8947335481643676,
+      0,
+      -0.009735964238643648,
+      -0.025406032800674435,
+      -0.012311235070228575,
+      1
+    ],
+    "BTransform": [
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0.010881411855650119,
+      0.02839508237150308,
+      0.013759666322433382,
+      1
+    ],
+    "BInverseTransform": [
+      0.8947335481643676,
+      0,
+      0,
+      0,
+      0,
+      0.8947335481643676,
+      0,
+      0,
+      0,
+      0,
+      0.8947335481643676,
+      0,
+      -0.009735964238643648,
+      -0.025406032800674435,
+      -0.012311235070228575,
+      1
+    ],
+    "legacyPostprocess": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/H-preparation/hi3d_postprocess_b.py",
+      "sha256": "f7daf0272926d51acbedcf6c188317eeafcafb6a977269c9a1f38d6828b119a4",
+      "commit": "873ba9d90bfd794498a3211d0ceeaf8b003f7c56",
+      "policy": "B-time uint8 color transfer/export retained only for this control"
+    },
+    "inference": {
+      "model": "hi3d-official/Hi3Dv1.0",
+      "resolution": 1024,
+      "steps": 25,
+      "seed": 0,
+      "smoothing": 0,
+      "cpuOffload": true
+    },
+    "inferScript": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/hi3d_infer.py",
+    "inferScriptSha256": "2ac8a84947596725d7500d308d3b4297f7e60778da2fb5dadd7f09847af34715",
+    "bRawMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/.stages/hi3d-refine/939bf71cab3adc54abbb9aa770917b685058470cf5f4c3d4bf7c192ca952d9ac/hi3d-raw.glb",
+    "bRawSha256": "1f5cdd2eab59199d0c289e7ac9b218edf39232c5dc6b0ed943a7f5e5e0e1c364",
+    "bCanonicalMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/geometry/proxy.glb",
+    "bCanonicalSha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+    "appearanceDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+    "coarseDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+    "run": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119",
+    "case": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/H",
+    "work": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H",
+    "cameraPolicy": "native true bounds/cameras; deterministic parallel-orthographic RGB affine",
+    "nativeResolution": 1024,
+    "backend": "webgl2",
+    "materialMaps": [],
+    "executionEnvironment": {
+      "successfulBProcessEvidence": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/hi3d-process.json",
+      "successfulBProcessEvidenceSha256": "73c80c903c22d9675daaefead03b51e428840a264f736b051705e5a42653d031",
+      "pythonExecutable": "/home/dev/Projects/box-impostor-lab/third_party/.venv-hi3d/bin/python",
+      "executablePathResolved": false,
+      "sameRegularModelHub": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub",
+      "modelFiles": [
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/model_index.json",
+          "regularFile": true,
+          "bytes": 224,
+          "expectedBytes": 224,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "e24988612733dad44b7354fbfa0b2ef50073ba6ef8d7a677e41023dc2d651386"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/scheduler/scheduler_config.json",
+          "regularFile": true,
+          "bytes": 127,
+          "expectedBytes": 127,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "40cdcdaaa6149dea32b86a5ff730e581b069ae619d7f580444ef503737fb0bf3"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_1024/config.json",
+          "regularFile": true,
+          "bytes": 1337,
+          "expectedBytes": 1337,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "2f96d851844e159523cb6cf5e5b29ddbc1354e222a333232612c19e1eaf278c2"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_1024/model.safetensors",
+          "regularFile": true,
+          "bytes": 3675679280,
+          "expectedBytes": 3675679280,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "a2ca5e44dde51cacecd59b42fceeb5f14e75d55e6dd047337752c4e6f281008c"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_512/config.json",
+          "regularFile": true,
+          "bytes": 1336,
+          "expectedBytes": 1336,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "809189b8183c3f44118751322f2cb6fe6fa4ca1922ea16c88cd032970d4bc937"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_512/model.safetensors",
+          "regularFile": true,
+          "bytes": 3675679280,
+          "expectedBytes": 3675679280,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "8ba88311dccf23463c6e10dd0d3bd5e0c5c35d1608c6f466413b6428b5ad8e56"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/vae/config.json",
+          "regularFile": true,
+          "bytes": 131,
+          "expectedBytes": 131,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "71c629eb188485786227277c7bb5b0fa0a1bfcf07a3d21316174da6b4d04f92f"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/vae/model.safetensors",
+          "regularFile": true,
+          "bytes": 376629712,
+          "expectedBytes": 376629712,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "605d207c77f8db0b33c567a5861252f0090cf3c3604dfda1cfee09e8f0b53f3e"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/config.json",
+          "regularFile": true,
+          "bytes": 549,
+          "expectedBytes": 549,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "12df51c069a2dc1305e34ba71ef58bc2407ea553b75f4722a1715c1bce3bbed0"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/model.safetensors",
+          "regularFile": true,
+          "bytes": 1217522888,
+          "expectedBytes": 1217522888,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "399fba97a95f22c36834418bc69373364a99af3a1153da1c0fb31db567c92e23"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--openai--clip-vit-large-patch14/snapshots/32bd64288804d66eefd0ccbe215aa642df71cc41/config.json",
+          "regularFile": true,
+          "bytes": 4519,
+          "expectedBytes": 4519,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "8a09b467700c58138c29d53c605b34ebc69beaadd13274a8a2af8ad2c2f4032a"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--openai--clip-vit-large-patch14/snapshots/32bd64288804d66eefd0ccbe215aa642df71cc41/model.safetensors",
+          "regularFile": true,
+          "bytes": 1710540580,
+          "expectedBytes": 1710540580,
+          "sameHardlinkedFile": true,
+          "bVerifiedSha256": "a2bf730a0c7debf160f7a6b50b3aaf3703e7e88ac73de7a314903141db026dcb"
+        }
+      ],
+      "modelHashPolicy": "B verified SHA256 retained; current regular-file/size/hardlink stat only",
+      "cpuOffload": true,
+      "hfOffline": "1",
+      "wslNvmlGuardBeforeCudaAndPipelineImport": true
+    },
+    "newH3Inference": false,
+    "freeRegistration": false
+  },
+  "implementationSha256": {
+    "box_nodes/camera_rebase.py": "1462d8becde53886e697321d9e37795f40c37ac8c0f0673c6b094ec237926c3b",
+    "scripts/run_geometry_h_reference.py": "48b93f5d8c430139cf7022e053409ad7df546267fd9c302333a0fa5585fa390c",
+    "tests/test_camera_rebase.py": "0ce0af46878ef8ea6d0b50cc6cb2af89de636c2b69bb13e8b4fd9ee021ce179b",
+    "tests/test_geometry_h_reference.py": "f6399d24a58f4e358e1c77bf6670218783fa6a4023b6e55206a642c4df30e9ba"
+  },
+  "hi3dChildWorkingDirectory": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory"
+}
