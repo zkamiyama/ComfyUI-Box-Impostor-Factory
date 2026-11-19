@@ -27,6 +27,18 @@
       "gzipSHA256": "a3b8c88dbf7e2332527cfcd0233daa998522b8372371593dffcfeb34f7292736",
       "gzipBytes": 46045429,
       "roundTripSHA256": "6e6c6e63c8882d6dbfcd26337e5365d607c3713ec73dac65366154fd896a7741"
+    },
+    {
+      "label": "L3-view-feather-final",
+      "sourceHtml": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather-final.inspector.html",
+      "htmlSHA256": "15c8dbaf981f026fc89fdfcec6cf2d28178fdbc91be1467e48f9d0f7d8bc7757",
+      "htmlBytes": 62301241,
+      "archivePath": "docs/verification/seam-fade-20261119/L3-view-feather-final.inspector.html.gz",
+      "gzipSHA256": "5f180f4d209e81be5d77c2f911442413202bb2846596756e82dcfb654d538384",
+      "gzipBytes": 46046194,
+      "roundTripSHA256": "15c8dbaf981f026fc89fdfcec6cf2d28178fdbc91be1467e48f9d0f7d8bc7757",
+      "helperSHA256": "b1cb7d3f7e0dd6bffe0101f3db9638e1bce2067d79c91b17380f0e0481c87df9"
     }
-  ]
+  ],
+  "previousArchiveCommit": "27bf01698702a45d5bb73a8422b27faa3595bee6"
 }
