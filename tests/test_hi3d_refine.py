@@ -1,11 +1,14 @@
 """Hi3D opt-in path: bypass, cache correctness and canonical rebake handoff."""
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
+import venv
 from unittest.mock import patch
 
 import numpy as np
@@ -42,6 +45,22 @@ class Hi3DProxyTests(unittest.TestCase):
         self.proxy={'path':str(self.source),'sha256':store.file_hash(self.source),
                     'stageKey':'a'*64,'metadata':str(self.meta),
                     'reference':{'path':str(self.ref),'sha256':'b'*64}}
+
+    @unittest.skipIf(os.name == 'nt', 'POSIX symlink interpreter regression')
+    def test_python_resolution_preserves_virtual_environment_and_expands_home(self):
+        environment=self.root/'isolated-venv'
+        venv.EnvBuilder(with_pip=False,symlinks=True).create(environment)
+        executable=environment/'bin'/'python'
+        self.assertTrue(executable.is_symlink())
+        node=RefineProxyHi3D()
+        home_relative='~/'+os.path.relpath(executable,Path.home())
+        for candidate in (str(executable),home_relative):
+            with self.subTest(candidate=candidate):
+                command=node.resolve_python(candidate)
+                self.assertEqual(command,str(executable.absolute()))
+                prefix=subprocess.check_output(
+                    [command,'-c','import sys; print(sys.prefix)'],text=True).strip()
+                self.assertEqual(Path(prefix),environment)
 
     def test_bypass_uses_original_proxy_without_importing_or_loading_gpu(self):
         node=RefineProxyHi3D()

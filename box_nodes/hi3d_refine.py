@@ -47,10 +47,12 @@ class RefineProxyHi3D:
                     'Set BI_HI3D_PYTHON to the Hi3D Python 3.10 virtualenv, '
                     'or enter the path in the node.')
             candidate=str(trial)
+        candidate=os.path.expanduser(candidate)
         resolved=shutil.which(candidate) if '/' not in candidate and '\\' not in candidate else candidate
         if not resolved or not Path(resolved).is_file():
             raise FileNotFoundError('Hi3D Python is not an executable file: '+str(candidate))
-        return str(Path(resolved).resolve())
+        # Resolving a venv interpreter symlink bypasses its pyvenv.cfg and packages.
+        return os.path.abspath(resolved)
 
     @staticmethod
     def invoke(cmd, log):

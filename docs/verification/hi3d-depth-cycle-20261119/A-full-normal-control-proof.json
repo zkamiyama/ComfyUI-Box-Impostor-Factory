@@ -1,0 +1,35 @@
+{
+  "sourceAsset": "9b50c8152e51820366cd5a2529689513d3c7a13358ddbb68f48910b6f8f6f14e",
+  "controlAsset": "e813b7e983a5ae7931e38ed2389064cd7ee4678db42b8937ed1a26d84c56774f",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/9b50c8152e51820366cd5a2529689513d3c7a13358ddbb68f48910b6f8f6f14e",
+  "controlPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/normal-control/output/box_impostor/e813b7e983a5ae7931e38ed2389064cd7ee4678db42b8937ed1a26d84c56774f",
+  "originalResultPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/normal-control/comparisons/9b50c8152e51820366cd5a2529689513d3c7a13358ddbb68f48910b6f8f6f14e/result.json",
+  "resultFile": "A-full-normal-control.json",
+  "resultSha256": "e2d029d882533753b76ebf6fd33db1e4ae6d394e736d0aac0a146571ae646374",
+  "resultBytes": 10831,
+  "allChecksPassed": true,
+  "checksCount": 60,
+  "acceptedFaces": [
+    "+X",
+    "-X",
+    "+Y",
+    "-Y",
+    "+Z",
+    "-Z"
+  ],
+  "baselineAsset": "60c1c7564132e5391d9856d667cf6bba8a7aef391d8e784e1b82785dab2ff93f",
+  "sameCachedBaselineAsPartial": true,
+  "partialSourceAsset": "5a6c458ff8d58943236413443adfd17adcd00bb873732f62fa745e41ccaf33d5",
+  "noNewInference": true,
+  "geometrySignature": "41cdafe62841b71b13a8f21f6a58f1c2c123052f4ae21fe0fb5a64a1c6058dd9",
+  "colorMapByteIdentical": true,
+  "normalCoverageByteIdentical": true,
+  "normalMapChanged": true,
+  "scriptSha256": "163916dfbd58394395ea12444e4a08caf8b999bec86497d6e1b91bc8ab59c7c1",
+  "nativeEnvironment": {
+    "BI_NODE": "unset; node resolves to /home/dev/.nvm/versions/node/v22.23.3/bin/node",
+    "BI_CHROMIUM": "/home/dev/.cache/ms-playwright/chromium_headless_shell-1254/chrome-headless-shell-linux64/chrome-headless-shell",
+    "BI_SOFTWARE_GPU": "1"
+  },
+  "limitation": "Normal maps also affect native cross-view incidence weighting; this is not solely a lighting ablation."
+}

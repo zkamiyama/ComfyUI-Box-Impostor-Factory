@@ -1,0 +1,269 @@
+{
+  "passed": true,
+  "checks": {
+    "resolutionEqual": true,
+    "tightBoundsEqual": true,
+    "bakeBoxEqual": true,
+    "transformEqual": true,
+    "inverseTransformEqual": true,
+    "faceOrderEqual": true,
+    "backendEqual": true,
+    "mapsEqual": true,
+    "versionsEqual": true,
+    "textureNamesEqual": true,
+    "colorMapEqual": true,
+    "colorMapDescriptorEqual": true,
+    "intervalMapEqual": true,
+    "intervalMapDescriptorEqual": true,
+    "normalMapChanged": true,
+    "normalMapDescriptorEqual": true,
+    "rangeMapEqual": true,
+    "rangeMapDescriptorEqual": true,
+    "normalCoverageEqual": true,
+    "baseColorEqual": true,
+    "+XCameraEqual": true,
+    "+XguideEqual": true,
+    "+XdepthEqual": true,
+    "-XCameraEqual": true,
+    "-XguideEqual": true,
+    "-XdepthEqual": true,
+    "+YCameraEqual": true,
+    "+YguideEqual": true,
+    "+YdepthEqual": true,
+    "-YCameraEqual": true,
+    "-YguideEqual": true,
+    "-YdepthEqual": true,
+    "+ZCameraEqual": true,
+    "+ZguideEqual": true,
+    "+ZdepthEqual": true,
+    "-ZCameraEqual": true,
+    "-ZguideEqual": true,
+    "-ZdepthEqual": true,
+    "jsonOnlyNormalTextureRemoved": true,
+    "nonJsonChunksByteIdentical": true,
+    "geometrySignatureEqual": true,
+    "normalTextureRemoved": true,
+    "+Xsource.pngReplayEqual": true,
+    "+Xsource.npyReplayEqual": true,
+    "+Xaligned.npyReplayEqual": true,
+    "-Xsource.pngReplayEqual": true,
+    "-Xsource.npyReplayEqual": true,
+    "-Xaligned.npyReplayEqual": true,
+    "+Ysource.pngReplayEqual": true,
+    "+Ysource.npyReplayEqual": true,
+    "+Yaligned.npyReplayEqual": true,
+    "-Ysource.pngReplayEqual": true,
+    "-Ysource.npyReplayEqual": true,
+    "-Yaligned.npyReplayEqual": true,
+    "+Zsource.pngReplayEqual": true,
+    "+Zsource.npyReplayEqual": true,
+    "+Zaligned.npyReplayEqual": true,
+    "-Zsource.pngReplayEqual": true,
+    "-Zsource.npyReplayEqual": true,
+    "-Zaligned.npyReplayEqual": true
+  },
+  "textures": {
+    "colorMap": {
+      "source": "db23fe28949c93e1fb61754bcaeb03b59cef3186a628e4425bf8bae18dc1885d",
+      "control": "db23fe28949c93e1fb61754bcaeb03b59cef3186a628e4425bf8bae18dc1885d",
+      "equal": true
+    },
+    "intervalMap": {
+      "source": "2f7cfafef8635afd0babc9ccf3bcbce121ccb57d4ffcb8b6291dbce668ec9089",
+      "control": "2f7cfafef8635afd0babc9ccf3bcbce121ccb57d4ffcb8b6291dbce668ec9089",
+      "equal": true
+    },
+    "normalMap": {
+      "source": "3f21281a6130ea65d0e7b593775e66ac1af8c131d125e83a3c1951a971be9373",
+      "control": "798c1d062a720d988a35d46f7fcfabf855c8b1862d12f910fe3d067816c323c7",
+      "equal": false
+    },
+    "rangeMap": {
+      "source": "06f75bba54198bf24359b8c21f771ab810726535f2ac94220d959bd2fe4eaf1a",
+      "control": "06f75bba54198bf24359b8c21f771ab810726535f2ac94220d959bd2fe4eaf1a",
+      "equal": true
+    }
+  },
+  "guides": {
+    "+X": {
+      "guide": {
+        "source": "7ce58a37e34c6fdd21d696ec82317e10f671315107ff89d6159fcd9f47445afa",
+        "control": "7ce58a37e34c6fdd21d696ec82317e10f671315107ff89d6159fcd9f47445afa",
+        "equal": true
+      },
+      "depth": {
+        "source": "bb00640a7dd63f35f00302eb7e7f5a109b8335d9a1245eaa4eefba8af88fbe68",
+        "control": "bb00640a7dd63f35f00302eb7e7f5a109b8335d9a1245eaa4eefba8af88fbe68",
+        "equal": true
+      }
+    },
+    "-X": {
+      "guide": {
+        "source": "f454565cac3f7389312bc533e89630bc5f693dfc2761a5e8b1471cebddd74493",
+        "control": "f454565cac3f7389312bc533e89630bc5f693dfc2761a5e8b1471cebddd74493",
+        "equal": true
+      },
+      "depth": {
+        "source": "9b5aa3019c55b805987197f4e37d3f0ee5253933f56e8c831fec7f77e6bfb1a3",
+        "control": "9b5aa3019c55b805987197f4e37d3f0ee5253933f56e8c831fec7f77e6bfb1a3",
+        "equal": true
+      }
+    },
+    "+Y": {
+      "guide": {
+        "source": "6ff4b5953e588418c5a7cd7104153cbbf39275252f3692fb22ae91788afcbc6d",
+        "control": "6ff4b5953e588418c5a7cd7104153cbbf39275252f3692fb22ae91788afcbc6d",
+        "equal": true
+      },
+      "depth": {
+        "source": "815d79e32ccce74f86393401159873e687503b10969a613b25581174c6f2679b",
+        "control": "815d79e32ccce74f86393401159873e687503b10969a613b25581174c6f2679b",
+        "equal": true
+      }
+    },
+    "-Y": {
+      "guide": {
+        "source": "71ed1fc6ac2906ce646cdabd4bfe55e06c487e35a22f18ad2e3e017644d1c1af",
+        "control": "71ed1fc6ac2906ce646cdabd4bfe55e06c487e35a22f18ad2e3e017644d1c1af",
+        "equal": true
+      },
+      "depth": {
+        "source": "a30d5eb71b1f377a9e329fd0a6b62c8ba1b42d53b51f51ab80e5cfbf913f1f46",
+        "control": "a30d5eb71b1f377a9e329fd0a6b62c8ba1b42d53b51f51ab80e5cfbf913f1f46",
+        "equal": true
+      }
+    },
+    "+Z": {
+      "guide": {
+        "source": "79702ba86e19d6a1bae5f105f86d1e2d6fba3fcad7d2e28d1d58088916225211",
+        "control": "79702ba86e19d6a1bae5f105f86d1e2d6fba3fcad7d2e28d1d58088916225211",
+        "equal": true
+      },
+      "depth": {
+        "source": "dced7fafa239fd945cd15fd41b6551e2ab238141dfed3620429a329c2653d274",
+        "control": "dced7fafa239fd945cd15fd41b6551e2ab238141dfed3620429a329c2653d274",
+        "equal": true
+      }
+    },
+    "-Z": {
+      "guide": {
+        "source": "465ae47fa84fb0365aa5e5de2cec69bb00d817b662dfed27a0ba5963ffa6d0a4",
+        "control": "465ae47fa84fb0365aa5e5de2cec69bb00d817b662dfed27a0ba5963ffa6d0a4",
+        "equal": true
+      },
+      "depth": {
+        "source": "8bd60ffe2d409e6008646e39eeac5c71c795d90911bdf8dedabcad393785caf6",
+        "control": "8bd60ffe2d409e6008646e39eeac5c71c795d90911bdf8dedabcad393785caf6",
+        "equal": true
+      }
+    }
+  },
+  "geometry": {
+    "jsonOnlyNormalTextureRemoved": true,
+    "nonJsonChunksByteIdentical": true,
+    "geometrySignatureEqual": true,
+    "sourceGeometrySignature": "41cdafe62841b71b13a8f21f6a58f1c2c123052f4ae21fe0fb5a64a1c6058dd9",
+    "controlGeometrySignature": "41cdafe62841b71b13a8f21f6a58f1c2c123052f4ae21fe0fb5a64a1c6058dd9",
+    "removedNormalTextures": [
+      {
+        "material": 0,
+        "normalTexture": {
+          "index": 2,
+          "texCoord": 0,
+          "scale": 1
+        }
+      }
+    ],
+    "sourceGlbSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "controlGlbSha256": "fd7ec8f5b5de3fc8e8a03890da29369876877fd0b707088e577cd09178721055",
+    "binaryChunks": [
+      {
+        "type": 5130562,
+        "byteLength": 4864600,
+        "sha256": "5828176119b269fc754de16868eb00ebe19aaf7be9170706cccd42d21a1babb1"
+      }
+    ]
+  },
+  "version": "normal-texture-control-v1",
+  "sourceAsset": "9b50c8152e51820366cd5a2529689513d3c7a13358ddbb68f48910b6f8f6f14e",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/9b50c8152e51820366cd5a2529689513d3c7a13358ddbb68f48910b6f8f6f14e",
+  "asset": "e813b7e983a5ae7931e38ed2389064cd7ee4678db42b8937ed1a26d84c56774f",
+  "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/normal-control/output/box_impostor/e813b7e983a5ae7931e38ed2389064cd7ee4678db42b8937ed1a26d84c56774f",
+  "baselineAsset": "60c1c7564132e5391d9856d667cf6bba8a7aef391d8e784e1b82785dab2ff93f",
+  "baselinePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/normal-control/output/box_impostor/60c1c7564132e5391d9856d667cf6bba8a7aef391d8e784e1b82785dab2ff93f",
+  "baselineCache": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/normal-control/baselines/d62c9f3c2550c429aea945af9f078e805b03380b3b68e4ad198069c54260b460",
+  "generatedFaces": [
+    "+X",
+    "-X",
+    "+Y",
+    "-Y",
+    "+Z",
+    "-Z"
+  ],
+  "replay": {
+    "+X": {
+      "status": "accepted",
+      "alignmentKey": "ff2eb2b1964b0023031740badfe155713e6ec764b12a56ea0c9527f986621a33",
+      "sourceFiles": {
+        "source.png": "bc37f2e6e6345650a906a33edb32ac4d32e11088f840ec5145d964ca7618f0c2",
+        "source.npy": "eb7e8bf3dbd61eb0ae9e6c8538909af8156f7342d979889eefd27550a5113290",
+        "aligned.npy": "96e74a12bc5044e12ca1142fea85b546184c24a8dfe50ef1c08e31bc838cded3"
+      },
+      "registration": "reused-byte-identical"
+    },
+    "-X": {
+      "status": "accepted",
+      "alignmentKey": "052cd91a4c2d7a7fb552244ff1223f104fd8e154ac4b4126afbb7ef944526817",
+      "sourceFiles": {
+        "source.png": "05590c968d417b921a1dcf7f88e249e85cb780623f41881acb930445b0b336c1",
+        "source.npy": "095f4ab678efad5000d4130659038e017e1d5852d3056f0cb1df8f1f5f750429",
+        "aligned.npy": "9ce5d4207db59a48a39dcdeab6cb7298287059b2a0e97b15ad14530d24b7f897"
+      },
+      "registration": "reused-byte-identical"
+    },
+    "+Y": {
+      "status": "accepted",
+      "alignmentKey": "a8a4016c66196b6b946248c0f670a54c3a32fadc306c511b96312b6baae394ad",
+      "sourceFiles": {
+        "source.png": "c5166f3fee7720e07a3f81b5a1561492a25cd5c663d99e012a18755d6cd7f64f",
+        "source.npy": "0dc8ec04340414e8b12c5974fd8c7a3ddce174612810a51fde23fa4790619e81",
+        "aligned.npy": "560c25a43e7a1d20bfa0ceb42375a76f914a757b78b0753cdc5af957a0cf7969"
+      },
+      "registration": "reused-byte-identical"
+    },
+    "-Y": {
+      "status": "accepted",
+      "alignmentKey": "a582e63da8a566586fce753b71fad35ef18e46b1d9603664f2a3bff7e29b3acc",
+      "sourceFiles": {
+        "source.png": "4650343cc023cde334889bd7f3389b5f10757074661319df47130f516195192e",
+        "source.npy": "e1da507795ed386bd434c3420d43f0f5f69d1d386cf2834378e3be3334d59b29",
+        "aligned.npy": "203c522c089a6ac1d33e7499484cfb0ce2323b79bf6205d6201aafd39ab35216"
+      },
+      "registration": "reused-byte-identical"
+    },
+    "+Z": {
+      "status": "accepted",
+      "alignmentKey": "ddd5fc8e348148fda696290b48b468afae8a62a6d2f6bda693f4e8d03485d115",
+      "sourceFiles": {
+        "source.png": "01b4db8ea1d91bd126ce105407f8aca8dd53944b332b4cccc4cd48dc6fc5032c",
+        "source.npy": "b56c37e6c9b641f0be33f47770e230e46e681414d161327e04cb6920122d29c3",
+        "aligned.npy": "d9a90e5f53b28cf2c5a7a8e229c763211d2c181e53f9c558c34cc87f8ed140ae"
+      },
+      "registration": "reused-byte-identical"
+    },
+    "-Z": {
+      "status": "accepted",
+      "alignmentKey": "6e8c0ce5986112861e9f79b63bee0f7aa7bd5307986fbadc9bf9f52443f8340d",
+      "sourceFiles": {
+        "source.png": "6f5e5ce2b72bc9b117a134b7bcb82a1a3135b0ae1d708615de5c42186cac06c2",
+        "source.npy": "cafe73a15f101b7829a927407cbb50c39dd2d6daeba037648fe893220d6ae2fb",
+        "aligned.npy": "837a12f186aead0139855bb671009a066af25cc420ef7d139cbd98bce8b8f31b"
+      },
+      "registration": "reused-byte-identical"
+    }
+  },
+  "sourceManifestSha256": "008becd169320d4e77edf0910758f734cdd79f9fc0ace03b6ddf0d3162176333",
+  "scriptSha256": "163916dfbd58394395ea12444e4a08caf8b999bec86497d6e1b91bc8ab59c7c1",
+  "limitation": "Normal maps also affect native cross-view incidence weighting; this is not solely a lighting ablation.",
+  "noNewInference": true
+}

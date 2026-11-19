@@ -1,0 +1,647 @@
+{
+  "branch": "A",
+  "baseline": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+  "baselinePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+  "coarseGeometry": "fixed Pixal3D / TRELLIS2 stages",
+  "proxySha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+  "bakeBox": {
+    "min": [
+      -0.19959635205538714,
+      -0.52,
+      -0.19067711655172312
+    ],
+    "max": [
+      0.19959635205538714,
+      0.52,
+      0.19067711655172312
+    ]
+  },
+  "tightBounds": {
+    "min": [
+      -0.17959635205538715,
+      -0.5,
+      -0.17067711655172313
+    ],
+    "max": [
+      0.17959635205538715,
+      0.5,
+      0.17067711655172313
+    ]
+  },
+  "transform": [
+    1.1176511734153667,
+    0,
+    0,
+    0,
+    0,
+    1.1176511734153667,
+    0,
+    0,
+    0,
+    0,
+    1.1176511734153667,
+    0,
+    0.010881411855650119,
+    0.02839508237150308,
+    0.013759666322433382,
+    1
+  ],
+  "referenceSha256": "c463bf4eea481e54bbb154f3c0b801765db6ecf92e36c25135e155e699dc9bde",
+  "conditioning": "H3 image references (VLM plus VAE reference latents); no ControlNet",
+  "pictureOrder": [
+    "guide",
+    "source",
+    "axis-depth",
+    "normals",
+    "mask"
+  ],
+  "pictureSize": [
+    1024,
+    1024
+  ],
+  "outputSize": [
+    1024,
+    1024
+  ],
+  "depthEncoding": "1 minus normalized axis depth, bright-near; gray background",
+  "normalEncoding": "world normal * .5 + .5; RGB xyz; gray background",
+  "maskEncoding": "white foreground, black background",
+  "models": {
+    "model": "minimax_h3_image_pruned_w4a8.safetensors",
+    "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+    "vae": "minimax_h3_image_vae_fp16.safetensors",
+    "matting": "birefnet.safetensors"
+  },
+  "seeds": {
+    "+X": 101,
+    "-X": 102,
+    "+Y": 103,
+    "-Y": 104,
+    "+Z": 105,
+    "-Z": 106
+  },
+  "sampler": {
+    "steps": 6,
+    "cfg": 1,
+    "sampler_name": "euler",
+    "scheduler": "simple",
+    "denoise": 1
+  },
+  "prompt": "Refine the person in <Picture 1> into a detailed, natural photograph of the same person shown in <Picture 2>. Preserve the exact orthographic camera, view direction, pose, silhouette, scale and framing of <Picture 1>. <Picture 3> is the aligned geometry depth: brighter means nearer the camera. <Picture 4> is the aligned world-space surface normal map. <Picture 5> is the aligned foreground mask: white is the person and black is background. Use Pictures 3, 4 and 5 only as structural references; do not copy their colors. Use Picture 2 only for identity, skin, hair, dress colors and material details. Keep the direction of the head and the visibility of facial features consistent with Picture 1 and the structural maps. Add anatomically plausible eyes, eyelids, nose, lips, hair strands, fingers, seams and fabric folds where they are visible from this camera. Keep the body and garment boundaries exactly within the mask. Use neutral even lighting and a flat mid-gray background. Return only one full-body orthographic image, no panels, no diagrams, no text, no colored depth or normal-map appearance.",
+  "viewConsistency": "none",
+  "materialMode": "keep",
+  "faces": {
+    "+X": {
+      "canvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "+X",
+        "guideRect": [
+          324,
+          0,
+          375,
+          1024
+        ],
+        "guideInputSha256": "cf2c1b4f1f7b3b86cd5eb2918f0e4f67f06ca25d181f454ccdab0d93c95bedd2",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.38135423310344624,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "pictures": {
+        "guide": {
+          "image": "A/px/guide.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/px/guide.png",
+          "sha256": "a07ad0996d7896bc347cdcabf6d4a7b3b94418eff80a3e8495c76ef222d9931b"
+        },
+        "source": {
+          "image": "A/px/source.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/px/source.png",
+          "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+        },
+        "axis-depth": {
+          "image": "A/px/axis-depth.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/px/axis-depth.png",
+          "sha256": "b077e4a3df1ebb4ede1ec7860882f37c393d5368769672ffe38a08accb97417b"
+        },
+        "normals": {
+          "image": "A/px/normals.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/px/normals.png",
+          "sha256": "735d43973298d9a2918d6a1b797e0e758c3f02dcbaa5c8e72df2baecef989f72"
+        },
+        "mask": {
+          "image": "A/px/mask.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/px/mask.png",
+          "sha256": "f4981b3c33156b5b16a43423acc7a794ca6e70767b9d2afd0ecc6405b0f4dc08"
+        }
+      },
+      "guideSha256": "7ce58a37e34c6fdd21d696ec82317e10f671315107ff89d6159fcd9f47445afa",
+      "viewMatrix": [
+        2.220446049250313e-16,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        2.220446049250313e-16,
+        0,
+        -6.741193204881916e-17,
+        0,
+        -0.30359635205538715,
+        1
+      ],
+      "projectionMatrix": [
+        5.244467810738787,
+        0,
+        0,
+        0,
+        0,
+        1.923076923076923,
+        0,
+        0,
+        0,
+        0,
+        -3.97462042605394,
+        0,
+        0,
+        0,
+        -1.2066802621548052,
+        1
+      ],
+      "prompt": "The orthographic camera is on the +X side, perpendicular to the front view. Return the strict side profile shown in <Picture 1>; preserve its visible side and nose direction. Do not turn the person or face toward the camera. Refine the person in <Picture 1> into a detailed, natural photograph of the same person shown in <Picture 2>. Preserve the exact orthographic camera, view direction, pose, silhouette, scale and framing of <Picture 1>. <Picture 3> is the aligned geometry depth: brighter means nearer the camera. <Picture 4> is the aligned world-space surface normal map. <Picture 5> is the aligned foreground mask: white is the person and black is background. Use Pictures 3, 4 and 5 only as structural references; do not copy their colors. Use Picture 2 only for identity, skin, hair, dress colors and material details. Keep the direction of the head and the visibility of facial features consistent with Picture 1 and the structural maps. Add anatomically plausible eyes, eyelids, nose, lips, hair strands, fingers, seams and fabric folds where they are visible from this camera. Keep the body and garment boundaries exactly within the mask. Use neutral even lighting and a flat mid-gray background. Return only one full-body orthographic image, no panels, no diagrams, no text, no colored depth or normal-map appearance."
+    },
+    "-X": {
+      "canvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "-X",
+        "guideRect": [
+          324,
+          0,
+          375,
+          1024
+        ],
+        "guideInputSha256": "57c4c6b161aa2a037c04f358fd1435bc07cf2dad53c49f697500f64e2bd1f3de",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.38135423310344624,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "pictures": {
+        "guide": {
+          "image": "A/nx/guide.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nx/guide.png",
+          "sha256": "379c8bf24e956166a8a2ec97b1cf8eb5032a5d296d7b832e2148a3cd7bc266a4"
+        },
+        "source": {
+          "image": "A/nx/source.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nx/source.png",
+          "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+        },
+        "axis-depth": {
+          "image": "A/nx/axis-depth.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nx/axis-depth.png",
+          "sha256": "7827b2910618d0a86f66bef94c290ed744dbdb9048c0af6cf8030ea844f2a549"
+        },
+        "normals": {
+          "image": "A/nx/normals.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nx/normals.png",
+          "sha256": "ffeedd821a35d6ea46e2c30534849fef66ae7f0739f1c04b590ffa004b1a1099"
+        },
+        "mask": {
+          "image": "A/nx/mask.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nx/mask.png",
+          "sha256": "03c2bff68b193911e1a2ff493ee0970a4c944c5781de93f8db9ace5185b9c637"
+        }
+      },
+      "guideSha256": "f454565cac3f7389312bc533e89630bc5f693dfc2761a5e8b1471cebddd74493",
+      "viewMatrix": [
+        2.220446049250313e-16,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2.220446049250313e-16,
+        0,
+        6.741193204881916e-17,
+        0,
+        -0.30359635205538715,
+        1
+      ],
+      "projectionMatrix": [
+        5.244467810738787,
+        0,
+        0,
+        0,
+        0,
+        1.923076923076923,
+        0,
+        0,
+        0,
+        0,
+        -3.97462042605394,
+        0,
+        0,
+        0,
+        -1.2066802621548052,
+        1
+      ],
+      "prompt": "The orthographic camera is on the -X side, opposite the +X side and perpendicular to the front view. Return the strict side profile shown in <Picture 1>; preserve its visible side and nose direction. Do not turn the person or face toward the camera. Refine the person in <Picture 1> into a detailed, natural photograph of the same person shown in <Picture 2>. Preserve the exact orthographic camera, view direction, pose, silhouette, scale and framing of <Picture 1>. <Picture 3> is the aligned geometry depth: brighter means nearer the camera. <Picture 4> is the aligned world-space surface normal map. <Picture 5> is the aligned foreground mask: white is the person and black is background. Use Pictures 3, 4 and 5 only as structural references; do not copy their colors. Use Picture 2 only for identity, skin, hair, dress colors and material details. Keep the direction of the head and the visibility of facial features consistent with Picture 1 and the structural maps. Add anatomically plausible eyes, eyelids, nose, lips, hair strands, fingers, seams and fabric folds where they are visible from this camera. Keep the body and garment boundaries exactly within the mask. Use neutral even lighting and a flat mid-gray background. Return only one full-body orthographic image, no panels, no diagrams, no text, no colored depth or normal-map appearance."
+    },
+    "+Y": {
+      "canvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "+Y",
+        "guideRect": [
+          0,
+          23,
+          1024,
+          978
+        ],
+        "guideInputSha256": "edb09add7acfe56dcd25140947e0289d7b722a97080a3133f6443c8c8b99da50",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3991927041107743,
+          0.38135423310344624
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "pictures": {
+        "guide": {
+          "image": "A/py/guide.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/py/guide.png",
+          "sha256": "6f16b5e6cb8d4032f1f5159948185643c37006f490082f4d4814853889083baa"
+        },
+        "source": {
+          "image": "A/py/source.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/py/source.png",
+          "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+        },
+        "axis-depth": {
+          "image": "A/py/axis-depth.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/py/axis-depth.png",
+          "sha256": "b5ead523e94975157d23b7316a812499cdf824cfe4ac8c1db7e4956c8b6dc4d3"
+        },
+        "normals": {
+          "image": "A/py/normals.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/py/normals.png",
+          "sha256": "307da4faaf2bb388571654e781ee0d30034c7f3d5489aa90feda78933309add4"
+        },
+        "mask": {
+          "image": "A/py/mask.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/py/mask.png",
+          "sha256": "f92d893a4561ef4f7b06821add061d49c92893dcc3f7fb9806d55b0b47530f0a"
+        }
+      },
+      "guideSha256": "6ff4b5953e588418c5a7cd7104153cbbf39275252f3692fb22ae91788afcbc6d",
+      "viewMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2.220446049250313e-16,
+        1,
+        0,
+        0,
+        -1,
+        2.220446049250313e-16,
+        0,
+        0,
+        -1.3855583347321954e-16,
+        -0.624,
+        1
+      ],
+      "projectionMatrix": [
+        5.0101116062607405,
+        0,
+        0,
+        0,
+        0,
+        5.244467810738787,
+        0,
+        0,
+        0,
+        0,
+        -1.7482517482517481,
+        0,
+        0,
+        0,
+        -1.090909090909091,
+        1
+      ],
+      "prompt": "The orthographic camera is directly above the person at +Y, looking straight downward. Preserve the overhead foreshortening, layout and occlusion in <Picture 1>. Show only surfaces visible from above; do not convert this into an upright front view. Refine the person in <Picture 1> into a detailed, natural photograph of the same person shown in <Picture 2>. Preserve the exact orthographic camera, view direction, pose, silhouette, scale and framing of <Picture 1>. <Picture 3> is the aligned geometry depth: brighter means nearer the camera. <Picture 4> is the aligned world-space surface normal map. <Picture 5> is the aligned foreground mask: white is the person and black is background. Use Pictures 3, 4 and 5 only as structural references; do not copy their colors. Use Picture 2 only for identity, skin, hair, dress colors and material details. Keep the direction of the head and the visibility of facial features consistent with Picture 1 and the structural maps. Add anatomically plausible eyes, eyelids, nose, lips, hair strands, fingers, seams and fabric folds where they are visible from this camera. Keep the body and garment boundaries exactly within the mask. Use neutral even lighting and a flat mid-gray background. Return only one orthographic image of only the surfaces visible from that direction, no panels, no diagrams, no text, no colored depth or normal-map appearance."
+    },
+    "-Y": {
+      "canvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "-Y",
+        "guideRect": [
+          0,
+          23,
+          1024,
+          978
+        ],
+        "guideInputSha256": "ee93a7a8acfe5c3147b74fada752935e50eb522aee22a866d6a403cdd7b83eb1",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3991927041107743,
+          0.38135423310344624
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "pictures": {
+        "guide": {
+          "image": "A/ny/guide.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/ny/guide.png",
+          "sha256": "f849942c55e600ce17f6371bcfee85af860df08ef470c0470a3daef6b61b1ceb"
+        },
+        "source": {
+          "image": "A/ny/source.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/ny/source.png",
+          "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+        },
+        "axis-depth": {
+          "image": "A/ny/axis-depth.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/ny/axis-depth.png",
+          "sha256": "2ff867d33729bbf338284b18fc8285a7e7b7f9f2b8dcdadfee3cd46c40e9b460"
+        },
+        "normals": {
+          "image": "A/ny/normals.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/ny/normals.png",
+          "sha256": "eb6c3043f72d316b849fb64e25e3974cce823722d7b4276fda6e19089308af35"
+        },
+        "mask": {
+          "image": "A/ny/mask.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/ny/mask.png",
+          "sha256": "1f6cf3f8e9044eb96b3dedb2a4dcb1dcd496e002e2d9f9b4467e0cf4352eb0f5"
+        }
+      },
+      "guideSha256": "71ed1fc6ac2906ce646cdabd4bfe55e06c487e35a22f18ad2e3e017644d1c1af",
+      "viewMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2.220446049250313e-16,
+        -1,
+        0,
+        0,
+        1,
+        2.220446049250313e-16,
+        0,
+        0,
+        1.3855583347321954e-16,
+        -0.624,
+        1
+      ],
+      "projectionMatrix": [
+        5.0101116062607405,
+        0,
+        0,
+        0,
+        0,
+        5.244467810738787,
+        0,
+        0,
+        0,
+        0,
+        -1.7482517482517481,
+        0,
+        0,
+        0,
+        -1.090909090909091,
+        1
+      ],
+      "prompt": "The orthographic camera is directly below the person at -Y, looking straight upward. Preserve the underside foreshortening, layout and occlusion in <Picture 1>. Show only surfaces visible from below; do not convert this into an upright front view. Refine the person in <Picture 1> into a detailed, natural photograph of the same person shown in <Picture 2>. Preserve the exact orthographic camera, view direction, pose, silhouette, scale and framing of <Picture 1>. <Picture 3> is the aligned geometry depth: brighter means nearer the camera. <Picture 4> is the aligned world-space surface normal map. <Picture 5> is the aligned foreground mask: white is the person and black is background. Use Pictures 3, 4 and 5 only as structural references; do not copy their colors. Use Picture 2 only for identity, skin, hair, dress colors and material details. Keep the direction of the head and the visibility of facial features consistent with Picture 1 and the structural maps. Add anatomically plausible eyes, eyelids, nose, lips, hair strands, fingers, seams and fabric folds where they are visible from this camera. Keep the body and garment boundaries exactly within the mask. Use neutral even lighting and a flat mid-gray background. Return only one orthographic image of only the surfaces visible from that direction, no panels, no diagrams, no text, no colored depth or normal-map appearance."
+    },
+    "+Z": {
+      "canvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "+Z",
+        "guideRect": [
+          315,
+          0,
+          393,
+          1024
+        ],
+        "guideInputSha256": "4d5e7cd820e63d2af803873a306a469e5c27f7daaa17d64780321d755a1d9802",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3991927041107743,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "pictures": {
+        "guide": {
+          "image": "A/pz/guide.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/guide.png",
+          "sha256": "b56df3344641e20d4317afe3edced03b09d8b5d31e48a909c04fa11271bbb14c"
+        },
+        "source": {
+          "image": "A/pz/source.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/source.png",
+          "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+        },
+        "axis-depth": {
+          "image": "A/pz/axis-depth.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/axis-depth.png",
+          "sha256": "07fe0b68d1fa498dd29f9c93a95a3f363ec7731058d26576c93fed3e1d260408"
+        },
+        "normals": {
+          "image": "A/pz/normals.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/normals.png",
+          "sha256": "25f7c930873b1704c2242f1f782a31d91d241c3999771d3e26cd51387f48dc15"
+        },
+        "mask": {
+          "image": "A/pz/mask.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/mask.png",
+          "sha256": "62a86a81eb8397009e6642924ba74b65965c1ab83ff832beeb545675ef909ae4"
+        }
+      },
+      "guideSha256": "79702ba86e19d6a1bae5f105f86d1e2d6fba3fcad7d2e28d1d58088916225211",
+      "viewMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -0.29467711655172313,
+        1
+      ],
+      "projectionMatrix": [
+        5.0101116062607405,
+        0,
+        0,
+        0,
+        0,
+        1.923076923076923,
+        0,
+        0,
+        0,
+        0,
+        -4.120701672285051,
+        0,
+        0,
+        0,
+        -1.2142764869588227,
+        1
+      ],
+      "prompt": "Refine the person in <Picture 1> into a detailed, natural photograph of the same person shown in <Picture 2>. Preserve the exact orthographic camera, view direction, pose, silhouette, scale and framing of <Picture 1>. <Picture 3> is the aligned geometry depth: brighter means nearer the camera. <Picture 4> is the aligned world-space surface normal map. <Picture 5> is the aligned foreground mask: white is the person and black is background. Use Pictures 3, 4 and 5 only as structural references; do not copy their colors. Use Picture 2 only for identity, skin, hair, dress colors and material details. Keep the direction of the head and the visibility of facial features consistent with Picture 1 and the structural maps. Add anatomically plausible eyes, eyelids, nose, lips, hair strands, fingers, seams and fabric folds where they are visible from this camera. Keep the body and garment boundaries exactly within the mask. Use neutral even lighting and a flat mid-gray background. Return only one full-body orthographic image, no panels, no diagrams, no text, no colored depth or normal-map appearance."
+    },
+    "-Z": {
+      "canvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "-Z",
+        "guideRect": [
+          315,
+          0,
+          393,
+          1024
+        ],
+        "guideInputSha256": "cac0d16a85629b0a3e4ce3c029d0802a5208e1d7935588db6012576b37cacd61",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3991927041107743,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "pictures": {
+        "guide": {
+          "image": "A/nz/guide.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nz/guide.png",
+          "sha256": "4d7ea351855e62a09e0e006d56ef88913aaf97c7775342874c944a9d8c78fe6d"
+        },
+        "source": {
+          "image": "A/nz/source.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nz/source.png",
+          "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+        },
+        "axis-depth": {
+          "image": "A/nz/axis-depth.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nz/axis-depth.png",
+          "sha256": "f78ece241da4a4d5e6eecdf94059f87e8710c41e156cc24ff55d27fc08669784"
+        },
+        "normals": {
+          "image": "A/nz/normals.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nz/normals.png",
+          "sha256": "476f8e7bc90e678c5fa3665446899d948acf4100a28215a5aeb637db857a17db"
+        },
+        "mask": {
+          "image": "A/nz/mask.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nz/mask.png",
+          "sha256": "2cc12276e7f51e9db6ff2362a4684e6d8fab2de58019138158a8481549bd9018"
+        }
+      },
+      "guideSha256": "465ae47fa84fb0365aa5e5de2cec69bb00d817b662dfed27a0ba5963ffa6d0a4",
+      "viewMatrix": [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        -0.29467711655172313,
+        1
+      ],
+      "projectionMatrix": [
+        5.0101116062607405,
+        0,
+        0,
+        0,
+        0,
+        1.923076923076923,
+        0,
+        0,
+        0,
+        0,
+        -4.120701672285051,
+        0,
+        0,
+        0,
+        -1.2142764869588227,
+        1
+      ],
+      "prompt": "The orthographic camera is directly behind the person at -Z. Return a strict rear view, with the back of the head, hair, body and dress as visible in <Picture 1>. Do not turn the head toward the camera or add a front-facing face. Refine the person in <Picture 1> into a detailed, natural photograph of the same person shown in <Picture 2>. Preserve the exact orthographic camera, view direction, pose, silhouette, scale and framing of <Picture 1>. <Picture 3> is the aligned geometry depth: brighter means nearer the camera. <Picture 4> is the aligned world-space surface normal map. <Picture 5> is the aligned foreground mask: white is the person and black is background. Use Pictures 3, 4 and 5 only as structural references; do not copy their colors. Use Picture 2 only for identity, skin, hair, dress colors and material details. Keep the direction of the head and the visibility of facial features consistent with Picture 1 and the structural maps. Add anatomically plausible eyes, eyelids, nose, lips, hair strands, fingers, seams and fabric folds where they are visible from this camera. Keep the body and garment boundaries exactly within the mask. Use neutral even lighting and a flat mid-gray background. Return only one full-body orthographic image, no panels, no diagrams, no text, no colored depth or normal-map appearance."
+    }
+  }
+}
