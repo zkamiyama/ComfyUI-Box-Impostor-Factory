@@ -20,7 +20,8 @@ from .neural_depth import project_prediction
 from .revision import DEPTH_ENCODING, RebakeProxyRevision
 from .mesh_normals import geometry_normals, mesh_arrays, vertex_normals
 
-METHOD = 'joint-full-depth-v2'
+METHOD = 'joint-full-depth-v3-boundary-dirichlet'
+BOUNDARY_POLICY = 'axis-dirichlet-within-max-displacement-v1'
 SLUGS = dict(zip(store.FACES, ('px', 'nx', 'py', 'ny', 'pz', 'nz')))
 
 
@@ -219,6 +220,20 @@ def constraints(points, views, seed_weights):
                   'rejectedCrossViewVertices':int(np.count_nonzero((observed>=2)&(supported<2)))}
 
 
+def boundary_axis_pins(points, max_world):
+    """Hold each near-boundary coordinate, leaving other axes free.
+
+    A free coordinate starts farther from its original bound than the largest
+    allowed world displacement, so the final bounds guard cannot pile it onto
+    that plane. Four FLOAT32 ulps cover GLB export and normalized-frame rounding.
+    """
+    points=np.asarray(points,dtype='f8')
+    low,high=points.min(axis=0),points.max(axis=0)
+    margin=4*np.spacing(np.maximum(abs(low),abs(high)).astype('f4')).astype('f8')
+    pins=((points-low)<=max_world+margin)|((high-points)<=max_world+margin)
+    return pins,margin
+
+
 def joint_fit(points, triangles, views, bounds, *, max_displacement_height=.015,
               iterations=8, smoothness=.3, prior=.025, cg_iterations=120, support_backtracks=12):
     """IRLS/Gauss-Newton on one mesh with a matrix-free 3x3-block PCG system."""
@@ -233,7 +248,7 @@ def joint_fit(points, triangles, views, bounds, *, max_displacement_height=.015,
     normals = vertex_normals(points, triangles)
     seed = seed_visibility(base,normals,views,span)
     laplacian = displacement_laplacian(triangles,len(base))
-    pins = np.isclose(base,base.min(axis=0),atol=1e-7)|np.isclose(base,base.max(axis=0),atol=1e-7)
+    pins, boundary_margin = boundary_axis_pins(points,max_world)
     diagonal_prior = np.full_like(base,prior)+pins.astype('f4')*10000
     logs = []
     def project(candidate):
@@ -315,7 +330,13 @@ def joint_fit(points, triangles, views, bounds, *, max_displacement_height=.015,
         'regularization':'graph Laplacian of displacement only',
         'parameters':{'maxDisplacementHeight':max_displacement_height,'iterations':iterations,
                       'smoothness':smoothness,'prior':prior,'cgIterations':cg_iterations,
-                      'supportBacktracks':support_backtracks},
+                      'supportBacktracks':support_backtracks,
+                      'boundaryPolicy':BOUNDARY_POLICY,'boundaryBandHeight':max_displacement_height},
+        'boundaryConstraints':{'policy':BOUNDARY_POLICY,'bandWorld':max_world,
+            'float32MarginWorld':boundary_margin.tolist(),
+            'fixedCoordinatesXYZ':pins.sum(axis=0).astype(int).tolist(),
+            'anyFixedVertices':int(np.count_nonzero(pins.any(axis=1))),
+            'fullyFixedVertices':int(np.count_nonzero(pins.all(axis=1)))},
         'vertices':len(points),'triangles':len(triangles),'height':height,
         'normalizedDisplacement':{'p50':float(np.quantile(lengths,.5)),
                                   'p95':float(np.quantile(lengths,.95)),'max':float(lengths.max())},

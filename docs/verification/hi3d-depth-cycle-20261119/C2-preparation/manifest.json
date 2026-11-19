@@ -1,0 +1,42 @@
+{
+  "previousMethod": "joint-full-depth-v2",
+  "nextMethod": "joint-full-depth-v3-boundary-dirichlet",
+  "change": "Only boundary coordinate constraint: extrema-only -> per-axis Dirichlet band of max displacement plus FLOAT32 guard. Tangential coordinates remain free unless constrained by their own axis boundary.",
+  "v2Snapshot": "docs/verification/hi3d-depth-cycle-20261119/C-run/fixed-support/full_depth-v2.py",
+  "v2SourceSha256": "3b054ce9e6970b8ccf67f4dd68b0bd1c6172cde2c6637a047564b659743f2a31",
+  "v3SourceSha256": "bbc38ebbce6991f00fa638d41b51c4574179b17d2a4357be1c9eadb1f9759672",
+  "fullC2FitRun": false,
+  "nativeBakeRun": false,
+  "neuralInferenceRun": false,
+  "originalCAndV2ArtifactsPreserved": true,
+  "tests": {
+    "fixture": "small analytic sphere expanding from radius .3 to .31; not B mesh",
+    "vertices": 258,
+    "triangles": 512,
+    "originalTopPlaneVertices": 1,
+    "v2TopPlaneVertices": 5,
+    "v3TopPlaneVertices": 1,
+    "v3BoundaryConstraints": {
+      "policy": "axis-dirichlet-within-max-displacement-v1",
+      "bandWorld": 0.018000000000000002,
+      "float32MarginWorld": [
+        2.384185791015625e-07,
+        2.384185791015625e-07,
+        2.384185791015625e-07
+      ],
+      "fixedCoordinatesXYZ": [
+        18,
+        18,
+        18
+      ],
+      "anyFixedVertices": 54,
+      "fullyFixedVertices": 0
+    },
+    "unitTestsRun": 17,
+    "unitTestsPassed": true,
+    "actualBMeshFitRun": false,
+    "nativeBakeRun": false,
+    "gpuInferenceRun": false
+  },
+  "v3TestsSha256": "c3563cbcea6ff2505ef89c84e174710862ea1a54b518aa21de1628e15c73db9d"
+}

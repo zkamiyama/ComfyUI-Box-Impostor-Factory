@@ -1,0 +1,29 @@
+{
+  "fixture": "small analytic sphere expanding from radius .3 to .31; not B mesh",
+  "vertices": 258,
+  "triangles": 512,
+  "originalTopPlaneVertices": 1,
+  "v2TopPlaneVertices": 5,
+  "v3TopPlaneVertices": 1,
+  "v3BoundaryConstraints": {
+    "policy": "axis-dirichlet-within-max-displacement-v1",
+    "bandWorld": 0.018000000000000002,
+    "float32MarginWorld": [
+      2.384185791015625e-07,
+      2.384185791015625e-07,
+      2.384185791015625e-07
+    ],
+    "fixedCoordinatesXYZ": [
+      18,
+      18,
+      18
+    ],
+    "anyFixedVertices": 54,
+    "fullyFixedVertices": 0
+  },
+  "unitTestsRun": 17,
+  "unitTestsPassed": true,
+  "actualBMeshFitRun": false,
+  "nativeBakeRun": false,
+  "gpuInferenceRun": false
+}

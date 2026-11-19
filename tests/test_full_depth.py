@@ -4,7 +4,7 @@ import numpy as np
 
 from box_nodes import depth_mesh
 from box_nodes.full_depth import (DepthView, constraints, fit_depth, geometry_normals,
-                                  joint_fit, mesh_arrays, vertex_normals, feasible_support_step)
+                                  joint_fit, mesh_arrays, vertex_normals, feasible_support_step, boundary_axis_pins)
 from tests.test_depth_mesh import fixture
 
 
@@ -41,6 +41,36 @@ def sphere_views(radius=.3, target_radius=.31, r=96):
 
 
 class FullDepthTests(unittest.TestCase):
+    def test_boundary_band_pins_only_the_nearby_axis_coordinate(self):
+        points=np.array([[0,0,0],[1,1,1],[.5,.99,.5],[.99,.5,.5],[.5,.5,.5]],'f8')
+        original=points.copy()
+        pins,margin=boundary_axis_pins(points,.02)
+        np.testing.assert_array_equal(pins[2],[False,True,False])
+        np.testing.assert_array_equal(pins[3],[True,False,False])
+        np.testing.assert_array_equal(pins[4],[False,False,False])
+        np.testing.assert_array_equal(points,original)
+        self.assertTrue(np.all(margin>0))
+        self.assertTrue(np.all(margin<1e-6))
+
+    def test_curved_cap_is_not_projected_into_a_new_flat_bound_plane(self):
+        points,triangles=sphere_mesh()
+        moved,report=joint_fit(points,triangles,sphere_views(),
+            {'min':[0,0,0],'max':[1,1,1]},max_displacement_height=.03,
+            iterations=7,prior=.01,smoothness=.15)
+        original32=points.astype('f4');moved32=moved.astype('f4')
+        top=original32[:,1].max()
+        self.assertEqual(int(np.count_nonzero(moved32[:,1]==top)),
+                         int(np.count_nonzero(original32[:,1]==top)))
+        band=(points[:,1].max()-points[:,1])<=.03*np.ptp(points[:,1])
+        np.testing.assert_array_equal(moved[band,1],points[band,1])
+        # Tangential reconstruction remains available in the pinned-Y cap.
+        tangent=np.linalg.norm((moved-points)[band][:,[0,2]],axis=1)
+        self.assertGreater(float(tangent.max()),1e-5)
+        self.assertGreater(float(np.mean(np.linalg.norm(moved-points,axis=1))),.002)
+        self.assertLessEqual(float(np.linalg.norm(moved-points,axis=1).max()),.018+1e-7)
+        self.assertEqual(report['boundaryConstraints']['policy'],
+                         'axis-dirichlet-within-max-displacement-v1')
+
     def test_exact_bilinear_jacobian_matches_subpixel_finite_difference(self):
         r=32
         rng=np.random.default_rng(9)
