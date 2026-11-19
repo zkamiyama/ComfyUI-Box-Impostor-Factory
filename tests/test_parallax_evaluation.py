@@ -44,6 +44,29 @@ def textured_plane(angle, size=64):
 
 
 class ParallaxEvaluationTests(unittest.TestCase):
+    def test_rejects_perspective_reversed_depth_and_nonrigid_camera_conventions(self):
+        evaluation.validate_orthographic_camera(camera(15))
+        bad = []
+        p = camera(0)
+        projection = evaluation.matrix(p['projectionMatrix'])
+        projection[3] = [0, 0, -1, 0]
+        p['projectionMatrix'] = projection.T.ravel().tolist()
+        bad.append(p)
+        p = camera(0)
+        p['near'] = .2
+        bad.append(p)
+        p = camera(0)
+        view = evaluation.matrix(p['viewMatrix'])
+        view[0, 0] = 2
+        p['viewMatrix'] = view.T.ravel().tolist()
+        bad.append(p)
+        p = camera(0)
+        p['cameraWorldMatrix'] = np.eye(4).T.ravel().tolist()
+        bad.append(p)
+        for frame in bad:
+            with self.assertRaises(ValueError):
+                evaluation.validate_orthographic_camera(frame)
+
     def test_packed_float_png_preserves_all_four_bytes_including_nonopaque_fourth_byte(self):
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / 'depth.png'

@@ -1,0 +1,196 @@
+{
+  "kind": "qualified-final-rgb-parallax-assessment-v1",
+  "overallVisualGoal": "not achieved",
+  "implementedPreset": {
+    "mode": "camera-hybrid",
+    "cameraPower": 8,
+    "depthToleranceTexels": 4
+  },
+  "deliveryStatus": "Opt-in experimental RGB material; preserve the observed failures.",
+  "orthographicHead": {
+    "frontPreservation": "Improved against both independently projected H native atlas and original F generated front image; these are separate references.",
+    "comparisonBandDegrees": [
+      -30,
+      30
+    ],
+    "comparisonBandMeaning": "An aggregate improvement comparison band only; not an acceptable-viewing range or a quality certification.",
+    "observedWithinBandLimitation": "A chin band is visible at orthographic -15 degrees.",
+    "negative15SourcePNG_SHA256": {
+      "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-hybrid-fine-001/015-camera-hybrid-yawm15.png": "4e7e08cc74f9431f7bdd3781798502a991960a79391b8fee458d90d71d0b7bcd",
+      "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-hybrid-fine-001/066-camera-hybrid-yawm15.png": "4e7e08cc74f9431f7bdd3781798502a991960a79391b8fee458d90d71d0b7bcd"
+    },
+    "fineMotionBands": [
+      {
+        "variant": "native",
+        "band": "within +/-30 degrees",
+        "adjacentAnglePairs": 20,
+        "angleStepDegrees": [
+          3
+        ],
+        "acceptedCorrespondenceSamples": 270793,
+        "acceptanceFraction": 0.9691045214117512,
+        "sampleWeightedMeanLinearRGBResidual": 0.0158134283982615,
+        "worstPairMeanLinearRGBResidual": {
+          "angles": [
+            27,
+            30
+          ],
+          "mean": 0.018402399495244026
+        },
+        "frozenScreenImageControl": {
+          "commonOpaqueSamples": 224341,
+          "actualMeanLinearRGBResidual": 0.015802545979475786,
+          "frozenMeanLinearRGBResidual": 0.10697567861545687
+        }
+      },
+      {
+        "variant": "native",
+        "band": "outside +/-30 through +/-60 degrees",
+        "adjacentAnglePairs": 20,
+        "angleStepDegrees": [
+          3
+        ],
+        "acceptedCorrespondenceSamples": 271585,
+        "acceptanceFraction": 0.9707091286010436,
+        "sampleWeightedMeanLinearRGBResidual": 0.015414915574312946,
+        "worstPairMeanLinearRGBResidual": {
+          "angles": [
+            45,
+            48
+          ],
+          "mean": 0.021535024046897888
+        },
+        "frozenScreenImageControl": {
+          "commonOpaqueSamples": 147305,
+          "actualMeanLinearRGBResidual": 0.01711626343985081,
+          "frozenMeanLinearRGBResidual": 0.10834502820901094
+        }
+      },
+      {
+        "variant": "camera-hybrid",
+        "band": "within +/-30 degrees",
+        "adjacentAnglePairs": 20,
+        "angleStepDegrees": [
+          3
+        ],
+        "acceptedCorrespondenceSamples": 270793,
+        "acceptanceFraction": 0.9691045214117512,
+        "sampleWeightedMeanLinearRGBResidual": 0.006034880367380322,
+        "worstPairMeanLinearRGBResidual": {
+          "angles": [
+            27,
+            30
+          ],
+          "mean": 0.009992692619562149
+        },
+        "frozenScreenImageControl": {
+          "commonOpaqueSamples": 224341,
+          "actualMeanLinearRGBResidual": 0.005919903755039386,
+          "frozenMeanLinearRGBResidual": 0.1014786658232221
+        }
+      },
+      {
+        "variant": "camera-hybrid",
+        "band": "outside +/-30 through +/-60 degrees",
+        "adjacentAnglePairs": 20,
+        "angleStepDegrees": [
+          3
+        ],
+        "acceptedCorrespondenceSamples": 271585,
+        "acceptanceFraction": 0.9707091286010436,
+        "sampleWeightedMeanLinearRGBResidual": 0.019990937386014596,
+        "worstPairMeanLinearRGBResidual": {
+          "angles": [
+            42,
+            45
+          ],
+          "mean": 0.03814949840307236
+        },
+        "frozenScreenImageControl": {
+          "commonOpaqueSamples": 147305,
+          "actualMeanLinearRGBResidual": 0.020763780894441707,
+          "frozenMeanLinearRGBResidual": 0.10202507511282528
+        }
+      }
+    ],
+    "repeatedCamera": {
+      "comparisons": 82,
+      "allRGBBytesEqual": true,
+      "allDepthBytesEqual": true,
+      "interpretation": "Independently captured repeated-camera results when comparisons exist; no repeat test is claimed for an empty set."
+    },
+    "nearFrontAnimationScope": "Head crop in an orthographic camera; does not certify full-body or perspective quality."
+  },
+  "factoryPerspective": {
+    "visualGoal": "Partial: front-face preservation improves; natural full-body rotation remains unmet.",
+    "observations": [
+      {
+        "view": "front-rgb",
+        "finding": "The generated face is visibly cleaner than the same-camera lit result; obvious facial bands in the lit view are absent."
+      },
+      {
+        "view": "orbit-right-rgb",
+        "finding": "The face remains recognizable, with frayed or striped rear hair and visible rear-limb/occlusion seams."
+      },
+      {
+        "view": "orbit-left-rgb",
+        "finding": "A visible chin/neck band and rear-leg slices remain. Natural full-body rotation is not achieved."
+      },
+      {
+        "view": "video-decoded-contact",
+        "finding": "Decoded frames show a real right-and-left orbit and return toward the front. The static captures and decoded frame contact were visually inspected."
+      }
+    ],
+    "angularScope": "The +/-30 degree orthographic head-comparison benefit is not a guarantee for full-body perspective. Here +/-30 labels are nominal OrbitControls drag angles; actual camera matrices were not available.",
+    "causalLimit": "Residual view, source and shape alignment artifacts are observed. This qualitative smoke does not uniquely attribute them to depth geometry, source RGB consistency or color selection.",
+    "video": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-H-perspective-001/factory-rgb-perspective-orbit.webm",
+      "sha256": "66216b4d827ccdaad481e25094ada08d71f3f8bff057460a9b5beb0cfd9a8ee8",
+      "codec": "vp9",
+      "dimensions": [
+        768,
+        768
+      ],
+      "decodedFrames": 54,
+      "uniqueDecodedFrames": 54,
+      "firstTimestampSeconds": 0,
+      "lastTimestampSeconds": 7.99,
+      "maximumDecodedFrameIntervalSeconds": 2.673,
+      "decodeErrors": [],
+      "reviewMethod": "All frames decoded with PyAV; nine timestamped decoded frames visually inspected. No claim of real-time playback performance."
+    },
+    "allFramesDecodedWithoutErrors": true
+  },
+  "sourceDisagreement": "Native source-head strips show a smiling front with visible teeth and more closed-mouth side expressions. This comparison alone does not prove the cause of every rendered seam.",
+  "evidence": {
+    "evaluations/H-hybrid-fine-001/summary.json": {
+      "sha256": "c3a85db99120986ce3dc64839cdf169fdbd5b7f28cbc0659733086c7784d1319"
+    },
+    "evaluations/F-hybrid-control-001/summary.json": {
+      "sha256": "69eb37dd85f5e80fa56278247619f4eb83401c2b5004961ea22a0d6e9c9489a6"
+    },
+    "factory-perspective.json": {
+      "sha256": "8fb61d787eee6118751b9ade952751ff0849d9a367ed807e7ffa4b62f7cb6d71"
+    },
+    "factory-perspective-qa.json": {
+      "sha256": "9a0630afbabfd19ccef78f55b6fdae34c7aa066ce77711f7104a7a1c1c309340"
+    },
+    "factory-perspective-video-qa.json": {
+      "sha256": "05affab3f27d6716e4c8f14a8e5d2201d0cc9611586464334d4cebad3a162751"
+    },
+    "source-projections.json": {
+      "sha256": "8fc76f45ffe7b5e5fa341eca54e466642ac1d98994cb1a625f83f5bccae59acf"
+    },
+    "media/media-provenance.json": {
+      "sha256": "b857f5f83de6f39ec6030529c88a6f29a742cd8e7da626d21eb32a2dfadeeca1"
+    },
+    "media/factory-perspective-contact.webp": {
+      "sha256": "dbc0f9f94c549bd321d7f5850d1b238553feb21dfe04e4bc66f77ef48b3c04ab"
+    },
+    "media/factory-rgb-perspective-orbit.webm": {
+      "sha256": "66216b4d827ccdaad481e25094ada08d71f3f8bff057460a9b5beb0cfd9a8ee8"
+    }
+  },
+  "originalInspectorHTMLModified": false,
+  "metricLimit": "Depth-reprojection residuals quantify color consistency on approximate mutually visible interiors, not naturalness, ghosting, or ground-truth face accuracy."
+}

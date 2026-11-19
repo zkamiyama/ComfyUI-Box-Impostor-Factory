@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "method": "manual-factory-perspective-image-review-v1",
+  "status": "reviewed-with-material-limitations",
+  "captureReport": "factory-perspective.json",
+  "videoValidation": "factory-perspective-video-qa.json",
+  "codeRevision": "44d6c9d80146250db1619e02b7bb399e039f8ac4",
+  "parallaxModuleSHA256": "c80a8938830e83110bae354645451dbcf82d2213435abcc1a947b93f2738cc76",
+  "preset": {
+    "mode": "camera-hybrid",
+    "cameraPower": 8,
+    "depthToleranceTexels": 4
+  },
+  "sourceMapsUnchanged": true,
+  "browserErrors": [],
+  "reviewedImages": [
+    {
+      "name": "front-rgb",
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-H-perspective-001/front-rgb.png",
+      "sha256": "68047b5ea85b17d94eb92158f0416cdd415fafcd86fb65a6c384dc17a2fa9591"
+    },
+    {
+      "name": "front-lit",
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-H-perspective-001/front-lit.png",
+      "sha256": "5be65ed5eec1160dddb65b7d3a7beba0a95b1c472a8c73d5418a14e52aa0d92c"
+    },
+    {
+      "name": "orbit-right-rgb",
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-H-perspective-001/orbit-right-rgb.png",
+      "sha256": "a22e791866a7680fd856d90b189ad72e39da623193c3df671e898087802f05bc"
+    },
+    {
+      "name": "orbit-left-rgb",
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-H-perspective-001/orbit-left-rgb.png",
+      "sha256": "afd996ba2aedd4054be809dbc5bd19e8943d85bd18e4181688ac2ce5f7356249"
+    }
+  ],
+  "fullBodyContact": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-H-perspective-001/factory-full-body-contact.png",
+    "sha256": "3f172216bef9e7af9f8f577fcad2b79041e17ec70ce1fb70f13ab07f3eb5908f",
+    "method": "All four complete canvas PNGs displayed side by side at uniform 50 percent scale on an alpha-composited gray background; no content retouching."
+  },
+  "observations": [
+    {
+      "view": "front-rgb",
+      "finding": "The generated face is visibly cleaner than the same-camera lit result; obvious facial bands in the lit view are absent."
+    },
+    {
+      "view": "orbit-right-rgb",
+      "finding": "The face remains recognizable, with frayed or striped rear hair and visible rear-limb/occlusion seams."
+    },
+    {
+      "view": "orbit-left-rgb",
+      "finding": "A visible chin/neck band and rear-leg slices remain. Natural full-body rotation is not achieved."
+    },
+    {
+      "view": "video-decoded-contact",
+      "finding": "Decoded frames show a real right-and-left orbit and return toward the front. The static captures and decoded frame contact were visually inspected."
+    }
+  ],
+  "interpretation": {
+    "productIntegration": "Pass: actual Factory perspective mode, RGB/lit switch and pointer-driven orbit operate without browser errors using the frozen final preset.",
+    "visualGoal": "Partial: front-face preservation improves; natural full-body rotation remains unmet.",
+    "angularScope": "The +/-30 degree orthographic head-comparison benefit is not a guarantee for full-body perspective. Here +/-30 labels are nominal OrbitControls drag angles; actual camera matrices were not available.",
+    "causalLimit": "Residual view, source and shape alignment artifacts are observed. This qualitative smoke does not uniquely attribute them to depth geometry, source RGB consistency or color selection.",
+    "lighting": "RGB mode adds no relighting. The selected hybrid still uses captured normals as view-color confidence.",
+    "performance": "This is a qualitative software-GPU UI capture. The requested 20 fps canvas stream is not evidence of sustained 20 fps rendering."
+  },
+  "video": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-H-perspective-001/factory-rgb-perspective-orbit.webm",
+    "sha256": "66216b4d827ccdaad481e25094ada08d71f3f8bff057460a9b5beb0cfd9a8ee8",
+    "codec": "vp9",
+    "dimensions": [
+      768,
+      768
+    ],
+    "decodedFrames": 54,
+    "uniqueDecodedFrames": 54,
+    "firstTimestampSeconds": 0,
+    "lastTimestampSeconds": 7.99,
+    "maximumDecodedFrameIntervalSeconds": 2.673,
+    "decodeErrors": [],
+    "reviewMethod": "All frames decoded with PyAV; nine timestamped decoded frames visually inspected. No claim of real-time playback performance."
+  },
+  "helper": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-H-perspective-001/capture_factory_rgb_perspective.mjs",
+    "sha256": "655b93acecb779715e9c2e68a20cb26d7d25d5adca4cf3630cd70a606f4ee35f",
+    "untrackedIntegrationCopyRemoved": true
+  },
+  "nextAction": "Keep RGB parallax opt-in and preserve the observed limitations. No additional shader trial is implied by this record."
+}

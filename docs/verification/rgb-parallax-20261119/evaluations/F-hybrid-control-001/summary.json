@@ -1,0 +1,687 @@
+{
+  "kind": "compact-parallax-evidence-summary-v1",
+  "fullReport": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/F-hybrid-control-001-evaluation/evaluation.json",
+  "fullReportSHA256": "8ee7688b4437f1f2b757284a6581b062e4b2bcff3a7aaa6e40be9be03211437c",
+  "sweep": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/F-hybrid-control-001/sweep.json",
+  "sweepSHA256": "53c17646050b3c240529c86bb847a1fe85e2c8a19de02a5329794b8fc95796fc",
+  "sourceAssetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "sourceManifestSHA256": "48d4630f488731650c5288d2242be6eec58a241fe760d594dcc7eb4736f67214",
+  "evaluatorSHA256": "bee621cb14ac104dee884d368721680496f68f63b7725cfeb34433f72b622dab",
+  "frontHeadFidelity": [
+    {
+      "variant": "native",
+      "reference": "nativeAtlas",
+      "region": "head",
+      "roi": [
+        463,
+        115,
+        572,
+        271
+      ],
+      "referenceOpaquePixels": 13334,
+      "candidateOpaquePixels": 13396,
+      "opaqueIntersectionPixels": 13334,
+      "erodedIntersectionPixels": 12824,
+      "erosionRadiusPixels": 2,
+      "silhouetteOpaqueIoU": 0.9953717527620185,
+      "pixels": 12824,
+      "linearRGBAbsoluteError": {
+        "mean": 0.060991331934928894,
+        "p50": 0.02555716037750244,
+        "p95": 0.2583845555782318,
+        "max": 0.831448495388031
+      },
+      "sRGB8AbsoluteError": {
+        "mean": 14.718847274780273,
+        "p50": 6.75783109664917,
+        "p95": 57.87485885620117,
+        "max": 160.46661376953125
+      },
+      "pixelsWithinOneSRGB8CodeValueAllChannels": 0.2046943231441048
+    },
+    {
+      "variant": "native",
+      "reference": "originalGeneratedPNG",
+      "region": "head",
+      "roi": [
+        463,
+        115,
+        572,
+        271
+      ],
+      "referenceOpaquePixels": 12380,
+      "candidateOpaquePixels": 13396,
+      "opaqueIntersectionPixels": 12374,
+      "erodedIntersectionPixels": 11858,
+      "erosionRadiusPixels": 2,
+      "silhouetteOpaqueIoU": 0.9232950305924489,
+      "pixels": 11858,
+      "linearRGBAbsoluteError": {
+        "mean": 0.05295167490839958,
+        "p50": 0.02273648977279663,
+        "p95": 0.21430347859859467,
+        "max": 0.8322269916534424
+      },
+      "sRGB8AbsoluteError": {
+        "mean": 13.373695373535156,
+        "p50": 6.050852298736572,
+        "p95": 51.91361618041992,
+        "max": 161.33132934570312
+      },
+      "pixelsWithinOneSRGB8CodeValueAllChannels": 0.15533816832518133
+    },
+    {
+      "variant": "camera-hybrid",
+      "reference": "nativeAtlas",
+      "region": "head",
+      "roi": [
+        463,
+        115,
+        572,
+        271
+      ],
+      "referenceOpaquePixels": 13334,
+      "candidateOpaquePixels": 13396,
+      "opaqueIntersectionPixels": 13334,
+      "erodedIntersectionPixels": 12824,
+      "erosionRadiusPixels": 2,
+      "silhouetteOpaqueIoU": 0.9953717527620185,
+      "pixels": 12824,
+      "linearRGBAbsoluteError": {
+        "mean": 0.0013015811564400792,
+        "p50": 0.000993490219116211,
+        "p95": 0.0035682260058820248,
+        "max": 0.010045647621154785
+      },
+      "sRGB8AbsoluteError": {
+        "mean": 0.3228594660758972,
+        "p50": 0.28157249093055725,
+        "p95": 0.7814797163009644,
+        "max": 2.202263116836548
+      },
+      "pixelsWithinOneSRGB8CodeValueAllChannels": 0.9601528384279476
+    },
+    {
+      "variant": "camera-hybrid",
+      "reference": "originalGeneratedPNG",
+      "region": "head",
+      "roi": [
+        463,
+        115,
+        572,
+        271
+      ],
+      "referenceOpaquePixels": 12380,
+      "candidateOpaquePixels": 13396,
+      "opaqueIntersectionPixels": 12374,
+      "erodedIntersectionPixels": 11858,
+      "erosionRadiusPixels": 2,
+      "silhouetteOpaqueIoU": 0.9232950305924489,
+      "pixels": 11858,
+      "linearRGBAbsoluteError": {
+        "mean": 0.001873763743788004,
+        "p50": 0.0013905689120292664,
+        "p95": 0.005079605616629124,
+        "max": 0.03294318914413452
+      },
+      "sRGB8AbsoluteError": {
+        "mean": 0.5523615479469299,
+        "p50": 0.3931117057800293,
+        "p95": 1.5627669095993042,
+        "max": 12.43470573425293
+      },
+      "pixelsWithinOneSRGB8CodeValueAllChannels": 0.7689323663349638
+    }
+  ],
+  "independentReferences": {
+    "nativeAtlas": {
+      "kind": "independently projected actual native +Z atlas",
+      "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "manifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/manifest.json",
+      "manifestSHA256": "48d4630f488731650c5288d2242be6eec58a241fe760d594dcc7eb4736f67214",
+      "texture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/maps/color_edited.rgba16f.bin",
+      "textureSHA256": "647ec74f534bfb8de476663261f257a1d912179a4351d4f33e9f256fc1338ece",
+      "tile": [
+        1,
+        1
+      ],
+      "nativeResolution": 1024,
+      "bakeBox": {
+        "min": [
+          -0.19968106269836425,
+          -0.52,
+          -0.18729551553726195
+        ],
+        "max": [
+          0.19968106269836425,
+          0.52,
+          0.18729551553726195
+        ]
+      },
+      "sampling": "one bilinear pass in premultiplied linear RGBA; then unpremultiply",
+      "sourcePixels": "original native atlas, increasing-V storage corrected to top-down",
+      "displayTransform": "linear RGB to sRGB only; no tone mapping of independent reference",
+      "notOriginalGeneratedPNG": true,
+      "limitation": "This is the captured asset current native atlas after its recorded source alignment/composition; not byte-identical original generated RGB. H additionally includes its recorded reprojection of frozen F sources."
+    },
+    "originalGeneratedPNG": {
+      "kind": "original generated full-body physical PNG, independently projected",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/source.png",
+      "sourceSHA256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+      "manifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/manifest.json",
+      "manifestSHA256": "48d4630f488731650c5288d2242be6eec58a241fe760d594dcc7eb4736f67214",
+      "qa": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/qa/report.json",
+      "qaSHA256": "bb6cf0dc2ecbd259e82a56e6113056378735384a8077db9a1438b2a05def405b",
+      "canvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "+Z",
+        "guideRect": [
+          315,
+          0,
+          393,
+          1024
+        ],
+        "guideInputSha256": "cbcf6b5c68a7c87f7987bd2874f124a8940aa3356f557534f9c2bb03f1e0d978",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3993621253967285,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "registration": {
+        "scale": 1.0,
+        "centerShiftYX": [
+          0.0,
+          0.0
+        ]
+      },
+      "sourceDimensions": [
+        1024,
+        1024
+      ],
+      "notNativeAlignedAtlas": true
+    }
+  },
+  "geometryComparisons": 9,
+  "allVariantAlphaAndDepthBytesEqual": true,
+  "originalNativeGeometryControl": {
+    "angleDegrees": 0,
+    "against": "original restoreBox material with native diffuseColor MRT",
+    "alphaEqual": true,
+    "depthBitEqual": true,
+    "alphaChangedPixels": 0,
+    "depthChangedPixels": 0,
+    "maxAbsDepthDelta": 0,
+    "images": {
+      "original-native": {
+        "rgbaPNG": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/F-hybrid-control-001/control-original-native-front.png",
+        "rgbaSHA256": "d0c5072b368155822239744ed8f43f32bed3fac905676eeeb774a3f5ddc70686",
+        "depthPNG": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/F-hybrid-control-001/control-original-native-front-depth-f32.png",
+        "depthRawSHA256": "3e9d87f10836e718403856659cef2a7b68544c5cc38263308856f4707e5e7093",
+        "alphaSHA256": "ef35d0e79be3ed35c816375cf3efcb0285a37f3c164bdd289e923b80c794f6d5",
+        "nonzeroAlphaPixels": 84895
+      },
+      "factory-native": {
+        "rgbaPNG": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/F-hybrid-control-001/control-factory-native-front.png",
+        "rgbaSHA256": "d0c5072b368155822239744ed8f43f32bed3fac905676eeeb774a3f5ddc70686",
+        "depthPNG": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/F-hybrid-control-001/control-factory-native-front-depth-f32.png",
+        "depthRawSHA256": "3e9d87f10836e718403856659cef2a7b68544c5cc38263308856f4707e5e7093",
+        "alphaSHA256": "ef35d0e79be3ed35c816375cf3efcb0285a37f3c164bdd289e923b80c794f6d5",
+        "nonzeroAlphaPixels": 84895
+      }
+    }
+  },
+  "repeatedCamera": {
+    "comparisons": 0,
+    "allRGBBytesEqual": null,
+    "allDepthBytesEqual": null,
+    "interpretation": "Independently captured repeated-camera results when comparisons exist; no repeat test is claimed for an empty set."
+  },
+  "motionBands": [
+    {
+      "variant": "native",
+      "band": "within +/-30 degrees",
+      "adjacentAnglePairs": 4,
+      "angleStepDegrees": [
+        15
+      ],
+      "acceptedCorrespondenceSamples": 51773,
+      "acceptanceFraction": 0.9078045273623118,
+      "sampleWeightedMeanLinearRGBResidual": 0.014899172024839905,
+      "worstPairMeanLinearRGBResidual": {
+        "angles": [
+          15,
+          30
+        ],
+        "mean": 0.016191445291042328
+      },
+      "frozenScreenImageControl": {
+        "commonOpaqueSamples": 38205,
+        "actualMeanLinearRGBResidual": 0.015394509532739357,
+        "frozenMeanLinearRGBResidual": 0.16691589920624686
+      }
+    },
+    {
+      "variant": "native",
+      "band": "outside +/-30 through +/-60 degrees",
+      "adjacentAnglePairs": 4,
+      "angleStepDegrees": [
+        15
+      ],
+      "acceptedCorrespondenceSamples": 50879,
+      "acceptanceFraction": 0.9050626156254448,
+      "sampleWeightedMeanLinearRGBResidual": 0.01589832215919587,
+      "worstPairMeanLinearRGBResidual": {
+        "angles": [
+          45,
+          60
+        ],
+        "mean": 0.020954711362719536
+      },
+      "frozenScreenImageControl": {
+        "commonOpaqueSamples": 24027,
+        "actualMeanLinearRGBResidual": 0.01787004887147744,
+        "frozenMeanLinearRGBResidual": 0.16621318829016435
+      }
+    },
+    {
+      "variant": "camera-hybrid",
+      "band": "within +/-30 degrees",
+      "adjacentAnglePairs": 4,
+      "angleStepDegrees": [
+        15
+      ],
+      "acceptedCorrespondenceSamples": 51773,
+      "acceptanceFraction": 0.9078045273623118,
+      "sampleWeightedMeanLinearRGBResidual": 0.007309533496390594,
+      "worstPairMeanLinearRGBResidual": {
+        "angles": [
+          15,
+          30
+        ],
+        "mean": 0.011146538890898228
+      },
+      "frozenScreenImageControl": {
+        "commonOpaqueSamples": 38205,
+        "actualMeanLinearRGBResidual": 0.007727097396400841,
+        "frozenMeanLinearRGBResidual": 0.18543234584359908
+      }
+    },
+    {
+      "variant": "camera-hybrid",
+      "band": "outside +/-30 through +/-60 degrees",
+      "adjacentAnglePairs": 4,
+      "angleStepDegrees": [
+        15
+      ],
+      "acceptedCorrespondenceSamples": 50879,
+      "acceptanceFraction": 0.9050626156254448,
+      "sampleWeightedMeanLinearRGBResidual": 0.07829604195062768,
+      "worstPairMeanLinearRGBResidual": {
+        "angles": [
+          45,
+          60
+        ],
+        "mean": 0.09581439197063446
+      },
+      "frozenScreenImageControl": {
+        "commonOpaqueSamples": 24027,
+        "actualMeanLinearRGBResidual": 0.07608786301911634,
+        "frozenMeanLinearRGBResidual": 0.18192159250994452
+      }
+    }
+  ],
+  "motionExampleNearFront": {
+    "variant": "camera-hybrid",
+    "region": "head",
+    "fromAngle": 0,
+    "toAngle": 15,
+    "roi": [
+      463,
+      115,
+      572,
+      271
+    ],
+    "sourceInteriorPixels": 12890,
+    "mutuallyVisiblePixels": 11566,
+    "mutuallyVisibleFractionOfSourceInterior": 0.8972847168347556,
+    "colorAfterDepthReprojection": {
+      "pixels": 11566,
+      "linearRGBAbsoluteError": {
+        "mean": 0.006178191397339106,
+        "p50": 0.00276859849691391,
+        "p95": 0.022788507863879204,
+        "max": 0.37092161178588867
+      },
+      "sRGB8AbsoluteError": {
+        "mean": 1.5649033784866333,
+        "p50": 0.7534805536270142,
+        "p95": 5.797345161437988,
+        "max": 107.6982650756836
+      },
+      "pixelsWithinOneSRGB8CodeValueAllChannels": 0.47164101677330106
+    },
+    "depthReprojectionResidualWorld": {
+      "mean": 0.0002486200063960751,
+      "p50": 0.00014515279077210476,
+      "p95": 0.0008571166446536879,
+      "max": 0.0020273699442778055
+    },
+    "projectedMotionPixels": {
+      "mean": 27.027623168104697,
+      "p50": 28.665685657819665,
+      "p95": 33.179831134211796,
+      "max": 34.08060836540233
+    },
+    "frozenFrontPixelControl": {
+      "description": "repeat the same front image at every angle; apply the same measured geometry reprojection",
+      "commonOpaquePixels": 9643,
+      "actualVariant": {
+        "pixels": 9643,
+        "linearRGBAbsoluteError": {
+          "mean": 0.006223655305802822,
+          "p50": 0.0028374940156936646,
+          "p95": 0.022683197632431984,
+          "max": 0.37092161178588867
+        },
+        "sRGB8AbsoluteError": {
+          "mean": 1.5572258234024048,
+          "p50": 0.7574361562728882,
+          "p95": 5.673810005187988,
+          "max": 107.6982650756836
+        },
+        "pixelsWithinOneSRGB8CodeValueAllChannels": 0.47111894638597945
+      },
+      "frozenFrontPixels": {
+        "pixels": 9643,
+        "linearRGBAbsoluteError": {
+          "mean": 0.188324436545372,
+          "p50": 0.13409888744354248,
+          "p95": 0.5835957527160645,
+          "max": 0.9432141184806824
+        },
+        "sRGB8AbsoluteError": {
+          "mean": 46.959877014160156,
+          "p50": 37.772117614746094,
+          "p95": 126.47520446777344,
+          "max": 220.29649353027344
+        },
+        "pixelsWithinOneSRGB8CodeValueAllChannels": 0.0
+      },
+      "notPhysicalBillboardRender": true
+    },
+    "acceptedSourceWorldBounds": [
+      [
+        -0.06231424330906079,
+        0.31028638678635423,
+        0.06830204447375365
+      ],
+      [
+        0.07644737065750756,
+        0.4965867018340618,
+        0.1671107590673131
+      ]
+    ],
+    "motionBeyondConstantZPlane": {
+      "planeWorldZ": 0.13897607306786597,
+      "pixels": 11566,
+      "motionResidualAgainstConstantZPlanePixels": {
+        "mean": 3.7278644977314976,
+        "p50": 2.739983586337246,
+        "p95": 10.406179936986263,
+        "max": 14.23673795447354
+      },
+      "interpretation": "motion implied by captured depth relative to this constant world-Z plane; does not exclude every oriented plane or establish measured ground truth"
+    },
+    "depthCorrespondenceExamples": [
+      {
+        "sourcePixelXY": [
+          463.0,
+          225.0
+        ],
+        "targetPixelXY": [
+          450.89367737653913,
+          225.0
+        ],
+        "capturedWorldXYZ": [
+          -0.06231424330906079,
+          0.3681037259390911,
+          0.06830204447375365
+        ],
+        "sourceLinearRGBA": [
+          0.13286833465099335,
+          0.10702311247587204,
+          0.07818742841482162,
+          1.0
+        ],
+        "sampledTargetLinearRGBA": [
+          0.13183395564556122,
+          0.10702041536569595,
+          0.07676438987255096,
+          1.0
+        ]
+      },
+      {
+        "sourcePixelXY": [
+          515.0,
+          224.0
+        ],
+        "targetPixelXY": [
+          491.01961262768987,
+          224.0
+        ],
+        "capturedWorldXYZ": [
+          0.004496904156323975,
+          0.3693885556980408,
+          0.11845143397989943
+        ],
+        "sourceLinearRGBA": [
+          0.7529423236846924,
+          0.32314324378967285,
+          0.1778884083032608,
+          1.0
+        ],
+        "sampledTargetLinearRGBA": [
+          0.752068281173706,
+          0.32261359691619873,
+          0.1807287633419037,
+          1.0
+        ]
+      },
+      {
+        "sourcePixelXY": [
+          485.0,
+          185.0
+        ],
+        "targetPixelXY": [
+          457.9073076004251,
+          185.0
+        ],
+        "capturedWorldXYZ": [
+          -0.034047988612167235,
+          0.41949691629707936,
+          0.13897607306786597
+        ],
+        "sourceLinearRGBA": [
+          0.23455065488815308,
+          0.10702311247587204,
+          0.06662595272064209,
+          1.0
+        ],
+        "sampledTargetLinearRGBA": [
+          0.24193662405014038,
+          0.10693980753421783,
+          0.06784211844205856,
+          1.0
+        ]
+      },
+      {
+        "sourcePixelXY": [
+          492.0,
+          174.0
+        ],
+        "targetPixelXY": [
+          462.15233868772566,
+          174.00000000000006
+        ],
+        "capturedWorldXYZ": [
+          -0.025054180299519287,
+          0.4336300436455261,
+          0.15146823513410368
+        ],
+        "sourceLinearRGBA": [
+          0.7529423236846924,
+          0.36625269055366516,
+          0.2746773660182953,
+          1.0
+        ],
+        "sampledTargetLinearRGBA": [
+          0.7402004599571228,
+          0.36625269055366516,
+          0.27113455533981323,
+          1.0
+        ]
+      },
+      {
+        "sourcePixelXY": [
+          521.0,
+          151.0
+        ],
+        "targetPixelXY": [
+          487.0131218538928,
+          151.0
+        ],
+        "capturedWorldXYZ": [
+          0.012205882710022218,
+          0.4631811281013694,
+          0.1671107590673131
+        ],
+        "sourceLinearRGBA": [
+          0.12213879823684692,
+          0.06480327993631363,
+          0.02955683320760727,
+          1.0
+        ],
+        "sampledTargetLinearRGBA": [
+          0.12026156485080719,
+          0.06340432912111282,
+          0.029841743409633636,
+          1.0
+        ]
+      }
+    ]
+  },
+  "visibilityPolicy": {
+    "opaqueAlphaAtLeast": 0.99,
+    "boundaryErosionPixels": 2,
+    "erosionStructure": "two iterations of the 3x3 four-connected cross (Manhattan distance)",
+    "targetDepthSampling": "nearest; foreground colors bilinear in premultiplied linear RGBA",
+    "worldDepthTolerance": 0.00203125,
+    "toleranceNativeLongestSpanTexels": 2.0,
+    "rejectsDepthInconsistentSamples": true,
+    "occlusionLimitation": "tolerance-based visibility, not certified; nearby distinct layers and internal depth edges can remain"
+  },
+  "cameraValidation": {
+    "framesValidated": 18,
+    "projection": "orthographic only",
+    "windowDepthConvention": "WebGL0..1 -> NDC-1..1",
+    "nearFarProjectionRowsChecked": true,
+    "rigidViewMatricesChecked": true,
+    "cameraWorldInverseCheckedWhenPresent": true,
+    "perspectiveDepthResidualImplemented": false
+  },
+  "limitations": [
+    "Native-atlas fidelity and original generated-PNG fidelity are distinct tracks.",
+    "Reference colors receive only linear-to-sRGB encoding; a different captured tone curve remains a real reported display difference.",
+    "Depth is the renderer own reconstructed geometry, not measured truth about the person.",
+    "Reprojection metrics cover mutually visible opaque interiors; excluded coverage is reported.",
+    "Visibility is approximated by captured depth within the recorded tolerance; close layers can pass near internal depth discontinuities.",
+    "Low temporal residual can hide blur or consistent errors; consistency alone does not establish natural appearance.",
+    "Curvature after motion compensation can include legitimate view-dependent appearance; it is not a ghosting score.",
+    "Frozen-front pixels are an explicit screen-image control, not a rendered physical billboard.",
+    "Montages and animation use actual saved images with a single fixed crop; they do not replace an interactive Inspector deliverable.",
+    "Band aggregation weights each accepted correspondence sample; the same world surface can appear in many adjacent pairs.",
+    "These color residuals measure consistency after approximate depth reprojection, not ghosting, naturalness, or ground-truth face accuracy."
+  ],
+  "sourceAssets": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/F-hybrid-control-001-evaluation/front-reference-nativeAtlas.png",
+      "sha256": "4c8ba879b89726fa8dfd7221e0fec475081929287a7253b5b16e9abeb6699e17",
+      "reference": "nativeAtlas"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/F-hybrid-control-001-evaluation/front-reference-originalGeneratedPNG.png",
+      "sha256": "b26499f66043e7a17737e6c71ebe300b93a0936f0b9f2781ecacf0a833f3a2bb",
+      "reference": "originalGeneratedPNG"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/F-hybrid-control-001-evaluation/parallax-contact-sheet.webp",
+      "sha256": "1844a51561e59c8383885b3069538135c314c793e0f07963c53ced5c31752dbe",
+      "kind": "fixed-crop contact sheet",
+      "anglesDegrees": [
+        -60,
+        -45,
+        -30,
+        -15,
+        0,
+        15,
+        30,
+        45,
+        60
+      ],
+      "variants": [
+        "native",
+        "camera-hybrid"
+      ],
+      "fixedCropXYXY": [
+        366,
+        115,
+        664,
+        271
+      ],
+      "nearestEnlargement": 1
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/F-hybrid-control-001-evaluation/parallax-orbit.webp",
+      "sha256": "9842a9055e31194114fc505576611f3c76f6d621ca5202c583d1fb521b785fec",
+      "kind": "animation of actual saved frames",
+      "playbackAnglesDegrees": [
+        -60,
+        -45,
+        -30,
+        -15,
+        0,
+        15,
+        30,
+        45,
+        60,
+        45,
+        30,
+        15,
+        0,
+        -15,
+        -30,
+        -45
+      ],
+      "durationMsPerFrame": 180,
+      "fixedCropXYXY": [
+        366,
+        115,
+        664,
+        271
+      ],
+      "nearestEnlargement": 1,
+      "reversePlayback": "reuses saved forward frames; does not replace the independent repeat-camera check"
+    }
+  ],
+  "summaryHelperSHA256": "9a1e6aef498dcc288ec23b123bf72d7ae28e8d243c02fe21a72e05784ff39c5a"
+}

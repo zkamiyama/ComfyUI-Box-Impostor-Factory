@@ -1,0 +1,49 @@
+{
+  "skill": "yomiyasu",
+  "version": "3.2.1",
+  "mode": "compose",
+  "stance": "説明",
+  "documentType": "article",
+  "final": "README.md",
+  "finalSHA256": "54762fbbc2465a997493b470d093a363c670f9f910da708f80740bdd8ea2462c",
+  "checksRun": [
+    "lint",
+    "material comparison",
+    "manual fact and visual-evidence review",
+    "final hash verification"
+  ],
+  "notRun": [],
+  "correctionRounds": 1,
+  "candidates": {
+    "initial": 14,
+    "final": 7,
+    "meaningRiskAutomated": 48,
+    "note": "Counts are review candidates, not quality scores."
+  },
+  "retained": {
+    "sentenceEndRepetition": {
+      "count": 5,
+      "reason": "Past-tense observations and instructions retain their factual function."
+    },
+    "longScopeComma": {
+      "count": 1,
+      "reason": "Separates the motion-evaluation scope from a long explanatory clause."
+    },
+    "negativeParallelism": {
+      "count": 1,
+      "reason": "Preserves the measured distinction between opaque RGB artifacts and enclosed alpha holes."
+    },
+    "weightDecrease": {
+      "reason": "Literal algorithm behavior is supported by the depth-confidence exponential in worker/parallax_material.mjs; not a measured before/after performance claim."
+    }
+  },
+  "factsReviewed": {
+    "numericRounding": "Front and motion tables independently matched the exact evaluation JSON; percentage and decimal rounding retained.",
+    "dates": "2026-11-19 matches the session date and named capture records.",
+    "namesAndCommands": "Repository files and CLI source verified; absolute/path/to examples are explicitly placeholders.",
+    "qualification": "Front color fidelity is distinct from novel-view naturalness. A chin band remains at-15degrees and full-body perspective rotation is unmet.",
+    "sourceReferenceDistinction": "Original F PNG and current H aligned atlas are distinct references; capture manifests and recovered Inspector subsets have separate hashes."
+  },
+  "verificationToken": "yomiyasu-check: executed via=verify run=20261119T113005Z-76aaaedd attempt=2 final=sha256:54762fbbc246 mode=compose doc_type=article checks=lint,materials meaning_risk=48 replay=skipped",
+  "runToken": "yomiyasu-check: executed via=run run=20261119T113005Z-76aaaedd attempt=2 final=sha256:54762fbbc246 mode=compose doc_type=article checks=lint,materials meaning_risk=48"
+}

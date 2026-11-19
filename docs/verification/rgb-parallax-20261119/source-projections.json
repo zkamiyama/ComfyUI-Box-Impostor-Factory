@@ -1,0 +1,241 @@
+{
+  "kind": "fixed-world-head-native-atlas-source-comparison-v1",
+  "sweep": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-hybrid-002/sweep.json",
+  "sweepSHA256": "d151f9cd0d9f67bebf0402d78a209b3cf93b07150fac9f06403cdde6fbb3e04b",
+  "manifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/manifest.json",
+  "manifestSHA256": "ae235e80807456cbe1e02aba42d1219820b03657898f3b697af7f6cfb2a6878c",
+  "nativeColorAtlas": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/maps/color_edited.rgba16f.bin",
+  "nativeColorAtlasSHA256": "294be4e4f13d8af6f8f991bf0b70923f9bbbbd7db2693e742476c896bb8834b3",
+  "assetId": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+  "headWorldBounds": [
+    [
+      -0.06190345578729607,
+      0.3100160773953314,
+      -0.024992582091377752
+    ],
+    [
+      0.07604182008052954,
+      0.51,
+      0.18067711655172314
+    ]
+  ],
+  "sourceMeaning": "Actual H native atlas after recorded alignment/reprojection of frozen F sources; not the original generated source PNG bytes.",
+  "colorEncoding": "Native premultiplied linear Float16 RGBA -> unpremultiply -> piecewise sRGB -> nearest 8-bit rounding; no tone mapping.",
+  "faces": [
+    {
+      "face": "+X",
+      "atlasTile": [
+        0,
+        0
+      ],
+      "nativeFaceResolution": 1024,
+      "nativeCropXYXY": [
+        23,
+        9,
+        580,
+        207
+      ],
+      "nativeCropPixels": [
+        557,
+        198
+      ],
+      "nativePremultipliedFloat16CropSHA256": "341495c19adaec3e345794aadf6c4f273381b4f1d5a669dbd1fc647e26d80802",
+      "worldPerNativePixelXY": [
+        0.00036968990112654863,
+        0.001015625
+      ],
+      "physicalCropSizeXY": [
+        0.2059172749274876,
+        0.20109375000000002
+      ],
+      "displayPixels": [
+        328,
+        320
+      ],
+      "resize": "nearest; only native non-square physical aspect and common display height",
+      "originalBakeViewMatrix": [
+        2.220446049250313e-16,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        2.220446049250313e-16,
+        0,
+        -6.752763421830396e-17,
+        0,
+        -0.3041174283027649,
+        1
+      ],
+      "originalBakeProjectionMatrix": [
+        5.2831440459917385,
+        0,
+        0,
+        0,
+        0,
+        1.923076923076923,
+        0,
+        0,
+        0,
+        0,
+        -3.966405681399826,
+        0,
+        0,
+        0,
+        -1.2062530954327912,
+        1
+      ],
+      "image": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-native-head-sources-001/px-native-head.png",
+      "imageSHA256": "b983e9c5ecf6d44385ac24e18f4c0096dcb88009e12e42db3ea37449981c36ed"
+    },
+    {
+      "face": "+Z",
+      "atlasTile": [
+        1,
+        1
+      ],
+      "nativeFaceResolution": 1024,
+      "nativeCropXYXY": [
+        353,
+        9,
+        707,
+        207
+      ],
+      "nativeCropPixels": [
+        354,
+        198
+      ],
+      "nativePremultipliedFloat16CropSHA256": "1d2c918f1792c4b1caadde1bb30d355b7af4dec122a1d759a6fc53fff287a2d2",
+      "worldPerNativePixelXY": [
+        0.0003908543521538376,
+        0.001015625
+      ],
+      "physicalCropSizeXY": [
+        0.1383624406624585,
+        0.20109375000000002
+      ],
+      "displayPixels": [
+        220,
+        320
+      ],
+      "resize": "nearest; only native non-square physical aspect and common display height",
+      "originalBakeViewMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -0.2932812293767929,
+        1
+      ],
+      "originalBakeProjectionMatrix": [
+        4.997066015095217,
+        0,
+        0,
+        0,
+        0,
+        1.923076923076923,
+        0,
+        0,
+        0,
+        0,
+        -4.14454121683194,
+        0,
+        0,
+        0,
+        -1.215516143275261,
+        1
+      ],
+      "image": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-native-head-sources-001/pz-native-head.png",
+      "imageSHA256": "98e33fe7e0c68526c3ed7f2608b88afd8ab8468607e78b3ea6e422ab95f53d5f"
+    },
+    {
+      "face": "-X",
+      "atlasTile": [
+        1,
+        0
+      ],
+      "nativeFaceResolution": 1024,
+      "nativeCropXYXY": [
+        444,
+        9,
+        1001,
+        207
+      ],
+      "nativeCropPixels": [
+        557,
+        198
+      ],
+      "nativePremultipliedFloat16CropSHA256": "54a20a8614e78781f2d04d942145f7bd5f4c67f3f52ef98ff8703d13b81d4116",
+      "worldPerNativePixelXY": [
+        0.00036968990112654863,
+        0.001015625
+      ],
+      "physicalCropSizeXY": [
+        0.2059172749274876,
+        0.20109375000000002
+      ],
+      "displayPixels": [
+        328,
+        320
+      ],
+      "resize": "nearest; only native non-square physical aspect and common display height",
+      "originalBakeViewMatrix": [
+        2.220446049250313e-16,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2.220446049250313e-16,
+        0,
+        6.752763421830396e-17,
+        0,
+        -0.3041174283027649,
+        1
+      ],
+      "originalBakeProjectionMatrix": [
+        5.2831440459917385,
+        0,
+        0,
+        0,
+        0,
+        1.923076923076923,
+        0,
+        0,
+        0,
+        0,
+        -3.966405681399826,
+        0,
+        0,
+        0,
+        -1.2062530954327912,
+        1
+      ],
+      "image": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-native-head-sources-001/nx-native-head.png",
+      "imageSHA256": "6aec31e21b11f8bf5fd93a0adc8b56dacf6c1e63431866dd250f38e5e70bd811"
+    }
+  ],
+  "strip": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-native-head-sources-001/native-head-source-strip.webp",
+  "stripSHA256": "77d42f57dffd04f8ce7421fd748f2d192d315e67cb1321baa28676a0633eb582",
+  "helperSHA256": "a6187cf12a6f4213db76768587856c31a34df93e1c24ddb81e610c61053d928c",
+  "evaluatorSourceSHA256": "915c57f9fedc78cf18bbaa527386f4cb0191ce08b10edfb389eb01c336935c40",
+  "interpretationLimit": "Different visible source expressions/features can explain pressure on view blending; this source comparison alone does not establish the cause of every rendered seam."
+}

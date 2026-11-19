@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "selected-opt-in",
+  "selected": {
+    "mode": "camera-hybrid",
+    "cameraPower": 8,
+    "depthToleranceTexels": 4,
+    "normalConfidenceFloor": 0.02
+  },
+  "shippingModuleSHA256": "c80a8938830e83110bae354645451dbcf82d2213435abcc1a947b93f2738cc76",
+  "comparisonModuleSHA256": "a96bbd0630f8e61398924a89e077b930e67e1c4a0abf6aa82fca93f007740065",
+  "differenceFromComparisonModule": "Only RGB_PARALLAX_PRESET selects camera-hybrid; the captured explicit hybrid algorithm is unchanged.",
+  "presentation": {
+    "factoryLabel": "RGB視差",
+    "shadingValue": "rgb",
+    "defaultShading": "lit",
+    "lightingApplied": false,
+    "normalAssistedColorSelection": true,
+    "sourceRGBRepainted": false,
+    "sourceMapsModified": false,
+    "nativeRayMarchUnchanged": true
+  },
+  "selectionBasis": {
+    "front": "Exact camera-depth and hybrid PNG equality at +Z; retains a single captured source view.",
+    "nearFront": "Controlled orthographic face appearance improves relative to native RGB mixing; ±30 is a comparison band, not an accepted naturalness range. Root also observed a chin band at -15 degrees in the actual fine-sweep animation.",
+    "yaw45": "Suppresses obvious secondary frontal-face ghost versus camera-depth, but eye/mouth and hair view seams remain.",
+    "yaw60": "Not accepted as natural face reproduction.",
+    "causeOfRemainingLimits": "Directional source RGB differs in mouth opening and hair strands; geometry/registration and view consistency are not repaired by the shading change."
+  },
+  "rejectedAlternatives": {
+    "native": "Normal-dependent global six-view mixing contaminates the front RGB.",
+    "cameraSingle": "Hard view changes and bands.",
+    "cameraBlend": "Visible duplicate/mixed faces.",
+    "cameraDepth": "Better front but frontal-face ghost inside hair around45degrees.",
+    "hybridBeforeScopeFix": "Rejected shader defect, preserved separately; corrected implementation used for selection."
+  },
+  "limits": [
+    "Evaluation range is specific to this H subject; this is not a universal angular quality guarantee.",
+    "No claim of correct360-degree reconstruction.",
+    "Actual Factory perspective UI evidence is a qualitative smoke check; exact geometry comparisons use the separately recorded orthographic sweep.",
+    "Small-angle chin artifacts remain; no nonzero angular interval is certified artifact-free."
+  ],
+  "records": {
+    "scopeFix": "tsl-rgb-scope-diagnosis.json",
+    "scopeFixVerification": "tsl-rgb-scope-verification.json",
+    "productIntegration": "integration-results.json",
+    "fixedSweep": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-hybrid-002/sweep.json"
+  }
+}

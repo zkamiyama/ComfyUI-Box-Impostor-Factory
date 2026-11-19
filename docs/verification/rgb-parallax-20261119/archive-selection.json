@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 1,
+  "selectionStatus": "frozen",
+  "selectionNote": "Root finalized all ten capture trials, their evaluations, actual media, and full Factory perspective QA. No further trials.",
+  "experimentRoot": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119",
+  "runs": [
+    {
+      "name": "H-preview-001",
+      "purpose": "failed native MRT control; preserve diagnosis",
+      "evaluations": [],
+      "additionalFiles": [
+        "H-preview-001-stdout.log"
+      ]
+    },
+    {
+      "name": "H-preview-002",
+      "purpose": "valid initial RGB/parallax comparison",
+      "evaluations": [
+        "H-preview-002-evaluation"
+      ],
+      "additionalFiles": [
+        "H-preview-002-stdout.log"
+      ]
+    },
+    {
+      "name": "H-depth-t1-001",
+      "purpose": "negative depth-tolerance parameter trial",
+      "evaluations": [
+        "H-depth-t1-001-evaluation"
+      ],
+      "additionalFiles": [
+        "H-depth-t1-001-stdout.log"
+      ]
+    },
+    {
+      "name": "H-hybrid-001",
+      "purpose": "failed angled appearance; black-speckle diagnostic context",
+      "evaluations": [
+        "H-hybrid-001-evaluation"
+      ],
+      "additionalFiles": [
+        "H-hybrid-001-stdout.log"
+      ]
+    },
+    {
+      "name": "H-hybrid-debug-001",
+      "purpose": "45-degree raw Float32 RGB and compiled shader diagnosis; no front or temporal evaluation",
+      "evaluations": [],
+      "additionalFiles": [
+        "H-hybrid-debug-001-stdout.log"
+      ]
+    },
+    {
+      "name": "H-hybrid-debug-002",
+      "purpose": "fixed GLSL scope diagnosis; raw Float32 RGB, compiled shaders, and scope-fix verification",
+      "evaluations": [],
+      "additionalFiles": [
+        "H-hybrid-debug-002-stdout.log"
+      ]
+    },
+    {
+      "name": "H-hybrid-002",
+      "purpose": "fixed hybrid nine-angle quality comparison; selection pending",
+      "evaluations": [
+        "H-hybrid-002-evaluation"
+      ],
+      "additionalFiles": [
+        "H-hybrid-002-stdout.log"
+      ]
+    },
+    {
+      "name": "H-mode-control-fixed-001",
+      "purpose": "five-mode scope-fix regression control",
+      "evaluations": [
+        "H-mode-control-fixed-001-evaluation"
+      ],
+      "additionalFiles": [
+        "H-mode-control-fixed-001-stdout.log"
+      ]
+    },
+    {
+      "name": "H-hybrid-fine-001",
+      "purpose": "selected hybrid/native 3-degree yaw sweep with independently rendered reverse traversal",
+      "evaluations": [
+        "H-hybrid-fine-001-evaluation"
+      ],
+      "additionalFiles": [
+        "H-hybrid-fine-001-stdout.log"
+      ]
+    },
+    {
+      "name": "F-hybrid-control-001",
+      "purpose": "second native asset control for selected hybrid",
+      "evaluations": [
+        "F-hybrid-control-001-evaluation"
+      ],
+      "additionalFiles": [
+        "F-hybrid-control-001-stdout.log"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "name": "F",
+      "manifestPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/manifest.json",
+      "officialInspectorRecovery": {
+        "repository": "ComfyUI-Box-Impostor-Factory",
+        "gitBranch": "verification/hi3d-depth-cycle-20261119-viewers",
+        "gitCommit": "7758dd73b28cb70a224507debb2800a08d251693",
+        "gitPath": "docs/verification/hi3d-depth-cycle-20261119/F.inspector.html.gz",
+        "gzipSHA256": "01fd51a852588da87511cb9d2b94c4bea4f5753d3c819847eba55dbfe2d6094f",
+        "htmlSHA256": "2bff2ec86f73ba5f5e011be9d306b3904a71c6a5da236b5445c2c83b9d7c3f69",
+        "recoveredInspectorManifestSHA256": "0d0f647aade499ac0069a5f5211e4f8dab65f71a0dd444d56c835e09a2b21afe",
+        "subsetSerialization": "json.dumps(embedded nativeBox.manifest, indent=2) plus newline, preserving JSON key order; this is not the full Factory capture manifest."
+      }
+    },
+    {
+      "name": "H",
+      "manifestPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/manifest.json",
+      "officialInspectorRecovery": {
+        "repository": "ComfyUI-Box-Impostor-Factory",
+        "gitBranch": "verification/hi3d-depth-cycle-20261119-viewers",
+        "gitCommit": "9459b30f58b1b3d71238c95d33d4a3f0c5e6b60d",
+        "gitPath": "docs/verification/hi3d-depth-cycle-20261119/H.inspector.html.gz",
+        "gzipSHA256": "3775a3d9d4bf81ebb3225ea1290f602b857c591d86c54d179834b8f6094e3bc9",
+        "htmlSHA256": "f3be6b7402642bc4a859812f4f19e66b8b0991ff0c30e9c556dbf912e20fb843",
+        "recoveredInspectorManifestSHA256": "38c8833d2ac6ea26aeb7c3875861a31a607a66779d10ce988a5058f8ce310316",
+        "subsetSerialization": "json.dumps(embedded nativeBox.manifest, indent=2) plus newline, preserving JSON key order; this is not the full Factory capture manifest."
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-viewer-delivery.json",
+      "archivePath": "inputs/F/official-viewer-receipt.json",
+      "role": "existing-official-viewer-byte-provenance"
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/H-viewer-delivery.json",
+      "archivePath": "inputs/H/official-viewer-receipt.json",
+      "role": "existing-official-viewer-byte-provenance"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/source.png",
+      "archivePath": "inputs/F-front/source.png",
+      "role": "original-F-generated-fullbody-front-RGBA"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/qa/report.json",
+      "archivePath": "inputs/F-front/qa-report.json",
+      "role": "original-F-registration-and-camera-QA"
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/package.json",
+      "archivePath": "dependencies/package.json",
+      "role": "repository-dependency-specification-at-archive"
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/package-lock.json",
+      "archivePath": "dependencies/package-lock.json",
+      "role": "repository-dependency-specification-at-archive"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/harness/worker/chromium.mjs",
+      "archivePath": "dependencies/worker/chromium.mjs",
+      "role": "capture-browser-support-source"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/transfer-proof-hybrid-001.json",
+      "archivePath": "transfers/transfer-proof-hybrid-001.json",
+      "role": "source-transfer-receipt"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/harness/scripts/compare_parallax_tolerances.py",
+      "archivePath": "tools/compare_parallax_tolerances.py",
+      "role": "tolerance-contact-sheet-helper"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/harness/transfer-proof.json",
+      "archivePath": "transfers/transfer-proof.json",
+      "role": "initial-source-transfer-receipt"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-native-head-sources-001/native-head-source-strip.webp",
+      "archivePath": "source-comparison/native-head-source-strip.webp",
+      "role": "registered-native-atlas-head-source-comparison"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-native-head-sources-001/px-native-head.png",
+      "archivePath": "source-comparison/px-native-head.png",
+      "role": "registered-native-atlas-head-source-comparison"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-native-head-sources-001/pz-native-head.png",
+      "archivePath": "source-comparison/pz-native-head.png",
+      "role": "registered-native-atlas-head-source-comparison"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-native-head-sources-001/nx-native-head.png",
+      "archivePath": "source-comparison/nx-native-head.png",
+      "role": "registered-native-atlas-head-source-comparison"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-native-head-sources-001/source-projections.json",
+      "archivePath": "source-comparison/source-projections.json",
+      "role": "registered-native-atlas-head-source-comparison"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-native-head-sources-001/source-comparison-helper.py",
+      "archivePath": "source-comparison/source-comparison-helper.py",
+      "role": "registered-native-atlas-head-source-comparison"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-native-head-sources-001/evaluator-source.py",
+      "archivePath": "source-comparison/evaluator-source.py",
+      "role": "registered-native-atlas-head-source-comparison"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/capture-final-validation.json",
+      "archivePath": "validation/capture-final-validation.json",
+      "role": "independent-final-capture-and-reverse-byte-validation",
+      "sha256": "5f5b25ded74fc806b92c304ad9c22568389979f2485effd1cfa4d6685700aece"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/harness/scripts/summarize_parallax_evaluation.py",
+      "archivePath": "tools/summarize_parallax_evaluation.py",
+      "role": "compact-evidence-summary-helper"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/final-review-001/final-assessment.json",
+      "archivePath": "review/final-assessment.json",
+      "role": "qualified-final-visual-assessment",
+      "sha256": "00d5ce20bde43e30b025837c1fd9ea295b4e5ed835edd9a25fb91b40b5c2c29c"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-asrun-sources-44d6c9d/source-snapshot-provenance.json",
+      "archivePath": "sources/factory44-source-snapshot-provenance.json",
+      "role": "exact-Factory-as-run-source-extraction-provenance"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/harness/tests/test_parallax_evaluation.py",
+      "archivePath": "tests/test_parallax_evaluation.py",
+      "role": "focused-evaluation-or-archive-fixtures"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/harness/tests/test_parallax_archive.py",
+      "archivePath": "tests/test_parallax_archive.py",
+      "role": "focused-evaluation-or-archive-fixtures"
+    }
+  ],
+  "sourceOrigins": {
+    "142ca9d3f1806dc2f6ea3df5ee41b3660d3c0bda48eaf1a585b7a84dffff04fa": "Reconstructed from saved 29b4009b harness by reversing only the MRT output-name/control-artifact patch; accepted only after exact match to the original recorded SHA256.",
+    "1c1fe0b7f56752a75c21721a29331293eb2003624c95c56fb53bb0929a250602": "Bytes additionally verified against recorded Factory QA git revision 44d6c9d80146250db1619e02b7bb399e039f8ac4:worker/runtime.mjs",
+    "c80a8938830e83110bae354645451dbcf82d2213435abcc1a947b93f2738cc76": "Bytes additionally verified against recorded Factory QA git revision 44d6c9d80146250db1619e02b7bb399e039f8ac4:worker/parallax_material.mjs",
+    "6fe4b235c8677c0fb023517647064f239f51e7e1940d250c7e0016e0a8ba0789": "Bytes additionally verified against recorded Factory QA git revision 44d6c9d80146250db1619e02b7bb399e039f8ac4:web/viewer.html",
+    "2c4a8cf5eb6be821d37450f005224832208089835044be45d03958423acb7679": "Bytes additionally verified against recorded Factory QA git revision 44d6c9d80146250db1619e02b7bb399e039f8ac4:web/viewer.mjs",
+    "2242675cad353095070100764f550acd172290ff7956c0e6588e5a89904da82c": "Bytes additionally verified against recorded Factory QA git revision 44d6c9d80146250db1619e02b7bb399e039f8ac4:web/asset_io.mjs"
+  },
+  "recoverySupplement": {
+    "captureSourceRestoration": "For the chosen run, copy each captureSourceMapping archivePath into a clean harness at its relativeSource path. Restore dependencies/worker/chromium.mjs as worker/chromium.mjs and dependencies/package*.json at the harness root. Install the pinned dependencies before the recorded capture command.",
+    "selection": "Original failed and negative runs are retained with explicit purposes; capture completion does not imply visual acceptance."
+  },
+  "evidenceDirectories": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/final-review-001/media",
+      "archivePath": "review/media",
+      "role": "final-actual-traversal-review-media-and-provenance"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-H-perspective-001",
+      "archivePath": "factory-perspective",
+      "role": "actual-full-body-Factory-perspective-capture-including-original-WebM"
+    }
+  ],
+  "qualityStatus": {
+    "overallVisualGoal": "not achieved",
+    "orthographicMinus30ToPlus30": "aggregate improvement comparison band only; not a certified acceptable viewing range",
+    "withinBandObservedFailure": "chin band at orthographic -15 degrees",
+    "fullBodyPerspective": "natural rotation remains unmet; chin/neck, rear-hair, and rear-leg seams remain",
+    "factoryCameraAngleMeaning": "nominal pointer-drag labels; actual camera matrices unavailable"
+  },
+  "additionalCaptureReports": [
+    {
+      "name": "factory-H-perspective-001",
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-H-perspective-001/factory-perspective.json"
+    }
+  ],
+  "sourceOverrides": {
+    "655b93acecb779715e9c2e68a20cb26d7d25d5adca4cf3630cd70a606f4ee35f": [
+      "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-H-perspective-001/capture_factory_rgb_perspective.mjs"
+    ],
+    "1c1fe0b7f56752a75c21721a29331293eb2003624c95c56fb53bb0929a250602": [
+      "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-asrun-sources-44d6c9d/worker/runtime.mjs"
+    ],
+    "c80a8938830e83110bae354645451dbcf82d2213435abcc1a947b93f2738cc76": [
+      "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-asrun-sources-44d6c9d/worker/parallax_material.mjs"
+    ],
+    "6fe4b235c8677c0fb023517647064f239f51e7e1940d250c7e0016e0a8ba0789": [
+      "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-asrun-sources-44d6c9d/web/viewer.html"
+    ],
+    "2c4a8cf5eb6be821d37450f005224832208089835044be45d03958423acb7679": [
+      "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-asrun-sources-44d6c9d/web/viewer.mjs"
+    ],
+    "2242675cad353095070100764f550acd172290ff7956c0e6588e5a89904da82c": [
+      "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/factory-asrun-sources-44d6c9d/web/asset_io.mjs"
+    ]
+  }
+}

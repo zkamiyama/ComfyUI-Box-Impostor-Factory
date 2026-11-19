@@ -17,12 +17,13 @@ const {positionals,values}=parseArgs({allowPositionals:true,options:{
   modes:{type:'string',default:'native,camera-single,camera-blend,camera-depth'},
   'camera-power':{type:'string',default:'8'},'depth-tolerance':{type:'string',default:'4'},
   'allow-geometry-mismatch':{type:'boolean',default:false},
+  'raw-debug':{type:'boolean',default:false},
 }});
 assert(positionals.length===2&&values.camera,'Expected ASSET_DIR OUT --camera PROOF.json');
 const [assetRoot,out]=positionals.map(p=>resolve(p));
 const size=Number(values.size),yaws=values.yaws.split(',').map(Number),modes=values.modes.split(',');
 assert(Number.isInteger(size)&&size>=64&&size<=4096&&yaws.length&&yaws.every(Number.isFinite));
-assert(new Set(modes).size===modes.length&&modes.every(x=>['native','camera-single','camera-blend','camera-depth'].includes(x)));
+assert(new Set(modes).size===modes.length&&modes.every(x=>['native','camera-single','camera-blend','camera-depth','camera-hybrid'].includes(x)));
 const sequence=values.reverse?[...yaws,...yaws.slice().reverse()]:yaws;
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const cameraBytes=await readFile(resolve(values.camera)),proof=JSON.parse(cameraBytes);
@@ -62,7 +63,9 @@ const report={schemaVersion:1,method:'native-box-unlit-parallax-sweep-v1',status
   outputEncoding:'Piecewise linear-sRGB to sRGB, rounded to nearest8bit, no lighting/tone curve/sharpening; straightRGBA.',
   depthEncoding:'WebGL window0..1; one IEEE754 Float32 little-endian value per pixel, packed byte-for-byte into rawRGBA8 PNG; top-to-bottom.',
   depthPNGWarning:'Data image: decode RGBA bytes directly and reinterpret as little-endian Float32; do not composite or color-convert.',
-  sourceFilesSHA256:sourceFiles,anglesDegrees:sequence,modes,frames:[],errors:[],originalInspectorHTMLModified:false,
+  sourceFilesSHA256:sourceFiles,anglesDegrees:sequence,forwardAngleCount:yaws.length,reverseCaptured:values.reverse,
+  reversePolicy:'Every forward/reverse variant is rendered and read back independently, including zero yaw; identical depth storage is deduplicated only after hashing.',
+  modes,frames:[],errors:[],originalInspectorHTMLModified:false,
   argv:process.argv.slice(2),scriptSHA256:sourceFiles['scripts/capture_parallax_sweep.mjs']};
 const saveReport=()=>writeFile(join(out,'sweep.json'),JSON.stringify(report,null,2)+'\n');
 await saveReport();
@@ -75,7 +78,7 @@ try{
   const page=await browser.newPage({viewport:{width:size,height:size},deviceScaleFactor:1});
   page.on('pageerror',e=>report.errors.push('page: '+e.message));
   page.on('console',m=>{if(m.type()==='error')report.errors.push('console: '+m.text());});
-  await page.exposeFunction('saveSweepFrame',async(entry,rgba64,depth64)=>{
+  await page.exposeFunction('saveSweepFrame',async(entry,rgba64,depth64,rawRGBA64)=>{
     const rgba=Buffer.from(rgba64,'base64'),depth=Buffer.from(depth64,'base64');
     assert.equal(rgba.length,size*size*4);assert.equal(depth.length,size*size*4);
     const alpha=Buffer.alloc(size*size);for(let i=0;i<alpha.length;i++)alpha[i]=rgba[4*i+3];
@@ -85,8 +88,19 @@ try{
     const roi=entry.headROI,face=pngRGBA(cropRGBA(rgba,roi),roi[2]-roi[0],roi[3]-roi[1]);await writeFile(facePNG,face);
     const depthRawSHA256=sha(depth);let depthPNG=depths.get(depthRawSHA256);
     if(!depthPNG){depthPNG=join(out,stem+'-depth-f32.png');await writeFile(depthPNG,pngRGBA(depth,size,size));depths.set(depthRawSHA256,depthPNG);}
-    report.frames.push({...entry,rgbaPNG,rgbaSHA256:sha(encoded),alphaSHA256:sha(alpha),facePNG,faceSHA256:sha(face),depthPNG,depthRawSHA256});
+    let rawFloatRGBA;
+    if(rawRGBA64){const raw=Buffer.from(rawRGBA64,'base64');assert.equal(raw.length,size*size*16);
+      const path=join(out,stem+'-raw-rgba32f.png');await writeFile(path,pngRGBA(raw,size*4,size));
+      rawFloatRGBA={path,rawSHA256:sha(raw),pngWidth:size*4,pngHeight:size,logicalWidth:size,logicalHeight:size,channels:4,
+        encoding:'RGBA Float32 little-endian; raw16bytes per logical pixel packed into four successive RGBA8 PNG pixels, top-to-bottom; no color conversion.'};}
+    report.frames.push({...entry,rgbaPNG,rgbaSHA256:sha(encoded),alphaSHA256:sha(alpha),facePNG,faceSHA256:sha(face),depthPNG,depthRawSHA256,rawFloatRGBA});
     await saveReport();console.log('FRAME',entry.sequenceIndex,entry.variant,entry.angleDegrees,facePNG);
+    if(values['raw-debug'])console.log('RAW',entry.variant,JSON.stringify(entry.rawRGBStatistics));
+  });
+  await page.exposeFunction('saveShaderSources',async sources=>{report.compiledFragmentShaders=[];
+    for(let i=0;i<sources.length;i++){assert.equal(typeof sources[i],'string');const path=join(out,'compiled-fragment-'+String(i).padStart(2,'0')+'.glsl');
+      await writeFile(path,sources[i]);report.compiledFragmentShaders.push({path,sha256:sha(Buffer.from(sources[i])),bytes:Buffer.byteLength(sources[i])});}
+    await saveReport();
   });
   await page.exposeFunction('saveSweepControl',async(data,original64,originalDepth64,native64,nativeDepth64)=>{
     const images={};
@@ -105,7 +119,7 @@ try{
       encoding:'Stored linear premultiplied atlas unpremultiplied, rows flipped to PNG, same piecewise sRGB output curve; no camera reprojection.'};await saveReport();
   });
   await page.goto(server.origin+'/bridge');
-  const result=await page.evaluate(async({proof,size,sequence,modes,options,allowMismatch})=>{
+  const result=await page.evaluate(async({proof,size,sequence,forwardAngleCount,modes,options,allowMismatch,rawDebug})=>{
     const T=await import('three/webgpu'),N=await import('three/tsl');
     const {restoreBox}=await import('/worker/runtime.mjs');
     const {FACES}=await import('/worker/codec.mjs');
@@ -139,6 +153,12 @@ try{
     const setYaw=degrees=>{const angle=degrees*Math.PI/180,direction=new T.Vector3(Math.sin(angle),0,Math.cos(angle));camera.position.copy(target).addScaledVector(direction,c.distance);camera.up.set(0,1,0);camera.lookAt(target);camera.updateMatrixWorld();camera.updateProjectionMatrix();return direction.toArray();};
     const roi=()=>{const points=[];for(let x=0;x<2;x++)for(let y=0;y<2;y++)for(let z=0;z<2;z++)points.push(new T.Vector3(proof.headWorldBounds[x][0],proof.headWorldBounds[y][1],proof.headWorldBounds[z][2]).project(camera));
       const xs=points.map(p=>(p.x+1)*size/2),ys=points.map(p=>(1-p.y)*size/2);return[Math.max(0,Math.floor(Math.min(...xs))),Math.max(0,Math.floor(Math.min(...ys))),Math.min(size,Math.ceil(Math.max(...xs))),Math.min(size,Math.ceil(Math.max(...ys)))];};
+    const rawStatistics=color=>{const counts={coveredPixels:0,nonFiniteRGBPixels:0,nanRGBValues:0,positiveInfinityRGBValues:0,negativeInfinityRGBValues:0,negativeRGBValues:0,aboveOneRGBValues:0,nonFiniteAlphaPixels:0};
+      let minimum=Infinity,maximum=-Infinity;const samples=[];
+      for(let i=0;i<color.length;i+=4){if(!Number.isFinite(color[i+3]))counts.nonFiniteAlphaPixels++;if(!(color[i+3]>.5))continue;counts.coveredPixels++;let invalid=false;
+        for(let k=0;k<3;k++){const v=color[i+k];if(Number.isNaN(v)){counts.nanRGBValues++;invalid=true;}else if(v===Infinity){counts.positiveInfinityRGBValues++;invalid=true;}else if(v===-Infinity){counts.negativeInfinityRGBValues++;invalid=true;}else{minimum=Math.min(minimum,v);maximum=Math.max(maximum,v);if(v<0)counts.negativeRGBValues++;if(v>1)counts.aboveOneRGBValues++;}}
+        if(invalid){counts.nonFiniteRGBPixels++;if(samples.length<16)samples.push({x:(i/4)%size,y:Math.floor(i/4/size),rgba:Array.from(color.subarray(i,i+4),v=>Number.isFinite(v)?v:String(v))});}}
+      return{...counts,finiteRGBMinimum:Number.isFinite(minimum)?minimum:null,finiteRGBMaximum:Number.isFinite(maximum)?maximum:null,nonFiniteSamples:samples,mask:'raw linear alpha >0.5; counts measured before sRGB/clamp/Uint8 encoding'};};
     const capture=async(material,mrt=null)=>{
       restored.mesh.material=material;renderer.setMRT(mrt);renderer.setRenderTarget(colorTarget);renderer.clear();renderer.render(scene,camera);
       const raw=await renderer.readRenderTargetPixelsAsync(colorTarget,0,0,size,size);if(!(raw instanceof Float32Array))throw Error('Expected Float32 color readback');
@@ -146,7 +166,7 @@ try{
       renderer.setMRT(null);renderer.setRenderTarget(depthTarget);quad.render(renderer);
       const d=await renderer.readRenderTargetPixelsAsync(depthTarget,0,0,size,size),depth=new Float32Array(size*size);
       for(let y=0;y<size;y++)for(let x=0;x<size;x++)depth[(size-1-y)*size+x]=d[(y*size+x)*4];
-      return{color,depth,rgba:frameRGBA(color)};
+      return{color,depth,rgba:frameRGBA(color),rawRGBStatistics:rawStatistics(color)};
     };
     const equal=(a,b)=>{let alphaChangedPixels=0,depthChangedPixels=0,maxAbsDepthDelta=0;const aa=new Uint32Array(a.depth.buffer),bb=new Uint32Array(b.depth.buffer);
       for(let i=0;i<aa.length;i++){if(a.rgba[4*i+3]!==b.rgba[4*i+3])alphaChangedPixels++;if(aa[i]!==bb[i])depthChangedPixels++;maxAbsDepthDelta=Math.max(maxAbsDepthDelta,Math.abs(a.depth[i]-b.depth[i]));}
@@ -163,27 +183,34 @@ try{
       await window.saveSweepControl(nativeGeometryControl,b64(control.rgba),b64(control.depth),b64(nativeControl.rgba),b64(nativeControl.depth));
       for(let index=0;index<sequence.length;index++){
         const angleDegrees=sequence[index],direction=setYaw(angleDegrees),headROI=roi();
-        const baseline=angleDegrees===0?nativeControl:await capture(materials.native);
+        // Re-render even zero yaw; reverse-pass evidence must never replay a control frame.
+        const baseline=await capture(materials.native);
         let mismatched=!nativeGeometryControl.alphaEqual||!nativeGeometryControl.depthBitEqual;
         for(const variant of modes){
           const frame=variant==='native'?baseline:await capture(materials[variant]);
           const geometryEquality=equal(baseline,frame);mismatched ||= !geometryEquality.alphaEqual||!geometryEquality.depthBitEqual;
           if(!frame.rgba.some((v,i)=>i%4===3&&v>0))throw Error('Empty rendered frame: '+variant);
-          await window.saveSweepFrame({variant,angleDegrees,sequenceIndex:index,direction,headROI,near,far,
+          await window.saveSweepFrame({variant,angleDegrees,sequenceIndex:index,
+            traversal:index<forwardAngleCount?'forward':'reverse',traversalIndex:index<forwardAngleCount?index:index-forwardAngleCount,
+            independentlyRendered:true,direction,headROI,near,far,
             viewMatrix:camera.matrixWorldInverse.toArray(),projectionMatrix:camera.projectionMatrix.toArray(),cameraWorldMatrix:camera.matrixWorld.toArray(),
-            cameraPosition:camera.position.toArray(),cameraTarget:target.toArray(),materialOptions:materials[variant].parallaxOptions,geometryEquality},b64(frame.rgba),b64(frame.depth));
+            cameraPosition:camera.position.toArray(),cameraTarget:target.toArray(),materialOptions:materials[variant].parallaxOptions,geometryEquality,
+            rawRGBStatistics:frame.rawRGBStatistics},b64(frame.rgba),b64(frame.depth),rawDebug?b64(frame.color):null);
         }
         if(mismatched&&!allowMismatch)throw Error('Native geometry equality failed; saved first-angle diagnostic frames');
       }
+      if(rawDebug){const stages=renderer._pipelines?.programs?.fragment;if(!(stages instanceof Map))throw Error('Fragment shader registry unavailable');
+        await window.saveShaderSources([...stages.values()].map(stage=>stage.code));}
       return{backend:backendName(renderer),adapter,hardwareGPUUsed:adapter?!/SwiftShader|llvmpipe/i.test(adapter):null,
         rayStepLimit:original.steps,camera:{projection:'orthographic',target:target.toArray(),distance:c.distance,halfExtent:span,near,far,pixels:[size,size]},
         geometryEqualityPassed:nativeGeometryControl.alphaEqual&&nativeGeometryControl.depthBitEqual};
     }finally{restored.mesh.material=original;for(const m of Object.values(materials))m.dispose();restored.dispose();colorTarget.dispose();depthTarget.dispose();depthMaterial.dispose();await renderer.dispose();}
-  },{proof,size,sequence,modes,options:{cameraPower:Number(values['camera-power']),depthToleranceTexels:Number(values['depth-tolerance'])},allowMismatch:values['allow-geometry-mismatch']});
+  },{proof,size,sequence,forwardAngleCount:yaws.length,modes,options:{cameraPower:Number(values['camera-power']),depthToleranceTexels:Number(values['depth-tolerance'])},allowMismatch:values['allow-geometry-mismatch'],rawDebug:values['raw-debug']});
   Object.assign(report,result);
   assert.equal(report.errors.length,0,report.errors.join('\n'));
   for(const [relative,digest] of Object.entries(sourceFiles))assert.equal(sha(await readFile(new URL('../'+relative,import.meta.url))),digest,'Source changed during capture: '+relative);
   report.geometryEqualityPassed &&= report.frames.every(f=>f.geometryEquality.alphaEqual&&f.geometryEquality.depthBitEqual);
+  report.frameCount=report.frames.length;assert.equal(report.frameCount,sequence.length*modes.length);
   report.status='complete';await saveReport();console.log('DONE',join(out,'sweep.json'));
 }catch(error){report.status='failed';report.error=String(error.stack??error);await saveReport();throw error;}
 finally{await browser?.close();await server.close();}

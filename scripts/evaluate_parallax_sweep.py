@@ -2,8 +2,9 @@
 """Evaluate saved Box orbit captures without modifying models or Inspector HTML.
 
 Front references come from the actual source atlas, independently of every
-rendering variant. Motion comparisons reproject captured depth and exclude
-occlusion; their residuals measure consistency, not ground-truth facial accuracy.
+rendering variant. Motion comparisons reproject captured depth and filter samples
+using approximate visibility; their residuals measure consistency, not ground-truth
+facial accuracy.
 PNG depth containers hold raw little-endian Float32 bytes in their RGBA channels.
 """
 import argparse
@@ -33,6 +34,26 @@ def matrix(values):
     if not np.isfinite(result).all():
         raise ValueError('Non-finite camera matrix.')
     return result
+
+
+def validate_orthographic_camera(frame):
+    """Reject conventions for which linear window-depth visibility is invalid."""
+    projection, view = matrix(frame['projectionMatrix']), matrix(frame['viewMatrix'])
+    near, far = frame['near'], frame['far']
+    if not np.isfinite([near, far]).all() or not far > near > 0:
+        raise ValueError('Invalid camera depth range.')
+    if not np.allclose(projection[3], [0, 0, 0, 1], rtol=0, atol=1e-12):
+        raise ValueError('Depth residual currently supports orthographic cameras only.')
+    expected_z = [0, 0, -2 / (far - near), -(far + near) / (far - near)]
+    if not np.allclose(projection[2], expected_z, rtol=1e-12, atol=1e-12):
+        raise ValueError('Projection depth convention differs from WebGL near/far metadata.')
+    if (not np.allclose(view[3], [0, 0, 0, 1], rtol=0, atol=1e-12)
+            or not np.allclose(view[:3, :3] @ view[:3, :3].T, np.eye(3), rtol=0, atol=1e-10)
+            or not np.isclose(np.linalg.det(view[:3, :3]), 1., rtol=0, atol=1e-10)):
+        raise ValueError('Camera view transform is not a proper rigid world-to-view transform.')
+    if ('cameraWorldMatrix' in frame
+            and not np.allclose(matrix(frame['cameraWorldMatrix']) @ view, np.eye(4), rtol=0, atol=1e-10)):
+        raise ValueError('Recorded camera world and view matrices are not inverses.')
 
 
 def srgb_to_linear(rgb):
@@ -173,7 +194,7 @@ def native_atlas_reference(sweep, root, frame, width, height):
         'sourcePixels': 'original native atlas, increasing-V storage corrected to top-down',
         'displayTransform': 'linear RGB to sRGB only; no tone mapping of independent reference',
         'notOriginalGeneratedPNG': True,
-        'limitation': 'H atlas contains its recorded alignment/reprojection of frozen F sources; not byte-identical original RGB',
+        'limitation': 'This is the captured asset current native atlas after its recorded source alignment/composition; not byte-identical original generated RGB. H additionally includes its recorded reprojection of frozen F sources.',
     }, manifest
 
 
@@ -246,6 +267,8 @@ def motion_metrics(a, b, roi, width, height, tolerance_world, frozen):
         'notPhysicalBillboardRender': True,
     }
     if valid.any():
+        result['acceptedSourceWorldBounds'] = [c['world'][valid].min(axis=0).tolist(),
+                                                c['world'][valid].max(axis=0).tolist()]
         # A constant world-Z plane is an explicitly labeled planar-motion control.
         plane_z = float(np.median(c['world'][..., 2][valid]))
         near = unproject(a, c['x'], c['y'], np.zeros_like(c['x']), width, height)
@@ -369,7 +392,7 @@ def image_assets(frames, output, references, display_variants=None, display_max_
         return 'native weights / unlit' if variant == 'native' else variant
 
     assets = []
-    display_angles = [angles[i] for i in np.unique(np.linspace(0, len(angles) - 1, min(7, len(angles))).astype(int))]
+    display_angles = [angles[i] for i in np.unique(np.linspace(0, len(angles) - 1, min(9, len(angles))).astype(int))]
     board = Image.new('RGB', (len(display_angles) * (size[0] + 12) + 12,
                               len(variants) * (size[1] + 40) + 55), background)
     draw = ImageDraw.Draw(board)
@@ -429,8 +452,7 @@ def evaluate(sweep_path, output, original_paths=None, tolerance_texels=2., displ
         opaque = f['_rgba'][..., 3] > 127
         if not np.isfinite(f['_depth'][opaque]).all():
             raise ValueError('Non-finite depth under visible rendered pixels.')
-        if not f['far'] > f['near'] > 0:
-            raise ValueError('Invalid camera depth range.')
+        validate_orthographic_camera(f)
         roi = f['headROI']
         if len(roi) != 4 or not (0 <= roi[0] < roi[2] <= width and 0 <= roi[1] < roi[3] <= height):
             raise ValueError('Invalid head ROI.')
@@ -448,6 +470,11 @@ def evaluate(sweep_path, output, original_paths=None, tolerance_texels=2., displ
     if original_paths:
         references['originalGeneratedPNG'] = original_png_reference(original_paths, fronts[0], width, height)
     output.mkdir(parents=True, exist_ok=True)
+    snapshot = output / 'evaluator-source.py'
+    code = Path(__file__).read_bytes()
+    if snapshot.exists() and snapshot.read_bytes() != code:
+        raise ValueError('This output contains another evaluator version; choose a fresh evaluation directory.')
+    snapshot.write_bytes(code)
     reference_artifacts = []
     for name, (rgba, proof) in references.items():
         path = output / ('front-reference-' + name + '.png')
@@ -496,6 +523,7 @@ def evaluate(sweep_path, output, original_paths=None, tolerance_texels=2., displ
         'method': METHOD, 'sweep': str(sweep_path), 'sweepSHA256': sha(sweep_path),
         'captureStatus': sweep.get('status'), 'captureError': sweep.get('error'),
         'evaluator': str(Path(__file__).resolve()), 'evaluatorSHA256': sha(__file__),
+        'evaluatorSnapshot': str(snapshot), 'evaluatorSnapshotSHA256': sha(snapshot),
         'inputFrameFileSHA256': input_files, 'source': sweep['source'],
         'display': {k: sweep.get(k) for k in ('outputColorSpace', 'toneMapping', 'exposure', 'depthEncoding')},
         'references': {name: proof for name, (rgba, proof) in references.items()},
@@ -503,16 +531,24 @@ def evaluate(sweep_path, output, original_paths=None, tolerance_texels=2., displ
         'originalNativeGeometryControl': sweep.get('nativeGeometryControl'),
         'depthReprojectedMotion': motions, 'motionCompensatedCurvature': curves,
         'repeatedCameraStability': repeats(frames),
+        'cameraValidation': {'framesValidated': len(frames), 'projection': 'orthographic only',
+                             'windowDepthConvention': 'WebGL0..1 -> NDC-1..1',
+                             'nearFarProjectionRowsChecked': True, 'rigidViewMatricesChecked': True,
+                             'cameraWorldInverseCheckedWhenPresent': True,
+                             'perspectiveDepthResidualImplemented': False},
         'visibilityPolicy': {'opaqueAlphaAtLeast': .99, 'boundaryErosionPixels': 2,
+                             'erosionStructure': 'two iterations of the 3x3 four-connected cross (Manhattan distance)',
                              'targetDepthSampling': 'nearest; foreground colors bilinear in premultiplied linear RGBA',
                              'worldDepthTolerance': tolerance, 'toleranceNativeLongestSpanTexels': tolerance_texels,
-                             'excludesOcclusionAndDisocclusion': True},
+                             'rejectsDepthInconsistentSamples': True,
+                             'occlusionLimitation': 'tolerance-based visibility, not certified; nearby distinct layers and internal depth edges can remain'},
         'assets': assets, 'originalInspectorHTMLModified': False,
         'limitations': [
             'Native-atlas fidelity and original generated-PNG fidelity are distinct tracks.',
             'Reference colors receive only linear-to-sRGB encoding; a different captured tone curve remains a real reported display difference.',
             'Depth is the renderer own reconstructed geometry, not measured truth about the person.',
             'Reprojection metrics cover mutually visible opaque interiors; excluded coverage is reported.',
+            'Visibility is approximated by captured depth within the recorded tolerance; close layers can pass near internal depth discontinuities.',
             'Low temporal residual can hide blur or consistent errors; consistency alone does not establish natural appearance.',
             'Curvature after motion compensation can include legitimate view-dependent appearance; it is not a ghosting score.',
             'Frozen-front pixels are an explicit screen-image control, not a rendered physical billboard.',

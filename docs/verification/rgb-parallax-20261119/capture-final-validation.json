@@ -1,0 +1,581 @@
+{
+  "schemaVersion": 1,
+  "method": "capture metadata and image hash validation; no new render",
+  "runs": {
+    "H-mode-control-fixed-001": {
+      "status": "complete",
+      "sweepSHA256": "051f533874bcb7e3492e8bacbb95ea7aa124abfc56b5ea915c9efb7dbd3779a2",
+      "frameCount": 25,
+      "cameraPositionCount": 5,
+      "distinctAngles": [
+        -45,
+        -30,
+        0,
+        30,
+        45
+      ],
+      "variants": [
+        "camera-blend",
+        "camera-depth",
+        "camera-hybrid",
+        "camera-single",
+        "native"
+      ],
+      "geometryEqualFrameCount": 25,
+      "geometryEqualityPassed": true,
+      "nativeControl": {
+        "alphaEqual": true,
+        "depthBitEqual": true,
+        "rgbaPNGEqual": true,
+        "originalNonzeroAlphaPixels": 84778
+      },
+      "sourceFilesSHA256": {
+        "scripts/capture_parallax_sweep.mjs": "adee18b44364c37326eab69611d9755e971066bdd80945bf888ac938b84e506d",
+        "worker/parallax_material.mjs": "a96bbd0630f8e61398924a89e077b930e67e1c4a0abf6aa82fca93f007740065",
+        "worker/runtime.mjs": "1c1fe0b7f56752a75c21721a29331293eb2003624c95c56fb53bb0929a250602",
+        "worker/codec.mjs": "535b755286373b4af8c79345b7337a7bea5097459f6753a6e1ad20bd3d17f705",
+        "worker/server.mjs": "d6a5bbfabb14580a7735d698c2dcc97720f73138da8227f4ffe5f134ac377b61",
+        "web/asset_io.mjs": "2242675cad353095070100764f550acd172290ff7956c0e6588e5a89904da82c"
+      },
+      "camera": {
+        "projection": "orthographic",
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "distance": 1.8073808642855147,
+        "halfExtent": 0.65783283658225,
+        "near": 0.0005876666886430749,
+        "far": 70.52000263716899,
+        "pixels": [
+          1024,
+          1024
+        ]
+      },
+      "cameraReferenceSHA256": "e3f68d22913799e488434e1f4ceeb0dd3facf203bbf1a668906410457783c7d1",
+      "sourceManifestSHA256": "ae235e80807456cbe1e02aba42d1219820b03657898f3b697af7f6cfb2a6878c",
+      "nonFiniteOrRangeStatisticsKeys": [
+        "coveredPixels",
+        "nonFiniteRGBPixels",
+        "nanRGBValues",
+        "positiveInfinityRGBValues",
+        "negativeInfinityRGBValues",
+        "negativeRGBValues",
+        "aboveOneRGBValues",
+        "nonFiniteAlphaPixels",
+        "finiteRGBMinimum",
+        "finiteRGBMaximum",
+        "nonFiniteSamples",
+        "mask"
+      ],
+      "actualPNGFileHashesVerified": 25,
+      "rawRGBStatisticsExample": {
+        "coveredPixels": 104168,
+        "nonFiniteRGBPixels": 0,
+        "nanRGBValues": 0,
+        "positiveInfinityRGBValues": 0,
+        "negativeInfinityRGBValues": 0,
+        "negativeRGBValues": 0,
+        "aboveOneRGBValues": 0,
+        "nonFiniteAlphaPixels": 0,
+        "finiteRGBMinimum": 0.0009389072074554861,
+        "finiteRGBMaximum": 0.9983157515525818,
+        "nonFiniteSamples": [],
+        "mask": "raw linear alpha >0.5; counts measured before sRGB/clamp/Uint8 encoding"
+      },
+      "rawRGBStatisticsMaximumCounts": {
+        "coveredPixels": 104168,
+        "nonFiniteRGBPixels": 0,
+        "nanRGBValues": 0,
+        "positiveInfinityRGBValues": 0,
+        "negativeInfinityRGBValues": 0,
+        "negativeRGBValues": 0,
+        "aboveOneRGBValues": 0,
+        "nonFiniteAlphaPixels": 0
+      },
+      "sourceAssetID": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+      "sourceColorMapSHA256": "294be4e4f13d8af6f8f991bf0b70923f9bbbbd7db2693e742476c896bb8834b3",
+      "sourceManifestActualHashVerified": true
+    },
+    "H-hybrid-fine-001": {
+      "status": "complete",
+      "sweepSHA256": "fc79549705b8c53d4dd6bdcf4e42c4d1b7c0bc25809f886041b41fb40e841143",
+      "frameCount": 164,
+      "cameraPositionCount": 82,
+      "distinctAngles": [
+        -60,
+        -57,
+        -54,
+        -51,
+        -48,
+        -45,
+        -42,
+        -39,
+        -36,
+        -33,
+        -30,
+        -27,
+        -24,
+        -21,
+        -18,
+        -15,
+        -12,
+        -9,
+        -6,
+        -3,
+        0,
+        3,
+        6,
+        9,
+        12,
+        15,
+        18,
+        21,
+        24,
+        27,
+        30,
+        33,
+        36,
+        39,
+        42,
+        45,
+        48,
+        51,
+        54,
+        57,
+        60
+      ],
+      "variants": [
+        "camera-hybrid",
+        "native"
+      ],
+      "geometryEqualFrameCount": 164,
+      "geometryEqualityPassed": true,
+      "nativeControl": {
+        "alphaEqual": true,
+        "depthBitEqual": true,
+        "rgbaPNGEqual": true,
+        "originalNonzeroAlphaPixels": 84778
+      },
+      "sourceFilesSHA256": {
+        "scripts/capture_parallax_sweep.mjs": "648b10ba4f39d56ccf3455e754500976f093054f0d33724e385412dc6369a145",
+        "worker/parallax_material.mjs": "a96bbd0630f8e61398924a89e077b930e67e1c4a0abf6aa82fca93f007740065",
+        "worker/runtime.mjs": "1c1fe0b7f56752a75c21721a29331293eb2003624c95c56fb53bb0929a250602",
+        "worker/codec.mjs": "535b755286373b4af8c79345b7337a7bea5097459f6753a6e1ad20bd3d17f705",
+        "worker/server.mjs": "d6a5bbfabb14580a7735d698c2dcc97720f73138da8227f4ffe5f134ac377b61",
+        "web/asset_io.mjs": "2242675cad353095070100764f550acd172290ff7956c0e6588e5a89904da82c"
+      },
+      "camera": {
+        "projection": "orthographic",
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "distance": 1.8073808642855147,
+        "halfExtent": 0.65783283658225,
+        "near": 0.0005876666886430749,
+        "far": 70.52000263716899,
+        "pixels": [
+          1024,
+          1024
+        ]
+      },
+      "cameraReferenceSHA256": "e3f68d22913799e488434e1f4ceeb0dd3facf203bbf1a668906410457783c7d1",
+      "sourceManifestSHA256": "ae235e80807456cbe1e02aba42d1219820b03657898f3b697af7f6cfb2a6878c",
+      "nonFiniteOrRangeStatisticsKeys": [
+        "coveredPixels",
+        "nonFiniteRGBPixels",
+        "nanRGBValues",
+        "positiveInfinityRGBValues",
+        "negativeInfinityRGBValues",
+        "negativeRGBValues",
+        "aboveOneRGBValues",
+        "nonFiniteAlphaPixels",
+        "finiteRGBMinimum",
+        "finiteRGBMaximum",
+        "nonFiniteSamples",
+        "mask"
+      ],
+      "actualPNGFileHashesVerified": 164,
+      "rawRGBStatisticsExample": {
+        "coveredPixels": 103561,
+        "nonFiniteRGBPixels": 0,
+        "nanRGBValues": 0,
+        "positiveInfinityRGBValues": 0,
+        "negativeInfinityRGBValues": 0,
+        "negativeRGBValues": 0,
+        "aboveOneRGBValues": 0,
+        "nonFiniteAlphaPixels": 0,
+        "finiteRGBMinimum": 0.00102750223595649,
+        "finiteRGBMaximum": 0.999013364315033,
+        "nonFiniteSamples": [],
+        "mask": "raw linear alpha >0.5; counts measured before sRGB/clamp/Uint8 encoding"
+      },
+      "rawRGBStatisticsMaximumCounts": {
+        "coveredPixels": 104775,
+        "nonFiniteRGBPixels": 0,
+        "nanRGBValues": 0,
+        "positiveInfinityRGBValues": 0,
+        "negativeInfinityRGBValues": 0,
+        "negativeRGBValues": 0,
+        "aboveOneRGBValues": 0,
+        "nonFiniteAlphaPixels": 0
+      },
+      "sourceAssetID": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+      "sourceColorMapSHA256": "294be4e4f13d8af6f8f991bf0b70923f9bbbbd7db2693e742476c896bb8834b3",
+      "sourceManifestActualHashVerified": true
+    },
+    "F-hybrid-control-001": {
+      "status": "complete",
+      "sweepSHA256": "53c17646050b3c240529c86bb847a1fe85e2c8a19de02a5329794b8fc95796fc",
+      "frameCount": 18,
+      "cameraPositionCount": 9,
+      "distinctAngles": [
+        -60,
+        -45,
+        -30,
+        -15,
+        0,
+        15,
+        30,
+        45,
+        60
+      ],
+      "variants": [
+        "camera-hybrid",
+        "native"
+      ],
+      "geometryEqualFrameCount": 18,
+      "geometryEqualityPassed": true,
+      "nativeControl": {
+        "alphaEqual": true,
+        "depthBitEqual": true,
+        "rgbaPNGEqual": true,
+        "originalNonzeroAlphaPixels": 84895
+      },
+      "sourceFilesSHA256": {
+        "scripts/capture_parallax_sweep.mjs": "648b10ba4f39d56ccf3455e754500976f093054f0d33724e385412dc6369a145",
+        "worker/parallax_material.mjs": "a96bbd0630f8e61398924a89e077b930e67e1c4a0abf6aa82fca93f007740065",
+        "worker/runtime.mjs": "1c1fe0b7f56752a75c21721a29331293eb2003624c95c56fb53bb0929a250602",
+        "worker/codec.mjs": "535b755286373b4af8c79345b7337a7bea5097459f6753a6e1ad20bd3d17f705",
+        "worker/server.mjs": "d6a5bbfabb14580a7735d698c2dcc97720f73138da8227f4ffe5f134ac377b61",
+        "web/asset_io.mjs": "2242675cad353095070100764f550acd172290ff7956c0e6588e5a89904da82c"
+      },
+      "camera": {
+        "projection": "orthographic",
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "distance": 1.8073808642855147,
+        "halfExtent": 0.65783283658225,
+        "near": 0.0005876666886430749,
+        "far": 70.52000263716899,
+        "pixels": [
+          1024,
+          1024
+        ]
+      },
+      "cameraReferenceSHA256": "e3f68d22913799e488434e1f4ceeb0dd3facf203bbf1a668906410457783c7d1",
+      "sourceManifestSHA256": "48d4630f488731650c5288d2242be6eec58a241fe760d594dcc7eb4736f67214",
+      "nonFiniteOrRangeStatisticsKeys": [
+        "coveredPixels",
+        "nonFiniteRGBPixels",
+        "nanRGBValues",
+        "positiveInfinityRGBValues",
+        "negativeInfinityRGBValues",
+        "negativeRGBValues",
+        "aboveOneRGBValues",
+        "nonFiniteAlphaPixels",
+        "finiteRGBMinimum",
+        "finiteRGBMaximum",
+        "nonFiniteSamples",
+        "mask"
+      ],
+      "actualPNGFileHashesVerified": 18,
+      "rawRGBStatisticsExample": {
+        "coveredPixels": 102839,
+        "nonFiniteRGBPixels": 0,
+        "nanRGBValues": 0,
+        "positiveInfinityRGBValues": 0,
+        "negativeInfinityRGBValues": 0,
+        "negativeRGBValues": 0,
+        "aboveOneRGBValues": 0,
+        "nonFiniteAlphaPixels": 0,
+        "finiteRGBMinimum": 0.0003849987988360226,
+        "finiteRGBMaximum": 0.9963805675506592,
+        "nonFiniteSamples": [],
+        "mask": "raw linear alpha >0.5; counts measured before sRGB/clamp/Uint8 encoding"
+      },
+      "rawRGBStatisticsMaximumCounts": {
+        "coveredPixels": 103389,
+        "nonFiniteRGBPixels": 0,
+        "nanRGBValues": 0,
+        "positiveInfinityRGBValues": 0,
+        "negativeInfinityRGBValues": 0,
+        "negativeRGBValues": 0,
+        "aboveOneRGBValues": 0,
+        "nonFiniteAlphaPixels": 0
+      },
+      "sourceAssetID": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "sourceColorMapSHA256": "647ec74f534bfb8de476663261f257a1d912179a4351d4f33e9f256fc1338ece",
+      "sourceManifestActualHashVerified": true
+    }
+  },
+  "independentReverse": {
+    "pairCount": 82,
+    "independentlyRenderedFrameCount": 164,
+    "checks": {
+      "rgbaPNG": 82,
+      "alpha": 82,
+      "depth": 82,
+      "viewMatrix": 82,
+      "projectionMatrix": 82,
+      "cameraWorldMatrix": 82,
+      "cameraPosition": 82
+    },
+    "mismatches": []
+  },
+  "scopeFixOldModeRegression": [
+    {
+      "variant": "native",
+      "angleDegrees": 0,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    },
+    {
+      "variant": "camera-single",
+      "angleDegrees": 0,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    },
+    {
+      "variant": "camera-blend",
+      "angleDegrees": 0,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    },
+    {
+      "variant": "camera-depth",
+      "angleDegrees": 0,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    },
+    {
+      "variant": "native",
+      "angleDegrees": 30,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    },
+    {
+      "variant": "camera-single",
+      "angleDegrees": 30,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    },
+    {
+      "variant": "camera-blend",
+      "angleDegrees": 30,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    },
+    {
+      "variant": "camera-depth",
+      "angleDegrees": 30,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    },
+    {
+      "variant": "native",
+      "angleDegrees": 45,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    },
+    {
+      "variant": "camera-single",
+      "angleDegrees": 45,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    },
+    {
+      "variant": "camera-blend",
+      "angleDegrees": 45,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    },
+    {
+      "variant": "camera-depth",
+      "angleDegrees": 45,
+      "rgbaPNGEqual": true,
+      "alphaEqual": true,
+      "depthEqual": true
+    }
+  ],
+  "F_H_cameraControl": [
+    {
+      "variant": "native",
+      "angleDegrees": -60,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "camera-hybrid",
+      "angleDegrees": -60,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "native",
+      "angleDegrees": -45,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "camera-hybrid",
+      "angleDegrees": -45,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "native",
+      "angleDegrees": -30,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "camera-hybrid",
+      "angleDegrees": -30,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "native",
+      "angleDegrees": -15,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "camera-hybrid",
+      "angleDegrees": -15,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "native",
+      "angleDegrees": 0,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "camera-hybrid",
+      "angleDegrees": 0,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "native",
+      "angleDegrees": 15,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "camera-hybrid",
+      "angleDegrees": 15,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "native",
+      "angleDegrees": 30,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "camera-hybrid",
+      "angleDegrees": 30,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "native",
+      "angleDegrees": 45,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "camera-hybrid",
+      "angleDegrees": 45,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "native",
+      "angleDegrees": 60,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    },
+    {
+      "variant": "camera-hybrid",
+      "angleDegrees": 60,
+      "viewMatrixEqual": true,
+      "projectionMatrixEqual": true,
+      "alphaEqualAcrossAssets": false,
+      "depthEqualAcrossAssets": false
+    }
+  ],
+  "F_H_limit": "Different asset geometry and native aligned atlas sampling; common generated RGB origin alone does not isolate geometry as sole causal factor.",
+  "frozenShaderSHA256": "a96bbd0630f8e61398924a89e077b930e67e1c4a0abf6aa82fca93f007740065",
+  "initialTransferProof": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/harness/transfer-proof.json",
+    "sha256": "c5f2d155a049ef8981b175ca27fe2e5c6bf3c2189c6b1e08e642df9325bb0441"
+  },
+  "projectionScope": "All captured trials use the same orthographic camera. Perspective appearance has not been tested in these runs."
+}

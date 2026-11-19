@@ -7,7 +7,6 @@
   },
   "inputs": {
     "F": {
-      "manifestSHA256": "0d0f647aade499ac0069a5f5211e4f8dab65f71a0dd444d56c835e09a2b21afe",
       "resolution": 1024,
       "bakeBox": {
         "min": [
@@ -26,10 +25,13 @@
         "normalMap": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
         "intervalMap": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
         "rangeMap": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9"
-      }
+      },
+      "recoveredInspectorManifestSHA256": "0d0f647aade499ac0069a5f5211e4f8dab65f71a0dd444d56c835e09a2b21afe",
+      "captureManifestSHA256": "48d4630f488731650c5288d2242be6eec58a241fe760d594dcc7eb4736f67214",
+      "captureAssetID": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "manifestNote": "Recovered Inspector storage manifest and original Factory manifest differ in metadata; native map bytes match the recorded hashes."
     },
     "H": {
-      "manifestSHA256": "38c8833d2ac6ea26aeb7c3875861a31a607a66779d10ce988a5058f8ce310316",
       "resolution": 1024,
       "bakeBox": {
         "min": [
@@ -48,7 +50,11 @@
         "normalMap": "8ae1080205c3a04921de75cd5e79d25f07be42e2f742f754a64f177aff7a5102",
         "intervalMap": "bfab6910865a1a2e5c9d0c2b46a1be9a4a4fcb18b4f13b810a2ec852f39c415c",
         "rangeMap": "751a06fc022bbeb77197f1d11b42cf1cab771c96b79bde14a9c97b31a3637669"
-      }
+      },
+      "recoveredInspectorManifestSHA256": "38c8833d2ac6ea26aeb7c3875861a31a607a66779d10ce988a5058f8ce310316",
+      "captureManifestSHA256": "ae235e80807456cbe1e02aba42d1219820b03657898f3b697af7f6cfb2a6878c",
+      "captureAssetID": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+      "manifestNote": "Recovered Inspector storage manifest and original Factory manifest differ in metadata; native map bytes match the recorded hashes."
     }
   },
   "fixed": [
@@ -62,7 +68,8 @@
     "Normal-independent color selection",
     "Camera-axis selection versus blending",
     "Depth-based source-view confidence",
-    "Camera weight sharpness and depth tolerance"
+    "Camera weight sharpness and depth tolerance",
+    "Bounded normal confidence for RGB source selection, with no added lighting"
   ],
   "firstComparisons": [
     "native",
@@ -81,8 +88,30 @@
     "Color reprojection consistency is not measured human anatomy or ground-truth view synthesis.",
     "An orthographic front frame alone does not validate rotating views.",
     "H aligned atlas and original F source RGB are distinct references.",
-    "The official 3D-Inspector HTML is not modified to implement these renderer variants."
+    "The official 3D-Inspector HTML is not modified to implement these renderer variants.",
+    "The selected preset uses normals only for color-view confidence; it is not normal-free.",
+    "The approximately ±30-degree useful range is a visual judgment for this subject and orthographic comparison, not a universal angular guarantee.",
+    "F/H have different aligned atlas sampling as well as geometry, so the cross-asset comparison does not isolate geometry alone."
   ],
   "newAIInference": false,
-  "status": "in-progress"
+  "status": "completed-evaluation",
+  "selected": {
+    "mode": "camera-hybrid",
+    "cameraPower": 8,
+    "depthToleranceTexels": 4,
+    "factoryShading": "rgb",
+    "defaultShading": "lit"
+  },
+  "evidence": {
+    "captureValidation": "capture-final-validation.json",
+    "presetSelection": "rgb-preset-selection.json",
+    "scopeFix": "tsl-rgb-scope-verification.json",
+    "finalAssessment": "final-assessment.json",
+    "fineEvaluation": "evaluations/H-hybrid-fine-001/summary.json",
+    "perspective": "factory-perspective-qa.json",
+    "archiveIndex": "archive-index.json",
+    "archiveVerification": "archive-verification.json"
+  },
+  "overallVisualGoalAchieved": false,
+  "result": "Front RGB fidelity improves; natural full-body camera rotation remains unmet. No nonzero angle range is certified artifact-free."
 }
