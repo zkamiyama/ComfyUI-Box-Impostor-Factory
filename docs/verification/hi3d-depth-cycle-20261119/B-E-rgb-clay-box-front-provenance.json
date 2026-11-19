@@ -1,0 +1,149 @@
+{
+  "kind": "Registered B RGB, full B mesh clay, E uniform native Box, B color native Box",
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "fovBeforeOrthographic": 40,
+    "fitFormula": "radius * 1.05 / sin(20deg)",
+    "sourceRadius": 0.5876666886430749,
+    "referenceRadius": 0.5887244402352406,
+    "perspectiveWheelDeltaY": 3.505915677124107,
+    "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001,
+    "wheelProtocolDeltaY": 4.4876070731820406,
+    "pans": [
+      {
+        "view": "front",
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "view": "right",
+        "dx": 0,
+        "dy": 0
+      }
+    ]
+  },
+  "crop": [
+    463,
+    115,
+    572,
+    271
+  ],
+  "cropSource": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-full-comparison-provenance.json",
+  "cropSourceSHA256": "aaa864bdead10ddd8f9afd85f46d77e922c96f5e11236ec3bd12cc9c4af64401",
+  "sourceCaptures": {
+    "B-clay": {
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/capture.json",
+      "captureSHA256": "c0efa87471cff7b192f15aba74aaea478f932bbaae18a7c429a079e41c25732b",
+      "image": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/lit-front.png",
+        "sha256": "8400ca4fa74716b5be7e3caf667d33c495254fb093d56d29c626ae4123ad314d",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ]
+      },
+      "htmlSHA256": "3ae13f97adee0bd522d5c84f81d627a9ed944715701217c10661d5f3f0b1f32f",
+      "stageState": "Three.js PBR",
+      "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2"
+    },
+    "E-box": {
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/E-box/capture.json",
+      "captureSHA256": "1deece404ab966976dc21515af1a10edf044f73b23005ca5730f1bd049f28ec1",
+      "image": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/E-box/lit-front.png",
+        "sha256": "eaf44906022ec4d60c4904a3b8d5384bc2a3edecc1bef21c6f9c35f871421df1",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ]
+      },
+      "htmlSHA256": "63c6df6360b5ff21165bb774ca6dd512f7f8e7e6d5150a3583b01bb8cb77c15b",
+      "stageState": "Native Box",
+      "assetId": "40ad89d5629ff7359e8edb7fc53c4c0aa6facb8a4caa615c72261fd17bef36d7"
+    },
+    "B-box": {
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/capture.json",
+      "captureSHA256": "012424c2df2ced4a3bc7ce7747c4f2e89f68827c142a0f94d3d2acf149b4a0a8",
+      "image": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-front.png",
+        "sha256": "86ad094cea67846fd19fd93c49742b7f20219a906a6bb2bbaf38fed6d43c1d41",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ]
+      },
+      "htmlSHA256": "e8421c1609879a8b7a4ae7b1dc15559cef15a00f05a0b81d89a8c82fdd8a8c2b",
+      "stageState": "Native Box",
+      "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2"
+    }
+  },
+  "registeredRGB": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/pz/aligned.npy",
+    "sha256": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488",
+    "sampling": "Linear-light premultiplied RGBA bilinear at common camera pixel centers; sRGB conversion",
+    "pixelsEqualPriorBStage": true,
+    "priorBStageSHA256": "b95ddcd057c591b27aa1bdbc46afc7f75cdb934463d620894ad5ff1c46a7b859"
+  },
+  "clay": {
+    "sourceTriangles": 1000000,
+    "payloadTriangles": 1000000,
+    "geometryIdenticalAfterReload": true,
+    "normalPolicy": "B GLB has no NORMAL. Official mesh converter computes shading normals; native Box uses baked maps.",
+    "materialAndLighting": "Mesh and Box material/light settings differ; no quantitative matched-lighting claim"
+  },
+  "uniformColorProof": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/E-uniform-color-proof.json",
+    "sha256": "ac8bd40c9edc810a11630eca5ca1a12996b3b4fe8f64ec5c2776aa05e8682d3a"
+  },
+  "processing": {
+    "integerCrop": true,
+    "resize": "3x nearest-neighbor",
+    "sharpening": false,
+    "aiPostprocessing": false,
+    "losslessWebPDecodedPixelsEqual": true
+  },
+  "output": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-E-rgb-clay-box-front.webp",
+    "sha256": "4369ff5265826fade4401e8ff72f2b0f882c61d0f16994f9261b853b55d28de8",
+    "bytes": 123220,
+    "size": [
+      1520,
+      682
+    ]
+  },
+  "scriptSHA256": "6dbe9f49a2d782bf3bd9737bf2c15133b495a06e9a6711650426742a1942a85f"
+}
