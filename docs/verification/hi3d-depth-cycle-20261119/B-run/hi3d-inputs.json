@@ -1,0 +1,14 @@
+{
+  "model": "hi3d-official/Hi3Dv1.0",
+  "resolution": 1024,
+  "steps": 25,
+  "smoothing": "none",
+  "cpuOffload": true,
+  "sourceBaseline": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+  "coarseMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+  "coarseSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+  "referenceImage": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/reference/source.png",
+  "referencePngSha256": "e60d982c5b2e296a4d9c9e756da2b22c8341232f5e9df7e835bbb4730ed7e34c",
+  "referenceSampleSha256": "c463bf4eea481e54bbb154f3c0b801765db6ecf92e36c25135e155e699dc9bde",
+  "startedEpoch": 1795058239.1168878
+}

@@ -1,0 +1,8 @@
+{
+  "returncode": 0,
+  "stdout": "{\"deferred\": \"/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5\", \"complete\": \"/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5\"}\n",
+  "stderr": "",
+  "checkedEpoch": 1795058232.5901582,
+  "gpuInference": false,
+  "environmentHub": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub"
+}

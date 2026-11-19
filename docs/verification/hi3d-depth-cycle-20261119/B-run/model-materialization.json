@@ -1,0 +1,143 @@
+{
+  "sourceHub": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub",
+  "materializedHub": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub",
+  "createdEpoch": 1795058183.1985762,
+  "elapsedSeconds": 73.48,
+  "fileCount": 12,
+  "totalBytes": 10656059963,
+  "files": [
+    {
+      "repo": "models--hi3d-official--Hi3Dv1.0",
+      "revision": "23d1bace196f618265b4b0b9c90d95fa9a9b1df5",
+      "relativePath": "model_index.json",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/model_index.json",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/blobs/b63881777731bd5093112b934721202d01771065",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/model_index.json",
+      "bytes": 224,
+      "sha256": "e24988612733dad44b7354fbfa0b2ef50073ba6ef8d7a677e41023dc2d651386",
+      "method": "regular-hardlink"
+    },
+    {
+      "repo": "models--hi3d-official--Hi3Dv1.0",
+      "revision": "23d1bace196f618265b4b0b9c90d95fa9a9b1df5",
+      "relativePath": "scheduler/scheduler_config.json",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/scheduler/scheduler_config.json",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/blobs/2a070592ea631dc2f158cf56ef0076cc87f2b872",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/scheduler/scheduler_config.json",
+      "bytes": 127,
+      "sha256": "40cdcdaaa6149dea32b86a5ff730e581b069ae619d7f580444ef503737fb0bf3",
+      "method": "regular-hardlink"
+    },
+    {
+      "repo": "models--hi3d-official--Hi3Dv1.0",
+      "revision": "23d1bace196f618265b4b0b9c90d95fa9a9b1df5",
+      "relativePath": "transformer_1024/config.json",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_1024/config.json",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/blobs/daa180abc108fc26a5d60501d77b1118ae94a0f6",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_1024/config.json",
+      "bytes": 1337,
+      "sha256": "2f96d851844e159523cb6cf5e5b29ddbc1354e222a333232612c19e1eaf278c2",
+      "method": "regular-hardlink"
+    },
+    {
+      "repo": "models--hi3d-official--Hi3Dv1.0",
+      "revision": "23d1bace196f618265b4b0b9c90d95fa9a9b1df5",
+      "relativePath": "transformer_1024/model.safetensors",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_1024/model.safetensors",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/blobs/a2ca5e44dde51cacecd59b42fceeb5f14e75d55e6dd047337752c4e6f281008c",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_1024/model.safetensors",
+      "bytes": 3675679280,
+      "sha256": "a2ca5e44dde51cacecd59b42fceeb5f14e75d55e6dd047337752c4e6f281008c",
+      "method": "regular-hardlink"
+    },
+    {
+      "repo": "models--hi3d-official--Hi3Dv1.0",
+      "revision": "23d1bace196f618265b4b0b9c90d95fa9a9b1df5",
+      "relativePath": "transformer_512/config.json",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_512/config.json",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/blobs/47d2b9e97f8002913a47dbd58c55ee1ae6fa2cf5",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_512/config.json",
+      "bytes": 1336,
+      "sha256": "809189b8183c3f44118751322f2cb6fe6fa4ca1922ea16c88cd032970d4bc937",
+      "method": "regular-hardlink"
+    },
+    {
+      "repo": "models--hi3d-official--Hi3Dv1.0",
+      "revision": "23d1bace196f618265b4b0b9c90d95fa9a9b1df5",
+      "relativePath": "transformer_512/model.safetensors",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_512/model.safetensors",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/blobs/8ba88311dccf23463c6e10dd0d3bd5e0c5c35d1608c6f466413b6428b5ad8e56",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_512/model.safetensors",
+      "bytes": 3675679280,
+      "sha256": "8ba88311dccf23463c6e10dd0d3bd5e0c5c35d1608c6f466413b6428b5ad8e56",
+      "method": "regular-hardlink"
+    },
+    {
+      "repo": "models--hi3d-official--Hi3Dv1.0",
+      "revision": "23d1bace196f618265b4b0b9c90d95fa9a9b1df5",
+      "relativePath": "vae/config.json",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/vae/config.json",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/blobs/c4f94b13cc30945292da5aac233405496a271dcc",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/vae/config.json",
+      "bytes": 131,
+      "sha256": "71c629eb188485786227277c7bb5b0fa0a1bfcf07a3d21316174da6b4d04f92f",
+      "method": "regular-hardlink"
+    },
+    {
+      "repo": "models--hi3d-official--Hi3Dv1.0",
+      "revision": "23d1bace196f618265b4b0b9c90d95fa9a9b1df5",
+      "relativePath": "vae/model.safetensors",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/vae/model.safetensors",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--hi3d-official--Hi3Dv1.0/blobs/605d207c77f8db0b33c567a5861252f0090cf3c3604dfda1cfee09e8f0b53f3e",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/vae/model.safetensors",
+      "bytes": 376629712,
+      "sha256": "605d207c77f8db0b33c567a5861252f0090cf3c3604dfda1cfee09e8f0b53f3e",
+      "method": "regular-hardlink"
+    },
+    {
+      "repo": "models--facebook--dinov2-large",
+      "revision": "47b73eefe95e8d44ec3623f8890bd894b6ea2d6c",
+      "relativePath": "config.json",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/config.json",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--facebook--dinov2-large/blobs/5def28dd2a0ecb2561a4649703f13c4dc595ee95",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/config.json",
+      "bytes": 549,
+      "sha256": "12df51c069a2dc1305e34ba71ef58bc2407ea553b75f4722a1715c1bce3bbed0",
+      "method": "regular-hardlink"
+    },
+    {
+      "repo": "models--facebook--dinov2-large",
+      "revision": "47b73eefe95e8d44ec3623f8890bd894b6ea2d6c",
+      "relativePath": "model.safetensors",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/model.safetensors",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--facebook--dinov2-large/blobs/399fba97a95f22c36834418bc69373364a99af3a1153da1c0fb31db567c92e23",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/model.safetensors",
+      "bytes": 1217522888,
+      "sha256": "399fba97a95f22c36834418bc69373364a99af3a1153da1c0fb31db567c92e23",
+      "method": "regular-hardlink"
+    },
+    {
+      "repo": "models--openai--clip-vit-large-patch14",
+      "revision": "32bd64288804d66eefd0ccbe215aa642df71cc41",
+      "relativePath": "config.json",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--openai--clip-vit-large-patch14/snapshots/32bd64288804d66eefd0ccbe215aa642df71cc41/config.json",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--openai--clip-vit-large-patch14/blobs/2c19f6666e0e163c7954df66cb901353fcad088e",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--openai--clip-vit-large-patch14/snapshots/32bd64288804d66eefd0ccbe215aa642df71cc41/config.json",
+      "bytes": 4519,
+      "sha256": "8a09b467700c58138c29d53c605b34ebc69beaadd13274a8a2af8ad2c2f4032a",
+      "method": "regular-hardlink"
+    },
+    {
+      "repo": "models--openai--clip-vit-large-patch14",
+      "revision": "32bd64288804d66eefd0ccbe215aa642df71cc41",
+      "relativePath": "model.safetensors",
+      "sourceSnapshotPath": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--openai--clip-vit-large-patch14/snapshots/32bd64288804d66eefd0ccbe215aa642df71cc41/model.safetensors",
+      "sourceBlob": "/mnt/f/_dev/box-impostor-lab/models/hi3d-v1/hf/hub/models--openai--clip-vit-large-patch14/blobs/a2bf730a0c7debf160f7a6b50b3aaf3703e7e88ac73de7a314903141db026dcb",
+      "regularFile": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--openai--clip-vit-large-patch14/snapshots/32bd64288804d66eefd0ccbe215aa642df71cc41/model.safetensors",
+      "bytes": 1710540580,
+      "sha256": "a2bf730a0c7debf160f7a6b50b3aaf3703e7e88ac73de7a314903141db026dcb",
+      "method": "regular-hardlink"
+    }
+  ],
+  "validationPolicy": "Unchanged; all model files are regular files, with verified original HF blob containment and SHA256."
+}

@@ -1,0 +1,120 @@
+{
+  "model": "hi3d-official/Hi3Dv1.0",
+  "resolution": 1024,
+  "steps": 25,
+  "smoothing": "none",
+  "cpuOffload": true,
+  "sourceBaseline": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+  "coarseMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+  "coarseSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+  "referenceImage": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/reference/source.png",
+  "referencePngSha256": "e60d982c5b2e296a4d9c9e756da2b22c8341232f5e9df7e835bbb4730ed7e34c",
+  "referenceSampleSha256": "c463bf4eea481e54bbb154f3c0b801765db6ecf92e36c25135e155e699dc9bde",
+  "startedEpoch": 1795058239.1168878,
+  "elapsedSeconds": 206.65,
+  "outputProxy": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/.stages/hi3d-refine/939bf71cab3adc54abbb9aa770917b685058470cf5f4c3d4bf7c192ca952d9ac/canonical.glb",
+  "outputProxySha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+  "canonicalMetadata": {
+    "glbSha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+    "sourceSha256": "b0a9620143c55dfac0ac9a96204c44ed330087d44961d12c5929e90f367c82ae",
+    "transform": [
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0.010881411855650119,
+      0.02839508237150308,
+      0.013759666322433382,
+      1
+    ],
+    "inverseTransform": [
+      0.8947335481643676,
+      0,
+      0,
+      0,
+      0,
+      0.8947335481643676,
+      0,
+      0,
+      0,
+      0,
+      0.8947335481643676,
+      0,
+      -0.009735964238643648,
+      -0.025406032800674435,
+      -0.012311235070228575,
+      1
+    ],
+    "tightBounds": {
+      "min": [
+        -0.17968105992633543,
+        -0.49999999999999994,
+        -0.167295519611424
+      ],
+      "max": [
+        0.17968105992633543,
+        0.49999999999999994,
+        0.167295519611424
+      ]
+    },
+    "refinement": {
+      "model": "hi3d-official/Hi3Dv1.0",
+      "resolution": 1024,
+      "steps": 25,
+      "smoothing": 0,
+      "hi3dSha256": "1f5cdd2eab59199d0c289e7ac9b218edf39232c5dc6b0ed943a7f5e5e0e1c364",
+      "coarseSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3"
+    }
+  },
+  "report": {
+    "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+    "hi3d_input": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/.stages/hi3d-refine/tmpo1cm9jn9/data/hi3d-raw.glb",
+    "source_sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "hi3d_sha256": "1f5cdd2eab59199d0c289e7ac9b218edf39232c5dc6b0ed943a7f5e5e0e1c364",
+    "smooth_iterations": 0,
+    "scale": 0.6279206758924942,
+    "source_extents": [
+      0.359193,
+      1.0,
+      0.341354
+    ],
+    "refined_extents": [
+      0.359362,
+      1.0,
+      0.334591
+    ],
+    "extent_ratio": [
+      1.000472,
+      1.0,
+      0.980187
+    ],
+    "nearest_dist_p50_p95": [
+      0.002918,
+      0.007377
+    ],
+    "vertices": 499920,
+    "faces": 1000000,
+    "has_vertex_color": true,
+    "inference": {
+      "status": "success",
+      "model": "hi3d-official/Hi3Dv1.0",
+      "resolution": 1024,
+      "steps": 25,
+      "source_faces": 81180,
+      "output_faces": 1000000,
+      "output_vertices": 499920,
+      "elapsed_s": 196.69,
+      "torch_cuda": "12.4",
+      "gpu": "NVIDIA GeForce RTX 4080",
+      "gpu_max_allocated_mib": 1717.26
+    }
+  }
+}
