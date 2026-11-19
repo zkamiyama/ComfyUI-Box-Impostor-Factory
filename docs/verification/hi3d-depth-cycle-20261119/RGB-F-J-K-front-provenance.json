@@ -1,0 +1,597 @@
+{
+  "kind": "Final CPU-only RGB/F/J/K-view front board from existing verified snapshots.",
+  "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "fovBeforeOrthographic": 40,
+    "fitFormula": "radius * 1.05 / sin(20deg)",
+    "sourceRadius": 0.5876666886430749,
+    "referenceRadius": 0.5887244402352406,
+    "perspectiveWheelDeltaY": 3.505915677124107,
+    "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001,
+    "wheelProtocolDeltaY": 4.4876070731820406,
+    "pans": [
+      {
+        "view": "front",
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "view": "right",
+        "dx": 0,
+        "dy": 0
+      }
+    ]
+  },
+  "headCrop": [
+    463,
+    115,
+    572,
+    271
+  ],
+  "labels": {
+    "display": [
+      "Registered RGB / +Z",
+      "F / original lighting",
+      "J / unlit",
+      "K-view / view selection"
+    ],
+    "requestedJapanese": [
+      "登録済みRGB",
+      "F元の照明表示",
+      "J照明なし",
+      "K-view視線方向選択"
+    ]
+  },
+  "inputs": {
+    "F": {
+      "capture": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/capture.json",
+        "sha256": "e145504dc7da03bd4a8a4765b76570bb9a1b8f6a2580cd006dba4004e4b7d650"
+      },
+      "html": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F.inspector.html",
+        "sha256": "2bff2ec86f73ba5f5e011be9d306b3904a71c6a5da236b5445c2c83b9d7c3f69"
+      },
+      "frame": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/lit-front.png",
+        "sha256": "c6dd7feafd68a8509c3668f29e2a2c6dea05e1cbf1c0323f224f3eb4ad6291df",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ]
+      }
+    },
+    "J": {
+      "capture": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/I-box/capture.json",
+        "sha256": "f05577b927dca56b065092bc6ae3f2cb493053e6295524de6bb4fe43248bac53"
+      },
+      "html": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/I-native-unlit.inspector.html",
+        "sha256": "2fd2f8910ee1dd9f097fd3dc91ec6bb772574f3592be7d7b919aa9306e901d0e"
+      },
+      "frame": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/I-box/lit-front.png",
+        "sha256": "7bc29449d896ef987212c426a97ef137a8bde9664d11af20432e39c153591497",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ],
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482
+          ],
+          "quaternion": [
+            -3.061616997868383e-17,
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            -6.123233995736766e-17,
+            0,
+            0,
+            6.123233995736766e-17,
+            1,
+            0,
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482,
+            1
+          ],
+          "matrixWorldInverse": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            6.123233995736766e-17,
+            0,
+            0,
+            -6.123233995736766e-17,
+            1,
+            0,
+            0,
+            0,
+            -1.8073808642341482,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        }
+      }
+    },
+    "K-view": {
+      "capture": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-front/capture.json",
+        "sha256": "d4c8909a63e57ab0377c84fc9c9912d047244c12df740320388098f0fff7f86b"
+      },
+      "html": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html",
+        "sha256": "4b1ee6af6e20a8e7ebe9fce88a01fce83af722551538499698fa70b01c570ce0"
+      },
+      "frame": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-front/yaw-p0_000.png",
+        "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59",
+        "requestedYawDegrees": 0,
+        "actualYawDegrees": 0,
+        "actualPitchDegrees": 3.5083546492674384e-15,
+        "radialDistance": 1.8073808642341482,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482
+          ],
+          "quaternion": [
+            -3.061616997868383e-17,
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            -6.123233995736766e-17,
+            0,
+            0,
+            6.123233995736766e-17,
+            1,
+            0,
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482,
+            1
+          ],
+          "matrixWorldInverse": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            6.123233995736766e-17,
+            0,
+            0,
+            -6.123233995736766e-17,
+            1,
+            0,
+            0,
+            0,
+            -1.8073808642341482,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": []
+      }
+    }
+  },
+  "actualCameras": {
+    "F": null,
+    "J": {
+      "type": "OrthographicCamera",
+      "position": [
+        0,
+        1.1067015951122633e-16,
+        1.8073808642341482
+      ],
+      "quaternion": [
+        -3.061616997868383e-17,
+        0,
+        0,
+        1
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "matrixWorld": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -6.123233995736766e-17,
+        0,
+        0,
+        6.123233995736766e-17,
+        1,
+        0,
+        0,
+        1.1067015951122633e-16,
+        1.8073808642341482,
+        1
+      ],
+      "matrixWorldInverse": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        6.123233995736766e-17,
+        0,
+        0,
+        -6.123233995736766e-17,
+        1,
+        0,
+        0,
+        0,
+        -1.8073808642341482,
+        1
+      ],
+      "projectionMatrix": [
+        1.5201430278608303,
+        0,
+        0,
+        0,
+        0,
+        1.5201430278608303,
+        0,
+        0,
+        0,
+        0,
+        -0.02836098400471992,
+        0,
+        0,
+        0,
+        -1.0000166668055568,
+        1
+      ],
+      "projectionMatrixInverse": [
+        0.6578328365635543,
+        0,
+        0,
+        0,
+        0,
+        0.6578328365635543,
+        0,
+        0,
+        0,
+        0,
+        -35.259707485240185,
+        0,
+        0,
+        0,
+        -35.26029515192882,
+        1
+      ],
+      "near": 0.000587666688643075,
+      "far": 70.520002637169,
+      "left": -0.6578328365635542,
+      "right": 0.6578328365635542,
+      "top": 0.6578328365635542,
+      "bottom": -0.6578328365635542,
+      "zoom": 1,
+      "canvasPixels": [
+        1024,
+        1024
+      ]
+    },
+    "K-view": {
+      "type": "OrthographicCamera",
+      "position": [
+        0,
+        1.1067015951122633e-16,
+        1.8073808642341482
+      ],
+      "quaternion": [
+        -3.061616997868383e-17,
+        0,
+        0,
+        1
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "matrixWorld": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -6.123233995736766e-17,
+        0,
+        0,
+        6.123233995736766e-17,
+        1,
+        0,
+        0,
+        1.1067015951122633e-16,
+        1.8073808642341482,
+        1
+      ],
+      "matrixWorldInverse": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        6.123233995736766e-17,
+        0,
+        0,
+        -6.123233995736766e-17,
+        1,
+        0,
+        0,
+        0,
+        -1.8073808642341482,
+        1
+      ],
+      "projectionMatrix": [
+        1.5201430278608303,
+        0,
+        0,
+        0,
+        0,
+        1.5201430278608303,
+        0,
+        0,
+        0,
+        0,
+        -0.02836098400471992,
+        0,
+        0,
+        0,
+        -1.0000166668055568,
+        1
+      ],
+      "projectionMatrixInverse": [
+        0.6578328365635543,
+        0,
+        0,
+        0,
+        0,
+        0.6578328365635543,
+        0,
+        0,
+        0,
+        0,
+        -35.259707485240185,
+        0,
+        0,
+        0,
+        -35.26029515192882,
+        1
+      ],
+      "near": 0.000587666688643075,
+      "far": 70.520002637169,
+      "left": -0.6578328365635542,
+      "right": 0.6578328365635542,
+      "top": 0.6578328365635542,
+      "bottom": -0.6578328365635542,
+      "zoom": 1,
+      "canvasPixels": [
+        1024,
+        1024
+      ]
+    }
+  },
+  "cameraEvidence": "All configured camera fields are equal. J/K have observed actual render matrices which agree. Legacy F capture recorded the same verified camera setup without the later read-only matrix observer.",
+  "renderedAlpha": {
+    "F_J_KViewByteExact": true
+  },
+  "registeredRGB": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/aligned.npy",
+    "sha256": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488",
+    "sampling": "Same established premultiplied linear-light bilinear at front-camera pixel centers; 8-bit sRGB."
+  },
+  "priorPanelPixelEquality": [
+    {
+      "column": 0,
+      "priorBoard": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-stages.webp",
+      "priorBoardSHA256": "8eedfdad7ba53e5c2bd90d607344ea9a2ca2b268df60bd851cc7ec55ce9b9a01",
+      "priorColumn": 0,
+      "imagePanelPixelsByteExact": true
+    },
+    {
+      "column": 1,
+      "priorBoard": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-J-front-stages.webp",
+      "priorBoardSHA256": "5c9918ed94b376648b3ad9711fd306895a5f1c9846ce6602567f8c295bc2d84c",
+      "priorColumn": 1,
+      "imagePanelPixelsByteExact": true
+    },
+    {
+      "column": 2,
+      "priorBoard": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-stages.webp",
+      "priorBoardSHA256": "8eedfdad7ba53e5c2bd90d607344ea9a2ca2b268df60bd851cc7ec55ce9b9a01",
+      "priorColumn": 1,
+      "imagePanelPixelsByteExact": true
+    },
+    {
+      "column": 3,
+      "priorBoard": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-stages.webp",
+      "priorBoardSHA256": "8eedfdad7ba53e5c2bd90d607344ea9a2ca2b268df60bd851cc7ec55ce9b9a01",
+      "priorColumn": 2,
+      "imagePanelPixelsByteExact": true
+    }
+  ],
+  "residualDiagnosis": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-residual-classification.json",
+    "sha256": "c1759975184c58ae79e922e6d477e0a0aac7eb28366634f1e5e5069fc5793559",
+    "note": "Small internal nose/cheek/chin marks were classified as opaque RGB residuals, not transparent holes in the source-only eroded head region."
+  },
+  "output": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/RGB-F-J-K-front.webp",
+    "sha256": "93e61112e7d0e83e1c1f8b578c4c8cf8ba8e16b9668802fc55cd69fd9c9f772e",
+    "bytes": 135918,
+    "size": [
+      1520,
+      652
+    ]
+  },
+  "processing": "CPU composition only: same integer crop, 3x nearest-neighbor, lossless WebP. Every image panel equals the already reviewed comparison pixels. No new browser/render/image generation.",
+  "scriptSHA256": "0b03f475d34faf4c8181470836b707bf70f88d025122be5c1c7d2a00dcfb6aff"
+}

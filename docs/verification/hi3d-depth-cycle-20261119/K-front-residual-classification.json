@@ -1,0 +1,866 @@
+{
+  "kind": "Classify K front residual pixels using existing captures, without new rendering.",
+  "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "headCrop": [
+    463,
+    115,
+    572,
+    271
+  ],
+  "faceRectangleFullImage": [
+    478,
+    165,
+    543,
+    231
+  ],
+  "reference": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/aligned.npy",
+    "sha256": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488",
+    "sampling": "Premultiplied linear-light bilinear at established orthographic front-camera pixel centers; converted to 8-bit sRGB."
+  },
+  "sourceEvidence": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-J-K-front-fidelity.json",
+    "sha256": "b92ca103db2168c254a5182758a2355fc3dc898ba0b34181d63adbc2bbd8887f"
+  },
+  "referenceSampler": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/build_box_control_front.py",
+    "sha256": "1af017c3376ab5777a9b9df3b00851cff46de06aace829074ce2bc8ba8e5a9d2"
+  },
+  "inputFrames": {
+    "F": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/lit-front.png",
+      "sha256": "c6dd7feafd68a8509c3668f29e2a2c6dea05e1cbf1c0323f224f3eb4ad6291df",
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "expectedPosition": [
+        0,
+        0,
+        1.8073808642855147
+      ]
+    },
+    "J": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/I-box/lit-front.png",
+      "sha256": "7bc29449d896ef987212c426a97ef137a8bde9664d11af20432e39c153591497",
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "expectedPosition": [
+        0,
+        0,
+        1.8073808642855147
+      ],
+      "actualCamera": {
+        "type": "OrthographicCamera",
+        "position": [
+          0,
+          1.1067015951122633e-16,
+          1.8073808642341482
+        ],
+        "quaternion": [
+          -3.061616997868383e-17,
+          0,
+          0,
+          1
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ],
+        "matrixWorld": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          -6.123233995736766e-17,
+          0,
+          0,
+          6.123233995736766e-17,
+          1,
+          0,
+          0,
+          1.1067015951122633e-16,
+          1.8073808642341482,
+          1
+        ],
+        "matrixWorldInverse": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          6.123233995736766e-17,
+          0,
+          0,
+          -6.123233995736766e-17,
+          1,
+          0,
+          0,
+          0,
+          -1.8073808642341482,
+          1
+        ],
+        "projectionMatrix": [
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          -0.02836098400471992,
+          0,
+          0,
+          0,
+          -1.0000166668055568,
+          1
+        ],
+        "projectionMatrixInverse": [
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          -35.259707485240185,
+          0,
+          0,
+          0,
+          -35.26029515192882,
+          1
+        ],
+        "near": 0.000587666688643075,
+        "far": 70.520002637169,
+        "left": -0.6578328365635542,
+        "right": 0.6578328365635542,
+        "top": 0.6578328365635542,
+        "bottom": -0.6578328365635542,
+        "zoom": 1,
+        "canvasPixels": [
+          1024,
+          1024
+        ]
+      }
+    },
+    "K-view": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-front/yaw-p0_000.png",
+      "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59",
+      "requestedYawDegrees": 0,
+      "actualYawDegrees": 0,
+      "actualPitchDegrees": 3.5083546492674384e-15,
+      "radialDistance": 1.8073808642341482,
+      "actualCamera": {
+        "type": "OrthographicCamera",
+        "position": [
+          0,
+          1.1067015951122633e-16,
+          1.8073808642341482
+        ],
+        "quaternion": [
+          -3.061616997868383e-17,
+          0,
+          0,
+          1
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ],
+        "matrixWorld": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          -6.123233995736766e-17,
+          0,
+          0,
+          6.123233995736766e-17,
+          1,
+          0,
+          0,
+          1.1067015951122633e-16,
+          1.8073808642341482,
+          1
+        ],
+        "matrixWorldInverse": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          6.123233995736766e-17,
+          0,
+          0,
+          -6.123233995736766e-17,
+          1,
+          0,
+          0,
+          0,
+          -1.8073808642341482,
+          1
+        ],
+        "projectionMatrix": [
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          -0.02836098400471992,
+          0,
+          0,
+          0,
+          -1.0000166668055568,
+          1
+        ],
+        "projectionMatrixInverse": [
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          -35.259707485240185,
+          0,
+          0,
+          0,
+          -35.26029515192882,
+          1
+        ],
+        "near": 0.000587666688643075,
+        "far": 70.520002637169,
+        "left": -0.6578328365635542,
+        "right": 0.6578328365635542,
+        "top": 0.6578328365635542,
+        "bottom": -0.6578328365635542,
+        "zoom": 1,
+        "canvasPixels": [
+          1024,
+          1024
+        ]
+      },
+      "mouseDragsCSSPixels": []
+    },
+    "K-dominant": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-dominant-front/yaw-p0_000.png",
+      "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59",
+      "requestedYawDegrees": 0,
+      "actualYawDegrees": 0,
+      "actualPitchDegrees": 3.5083546492674384e-15,
+      "radialDistance": 1.8073808642341482,
+      "actualCamera": {
+        "type": "OrthographicCamera",
+        "position": [
+          0,
+          1.1067015951122633e-16,
+          1.8073808642341482
+        ],
+        "quaternion": [
+          -3.061616997868383e-17,
+          0,
+          0,
+          1
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ],
+        "matrixWorld": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          -6.123233995736766e-17,
+          0,
+          0,
+          6.123233995736766e-17,
+          1,
+          0,
+          0,
+          1.1067015951122633e-16,
+          1.8073808642341482,
+          1
+        ],
+        "matrixWorldInverse": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          6.123233995736766e-17,
+          0,
+          0,
+          -6.123233995736766e-17,
+          1,
+          0,
+          0,
+          0,
+          -1.8073808642341482,
+          1
+        ],
+        "projectionMatrix": [
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          1.5201430278608303,
+          0,
+          0,
+          0,
+          0,
+          -0.02836098400471992,
+          0,
+          0,
+          0,
+          -1.0000166668055568,
+          1
+        ],
+        "projectionMatrixInverse": [
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          0.6578328365635543,
+          0,
+          0,
+          0,
+          0,
+          -35.259707485240185,
+          0,
+          0,
+          0,
+          -35.26029515192882,
+          1
+        ],
+        "near": 0.000587666688643075,
+        "far": 70.520002637169,
+        "left": -0.6578328365635542,
+        "right": 0.6578328365635542,
+        "top": 0.6578328365635542,
+        "bottom": -0.6578328365635542,
+        "zoom": 1,
+        "canvasPixels": [
+          1024,
+          1024
+        ]
+      },
+      "mouseDragsCSSPixels": []
+    }
+  },
+  "KViewAndDominantPixelsIdentical": true,
+  "renderAlphaByteIdenticalToK": {
+    "F": true,
+    "J": true,
+    "K-view": true,
+    "K-dominant": true
+  },
+  "priorCommonMaskCheck": {
+    "pixels": 10936,
+    "sRGBMAE255": 0.6079614728115094
+  },
+  "definitions": {
+    "erosion": "3x3 all-ones binary erosion, stated iteration count, border=0, applied only to reference alpha>250",
+    "transparent": "render alpha<=5",
+    "partial": "6<=render alpha<=250",
+    "opaque": "render alpha>250",
+    "opaqueError": "mean absolute difference of 8-bit sRGB channels > stated threshold; alpha-deficient pixels are classified separately",
+    "faceRectangle": "Fixed manually selected rectangle; not semantic skin segmentation"
+  },
+  "countsByErosionRadius": {
+    "0": {
+      "head": {
+        "sourceOpaqueInteriorPixels": 12478,
+        "renderTransparentAlpha0to5": 7,
+        "renderPartialAlpha6to250": 0,
+        "renderOpaqueAlpha251to255": 12471,
+        "opaqueRGBMAE255": 0.636997834977147,
+        "thresholds": {
+          "8": {
+            "opaquePerPixelMAEGreater": 68,
+            "opaqueMaxChannelDifferenceGreater": 71,
+            "opaqueMeanRGBDarkeningGreater": 41,
+            "opacityDeficitOrOpaqueMAEError": 75
+          },
+          "16": {
+            "opaquePerPixelMAEGreater": 56,
+            "opaqueMaxChannelDifferenceGreater": 63,
+            "opaqueMeanRGBDarkeningGreater": 36,
+            "opacityDeficitOrOpaqueMAEError": 63
+          },
+          "32": {
+            "opaquePerPixelMAEGreater": 44,
+            "opaqueMaxChannelDifferenceGreater": 49,
+            "opaqueMeanRGBDarkeningGreater": 29,
+            "opacityDeficitOrOpaqueMAEError": 51
+          }
+        }
+      },
+      "faceRectangle": {
+        "sourceOpaqueInteriorPixels": 4290,
+        "renderTransparentAlpha0to5": 0,
+        "renderPartialAlpha6to250": 0,
+        "renderOpaqueAlpha251to255": 4290,
+        "opaqueRGBMAE255": 0.7461538461538462,
+        "thresholds": {
+          "8": {
+            "opaquePerPixelMAEGreater": 30,
+            "opaqueMaxChannelDifferenceGreater": 31,
+            "opaqueMeanRGBDarkeningGreater": 23,
+            "opacityDeficitOrOpaqueMAEError": 30
+          },
+          "16": {
+            "opaquePerPixelMAEGreater": 24,
+            "opaqueMaxChannelDifferenceGreater": 27,
+            "opaqueMeanRGBDarkeningGreater": 21,
+            "opacityDeficitOrOpaqueMAEError": 24
+          },
+          "32": {
+            "opaquePerPixelMAEGreater": 18,
+            "opaqueMaxChannelDifferenceGreater": 21,
+            "opaqueMeanRGBDarkeningGreater": 18,
+            "opacityDeficitOrOpaqueMAEError": 18
+          }
+        }
+      }
+    },
+    "1": {
+      "head": {
+        "sourceOpaqueInteriorPixels": 11960,
+        "renderTransparentAlpha0to5": 2,
+        "renderPartialAlpha6to250": 0,
+        "renderOpaqueAlpha251to255": 11958,
+        "opaqueRGBMAE255": 0.6050621620114847,
+        "thresholds": {
+          "8": {
+            "opaquePerPixelMAEGreater": 54,
+            "opaqueMaxChannelDifferenceGreater": 56,
+            "opaqueMeanRGBDarkeningGreater": 28,
+            "opacityDeficitOrOpaqueMAEError": 56
+          },
+          "16": {
+            "opaquePerPixelMAEGreater": 44,
+            "opaqueMaxChannelDifferenceGreater": 49,
+            "opaqueMeanRGBDarkeningGreater": 25,
+            "opacityDeficitOrOpaqueMAEError": 46
+          },
+          "32": {
+            "opaquePerPixelMAEGreater": 36,
+            "opaqueMaxChannelDifferenceGreater": 39,
+            "opaqueMeanRGBDarkeningGreater": 21,
+            "opacityDeficitOrOpaqueMAEError": 38
+          }
+        }
+      },
+      "faceRectangle": {
+        "sourceOpaqueInteriorPixels": 4290,
+        "renderTransparentAlpha0to5": 0,
+        "renderPartialAlpha6to250": 0,
+        "renderOpaqueAlpha251to255": 4290,
+        "opaqueRGBMAE255": 0.7461538461538462,
+        "thresholds": {
+          "8": {
+            "opaquePerPixelMAEGreater": 30,
+            "opaqueMaxChannelDifferenceGreater": 31,
+            "opaqueMeanRGBDarkeningGreater": 23,
+            "opacityDeficitOrOpaqueMAEError": 30
+          },
+          "16": {
+            "opaquePerPixelMAEGreater": 24,
+            "opaqueMaxChannelDifferenceGreater": 27,
+            "opaqueMeanRGBDarkeningGreater": 21,
+            "opacityDeficitOrOpaqueMAEError": 24
+          },
+          "32": {
+            "opaquePerPixelMAEGreater": 18,
+            "opaqueMaxChannelDifferenceGreater": 21,
+            "opaqueMeanRGBDarkeningGreater": 18,
+            "opacityDeficitOrOpaqueMAEError": 18
+          }
+        }
+      }
+    },
+    "3": {
+      "head": {
+        "sourceOpaqueInteriorPixels": 10953,
+        "renderTransparentAlpha0to5": 0,
+        "renderPartialAlpha6to250": 0,
+        "renderOpaqueAlpha251to255": 10953,
+        "opaqueRGBMAE255": 0.6086003834565873,
+        "thresholds": {
+          "8": {
+            "opaquePerPixelMAEGreater": 49,
+            "opaqueMaxChannelDifferenceGreater": 51,
+            "opaqueMeanRGBDarkeningGreater": 26,
+            "opacityDeficitOrOpaqueMAEError": 49
+          },
+          "16": {
+            "opaquePerPixelMAEGreater": 40,
+            "opaqueMaxChannelDifferenceGreater": 45,
+            "opaqueMeanRGBDarkeningGreater": 23,
+            "opacityDeficitOrOpaqueMAEError": 40
+          },
+          "32": {
+            "opaquePerPixelMAEGreater": 32,
+            "opaqueMaxChannelDifferenceGreater": 35,
+            "opaqueMeanRGBDarkeningGreater": 19,
+            "opacityDeficitOrOpaqueMAEError": 32
+          }
+        }
+      },
+      "faceRectangle": {
+        "sourceOpaqueInteriorPixels": 4287,
+        "renderTransparentAlpha0to5": 0,
+        "renderPartialAlpha6to250": 0,
+        "renderOpaqueAlpha251to255": 4287,
+        "opaqueRGBMAE255": 0.746520488297955,
+        "thresholds": {
+          "8": {
+            "opaquePerPixelMAEGreater": 30,
+            "opaqueMaxChannelDifferenceGreater": 31,
+            "opaqueMeanRGBDarkeningGreater": 23,
+            "opacityDeficitOrOpaqueMAEError": 30
+          },
+          "16": {
+            "opaquePerPixelMAEGreater": 24,
+            "opaqueMaxChannelDifferenceGreater": 27,
+            "opaqueMeanRGBDarkeningGreater": 21,
+            "opacityDeficitOrOpaqueMAEError": 24
+          },
+          "32": {
+            "opaquePerPixelMAEGreater": 18,
+            "opaqueMaxChannelDifferenceGreater": 21,
+            "opaqueMeanRGBDarkeningGreater": 18,
+            "opacityDeficitOrOpaqueMAEError": 18
+          }
+        }
+      }
+    },
+    "5": {
+      "head": {
+        "sourceOpaqueInteriorPixels": 9981,
+        "renderTransparentAlpha0to5": 0,
+        "renderPartialAlpha6to250": 0,
+        "renderOpaqueAlpha251to255": 9981,
+        "opaqueRGBMAE255": 0.6116621581003907,
+        "thresholds": {
+          "8": {
+            "opaquePerPixelMAEGreater": 47,
+            "opaqueMaxChannelDifferenceGreater": 49,
+            "opaqueMeanRGBDarkeningGreater": 26,
+            "opacityDeficitOrOpaqueMAEError": 47
+          },
+          "16": {
+            "opaquePerPixelMAEGreater": 38,
+            "opaqueMaxChannelDifferenceGreater": 43,
+            "opaqueMeanRGBDarkeningGreater": 23,
+            "opacityDeficitOrOpaqueMAEError": 38
+          },
+          "32": {
+            "opaquePerPixelMAEGreater": 30,
+            "opaqueMaxChannelDifferenceGreater": 33,
+            "opaqueMeanRGBDarkeningGreater": 19,
+            "opacityDeficitOrOpaqueMAEError": 30
+          }
+        }
+      },
+      "faceRectangle": {
+        "sourceOpaqueInteriorPixels": 4258,
+        "renderTransparentAlpha0to5": 0,
+        "renderPartialAlpha6to250": 0,
+        "renderOpaqueAlpha251to255": 4258,
+        "opaqueRGBMAE255": 0.7458118052293722,
+        "thresholds": {
+          "8": {
+            "opaquePerPixelMAEGreater": 30,
+            "opaqueMaxChannelDifferenceGreater": 31,
+            "opaqueMeanRGBDarkeningGreater": 23,
+            "opacityDeficitOrOpaqueMAEError": 30
+          },
+          "16": {
+            "opaquePerPixelMAEGreater": 24,
+            "opaqueMaxChannelDifferenceGreater": 27,
+            "opaqueMeanRGBDarkeningGreater": 21,
+            "opacityDeficitOrOpaqueMAEError": 24
+          },
+          "32": {
+            "opaquePerPixelMAEGreater": 18,
+            "opaqueMaxChannelDifferenceGreater": 21,
+            "opaqueMeanRGBDarkeningGreater": 18,
+            "opacityDeficitOrOpaqueMAEError": 18
+          }
+        }
+      }
+    }
+  },
+  "componentsAtRadius3Threshold16": {
+    "transparent": [],
+    "partial": [],
+    "opaqueRGBError": [
+      {
+        "pixels": 6,
+        "bboxFullImage": [
+          512,
+          223,
+          518,
+          225
+        ]
+      },
+      {
+        "pixels": 5,
+        "bboxFullImage": [
+          506,
+          207,
+          511,
+          208
+        ]
+      },
+      {
+        "pixels": 3,
+        "bboxFullImage": [
+          499,
+          224,
+          502,
+          225
+        ]
+      },
+      {
+        "pixels": 3,
+        "bboxFullImage": [
+          510,
+          265,
+          511,
+          268
+        ]
+      },
+      {
+        "pixels": 2,
+        "bboxFullImage": [
+          486,
+          215,
+          488,
+          217
+        ]
+      },
+      {
+        "pixels": 2,
+        "bboxFullImage": [
+          494,
+          222,
+          496,
+          223
+        ]
+      },
+      {
+        "pixels": 2,
+        "bboxFullImage": [
+          520,
+          243,
+          522,
+          245
+        ]
+      },
+      {
+        "pixels": 2,
+        "bboxFullImage": [
+          516,
+          248,
+          518,
+          250
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          547,
+          160,
+          548,
+          161
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          496,
+          178,
+          497,
+          179
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          551,
+          179,
+          552,
+          180
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          480,
+          197,
+          481,
+          198
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          492,
+          204,
+          493,
+          205
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          482,
+          208,
+          483,
+          209
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          483,
+          210,
+          484,
+          211
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          484,
+          212,
+          485,
+          213
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          531,
+          232,
+          532,
+          233
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          531,
+          238,
+          532,
+          239
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          519,
+          246,
+          520,
+          247
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          519,
+          252,
+          520,
+          253
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          514,
+          253,
+          515,
+          254
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          513,
+          256,
+          514,
+          257
+        ]
+      },
+      {
+        "pixels": 1,
+        "bboxFullImage": [
+          512,
+          259,
+          513,
+          260
+        ]
+      }
+    ]
+  },
+  "outputs": {
+    "K-front-residual-classification.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-residual-classification.webp",
+      "sha256": "3543eb3213da63e9fc858c04f669fcd8b4acaa65477d046bc35cade1136296fb",
+      "bytes": 99360
+    },
+    "K-front-source-interior-mask.png": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-source-interior-mask.png",
+      "sha256": "65ee9f77ec8aa94c099c7e96d9ccd7bc33aa972d35bb09fbccfbd1571c79fea9",
+      "bytes": 439
+    },
+    "K-front-reference-rgba.png": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-reference-rgba.png",
+      "sha256": "bf562f2bc6aa194f6d642152b2a1f1ddfaf40b206effd826f163eba24a0a7949",
+      "bytes": 31933
+    }
+  },
+  "scriptSHA256": "3ea2d1cf9a5d29001dbf8702fb9e25ca6f73161ebf2a7a6993d5936892d257ab",
+  "renderingPerformed": false,
+  "sourceAssetsModified": false,
+  "limitations": [
+    "Classifies existing rendered pixels only; does not prove an underlying geometry, mesh, depth, rasterization, or shader cause.",
+    "Counts depend on alpha/RGB thresholds and reference-interior mask; radius and threshold sensitivity are reported.",
+    "The reference uses the established registration/camera sampling. No new alignment, exposure fitting, sharpening, or colour correction."
+  ]
+}
