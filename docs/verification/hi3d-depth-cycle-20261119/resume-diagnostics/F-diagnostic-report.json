@@ -1,0 +1,167 @@
+{
+  "method": "production-native-box-map-diagnostics-v1",
+  "sourceManifestSHA256": "48d4630f488731650c5288d2242be6eec58a241fe760d594dcc7eb4736f67214",
+  "sourceMeshPayloadSHA256": "ec64f87f889d53e868ee0ba4976747f6555f0d0309795bbe33146cd36282d13d",
+  "scriptSHA256": "8c3eac5fcea1c5b5968168922d625bebdd1ff85d57c38be8eaa07ed656adbe2e",
+  "sourceMeshInspectorHTMLSHA256": "3ae13f97adee0bd522d5c84f81d627a9ed944715701217c10661d5f3f0b1f32f",
+  "cameraReferenceSHA256": "e3f68d22913799e488434e1f4ceeb0dd3facf203bbf1a668906410457783c7d1",
+  "rendererSource": "worker/runtime.mjs restoreBox; three-impostor@0.4.1",
+  "manifestScaffold": "Unused proxy/tightBounds/face validator fields supplied in memory; embedded render subset and all texture bytes unchanged.",
+  "originalInspectorHTMLModified": false,
+  "browserVersion": "158.0.8127.18",
+  "backend": "webgl2",
+  "adapter": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "triangles": 1000000,
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "near": 0.0005876666886430749,
+    "far": 70.52000263716899,
+    "sourceRadius": 0.5876666886430749,
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      1024,
+      1024
+    ],
+    "deviceScaleFactor": 1,
+    "matching": "Numerically equal camera target, position, and half-extent from recorded H-front-provenance.json"
+  },
+  "headCrop": [
+    463,
+    115,
+    572,
+    271
+  ],
+  "views": [
+    {
+      "name": "B-mesh",
+      "view": "front",
+      "cameraPosition": [
+        0,
+        0,
+        1.8073808642855147
+      ],
+      "normalEncoding": "world normal * 0.5 + 0.5",
+      "depthEncoding": "normalized actual orthographic depth-buffer value",
+      "albedo": "native diffuseColor before lights; native ray intersection, normal-dependent view weights and cross-view texture blending retained"
+    },
+    {
+      "name": "F-box",
+      "view": "front",
+      "cameraPosition": [
+        0,
+        0,
+        1.8073808642855147
+      ],
+      "normalEncoding": "world normal * 0.5 + 0.5",
+      "depthEncoding": "normalized actual orthographic depth-buffer value",
+      "albedo": "native diffuseColor before lights; native ray intersection, normal-dependent view weights and cross-view texture blending retained"
+    }
+  ],
+  "rayStepLimit": 2048,
+  "lighting": {
+    "directional": {
+      "color": 16777215,
+      "intensity": 2.1,
+      "position": [
+        1.1753333772861498,
+        1.7630000659292246,
+        1.1753333772861498
+      ]
+    },
+    "hemisphere": {
+      "sky": 16250349,
+      "ground": 8947855,
+      "intensity": 1.55
+    },
+    "toneMapping": "ACESFilmicToneMapping",
+    "exposure": 1
+  },
+  "limitations": [
+    "Mesh normals are the full-triangle official Inspector payload normals; these can differ from the baker normals.",
+    "Float depth readback preserves the depth buffer value, which is still subject to depth-buffer precision.",
+    "Albedo rendering retains normal-dependent view weighting; it is not a normal-independence experiment.",
+    "This is an internal diagnostic harness using the production renderer; it is not a replacement Inspector viewer."
+  ],
+  "files": [
+    {
+      "name": "B-mesh-front-lit.png",
+      "bytes": 237290,
+      "sha256": "2f252e6b9f9966777f5fe198fa1d0dced20e9996ddc24981939b03dcc9b55812"
+    },
+    {
+      "name": "B-mesh-front-albedo.rgba32f.bin",
+      "bytes": 16777216,
+      "sha256": "80630cccf878f13512bb44596136fc1ce543334b3f2b11f65989a9996d4aa906"
+    },
+    {
+      "name": "B-mesh-front-albedo.png",
+      "bytes": 28580,
+      "sha256": "36b79095c61074075846d0e98cee11cf0aa78ee864571fc363c1ed1ab81d85bc"
+    },
+    {
+      "name": "B-mesh-front-normal.rgba32f.bin",
+      "bytes": 16777216,
+      "sha256": "7f2ec96d530b4315b32c0f53bd3ac9d30dd1e669c61465c9b3556c9f66698560"
+    },
+    {
+      "name": "B-mesh-front-normal.png",
+      "bytes": 256252,
+      "sha256": "03e920fc49ea976940a2e750e669f24ded23b0434c732ba79c314f76b7285105"
+    },
+    {
+      "name": "B-mesh-front-depth.rgba32f.bin",
+      "bytes": 16777216,
+      "sha256": "124c44bed9db3c6a0bb8fa7d1a9ea7c3e8c87254ccfc97241d28477b1221a38d"
+    },
+    {
+      "name": "B-mesh-front-depth.png",
+      "bytes": 61415,
+      "sha256": "035c1bd1b05c13179fed38cfc6b62d525c6b955b90017c140670011d520d3310"
+    },
+    {
+      "name": "F-box-front-lit.png",
+      "bytes": 268131,
+      "sha256": "5f1a41e3957f5c25c18d37ac135f535732f3eecc504d326ba86c8b97d1a2d9e6"
+    },
+    {
+      "name": "F-box-front-albedo.rgba32f.bin",
+      "bytes": 16777216,
+      "sha256": "7f338522a1a2add4ed6d81c21c718ca9950261f0ff1414a1b7da2fc30e77c4df"
+    },
+    {
+      "name": "F-box-front-albedo.png",
+      "bytes": 258456,
+      "sha256": "19374878fe41fc42dcfb98f80b5739475404a929cafb5dfe489c11af9a2dc2c8"
+    },
+    {
+      "name": "F-box-front-normal.rgba32f.bin",
+      "bytes": 16777216,
+      "sha256": "0e18a9e9bb12279c28825be5ec1b49ed5495b16b7ce6c980384f700be0b78ffb"
+    },
+    {
+      "name": "F-box-front-normal.png",
+      "bytes": 262954,
+      "sha256": "fe760a6358507fa00b0578f3b1beb99b03eb4ed0ccc27790bf8d6adcfef03226"
+    },
+    {
+      "name": "F-box-front-depth.rgba32f.bin",
+      "bytes": 16777216,
+      "sha256": "412b43a0c35be4f341c3167043cde1ec829b7562f0992dbdbe6b4119db4157f5"
+    },
+    {
+      "name": "F-box-front-depth.png",
+      "bytes": 59015,
+      "sha256": "82639da48f9669cbfb65e68eebe244271523a2bf3cf5a60023e5073896ebf8bb"
+    }
+  ]
+}

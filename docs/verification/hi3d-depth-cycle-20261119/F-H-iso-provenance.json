@@ -1,0 +1,587 @@
+{
+  "kind": "Build a fixed-ROI oblique F/H board from unchanged official Inspector captures.",
+  "status": "verified existing captures",
+  "view": "iso",
+  "direction": [
+    0.5773502691896258,
+    0.5773502691896258,
+    0.5773502691896258
+  ],
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "halfExtent": 0.65783283658225,
+    "distance": 1.8073808642855147,
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001
+  },
+  "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+  "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+  "headWorldBounds": [
+    [
+      -0.06190345578729607,
+      0.3100160773953314,
+      -0.024992582091377752
+    ],
+    [
+      0.07604182008052954,
+      0.51,
+      0.18067711655172314
+    ]
+  ],
+  "headCrop": [
+    378,
+    160,
+    568,
+    397
+  ],
+  "headCropSource": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-full-comparison-provenance.json",
+    "sha256": "aaa864bdead10ddd8f9afd85f46d77e922c96f5e11236ec3bd12cc9c4af64401"
+  },
+  "earlierFourViewProof": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-H-comparison-provenance.json",
+    "sha256": "ca070bcf31aab7a9955aad88aaf1942f90ea5cea1a42dcce7a3bd5d4db50853d"
+  },
+  "FClayReuse": {
+    "sameProxySHA256AsB": true,
+    "sameClayGLBSHA256": "c0457a74ea6537333e5431a3cafb2a9828f9407f19fc87a9da07202aef80c043"
+  },
+  "captures": {
+    "F": {
+      "clay": {
+        "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay-iso-resume/capture.json",
+        "captureSHA256": "55789af8259e75a3b96f504449df8f042471f09d3dc73d4e8ec51811dab26e53",
+        "metadataStage": "B",
+        "capture": {
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay.inspector.html",
+          "htmlSHA256": "3ae13f97adee0bd522d5c84f81d627a9ed944715701217c10661d5f3f0b1f32f",
+          "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+          "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+          "assetId": null,
+          "sourceBounds": {
+            "min": [
+              -0.17968106269836426,
+              -0.5,
+              -0.16729551553726196
+            ],
+            "max": [
+              0.17968106269836426,
+              0.5,
+              0.16729551553726196
+            ]
+          },
+          "referenceBounds": {
+            "min": [
+              -0.19959635205538714,
+              -0.52,
+              -0.19067711655172312
+            ],
+            "max": [
+              0.19959635205538714,
+              0.52,
+              0.19067711655172312
+            ]
+          },
+          "triangleCounts": {
+            "expected": 1000000,
+            "meshPayload": 1000000,
+            "sourceOriginal": {
+              "vertices": 499920,
+              "triangles": 1000000
+            }
+          },
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5570216098243332,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 107.91702004948496,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 138.13486321155844,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "modes": {
+            "lit": {
+              "iso": {
+                "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay-iso-resume/lit-iso.png",
+                "sha256": "0e20f3e3f4df096582da78ea9f130ad8b329c6541d9f829113b68aacec59db63",
+                "direction": [
+                  0.5773502691896258,
+                  0.5773502691896258,
+                  0.5773502691896258
+                ],
+                "expectedPosition": [
+                  1.0434918285234205,
+                  1.0434918285234205,
+                  1.0434918285234205
+                ]
+              }
+            }
+          },
+          "errors": [],
+          "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "hardwareGPUUsed": false,
+          "browserVersion": "158.0.8127.18",
+          "viewport": {
+            "width": 800,
+            "height": 800
+          },
+          "canvasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 800,
+            "height": 800
+          },
+          "devicePixelRatio": 1.2800099849700928,
+          "canvasPixels": [
+            1024,
+            1024
+          ],
+          "backend": "Three.js / WebGL2",
+          "stageState": "Three.js PBR"
+        }
+      },
+      "box": {
+        "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box-iso-resume/capture.json",
+        "captureSHA256": "305b0675ff03b6b2264ae22e82c1f3324e0000a594fc56789f72eb17fa060b5a",
+        "metadataStage": "F",
+        "capture": {
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F.inspector.html",
+          "htmlSHA256": "2bff2ec86f73ba5f5e011be9d306b3904a71c6a5da236b5445c2c83b9d7c3f69",
+          "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+          "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+          "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+          "sourceBounds": {
+            "min": [
+              -0.19968106269836425,
+              -0.52,
+              -0.18729551553726195
+            ],
+            "max": [
+              0.19968106269836425,
+              0.52,
+              0.18729551553726195
+            ]
+          },
+          "referenceBounds": {
+            "min": [
+              -0.19959635205538714,
+              -0.52,
+              -0.19067711655172312
+            ],
+            "max": [
+              0.19959635205538714,
+              0.52,
+              0.19067711655172312
+            ]
+          },
+          "triangleCounts": {
+            "expected": null,
+            "meshPayload": 19320,
+            "sourceOriginal": {
+              "vertices": 499920,
+              "triangles": 1000000
+            }
+          },
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5876666886430749,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 3.505915677124107,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 4.4876070731820406,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "modes": {
+            "lit": {
+              "iso": {
+                "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box-iso-resume/lit-iso.png",
+                "sha256": "d06c918e0042268116a519c827c89b81c7cd7d78e1335e5dca048fbb7e76b2ec",
+                "direction": [
+                  0.5773502691896258,
+                  0.5773502691896258,
+                  0.5773502691896258
+                ],
+                "expectedPosition": [
+                  1.0434918285234205,
+                  1.0434918285234205,
+                  1.0434918285234205
+                ]
+              }
+            }
+          },
+          "errors": [],
+          "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "hardwareGPUUsed": false,
+          "browserVersion": "158.0.8127.18",
+          "viewport": {
+            "width": 800,
+            "height": 800
+          },
+          "canvasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 800,
+            "height": 800
+          },
+          "devicePixelRatio": 1.2800099849700928,
+          "canvasPixels": [
+            1024,
+            1024
+          ],
+          "backend": "Three.js / WebGL2",
+          "stageState": "Native Box"
+        }
+      }
+    },
+    "H": {
+      "clay": {
+        "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay-iso-resume/capture.json",
+        "captureSHA256": "b1e6559d8561b1471af89de99728d94019af11222157115c7d6c82a2fd31d2f5",
+        "metadataStage": "H",
+        "capture": {
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay.inspector.html",
+          "htmlSHA256": "694c4005dba5d4513984be955793ecdadd70e83ae5bb18018ab5862f109f671b",
+          "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+          "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+          "assetId": null,
+          "sourceBounds": {
+            "min": [
+              -0.1801174283027649,
+              -0.5,
+              -0.1692812293767929
+            ],
+            "max": [
+              0.1801174283027649,
+              0.5,
+              0.1692812293767929
+            ]
+          },
+          "referenceBounds": {
+            "min": [
+              -0.19959635205538714,
+              -0.52,
+              -0.19067711655172312
+            ],
+            "max": [
+              0.19959635205538714,
+              0.52,
+              0.19067711655172312
+            ]
+          },
+          "triangleCounts": {
+            "expected": 999999,
+            "meshPayload": 999999,
+            "sourceOriginal": {
+              "vertices": 499896,
+              "triangles": 999999
+            }
+          },
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5577619766510801,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 105.32746080172946,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 134.82020151775976,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "modes": {
+            "lit": {
+              "iso": {
+                "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay-iso-resume/lit-iso.png",
+                "sha256": "e8371e9cff212b75417aa378c8fc6429f92fe04652cc8e357991a6ec30329856",
+                "direction": [
+                  0.5773502691896258,
+                  0.5773502691896258,
+                  0.5773502691896258
+                ],
+                "expectedPosition": [
+                  1.0434918285234205,
+                  1.0434918285234205,
+                  1.0434918285234205
+                ]
+              }
+            }
+          },
+          "errors": [],
+          "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "hardwareGPUUsed": false,
+          "browserVersion": "158.0.8127.18",
+          "viewport": {
+            "width": 800,
+            "height": 800
+          },
+          "canvasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 800,
+            "height": 800
+          },
+          "devicePixelRatio": 1.2800099849700928,
+          "canvasPixels": [
+            1024,
+            1024
+          ],
+          "backend": "Three.js / WebGL2",
+          "stageState": "Three.js PBR"
+        }
+      },
+      "box": {
+        "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-box-iso-resume/capture.json",
+        "captureSHA256": "1598c64276db2c2ec34e65df13b6caae99db40734b5b874b907a8b822b8706a1",
+        "metadataStage": "H",
+        "capture": {
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H.inspector.html",
+          "htmlSHA256": "f3be6b7402642bc4a859812f4f19e66b8b0991ff0c30e9c556dbf912e20fb843",
+          "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+          "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+          "assetId": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+          "sourceBounds": {
+            "min": [
+              -0.20011742830276488,
+              -0.52,
+              -0.1892812293767929
+            ],
+            "max": [
+              0.20011742830276488,
+              0.52,
+              0.1892812293767929
+            ]
+          },
+          "referenceBounds": {
+            "min": [
+              -0.19959635205538714,
+              -0.52,
+              -0.19067711655172312
+            ],
+            "max": [
+              0.19959635205538714,
+              0.52,
+              0.19067711655172312
+            ]
+          },
+          "triangleCounts": {
+            "expected": null,
+            "meshPayload": 19256,
+            "sourceOriginal": {
+              "vertices": 499896,
+              "triangles": 999999
+            }
+          },
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5884508211438764,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 0.906305634385603,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 1.160080261448226,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "modes": {
+            "lit": {
+              "iso": {
+                "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-box-iso-resume/lit-iso.png",
+                "sha256": "701cf28905a63feca5133dc82f27b8a2af9e4e0be0a3e9e8c3aa73322d85f691",
+                "direction": [
+                  0.5773502691896258,
+                  0.5773502691896258,
+                  0.5773502691896258
+                ],
+                "expectedPosition": [
+                  1.0434918285234205,
+                  1.0434918285234205,
+                  1.0434918285234205
+                ]
+              }
+            }
+          },
+          "errors": [],
+          "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "hardwareGPUUsed": false,
+          "browserVersion": "158.0.8127.18",
+          "viewport": {
+            "width": 800,
+            "height": 800
+          },
+          "canvasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 800,
+            "height": 800
+          },
+          "devicePixelRatio": 1.2800099849700928,
+          "canvasPixels": [
+            1024,
+            1024
+          ],
+          "backend": "Three.js / WebGL2",
+          "stageState": "Native Box"
+        }
+      }
+    }
+  },
+  "processing": "One common integer ROI projected from the recorded world-space head bounds; 3x nearest; neutral backdrop; lossless WebP.",
+  "limitation": "Camera and lighting comparisons apply within each rendering path. Mesh and native Box use different official renderers. No enhancement, inference, rebake, or viewer modification.",
+  "panel": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-H-iso-faces.webp",
+    "sha256": "96d90109e6e3120790eb8e90233659d326de1036efb87e8eb127e8e731f60798",
+    "bytes": 157142,
+    "size": [
+      1212,
+      1726
+    ]
+  },
+  "scriptSHA256": "c4a3cf53710c759a0bcbabcc1b3e00eed2722c95c022eb0ec68603d73500bdaa"
+}

@@ -1,0 +1,425 @@
+{
+  "method": "paired-native-box-render-diagnostics-v1",
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "near": 0.0005876666886430749,
+    "far": 70.52000263716899,
+    "sourceRadius": 0.5876666886430749,
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      1024,
+      1024
+    ],
+    "deviceScaleFactor": 1,
+    "matching": "Numerically equal camera target, position, and half-extent from recorded H-front-provenance.json"
+  },
+  "headCrop": [
+    463,
+    115,
+    572,
+    271
+  ],
+  "commonLighting": {
+    "directional": {
+      "color": 16777215,
+      "intensity": 2.1,
+      "position": [
+        1.1753333772861498,
+        1.7630000659292246,
+        1.1753333772861498
+      ]
+    },
+    "hemisphere": {
+      "sky": 16250349,
+      "ground": 8947855,
+      "intensity": 1.55
+    },
+    "toneMapping": "ACESFilmicToneMapping",
+    "exposure": 1
+  },
+  "units": "Canonical object height=1; no measured real-world scale",
+  "sourceReports": {
+    "F": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/diagnostic-report.json",
+      "sha256": "51db16e0cb93bfc4df285da4c4bbf5425369d37cf4bf0b2b4414ea704a434843"
+    },
+    "H": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/diagnostic-report.json",
+      "sha256": "6826f6899f34691b6c7f488d4857cd75fda00d7c322ae1357d987478d1961682"
+    }
+  },
+  "sameHarnessSHA256": "8c3eac5fcea1c5b5968168922d625bebdd1ff85d57c38be8eaa07ed656adbe2e",
+  "metrics": {
+    "F-mesh-vs-Box": {
+      "body": {
+        "roi": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "overlapPixels": 84847,
+        "referencePixels": 84993,
+        "candidatePixels": 84895,
+        "silhouetteIoU": 0.9977187474277114,
+        "depthWorldAbs": {
+          "50": 0.00031997504993341863,
+          "90": 0.0005897734081372619,
+          "95": 0.0006408696062862873,
+          "99": 0.001318775350227952,
+          "100": 0.11680153757333755
+        },
+        "signedDepthMean": -0.0002109805791405961,
+        "normalAngleDegrees": {
+          "50": 2.922684669494629,
+          "90": 9.88491439819336,
+          "95": 13.22048282623291,
+          "99": 24.604488372802734,
+          "100": 147.0591278076172
+        },
+        "depthValuesFinite": true
+      },
+      "head": {
+        "roi": [
+          463,
+          115,
+          572,
+          271
+        ],
+        "overlapPixels": 13393,
+        "referencePixels": 13422,
+        "candidatePixels": 13396,
+        "silhouetteIoU": 0.9976163873370577,
+        "depthWorldAbs": {
+          "50": 0.00036187656223773956,
+          "90": 0.0006096076685935259,
+          "95": 0.0007093306048773229,
+          "99": 0.002157824579626322,
+          "100": 0.04235794395208359
+        },
+        "signedDepthMean": -0.0002662787155713886,
+        "normalAngleDegrees": {
+          "50": 3.505204677581787,
+          "90": 13.28857421875,
+          "95": 18.48826026916504,
+          "99": 33.18410873413086,
+          "100": 97.61622619628906
+        },
+        "depthValuesFinite": true
+      }
+    },
+    "H-mesh-vs-Box": {
+      "body": {
+        "roi": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "overlapPixels": 84740,
+        "referencePixels": 84891,
+        "candidatePixels": 84778,
+        "silhouetteIoU": 0.9977746117345077,
+        "depthWorldAbs": {
+          "50": 0.00030743086244910955,
+          "90": 0.0005784770473837852,
+          "95": 0.0006203785887919366,
+          "99": 0.0012885760515928268,
+          "100": 0.09829723089933395
+        },
+        "signedDepthMean": -0.000190222795936279,
+        "normalAngleDegrees": {
+          "50": 1.8822160959243774,
+          "90": 7.283899307250977,
+          "95": 10.991546630859375,
+          "99": 25.16942596435547,
+          "100": 126.28571319580078
+        },
+        "depthValuesFinite": true
+      },
+      "head": {
+        "roi": [
+          463,
+          115,
+          572,
+          271
+        ],
+        "overlapPixels": 13381,
+        "referencePixels": 13394,
+        "candidatePixels": 13384,
+        "silhouetteIoU": 0.9988057027692767,
+        "depthWorldAbs": {
+          "50": 0.0003893292450811714,
+          "90": 0.0006209039711393416,
+          "95": 0.0007321596494875848,
+          "99": 0.0022439761087298393,
+          "100": 0.0441855862736702
+        },
+        "signedDepthMean": -0.00026640581199899316,
+        "normalAngleDegrees": {
+          "50": 3.413517475128174,
+          "90": 14.164874076843262,
+          "95": 19.431838989257812,
+          "99": 33.49787902832031,
+          "100": 126.28571319580078
+        },
+        "depthValuesFinite": true
+      }
+    },
+    "B-vs-H-mesh": {
+      "body": {
+        "roi": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "overlapPixels": 83947,
+        "referencePixels": 84993,
+        "candidatePixels": 84891,
+        "silhouetteIoU": 0.9768435016349186,
+        "depthWorldAbs": {
+          "50": 0.0013044631341472268,
+          "90": 0.0042759752832353115,
+          "95": 0.005976204294711351,
+          "99": 0.013902547769248486,
+          "100": 0.11929408460855484
+        },
+        "signedDepthMean": 0.0001412098208675161,
+        "normalAngleDegrees": {
+          "50": 10.198114395141602,
+          "90": 29.818464279174805,
+          "95": 43.77207946777344,
+          "99": 74.53935241699219,
+          "100": 138.2226104736328
+        },
+        "depthValuesFinite": true
+      },
+      "head": {
+        "roi": [
+          463,
+          115,
+          572,
+          271
+        ],
+        "overlapPixels": 13338,
+        "referencePixels": 13422,
+        "candidatePixels": 13394,
+        "silhouetteIoU": 0.9896127021813326,
+        "depthWorldAbs": {
+          "50": 0.0017593373777344823,
+          "90": 0.0058731576427817345,
+          "95": 0.00820900872349739,
+          "99": 0.017497006803750992,
+          "100": 0.046144843101501465
+        },
+        "signedDepthMean": 0.0006929064984433353,
+        "normalAngleDegrees": {
+          "50": 18.0706787109375,
+          "90": 50.87900161743164,
+          "95": 63.40768051147461,
+          "99": 90.20530700683594,
+          "100": 137.519775390625
+        },
+        "depthValuesFinite": true
+      }
+    },
+    "F-vs-H-Box": {
+      "body": {
+        "roi": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "overlapPixels": 83834,
+        "referencePixels": 84895,
+        "candidatePixels": 84778,
+        "silhouetteIoU": 0.9766423187595382,
+        "depthWorldAbs": {
+          "50": 0.0012843005824834108,
+          "90": 0.004187969025224447,
+          "95": 0.005827992223203182,
+          "99": 0.013545678928494453,
+          "100": 0.11908601969480515
+        },
+        "signedDepthMean": 0.00017026226851157844,
+        "normalAngleDegrees": {
+          "50": 11.325267791748047,
+          "90": 31.14921760559082,
+          "95": 42.92477035522461,
+          "99": 71.78825378417969,
+          "100": 136.9021453857422
+        },
+        "depthValuesFinite": true
+      },
+      "head": {
+        "roi": [
+          463,
+          115,
+          572,
+          271
+        ],
+        "overlapPixels": 13324,
+        "referencePixels": 13396,
+        "candidatePixels": 13384,
+        "silhouetteIoU": 0.9901902497027348,
+        "depthWorldAbs": {
+          "50": 0.0017076500225812197,
+          "90": 0.005709098652005196,
+          "95": 0.007898642681539059,
+          "99": 0.016735520213842392,
+          "100": 0.047864772379398346
+        },
+        "signedDepthMean": 0.0007037937757559121,
+        "normalAngleDegrees": {
+          "50": 18.92885971069336,
+          "90": 50.51564407348633,
+          "95": 62.70512771606445,
+          "99": 88.73028564453125,
+          "100": 136.9021453857422
+        },
+        "depthValuesFinite": true
+      }
+    }
+  },
+  "images": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/paired/F-diagnostic-heads.webp",
+      "sha256": "6417f4e438870ca1a8f40c2262cbd0ebe7cd43d81c582124ea9960dc4302af80",
+      "sources": [
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/B-mesh-front-lit.png",
+          "sha256": "2f252e6b9f9966777f5fe198fa1d0dced20e9996ddc24981939b03dcc9b55812"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/B-mesh-front-albedo.png",
+          "sha256": "36b79095c61074075846d0e98cee11cf0aa78ee864571fc363c1ed1ab81d85bc"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/B-mesh-front-normal.png",
+          "sha256": "03e920fc49ea976940a2e750e669f24ded23b0434c732ba79c314f76b7285105"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/B-mesh-front-depth.png",
+          "sha256": "035c1bd1b05c13179fed38cfc6b62d525c6b955b90017c140670011d520d3310"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-lit.png",
+          "sha256": "5f1a41e3957f5c25c18d37ac135f535732f3eecc504d326ba86c8b97d1a2d9e6"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-albedo.png",
+          "sha256": "19374878fe41fc42dcfb98f80b5739475404a929cafb5dfe489c11af9a2dc2c8"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-normal.png",
+          "sha256": "fe760a6358507fa00b0578f3b1beb99b03eb4ed0ccc27790bf8d6adcfef03226"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-depth.png",
+          "sha256": "82639da48f9669cbfb65e68eebe244271523a2bf3cf5a60023e5073896ebf8bb"
+        }
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/paired/H-diagnostic-heads.webp",
+      "sha256": "6c48bd050340cbc036adb2a366064787f2c57c8d8b72bc1c01b1b1ae8715af28",
+      "sources": [
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-mesh-front-lit.png",
+          "sha256": "858feb993705ad348a2324a58e2008063721d1d7b86add49a5cfdfa41e26ca23"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-mesh-front-albedo.png",
+          "sha256": "209e340b5b8b8bbc780ef3dcee22496365ed276b9d17d29f8f286605149820d4"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-mesh-front-normal.png",
+          "sha256": "d58d8c65e3a0d0a0f09a90957c13e85863990ed65999db8c237cf035b327a753"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-mesh-front-depth.png",
+          "sha256": "107deff8f58a439f82fd53da2fc99fa19bfc80b1413c9c05a37116749844d959"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-lit.png",
+          "sha256": "5e73fa25515d68d5230b2eafed1f5f70bccd68de27ebb67433a0343d9507bc3a"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-albedo.png",
+          "sha256": "82ff65c06cae1ba7f2cc855e485092d855ffdbe064761a4604756fbea12697ba"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-normal.png",
+          "sha256": "23a70759a8574bfd8c086786fb62d57223f7a91a8e73c99cea1a9f4978f5bec7"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-depth.png",
+          "sha256": "eb8a20ed40fafd2928c4ad7bfdd64560597bcb7a59a08f1eb84254c41d121fc9"
+        }
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/paired/F-H-shading-heads.webp",
+      "sha256": "551c0cb85f58fa67cf97b9f48e112382c3168782c9028ea2308a4a5f836562ff",
+      "sources": [
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-lit.png",
+          "sha256": "5f1a41e3957f5c25c18d37ac135f535732f3eecc504d326ba86c8b97d1a2d9e6"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-albedo.png",
+          "sha256": "19374878fe41fc42dcfb98f80b5739475404a929cafb5dfe489c11af9a2dc2c8"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-lit.png",
+          "sha256": "5e73fa25515d68d5230b2eafed1f5f70bccd68de27ebb67433a0343d9507bc3a"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-albedo.png",
+          "sha256": "82ff65c06cae1ba7f2cc855e485092d855ffdbe064761a4604756fbea12697ba"
+        }
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/paired/F-H-normals-heads.webp",
+      "sha256": "fb8e17d9e557cfaa3476553736a1a97c23d3df3bb80c9db01ce25f27be86fc4a",
+      "sources": [
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/B-mesh-front-normal.png",
+          "sha256": "03e920fc49ea976940a2e750e669f24ded23b0434c732ba79c314f76b7285105"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-normal.png",
+          "sha256": "fe760a6358507fa00b0578f3b1beb99b03eb4ed0ccc27790bf8d6adcfef03226"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-mesh-front-normal.png",
+          "sha256": "d58d8c65e3a0d0a0f09a90957c13e85863990ed65999db8c237cf035b327a753"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-normal.png",
+          "sha256": "23a70759a8574bfd8c086786fb62d57223f7a91a8e73c99cea1a9f4978f5bec7"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Only front camera evaluated; side and oblique conclusions need separate captures.",
+    "Depth metrics measure Box reconstruction relative to its own mesh, not accuracy to the person.",
+    "Both silhouettes must cover a pixel for depth/normal metrics; edge maxima are reported.",
+    "Mesh normals come from full-triangle Inspector payloads; baked normals can differ.",
+    "Albedo removes lighting but preserves geometry and normal-dependent view selection."
+  ]
+}
