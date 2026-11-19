@@ -1,0 +1,90 @@
+{
+  "kind": "A versus B raw -X RGB, before Box composition",
+  "isBoxRender": false,
+  "stages": {
+    "A": {
+      "rawPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/nx/generated.png",
+      "rawSHA256": "03a0486444c9f0637f82e2cc3c066e125dba9c25650a3060a1730178b9182fdf",
+      "unchangedCopy": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-nx-raw.png",
+      "copySHA256": "03a0486444c9f0637f82e2cc3c066e125dba9c25650a3060a1730178b9182fdf",
+      "rawBytes": 894757,
+      "recipePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/prepared.json",
+      "recipeSHA256": "4ca5df2b3c65eeca3f859c078a2b2a5ecbfbbc26fc18c87505a11846ea7b3fcf",
+      "guide": {
+        "image": "A/nx/guide.png",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nx/guide.png",
+        "sha256": "379c8bf24e956166a8a2ec97b1cf8eb5032a5d296d7b832e2148a3cd7bc266a4"
+      },
+      "seed": 102
+    },
+    "B": {
+      "rawPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/B/nx/raw_00001_.png",
+      "rawSHA256": "b1252bf14ca410884ef8f2cb2214893a372e994b59f31291995d73cf239f5103",
+      "unchangedCopy": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-nx-raw.png",
+      "copySHA256": "b1252bf14ca410884ef8f2cb2214893a372e994b59f31291995d73cf239f5103",
+      "rawBytes": 930631,
+      "recipePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/prepared.json",
+      "recipeSHA256": "7afc06ebcb8c7d0dd189475b1649762907463b15db6e587ec13c433700e7fc28",
+      "guide": {
+        "image": "B/nx/guide.png",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/nx/guide.png",
+        "sha256": "6962723f54d7a9a9e557e0b0cf37f1414393e846443d90285518a2b744dbe551"
+      },
+      "seed": 102
+    }
+  },
+  "headCrop": [
+    463,
+    0,
+    687,
+    213
+  ],
+  "headCropReference": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-six-view-source-provenance.json",
+    "sha256": "f0a2af9a9068e2e5a50642e180ebadc18c88648c3627cbbfe239c8eb1130d064"
+  },
+  "controlledSettingsEqual": {
+    "models": {
+      "model": "minimax_h3_image_pruned_w4a8.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "matting": "birefnet.safetensors"
+    },
+    "sampler": {
+      "steps": 6,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1
+    },
+    "conditioning": "H3 image references (VLM plus VAE reference latents); no ControlNet",
+    "pictureOrder": [
+      "guide",
+      "source",
+      "axis-depth",
+      "normals",
+      "mask"
+    ],
+    "pictureSize": [
+      1024,
+      1024
+    ],
+    "outputSize": [
+      1024,
+      1024
+    ]
+  },
+  "sameReferencePhotoSHA256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+  "processing": "Same integer pixel crop enlarged 2x nearest-neighbor. Full-frame inset 1/4 nearest-neighbor. No registration, sharpening, recoloring or AI postprocessing.",
+  "pixelPreservationVerifiedAfterWebPDecode": true,
+  "limitation": "Compares raw generation of one direction. It does not validate six-view consistency, registration, geometry accuracy or Box rendering.",
+  "panel": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-B-nx-raw-proof.webp",
+    "sha256": "c8cc4f4de0aa6bd338b7a421711d5fea400d22383e1cbe03fe632b317c4e7e26",
+    "bytes": 244654,
+    "size": [
+      984,
+      956
+    ]
+  }
+}
