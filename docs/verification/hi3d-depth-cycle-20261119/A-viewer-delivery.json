@@ -1,0 +1,11 @@
+{
+  "source": "A.inspector.html",
+  "htmlBytes": 59023126,
+  "htmlSHA256": "8784f5a2466c5e45d6d5296e52dda3fb781ec4d9c4026f8f797264b2aebd03b9",
+  "gzip": "A.inspector.html.gz",
+  "gzipBytes": 43560356,
+  "gzipSHA256": "9e1adb25909e5c72307136cdd96116e5416321f4d02c7cab7d353d4548f9b715",
+  "officialViewerUnmodified": true,
+  "asset": "9b50c8152e51820366cd5a2529689513d3c7a13358ddbb68f48910b6f8f6f14e",
+  "delivery": "Lossless gzip packaging; decompress to recover exact official HTML"
+}
