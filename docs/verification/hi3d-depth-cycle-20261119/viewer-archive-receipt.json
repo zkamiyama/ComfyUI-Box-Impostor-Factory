@@ -1,0 +1,30 @@
+{
+  "format": "gzip; decompress to unchanged official 3D-Inspector HTML",
+  "files": [
+    {
+      "name": "D.inspector.html.gz",
+      "sha256": "be422f9452369f4886c946da51efb44e9e2008d5f70715f2a97dde5f0c4958f0",
+      "bytes": 45505128
+    },
+    {
+      "name": "E.inspector.html.gz",
+      "sha256": "a3394daa4f1326002fc8ea1977787c549edc5795087c42321b9ef9cc71d08093",
+      "bytes": 28511805
+    },
+    {
+      "name": "C2.inspector.html.gz",
+      "sha256": "0310b60548b46dd8dbe3648be982a6abc4dbf202c7baa36865bcc9cfc0121ce5",
+      "bytes": 46981710
+    },
+    {
+      "name": "C2-clay.inspector.html.gz",
+      "sha256": "77e5182cb42522056c3168e556fbbaea841ebd9f363c99665734899b7f276af2",
+      "bytes": 17404006
+    },
+    {
+      "name": "F.inspector.html.gz",
+      "sha256": "01fd51a852588da87511cb9d2b94c4bea4f5753d3c819847eba55dbfe2d6094f",
+      "bytes": 46045286
+    }
+  ]
+}
