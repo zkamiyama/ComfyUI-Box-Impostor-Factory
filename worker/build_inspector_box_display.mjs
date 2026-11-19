@@ -75,7 +75,7 @@ const receipt = {
   dependencies, upstreamSHA256, helpers,
   builderSHA256: sha(await readFile(fileURLToPath(import.meta.url))), outputs,
   shapeSamplingOptions: ['native', 'interval-morph'],
-  colorSamplingOptions: ['native', 'view', 'dominant', 'view-fade', 'view-soft', 'view-feather'],
+  colorSamplingOptions: ['native', 'view', 'dominant', 'view-fade', 'view-soft', 'view-feather', 'field-morph'],
   distanceMap: { derivation: 'Original decoded RGBA16F rangeMap; increasingShaderV; before WebGL2 row flip',
     storage: 'Runtime-only R8 DataTexture, nearest, NoColorSpace, disposed with the Box',
     legacyAssetBytesChanged: false },

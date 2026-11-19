@@ -36,6 +36,58 @@ const VIEW_UV=[p=>vec2(p.z.oneMinus(),p.y),p=>vec2(p.z,p.y),
   p=>vec2(p.x,p.y),p=>vec2(p.x.oneMinus(),p.y)];
 const AXIS_UV=[p=>vec2(p.z,p.y),p=>vec2(p.x,p.z),p=>vec2(p.x,p.y)];
 
+// Shared scalar/attribute field terms. Colour calls this only after the final
+// hit, so pairing RGB with the field adds no texture reads to ray marching.
+export function createBoxMorphFieldTerms(point,toRay,{intervalAt,sizes,resolution,epsilon,band,strength}) {
+  const p=point.toVar(),fields=[],supports=[],weights=[];
+  let nativeField=float(-1e20),gapGuard=float(-1e20);
+  let minimumSpan=float(1e20),minimumSpanTexels=float(1e20);
+  for(let axis=0;axis<3;axis++) {
+    const interval=intervalAt(p,axis).toVar();
+    const c=p.element(axis),high=interval.x,low=interval.y.oneMinus();
+    const gap=min(c.sub(interval.w),interval.z.sub(c));
+    const outer=max(c.sub(high),low.sub(c));
+    // Scale each normalized Box-axis residual to the same physical local
+    // units before combining axes. This does not make it a true SDF.
+    const f=max(outer,gap).sub(epsilon).mul(sizes[axis]).toVar();
+    const first=select(toRay.element(axis).greaterThanEqual(0),c.sub(high),low.sub(c)).sub(epsilon).mul(sizes[axis]).toVar();
+    const endpoint=select(toRay.element(axis).greaterThanEqual(0),high,low);
+    const support=high.greaterThanEqual(low).toVar();
+    const observed=support.and(endpoint.greaterThan(1e-6)).and(endpoint.lessThan(1-1e-6));
+    const nearFirst=smoothstep(band*.5,band,abs(first)).oneMinus();
+    const outerSurface=smoothstep(band*.5,band,abs(f.sub(first))).oneMinus();
+    const a=select(observed,toRay.element(axis).mul(toRay.element(axis)).mul(nearFirst).mul(outerSurface),0).toVar();
+    fields.push(f);supports.push(support);weights.push(a);
+    nativeField=max(nativeField,f);
+    gapGuard=max(gapGuard,gap.sub(epsilon).mul(sizes[axis]));
+
+    const hasGap=interval.z.greaterThan(interval.w);
+    const lowerSpan=interval.w.sub(low),upperSpan=high.sub(interval.z);
+    const segment=select(c.lessThanEqual(interval.w),lowerSpan,
+      select(c.greaterThanEqual(interval.z),upperSpan,min(lowerSpan,upperSpan)));
+    const span=max(select(hasGap,segment,high.sub(low)),0).toVar();
+    minimumSpan=min(minimumSpan,span.mul(sizes[axis]));
+    minimumSpanTexels=min(minimumSpanTexels,span.mul(resolution));
+  }
+  nativeField=nativeField.toVar();gapGuard=gapGuard.toVar();
+  const total=weights.reduce((a,b)=>a.add(b)).toVar();
+  const q=weights.map(w=>w.div(max(total,1e-12)));
+  const mixed=fields.reduce((sum,f,i)=>sum.add(max(f,nativeField.sub(band)).mul(q[i])),float(0)).toVar();
+  // One usable view keeps native geometry. Two overlapping views gradually
+  // activate the morph; weights are continuous through cardinal directions.
+  const overlap=clamp(float(1).sub(q.reduce((sum,w)=>sum.add(w.mul(w)),float(0))).mul(2),0,1);
+  const amount=overlap.mul(smoothstep(.05,.25,total)).mul(strength);
+  const thinProtection=smoothstep(4,8,minimumSpanTexels);
+  const limit=min(band,minimumSpan.mul(.25)).mul(thinProtection);
+  const candidate=max(max(mix(nativeField,mixed,amount),nativeField.sub(limit)),gapGuard);
+  const supported=supports[0].and(supports[1]).and(supports[2]);
+  // Empty/inside-out interval texels include the baker's thin-edge support.
+  // Retain their native value instead of fabricating an observed surface.
+  return {field:select(supported,candidate,nativeField),nativeField,gapGuard,mixed,
+    amount,thinProtection,limit,supported,q,total};
+
+}
+
 // A bounded, angle-dependent projective-field morph, not a Euclidean SDF.
 // It changes the single surface hit, its normal and its fragment depth. The
 // original interval gaps remain hard exclusions. The native distanceMap is
@@ -91,51 +143,7 @@ export class BoxShapeImpostorMaterial extends ImpostorNodeMaterial {
     };
 
     const fieldAt=Fn(([point,toRay])=>{
-      const p=point.toVar(),fields=[],supports=[],weights=[];
-      let nativeField=float(-1e20),gapGuard=float(-1e20);
-      let minimumSpan=float(1e20),minimumSpanTexels=float(1e20);
-      for(let axis=0;axis<3;axis++) {
-        const interval=intervalAt(p,axis).toVar();
-        const c=p.element(axis),high=interval.x,low=interval.y.oneMinus();
-        const gap=min(c.sub(interval.w),interval.z.sub(c));
-        const outer=max(c.sub(high),low.sub(c));
-        // Scale each normalized Box-axis residual to the same physical local
-        // units before combining axes. This does not make it a true SDF.
-        const f=max(outer,gap).sub(epsilon).mul(sizes[axis]).toVar();
-        const first=select(toRay.element(axis).greaterThanEqual(0),c.sub(high),low.sub(c)).sub(epsilon).mul(sizes[axis]).toVar();
-        const endpoint=select(toRay.element(axis).greaterThanEqual(0),high,low);
-        const support=high.greaterThanEqual(low).toVar();
-        const observed=support.and(endpoint.greaterThan(1e-6)).and(endpoint.lessThan(1-1e-6));
-        const nearFirst=smoothstep(band*.5,band,abs(first)).oneMinus();
-        const outerSurface=smoothstep(band*.5,band,abs(f.sub(first))).oneMinus();
-        const a=select(observed,toRay.element(axis).mul(toRay.element(axis)).mul(nearFirst).mul(outerSurface),0).toVar();
-        fields.push(f);supports.push(support);weights.push(a);
-        nativeField=max(nativeField,f);
-        gapGuard=max(gapGuard,gap.sub(epsilon).mul(sizes[axis]));
-
-        const hasGap=interval.z.greaterThan(interval.w);
-        const lowerSpan=interval.w.sub(low),upperSpan=high.sub(interval.z);
-        const segment=select(c.lessThanEqual(interval.w),lowerSpan,
-          select(c.greaterThanEqual(interval.z),upperSpan,min(lowerSpan,upperSpan)));
-        const span=max(select(hasGap,segment,high.sub(low)),0).toVar();
-        minimumSpan=min(minimumSpan,span.mul(sizes[axis]));
-        minimumSpanTexels=min(minimumSpanTexels,span.mul(resolution));
-      }
-      nativeField=nativeField.toVar();gapGuard=gapGuard.toVar();
-      const total=weights.reduce((a,b)=>a.add(b)).toVar();
-      const q=weights.map(w=>w.div(max(total,1e-12)));
-      const mixed=fields.reduce((sum,f,i)=>sum.add(max(f,nativeField.sub(band)).mul(q[i])),float(0)).toVar();
-      // One usable view keeps native geometry. Two overlapping views gradually
-      // activate the morph; weights are continuous through cardinal directions.
-      const overlap=clamp(float(1).sub(q.reduce((sum,w)=>sum.add(w.mul(w)),float(0))).mul(2),0,1);
-      const amount=overlap.mul(smoothstep(.05,.25,total)).mul(strength);
-      const thinProtection=smoothstep(4,8,minimumSpanTexels);
-      const limit=min(band,minimumSpan.mul(.25)).mul(thinProtection);
-      const candidate=max(max(mix(nativeField,mixed,amount),nativeField.sub(limit)),gapGuard);
-      const supported=supports[0].and(supports[1]).and(supports[2]);
-      // Empty/inside-out interval texels include the baker's thin-edge support.
-      // Retain their native value instead of fabricating an observed surface.
-      return select(supported,candidate,nativeField);
+      return createBoxMorphFieldTerms(point,toRay,{intervalAt,sizes,resolution,epsilon,band,strength}).field;
     }).setLayout({name:'boxMorphField',type:'float',inputs:[
       {name:'point',type:'vec3'},{name:'toRay',type:'vec3'},
     ]});

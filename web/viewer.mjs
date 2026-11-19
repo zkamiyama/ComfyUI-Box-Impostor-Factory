@@ -200,7 +200,7 @@ async function run() {
   const colorSampling=params.get('color-sampling') || 'native';
   const shapeSampling=params.get('shape-sampling') || 'native';
   if(!['native','interval-morph'].includes(shapeSampling)) throw new Error('不明な Box 形状補間設定です');
-  if(!['native','view','dominant','view-fade','view-soft','view-feather'].includes(colorSampling)) throw new Error('不明な Box 色選択設定です');
+  if(!['native','view','dominant','view-fade','view-soft','view-feather','field-morph'].includes(colorSampling)) throw new Error('不明な Box 色選択設定です');
   if(!['lit','unlit'].includes(lighting)) throw new Error('不明な Box 照明設定です');
   const renderer = await makeRenderer(params.get('backend') || (globalThis.__BI_CHAT_BOX__ ? 'webgl2' : 'auto'),{canvas:el('canvas'),antialias:true});
   const defaultToneMapping=renderer.toneMapping;
@@ -455,7 +455,7 @@ async function run() {
   rotateLight(); placeCamera(true); modeChanged();
   const faceReports=Object.values(manifest.faces||{}).map(f=>f.edit?.status);
   const fallback=faceReports.filter(s=>s==='fallback').length;
-  el('status').textContent=[backendName(renderer),manifest.mode,'R='+manifest.resolution,shapeSampling==='interval-morph'?'形状：角度補間（試験）':'',lighting==='unlit'?'Box 照明なし':'',colorSampling==='view'?'色：視線方向で混合':colorSampling==='dominant'?'色：主方向の一面':colorSampling==='view-fade'?'色：境界をフェード':colorSampling==='view-soft'?'色：境界を広く混合':colorSampling==='view-feather'?'色：境界付近で混合':'',fallback ? '元の色へ戻した面 '+fallback : '',currentSampling==='reduce_bleeding'?'色にじみ低減':''].filter(Boolean).join(' · ');
+  el('status').textContent=[backendName(renderer),manifest.mode,'R='+manifest.resolution,shapeSampling==='interval-morph'?'形状：角度補間（試験）':'',lighting==='unlit'?'Box 照明なし':'',colorSampling==='view'?'色：視線方向で混合':colorSampling==='dominant'?'色：主方向の一面':colorSampling==='view-fade'?'色：境界をフェード':colorSampling==='view-soft'?'色：境界を広く混合':colorSampling==='view-feather'?'色：境界付近で混合':colorSampling==='field-morph'?'色：Zと同時補間':'',fallback ? '元の色へ戻した面 '+fallback : '',currentSampling==='reduce_bleeding'?'色にじみ低減':''].filter(Boolean).join(' · ');
   let closing=false;
   if (renderer.backend.isWebGPUBackend) renderer.backend.device.lost.then(info => {
     if (closing) return;

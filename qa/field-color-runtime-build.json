@@ -1,0 +1,64 @@
+{
+  "method": "official-inspector-three-impostor-0.4.2-runtime",
+  "baselineSource": {
+    "path": "inspector_native_entry.mjs",
+    "sha256": "ac0f29cd15b3bf9f3b6a95c216a34e39637474ca8c8b5613c51b94d2e10b7ff9",
+    "origin": "3D-Inspector skills/3d-inspector/assets/native-runtime.cdn.mjs before the 0.4.2 upgrade"
+  },
+  "dependencies": {
+    "three": "0.186.0",
+    "three-impostor": "0.4.2",
+    "esbuild": "0.28.2"
+  },
+  "upstreamSHA256": "18d82ffce940ec996c41e8c61018d38f5a0503cbabe06e69cd2f2c5bf7abcc56",
+  "helpers": {
+    "distance_map.mjs": "649d680a960bf4e697f6536716f37dbfc5ce1c755a3626b379948508e6ebb7a1",
+    "distance_texture.mjs": "8e7cbc13916dff36f4507d841f422653e2d1e7c8da8ff503823d7ea6c6c03144",
+    "box_display_material.mjs": "27a18654f72a9385af037d00d287c38e6990b9cb3066ee2677e4e31e84083397",
+    "box_morph_material.mjs": "c3177116cdad42cd8728fc1b3329d425c41f85776dd757752982994665bbf330"
+  },
+  "builderSHA256": "2336f4f768a921e20f7585e53c7e65bc342a8b0e11b2ea3aad55d076e6c84bcb",
+  "outputs": {
+    "native-runtime.bundle.js": {
+      "bytes": 1105025,
+      "sha256": "2722eb2d964aaf13d82fd1f8a86380f644ea18897f05aff3c3e109db51f1912a"
+    },
+    "native-runtime.cdn.mjs": {
+      "bytes": 11413,
+      "sha256": "8743c007dec4f620bd498793b564344586253b80a951bc573d967bc8095c84a3"
+    },
+    "native-rgb-runtime.bundle.js": {
+      "bytes": 1117548,
+      "sha256": "ad987457d7ae7dc8144dfc8e13e19584a3b29cd09602e3ac663120b5c5f19086"
+    },
+    "native-rgb-runtime.cdn.mjs": {
+      "bytes": 24348,
+      "sha256": "9a224bfba5819555bb21a84d8ec28f7835b09ac008272a0718f20414c67ce41a"
+    }
+  },
+  "shapeSamplingOptions": [
+    "native",
+    "interval-morph"
+  ],
+  "colorSamplingOptions": [
+    "native",
+    "view",
+    "dominant",
+    "view-fade",
+    "view-soft",
+    "view-feather",
+    "field-morph"
+  ],
+  "distanceMap": {
+    "derivation": "Original decoded RGBA16F rangeMap; increasingShaderV; before WebGL2 row flip",
+    "storage": "Runtime-only R8 DataTexture, nearest, NoColorSpace, disposed with the Box",
+    "legacyAssetBytesChanged": false
+  },
+  "generatedHtmlPostprocessing": false,
+  "changes": [
+    "Both native and native-rgb profiles use pinned three-impostor 0.4.2",
+    "Legacy Box assets derive the required distance field once at restore time",
+    "Existing native depth step budget and opt-in RGB display options are preserved",
+    "Opt-in interval morph solves a bounded angle-dependent field with a single hit and its own conservatively expanded skip cache"
+  ]
+}

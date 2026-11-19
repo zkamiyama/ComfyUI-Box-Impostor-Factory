@@ -2,7 +2,7 @@ import {
   Fn, If, abs, clamp, diffuseColor, dot, float, floor, materialColor, max, min, mix,
   normalize, property, select, smoothstep, texture, vec2, vec3, vec4,
 } from 'three/tsl';
-import { BoxShapeImpostorMaterial } from './box_morph_material.mjs';
+import { BoxShapeImpostorMaterial, createBoxMorphFieldTerms } from './box_morph_material.mjs';
 
 // Pinned three-impostor 0.4.2 Box projection convention. These functions only
 // locate colour samples after the selected native or interval-morph hit solver.
@@ -80,6 +80,7 @@ class ViewColorImpostorMaterial extends BoxShapeImpostorMaterial {
     const fade=this.boxColorSampling==='view-fade'||this.boxColorSampling==='view-soft';
     const soft=this.boxColorSampling==='view-soft';
     const feather=this.boxColorSampling==='view-feather';
+    const fieldMorph=this.boxColorSampling==='field-morph';
     return Fn(()=>{
       // Resolve the selected shape first, including discard, normal and depth.
       const original=nativeColor.toVar();
@@ -88,6 +89,19 @@ class ViewColorImpostorMaterial extends BoxShapeImpostorMaterial {
         const q=clamp(project(p),.5/resolution,1-.5/resolution);
         return texture(intervalMap,vec2(q.x.add(axis),q.y).div(vec2(3,1))).level(0).toVar();
       });
+      // A source's depth field and colour travel as a pair. This reuses the
+      // exact scalar-field terms at the final hit; it does not retrace rays,
+      // invent UV correspondences, or add reads inside the march.
+      let fieldTerms,pairedColor,pairedTotal,fieldBand;
+      if(fieldMorph) {
+        const sizes=[box.max.x-box.min.x,box.max.y-box.min.y,box.max.z-box.min.z];
+        fieldBand=Math.min(...sizes)*this.morphBandTexels/resolution;
+        fieldTerms=createBoxMorphFieldTerms(p,space.boxDisplayToRay,{
+          intervalAt:(_point,axis)=>intervals[axis],sizes,resolution,
+          epsilon:1.5/resolution,band:fieldBand,strength:this.morphStrength,
+        });
+        pairedColor=vec3(0).toVar();pairedTotal=float(0).toVar();
+      }
       const selected=original.rgb.toVar();
       const accumulated=vec3(0).toVar(),total=float(0).toVar(),best=float(0).toVar();
       const confidence=float(0).toVar();
@@ -112,6 +126,16 @@ class ViewColorImpostorMaterial extends BoxShapeImpostorMaterial {
         const visible=select(valid,smoothstep(2/resolution,(soft?6:3)/resolution,distance).oneMinus(),0).toVar();
         const angle=max(dot(space.boxDisplayToRay,vec3(...SIDES[i])),0).toVar();
         const rgb=c.rgb.div(max(c.a,1e-3)).mul(materialColor);
+        if(fieldMorph) {
+          // q already contains angle^2 and the same physical-Z near-surface
+          // support as the geometry. The paired path deliberately does not use
+          // the old 2--3-texel visibility ramp: an 8-texel field morph can move
+          // its hit farther from either original surface. Alpha/known-source
+          // validity may remove a colour source, so eligible q is renormalized.
+          const pairedWeight=select(valid.and(angle.greaterThan(0)),
+            fieldTerms.q[axis].mul(c.a),0).toVar();
+          pairedColor.addAssign(rgb.mul(pairedWeight));pairedTotal.addAssign(pairedWeight);
+        }
         if(dominant) {
           // Strict comparison gives a deterministic face-order tie break.
           If(visible.greaterThan(0).and(angle.greaterThan(best)),()=>{
@@ -143,6 +167,26 @@ class ViewColorImpostorMaterial extends BoxShapeImpostorMaterial {
         const resolved=accumulated.div(max(total,1e-12));
         selected.assign(mix(original.rgb,resolved,confidence.mul(smoothstep(0,1e-8,total))));
       } else if(!dominant) If((feather?baseTotal:total).greaterThan(1e-8),()=>selected.assign(accumulated.div(feather?max(total,1e-20):total)));
+      if(fieldMorph) {
+        // The scalar mixture is subsequently bounded by its native band,
+        // interval gaps, and thin-segment protection. Recover the portion of
+        // that mixture which survived those guards instead of blending colour
+        // at full strength where geometry was held at its native field.
+        const {nativeField,mixed,field,amount,thinProtection,gapGuard,supported}=fieldTerms;
+        const delta=max(nativeField.sub(mixed),0).toVar();
+        const achieved=max(nativeField.sub(field),0).toVar();
+        const tolerance=Math.max(fieldBand*1e-6,1e-12);
+        const measured=select(supported,clamp(achieved.div(max(delta,tolerance)),0,amount),0);
+        // Coincident scalar fields can still carry different colour. Their
+        // attributes may interpolate, provided the same guards allow it. A
+        // narrow smooth transition avoids an unstable division near delta=0.
+        const gapPermission=smoothstep(tolerance,4*tolerance,max(nativeField.sub(gapGuard),0));
+        const coincident=select(supported,amount.mul(thinProtection).mul(gapPermission),0);
+        const effective=clamp(mix(coincident,measured,smoothstep(tolerance,4*tolerance,delta)),0,amount);
+        const confidence=smoothstep(0,1e-5,pairedTotal);
+        const paired=pairedColor.div(max(pairedTotal,1e-12));
+        selected.assign(mix(selected,paired,effective.mul(confidence)));
+      }
       // Alpha and all geometry outputs remain those of the selected shape resolver.
       return vec4(selected,original.a);
     })();
@@ -158,10 +202,12 @@ export function createBoxDisplayMaterial(impostor, {lighting='lit',sampling='nat
   // Retain the original helper option for old display payloads. Texture
   // interpolation is a separate Factory setting; this legacy value stays native.
   if (sampling!=='native') throw new Error('Unknown Box view sampling: '+sampling);
-  if (!['native','view','dominant','view-fade','view-soft','view-feather'].includes(colorSampling)) throw new Error('Unknown Box colour sampling: '+colorSampling);
+  if (!['native','view','dominant','view-fade','view-soft','view-feather','field-morph'].includes(colorSampling)) throw new Error('Unknown Box colour sampling: '+colorSampling);
   if (colorSampling!=='native' && impostor.layout!=='box') throw new Error('View colour sampling requires Box layout');
+  if (colorSampling==='field-morph' && shapeSampling!=='interval-morph') throw new Error('Field colour morph requires interval-morph shape sampling');
   const shapeOptions={shapeSampling,morphStrength,morphBandTexels,morphStepTexels};
   const material=colorSampling==='native' ? new BoxShapeImpostorMaterial(impostor,shapeOptions) : new ViewColorImpostorMaterial(impostor,colorSampling,shapeOptions);
   if (lighting==='unlit') material.outputNode=vec4(diffuseColor.rgb,diffuseColor.a);
   return material;
 }
+

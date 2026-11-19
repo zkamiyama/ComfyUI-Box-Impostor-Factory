@@ -13,9 +13,9 @@ import { chromiumOptions, presentedForeground } from './chromium.mjs';
 
 const usage = `node worker/cli.mjs bake --input model.glb --output asset-dir [--resolution 256] [--backend auto|webgpu|webgl2] [--maps roughness,metalness,ao,emissive] [--verify]
 node worker/cli.mjs canonicalize --input model.glb --output new-dir
-node worker/cli.mjs preview --asset asset-dir [--port 8080] [--lighting lit|unlit] [--color-sampling native|view|dominant|view-fade|view-soft|view-feather] [--shape-sampling native|interval-morph]
-node worker/cli.mjs thumbnail --asset asset-dir --output hero.png [--sampling standard|reduce_bleeding] [--lighting lit|unlit] [--color-sampling native|view|dominant|view-fade|view-soft|view-feather] [--shape-sampling native|interval-morph]
-node worker/cli.mjs render --asset asset-dir --output frame.png [--view +Z] [--projection orthographic|perspective] [--width 512] [--height 512] [--sampling standard|reduce_bleeding] [--lighting lit|unlit] [--color-sampling native|view|dominant|view-fade|view-soft|view-feather] [--shape-sampling native|interval-morph]
+node worker/cli.mjs preview --asset asset-dir [--port 8080] [--lighting lit|unlit] [--color-sampling native|view|dominant|view-fade|view-soft|view-feather|field-morph] [--shape-sampling native|interval-morph]
+node worker/cli.mjs thumbnail --asset asset-dir --output hero.png [--sampling standard|reduce_bleeding] [--lighting lit|unlit] [--color-sampling native|view|dominant|view-fade|view-soft|view-feather|field-morph] [--shape-sampling native|interval-morph]
+node worker/cli.mjs render --asset asset-dir --output frame.png [--view +Z] [--projection orthographic|perspective] [--width 512] [--height 512] [--sampling standard|reduce_bleeding] [--lighting lit|unlit] [--color-sampling native|view|dominant|view-fade|view-soft|view-feather|field-morph] [--shape-sampling native|interval-morph]
 node worker/cli.mjs inspect --asset asset-dir`;
 const allowedMaps = ['roughness','metalness','ao','emissive'];
 export async function inspectAsset(dir) {
@@ -247,7 +247,7 @@ export async function main(argv) {
   }}).values;
   if(['thumbnail','render','preview'].includes(command) && !['lit','unlit'].includes(opt.lighting))
     throw new Error('Unknown Box display lighting');
-  if(['thumbnail','render','preview'].includes(command) && !['native','view','dominant','view-fade','view-soft','view-feather'].includes(opt['color-sampling']))
+  if(['thumbnail','render','preview'].includes(command) && !['native','view','dominant','view-fade','view-soft','view-feather','field-morph'].includes(opt['color-sampling']))
     throw new Error('Unknown Box colour sampling');
   if(['thumbnail','render','preview'].includes(command) && !['native','interval-morph'].includes(opt['shape-sampling']))
     throw new Error('Unknown Box shape sampling');
