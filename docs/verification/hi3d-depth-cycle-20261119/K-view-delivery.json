@@ -1,0 +1,14 @@
+{
+  "stage": "K-view",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html",
+  "fileName": "K-view.inspector.html",
+  "htmlBytes": 62299700,
+  "htmlSHA256": "4b1ee6af6e20a8e7ebe9fce88a01fce83af722551538499698fa70b01c570ce0",
+  "gzipName": "K-view.inspector.html.gz",
+  "gzipBytes": 46045185,
+  "gzipSHA256": "163a47c54546f64fdc35a201f685d1f61b74cb6292ad547a789c4fd5673c9e08",
+  "roundTripByteIdentityVerified": true,
+  "officialViewerUnmodified": true,
+  "factoryCommit": "734c915e6d89919ac9135e06476bff85b33954d6",
+  "inspectorCommit": "66614346c951b77652fc64be54efddeb758e2c52"
+}
