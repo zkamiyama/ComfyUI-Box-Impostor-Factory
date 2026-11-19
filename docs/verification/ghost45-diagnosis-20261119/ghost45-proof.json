@@ -1,0 +1,220 @@
+{
+  "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "productionHelperSha256": "b1cb7d3f7e0dd6bffe0101f3db9638e1bce2067d79c91b17380f0e0481c87df9",
+  "debugHelperSha256": "649b59f264690e1021e0286c97e3b225bc86864bf20dc722210ce5e8fbb74b34",
+  "yawDegrees": 45,
+  "cameraAndGeometry": "Original K camera and original F native maps; only diagnostic source color output changed",
+  "probeCount": 10,
+  "probeMaxColorByteDelta": 1,
+  "wholeImageComparison": {
+    "maxByteDelta": 2,
+    "differentPixels": 2332,
+    "alphaMaxDelta": 0
+  },
+  "errors": [],
+  "ghostExamples": [
+    {
+      "xy": [
+        461,
+        180
+      ],
+      "renderedRGB": [
+        187,
+        162,
+        139
+      ],
+      "weights": {
+        "+X": 1,
+        "+Z": 0
+      },
+      "nativeFallback": 0,
+      "sourceX_sRGB": [
+        187,
+        162,
+        139
+      ],
+      "sourceZ_sRGB": [
+        241,
+        210,
+        165
+      ],
+      "sourceX_pixel_xy": [
+        121.6357421875,
+        92.15972900390625
+      ],
+      "sourceZ_pixel_xy": [
+        641.9154663085938,
+        92.15972900390625
+      ],
+      "linearWeightedReconstructionMaxError": 0.4550324295523467
+    },
+    {
+      "xy": [
+        463,
+        183
+      ],
+      "renderedRGB": [
+        174,
+        138,
+        112
+      ],
+      "weights": {
+        "+X": 1,
+        "+Z": 0
+      },
+      "nativeFallback": 0,
+      "sourceX_sRGB": [
+        174,
+        138,
+        112
+      ],
+      "sourceZ_sRGB": [
+        232,
+        200,
+        149
+      ],
+      "sourceX_pixel_xy": [
+        129.208984375,
+        95.9547119140625
+      ],
+      "sourceZ_pixel_xy": [
+        644.1288452148438,
+        95.9547119140625
+      ],
+      "linearWeightedReconstructionMaxError": 0.39812235040119504
+    },
+    {
+      "xy": [
+        466,
+        193
+      ],
+      "renderedRGB": [
+        219,
+        182,
+        148
+      ],
+      "weights": {
+        "+X": 0.5,
+        "+Z": 0.5
+      },
+      "nativeFallback": 0,
+      "sourceX_sRGB": [
+        193,
+        143,
+        124
+      ],
+      "sourceZ_sRGB": [
+        242,
+        213,
+        167
+      ],
+      "sourceX_pixel_xy": [
+        137.580078125,
+        108.60443115234375
+      ],
+      "sourceZ_pixel_xy": [
+        650.2518920898438,
+        108.60443115234375
+      ],
+      "linearWeightedReconstructionMaxError": 0.38169672232248786
+    },
+    {
+      "xy": [
+        461,
+        211
+      ],
+      "renderedRGB": [
+        201,
+        158,
+        115
+      ],
+      "weights": {
+        "+X": 0.5,
+        "+Z": 0.5
+      },
+      "nativeFallback": 0,
+      "sourceX_sRGB": [
+        163,
+        108,
+        88
+      ],
+      "sourceZ_sRGB": [
+        232,
+        193,
+        136
+      ],
+      "sourceX_pixel_xy": [
+        121.19140625,
+        131.3740234375
+      ],
+      "sourceZ_pixel_xy": [
+        642.3319702148438,
+        131.3740234375
+      ],
+      "linearWeightedReconstructionMaxError": 0.37410892707856647
+    },
+    {
+      "xy": [
+        473,
+        209
+      ],
+      "renderedRGB": [
+        206,
+        187,
+        162
+      ],
+      "weights": {
+        "+X": 0.5,
+        "+Z": 0.5
+      },
+      "nativeFallback": 0,
+      "sourceX_sRGB": [
+        134,
+        83,
+        58
+      ],
+      "sourceZ_sRGB": [
+        254,
+        245,
+        215
+      ],
+      "sourceX_pixel_xy": [
+        154.9619140625,
+        128.8441162109375
+      ],
+      "sourceZ_pixel_xy": [
+        666.5565795898438,
+        128.8441162109375
+      ],
+      "linearWeightedReconstructionMaxError": 0.4545485840149013
+    }
+  ],
+  "interpretation": "The extra face is carried by +X. Some ghost samples mix +X and +Z equally; eye samples use +X alone. This does not isolate generation pose error from depth/projection error.",
+  "comparisonBoard": {
+    "path": "/mnt/f/_dev/box-impostor-lab/results/ghost45-diagnosis-20261119/ghost45-source-contributions.png",
+    "sha256": "7852ae89e795465e7c671b97b9592215ae04431603b66ffedb9526d6ec24827f",
+    "crop": [
+      406,
+      140,
+      520,
+      244
+    ],
+    "scale": 4,
+    "interpolation": "nearest",
+    "sourcePanelMeaning": "source-only RGB at unchanged native hit where source K weight is positive"
+  },
+  "sourceImages": {
+    "color": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/ghost45-diagnosis-20261119/color.png",
+      "sha256": "92b627794a9b6e5564522e00dbfd6cfc44f84e7ba526d26fdbfa22cf8398b398"
+    },
+    "plusX-active": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/ghost45-diagnosis-20261119/plusX-active.png",
+      "sha256": "b7d92cb042ea0a6f0d1aff4e7b6d2aa26219ff7e1f1b56a99f5e8ab58dabc549"
+    },
+    "plusZ-active": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/ghost45-diagnosis-20261119/plusZ-active.png",
+      "sha256": "57e2d94f4468c1a03351dbfdadccd30857363e37c10f770f4976be57cdd4a556"
+    }
+  }
+}

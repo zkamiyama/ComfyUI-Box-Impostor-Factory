@@ -1,0 +1,76 @@
+{
+  "kind": "generation-input-audit",
+  "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "inspectedSourceCommit": "4a90b49d418e2732f572099fcddc880b03a875b1",
+  "composition": {
+    "sourceAssetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+    "replacedFace": "-X",
+    "unchangedFaces": [
+      "+X",
+      "+Y",
+      "-Y",
+      "+Z",
+      "-Z"
+    ],
+    "record": "../hi3d-depth-cycle-20261119/F-run/composed.json"
+  },
+  "plusX": {
+    "workflow": "B-px-prompt.json",
+    "workflowSHA256": "12bde47fe902b38dde77bd9ee020f9c538bcf98832540e0849d6cc4daf8d504c",
+    "imagesInOrder": [
+      "guide.png",
+      "source.png",
+      "axis-depth.png",
+      "normals.png",
+      "mask.png"
+    ],
+    "conditioningClass": "MiniMaxH3ImageConditioning",
+    "latentImage": [
+      "10",
+      1
+    ],
+    "denoise": 1,
+    "seed": 101,
+    "steps": 6,
+    "guideSHA256": "bbd1d68258bb6d0eb91884c592d6c8287591f63171f92f11b00263ec622f272f",
+    "generatedSHA256": "29ff7e1e8268a79957d694ff1950e7c4000898b72fdebbe75178ef3c146cc22a",
+    "promptExcerpts": [
+      "Return the strict side profile shown in <Picture 1>",
+      "Do not turn the person or face toward the camera."
+    ]
+  },
+  "nativeConditioner": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/comfy_extras/nodes_minimax_h3.py",
+    "sha256": "217f3b50ede649831c34be347196926211606904610bcb267c8725c18eb62498",
+    "visionImages": "clip.tokenize(prompt, images=vision_images, ...)",
+    "vaeReferences": "minimax_refs",
+    "initialLatent": "torch.zeros([1, 24, 1, height // 16, width // 16])",
+    "cameraMatrixInput": false,
+    "meshInput": false,
+    "dedicatedDepthControlNet": false
+  },
+  "guides": {
+    "generator": "scripts/run_geometry_ab.py",
+    "geometryProxySHA256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+    "recipe": "../hi3d-depth-cycle-20261119/B-run/prepared.json",
+    "cameraMatricesStoredInRecipe": true,
+    "cameraMatricesPassedToImageGenerator": false
+  },
+  "limits": {
+    "viewConsistency": "none",
+    "acceptanceReason": "silhouette-passed",
+    "silhouetteIoU": 0.9822779749359579,
+    "facePoseOrInternalFeatureQA": false
+  },
+  "visualFinding": "The saved +X model-derived guide hides the face under hair. The saved +X generated image exposes the eye, nose and mouth in that area. This establishes disagreement with the input guide; it does not establish ground-truth geometric accuracy.",
+  "diagnosis": "ghost45-proof.json",
+  "interpretation": "The +45 degree ghost is carried by +X. Generation input/output view mismatch is present before Box composition. The contribution of model/Depth error to remaining distortion is not fully isolated.",
+  "minusXException": {
+    "imagesInOrder": [
+      "guide.png",
+      "source.png"
+    ],
+    "source": "../hi3d-depth-cycle-20261119/F-run/nx-prompt.json",
+    "notSourceOfPlus45Ghost": true
+  }
+}
