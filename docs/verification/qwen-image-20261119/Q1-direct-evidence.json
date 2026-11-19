@@ -1,0 +1,202 @@
+{
+  "status": "Q1 receipt cross-checks complete; Q2 and actual Box comparison pending",
+  "fileSha256": {
+    "Q1/prepared.json": "25fe8d1cc3a71c30583c457378ade559ce9c4e2530a544e52eefbceedb8edb54",
+    "Q1/graph-inspection.json": "4509883a64fb8a92b41efe94ba816560276ff952c937a9302238054d166bc674",
+    "Q1/composed.json": "966a9193352b5855a05aca6981f8418748ec4346964d63bdd48c85e98e79f5b0",
+    "Q1/comparison-ready.json": "5e9ba89cc32ac2b2ddecae31d2c42e4253788c5847903da8af012fd1c0e6603a",
+    "Q1/px/result.json": "e3503ddfd3e775cc479c44e937d07ad8aca3aaf6fcb99f0fe1a47a1ffb823dbe",
+    "Q1/px/prepared-prompt.json": "5b52e1fac85f70ca4e970245004ba8c6fcd2ca67cb65f0ede20e05b9cb0a2a61",
+    "Q1-px-raw-provenance.json": "876b2cda2a10ef2a75643d93930635c03d51dc8af919d8dea1bfab4ba7497bcf"
+  },
+  "checks": {
+    "preparedHashMatchesInspection": true,
+    "graphHashMatchesInspection": true,
+    "graphHashMatchesExecutedResult": true,
+    "comparisonResultEqualsResultReceipt": true,
+    "comparisonBoxEqualsComposedReceipt": true,
+    "rawBoardReceiptHashMatchesResult": true,
+    "rawBoardImageHashMatchesResult": true,
+    "fiveReferencesInRecordedOrder": true,
+    "samplerMatchesRecipe": true,
+    "cacheCpuDefault": true,
+    "noControlNetOrLoRANode": true,
+    "noViewOrProjectionMatrixInput": true,
+    "appliedRegistrationIdentity": true,
+    "qaBeforeAfterEqual": true,
+    "sourceAssetMatchesRecipe": true,
+    "proxyHashMatchesRecipe": true,
+    "preservationBooleanFieldsTrue": true
+  },
+  "rows": [
+    {
+      "item": "actual prompt_id",
+      "value": "320ee07e-a192-4de6-ad1a-0eb6e0b376b1",
+      "source": "Q1/px/result.json",
+      "pointer": "/prompt_id"
+    },
+    {
+      "item": "fresh inference",
+      "value": true,
+      "source": "Q1/px/result.json",
+      "pointer": "/freshInference"
+    },
+    {
+      "item": "elapsed seconds",
+      "value": 109.68,
+      "source": "Q1/px/result.json",
+      "pointer": "/elapsedSeconds"
+    },
+    {
+      "item": "source asset",
+      "value": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "source": "Q1/composed.json",
+      "pointer": "/sourceBox"
+    },
+    {
+      "item": "composed asset",
+      "value": "90bc93b6d83833f93eef20492d011bc60376ddd5bb2a3c0deeda95e2dd8059ba",
+      "source": "Q1/composed.json",
+      "pointer": "/asset"
+    },
+    {
+      "item": "replaced face / applied",
+      "value": {
+        "face": "+X",
+        "applied": true
+      },
+      "source": "Q1/composed.json",
+      "pointer": "/"
+    },
+    {
+      "item": "silhouette IoU",
+      "value": 0.9854688097499599,
+      "source": "Q1/composed.json",
+      "pointer": "/faceQA/after/iou"
+    },
+    {
+      "item": "boundary P95 pixels",
+      "value": 3.605551275463989,
+      "source": "Q1/composed.json",
+      "pointer": "/faceQA/after/boundaryP95Px"
+    },
+    {
+      "item": "applied registration",
+      "value": {
+        "scale": 1.0,
+        "centerShiftYX": [
+          0.0,
+          0.0
+        ]
+      },
+      "source": "Q1/composed.json",
+      "pointer": "/faceQA/registration"
+    },
+    {
+      "item": "Depth etc preservation",
+      "value": {
+        "proxyBytesExact": true,
+        "geometryMetadataExact": true,
+        "nonColorMapsExact": true,
+        "coverageAlphaExact": true,
+        "unchangedFaceRGBAHashes": {
+          "-X": "cc0c79b955218f50a9bcb7f0339f6f5c7838f0dafaeb3dae21092e9ae67be42a",
+          "+Y": "afa9b1f5a1a2a00a1e575a0095397b290639487ed4a9c25ed0e9f5a572fd258d",
+          "-Y": "dd101db24c1082bb50ed9b590008f1cb3bff33f7d3f9d44091c82d07e7263101",
+          "+Z": "f6002edf2719ef1e401eaf1c17093fd006469e83918adbc087145e9c1c09db6a",
+          "-Z": "f29da30a062938731a685aab26f343738f4d4f9588c549b825c0621ba31c2dcd"
+        },
+        "unchangedFaceSourcesAndMetadata": true
+      },
+      "source": "Q1/composed.json",
+      "pointer": "/preservation"
+    },
+    {
+      "item": "image reference order",
+      "value": [
+        "guide",
+        "source",
+        "axis-depth",
+        "normals",
+        "mask"
+      ],
+      "source": "Q1/prepared.json",
+      "pointer": "/pictureOrder"
+    },
+    {
+      "item": "image reference identities",
+      "value": {
+        "guide": {
+          "image": "B/px/guide.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/px/guide.png",
+          "sha256": "bbd1d68258bb6d0eb91884c592d6c8287591f63171f92f11b00263ec622f272f"
+        },
+        "source": {
+          "image": "B/px/source.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/px/source.png",
+          "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+        },
+        "axis-depth": {
+          "image": "B/px/axis-depth.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/px/axis-depth.png",
+          "sha256": "805191426dee7ffe5664a256b095c602c32d3a71ce7de18a772a623242798aab"
+        },
+        "normals": {
+          "image": "B/px/normals.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/px/normals.png",
+          "sha256": "a894491df8c258f35d93b397bea2b7dd40b5661e1981bb9f778e20952dd5c86a"
+        },
+        "mask": {
+          "image": "B/px/mask.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/px/mask.png",
+          "sha256": "7dba6c46daca19d86f8a180bade1437d61852d2174f90068c6582e37af85a6ff"
+        }
+      },
+      "source": "Q1/prepared.json",
+      "pointer": "/faces/+X/pictures"
+    },
+    {
+      "item": "weights recorded SHA256",
+      "value": {
+        "model": {
+          "name": "qwen_image_2.1_int8_convrot.safetensors",
+          "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+          "bytes": 7256783064,
+          "sha256": "cb74113cb03faecd79611b01fd7fd642f0aa60d6f0b95086abee214d75eaa57d"
+        },
+        "clip": {
+          "name": "qwen3vl_8b_int8_convrot.safetensors",
+          "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/text_encoders/qwen3vl_8b_int8_convrot.safetensors",
+          "bytes": 9350798360,
+          "sha256": "8bfd0f6e12abf2d2d697ecc888e5e90b0d6741d6708f05799f53afa560452e8f"
+        },
+        "vae": {
+          "name": "qwen_image_2.1_vae_bf16.safetensors",
+          "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/vae/qwen_image_2.1_vae_bf16.safetensors",
+          "bytes": 675509688,
+          "sha256": "bb21f7473051e1ac368515dd3f2e15cd44d7a11748ee8823e1ddca3e4876b7c9"
+        },
+        "matting": {
+          "name": "birefnet.safetensors",
+          "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/background_removal/birefnet.safetensors",
+          "bytes": 444473596,
+          "sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154"
+        }
+      },
+      "source": "Q1/prepared.json",
+      "pointer": "/experiment/modelFiles"
+    },
+    {
+      "item": "raw PNG SHA256",
+      "value": "df666bf2fe62d76147a86ccd35bcc43ed6141097a429c32bb8950a9291b40070",
+      "source": "Q1/px/result.json",
+      "pointer": "/rawSha256"
+    }
+  ],
+  "limitations": [
+    "Read-only cross-check of preserved receipt files; no GPU rerun and no remote polling.",
+    "No explicit OOM field exists in these receipts; successful fresh inference is the directly recorded fact.",
+    "boundingBoxRegistration records a candidate; faceQA.registration is the applied transform.",
+    "RGB-only +X replacement and preserved geometry do not establish inter-view texture correspondence."
+  ]
+}

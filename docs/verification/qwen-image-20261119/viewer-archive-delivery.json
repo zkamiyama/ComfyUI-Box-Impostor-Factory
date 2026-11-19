@@ -1,0 +1,31 @@
+{
+  "branch": "verification/qwen-image-20261119-viewers",
+  "previousCommit": "a6b2d4684d6f6f624d4fb4432e17d065bad14234",
+  "description": "Byte-identical official 3D-Inspector output; +X replaced only.",
+  "viewers": [
+    {
+      "label": "Q1-qwen-five",
+      "sourceHtml": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five.inspector.html",
+      "htmlSHA256": "dd27d5f5ea38fd8e22b616fa0cc7ee4bc15c911b30dfde699baf44b5117aa232",
+      "htmlBytes": 62074705,
+      "archivePath": "docs/verification/qwen-image-20261119/Q1-qwen-five.inspector.html.gz",
+      "gzipSHA256": "4e1db55c66f861582ce537527140c648aae5bc6d21631c2bf4e02b6ee79854cb",
+      "gzipBytes": 45870936,
+      "roundTripSHA256": "dd27d5f5ea38fd8e22b616fa0cc7ee4bc15c911b30dfde699baf44b5117aa232",
+      "rawDownloadURL": "https://raw.githubusercontent.com/zkamiyama/ComfyUI-Box-Impostor-Factory/9be1efb5bee8cef187e1efa22cafcc64da68f228/docs/verification/qwen-image-20261119/Q1-qwen-five.inspector.html.gz"
+    },
+    {
+      "label": "Q2-qwen-anyangle",
+      "sourceHtml": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html",
+      "htmlSHA256": "b1ebcba77a31898b76e108adf796bc9e7c16f07cc0b26a2af8dbf95ff218c80a",
+      "htmlBytes": 62101909,
+      "archivePath": "docs/verification/qwen-image-20261119/Q2-qwen-anyangle.inspector.html.gz",
+      "gzipSHA256": "1effbf486e5432af1ea98d2b2a700824b0712b04112990fbafdba983fb5e155c",
+      "gzipBytes": 45890938,
+      "roundTripSHA256": "b1ebcba77a31898b76e108adf796bc9e7c16f07cc0b26a2af8dbf95ff218c80a",
+      "rawDownloadURL": "https://raw.githubusercontent.com/zkamiyama/ComfyUI-Box-Impostor-Factory/9be1efb5bee8cef187e1efa22cafcc64da68f228/docs/verification/qwen-image-20261119/Q2-qwen-anyangle.inspector.html.gz"
+    }
+  ],
+  "commit": "9be1efb5bee8cef187e1efa22cafcc64da68f228",
+  "clean": true
+}

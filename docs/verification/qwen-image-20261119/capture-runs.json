@@ -1,0 +1,53 @@
+{
+  "K-view": {
+    "command": [
+      "node",
+      "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/capture_inspector_display_yaw.mjs",
+      "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.inspector.html",
+      "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+      "0,30,45,60",
+      "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/K-view-capture-control.json"
+    ],
+    "log": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/K-view-capture.log",
+    "logSHA256": "4fc8cd254f45f3154415aab1b603299ecef453f1f71c2620f36f8255d99103ec",
+    "elapsedSeconds": 14.43,
+    "exitCode": 0,
+    "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current/capture.json",
+    "captureJSONSHA256": "4a4c4440ce85997d6322dbafc6d596cc2ab11a12cb10991d23eb729e8c9cc4dc"
+  },
+  "Q1": {
+    "command": [
+      "node",
+      "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/capture_inspector_display_yaw.mjs",
+      "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five.inspector.html",
+      "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+      "0,30,45,60",
+      "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-capture-control.json"
+    ],
+    "log": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-capture.log",
+    "logSHA256": "05c96eae7b7f511e5f1691f3754f157cd8c7bd60fb22cd1890184478630220cf",
+    "elapsedSeconds": 14.037,
+    "exitCode": 0,
+    "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five/capture.json",
+    "captureJSONSHA256": "e4952bb4fc29ccfe1f85c4ac94b9371199d6e9ac19df58f126916e9cdf5fb4d6"
+  },
+  "Q2": {
+    "command": [
+      "node",
+      "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/capture_inspector_display_yaw.mjs",
+      "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html",
+      "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+      "0,30,45,60",
+      "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-capture-control.json"
+    ],
+    "log": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-capture.log",
+    "logSHA256": "86ba11e0745ac6da6f1058469776fa82fd481fc84a3ad624a3731d2772f998be",
+    "elapsedSeconds": 14.0,
+    "exitCode": 0,
+    "captureJSON": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle/capture.json",
+    "captureJSONSHA256": "ed64aa5f5ae3ff74b4af2293305d8376e0a5f0ef5f074d66f5f73a2ee081ade8"
+  }
+}

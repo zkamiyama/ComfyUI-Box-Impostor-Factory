@@ -1,0 +1,294 @@
+{
+  "kind": "Package actual Qwen replacements with official Inspector, then capture fixed views.",
+  "scriptSHA256": "88a69e37e68d09865a4a45b280dbdb933181d821abdd4c64402cc109f7f2d93b",
+  "viewPy": "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+  "viewPySHA256": "ac5582e709b88c5d02aad2c999147237f077f3dc56850c8d8e139abaec947ada",
+  "display": {
+    "lighting": "unlit",
+    "sampling": "native",
+    "colorSampling": "view"
+  },
+  "baseHtml": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html",
+  "baseHtmlSHA256": "4b1ee6af6e20a8e7ebe9fce88a01fce83af722551538499698fa70b01c570ce0",
+  "cases": {
+    "K-view": {
+      "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "assetPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "composed": null,
+      "composedSHA256": null,
+      "assetManifestSHA256": "48d4630f488731650c5288d2242be6eec58a241fe760d594dcc7eb4736f67214",
+      "boxArchive": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.box.zip",
+      "boxArchiveSHA256": "4878c363c4932e76ec9c5035abfa46d2b928ca4c16ab8d073a124912fa1273ce",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.inspector.html",
+      "htmlSHA256": "1a9b97db6662cf726276bb9849d0750281f003c4064d23b25d1c9a00ee6e11e0",
+      "htmlBytes": 62301217,
+      "build": {
+        "command": [
+          "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+          "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+          "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.box.zip",
+          "--box-lighting",
+          "unlit",
+          "--box-color-sampling",
+          "view",
+          "--title",
+          "Baseline / previous H3",
+          "-o",
+          "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.inspector.html"
+        ],
+        "log": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current-build.log",
+        "logSHA256": "547cc34cd88f3a59929f62361d5c48617f64c95cab3174d94f8e796c62be0864",
+        "exitCode": 0,
+        "reusedExistingOfficialOutput": true,
+        "reuseReceipt": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/interrupted-build-reuse.json",
+        "reuseReceiptSHA256": "fd34d92a872b3afc619e2e4f8e5a035ee46e626fee7f3faa458ef3d678eef64a"
+      },
+      "payloadChecks": {
+        "assetIdMatchesComposed": true,
+        "boundsEqualToK": true,
+        "proxyGeometryEqualToK": true,
+        "proxyFallbackColorChanges": [],
+        "displayEqualToK": true,
+        "maps": {
+          "colorMap": {
+            "sha256": "647ec74f534bfb8de476663261f257a1d912179a4351d4f33e9f256fc1338ece",
+            "bytes": 50331648,
+            "rawEqualToK": true,
+            "coverageAlphaBitsExactToK": true,
+            "changedRGBTexelsToK": 0
+          },
+          "normalMap": {
+            "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+            "bytes": 50331648,
+            "rawEqualToK": true
+          },
+          "intervalMap": {
+            "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+            "bytes": 25165824,
+            "rawEqualToK": true
+          },
+          "rangeMap": {
+            "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+            "bytes": 393216,
+            "rawEqualToK": true
+          }
+        }
+      },
+      "preservation": {
+        "baselineAssetUnchanged": true
+      },
+      "embeddedScripts": [
+        {
+          "attributes": "",
+          "bytes": 1106324,
+          "sha256": "2c99aef29eafa58427f15a5e82399f74364507fffbbe502d923be24d8dcd66c6"
+        },
+        {
+          "attributes": "",
+          "bytes": 23094,
+          "sha256": "5ad9826903abac0a769e1aa0136a26042ef733b2746856a71657480ecdc5ceaa"
+        }
+      ],
+      "embeddedScriptsEqualToFreshF": true,
+      "embeddedScriptsEqualToHistoricalK": false
+    },
+    "Q1": {
+      "assetId": "90bc93b6d83833f93eef20492d011bc60376ddd5bb2a3c0deeda95e2dd8059ba",
+      "assetPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/90bc93b6d83833f93eef20492d011bc60376ddd5bb2a3c0deeda95e2dd8059ba",
+      "composed": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q1-qwen-five-20261119/composed.json",
+      "composedSHA256": "966a9193352b5855a05aca6981f8418748ec4346964d63bdd48c85e98e79f5b0",
+      "assetManifestSHA256": "8005a98f2510d23be8d2452bf1ae14ec44de62ed4beb00f7c39ca2568df53f69",
+      "boxArchive": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five.box.zip",
+      "boxArchiveSHA256": "1508ebfb8d4b76ee4b56c4c1ba8eb1b05df3a304d176c139280981d6085ddc94",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five.inspector.html",
+      "htmlSHA256": "dd27d5f5ea38fd8e22b616fa0cc7ee4bc15c911b30dfde699baf44b5117aa232",
+      "htmlBytes": 62074705,
+      "build": {
+        "command": [
+          "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+          "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+          "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five.box.zip",
+          "--box-lighting",
+          "unlit",
+          "--box-color-sampling",
+          "view",
+          "--title",
+          "Q1 / Qwen Image 2.1",
+          "-o",
+          "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five.inspector.html"
+        ],
+        "log": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five-build.log",
+        "logSHA256": "ed59dbb1a874f7118d2dd162de84fadf2737c2a0ed79fe6acf509612b6a0e51d",
+        "exitCode": 0,
+        "reusedExistingOfficialOutput": true,
+        "reuseReceipt": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/interrupted-build-reuse.json",
+        "reuseReceiptSHA256": "fd34d92a872b3afc619e2e4f8e5a035ee46e626fee7f3faa458ef3d678eef64a"
+      },
+      "payloadChecks": {
+        "assetIdMatchesComposed": true,
+        "boundsEqualToK": true,
+        "proxyGeometryEqualToK": true,
+        "proxyFallbackColorChanges": [
+          0
+        ],
+        "displayEqualToK": true,
+        "maps": {
+          "colorMap": {
+            "sha256": "1b61ffcc0078f8d93a8e524142aad0e53a5d32477ab99bb9c3b297977955d858",
+            "bytes": 50331648,
+            "rawEqualToK": false,
+            "coverageAlphaBitsExactToK": true,
+            "changedRGBTexelsToK": 401248
+          },
+          "normalMap": {
+            "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+            "bytes": 50331648,
+            "rawEqualToK": true
+          },
+          "intervalMap": {
+            "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+            "bytes": 25165824,
+            "rawEqualToK": true
+          },
+          "rangeMap": {
+            "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+            "bytes": 393216,
+            "rawEqualToK": true
+          }
+        }
+      },
+      "preservation": {
+        "proxyBytesExact": true,
+        "geometryMetadataExact": true,
+        "nonColorMapsExact": true,
+        "coverageAlphaExact": true,
+        "unchangedFaceRGBAHashes": {
+          "-X": "cc0c79b955218f50a9bcb7f0339f6f5c7838f0dafaeb3dae21092e9ae67be42a",
+          "+Y": "afa9b1f5a1a2a00a1e575a0095397b290639487ed4a9c25ed0e9f5a572fd258d",
+          "-Y": "dd101db24c1082bb50ed9b590008f1cb3bff33f7d3f9d44091c82d07e7263101",
+          "+Z": "f6002edf2719ef1e401eaf1c17093fd006469e83918adbc087145e9c1c09db6a",
+          "-Z": "f29da30a062938731a685aab26f343738f4d4f9588c549b825c0621ba31c2dcd"
+        },
+        "unchangedFaceSourcesAndMetadata": true
+      },
+      "embeddedScripts": [
+        {
+          "attributes": "",
+          "bytes": 1106324,
+          "sha256": "2c99aef29eafa58427f15a5e82399f74364507fffbbe502d923be24d8dcd66c6"
+        },
+        {
+          "attributes": "",
+          "bytes": 23094,
+          "sha256": "5ad9826903abac0a769e1aa0136a26042ef733b2746856a71657480ecdc5ceaa"
+        }
+      ],
+      "embeddedScriptsEqualToFreshF": true,
+      "embeddedScriptsEqualToHistoricalK": false
+    },
+    "Q2": {
+      "assetId": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+      "assetPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+      "composed": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q2-qwen-anyangle-20261119/composed.json",
+      "composedSHA256": "13f0152cb6a2baab4c5d96c36d720acbc5b8039f07af936cb23ac3b363cbe828",
+      "assetManifestSHA256": "2d83d7fbabb98db6c5aca524c69585859beced57b3fc70cde07947c7a5b94159",
+      "boxArchive": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.box.zip",
+      "boxArchiveSHA256": "2fa9fb690dc38289dab48fc20df00096a7bb8e35325ed9ab15cf9db741805c56",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html",
+      "htmlSHA256": "b1ebcba77a31898b76e108adf796bc9e7c16f07cc0b26a2af8dbf95ff218c80a",
+      "htmlBytes": 62101909,
+      "build": {
+        "command": [
+          "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+          "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+          "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.box.zip",
+          "--box-lighting",
+          "unlit",
+          "--box-color-sampling",
+          "view",
+          "--title",
+          "Q2 / Qwen + AnyAngle",
+          "-o",
+          "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html"
+        ],
+        "log": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle-build.log",
+        "logSHA256": "b67efaed3c22c266f87ec9284406d563365cbb2125a131fb25fb53861a3a430a",
+        "elapsedSeconds": 14.558,
+        "exitCode": 0
+      },
+      "payloadChecks": {
+        "assetIdMatchesComposed": true,
+        "boundsEqualToK": true,
+        "proxyGeometryEqualToK": true,
+        "proxyFallbackColorChanges": [
+          0
+        ],
+        "displayEqualToK": true,
+        "maps": {
+          "colorMap": {
+            "sha256": "2a202a96c699acc18d34bf70aad2e8377b7a33d6b4fe28946e99453655608f13",
+            "bytes": 50331648,
+            "rawEqualToK": false,
+            "coverageAlphaBitsExactToK": true,
+            "changedRGBTexelsToK": 401220
+          },
+          "normalMap": {
+            "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+            "bytes": 50331648,
+            "rawEqualToK": true
+          },
+          "intervalMap": {
+            "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+            "bytes": 25165824,
+            "rawEqualToK": true
+          },
+          "rangeMap": {
+            "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+            "bytes": 393216,
+            "rawEqualToK": true
+          }
+        }
+      },
+      "preservation": {
+        "proxyBytesExact": true,
+        "geometryMetadataExact": true,
+        "nonColorMapsExact": true,
+        "coverageAlphaExact": true,
+        "unchangedFaceRGBAHashes": {
+          "-X": "cc0c79b955218f50a9bcb7f0339f6f5c7838f0dafaeb3dae21092e9ae67be42a",
+          "+Y": "afa9b1f5a1a2a00a1e575a0095397b290639487ed4a9c25ed0e9f5a572fd258d",
+          "-Y": "dd101db24c1082bb50ed9b590008f1cb3bff33f7d3f9d44091c82d07e7263101",
+          "+Z": "f6002edf2719ef1e401eaf1c17093fd006469e83918adbc087145e9c1c09db6a",
+          "-Z": "f29da30a062938731a685aab26f343738f4d4f9588c549b825c0621ba31c2dcd"
+        },
+        "unchangedFaceSourcesAndMetadata": true
+      },
+      "embeddedScripts": [
+        {
+          "attributes": "",
+          "bytes": 1106324,
+          "sha256": "2c99aef29eafa58427f15a5e82399f74364507fffbbe502d923be24d8dcd66c6"
+        },
+        {
+          "attributes": "",
+          "bytes": 23094,
+          "sha256": "5ad9826903abac0a769e1aa0136a26042ef733b2746856a71657480ecdc5ceaa"
+        }
+      ],
+      "embeddedScriptsEqualToFreshF": true,
+      "embeddedScriptsEqualToHistoricalK": false
+    }
+  },
+  "historicalKEmbeddedScripts": [
+    {
+      "attributes": "",
+      "bytes": 1104795,
+      "sha256": "24f6a19c96c6f191ca8f20c6b5c222b5b70bb0c11bc93e1c6d1700c325aba20b"
+    },
+    {
+      "attributes": "",
+      "bytes": 23094,
+      "sha256": "5ad9826903abac0a769e1aa0136a26042ef733b2746856a71657480ecdc5ceaa"
+    }
+  ]
+}

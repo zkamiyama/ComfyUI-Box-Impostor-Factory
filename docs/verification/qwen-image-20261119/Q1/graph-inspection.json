@@ -1,0 +1,66 @@
+{
+  "checkedOn": "CPU",
+  "gpuInference": false,
+  "nativeEncoder": "TextEncodeQwenImage21",
+  "referenceCount": 5,
+  "referenceOrder": [
+    "guide",
+    "source",
+    "axis-depth",
+    "normals",
+    "mask"
+  ],
+  "encoderOutputs": {
+    "positive": 0,
+    "negative": 1,
+    "emptyLatent": 2
+  },
+  "cache": {
+    "device": "cpu",
+    "dtype": "default",
+    "lossless": true
+  },
+  "rawOutputNode": "14",
+  "foregroundOutputNode": "18",
+  "lora": false,
+  "sourceBox": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "replacementVerification": "run_geometry_d.verify_replacement",
+  "graphPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q1-qwen-five-20261119/px/prepared-prompt.json",
+  "graphSha256": "5b52e1fac85f70ca4e970245004ba8c6fcd2ca67cb65f0ede20e05b9cb0a2a61",
+  "recipeSha256": "25fe8d1cc3a71c30583c457378ade559ce9c4e2530a544e52eefbceedb8edb54",
+  "models": {
+    "model": {
+      "name": "qwen_image_2.1_int8_convrot.safetensors",
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+      "bytes": 7256783064,
+      "sha256": "cb74113cb03faecd79611b01fd7fd642f0aa60d6f0b95086abee214d75eaa57d"
+    },
+    "clip": {
+      "name": "qwen3vl_8b_int8_convrot.safetensors",
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/text_encoders/qwen3vl_8b_int8_convrot.safetensors",
+      "bytes": 9350798360,
+      "sha256": "8bfd0f6e12abf2d2d697ecc888e5e90b0d6741d6708f05799f53afa560452e8f"
+    },
+    "vae": {
+      "name": "qwen_image_2.1_vae_bf16.safetensors",
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/vae/qwen_image_2.1_vae_bf16.safetensors",
+      "bytes": 675509688,
+      "sha256": "bb21f7473051e1ac368515dd3f2e15cd44d7a11748ee8823e1ddca3e4876b7c9"
+    },
+    "matting": {
+      "name": "birefnet.safetensors",
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/background_removal/birefnet.safetensors",
+      "bytes": 444473596,
+      "sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154"
+    }
+  },
+  "codeSha256": {
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/run_qwen_face_trial.py": "9b6940b68cd6805c0658ed56f3fd041a30622e70b74821512a69c39eb635c3ba",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/run_geometry_ab.py": "f774006adf23bfd787d02e7a4e64c6fccb61399522a996b23eedfdc6e3c38821",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/run_geometry_d.py": "c7bb962ac14c27fcb9eb145dc6209e0f0968d2adb2d81dd9c44b109fdb66b8d4",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/comfy_extras/nodes_qwen.py": "54ce02aa9e167c0b497ce026ac6b558f539427d2d1ed4fc1fcc2ec8e6bc529da",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/comfy_extras/nodes_bg_removal.py": "c2cf4b42f10cfb1bb057b60a8745fb96a2462e1f1a2bd275e00795bb3f758cce",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/comfy/text_encoders/qwen_image21.py": "f552c9336b13f1f1fd8524650ac28ffc68c0931b3512855820edf97e415d34f4",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/comfy/ldm/qwen_image21/model.py": "453cbc7a0e94fc377cd523a5c1a2e8ffb3a92e71527d171f176e0a0d30c7446e"
+  }
+}

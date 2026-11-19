@@ -110,7 +110,7 @@ def compose_replacement(run,recipe,fid,*,prompt_builder=None):
     mask=ab.np.asarray(ab.Image.open(case/'foreground.png').convert('L'),dtype='f4')/255
     item=ab.faces.save_view(ab.faces.rgba(rgb[None],'foreground',mask[None]))
     face=recipe['faces'][fid]
-    item['provenance']={'backend':'h3_enhanced','faceId':fid,
+    item['provenance']={'backend':recipe.get('backend','h3_enhanced'),'faceId':fid,
         'recipe':{'models':recipe['models'],'conditioning':recipe['conditioning'],
                   'pictures':face['pictures'],'prompt':face['prompt'],'experiment':recipe['experiment']},
         'recipeSeed':recipe['seeds'][fid],'samplers':[recipe['sampler']],

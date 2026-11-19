@@ -1,0 +1,134 @@
+{
+  "utc": "2026-11-19T14:55:18.889654+00:00",
+  "prompt_id": "2909f9d5-4ea9-487e-9dce-0bab3d048631",
+  "serverLog": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/comfy-qwen.log",
+  "logLines": [
+    110,
+    147
+  ],
+  "warnings": [],
+  "loraLogLines": [],
+  "logTail": [
+    " 88%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a | 22/25 [01:33<00:11,  3.91s/it]",
+    " 92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 23/25 [01:37<00:07,  3.91s/it]",
+    " 96%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c| 24/25 [01:41<00:03,  3.92s/it]",
+    "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 25/25 [01:45<00:00,  3.92s/it]",
+    "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 25/25 [01:45<00:00,  4.20s/it]",
+    "[INFO] Requested to load BiRefNet",
+    "[INFO] loaded completely; 2988.42 MB usable, 419.43 MB loaded, full load: True",
+    "[INFO] Prompt executed in 127.92 seconds"
+  ],
+  "queue": {
+    "running": [],
+    "pending": []
+  },
+  "historyStatus": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "2909f9d5-4ea9-487e-9dce-0bab3d048631",
+          "timestamp": 1795099896433
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "2",
+            "6",
+            "7",
+            "8",
+            "15"
+          ],
+          "prompt_id": "2909f9d5-4ea9-487e-9dce-0bab3d048631",
+          "timestamp": 1795099896457
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "2909f9d5-4ea9-487e-9dce-0bab3d048631",
+          "timestamp": 1795100021330
+        }
+      ]
+    ]
+  },
+  "loraNodeInExecutedPrompt": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "lora_name": "QI2.1_AnyAngle.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "loraNodeWasCached": false,
+  "runner": {
+    "pid": 65555,
+    "exitCode": 0,
+    "runtimeSeconds": 154.2,
+    "observedWarningsAfterRawGeneration": [
+      "WARNING:root:WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.",
+      "WARNING WARNING WARNING",
+      "If you are on nvidia 20 series and above it is required that you update your pytorch to cu130 or higher."
+    ]
+  },
+  "warningScope": "warnings above refer only to the Q2 server log range; runner warnings are recorded separately and did not prevent inference or composition.",
+  "generationSeconds": 126.4,
+  "serverReportedSeconds": 127.92,
+  "graphSha256": "b44cf9deb50937159dadbc7b5bdc914ebdefc4baa903fd3405ac7f861a61d9c7",
+  "raw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q2-qwen-anyangle-20261119/px/generated.png",
+  "rawSha256": "e7f79500a5c04ef6718385ef73080cfa9908f92d3d69f8e404e51b54a705e8aa",
+  "maskSha256": "f92dfc11fdb5646db54be27e829f8bb1ca24b1ed1e78fc60696fff9350bfd9ab",
+  "lora": {
+    "name": "QI2.1_AnyAngle.safetensors",
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/loras/QI2.1_AnyAngle.safetensors",
+    "bytes": 119590312,
+    "sha256": "e4d7a0d44a45ed62daabd0f2484a1a59046618a4c47e76b1eab5e386a7a35d8a"
+  },
+  "composition": {
+    "asset": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+    "sourceBox": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+    "replacedFace": "+X",
+    "applied": true,
+    "preservation": {
+      "proxyBytesExact": true,
+      "geometryMetadataExact": true,
+      "nonColorMapsExact": true,
+      "coverageAlphaExact": true,
+      "unchangedFaceRGBAHashes": {
+        "-X": "cc0c79b955218f50a9bcb7f0339f6f5c7838f0dafaeb3dae21092e9ae67be42a",
+        "+Y": "afa9b1f5a1a2a00a1e575a0095397b290639487ed4a9c25ed0e9f5a572fd258d",
+        "-Y": "dd101db24c1082bb50ed9b590008f1cb3bff33f7d3f9d44091c82d07e7263101",
+        "+Z": "f6002edf2719ef1e401eaf1c17093fd006469e83918adbc087145e9c1c09db6a",
+        "-Z": "f29da30a062938731a685aab26f343738f4d4f9588c549b825c0621ba31c2dcd"
+      },
+      "unchangedFaceSourcesAndMetadata": true
+    },
+    "faceQA": {
+      "status": "accepted",
+      "before": {
+        "iou": 0.8999510471287071,
+        "boundaryP95Px": 22.47220505424423
+      },
+      "after": {
+        "iou": 0.9300731049464833,
+        "boundaryP95Px": 18.027756377319946
+      },
+      "registration": {
+        "scale": 1.013967783511331,
+        "centerShiftYX": [
+          2.740069186070121,
+          -10.23104616522543
+        ]
+      }
+    }
+  }
+}

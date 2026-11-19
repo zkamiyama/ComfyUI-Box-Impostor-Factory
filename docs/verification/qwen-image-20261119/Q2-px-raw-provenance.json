@@ -1,0 +1,72 @@
+{
+  "kind": "Compare completed +X source generations at fixed canvas coordinates.",
+  "fixedHeadCrop": [
+    339,
+    0,
+    558,
+    213
+  ],
+  "sourceDimensions": [
+    1024,
+    1024
+  ],
+  "originalFAsset": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "previousH3RGBEqualsFSource": true,
+  "inputs": {
+    "Geometry guide / +X": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/px/guide.png",
+      "sha256": "bbd1d68258bb6d0eb91884c592d6c8287591f63171f92f11b00263ec622f272f"
+    },
+    "Previous H3 / +X": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/px/generated.png",
+      "sha256": "29ff7e1e8268a79957d694ff1950e7c4000898b72fdebbe75178ef3c146cc22a"
+    },
+    "Qwen 2.1 + AnyAngle LoRA": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q2-qwen-anyangle-20261119/px/generated.png",
+      "sha256": "e7f79500a5c04ef6718385ef73080cfa9908f92d3d69f8e404e51b54a705e8aa"
+    }
+  },
+  "receipts": {
+    "H3": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/px/result.json",
+      "sha256": "52b44af2757f355df0df2b75b81d860f6ab6646d51f855311dbff573e0502c33",
+      "promptId": "ba4504f7-ab5a-4de5-b4ca-052d0123e9e9",
+      "rawSha256": "29ff7e1e8268a79957d694ff1950e7c4000898b72fdebbe75178ef3c146cc22a"
+    },
+    "Q1": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q1-qwen-five-20261119/px/result.json",
+      "sha256": "e3503ddfd3e775cc479c44e937d07ad8aca3aaf6fcb99f0fe1a47a1ffb823dbe",
+      "promptId": "320ee07e-a192-4de6-ad1a-0eb6e0b376b1",
+      "rawSha256": "df666bf2fe62d76147a86ccd35bcc43ed6141097a429c32bb8950a9291b40070"
+    },
+    "Q2": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q2-qwen-anyangle-20261119/px/result.json",
+      "sha256": "fc600b3ed339c9d7fe889a75887d84181486d518e8ed83c504db56f356ffbff0",
+      "promptId": "2909f9d5-4ea9-487e-9dce-0bab3d048631",
+      "rawSha256": "e7f79500a5c04ef6718385ef73080cfa9908f92d3d69f8e404e51b54a705e8aa"
+    }
+  },
+  "outputs": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/evidence/Q2-px-raw-head-comparison.png",
+      "sha256": "1c5e15f5733936b0da57598bdaa75e8ad526b93c612be5c024025ba62d6127e5",
+      "bytes": 246863,
+      "size": [
+        1410,
+        580
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/evidence/Q2-px-raw-body-comparison.png",
+      "sha256": "d473aa1d4dc661108aec09eecf20fdb153acec5d543a8b3d3ee069d57e4e0aff",
+      "bytes": 223139,
+      "size": [
+        1104,
+        438
+      ]
+    }
+  ],
+  "processing": "Raw RGB PNG pixels only, fixed source coordinates, nearest-neighbor display. No alignment, pose correction or pixel retouching.",
+  "scriptSHA256": "dc22e918f8d40493a731e62d7446da843f33b760071a36dc6a3e4f627c4d99ab",
+  "limitations": "Generated source content before composition. This does not prove cross-view consistency or geometric accuracy."
+}

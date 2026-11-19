@@ -1,0 +1,235 @@
+{
+  "kind": "Explicit stable QA evidence for repository copy; generated HTML and derived comparison boards are archived/delivered separately.",
+  "items": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/build_capture_qwen.py",
+      "destinationRelativePath": "build_capture_qwen.py",
+      "sha256": "88a69e37e68d09865a4a45b280dbdb933181d821abdd4c64402cc109f7f2d93b",
+      "bytes": 11325
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/compare_qwen_captures.py",
+      "destinationRelativePath": "compare_qwen_captures.py",
+      "sha256": "75fd3d2ca691a71048f348983b52096021e1844956910491a77adfc30b310b89",
+      "bytes": 11007
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/build_qwen_px_raw.py",
+      "destinationRelativePath": "build_qwen_px_raw.py",
+      "sha256": "1f22c5534dd9f31efa22016979f6b1ea0639e1ec864ea2489b1de1fdc0b6b8e1",
+      "bytes": 4662
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/build_qwen_raw_series.py",
+      "destinationRelativePath": "build_qwen_raw_series.py",
+      "sha256": "dc22e918f8d40493a731e62d7446da843f33b760071a36dc6a3e4f627c4d99ab",
+      "bytes": 4758
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/interrupted-build-reuse.json",
+      "destinationRelativePath": "interrupted-build-reuse.json",
+      "sha256": "fd34d92a872b3afc619e2e4f8e5a035ee46e626fee7f3faa458ef3d678eef64a",
+      "bytes": 721
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/viewer-builds.json",
+      "destinationRelativePath": "viewer-builds.json",
+      "sha256": "e5e9f4af542f60cac53bce5419841bb0d56e36739c84a46dc1bb9cc791f2ca43",
+      "bytes": 12841
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/capture-cases.json",
+      "destinationRelativePath": "capture-cases.json",
+      "sha256": "3d0cc63b140667acd14837239ae3d638ff57438f4a0c0ee762e690306cfd8978",
+      "bytes": 2148
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/capture-runs.json",
+      "destinationRelativePath": "capture-runs.json",
+      "sha256": "82655e429e4d39ac427be4cc0bc2efff2872be87fe3d481431f5993b0d5b4c29",
+      "bytes": 3279
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/K-view-capture-control.json",
+      "destinationRelativePath": "K-view-capture-control.json",
+      "sha256": "d62fe8fff1803195624bfc1d9f456e88f8c8472c7ec8a80787c1b8d0db8cce40",
+      "bytes": 267
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-capture-control.json",
+      "destinationRelativePath": "Q1-capture-control.json",
+      "sha256": "6f92ba93545ad7c7c3d8a34ccbfc1a8be20f5187270a2c526c648e119a1a67bf",
+      "bytes": 267
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-capture-control.json",
+      "destinationRelativePath": "Q2-capture-control.json",
+      "sha256": "3c829ff90945c40c5b3bb8cb7e6885abdbdf76982a122e62d859c6adfd2c0cc5",
+      "bytes": 267
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current-build.log",
+      "destinationRelativePath": "F-current-build.log",
+      "sha256": "547cc34cd88f3a59929f62361d5c48617f64c95cab3174d94f8e796c62be0864",
+      "bytes": 82
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five-build.log",
+      "destinationRelativePath": "Q1-qwen-five-build.log",
+      "sha256": "ed59dbb1a874f7118d2dd162de84fadf2737c2a0ed79fe6acf509612b6a0e51d",
+      "bytes": 85
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle-build.log",
+      "destinationRelativePath": "Q2-qwen-anyangle-build.log",
+      "sha256": "b67efaed3c22c266f87ec9284406d563365cbb2125a131fb25fb53861a3a430a",
+      "bytes": 89
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/K-view-capture.log",
+      "destinationRelativePath": "K-view-capture.log",
+      "sha256": "4fc8cd254f45f3154415aab1b603299ecef453f1f71c2620f36f8255d99103ec",
+      "bytes": 501
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-capture.log",
+      "destinationRelativePath": "Q1-capture.log",
+      "sha256": "05c96eae7b7f511e5f1691f3754f157cd8c7bd60fb22cd1890184478630220cf",
+      "bytes": 516
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-capture.log",
+      "destinationRelativePath": "Q2-capture.log",
+      "sha256": "86ba11e0745ac6da6f1058469776fa82fd481fc84a3ad624a3731d2772f998be",
+      "bytes": 536
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/evidence/Q1-px-raw-provenance.json",
+      "destinationRelativePath": "Q1-px-raw-provenance.json",
+      "sha256": "876b2cda2a10ef2a75643d93930635c03d51dc8af919d8dea1bfab4ba7497bcf",
+      "bytes": 2564
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/evidence/Q2-px-raw-provenance.json",
+      "destinationRelativePath": "Q2-px-raw-provenance.json",
+      "sha256": "7bc2eccf8bccc4dc123eb99bf6e9c3de45f7bf94e00d81730608291f6a8dcbae",
+      "bytes": 3146
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/evidence/raw-alpha-display-convention.json",
+      "destinationRelativePath": "raw-alpha-display-convention.json",
+      "sha256": "05d8f3729c07b7a841e6759a0198421ecd829bc74fa5018845ef4b3c15c19a8b",
+      "bytes": 1853
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/evidence/Q1-Q2-box-provenance.json",
+      "destinationRelativePath": "Q1-Q2-box-provenance.json",
+      "sha256": "dc1716b75552da71961ba2d827e2c6b5117073f3814563ab3435870286405a91",
+      "bytes": 49709
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current/capture.json",
+      "destinationRelativePath": "raw/F-current/capture.json",
+      "sha256": "4a4c4440ce85997d6322dbafc6d596cc2ab11a12cb10991d23eb729e8c9cc4dc",
+      "bytes": 19112
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current/yaw-p0_000.png",
+      "destinationRelativePath": "raw/F-current/yaw-p0_000.png",
+      "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59",
+      "bytes": 257203
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current/yaw-p30_000.png",
+      "destinationRelativePath": "raw/F-current/yaw-p30_000.png",
+      "sha256": "8e9c9c9115fd5386a07f7787456db7207f7c82b93eafe58a1f48091e8ac325fd",
+      "bytes": 239954
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current/yaw-p45_000.png",
+      "destinationRelativePath": "raw/F-current/yaw-p45_000.png",
+      "sha256": "c2ca5b4b6dd23e23d5f76710faca3d2637f535298bf9b5c0b2a125740d31abe8",
+      "bytes": 229037
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current/yaw-p60_000.png",
+      "destinationRelativePath": "raw/F-current/yaw-p60_000.png",
+      "sha256": "46a57d002ce6ee4c4ca8ab893fc974962859aeea4ef205ca49ceb140f4d68641",
+      "bytes": 228344
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five/capture.json",
+      "destinationRelativePath": "raw/Q1-qwen-five/capture.json",
+      "sha256": "e4952bb4fc29ccfe1f85c4ac94b9371199d6e9ac19df58f126916e9cdf5fb4d6",
+      "bytes": 19123
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five/yaw-p0_000.png",
+      "destinationRelativePath": "raw/Q1-qwen-five/yaw-p0_000.png",
+      "sha256": "62ce59963ac7fe1e0d0633db9d5e8dee66a5a29d144c9c392267e5771481d3c5",
+      "bytes": 257771
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five/yaw-p30_000.png",
+      "destinationRelativePath": "raw/Q1-qwen-five/yaw-p30_000.png",
+      "sha256": "c1fb8100e3fa31469b4e534845145d46814c417a5c8f2d08daf244defea08d66",
+      "bytes": 237826
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five/yaw-p45_000.png",
+      "destinationRelativePath": "raw/Q1-qwen-five/yaw-p45_000.png",
+      "sha256": "e2c0730b8544f32a78738054b26090806ddeb832a159cc66e8bcb0bb52a98da2",
+      "bytes": 222540
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five/yaw-p60_000.png",
+      "destinationRelativePath": "raw/Q1-qwen-five/yaw-p60_000.png",
+      "sha256": "597b1ca69c25d91da84f789b03592ef55af342d4e7a2f989c53e57efc3b43535",
+      "bytes": 218491
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle/capture.json",
+      "destinationRelativePath": "raw/Q2-qwen-anyangle/capture.json",
+      "sha256": "ed64aa5f5ae3ff74b4af2293305d8376e0a5f0ef5f074d66f5f73a2ee081ade8",
+      "bytes": 19143
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle/yaw-p0_000.png",
+      "destinationRelativePath": "raw/Q2-qwen-anyangle/yaw-p0_000.png",
+      "sha256": "8f7c6c5ab138d54acda60b2fc4d8d531ca0df4373e9a428a1ef48d688850e408",
+      "bytes": 257833
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle/yaw-p30_000.png",
+      "destinationRelativePath": "raw/Q2-qwen-anyangle/yaw-p30_000.png",
+      "sha256": "964f7095bb247a0283af5bea19d10f6014b0e174043fac1a042e6aea7ff8d9d0",
+      "bytes": 237239
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle/yaw-p45_000.png",
+      "destinationRelativePath": "raw/Q2-qwen-anyangle/yaw-p45_000.png",
+      "sha256": "4cbe4f84e89087d74efb58ea70df267415f0fcb6256cbb6d587c2aaca7f61d31",
+      "bytes": 222082
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle/yaw-p60_000.png",
+      "destinationRelativePath": "raw/Q2-qwen-anyangle/yaw-p60_000.png",
+      "sha256": "6bff13b83ac85fef30ba7c2ef31ec2c6f2f963b2cd89f4c3da69f2b57de115d7",
+      "bytes": 216454
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/capture_inspector_display_yaw.mjs",
+      "sha256": "025df3d803375da598d1e8952f4a35011b2426519d63d59c0ff4216bc5966a3a"
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/inspector_camera_probe.js",
+      "sha256": "b2bb23dda2827b16c5d7048a3dd2cec92a65f69a8455c93da5e2742b3bddaaa0"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/compare_seam_variants.py",
+      "sha256": "5491ae82a0669749a540cc047e2a015a751efd48963bf936af93be7851bc2b9c"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "kind": "Show raw +X guide/H3/Qwen images at fixed coordinates, without alignment or retouching.",
+  "fixedHeadCrop": [
+    339,
+    0,
+    558,
+    213
+  ],
+  "sourceDimensions": [
+    1024,
+    1024
+  ],
+  "originalFAsset": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "previousH3RGBEqualsFSource": true,
+  "inputs": {
+    "Geometry guide / +X": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/px/guide.png",
+      "sha256": "bbd1d68258bb6d0eb91884c592d6c8287591f63171f92f11b00263ec622f272f"
+    },
+    "Previous H3 / +X": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/px/generated.png",
+      "sha256": "29ff7e1e8268a79957d694ff1950e7c4000898b72fdebbe75178ef3c146cc22a"
+    },
+    "Qwen Image 2.1 / +X": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q1-qwen-five-20261119/px/generated.png",
+      "sha256": "df666bf2fe62d76147a86ccd35bcc43ed6141097a429c32bb8950a9291b40070"
+    }
+  },
+  "candidateReceipt": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q1-qwen-five-20261119/px/result.json",
+    "sha256": "e3503ddfd3e775cc479c44e937d07ad8aca3aaf6fcb99f0fe1a47a1ffb823dbe",
+    "promptId": "320ee07e-a192-4de6-ad1a-0eb6e0b376b1"
+  },
+  "previousReceipt": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/px/result.json",
+    "sha256": "52b44af2757f355df0df2b75b81d860f6ab6646d51f855311dbff573e0502c33"
+  },
+  "outputs": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/evidence/Q1-px-raw-head-comparison.png",
+      "sha256": "9d57864c4e1266c29bacd38a672f63bba74b912295c90edbbb320606bc9caca1",
+      "bytes": 264680,
+      "size": [
+        1410,
+        580
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/evidence/Q1-px-raw-body-comparison.png",
+      "sha256": "447c22259e6d85079551f181618cb90fe78649f8aced3fee5442aaf9107282c1",
+      "bytes": 298814,
+      "size": [
+        1104,
+        438
+      ]
+    }
+  ],
+  "processing": "Raw RGB PNG pixels only. Fixed source coordinates, nearest-neighbor display. No alignment, pose correction or pixel retouching.",
+  "scriptSHA256": "1f22c5534dd9f31efa22016979f6b1ea0639e1ec864ea2489b1de1fdc0b6b8e1",
+  "limitations": "This comparison shows generated source content before compositing. It does not prove cross-view 3D consistency or shape accuracy."
+}

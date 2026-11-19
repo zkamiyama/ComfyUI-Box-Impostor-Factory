@@ -1,0 +1,264 @@
+{
+  "prompt": [
+    1,
+    "2909f9d5-4ea9-487e-9dce-0bab3d048631",
+    {
+      "1": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "B/px/source.png"
+        }
+      },
+      "2": {
+        "class_type": "LoadImage",
+        "inputs": {
+          "image": "B/px/guide.png"
+        }
+      },
+      "6": {
+        "class_type": "UNETLoader",
+        "inputs": {
+          "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+          "weight_dtype": "default"
+        }
+      },
+      "7": {
+        "class_type": "CLIPLoader",
+        "inputs": {
+          "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+          "type": "qwen_image",
+          "device": "default"
+        }
+      },
+      "8": {
+        "class_type": "VAELoader",
+        "inputs": {
+          "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+        }
+      },
+      "10": {
+        "class_type": "TextEncodeQwenImage21",
+        "inputs": {
+          "clip": [
+            "7",
+            0
+          ],
+          "vae": [
+            "8",
+            0
+          ],
+          "prompt": "Change the camera angle from <image2> to <image1>.",
+          "negative_prompt": "",
+          "resolution": 1024,
+          "images.image_1": [
+            "1",
+            0
+          ],
+          "images.image_2": [
+            "2",
+            0
+          ]
+        }
+      },
+      "12": {
+        "class_type": "KSampler",
+        "inputs": {
+          "steps": 25,
+          "cfg": 3.0,
+          "sampler_name": "euler",
+          "scheduler": "simple",
+          "denoise": 1.0,
+          "seed": 101,
+          "model": [
+            "9",
+            0
+          ],
+          "positive": [
+            "10",
+            0
+          ],
+          "negative": [
+            "10",
+            1
+          ],
+          "latent_image": [
+            "10",
+            2
+          ]
+        }
+      },
+      "13": {
+        "class_type": "VAEDecode",
+        "inputs": {
+          "samples": [
+            "12",
+            0
+          ],
+          "vae": [
+            "8",
+            0
+          ]
+        }
+      },
+      "14": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "13",
+            0
+          ],
+          "filename_prefix": "Q2-qwen-anyangle-20261119/px/raw"
+        }
+      },
+      "15": {
+        "class_type": "LoadBackgroundRemovalModel",
+        "inputs": {
+          "bg_removal_name": "birefnet.safetensors"
+        }
+      },
+      "16": {
+        "class_type": "RemoveBackground",
+        "inputs": {
+          "bg_removal_model": [
+            "15",
+            0
+          ],
+          "image": [
+            "13",
+            0
+          ]
+        }
+      },
+      "17": {
+        "class_type": "MaskToImage",
+        "inputs": {
+          "mask": [
+            "16",
+            0
+          ]
+        }
+      },
+      "18": {
+        "class_type": "SaveImage",
+        "inputs": {
+          "images": [
+            "17",
+            0
+          ],
+          "filename_prefix": "Q2-qwen-anyangle-20261119/px/mask"
+        }
+      },
+      "19": {
+        "class_type": "LoraLoaderModelOnly",
+        "inputs": {
+          "model": [
+            "6",
+            0
+          ],
+          "lora_name": "QI2.1_AnyAngle.safetensors",
+          "strength_model": 1.0
+        }
+      },
+      "9": {
+        "class_type": "QwenImage21Cache",
+        "inputs": {
+          "model": [
+            "19",
+            0
+          ],
+          "device": "cpu",
+          "dtype": "default"
+        }
+      }
+    },
+    {
+      "geometryAB": "Q2-qwen-anyangle-20261119",
+      "face": "+X",
+      "client_id": "4a87694c-303d-4990-a023-3c2d2eddf97d",
+      "create_time": 1795099896432
+    },
+    [
+      "18",
+      "14"
+    ]
+  ],
+  "outputs": {
+    "14": {
+      "images": [
+        {
+          "filename": "raw_00001_.png",
+          "subfolder": "Q2-qwen-anyangle-20261119/px",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1024,
+            "height": 1024
+          }
+        }
+      ]
+    },
+    "18": {
+      "images": [
+        {
+          "filename": "mask_00001_.png",
+          "subfolder": "Q2-qwen-anyangle-20261119/px",
+          "type": "output",
+          "metadata": {
+            "kind": "image",
+            "width": 1024,
+            "height": 1024
+          }
+        }
+      ]
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "2909f9d5-4ea9-487e-9dce-0bab3d048631",
+          "timestamp": 1795099896433
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "2",
+            "6",
+            "7",
+            "8",
+            "15"
+          ],
+          "prompt_id": "2909f9d5-4ea9-487e-9dce-0bab3d048631",
+          "timestamp": 1795099896457
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "2909f9d5-4ea9-487e-9dce-0bab3d048631",
+          "timestamp": 1795100021330
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "14": {
+      "node_id": "14",
+      "display_node": "14",
+      "parent_node": null,
+      "real_node_id": "14"
+    },
+    "18": {
+      "node_id": "18",
+      "display_node": "18",
+      "parent_node": null,
+      "real_node_id": "18"
+    }
+  }
+}

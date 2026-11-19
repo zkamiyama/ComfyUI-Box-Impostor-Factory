@@ -1,0 +1,102 @@
+{
+  "asset": "90bc93b6d83833f93eef20492d011bc60376ddd5bb2a3c0deeda95e2dd8059ba",
+  "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/90bc93b6d83833f93eef20492d011bc60376ddd5bb2a3c0deeda95e2dd8059ba",
+  "sourceBox": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "guideBaseline": "f6a5d91901f6745980cf73315bdacecc7e9db216b88784018cc7f8093d9dd404",
+  "replacedFace": "+X",
+  "applied": true,
+  "faceQA": {
+    "before": {
+      "iou": 0.9854688097499599,
+      "boundaryP95Px": 3.605551275463989
+    },
+    "status": "accepted",
+    "sourceSize": [
+      369,
+      1024
+    ],
+    "tileSize": [
+      1024,
+      1024
+    ],
+    "registration": {
+      "scale": 1.0,
+      "centerShiftYX": [
+        0.0,
+        0.0
+      ]
+    },
+    "registrationCenterYX": [
+      511.5,
+      513.5
+    ],
+    "sampling": "source-affine-v1",
+    "boundingBoxRegistration": {
+      "scale": 1.0010133333333333,
+      "centerShiftYX": [
+        0.0,
+        -2.0
+      ],
+      "scores": {
+        "iou": 0.9839013145905264,
+        "boundaryP95Px": 4.47213595499958
+      }
+    },
+    "after": {
+      "iou": 0.9854688097499599,
+      "boundaryP95Px": 3.605551275463989
+    },
+    "reason": "silhouette-passed",
+    "originalSize": [
+      1024,
+      1024
+    ],
+    "guideCanvas": {
+      "version": 1,
+      "size": 1024,
+      "faceId": "+X",
+      "guideRect": [
+        327,
+        0,
+        369,
+        1024
+      ],
+      "guideInputSha256": "383151f7ff1091eeb4c5c59851f562f46b53d07626adee23aea43202605a9ccc",
+      "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+      "sourceRect": [
+        0,
+        0,
+        1024,
+        1024
+      ],
+      "physicalWidthHeight": [
+        0.3745910310745239,
+        1.04
+      ],
+      "imageRowOrder": "top-to-bottom",
+      "backgroundSRGB": 0.5
+    },
+    "thresholds": {
+      "minIoU": 0.85,
+      "maxShiftFraction": 0.1,
+      "maxScaleChange": 0.15
+    }
+  },
+  "preservation": {
+    "proxyBytesExact": true,
+    "geometryMetadataExact": true,
+    "nonColorMapsExact": true,
+    "coverageAlphaExact": true,
+    "unchangedFaceRGBAHashes": {
+      "-X": "cc0c79b955218f50a9bcb7f0339f6f5c7838f0dafaeb3dae21092e9ae67be42a",
+      "+Y": "afa9b1f5a1a2a00a1e575a0095397b290639487ed4a9c25ed0e9f5a572fd258d",
+      "-Y": "dd101db24c1082bb50ed9b590008f1cb3bff33f7d3f9d44091c82d07e7263101",
+      "+Z": "f6002edf2719ef1e401eaf1c17093fd006469e83918adbc087145e9c1c09db6a",
+      "-Z": "f29da30a062938731a685aab26f343738f4d4f9588c549b825c0621ba31c2dcd"
+    },
+    "unchangedFaceSourcesAndMetadata": true
+  },
+  "proxySha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+  "viewConsistency": "none",
+  "materialEstimation": "none"
+}

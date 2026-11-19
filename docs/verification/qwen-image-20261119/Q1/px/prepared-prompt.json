@@ -1,0 +1,188 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "B/px/guide.png"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "B/px/source.png"
+    }
+  },
+  "3": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "B/px/axis-depth.png"
+    }
+  },
+  "4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "B/px/normals.png"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "B/px/mask.png"
+    }
+  },
+  "6": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "7": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "8": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "10": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "7",
+        0
+      ],
+      "vae": [
+        "8",
+        0
+      ],
+      "prompt": "The orthographic camera is on the +X side, perpendicular to the front view. Return the strict side profile shown in <image1>; preserve its visible side and nose direction. Do not turn the person or face toward the camera. Refine the person in <image1> into a detailed, natural photograph of the same person shown in <image2>. Preserve the exact orthographic camera, view direction, pose, silhouette, scale and framing of <image1>. <image3> is the aligned geometry depth: brighter means nearer the camera. <image4> is the aligned world-space surface normal map. <image5> is the aligned foreground mask: white is the person and black is background. Use Pictures 3, 4 and 5 only as structural references; do not copy their colors. Use Picture 2 only for identity, skin, hair, dress colors and material details. Keep the direction of the head and the visibility of facial features consistent with Picture 1 and the structural maps. Add anatomically plausible eyes, eyelids, nose, lips, hair strands, fingers, seams and fabric folds where they are visible from this camera. Keep the body and garment boundaries exactly within the mask. Use neutral even lighting and a flat mid-gray background. Return only one full-body orthographic image, no panels, no diagrams, no text, no colored depth or normal-map appearance.",
+      "negative_prompt": "",
+      "resolution": 1024,
+      "images.image_1": [
+        "1",
+        0
+      ],
+      "images.image_2": [
+        "2",
+        0
+      ],
+      "images.image_3": [
+        "3",
+        0
+      ],
+      "images.image_4": [
+        "4",
+        0
+      ],
+      "images.image_5": [
+        "5",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "KSampler",
+    "inputs": {
+      "steps": 25,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "seed": 101,
+      "model": [
+        "9",
+        0
+      ],
+      "positive": [
+        "10",
+        0
+      ],
+      "negative": [
+        "10",
+        1
+      ],
+      "latent_image": [
+        "10",
+        2
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "8",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "Q1-qwen-five-20261119/px/raw"
+    }
+  },
+  "15": {
+    "class_type": "LoadBackgroundRemovalModel",
+    "inputs": {
+      "bg_removal_name": "birefnet.safetensors"
+    }
+  },
+  "16": {
+    "class_type": "RemoveBackground",
+    "inputs": {
+      "bg_removal_model": [
+        "15",
+        0
+      ],
+      "image": [
+        "13",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "16",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "17",
+        0
+      ],
+      "filename_prefix": "Q1-qwen-five-20261119/px/mask"
+    }
+  },
+  "9": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "device": "cpu",
+      "dtype": "default"
+    }
+  }
+}

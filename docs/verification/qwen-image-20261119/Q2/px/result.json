@@ -1,0 +1,11 @@
+{
+  "prompt_id": "2909f9d5-4ea9-487e-9dce-0bab3d048631",
+  "freshInference": true,
+  "face": "+X",
+  "elapsedSeconds": 126.4,
+  "raw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q2-qwen-anyangle-20261119/px/generated.png",
+  "mask": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q2-qwen-anyangle-20261119/px/foreground.png",
+  "rawSha256": "e7f79500a5c04ef6718385ef73080cfa9908f92d3d69f8e404e51b54a705e8aa",
+  "maskSha256": "f92dfc11fdb5646db54be27e829f8bb1ca24b1ed1e78fc60696fff9350bfd9ab",
+  "promptSha256": "b44cf9deb50937159dadbc7b5bdc914ebdefc4baa903fd3405ac7f861a61d9c7"
+}

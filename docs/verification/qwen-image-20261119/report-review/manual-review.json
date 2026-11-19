@@ -1,0 +1,525 @@
+{
+  "reportSHA256": "5d108c92e4c20b237bafec10e28abb51f371d0705ea6f25079f2a66202dba065",
+  "runId": "20261119T151632Z-582e6b68",
+  "attempt": 1,
+  "manualReviewCompleted": true,
+  "proseChangedAfterRun": false,
+  "lintCandidates": 0,
+  "meaningRiskCount": 72,
+  "meaningRiskMeaning": "Candidates are not a quality score. The large diff is the authorized completion of an earlier pending draft with actual Q2 and Box results.",
+  "diffRiskReview": [
+    {
+      "index": 1,
+      "kind": "number",
+      "line": 3,
+      "decision": "retain after manual comparison",
+      "reason": "The experiment ID is retained in the run directories and receipts."
+    },
+    {
+      "index": 2,
+      "kind": "number",
+      "line": 3,
+      "decision": "retain after manual comparison",
+      "reason": "The reporting period follows the coordinator instruction to express Nov19 evening through Nov20 after midnight in JST; the final run timestamp is 2026-11-19T15:16:32Z."
+    },
+    {
+      "index": 3,
+      "kind": "number",
+      "line": 5,
+      "decision": "retain after manual comparison",
+      "reason": "The recorded angles include +60 and the exact comparison image was visually inspected."
+    },
+    {
+      "index": 4,
+      "kind": "protected",
+      "line": 19,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 5,
+      "kind": "protected",
+      "line": 19,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 6,
+      "kind": "protected",
+      "line": 21,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 7,
+      "kind": "protected",
+      "line": 21,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 8,
+      "kind": "protected",
+      "line": 23,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 9,
+      "kind": "protected",
+      "line": 25,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 10,
+      "kind": "protected",
+      "line": 27,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 11,
+      "kind": "number",
+      "line": 31,
+      "decision": "retain after manual comparison",
+      "reason": "Q2 result.json elapsedSeconds is 126.4; the Japanese unit is seconds."
+    },
+    {
+      "index": 12,
+      "kind": "number",
+      "line": 32,
+      "decision": "retain after manual comparison",
+      "reason": "Q2 composed.json before.iou 0.8999510471287071 rounded to 7 decimal places."
+    },
+    {
+      "index": 13,
+      "kind": "number",
+      "line": 33,
+      "decision": "retain after manual comparison",
+      "reason": "Q2 composed.json after.iou 0.9300731049464833 rounded to 7 decimal places."
+    },
+    {
+      "index": 14,
+      "kind": "number",
+      "line": 34,
+      "decision": "retain after manual comparison",
+      "reason": "Q2 boundaryP95Px before 22.47220505424423 rounded to 4 decimal places."
+    },
+    {
+      "index": 15,
+      "kind": "number",
+      "line": 35,
+      "decision": "retain after manual comparison",
+      "reason": "Q2 boundaryP95Px after 18.027756377319946 rounded to 4 decimal places."
+    },
+    {
+      "index": 16,
+      "kind": "number",
+      "line": 36,
+      "decision": "retain after manual comparison",
+      "reason": "Q2 applied registration.scale 1.013967783511331 rounded to 7 decimal places."
+    },
+    {
+      "index": 17,
+      "kind": "number",
+      "line": 37,
+      "decision": "retain after manual comparison",
+      "reason": "Q2 applied centerShiftYX [2.740069186070121,-10.23104616522543] rounded to 7 decimal places; the negative X sign is retained."
+    },
+    {
+      "index": 18,
+      "kind": "protected",
+      "line": 39,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 19,
+      "kind": "protected",
+      "line": 39,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 20,
+      "kind": "number",
+      "line": 41,
+      "decision": "retain after manual comparison",
+      "reason": "The preservation receipt lists the five unchanged faces: -X,+Y,-Y,+Z,-Z."
+    },
+    {
+      "index": 21,
+      "kind": "protected",
+      "line": 41,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 22,
+      "kind": "protected",
+      "line": 41,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 23,
+      "kind": "number",
+      "line": 43,
+      "decision": "retain after manual comparison",
+      "reason": "raw-alpha-display-convention.json records Q2 alpha min251/max255 and zeroPixels0."
+    },
+    {
+      "index": 24,
+      "kind": "protected",
+      "line": 43,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 25,
+      "kind": "number",
+      "line": null,
+      "decision": "retain after manual comparison",
+      "reason": "1024 source size remains in the conditions table; the old board-specific crop explanation is moved to its provenance link."
+    },
+    {
+      "index": 26,
+      "kind": "protected",
+      "line": 45,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 27,
+      "kind": "protected",
+      "line": 45,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 28,
+      "kind": "number",
+      "line": 47,
+      "decision": "retain after manual comparison",
+      "reason": "Capture angles explicitly include +30."
+    },
+    {
+      "index": 29,
+      "kind": "number",
+      "line": 47,
+      "decision": "retain after manual comparison",
+      "reason": "viewer-builds.json contains the three cases F-current,Q1,Q2 with identical embedded renderer scripts."
+    },
+    {
+      "index": 30,
+      "kind": "protected",
+      "line": 47,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 31,
+      "kind": "number",
+      "line": 49,
+      "decision": "retain after manual comparison",
+      "reason": "There are four recorded views, 0/30/45/60; claims stay within those views."
+    },
+    {
+      "index": 32,
+      "kind": "protected",
+      "line": 49,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 33,
+      "kind": "protected",
+      "line": 49,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 34,
+      "kind": "number",
+      "line": 56,
+      "decision": "retain after manual comparison",
+      "reason": "Q1/0 and Q2/0 each record foregroundRGBChangedPixelsToK=204; the report does not claim identical frontal RGB."
+    },
+    {
+      "index": 35,
+      "kind": "number",
+      "line": 56,
+      "decision": "retain after manual comparison",
+      "reason": "The fixed mask contains10936 pixels; three MAE values are rounded to 6 decimals from frontFidelity.metrics."
+    },
+    {
+      "index": 36,
+      "kind": "number",
+      "line": 56,
+      "decision": "retain after manual comparison",
+      "reason": "The separate faceRectangle has4287pixels and opaqueMeanRGBErrorOver16=24 in all3 cases."
+    },
+    {
+      "index": 37,
+      "kind": "number",
+      "line": 58,
+      "decision": "retain after manual comparison",
+      "reason": "edge-review-provenance.json metricDefinition states a3-pixel inner band."
+    },
+    {
+      "index": 38,
+      "kind": "number",
+      "line": 58,
+      "decision": "retain after manual comparison",
+      "reason": "The edge record supplies alpha>250,8296bandpixels,14/7/7darkpixels and0newdarkpixels."
+    },
+    {
+      "index": 39,
+      "kind": "protected",
+      "line": 53,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 40,
+      "kind": "protected",
+      "line": 68,
+      "decision": "retain after manual comparison",
+      "reason": "Identifier/prompt values were preserved or updated from direct receipts; links now target raw inputs/captures and JSON, with board-only links removed. Relocated text was read in the completed report."
+    },
+    {
+      "index": 41,
+      "kind": "citation",
+      "line": 37,
+      "decision": "retain after manual comparison",
+      "reason": "[0,0] is a transform vector, not a citation; it is the Q1 applied centerShiftYX."
+    },
+    {
+      "index": 42,
+      "kind": "limiter",
+      "line": 64,
+      "decision": "retain after manual comparison",
+      "reason": "The +X-only scope is stated in the same final paragraph; other five face preservation is documented."
+    },
+    {
+      "index": 43,
+      "kind": "promise",
+      "line": 19,
+      "decision": "retain after manual comparison",
+      "reason": "This is a measured SHA equality, not a future promise; the phrase match is lexical."
+    },
+    {
+      "index": 44,
+      "kind": "state",
+      "line": null,
+      "decision": "retain after manual comparison",
+      "reason": "The old pending-status sentence is replaced by actual Q2/Box observations; Q2 remains explicitly an angle-improvement candidate, with unresolved global artifacts."
+    },
+    {
+      "index": 45,
+      "kind": "claim",
+      "line": 58,
+      "decision": "retain after manual comparison",
+      "reason": "The wording limits the scope of edge evidence and explains retaining Q2 as a candidate; no general quality or original-geometry correctness claim is added."
+    },
+    {
+      "index": 46,
+      "kind": "claim",
+      "line": 64,
+      "decision": "retain after manual comparison",
+      "reason": "The wording limits the scope of edge evidence and explains retaining Q2 as a candidate; no general quality or original-geometry correctness claim is added."
+    },
+    {
+      "index": 47,
+      "kind": "state",
+      "line": null,
+      "decision": "retain after manual comparison",
+      "reason": "The official template commit remains explicitly marked undetermined in the final reference section."
+    }
+  ],
+  "materialRiskReview": [
+    {
+      "index": 1,
+      "token": "JST",
+      "line": 3,
+      "decision": "retain",
+      "reason": "The reporting period follows the coordinator instruction to express Nov19 evening through Nov20 after midnight in JST; the final run timestamp is 2026-11-19T15:16:32Z."
+    },
+    {
+      "index": 2,
+      "token": "Q1/px/prepared-prompt.json",
+      "line": 19,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 3,
+      "token": "Q2/px/prepared-prompt.json",
+      "line": 19,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 4,
+      "token": "Q1/prepared.json",
+      "line": 21,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 5,
+      "token": "Q2/prepared.json",
+      "line": 21,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 6,
+      "token": "Q1/px/generated.png",
+      "line": 27,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 7,
+      "token": "Q2/px/generated.png",
+      "line": 27,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 8,
+      "token": "shift",
+      "line": 37,
+      "decision": "retain",
+      "reason": "Readable report labels correspond to exact JSON fields centerShiftYX, geometryMetadataExact, nonColorMapsExact, coverageAlphaExact, sRGBMAE255FixedPriorMask, or maxRGBBelow16InBand."
+    },
+    {
+      "index": 9,
+      "token": "YX",
+      "line": 37,
+      "decision": "retain",
+      "reason": "Readable report labels correspond to exact JSON fields centerShiftYX, geometryMetadataExact, nonColorMapsExact, coverageAlphaExact, sRGBMAE255FixedPriorMask, or maxRGBBelow16InBand."
+    },
+    {
+      "index": 10,
+      "token": "Q1/px/result.json",
+      "line": 39,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 11,
+      "token": "Q1/composed.json",
+      "line": 39,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 12,
+      "token": "Q2/px/result.json",
+      "line": 39,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 13,
+      "token": "Q2/composed.json",
+      "line": 39,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 14,
+      "token": "metadata",
+      "line": 41,
+      "decision": "retain",
+      "reason": "Readable report labels correspond to exact JSON fields centerShiftYX, geometryMetadataExact, nonColorMapsExact, coverageAlphaExact, sRGBMAE255FixedPriorMask, or maxRGBBelow16InBand."
+    },
+    {
+      "index": 15,
+      "token": "non-color",
+      "line": 41,
+      "decision": "retain",
+      "reason": "Readable report labels correspond to exact JSON fields centerShiftYX, geometryMetadataExact, nonColorMapsExact, coverageAlphaExact, sRGBMAE255FixedPriorMask, or maxRGBBelow16InBand."
+    },
+    {
+      "index": 16,
+      "token": "coverage",
+      "line": 41,
+      "decision": "retain",
+      "reason": "Readable report labels correspond to exact JSON fields centerShiftYX, geometryMetadataExact, nonColorMapsExact, coverageAlphaExact, sRGBMAE255FixedPriorMask, or maxRGBBelow16InBand."
+    },
+    {
+      "index": 17,
+      "token": "Q1-direct-evidence.json",
+      "line": 41,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 18,
+      "token": "Q2-direct-evidence.json",
+      "line": 41,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 19,
+      "token": "MAE",
+      "line": 56,
+      "decision": "retain",
+      "reason": "Readable report labels correspond to exact JSON fields centerShiftYX, geometryMetadataExact, nonColorMapsExact, coverageAlphaExact, sRGBMAE255FixedPriorMask, or maxRGBBelow16InBand."
+    },
+    {
+      "index": 20,
+      "token": "maxRGB",
+      "line": 58,
+      "decision": "retain",
+      "reason": "Readable report labels correspond to exact JSON fields centerShiftYX, geometryMetadataExact, nonColorMapsExact, coverageAlphaExact, sRGBMAE255FixedPriorMask, or maxRGBBelow16InBand."
+    },
+    {
+      "index": 21,
+      "token": "edge-review-provenance.json",
+      "line": 58,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 22,
+      "token": "github.com/zkamiyama/ComfyUI-Box-Impostor-Factory/tree/9be1efb5bee8cef187e1efa22cafcc64da68f228/docs/verification/qwen-image-20261119",
+      "line": 70,
+      "decision": "retain",
+      "reason": "The coordinator supplied the published archive commit and reviewed the exact final report URL before verification."
+    },
+    {
+      "index": 23,
+      "token": "qa-manifest.json",
+      "line": 71,
+      "decision": "retain",
+      "reason": "Repository-relative destination corresponds to the supplied receipt/source or qa-manifest destination path; final physical repository path validation is assigned to the staging agent."
+    },
+    {
+      "index": 24,
+      "token": "repo",
+      "line": 71,
+      "decision": "retain",
+      "reason": "Ordinary names for the repository and file format, not unsupported experimental claims."
+    },
+    {
+      "index": 25,
+      "token": "JSON",
+      "line": 71,
+      "decision": "retain",
+      "reason": "Ordinary names for the repository and file format, not unsupported experimental claims."
+    }
+  ],
+  "numericMaterialReview": "Rounded decimal values and units were compared with the exact receipt values. Date/reporting-period wording follows the explicit coordinator instruction. Source numerical values are retained in the frozen material.",
+  "stiffnessReview": "Retain the technical scope sentence; standard terms identify unresolved artifacts and unverified 3D accuracy. Kanji ratio is not used as a quality judgment.",
+  "logicReview": "The three demonstratives refer to immediately preceding image metrics, edge angle/threshold, and geometry preservation respectively.",
+  "visualScope": "All5Boxboards and Q1/Q2rawheads were inspected. Only the second face at +45/+60 is reported as removed; stripes, mottling, chin discontinuity, torso seam and grey leg strip remain.",
+  "originalToFinalCommaReview": "Additional commas occur in new measured results and explicit scopes/conditions; no gratuitous pause after a short topic was identified.",
+  "checksNotRun": [],
+  "verdict": "Required automated checks executed; all displayed review candidates manually assessed; exact-byte verification executed. This is not an automatic readability or factual-truth certification."
+}

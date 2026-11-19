@@ -1,0 +1,29 @@
+{
+  "utc": "2026-11-19T15:01:47.525124+00:00",
+  "source": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/run_qwen_face_trial.py",
+  "sourceSha256": "9d329f628f0db928184cd00462e7e3a29aae102f9c67a84342b04a9c4b2c4551",
+  "composeSource": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/run_geometry_d.py",
+  "composeSourceSha256": "c7bb962ac14c27fcb9eb145dc6209e0f0968d2adb2d81dd9c44b109fdb66b8d4",
+  "q1SourceSnapshot": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q1-qwen-five-20261119/code/run_qwen_face_trial.py",
+  "q1SnapshotSha256": "9b6940b68cd6805c0658ed56f3fd041a30622e70b74821512a69c39eb635c3ba",
+  "checks": {
+    "pythonSyntax": true,
+    "gitDiffCheck": true,
+    "currentSourceMatchesQ2RecordedCodeHash": true,
+    "q1SnapshotMatchesQ1RecordedCodeHash": true,
+    "q1GraphExactlyPreserved": {
+      "passed": true,
+      "observedInPrepareProcess": 64578
+    },
+    "q2ReferenceOrderAndExactPrompt": true,
+    "q2GraphInspection": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q2-qwen-anyangle-20261119/graph-inspection.json",
+    "q2ActualInferenceAndComposition": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q2-qwen-anyangle-20261119/execution-monitor.json"
+  },
+  "q2GraphSha256": "b44cf9deb50937159dadbc7b5bdc914ebdefc4baa903fd3405ac7f861a61d9c7",
+  "q2RecipeSha256": "66b6df20754c0c7ea6e2326da2e9deb06d6a35b5d8df566a339f809ce15c89a1",
+  "executionReceiptSha256": "1fc0607a7e30d69c299f3a3d80e5b0ecec7be46902187c27db84b9d1b1461641",
+  "stageReadySourcePaths": [
+    "scripts/run_qwen_face_trial.py",
+    "scripts/run_geometry_d.py"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "status": "material frozen before final language check",
+  "sources": [
+    {
+      "path": "deliverables/docs/verification/qwen-image-20261119/Q1/prepared.json",
+      "sha256": "25fe8d1cc3a71c30583c457378ade559ce9c4e2530a544e52eefbceedb8edb54",
+      "bytes": 18100
+    },
+    {
+      "path": "deliverables/docs/verification/qwen-image-20261119/Q1/composed.json",
+      "sha256": "966a9193352b5855a05aca6981f8418748ec4346964d63bdd48c85e98e79f5b0",
+      "bytes": 2801
+    },
+    {
+      "path": "deliverables/docs/verification/qwen-image-20261119/Q1/px/result.json",
+      "sha256": "e3503ddfd3e775cc479c44e937d07ad8aca3aaf6fcb99f0fe1a47a1ffb823dbe",
+      "bytes": 611
+    },
+    {
+      "path": "deliverables/docs/verification/qwen-image-20261119/Q2/prepared.json",
+      "sha256": "66b6df20754c0c7ea6e2326da2e9deb06d6a35b5d8df566a339f809ce15c89a1",
+      "bytes": 12921
+    },
+    {
+      "path": "deliverables/docs/verification/qwen-image-20261119/Q2/composed.json",
+      "sha256": "13f0152cb6a2baab4c5d96c36d720acbc5b8039f07af936cb23ac3b363cbe828",
+      "bytes": 3116
+    },
+    {
+      "path": "deliverables/docs/verification/qwen-image-20261119/Q2/px/result.json",
+      "sha256": "fc600b3ed339c9d7fe889a75887d84181486d518e8ed83c504db56f356ffbff0",
+      "bytes": 618
+    },
+    {
+      "path": "deliverables/docs/verification/qwen-image-20261119/Q1-Q2-box-provenance.json",
+      "sha256": "dc1716b75552da71961ba2d827e2c6b5117073f3814563ab3435870286405a91",
+      "bytes": 49709
+    },
+    {
+      "path": "deliverables/docs/verification/qwen-image-20261119/viewer-builds.json",
+      "sha256": "e5e9f4af542f60cac53bce5419841bb0d56e36739c84a46dc1bb9cc791f2ca43",
+      "bytes": 12841
+    },
+    {
+      "path": "deliverables/docs/verification/qwen-image-20261119/raw-alpha-display-convention.json",
+      "sha256": "05d8f3729c07b7a841e6759a0198421ecd829bc74fa5018845ef4b3c15c19a8b",
+      "bytes": 1853
+    },
+    {
+      "path": "deliverables/docs/verification/qwen-image-20261119/edge-review-provenance.json",
+      "sha256": "dea15507269b37e028b6c3a168bb387428ad5789f2801af12e613f64910f00ac",
+      "bytes": 2196
+    },
+    {
+      "path": "deliverables/docs/verification/qwen-image-20261119/qa-manifest.json",
+      "sha256": "18a704782a7611a86bf06cfd557e7e270589321fd6243796d4577cf648cb30dd",
+      "bytes": 11094
+    },
+    {
+      "path": "research/qwen-image-trial/template-provenance.json",
+      "sha256": "a8f698cdf4e505a3358d9f56f10f0a91b977da2990862361945ab1f60419e4e8",
+      "bytes": 2890
+    },
+    {
+      "path": "research/qwen-image-trial/sources/anyangle-model-card.md",
+      "sha256": "f1905d98ec1cde40ec4dfe5bc0b7dc60efa19c2ef4ac5c03ee10616b85662322",
+      "bytes": 5940
+    }
+  ],
+  "materialSHA256": "028ecef1396809e7b28a68c6839729b698252f04f76b1787a91a6f03103b41fc",
+  "report": "deliverables/docs/verification/qwen-image-20261119/REPORT.ja.md",
+  "source": "work/qwen-image/report-review/REPORT.source.ja.md",
+  "visualReview": {
+    "files": [
+      "Q1-px-raw-head-comparison.png",
+      "Q2-px-raw-head-comparison.png",
+      "Q2-px-raw-body-comparison.png",
+      "Q1-Q2-box-p45-head-comparison.png",
+      "Q1-Q2-box-p45-ghost-comparison.png",
+      "Q1-Q2-box-head-other-angles.png",
+      "Q1-Q2-box-front-preservation.png",
+      "Q1-Q2-box-body-comparison.png"
+    ],
+    "observations": [
+      "Q1 retains a faint second face at +45 and +60; Q2 replaces that region with hair.",
+      "Top-of-head striped and mottled artifacts and chin discontinuity remain.",
+      "Full-body captures retain a torso/arm seam and a grey strip along the leg.",
+      "These observations are bounded to the four recorded angles and fixed crops."
+    ]
+  }
+}

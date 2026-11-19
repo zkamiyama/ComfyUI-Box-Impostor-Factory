@@ -1,0 +1,55 @@
+{
+  "kind": "Review existing +60 captures on a light background without changing their RGBA.",
+  "scriptSHA256": "31850dd6ffb422e976c499963a621b7b1bf3d2812dcd336a4684955e9546e7e6",
+  "crop": [
+    388,
+    111,
+    644,
+    913
+  ],
+  "inputs": {
+    "K-view": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current/yaw-p60_000.png",
+      "sha256": "46a57d002ce6ee4c4ca8ab893fc974962859aeea4ef205ca49ceb140f4d68641",
+      "label": "Baseline / previous H3"
+    },
+    "Q1": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five/yaw-p60_000.png",
+      "sha256": "597b1ca69c25d91da84f789b03592ef55af342d4e7a2f989c53e57efc3b43535",
+      "label": "Q1 / Qwen Image 2.1"
+    },
+    "Q2": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle/yaw-p60_000.png",
+      "sha256": "6bff13b83ac85fef30ba7c2ef31ec2c6f2f963b2cd89f4c3da69f2b57de115d7",
+      "label": "Q2 / Qwen + AnyAngle"
+    }
+  },
+  "alphaByteExactAcrossCases": true,
+  "metrics": {
+    "K-view": {
+      "opaqueInnerEdgeBandPixels": 8296,
+      "maxRGBBelow16InBand": 14,
+      "newDarkPixelsVsBaselineInBand": 0,
+      "newDarkPixelCoordinatesXY": []
+    },
+    "Q1": {
+      "opaqueInnerEdgeBandPixels": 8296,
+      "maxRGBBelow16InBand": 7,
+      "newDarkPixelsVsBaselineInBand": 0,
+      "newDarkPixelCoordinatesXY": []
+    },
+    "Q2": {
+      "opaqueInnerEdgeBandPixels": 8296,
+      "maxRGBBelow16InBand": 7,
+      "newDarkPixelsVsBaselineInBand": 0,
+      "newDarkPixelCoordinatesXY": []
+    }
+  },
+  "metricDefinition": "Opaque alpha >250; 3-pixel inner band = opaque minus 7x7 min-filter erosion. Dark means maximum RGB byte <16. New dark pixels are an inspection locator, not a halo or quality classification; natural black shoes/hair may satisfy it.",
+  "output": {
+    "path": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/evidence/Q1-Q2-box-p60-edge-review.png",
+    "sha256": "8a0de6943e3f16a3ce65e721f085ae829a815f29ce9bb7e0e3a1bd9b536a5172",
+    "bytes": 408330
+  },
+  "processing": "Original snapshot RGBA, fixed common crop, alpha-composited on RGB(235,238,242). No pixel retouching or geometry change."
+}

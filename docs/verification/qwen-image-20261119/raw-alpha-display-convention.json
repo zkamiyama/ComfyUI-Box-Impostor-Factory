@@ -1,0 +1,80 @@
+{
+  "displayConvention": "The raw comparison converts source PNG to RGB without adding transparency or changing source RGB values. It does not use the separately generated foreground mask.",
+  "files": {
+    "H3": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/px/generated.png",
+      "sha256": "29ff7e1e8268a79957d694ff1950e7c4000898b72fdebbe75178ef3c146cc22a",
+      "mode": "RGB",
+      "size": [
+        1024,
+        1024
+      ],
+      "bands": [
+        "R",
+        "G",
+        "B"
+      ],
+      "cornerRGB": [
+        123,
+        123,
+        123
+      ],
+      "rawBlackRGBPixels": 1,
+      "alpha": null
+    },
+    "Q1": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q1-qwen-five-20261119/px/generated.png",
+      "sha256": "df666bf2fe62d76147a86ccd35bcc43ed6141097a429c32bb8950a9291b40070",
+      "mode": "RGBA",
+      "size": [
+        1024,
+        1024
+      ],
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "cornerRGB": [
+        127,
+        124,
+        128
+      ],
+      "rawBlackRGBPixels": 0,
+      "alpha": {
+        "min": 253,
+        "max": 255,
+        "zeroPixels": 0,
+        "opaquePixels": 88026
+      }
+    },
+    "Q2": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q2-qwen-anyangle-20261119/px/generated.png",
+      "sha256": "e7f79500a5c04ef6718385ef73080cfa9908f92d3d69f8e404e51b54a705e8aa",
+      "mode": "RGBA",
+      "size": [
+        1024,
+        1024
+      ],
+      "bands": [
+        "R",
+        "G",
+        "B",
+        "A"
+      ],
+      "cornerRGB": [
+        2,
+        0,
+        4
+      ],
+      "rawBlackRGBPixels": 860419,
+      "alpha": {
+        "min": 251,
+        "max": 255,
+        "zeroPixels": 0,
+        "opaquePixels": 1015414
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "angles": [
+    0,
+    30,
+    45,
+    60
+  ],
+  "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+  "cases": {
+    "K-view": {
+      "label": "Baseline / previous H3",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.inspector.html",
+      "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "composed": null,
+      "captures": [
+        "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current/capture.json"
+      ],
+      "control": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/K-view-capture-control.json"
+    },
+    "Q1": {
+      "label": "Q1 / Qwen Image 2.1",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five.inspector.html",
+      "assetId": "90bc93b6d83833f93eef20492d011bc60376ddd5bb2a3c0deeda95e2dd8059ba",
+      "composed": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q1-qwen-five-20261119/composed.json",
+      "captures": [
+        "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five/capture.json"
+      ],
+      "control": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-capture-control.json"
+    },
+    "Q2": {
+      "label": "Q2 / Qwen + AnyAngle",
+      "html": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle.inspector.html",
+      "assetId": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+      "composed": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q2-qwen-anyangle-20261119/composed.json",
+      "captures": [
+        "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-qwen-anyangle/capture.json"
+      ],
+      "control": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q2-capture-control.json"
+    }
+  },
+  "baselineNote": "K-view is an internal QA key for freshly generated F-current, using the current identical renderer and K view/unlit settings. Historical K is used only for camera and source payload checks."
+}

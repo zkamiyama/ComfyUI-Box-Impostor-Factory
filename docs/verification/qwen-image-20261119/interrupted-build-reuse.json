@@ -1,0 +1,12 @@
+{
+  "reason": "The first build run stopped during QA because it compared fallback RGB along with geometry. Only +X fallbackColors changed as expected; all other mesh fields matched. The exact official view.py outputs are reused without edits.",
+  "initialScriptSHA256": "2aa634cc180b20925f6c9a9ce4291f87ee753c9d3c157e65366fad8c7009d363",
+  "files": {
+    "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/F-current.inspector.html": {
+      "sha256": "1a9b97db6662cf726276bb9849d0750281f003c4064d23b25d1c9a00ee6e11e0"
+    },
+    "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/Q1-qwen-five.inspector.html": {
+      "sha256": "dd27d5f5ea38fd8e22b616fa0cc7ee4bc15c911b30dfde699baf44b5117aa232"
+    }
+  }
+}

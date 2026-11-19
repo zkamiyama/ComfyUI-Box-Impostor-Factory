@@ -1,0 +1,192 @@
+{
+  "status": "Q2 receipt cross-checks complete; actual Box comparison pending",
+  "fileSha256": {
+    "Q2/prepared.json": "66b6df20754c0c7ea6e2326da2e9deb06d6a35b5d8df566a339f809ce15c89a1",
+    "Q2/graph-inspection.json": "a78483a45331dafa81d57d9d2495e2af503e43272b80c71e08583f6d2260f518",
+    "Q2/composed.json": "13f0152cb6a2baab4c5d96c36d720acbc5b8039f07af936cb23ac3b363cbe828",
+    "Q2/comparison-ready.json": "b0b9b6baa60ebe7f2bbf6429688bbf82ec7257153b43e998b680c34d35bb6607",
+    "Q2/px/result.json": "fc600b3ed339c9d7fe889a75887d84181486d518e8ed83c504db56f356ffbff0",
+    "Q2/px/prepared-prompt.json": "b44cf9deb50937159dadbc7b5bdc914ebdefc4baa903fd3405ac7f861a61d9c7",
+    "Q2-px-raw-provenance.json": "7bc2eccf8bccc4dc123eb99bf6e9c3de45f7bf94e00d81730608291f6a8dcbae",
+    "raw-alpha-display-convention.json": "05d8f3729c07b7a841e6759a0198421ecd829bc74fa5018845ef4b3c15c19a8b"
+  },
+  "checks": {
+    "preparedHashMatchesInspection": true,
+    "graphHashMatchesInspection": true,
+    "graphHashMatchesExecutedResult": true,
+    "comparisonResultEqualsResultReceipt": true,
+    "comparisonBoxEqualsComposedReceipt": true,
+    "rawBoardReceiptHashMatchesResult": true,
+    "rawBoardImageHashMatchesResult": true,
+    "twoReferencesInRecordedOrder": true,
+    "samplerMatchesRecipe": true,
+    "loraOnSamplerModelPath": true,
+    "cacheCpuDefault": true,
+    "authorPromptExact": true,
+    "noControlNetNode": true,
+    "appliedRegistrationNonIdentity": true,
+    "registeredIoUIncreased": true,
+    "registeredBoundaryP95Decreased": true,
+    "sourceAssetMatchesRecipe": true,
+    "proxyHashMatchesRecipe": true,
+    "preservationBooleanFieldsTrue": true,
+    "sameFiveUnchangedFaceHashesAsQ1": true
+  },
+  "rows": [
+    {
+      "item": "actual prompt_id",
+      "value": "2909f9d5-4ea9-487e-9dce-0bab3d048631",
+      "source": "Q2/px/result.json",
+      "pointer": "/prompt_id"
+    },
+    {
+      "item": "fresh inference",
+      "value": true,
+      "source": "Q2/px/result.json",
+      "pointer": "/freshInference"
+    },
+    {
+      "item": "elapsed seconds",
+      "value": 126.4,
+      "source": "Q2/px/result.json",
+      "pointer": "/elapsedSeconds"
+    },
+    {
+      "item": "source asset",
+      "value": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "source": "Q2/composed.json",
+      "pointer": "/sourceBox"
+    },
+    {
+      "item": "composed asset",
+      "value": "87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+      "source": "Q2/composed.json",
+      "pointer": "/asset"
+    },
+    {
+      "item": "silhouette before",
+      "value": {
+        "iou": 0.8999510471287071,
+        "boundaryP95Px": 22.47220505424423
+      },
+      "source": "Q2/composed.json",
+      "pointer": "/faceQA/before"
+    },
+    {
+      "item": "silhouette after",
+      "value": {
+        "iou": 0.9300731049464833,
+        "boundaryP95Px": 18.027756377319946
+      },
+      "source": "Q2/composed.json",
+      "pointer": "/faceQA/after"
+    },
+    {
+      "item": "applied registration",
+      "value": {
+        "scale": 1.013967783511331,
+        "centerShiftYX": [
+          2.740069186070121,
+          -10.23104616522543
+        ]
+      },
+      "source": "Q2/composed.json",
+      "pointer": "/faceQA/registration"
+    },
+    {
+      "item": "Depth etc preservation",
+      "value": {
+        "proxyBytesExact": true,
+        "geometryMetadataExact": true,
+        "nonColorMapsExact": true,
+        "coverageAlphaExact": true,
+        "unchangedFaceRGBAHashes": {
+          "-X": "cc0c79b955218f50a9bcb7f0339f6f5c7838f0dafaeb3dae21092e9ae67be42a",
+          "+Y": "afa9b1f5a1a2a00a1e575a0095397b290639487ed4a9c25ed0e9f5a572fd258d",
+          "-Y": "dd101db24c1082bb50ed9b590008f1cb3bff33f7d3f9d44091c82d07e7263101",
+          "+Z": "f6002edf2719ef1e401eaf1c17093fd006469e83918adbc087145e9c1c09db6a",
+          "-Z": "f29da30a062938731a685aab26f343738f4d4f9588c549b825c0621ba31c2dcd"
+        },
+        "unchangedFaceSourcesAndMetadata": true
+      },
+      "source": "Q2/composed.json",
+      "pointer": "/preservation"
+    },
+    {
+      "item": "image reference order",
+      "value": [
+        "source",
+        "guide"
+      ],
+      "source": "Q2/prepared.json",
+      "pointer": "/pictureOrder"
+    },
+    {
+      "item": "image reference identities",
+      "value": {
+        "source": {
+          "image": "B/px/source.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/px/source.png",
+          "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+        },
+        "guide": {
+          "image": "B/px/guide.png",
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/px/guide.png",
+          "sha256": "bbd1d68258bb6d0eb91884c592d6c8287591f63171f92f11b00263ec622f272f"
+        }
+      },
+      "source": "Q2/prepared.json",
+      "pointer": "/faces/+X/pictures"
+    },
+    {
+      "item": "weights recorded SHA256",
+      "value": {
+        "model": {
+          "name": "qwen_image_2.1_int8_convrot.safetensors",
+          "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+          "bytes": 7256783064,
+          "sha256": "cb74113cb03faecd79611b01fd7fd642f0aa60d6f0b95086abee214d75eaa57d"
+        },
+        "clip": {
+          "name": "qwen3vl_8b_int8_convrot.safetensors",
+          "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/text_encoders/qwen3vl_8b_int8_convrot.safetensors",
+          "bytes": 9350798360,
+          "sha256": "8bfd0f6e12abf2d2d697ecc888e5e90b0d6741d6708f05799f53afa560452e8f"
+        },
+        "vae": {
+          "name": "qwen_image_2.1_vae_bf16.safetensors",
+          "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/vae/qwen_image_2.1_vae_bf16.safetensors",
+          "bytes": 675509688,
+          "sha256": "bb21f7473051e1ac368515dd3f2e15cd44d7a11748ee8823e1ddca3e4876b7c9"
+        },
+        "matting": {
+          "name": "birefnet.safetensors",
+          "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/background_removal/birefnet.safetensors",
+          "bytes": 444473596,
+          "sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154"
+        },
+        "lora": {
+          "name": "QI2.1_AnyAngle.safetensors",
+          "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/loras/QI2.1_AnyAngle.safetensors",
+          "bytes": 119590312,
+          "sha256": "e4d7a0d44a45ed62daabd0f2484a1a59046618a4c47e76b1eab5e386a7a35d8a"
+        }
+      },
+      "source": "Q2/prepared.json",
+      "pointer": "/experiment/modelFiles"
+    },
+    {
+      "item": "raw PNG SHA256",
+      "value": "e7f79500a5c04ef6718385ef73080cfa9908f92d3d69f8e404e51b54a705e8aa",
+      "source": "Q2/px/result.json",
+      "pointer": "/rawSha256"
+    }
+  ],
+  "limitations": [
+    "No GPU rerun or remote polling.",
+    "This records the LoRA on the submitted sampler model path; separate runtime execution history is not included here.",
+    "Q2 changes LoRA, CFG, prompt, and reference number/order together; it is not a single-variable LoRA ablation.",
+    "Q2 uses a non-identity registration; its raw silhouettes and composed color projection must be distinguished.",
+    "All geometry and coverage-preservation flags are true, but silhouette matching and cross-view RGB consistency are separate questions."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "utc": "2026-11-19T15:00:50.154130+00:00",
+  "ownedPid": 59238,
+  "serverReceipt": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/server-process.json",
+  "serverReceiptSha256": "2a331ba7c56e785a61170dfc80a03ad23b9f57c52df775292c7ebccda1221cd9",
+  "cwd": "/home/dev/Projects/box-impostor-lab/ComfyUI",
+  "port": 8201,
+  "processStartTicks": "996043",
+  "sharedPgid": 1109,
+  "signalTarget": "owned PID only; no process group signal",
+  "queueBefore": {
+    "running": 0,
+    "pending": 0
+  },
+  "freeRequest": {
+    "unload_models": true,
+    "free_memory": true,
+    "status": 200
+  },
+  "queueAfterFree": {
+    "running": 0,
+    "pending": 0
+  },
+  "signal": "SIGINT",
+  "processAlive": false,
+  "portListening": false,
+  "gpuBeforeMiBTotalUtil": "10357, 16376, 5",
+  "gpuAfterMiBTotalUtil": "1379, 16376, 5",
+  "initialAttempt": {
+    "utc": "2026-11-19T14:58:35.028853+00:00",
+    "ownedPid": 59238,
+    "serverReceipt": "/mnt/f/_dev/box-impostor-lab/results/qwen-image-20261119/server-process.json",
+    "serverReceiptSha256": "2a331ba7c56e785a61170dfc80a03ad23b9f57c52df775292c7ebccda1221cd9",
+    "cwd": "/home/dev/Projects/box-impostor-lab/ComfyUI",
+    "port": 8201,
+    "processStartTicks": "996043",
+    "sharedPgid": 1109,
+    "signalTarget": "owned PID only; no process group signal",
+    "queueBefore": {
+      "running": 0,
+      "pending": 0
+    },
+    "freeRequest": {
+      "unload_models": true,
+      "free_memory": true,
+      "status": 200
+    },
+    "queueAfterFree": {
+      "running": 0,
+      "pending": 0
+    },
+    "signal": "SIGINT",
+    "processAlive": true,
+    "portListening": true,
+    "gpuBeforeMiBTotalUtil": "10357, 16376, 5",
+    "gpuAfterMiBTotalUtil": "10368, 16376, 5"
+  },
+  "followupSignal": null,
+  "ownedDirectChildren": [],
+  "portOpenBeforeFollowup": false,
+  "vramFreedMiB": 8978
+}

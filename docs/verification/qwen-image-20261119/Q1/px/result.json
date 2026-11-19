@@ -1,0 +1,11 @@
+{
+  "prompt_id": "320ee07e-a192-4de6-ad1a-0eb6e0b376b1",
+  "freshInference": true,
+  "face": "+X",
+  "elapsedSeconds": 109.68,
+  "raw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q1-qwen-five-20261119/px/generated.png",
+  "mask": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/Q1-qwen-five-20261119/px/foreground.png",
+  "rawSha256": "df666bf2fe62d76147a86ccd35bcc43ed6141097a429c32bb8950a9291b40070",
+  "maskSha256": "5f2f6dd341aab3e53fad01c1f97f80274f13cd8f1f8feb18e716bdd3f7b390f7",
+  "promptSha256": "5b52e1fac85f70ca4e970245004ba8c6fcd2ca67cb65f0ede20e05b9cb0a2a61"
+}
