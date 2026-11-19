@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Byte-preserving archive of the generated 3D-Inspector viewers for the three-impostor 0.4.2 verification",
+  "sourceDirectory": "results/three-impostor-v042-20261120",
+  "sourceHtmlModified": false,
+  "runtime": {
+    "three": "0.186.0",
+    "threeImpostor": "0.4.2"
+  },
+  "archiveBranch": "verification/three-impostor-v042-20261120",
+  "archiveBaseCommit": "9be1efb5bee8cef187e1efa22cafcc64da68f228",
+  "compression": {
+    "format": "gzip",
+    "level": 9,
+    "mtime": 0,
+    "originalFilenameStored": false,
+    "pythonVersion": "3.12.3",
+    "zlibVersion": "1.3"
+  },
+  "artifacts": [
+    {
+      "sourceHtml": "F-v042.inspector.html",
+      "sourceHtmlBytes": 62303217,
+      "sourceHtmlSha256": "2c9341b1620003c01a982c9c2525e48a60bd68bea2998a4a8482897968688867",
+      "gzipFile": "F-v042.inspector.html.gz",
+      "gzipBytes": 46046549,
+      "gzipSha256": "eb8ee66c8a9127e9d0df326976251b8a94ff5a631829e3c0413b8145af5425ba",
+      "decompressedSha256": "2c9341b1620003c01a982c9c2525e48a60bd68bea2998a4a8482897968688867"
+    },
+    {
+      "sourceHtml": "Q2-v042.inspector.html",
+      "sourceHtmlBytes": 62103885,
+      "sourceHtmlSha256": "0634958c32fd753899cffe6c9f3c25c7454be471e96ecbab8ee58a054f39f83c",
+      "gzipFile": "Q2-v042.inspector.html.gz",
+      "gzipBytes": 45889766,
+      "gzipSha256": "60b5c3abb451df42be05c4fb86df1e4369dc72577b38dba80858581dec727319",
+      "decompressedSha256": "0634958c32fd753899cffe6c9f3c25c7454be471e96ecbab8ee58a054f39f83c"
+    }
+  ]
+}
