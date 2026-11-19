@@ -1,0 +1,27 @@
+{
+  "source": "D.inspector.html",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/D.inspector.html",
+  "htmlBytes": 61594462,
+  "htmlSHA256": "dd2ef7b15ba2e365104456777b884f70f92a6ce068e7e7a1cf795d4210526f6e",
+  "gzip": "D.inspector.html.gz",
+  "gzipSourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/D.inspector.html.gz",
+  "gzipBytes": 45505128,
+  "gzipSHA256": "be422f9452369f4886c946da51efb44e9e2008d5f70715f2a97dde5f0c4958f0",
+  "officialViewerUnmodified": true,
+  "asset": "0f953f9644896bedbb561576cce0d41d5b32dc69046b635e9fcf76de2fb2a7e0",
+  "decompressedSHA256": "dd2ef7b15ba2e365104456777b884f70f92a6ce068e7e7a1cf795d4210526f6e",
+  "decompressedBytes": 61594462,
+  "roundTripByteIdentityVerified": true,
+  "deliveryCopySHA256Verified": true,
+  "delivery": "Lossless gzip packaging; decompress to recover exact official HTML",
+  "packaging": {
+    "compressionLevel": 9,
+    "mtime": 0,
+    "rawHTMLCopiedToRepo": false
+  },
+  "captureStageState": "Native Box",
+  "repoFilesystemFreeAfter": 295940096,
+  "deliveryArchiveLocation": "F only; main repo duplicate removed after verified SHA equality",
+  "deliveryArchivePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/D.inspector.html.gz",
+  "repoArchivePresent": false
+}

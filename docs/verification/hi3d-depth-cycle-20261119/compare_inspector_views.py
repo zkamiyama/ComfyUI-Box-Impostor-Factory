@@ -16,14 +16,15 @@ parser.add_argument("--control-proof", type=Path)
 args = parser.parse_args()
 stages = args.stages.split(",")
 is_control = stages in (["A", "A-normal-control"], ["B", "B-normal-only"])
-assert is_control or all(stage in ("A", "B", "C", "B-normal-only") for stage in stages)
+assert is_control or all(stage in ("A", "B", "C", "D", "B-normal-only") for stage in stages)
 assert len(stages) == 1 or stages[0] in ("A", "B"), "Cross-stage comparisons must start from A or B"
 args.output.mkdir(parents=True, exist_ok=True)
 views = {"front": [0, 0, 1], "iso": [1, 1, 1], "left": [-1, 0, 0], "right": [1, 0, 0]}
 labels = {"A": "Full A / original normal texture", "A-normal-control": "Same six RGB views / geometry normals only",
           "B": "B / Hi3D geometry + fresh six-view H3 RGB",
           "C": "C / MoGe depth fusion / same registered B RGB",
-          "B-normal-only": "B normal-only / same geometry and RGB"}
+          "B-normal-only": "B normal-only / same geometry and RGB",
+          "D": "D / only -X RGB regenerated; VLM 5 / VAE 2"}
 if not is_control and len(stages) > 1:
     labels["A"] = "A / coarse geometry + fresh six-view H3 RGB"
 sha = lambda path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -117,6 +118,13 @@ for stage in stages[1:]:
               base["metadata"]["faces"][face]["alignedSHA256"] == records[stage]["metadata"]["faces"][face].get("alignedSHA256")
         for face in base["metadata"]["faces"]
     }
+    if stages[0] == "B" and stage == "D":
+        assert geometry_equal and normal_accessors_equal
+        assert all(equal_depths.values())
+        assert manifest["bakeBox"] == other["bakeBox"]
+        assert all(description["sha256"] == other["textures"][name]["sha256"]
+                   for name, description in manifest["textures"].items() if name != "colorMap")
+        assert [face for face, equal in aligned_equal.items() if not equal] == ["-X"]
     if stages[0] == "B" and stage == "C":
         assert all(aligned_equal.values()), "C must retain all six registered B RGB arrays"
         assert manifest["bakeBox"] == other["bakeBox"], "C must retain B bakeBox"
@@ -127,7 +135,7 @@ for stage in stages[1:]:
                                      "canonicalFrameTransformEqual": manifest["transform"] == other["transform"],
                                      "bakeBoxes": [manifest["bakeBox"], other["bakeBox"]],
                                      "proxyDifference": (("Control removes normalTexture from material JSON; binary chunks are retained." if stages[0] == "A" else "Control adds area-weighted vertex NORMAL; source positions, indices and colors retained.") if pair_is_control
-                                                         else "Actual stage geometry changes are retained; no image-based shape alignment."),
+                                                         else ("D retains B geometry and replaces only -X registered RGB." if stage == "D" else "Actual stage geometry changes are retained; no image-based shape alignment.")),
                                      "limitation": ("normalMap also affects native cross-view incidence weighting; this is not solely a lighting ablation." if pair_is_control
                                                     else ("C retains B source/aligned RGB and mapping. Geometry changes can alter atlas alpha, newly exposed pixels and boundary fallback; colorMap byte identity is not required." if stages[0] == "B" and stage == "C" else
                                                           "Appearance includes the stage geometry and its generated RGB; raw RGB and clay evidence must be considered separately.")),
@@ -139,7 +147,8 @@ if args.control_proof:
     evidence["controlInvariantProof"] = {"path": str(args.control_proof), "sha256": sha(args.control_proof),
                                         "data": json.loads(args.control_proof.read_text())}
 def acceptance_label(stage):
-    return (" / reuses all six registered B images" if stage == "C" else
+    return (" / five RGB views reused from B" if stage == "D" else
+            " / reuses all six registered B images" if stage == "C" else
             f" / accepted {records[stage]['metadata']['acceptedCount']}/6")
 
 BG = (21, 24, 30)

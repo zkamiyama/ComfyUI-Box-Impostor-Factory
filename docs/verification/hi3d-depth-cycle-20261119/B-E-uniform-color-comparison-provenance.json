@@ -1,0 +1,145 @@
+{
+  "kind": "B/E lit native Box; six-view RGB differences removed",
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "diagnosticAsset": "40ad89d5629ff7359e8edb7fc53c4c0aa6facb8a4caa615c72261fd17bef36d7",
+  "diagnosticProofPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/40ad89d5629ff7359e8edb7fc53c4c0aa6facb8a4caa615c72261fd17bef36d7/diagnostic/uniform-color-proof.json",
+  "diagnosticProofSHA256": "ac8bd40c9edc810a11630eca5ca1a12996b3b4fe8f64ec5c2776aa05e8682d3a",
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "fovBeforeOrthographic": 40,
+    "fitFormula": "radius * 1.05 / sin(20deg)",
+    "sourceRadius": 0.5876666886430749,
+    "referenceRadius": 0.5887244402352406,
+    "perspectiveWheelDeltaY": 3.505915677124107,
+    "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001,
+    "wheelProtocolDeltaY": 4.4876070731820406,
+    "pans": [
+      {
+        "view": "front",
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "view": "right",
+        "dx": 0,
+        "dy": 0
+      }
+    ]
+  },
+  "frameProofs": {
+    "front": {
+      "B": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-front.png",
+        "sha256": "86ad094cea67846fd19fd93c49742b7f20219a906a6bb2bbaf38fed6d43c1d41",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ]
+      },
+      "E": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/E-box/lit-front.png",
+        "sha256": "eaf44906022ec4d60c4904a3b8d5384bc2a3edecc1bef21c6f9c35f871421df1",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ]
+      },
+      "renderedAlphaByteExact": true
+    },
+    "left": {
+      "B": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-left.png",
+        "sha256": "09a981029636d656553e71f4a7d9e677234aaab8fc605567a9c443c215da3620",
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "expectedPosition": [
+          -1.8073808642855147,
+          0,
+          0
+        ]
+      },
+      "E": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/E-box/lit-left.png",
+        "sha256": "67971df2812aac17c25a17ebf0acd2b39f25a06bd0f48e5b2fd4e9b3e66ff623",
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "expectedPosition": [
+          -1.8073808642855147,
+          0,
+          0
+        ]
+      },
+      "renderedAlphaByteExact": true
+    }
+  },
+  "headCrops": {
+    "front": [
+      463,
+      115,
+      572,
+      271
+    ],
+    "left": [
+      492,
+      115,
+      653,
+      271
+    ]
+  },
+  "cropSourceSHA256": "aaa864bdead10ddd8f9afd85f46d77e922c96f5e11236ec3bd12cc9c4af64401",
+  "processing": "Identical integer crops; 3x nearest-neighbor; no sharpening or AI processing",
+  "lighting": "Active official native PBR; unchanged. This is not unlit.",
+  "html": {
+    "archive": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/E.box.zip",
+    "archiveSHA256": "53d5eab0e89a2c83ba71f7c484ae5e07f36bc6ea37949b9b81c1afd4a9293b58",
+    "viewer": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/E.inspector.html",
+    "viewerSHA256": "63c6df6360b5ff21165bb774ca6dd512f7f8e7e6d5150a3583b01bb8cb77c15b",
+    "viewerBytes": 38974226,
+    "colorMapSHA256": "b720549d4cab3a37cdec1579cb0e2e0351bab2dde7b911bd8b13034d72e70f02"
+  },
+  "htmlUnchangedAfterCapture": true,
+  "output": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-E-uniform-color-faces.webp",
+    "sha256": "11aa478b334e7291d0fd7db236b59c922477db1ce3229f3dfc018648fb45cbea",
+    "bytes": 116662,
+    "size": [
+      1070,
+      1176
+    ]
+  },
+  "scriptSHA256": "e01d07d78bf517fbd7601a424b6bbe6688579004054e4eb72618cf3bf4144bd1"
+}

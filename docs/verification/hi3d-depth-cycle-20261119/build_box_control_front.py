@@ -48,10 +48,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("work", type=Path)
     parser.add_argument("output", type=Path)
-    parser.add_argument("--include-c", action="store_true")
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument("--include-c", action="store_true")
+    modes.add_argument("--include-d", action="store_true")
     args = parser.parse_args()
-    stages = ["B", "B-normal-only"] + (["C"] if args.include_c else [])
-    proof_path = args.output / ("B-B-normal-only-C-stages-comparison-provenance.json" if args.include_c else "B-normal-only-comparison-provenance.json")
+    stages = ["B", "D"] if args.include_d else ["B", "B-normal-only"] + (["C"] if args.include_c else [])
+    proof_path = args.output / ("B-D-stages-comparison-provenance.json" if args.include_d else "B-B-normal-only-C-stages-comparison-provenance.json" if args.include_c else "B-normal-only-comparison-provenance.json")
     proof = json.loads(proof_path.read_text())
     crop = proof["headCrops"]["front"]
     camera = proof["camera"]
@@ -89,24 +91,30 @@ def main():
     panel = Image.new("RGB", (column_width * len(images), panel_height), BG)
     draw = ImageDraw.Draw(panel)
     def font(size): return ImageFont.truetype(FONT, size)
-    draw.text((24, 18), "B / normal-only / C: same registered RGB, actual Box" if args.include_c else "B / fixed RGB and geometry; vertex-normal control", font=font(25), fill=TEXT)
+    draw.text((24, 18), "B / D: same front RGB; only -X RGB regenerated" if args.include_d else "B / normal-only / C: same registered RGB, actual Box" if args.include_c else "B / fixed RGB and geometry; vertex-normal control", font=font(25), fill=TEXT)
     draw.text((24, 55), "Actual official Inspector Box renders | same A-based camera | no image enhancement", font=font(16), fill=MUTED)
-    labels = ["H3 +Z / registered RGB", "B / actual Box", "B / vertex-normal control"] + (["C / RGB-depth-refined geometry"] if args.include_c else [])
+    labels = ["H3 +Z / registered RGB", "B / actual Box", "D / only -X RGB regenerated"] if args.include_d else ["H3 +Z / registered RGB", "B / actual Box", "B / vertex-normal control"] + (["C / RGB-depth-refined geometry"] if args.include_c else [])
     for i, (im, label) in enumerate(zip(enlarged, labels)):
         draw.text((i * column_width + 16, 91), label, font=font(16), fill=TEXT)
         panel.paste(im, (i * column_width + (column_width - im.width) // 2, 125))
     draw.text((24, panel_height - 47), "Head crops: 3x nearest-neighbor. RGB is sampled on the same camera pixel grid; no sharpening.", font=font(14), fill=MUTED)
-    draw.text((24, panel_height - 24), "Normal-only: same geometry. C: depth-refined geometry. Both retain B registered RGB; coverage may change in C." if args.include_c else "Control changes vertex-normal data only; the normal map affects lighting and cross-view weights.", font=font(14), fill=MUTED)
-    target = args.output / ("C-front-stages.webp" if args.include_c else "B-normal-only-front-stages.webp")
+    draw.text((24, panel_height - 24), "D changes only the -X registered RGB. Front RGB, geometry, alpha, normals, depth and camera are fixed." if args.include_d else "Normal-only: same geometry. C: depth-refined geometry. Both retain B registered RGB; coverage may change in C." if args.include_c else "Control changes vertex-normal data only; the normal map affects lighting and cross-view weights.", font=font(14), fill=MUTED)
+    target = args.output / ("D-front-stages.webp" if args.include_d else "C-front-stages.webp" if args.include_c else "B-normal-only-front-stages.webp")
     panel.save(target, "WEBP", lossless=True)
     assert np.array_equal(np.asarray(Image.open(target)), np.asarray(panel))
     external = {}
-    for name in ("B-normal-only-rebake-evaluation.json", "B-normal-only-refinement.json", "B-normal-only-normal-alpha-proof.json"):
+    for name in (() if args.include_d else ("B-normal-only-rebake-evaluation.json", "B-normal-only-refinement.json", "B-normal-only-normal-alpha-proof.json")):
         p = args.output / name
         assert p.is_file()
         external[name] = {"path": str(p), "sha256": sha(p)}
+    if args.include_d:
+        run = Path(metadata["B"]["assetDirectory"]).parents[2]
+        for name in ("comparison-ready.json", "composed.json"):
+            p = run / "D" / name
+            assert p.is_file()
+            external["D/" + name] = {"path": str(p), "sha256": sha(p)}
     result = {
-        "kind": "Registered B front RGB versus actual B, normal-only control and C geometry" if args.include_c else "Registered B front RGB versus actual B and same-geometry normal-only Box",
+        "kind": "Same registered B front RGB versus actual B and D (-X-only RGB control)" if args.include_d else "Registered B front RGB versus actual B, normal-only control and C geometry" if args.include_c else "Registered B front RGB versus actual B and same-geometry normal-only Box",
         "renderer": "Unchanged official 3D-Inspector native Box PBR, CPU SwiftShader",
         "crop": crop, "camera": camera, "sourceImages": sources,
         "registeredRGB": {"path": front["alignedPath"], "sha256": front["alignedSHA256"],
@@ -122,7 +130,7 @@ def main():
         "output": {"path": str(target), "sha256": sha(target), "bytes": target.stat().st_size, "size": list(panel.size)},
         "script": {"path": str(Path(__file__).resolve()), "sha256": sha(__file__)},
     }
-    output_proof = args.output / ("C-front-stages-provenance.json" if args.include_c else "B-normal-only-front-stages-provenance.json")
+    output_proof = args.output / ("D-front-stages-provenance.json" if args.include_d else "C-front-stages-provenance.json" if args.include_c else "B-normal-only-front-stages-provenance.json")
     output_proof.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
     print(json.dumps(result["output"]))
     print(json.dumps({"provenance": str(output_proof), "sha256": sha(output_proof)}))

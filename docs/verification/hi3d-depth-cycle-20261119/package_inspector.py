@@ -11,6 +11,7 @@ p.add_argument("work", type=Path)
 p.add_argument("stage")
 p.add_argument("output", type=Path)
 p.add_argument("--kind", choices=["box", "clay"], default="box")
+p.add_argument("--no-copy", action="store_true", help="Keep gzip only in work; write the small receipt to output.")
 a = p.parse_args()
 stem = a.stage if a.kind == "box" else f"{a.stage}-clay"
 a.output.mkdir(parents=True, exist_ok=True)
@@ -40,13 +41,14 @@ with gzip.open(archive, "rb") as restored:
 assert digest.hexdigest() == expected_sha
 assert restored_bytes == source.stat().st_size
 gzip_sha = sha(archive)
-target = a.output / archive.name
-free_before = shutil.disk_usage(a.output).free
-assert free_before > archive.stat().st_size + 8*1024*1024, "Insufficient space for gzip delivery copy"
-copy = target.with_suffix(target.suffix + ".partial")
-shutil.copyfile(archive, copy)
-assert sha(copy) == gzip_sha
-copy.replace(target)
+target = archive if a.no_copy else a.output / archive.name
+if not a.no_copy:
+    free_before = shutil.disk_usage(a.output).free
+    assert free_before > archive.stat().st_size + 8*1024*1024, "Insufficient space for gzip delivery copy"
+    copy = target.with_suffix(target.suffix + ".partial")
+    shutil.copyfile(archive, copy)
+    assert sha(copy) == gzip_sha
+    copy.replace(target)
 assert sha(source) == expected_sha
 receipt = {
     "source": source.name, "sourcePath": str(source),
@@ -55,7 +57,8 @@ receipt = {
     "gzipBytes": target.stat().st_size, "gzipSHA256": gzip_sha,
     "officialViewerUnmodified": True, "asset": meta["assetId"],
     "decompressedSHA256": digest.hexdigest(), "decompressedBytes": restored_bytes,
-    "roundTripByteIdentityVerified": True, "deliveryCopySHA256Verified": True,
+    "roundTripByteIdentityVerified": True, "deliveryCopySHA256Verified": None if a.no_copy else True,
+    "deliveryArchivePath": str(target), "deliveryCopyMade": not a.no_copy,
     "delivery": "Lossless gzip packaging; decompress to recover exact official HTML",
     "packaging": {"compressionLevel": 9, "mtime": 0, "rawHTMLCopiedToRepo": False},
     "captureStageState": capture["stageState"], "repoFilesystemFreeAfter": shutil.disk_usage(a.output).free,
