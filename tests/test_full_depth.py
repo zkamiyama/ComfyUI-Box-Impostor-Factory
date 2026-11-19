@@ -4,7 +4,7 @@ import numpy as np
 
 from box_nodes import depth_mesh
 from box_nodes.full_depth import (DepthView, constraints, fit_depth, geometry_normals,
-                                  joint_fit, mesh_arrays, vertex_normals)
+                                  joint_fit, mesh_arrays, vertex_normals, feasible_support_step)
 from tests.test_depth_mesh import fixture
 
 
@@ -41,6 +41,46 @@ def sphere_views(radius=.3, target_radius=.31, r=96):
 
 
 class FullDepthTests(unittest.TestCase):
+    def test_exact_bilinear_jacobian_matches_subpixel_finite_difference(self):
+        r=32
+        rng=np.random.default_rng(9)
+        target=rng.uniform(.15,.35,(r,r)).astype('f4')
+        mask=np.ones((r,r),dtype=bool)
+        view=DepthView('+Z',[0,0,1],[0,1,0],target.copy(),target,mask)
+        points=np.array([[.234,.527,.6],[.468,.319,.65],[.713,.824,.7]],'f8')
+        _,jac,valid,_=view.sample(points)
+        self.assertTrue(valid.all())
+        numerical=np.zeros_like(points)
+        epsilon=1e-4
+        for axis in range(3):
+            shift=np.zeros_like(points);shift[:,axis]=epsilon
+            numerical[:,axis]=(view.sample(points+shift)[0]-view.sample(points-shift)[0])/(2*epsilon)
+        np.testing.assert_allclose(jac,numerical,atol=.001,rtol=2e-4)
+
+    def test_support_exiting_vertex_does_not_block_feasible_interior_update(self):
+        r=32
+        mask=np.zeros((r,r),dtype=bool);mask[:,8:]=True
+        coarse=np.full((r,r),.3,'f4')
+        view=DepthView('+Z',[0,0,1],[0,1,0],coarse,coarse.copy(),mask)
+        current=np.array([[(8.001+.5)/r,.5,.6],[.6,.5,.6]],'f8')
+        step=np.array([[-.05,0,0],[0,0,.02]],'f8')
+        residual,jac,valid,_=view.sample(current)
+        self.assertTrue(valid.all())
+        self.assertFalse(view.covered(current+step)[0])
+        weights=np.ones(2,'f4');saved=weights.copy()
+        rows=[(residual,jac,weights)]
+        feasible,report=feasible_support_step(current,step,[view],rows,lambda p:p)
+        updated=current+feasible
+        self.assertTrue(view.covered(updated).all())
+        self.assertEqual(report['supportBacktrackedVertices'],1)
+        np.testing.assert_allclose(feasible[1],step[1],atol=1e-12)
+        self.assertLess(abs(feasible[0,0]),abs(step[0,0])/100)
+        np.testing.assert_array_equal(weights,saved)
+        new_residual,_,new_valid,_=view.sample(updated)
+        # Same fixed observations and invalid penalty as the actual line search.
+        self.assertLess(float(np.sum(weights*np.where(new_valid,new_residual**2,1))),
+                        float(np.sum(weights*residual**2)))
+
     def test_affine_registration_retains_broad_shape_change(self):
         y,x = np.mgrid[:128,:128]
         coarse = (.3+.15*x/128+.08*y/128).astype('f4')

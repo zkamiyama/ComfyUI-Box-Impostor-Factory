@@ -1,0 +1,136 @@
+{
+  "kind": "Registered B front RGB versus actual B, normal-only control and C geometry",
+  "renderer": "Unchanged official 3D-Inspector native Box PBR, CPU SwiftShader",
+  "crop": [
+    463,
+    115,
+    572,
+    271
+  ],
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "fovBeforeOrthographic": 40,
+    "fitFormula": "radius * 1.05 / sin(20deg)",
+    "sourceRadius": 0.5876666886430749,
+    "referenceRadius": 0.5887244402352406,
+    "perspectiveWheelDeltaY": 3.505915677124107,
+    "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001,
+    "wheelProtocolDeltaY": 4.4876070731820406,
+    "pans": [
+      {
+        "view": "front",
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "view": "right",
+        "dx": 0,
+        "dy": 0
+      }
+    ]
+  },
+  "sourceImages": {
+    "B": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-front.png",
+      "sha256": "86ad094cea67846fd19fd93c49742b7f20219a906a6bb2bbaf38fed6d43c1d41",
+      "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "htmlSHA256": "e8421c1609879a8b7a4ae7b1dc15559cef15a00f05a0b81d89a8c82fdd8a8c2b",
+      "capture": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/capture.json"
+    },
+    "B-normal-only": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-normal-only-box/lit-front.png",
+      "sha256": "65f5d9bf2c134d2593fa64e65a5cdf0f18c9ddc563302fe25744a7ea93f21434",
+      "assetId": "cda76d9249679db4eac25221bd9b2ab313d0f203c4ce425ab45e1cbe578fcd74",
+      "htmlSHA256": "595b694dae69d25dbb70b0dc693163e7ed75afd5856f953435eac9238dbee9f1",
+      "capture": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-normal-only-box/capture.json"
+    },
+    "C": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-box/lit-front.png",
+      "sha256": "870db05ae55ad18489a0c6261908a60ca010fa86f724e538c98ba6ce199e300f",
+      "assetId": "1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+      "htmlSHA256": "49e5ad1bec434760349a94e591ada1868380a7c6a1e0993f8bda3ec13b3e8658",
+      "capture": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-box/capture.json"
+    }
+  },
+  "registeredRGB": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/pz/aligned.npy",
+    "sha256": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488",
+    "bakeBox": {
+      "min": [
+        -0.19968106269836425,
+        -0.52,
+        -0.18729551553726195
+      ],
+      "max": [
+        0.19968106269836425,
+        0.52,
+        0.18729551553726195
+      ]
+    },
+    "sampling": "Linear-light premultiplied RGBA bilinear sample at the common orthographic pixel centers; sRGB conversion",
+    "priorBStagePath": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-stage.webp",
+    "priorBStageSHA256": "b95ddcd057c591b27aa1bdbc46afc7f75cdb934463d620894ad5ff1c46a7b859",
+    "pixelsEqualPriorBStage": true,
+    "priorProofSHA256": "a944eee8fec3498d55723732ce755bc7f1697fa9ad4143a4ca2b2141eeba79ad"
+  },
+  "controlProvenance": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-B-normal-only-C-stages-comparison-provenance.json",
+    "sha256": "6a208e1d280d098c101de5efb3421c72162d9abff2df2a805d3f0dd2e70cc760"
+  },
+  "nativeControlProofs": {
+    "B-normal-only-rebake-evaluation.json": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-normal-only-rebake-evaluation.json",
+      "sha256": "8126fff9fac12f4916375f7906a8afdc8a57f7b1c254f552ac92d073a314dcf8"
+    },
+    "B-normal-only-refinement.json": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-normal-only-refinement.json",
+      "sha256": "cc0613f20a80842d95fe6bc0229f324a79b86a88ae626ec67482d2831fe4e1cf"
+    },
+    "B-normal-only-normal-alpha-proof.json": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-normal-only-normal-alpha-proof.json",
+      "sha256": "16e6c9bd31b1a285253edd735bf4b658d4a34a328bfd80816452844580f7648f"
+    }
+  },
+  "normalMapMeaning": "Normal RGB controls both native PBR lighting and incidence-dependent cross-view weighting; this is not a pure lighting-only control.",
+  "imageProcessing": {
+    "cropOnlyRenders": true,
+    "resize": "3x nearest-neighbor",
+    "backdropRGB": [
+      21,
+      24,
+      30
+    ],
+    "sharpening": false,
+    "aiPostprocessing": false,
+    "losslessWebPDecodedPixelsEqual": true
+  },
+  "output": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/C-front-stages.webp",
+    "sha256": "48ff40573010725ade953eec5a130c171943765b55b92a660ecea86f5e75a3a2",
+    "bytes": 143850,
+    "size": [
+      1520,
+      652
+    ]
+  },
+  "script": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/build_box_control_front.py",
+    "sha256": "a00820b492d10895614eab7bc11f595b8fcac0c4e963df8cf600649062d2f186"
+  }
+}

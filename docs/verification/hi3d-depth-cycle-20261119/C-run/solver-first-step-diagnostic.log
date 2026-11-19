@@ -1,0 +1,138 @@
+{
+  "cg": {
+    "status": 120,
+    "seconds": 3.213072552000085,
+    "rhsL2": 0.8319919109344482,
+    "residualL2": 0.0002944021289869107,
+    "relativeResidualL2": 0.0003538521530290531,
+    "negativeGradientDotStep": 1.8621876239776611
+  },
+  "agreement": {
+    "multiViewVertices": 4456,
+    "singleViewVertices": 149733,
+    "rejectedCrossViewVertices": 317221
+  },
+  "gradientDotStep": -2.620520548308546,
+  "beforeEnergy": 3.139865510388377,
+  "trials": [
+    {
+      "backtrack": 0,
+      "energyChange": 28.21365602056125,
+      "invalidPenalty": 29.627322682514205,
+      "sampledDataChange": 3.21284061271739,
+      "expectedFirstOrderChange": -2.620520548308546
+    },
+    {
+      "backtrack": 1,
+      "energyChange": 11.471533334842942,
+      "invalidPenalty": 12.505571522036917,
+      "sampledDataChange": 0.2596917270935637,
+      "expectedFirstOrderChange": -1.310260274154273
+    },
+    {
+      "backtrack": 2,
+      "energyChange": 5.038065644123645,
+      "invalidPenalty": 5.628958539979067,
+      "sampledDataChange": -0.3045718093925416,
+      "expectedFirstOrderChange": -0.6551301370771365
+    },
+    {
+      "backtrack": 3,
+      "energyChange": 2.6927920230830416,
+      "invalidPenalty": 3.004922548716422,
+      "sampledDataChange": -0.27053291361099996,
+      "expectedFirstOrderChange": -0.32756506853856826
+    },
+    {
+      "backtrack": 4,
+      "energyChange": 1.127242754938813,
+      "invalidPenalty": 1.2873498375411145,
+      "sampledDataChange": -0.15455977128071963,
+      "expectedFirstOrderChange": -0.16378253426928413
+    },
+    {
+      "backtrack": 5,
+      "energyChange": 0.6333870360751508,
+      "invalidPenalty": 0.7144434509682469,
+      "sampledDataChange": -0.07998651346552288,
+      "expectedFirstOrderChange": -0.08189126713464207
+    },
+    {
+      "backtrack": 6,
+      "energyChange": 0.385176370301167,
+      "invalidPenalty": 0.4259005736093968,
+      "sampledDataChange": -0.04045484501681651,
+      "expectedFirstOrderChange": -0.04094563356732103
+    },
+    {
+      "backtrack": 7,
+      "energyChange": 0.2633904989373592,
+      "invalidPenalty": 0.2838251949287951,
+      "sampledDataChange": -0.02032428583066359,
+      "expectedFirstOrderChange": -0.020472816783660516
+    },
+    {
+      "backtrack": 8,
+      "energyChange": 0.036191236198421795,
+      "invalidPenalty": 0.04643261060118675,
+      "sampledDataChange": -0.01018619912700336,
+      "expectedFirstOrderChange": -0.010236408391830258
+    },
+    {
+      "backtrack": 9,
+      "energyChange": 0.023751708968990037,
+      "invalidPenalty": 0.02888130210340023,
+      "sampledDataChange": -0.005097380588013678,
+      "expectedFirstOrderChange": -0.005118204195915129
+    },
+    {
+      "backtrack": 10,
+      "energyChange": -0.0025496757572196493,
+      "invalidPenalty": 0.0,
+      "sampledDataChange": -0.0025500137684928426,
+      "expectedFirstOrderChange": -0.0025591020979575645
+    },
+    {
+      "backtrack": 11,
+      "energyChange": -0.0012749846547208676,
+      "invalidPenalty": 0.0,
+      "sampledDataChange": -0.0012750692004739328,
+      "expectedFirstOrderChange": -0.0012795510489787823
+    },
+    {
+      "backtrack": 12,
+      "energyChange": -0.0006375970586596225,
+      "invalidPenalty": 0.0,
+      "sampledDataChange": -0.0006376182536991237,
+      "expectedFirstOrderChange": -0.0006397755244893911
+    },
+    {
+      "backtrack": 13,
+      "energyChange": -0.00031891522321370047,
+      "invalidPenalty": 0.0,
+      "sampledDataChange": -0.0003189205703511,
+      "expectedFirstOrderChange": -0.00031988776224469557
+    },
+    {
+      "backtrack": 14,
+      "energyChange": -0.0001599384126467207,
+      "invalidPenalty": 0.0,
+      "sampledDataChange": -0.0001599397906919542,
+      "expectedFirstOrderChange": -0.00015994388112234778
+    },
+    {
+      "backtrack": 15,
+      "energyChange": -7.824016188173744e-05,
+      "invalidPenalty": 0.0,
+      "sampledDataChange": -7.824052642879664e-05,
+      "expectedFirstOrderChange": -7.997194056117389e-05
+    },
+    {
+      "backtrack": 16,
+      "energyChange": -3.896675428061158e-05,
+      "invalidPenalty": 0.0,
+      "sampledDataChange": -3.896686198201493e-05,
+      "expectedFirstOrderChange": -3.9985970280586946e-05
+    }
+  ]
+}

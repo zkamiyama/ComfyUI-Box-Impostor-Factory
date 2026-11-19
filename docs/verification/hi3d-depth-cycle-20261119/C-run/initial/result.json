@@ -1,0 +1,363 @@
+{
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "proxy": {
+    "sha256": "020f6a29688393be11b62e6987c80f956abc5d5e28e80b7b3c9220f21d67093e",
+    "stageKey": "24b88620dcd31c24fc1667a43604fe30e960612ca9abd6f4dbbd6503002a14be",
+    "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/refined.glb",
+    "metadata": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/canonical.json",
+    "depthRefinement": {
+      "method": "joint-full-depth-v1",
+      "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "registration": {
+        "+X": {
+          "status": "fitted",
+          "calibration": "positive-affine-to-seed-orthographic-depth",
+          "exactCameraCalibration": false,
+          "scale": 0.7521098512137238,
+          "offset": -2.8655840100417374,
+          "samples": 371732,
+          "medianAbsFitResidual": 0.026826143264770508,
+          "p95AbsFitResidual": 0.11806317418813705,
+          "clippedFraction": 0.36308684751380027,
+          "maxNormalizedAxialChange": 0.03755989625981412,
+          "residualFilter": "none; full low/mid/high frequency residual",
+          "sourceSha256": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa",
+          "predictionSha256": "c6f0dbd7633c66ebecc5a0ec531cb4bd97d51d2885e44c82b8d0c25df8b9424f"
+        },
+        "-X": {
+          "status": "fitted",
+          "calibration": "positive-affine-to-seed-orthographic-depth",
+          "exactCameraCalibration": false,
+          "scale": 0.6723776839303651,
+          "offset": -5.158261531972292,
+          "samples": 368754,
+          "medianAbsFitResidual": 0.030405282974243164,
+          "p95AbsFitResidual": 0.12441668659448624,
+          "clippedFraction": 0.3808609533727092,
+          "maxNormalizedAxialChange": 0.03755989625981412,
+          "residualFilter": "none; full low/mid/high frequency residual",
+          "sourceSha256": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973",
+          "predictionSha256": "dfc300de87a23d274327089ea12e31fc81deafffa1d601011f03f4b2b727af1f"
+        },
+        "+Y": {
+          "status": "fitted",
+          "calibration": "positive-affine-to-seed-orthographic-depth",
+          "exactCameraCalibration": false,
+          "scale": 0.6616782678371701,
+          "offset": -1.5768159436650353,
+          "samples": 356470,
+          "medianAbsFitResidual": 0.0536113977432251,
+          "p95AbsFitResidual": 0.14431239664554596,
+          "clippedFraction": 0.9026706314696888,
+          "maxNormalizedAxialChange": 0.014423076923076922,
+          "residualFilter": "none; full low/mid/high frequency residual",
+          "sourceSha256": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d",
+          "predictionSha256": "c386ca395fe56cc2d8684e0890b31b55f79d2b5771c025d42f9fc968a28ed5f0"
+        },
+        "-Y": {
+          "status": "fitted",
+          "calibration": "positive-affine-to-seed-orthographic-depth",
+          "exactCameraCalibration": false,
+          "scale": 0.7617412403648229,
+          "offset": -0.8941165533849575,
+          "samples": 367117,
+          "medianAbsFitResidual": 0.03165239095687866,
+          "p95AbsFitResidual": 0.07530075311660767,
+          "clippedFraction": 0.7243494580746738,
+          "maxNormalizedAxialChange": 0.014423076923076922,
+          "residualFilter": "none; full low/mid/high frequency residual",
+          "sourceSha256": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623",
+          "predictionSha256": "5c2751c0990a89466b8be26b883da12e960790d4f3ec3a053f9a78f5ed481d8f"
+        },
+        "+Z": {
+          "status": "fitted",
+          "calibration": "positive-affine-to-seed-orthographic-depth",
+          "exactCameraCalibration": false,
+          "scale": 0.9294180624669456,
+          "offset": -4.602455197372144,
+          "samples": 323092,
+          "medianAbsFitResidual": 0.05706620216369629,
+          "p95AbsFitResidual": 0.1911594122648239,
+          "clippedFraction": 0.6494125512238,
+          "maxNormalizedAxialChange": 0.04004367097891297,
+          "residualFilter": "none; full low/mid/high frequency residual",
+          "sourceSha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+          "predictionSha256": "c789cd1e37862fe233cbfc737868fc0d7f7b27991d831a6b6e7c0ae91f3ad1fd"
+        },
+        "-Z": {
+          "status": "fitted",
+          "calibration": "positive-affine-to-seed-orthographic-depth",
+          "exactCameraCalibration": false,
+          "scale": 0.9634000036192873,
+          "offset": -3.4926738420198467,
+          "samples": 324754,
+          "medianAbsFitResidual": 0.05016958713531494,
+          "p95AbsFitResidual": 0.12170795351266861,
+          "clippedFraction": 0.5753647376167808,
+          "maxNormalizedAxialChange": 0.04004367097891297,
+          "residualFilter": "none; full low/mid/high frequency residual",
+          "sourceSha256": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede",
+          "predictionSha256": "5b988dccaee2fdb2b75e0dcbd1ab54b9d13023867fab09f289c05fb8deacc2a1"
+        }
+      },
+      "inference": {
+        "model": "moge_2_vitl_normal_fp16",
+        "model_sha256": "cb1a692d03235671e959e81360d7b4d9f44aefadb1f852d6ca6aa17799d5e31f",
+        "level": 8,
+        "size": 1024,
+        "faces": {
+          "px": {
+            "source_sha256": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa",
+            "crop": [
+              306,
+              0,
+              715,
+              1024
+            ],
+            "shape": [
+              1024,
+              1024
+            ],
+            "valid": 418816,
+            "quantiles": [
+              3.9913922548294067,
+              4.4133689403533936,
+              4.911995244026184
+            ],
+            "seconds": 0.92
+          },
+          "nx": {
+            "source_sha256": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973",
+            "crop": [
+              307,
+              0,
+              715,
+              1024
+            ],
+            "shape": [
+              1024,
+              1024
+            ],
+            "valid": 417792,
+            "quantiles": [
+              7.937935829162598,
+              8.360846519470215,
+              8.685653676986695
+            ],
+            "seconds": 0.31
+          },
+          "py": {
+            "source_sha256": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d",
+            "crop": [
+              14,
+              46,
+              1010,
+              977
+            ],
+            "shape": [
+              1024,
+              1024
+            ],
+            "valid": 927276,
+            "quantiles": [
+              2.3488612174987793,
+              3.031991720199585,
+              3.6624661684036255
+            ],
+            "seconds": 0.37
+          },
+          "ny": {
+            "source_sha256": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623",
+            "crop": [
+              12,
+              28,
+              1013,
+              980
+            ],
+            "shape": [
+              1024,
+              1024
+            ],
+            "valid": 952952,
+            "quantiles": [
+              1.2170399570465087,
+              1.7714735269546509,
+              2.4586744260787965
+            ],
+            "seconds": 0.34
+          },
+          "pz": {
+            "source_sha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+            "crop": [
+              294,
+              0,
+              729,
+              1024
+            ],
+            "shape": [
+              1024,
+              1024
+            ],
+            "valid": 445440,
+            "quantiles": [
+              5.011045837402344,
+              5.470840215682983,
+              6.0036518764495845
+            ],
+            "seconds": 0.32
+          },
+          "nz": {
+            "source_sha256": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede",
+            "crop": [
+              295,
+              0,
+              728,
+              1024
+            ],
+            "shape": [
+              1024,
+              1024
+            ],
+            "valid": 443392,
+            "quantiles": [
+              3.754674186706543,
+              4.296421527862549,
+              4.814071197509765
+            ],
+            "seconds": 0.33
+          }
+        },
+        "elapsed_s": 3.86
+      },
+      "solver": {
+        "solver": "joint-IRLS-GaussNewton-matrix-free-PCG",
+        "visibility": "seed first-hit + current vertex-splat; not triangle rasterization",
+        "regularization": "graph Laplacian of displacement only",
+        "parameters": {
+          "maxDisplacementHeight": 0.015,
+          "iterations": 8,
+          "smoothness": 0.3,
+          "prior": 0.025,
+          "cgIterations": 120
+        },
+        "vertices": 499920,
+        "triangles": 1000000,
+        "height": 1.0,
+        "normalizedDisplacement": {
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        },
+        "iterations": [
+          {
+            "iteration": 0,
+            "energyBefore": 3.1398656517267227,
+            "energyAfter": 3.1760567465867986,
+            "pcgStatus": 120,
+            "stepAccepted": false,
+            "stepScale": 0.00390625,
+            "multiViewVertices": 4456,
+            "singleViewVertices": 149733,
+            "rejectedCrossViewVertices": 317221
+          }
+        ]
+      },
+      "mesh": {
+        "uniquePositions": 499920,
+        "vertices": 499920,
+        "triangles": 1000000,
+        "originalDegenerateTriangles": 0,
+        "stepScale": 0.0,
+        "maxDisplacement": 0.0,
+        "meanDisplacement": 0.0,
+        "movedVertices": 0
+      },
+      "actualDisplacementHeight": {
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "normalSource": "area-weighted geometric normals recomputed from changed shared mesh",
+      "normalRecompute": {
+        "version": "area-weighted-unit-v1",
+        "algorithm": "area-weighted; largest-area incident face for cancellation; +Y for unrendered vertices",
+        "vertices": 499920,
+        "triangles": 1000000,
+        "cancellationFallbackVertices": 2,
+        "unusedPlaceholderVertices": 0,
+        "degenerateOnlyPlaceholderVertices": 0,
+        "degenerateTriangles": 0,
+        "relativeCancellationThreshold": 1e-12,
+        "unitPlaceholder": [
+          0,
+          1,
+          0
+        ]
+      },
+      "limitations": [
+        "Depth-to-orthographic registration is an anchored affine approximation.",
+        "Current occlusion uses vertex splats; final native rebake supplies exact rasterized depth."
+      ],
+      "seconds": 12.07
+    },
+    "rotationDegreesXYZ": [
+      0,
+      0,
+      0
+    ],
+    "reference": {
+      "sha256": "c463bf4eea481e54bbb154f3c0b801765db6ecf92e36c25135e155e699dc9bde",
+      "width": 1280,
+      "height": 1920,
+      "maskMode": "foreground",
+      "sourceToReference": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "image": "reference/source.png",
+      "samples": "reference/source.npy",
+      "camera": {
+        "horizontalFovDegrees": 43.484582858154575,
+        "focalPixels": 1283.8399658203125,
+        "width": 1024,
+        "height": 1024,
+        "image": "reference/cropped.png",
+        "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+        "rig": "pixal3d-single-view-v1"
+      },
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/reference"
+    },
+    "camera": {
+      "horizontalFovDegrees": 43.484582858154575,
+      "focalPixels": 1283.8399658203125,
+      "width": 1024,
+      "height": 1024,
+      "image": "reference/cropped.png",
+      "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+      "rig": "pixal3d-single-view-v1"
+    },
+    "croppedImage": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/reference/cropped.png",
+    "provenance": {
+      "backend": "native_mesh",
+      "graphSha256": "9b5018354cb3c2fa49cf8cf6cc385469a0f31d78fec9778a1dea1f1f0fe9de8a",
+      "weights": {
+        "diffusion_models/pixal3d_int8_convrot.safetensors": "4621eac3b715484f79303c7152af641fe0b2b14f4d0e3d394fd6922d00f955ec",
+        "geometry_estimation/moge_2_vitl_normal_fp16.safetensors": "cb1a692d03235671e959e81360d7b4d9f44aefadb1f852d6ca6aa17799d5e31f",
+        "clip_vision/dino_v3_L_naf_fp32.safetensors": "4ad2ec4e0879a5b5b04cd97325cc37da954a7b6edca5170b86510f17f2b2290f",
+        "vae/trellis_2_shape_vae_bf16.safetensors": "de0cb4949a76c59ee5c091a995a69bcc8c51d5aeda939f0c641a50d2a72341f4",
+        "vae/trellis_2_texture_vae_bf16.safetensors": "714e5ebf094a610e12a8e3b5175c18a62f37f6ea4218acb6073644456b73ab0e"
+      }
+    }
+  },
+  "refinementReport": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/refinement.json",
+  "assetId": "b84ecfff22e6ad96e9105d858731aafe3a667f8f99c52b1824ea9ac5560a3077",
+  "assetDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/b84ecfff22e6ad96e9105d858731aafe3a667f8f99c52b1824ea9ac5560a3077",
+  "rebakeEvaluation": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/rebake-evaluation.json"
+}

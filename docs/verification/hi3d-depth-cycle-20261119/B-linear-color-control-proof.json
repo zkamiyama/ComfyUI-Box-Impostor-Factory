@@ -1,0 +1,244 @@
+{
+  "purpose": "CPU-only color-transfer preparation. Actual B/C conditions and assets unchanged. No new Hi3D inference, bake or render.",
+  "sourceReceipt": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/hi3d-completed.json",
+    "sha256": "1e83000e7e1a569d2c526876c140a5af76867c5090d35832d9c4cd80be10cbb3"
+  },
+  "inputs": {
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/.stages/hi3d-refine/939bf71cab3adc54abbb9aa770917b685058470cf5f4c3d4bf7c192ca952d9ac/canonical.glb": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/.stages/hi3d-refine/939bf71cab3adc54abbb9aa770917b685058470cf5f4c3d4bf7c192ca952d9ac/hi3d-raw.glb": "1f5cdd2eab59199d0c289e7ac9b218edf39232c5dc6b0ed943a7f5e5e0e1c364"
+  },
+  "outputs": {
+    "proxy": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/color-linear/proxy.glb",
+      "sha256": "411d924f8fd1170522a08f1998d24d28641a4445834c1a876d5f84b5d3a8a2bd",
+      "bytes": 27998764
+    },
+    "canonicalMetadata": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/color-linear/proxy.json",
+      "sha256": "4a097a205392145ee1f6f1a259d8649ad00f4db0334d82f24c539ed376574857"
+    },
+    "prepareReport": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/color-linear/prepare-report.json",
+      "sha256": "735344815d8e1e1b91ebe325c52aa5db3a223b922de3c47741c8830846fff5ab"
+    }
+  },
+  "retainedInference": {
+    "model": "hi3d-official/Hi3Dv1.0",
+    "resolution": 1024,
+    "steps": 25,
+    "smoothing": 0
+  },
+  "geometry": {
+    "attributes": {
+      "POSITION": {
+        "byteIdentical": true,
+        "count": 499920,
+        "sha256": "606ecc1cbf318637ed517503bb2f4d88f39d61c2c4eb43938105b76a920f7391"
+      }
+    },
+    "indicesByteIdentical": true,
+    "indicesSHA256": "4e6605b02a85feebf5527e7377aa0be42184a85d287ebe61d8fa4884f60cef76",
+    "triangles": 1000000,
+    "nodeTransformsIdentical": true,
+    "materialsIdentical": true,
+    "sourceNORMALPresent": false,
+    "controlNORMALPresent": false,
+    "vertexPositionsChanged": 0,
+    "existingInputFilesUnchanged": true
+  },
+  "colors": {
+    "oldAccessor": {
+      "componentType": 5121,
+      "normalized": true,
+      "type": "VEC4",
+      "byteOffset": 0,
+      "bufferView": 2,
+      "count": 499920,
+      "max": [
+        245,
+        227,
+        208,
+        255
+      ],
+      "min": [
+        3,
+        4,
+        5,
+        255
+      ]
+    },
+    "newAccessor": {
+      "componentType": 5126,
+      "type": "VEC4",
+      "byteOffset": 0,
+      "max": [
+        0.914165198802948,
+        0.764653205871582,
+        0.630757212638855,
+        1.0
+      ],
+      "min": [
+        0.0009169323602691293,
+        0.0012271812884137034,
+        0.0015176349552348256,
+        1.0
+      ],
+      "bufferView": 3,
+      "count": 499920
+    },
+    "allVertices": 499920,
+    "expectedMethod": "Independent float64 sRGB decode before bilinear source texture sampling; linear factor; same nearest source-vertex transfer",
+    "maxAbsoluteRGBAError": 1.8557045877720668e-07,
+    "meanAbsoluteRGBError": 2.2375482234037716e-08,
+    "alphaMaxAbsoluteErrorVsOriginalB": 0.0,
+    "samples": [
+      {
+        "vertex": 0,
+        "oldEncodedBytes": [
+          134,
+          133,
+          131,
+          255
+        ],
+        "newLinearRGBA": [
+          0.23858822882175446,
+          0.23475754261016846,
+          0.22598466277122498,
+          1.0
+        ],
+        "independentLinearRGBA": [
+          0.23858817959990145,
+          0.23475750237983892,
+          0.22598463701933053,
+          1.0
+        ]
+      },
+      {
+        "vertex": 124980,
+        "oldEncodedBytes": [
+          86,
+          85,
+          84,
+          255
+        ],
+        "newLinearRGBA": [
+          0.09397567063570023,
+          0.09154245257377625,
+          0.08988920599222183,
+          1.0
+        ],
+        "independentLinearRGBA": [
+          0.09397565672305072,
+          0.09154244149434931,
+          0.0898891927686536,
+          1.0
+        ]
+      },
+      {
+        "vertex": 249960,
+        "oldEncodedBytes": [
+          217,
+          185,
+          160,
+          255
+        ],
+        "newLinearRGBA": [
+          0.6923860311508179,
+          0.4875302314758301,
+          0.3534669578075409,
+          1.0
+        ],
+        "independentLinearRGBA": [
+          0.6923859127892154,
+          0.4875301575836488,
+          0.3534668962149003,
+          1.0
+        ]
+      },
+      {
+        "vertex": 499919,
+        "oldEncodedBytes": [
+          85,
+          83,
+          84,
+          255
+        ],
+        "newLinearRGBA": [
+          0.09080861508846283,
+          0.08647022396326065,
+          0.08943649381399155,
+          1.0
+        ],
+        "independentLinearRGBA": [
+          0.09080860078647036,
+          0.08647020956453422,
+          0.08943647984949628,
+          1.0
+        ]
+      }
+    ]
+  },
+  "actualInstalledGLTFLoaderParse": [
+    {
+      "count": 499920,
+      "arrayType": "Float32Array",
+      "normalized": false,
+      "vertexColors": true,
+      "flatShading": true,
+      "hasNormal": false,
+      "materialColor": [
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        {
+          "vertex": 0,
+          "rgba": [
+            0.23858822882175446,
+            0.23475754261016846,
+            0.22598466277122498,
+            1
+          ]
+        },
+        {
+          "vertex": 124980,
+          "rgba": [
+            0.09397567063570023,
+            0.09154245257377625,
+            0.08988920599222183,
+            1
+          ]
+        },
+        {
+          "vertex": 249960,
+          "rgba": [
+            0.6923860311508179,
+            0.4875302314758301,
+            0.3534669578075409,
+            1
+          ]
+        },
+        {
+          "vertex": 499919,
+          "rgba": [
+            0.09080861508846283,
+            0.08647022396326065,
+            0.08943649381399155,
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "sourceCode": {
+    "helperPath": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/hi3d_postprocess.py",
+    "helperSHA256": "f5f7880db2ada2082e462bcf2f463abbabc40b4ce05cef6a114bc5579d1e10d6",
+    "loaderPath": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+    "loaderSHA256": "131c0f78c01d19368ae495caa65b3adaa10487810a36a05bb5901b769a35ac16",
+    "proofScriptSHA256": "f93447cec9d38390e03d7c628075b04aa3d4f16a80e0508d9430302ff260b864"
+  },
+  "limitation": "This validates representation and geometry invariants. It is not a corrected guide, H3 RGB, or actual Box quality result."
+}

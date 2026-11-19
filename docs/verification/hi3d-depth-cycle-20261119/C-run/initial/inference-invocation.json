@@ -1,0 +1,124 @@
+{
+  "command": [
+    "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/moge_face_depth_infer.py",
+    "--asset",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+    "--model",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/models/geometry_estimation/moge_2_vitl_normal_fp16.safetensors",
+    "--output",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/predictions",
+    "--face",
+    "all",
+    "--size",
+    "1024",
+    "--level",
+    "8"
+  ],
+  "inputImages": {
+    "+X": {
+      "sourceSize": [
+        1024,
+        1024
+      ],
+      "crop": [
+        306,
+        0,
+        715,
+        1024
+      ],
+      "effectiveInferenceSize": [
+        409,
+        1024
+      ],
+      "sourceSha256": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa"
+    },
+    "-X": {
+      "sourceSize": [
+        1024,
+        1024
+      ],
+      "crop": [
+        307,
+        0,
+        715,
+        1024
+      ],
+      "effectiveInferenceSize": [
+        408,
+        1024
+      ],
+      "sourceSha256": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973"
+    },
+    "+Y": {
+      "sourceSize": [
+        1024,
+        1024
+      ],
+      "crop": [
+        14,
+        46,
+        1010,
+        977
+      ],
+      "effectiveInferenceSize": [
+        996,
+        931
+      ],
+      "sourceSha256": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d"
+    },
+    "-Y": {
+      "sourceSize": [
+        1024,
+        1024
+      ],
+      "crop": [
+        12,
+        28,
+        1013,
+        980
+      ],
+      "effectiveInferenceSize": [
+        1001,
+        952
+      ],
+      "sourceSha256": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623"
+    },
+    "+Z": {
+      "sourceSize": [
+        1024,
+        1024
+      ],
+      "crop": [
+        294,
+        0,
+        729,
+        1024
+      ],
+      "effectiveInferenceSize": [
+        435,
+        1024
+      ],
+      "sourceSha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f"
+    },
+    "-Z": {
+      "sourceSize": [
+        1024,
+        1024
+      ],
+      "crop": [
+        295,
+        0,
+        728,
+        1024
+      ],
+      "effectiveInferenceSize": [
+        433,
+        1024
+      ],
+      "sourceSha256": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede"
+    }
+  },
+  "outputSize": "source canvas size",
+  "note": "Crop/rescale is recorded; intrinsics are not calibrated to the orthographic guide."
+}

@@ -1,0 +1,95 @@
+{
+  "command": [
+    "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/refine_full_depth.py",
+    "--asset",
+    "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+    "--output-directory",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output",
+    "--work-dir",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/fixed-support",
+    "--prediction-dir",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/predictions",
+    "--max-displacement-height",
+    ".015",
+    "--iterations",
+    "8",
+    "--smoothness",
+    ".3",
+    "--prior",
+    ".025",
+    "--cg-iterations",
+    "120",
+    "--backend",
+    "webgl2"
+  ],
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "startedUtc": "2026-11-19T04:57:20.898252+00:00",
+  "stage": "nativeRebakeAndFixedRGB",
+  "stages": {
+    "initialization": {
+      "startedSeconds": 0,
+      "peakProcessTreeRSSKiB": 562380,
+      "seconds": 1.407
+    },
+    "jointGeometryFit": {
+      "startedSeconds": 1.407,
+      "peakProcessTreeRSSKiB": 1242944,
+      "seconds": 61.979
+    },
+    "nativeRebakeAndFixedRGB": {
+      "startedSeconds": 63.386,
+      "peakProcessTreeRSSKiB": 2742316,
+      "seconds": 37.108
+    }
+  },
+  "processes": {
+    "1643772": {
+      "name": "python",
+      "command": "/home/dev/Projects/box-impostor-lab/.venv/bin/python /home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/refine_full_depth.py --asset ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2 --output-directory /mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output --work-dir /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/fixed-support --prediction-dir /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/predictions --max-displacement-height .015 --iterations 8 --smoothness .3 --prior .025 --cg-iterations 120 --backend webgl2 ",
+      "peakRSSKiB": 1444096
+    },
+    "1653976": {
+      "name": "node",
+      "command": "/home/dev/.nvm/versions/node/v22.23.3/bin/node /home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/worker/cli.mjs bake --input /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/fixed-support/refined.glb --output /mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/.box-67l1_ldi/asset --resolution 1024 --backend webgl2 --asset-id c75bfc08dcc2b07e8e5aa979fe8aef9db1e9f10b366c3f52fc2695abc36dbee5 --canonical-meta /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/fixed-support/canonical.json --maps  ",
+      "peakRSSKiB": 164552
+    },
+    "1654086": {
+      "name": "chrome-headless",
+      "command": "/home/dev/.cache/ms-playwright/chromium_headless_shell-1254/chrome-headless-shell-linux64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-angle=swiftshader --enable-unsafe-swiftshader --user-data-dir=/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/tmp/playwright_chromiumdev_profile-ZRwmxU --remote-debugging-pipe --no-startup-window ",
+      "peakRSSKiB": 259456
+    },
+    "1654107": {
+      "name": "chrome-headless",
+      "command": "/home/dev/.cache/ms-playwright/chromium_headless_shell-1254/chrome-headless-shell-linux64/chrome-headless-shell --type=zygote --no-sandbox --headless ",
+      "peakRSSKiB": 43972
+    },
+    "1654191": {
+      "name": "chrome-headless",
+      "command": "/home/dev/.cache/ms-playwright/chromium_headless_shell-1254/chrome-headless-shell-linux64/chrome-headless-shell --type=renderer --headless=old --no-sandbox --disable-dev-shm-usage --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --enable-automation --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --ozone-platform=headless --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=4 --launch-time-ticks=10510212871 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,16257296345515804025,4096090104912535803,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AcceptCHFrame,AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate --variations-seed-version --pseudonymization-salt-handle=7,i,16778459305970075528,10589328135652407633,4 --trace-process-track-uuid=3190708990060038890 ",
+      "peakRSSKiB": 644192
+    },
+    "1654106": {
+      "name": "chrome-headless",
+      "command": "/home/dev/.cache/ms-playwright/chromium_headless_shell-1254/chrome-headless-shell-linux64/chrome-headless-shell --type=zygote --no-zygote-sandbox --no-sandbox --headless ",
+      "peakRSSKiB": 44132
+    },
+    "1654126": {
+      "name": "chrome-headless",
+      "command": "/home/dev/.cache/ms-playwright/chromium_headless_shell-1254/chrome-headless-shell-linux64/chrome-headless-shell --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --disable-dev-shm-usage --disable-breakpad --headless --ozone-platform=headless --use-angle=swiftshader --enable-unsafe-swiftshader --gpu-preferences=YAAAAAAAAAAgAACBAAAAAAAAAAAAAGAASAAAAAAAAAABAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAMAAAAAQAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAA== --shared-files --field-trial-handle=3,i,16257296345515804025,4096090104912535803,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AcceptCHFrame,AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate --variations-seed-version --pseudonymization-salt-handle=7,i,16778459305970075528,10589328135652407633,4 --trace-process-track-uuid=3190708988185955192 ",
+      "peakRSSKiB": 602844
+    }
+  },
+  "peakProcessTreeRSSKiB": 2742316,
+  "environment": {
+    "BI_NODE": "/home/dev/.nvm/versions/node/v22.23.3/bin/node",
+    "BI_CHROMIUM": "/home/dev/.cache/ms-playwright/chromium_headless_shell-1254/chrome-headless-shell-linux64/chrome-headless-shell",
+    "BI_SOFTWARE_GPU": "1",
+    "CUDA_VISIBLE_DEVICES": ""
+  },
+  "rssMethod": "sum /proc VmRSS over descendants every 0.5s; sampled, not exact peak",
+  "pid": 1643772,
+  "elapsedSeconds": 100.493,
+  "exitCode": 0,
+  "finishedUtc": "2026-11-19T04:59:05.893150+00:00"
+}

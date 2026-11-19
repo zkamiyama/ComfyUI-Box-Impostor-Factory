@@ -1,0 +1,14 @@
+MoGe inference starting; log=/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/inference-process.log
+CPU full-depth shared-mesh fit starting
+Native Box rebake and frozen B RGB mapping starting
+WARNING:root:WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
+WARNING WARNING WARNING
+If you are on nvidia 20 series and above it is required that you update your pytorch to cu130 or higher.
+
+{
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "refinementReport": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/refinement.json",
+  "assetId": "b84ecfff22e6ad96e9105d858731aafe3a667f8f99c52b1824ea9ac5560a3077",
+  "assetDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/b84ecfff22e6ad96e9105d858731aafe3a667f8f99c52b1824ea9ac5560a3077",
+  "rebakeEvaluation": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/rebake-evaluation.json"
+}

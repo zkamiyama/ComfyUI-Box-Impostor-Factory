@@ -1,0 +1,445 @@
+{
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "assetId": "b84ecfff22e6ad96e9105d858731aafe3a667f8f99c52b1824ea9ac5560a3077",
+  "geometryAsset": "196e7a561a584ac017e0cd371d14da99b829502f3da0ee25ca006795ee2a6b21",
+  "faces": {
+    "+X": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa",
+          "after": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa"
+        },
+        "source.npy": {
+          "before": "6920fe5a15f6b7fcce9739e6e3e49a83ed76cd3e0648abe2ae5417f1802417be",
+          "after": "6920fe5a15f6b7fcce9739e6e3e49a83ed76cd3e0648abe2ae5417f1802417be"
+        },
+        "aligned.npy": {
+          "before": "99ca90b0bc6cf2dd379ac212f37b2dc1a14cd2d2d87a9cf05e6298390c72033c",
+          "after": "99ca90b0bc6cf2dd379ac212f37b2dc1a14cd2d2d87a9cf05e6298390c72033c"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "ac7bdb232d8433091ec26022c1f65b60e6722e34f66d0826c2d417cfe71e2ac8",
+        "sourceFiles": {
+          "source.png": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa",
+          "source.npy": "6920fe5a15f6b7fcce9739e6e3e49a83ed76cd3e0648abe2ae5417f1802417be",
+          "aligned.npy": "99ca90b0bc6cf2dd379ac212f37b2dc1a14cd2d2d87a9cf05e6298390c72033c"
+        },
+        "sourceSilhouette": {
+          "iou": 0.9822779749359579,
+          "boundaryP95Px": 5.0
+        },
+        "revisedSilhouette": {
+          "iou": 0.9822779749359579,
+          "boundaryP95Px": 5.0
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 3227,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 371732,
+      "sharedPixels": 371732,
+      "missingAfterPixels": 0,
+      "before": {
+        "samples": 371732,
+        "rmsHeight": 0.011086755699820528,
+        "lowFrequencySamples": 368010,
+        "lowFrequencyRmsHeight": 0.010419374365958271,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000000178802679
+      },
+      "after": {
+        "samples": 371732,
+        "rmsHeight": 0.011086755699820528,
+        "lowFrequencySamples": 368010,
+        "lowFrequencyRmsHeight": 0.010419374365958271,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000000178802679
+      }
+    },
+    "-X": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973",
+          "after": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973"
+        },
+        "source.npy": {
+          "before": "8f31ee8d16d865193cb48dc82791ee6321cbd7a8269c3aa7bcbed6e1a7c28633",
+          "after": "8f31ee8d16d865193cb48dc82791ee6321cbd7a8269c3aa7bcbed6e1a7c28633"
+        },
+        "aligned.npy": {
+          "before": "2e45a8979c4a8b0dfb3ab6fbe7c3e7ed01fe74d2d08b7d243bff7ac95378dcad",
+          "after": "2e45a8979c4a8b0dfb3ab6fbe7c3e7ed01fe74d2d08b7d243bff7ac95378dcad"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "6a497991aa0ff8f18551c1603dfe5e8880c4143abdcb81e33783da76a40e52df",
+        "sourceFiles": {
+          "source.png": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973",
+          "source.npy": "8f31ee8d16d865193cb48dc82791ee6321cbd7a8269c3aa7bcbed6e1a7c28633",
+          "aligned.npy": "2e45a8979c4a8b0dfb3ab6fbe7c3e7ed01fe74d2d08b7d243bff7ac95378dcad"
+        },
+        "sourceSilhouette": {
+          "iou": 0.9861383487503192,
+          "boundaryP95Px": 3.1622776601683795
+        },
+        "revisedSilhouette": {
+          "iou": 0.9861383487503192,
+          "boundaryP95Px": 3.1622776601683795
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 3498,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 368754,
+      "sharedPixels": 368754,
+      "missingAfterPixels": 0,
+      "before": {
+        "samples": 368754,
+        "rmsHeight": 0.011487512829007064,
+        "lowFrequencySamples": 365123,
+        "lowFrequencyRmsHeight": 0.01117095456511197,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000000178802679
+      },
+      "after": {
+        "samples": 368754,
+        "rmsHeight": 0.011487512829007064,
+        "lowFrequencySamples": 365123,
+        "lowFrequencyRmsHeight": 0.01117095456511197,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000000178802679
+      }
+    },
+    "+Y": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d",
+          "after": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d"
+        },
+        "source.npy": {
+          "before": "2efb4294efd3b69223145c08f7520aab1276242cf9922596e35704740cf9eaf6",
+          "after": "2efb4294efd3b69223145c08f7520aab1276242cf9922596e35704740cf9eaf6"
+        },
+        "aligned.npy": {
+          "before": "b8670517f6a84efc51802b0fd8e4dfbdfe0e9703032a37a15200542444db5854",
+          "after": "b8670517f6a84efc51802b0fd8e4dfbdfe0e9703032a37a15200542444db5854"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "5a7b4be152bcbb8898656e4db93a70f298a3f8185ae2ea2aa30e1e44a99f0b42",
+        "sourceFiles": {
+          "source.png": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d",
+          "source.npy": "2efb4294efd3b69223145c08f7520aab1276242cf9922596e35704740cf9eaf6",
+          "aligned.npy": "b8670517f6a84efc51802b0fd8e4dfbdfe0e9703032a37a15200542444db5854"
+        },
+        "sourceSilhouette": {
+          "iou": 0.9924306005163498,
+          "boundaryP95Px": 2.23606797749979
+        },
+        "revisedSilhouette": {
+          "iou": 0.9924306005163498,
+          "boundaryP95Px": 2.23606797749979
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 1555,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 356470,
+      "sharedPixels": 356470,
+      "missingAfterPixels": 0,
+      "before": {
+        "samples": 356470,
+        "rmsHeight": 0.014541095518322758,
+        "lowFrequencySamples": 353721,
+        "lowFrequencyRmsHeight": 0.013644879810582981,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.01500000298023224
+      },
+      "after": {
+        "samples": 356470,
+        "rmsHeight": 0.014541095518322758,
+        "lowFrequencySamples": 353721,
+        "lowFrequencyRmsHeight": 0.013644879810582981,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.01500000298023224
+      }
+    },
+    "-Y": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623",
+          "after": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623"
+        },
+        "source.npy": {
+          "before": "3902f306807845315e0b3e3c65c98a4cbf0ce04baf5bbd08a1bca0d4525cfa08",
+          "after": "3902f306807845315e0b3e3c65c98a4cbf0ce04baf5bbd08a1bca0d4525cfa08"
+        },
+        "aligned.npy": {
+          "before": "a2285b1647f69128e1e061185397790c24eae160606ca25fe9dda18cfab70bad",
+          "after": "a2285b1647f69128e1e061185397790c24eae160606ca25fe9dda18cfab70bad"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "345ebdb88372b6e8bd743eb11d71144e6f07d20e9f17a6f8a6d52d8d1e555ac6",
+        "sourceFiles": {
+          "source.png": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623",
+          "source.npy": "3902f306807845315e0b3e3c65c98a4cbf0ce04baf5bbd08a1bca0d4525cfa08",
+          "aligned.npy": "a2285b1647f69128e1e061185397790c24eae160606ca25fe9dda18cfab70bad"
+        },
+        "sourceSilhouette": {
+          "iou": 0.9757033481589691,
+          "boundaryP95Px": 5.0
+        },
+        "revisedSilhouette": {
+          "iou": 0.9757033481589691,
+          "boundaryP95Px": 5.0
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 9,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 367117,
+      "sharedPixels": 367117,
+      "missingAfterPixels": 0,
+      "before": {
+        "samples": 367117,
+        "rmsHeight": 0.013517050922909779,
+        "lowFrequencySamples": 364423,
+        "lowFrequencyRmsHeight": 0.012188354968344103,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.01500000298023224
+      },
+      "after": {
+        "samples": 367117,
+        "rmsHeight": 0.013517050922909779,
+        "lowFrequencySamples": 364423,
+        "lowFrequencyRmsHeight": 0.012188354968344103,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.01500000298023224
+      }
+    },
+    "+Z": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+          "after": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f"
+        },
+        "source.npy": {
+          "before": "af3f09c0d4780de0810a2cf83496c60a1dbc8933b0da2ca6166bc82bbafdc7ab",
+          "after": "af3f09c0d4780de0810a2cf83496c60a1dbc8933b0da2ca6166bc82bbafdc7ab"
+        },
+        "aligned.npy": {
+          "before": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488",
+          "after": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "eb87a07beaf3f9d3a6efe0482708c863160c37971dc89acc64ba857fd5564c39",
+        "sourceFiles": {
+          "source.png": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+          "source.npy": "af3f09c0d4780de0810a2cf83496c60a1dbc8933b0da2ca6166bc82bbafdc7ab",
+          "aligned.npy": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488"
+        },
+        "sourceSilhouette": {
+          "iou": 0.972648452831879,
+          "boundaryP95Px": 6.0
+        },
+        "revisedSilhouette": {
+          "iou": 0.972648452831879,
+          "boundaryP95Px": 6.0
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 6767,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 323092,
+      "sharedPixels": 323092,
+      "missingAfterPixels": 0,
+      "before": {
+        "samples": 323092,
+        "rmsHeight": 0.013066986902338346,
+        "lowFrequencySamples": 319371,
+        "lowFrequencyRmsHeight": 0.01265333006846235,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000004075946406
+      },
+      "after": {
+        "samples": 323092,
+        "rmsHeight": 0.013066986902338346,
+        "lowFrequencySamples": 319371,
+        "lowFrequencyRmsHeight": 0.01265333006846235,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000004075946406
+      }
+    },
+    "-Z": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede",
+          "after": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede"
+        },
+        "source.npy": {
+          "before": "6938e167ff6c13a8021c1d97d5e3dc3f88bccf7e081534d45d6b8771f04614c4",
+          "after": "6938e167ff6c13a8021c1d97d5e3dc3f88bccf7e081534d45d6b8771f04614c4"
+        },
+        "aligned.npy": {
+          "before": "e0105542f31e3f7851b5f6fcd70d27b100f569f50dc912afc7082d4ef6369550",
+          "after": "e0105542f31e3f7851b5f6fcd70d27b100f569f50dc912afc7082d4ef6369550"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "0d14f6743f7963d5a57878895caa396e87e9df0ce8ac3ee006c8019fb41daec0",
+        "sourceFiles": {
+          "source.png": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede",
+          "source.npy": "6938e167ff6c13a8021c1d97d5e3dc3f88bccf7e081534d45d6b8771f04614c4",
+          "aligned.npy": "e0105542f31e3f7851b5f6fcd70d27b100f569f50dc912afc7082d4ef6369550"
+        },
+        "sourceSilhouette": {
+          "iou": 0.988862733186524,
+          "boundaryP95Px": 2.23606797749979
+        },
+        "revisedSilhouette": {
+          "iou": 0.988862733186524,
+          "boundaryP95Px": 2.23606797749979
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 2592,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 324754,
+      "sharedPixels": 324754,
+      "missingAfterPixels": 0,
+      "before": {
+        "samples": 324754,
+        "rmsHeight": 0.012377987715269663,
+        "lowFrequencySamples": 321400,
+        "lowFrequencyRmsHeight": 0.011863699688397396,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000004075946406
+      },
+      "after": {
+        "samples": 324754,
+        "rmsHeight": 0.012377987715269663,
+        "lowFrequencySamples": 321400,
+        "lowFrequencyRmsHeight": 0.011863699688397396,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000004075946406
+      }
+    }
+  },
+  "mappingPolicy": "fixed-b-rgb-v1",
+  "fixedFrame": {
+    "passed": true,
+    "checks": {
+      "resolution": true,
+      "tightBounds": true,
+      "bakeBox": true,
+      "transform": true,
+      "inverseTransform": true,
+      "faceOrder": true,
+      "coordinateSystem": true,
+      "+X:side": true,
+      "+X:up": true,
+      "+X:tile": true,
+      "+X:viewMatrix": true,
+      "+X:projectionMatrix": true,
+      "+X:frustum": true,
+      "+X:imageRowOrder": true,
+      "+X:depthEncoding": true,
+      "-X:side": true,
+      "-X:up": true,
+      "-X:tile": true,
+      "-X:viewMatrix": true,
+      "-X:projectionMatrix": true,
+      "-X:frustum": true,
+      "-X:imageRowOrder": true,
+      "-X:depthEncoding": true,
+      "+Y:side": true,
+      "+Y:up": true,
+      "+Y:tile": true,
+      "+Y:viewMatrix": true,
+      "+Y:projectionMatrix": true,
+      "+Y:frustum": true,
+      "+Y:imageRowOrder": true,
+      "+Y:depthEncoding": true,
+      "-Y:side": true,
+      "-Y:up": true,
+      "-Y:tile": true,
+      "-Y:viewMatrix": true,
+      "-Y:projectionMatrix": true,
+      "-Y:frustum": true,
+      "-Y:imageRowOrder": true,
+      "-Y:depthEncoding": true,
+      "+Z:side": true,
+      "+Z:up": true,
+      "+Z:tile": true,
+      "+Z:viewMatrix": true,
+      "+Z:projectionMatrix": true,
+      "+Z:frustum": true,
+      "+Z:imageRowOrder": true,
+      "+Z:depthEncoding": true,
+      "-Z:side": true,
+      "-Z:up": true,
+      "-Z:tile": true,
+      "-Z:viewMatrix": true,
+      "-Z:projectionMatrix": true,
+      "-Z:frustum": true,
+      "-Z:imageRowOrder": true,
+      "-Z:depthEncoding": true
+    }
+  },
+  "silhouetteQaPassed": true,
+  "method": "joint-full-depth-v1",
+  "normalMapChanged": true,
+  "intervalMapChanged": false,
+  "rangeMapChanged": false
+}

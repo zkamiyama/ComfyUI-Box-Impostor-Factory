@@ -1,0 +1,1025 @@
+{
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "assetId": "1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+  "method": "joint-full-depth-v2",
+  "predictionsReusedFrom": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/predictions",
+  "newGpuInferenceAfterFix": false,
+  "cudaDeviceEvidence": "MODEL v2 GPU NVIDIA GeForce RTX 4080 in initial/inference-process.log",
+  "inferenceSourceFaces": 6,
+  "inferenceSize": 1024,
+  "inferenceLevel": 8,
+  "actualDisplacementHeight": {
+    "p50": 0.0007205299681719686,
+    "p95": 0.0038049098348137194,
+    "max": 0.014999998628048988
+  },
+  "mesh": {
+    "uniquePositions": 499920,
+    "vertices": 499920,
+    "triangles": 1000000,
+    "originalDegenerateTriangles": 0,
+    "stepScale": 0.0009765625,
+    "maxDisplacement": 0.014999998628048988,
+    "meanDisplacement": 0.0011365933012693174,
+    "movedVertices": 499917,
+    "localBacktracking": true,
+    "attenuatedVertices": 237234,
+    "meanStepScale": 0.6226828284713054,
+    "medianStepScale": 1.0,
+    "fullStrengthVertices": 262686,
+    "localAttenuationSteps": 649960
+  },
+  "solverParameters": {
+    "maxDisplacementHeight": 0.015,
+    "iterations": 8,
+    "smoothness": 0.3,
+    "prior": 0.025,
+    "cgIterations": 120,
+    "supportBacktracks": 12
+  },
+  "solverIterations": [
+    {
+      "iteration": 0,
+      "energyBefore": 3.1398656517267227,
+      "energyAfter": 1.7985287270474435,
+      "pcgStatus": 0,
+      "pcgRelativeResidual": 0.0001887782903363845,
+      "rawGradientDotStep": -3.7181290680491705,
+      "clippedGradientDotStep": -2.6287914939866015,
+      "feasibleGradientDotStep": -2.6096836334048232,
+      "actualGradientDotCandidate": -2.6096836334048232,
+      "usedGradientFallback": false,
+      "stepAccepted": true,
+      "stepScale": 1.0,
+      "supportBacktrackedVertices": 1636,
+      "supportFrozenVertices": 0,
+      "supportBacktracksUsed": 11,
+      "multiViewVertices": 4456,
+      "singleViewVertices": 149733,
+      "rejectedCrossViewVertices": 317221
+    },
+    {
+      "iteration": 1,
+      "energyBefore": 2.660744148563291,
+      "energyAfter": 1.9923597120099097,
+      "pcgStatus": 120,
+      "pcgRelativeResidual": 0.0002064672021071635,
+      "rawGradientDotStep": -1.9544248212510238,
+      "clippedGradientDotStep": -1.6573508813903621,
+      "feasibleGradientDotStep": -1.6185484552911937,
+      "actualGradientDotCandidate": -1.6185484552911937,
+      "usedGradientFallback": false,
+      "stepAccepted": true,
+      "stepScale": 1.0,
+      "supportBacktrackedVertices": 1921,
+      "supportFrozenVertices": 0,
+      "supportBacktracksUsed": 12,
+      "multiViewVertices": 5033,
+      "singleViewVertices": 165823,
+      "rejectedCrossViewVertices": 292041
+    },
+    {
+      "iteration": 2,
+      "energyBefore": 2.5645915071167673,
+      "energyAfter": 2.27196765270636,
+      "pcgStatus": 0,
+      "pcgRelativeResidual": 0.00018270155728431845,
+      "rawGradientDotStep": -1.2336208549528997,
+      "clippedGradientDotStep": -1.1013865641397862,
+      "feasibleGradientDotStep": -1.0589601959969221,
+      "actualGradientDotCandidate": -1.0589601959969221,
+      "usedGradientFallback": false,
+      "stepAccepted": true,
+      "stepScale": 1.0,
+      "supportBacktrackedVertices": 1833,
+      "supportFrozenVertices": 1,
+      "supportBacktracksUsed": 12,
+      "multiViewVertices": 6542,
+      "singleViewVertices": 171836,
+      "rejectedCrossViewVertices": 278616
+    },
+    {
+      "iteration": 3,
+      "energyBefore": 2.6218298626538497,
+      "energyAfter": 2.4162981575797233,
+      "pcgStatus": 0,
+      "pcgRelativeResidual": 0.00019507198255163386,
+      "rawGradientDotStep": -1.0441901700375886,
+      "clippedGradientDotStep": -0.9266393419912873,
+      "feasibleGradientDotStep": -0.8575809151839056,
+      "actualGradientDotCandidate": -0.8575809151839056,
+      "usedGradientFallback": false,
+      "stepAccepted": true,
+      "stepScale": 1.0,
+      "supportBacktrackedVertices": 1627,
+      "supportFrozenVertices": 1,
+      "supportBacktracksUsed": 12,
+      "multiViewVertices": 6976,
+      "singleViewVertices": 177156,
+      "rejectedCrossViewVertices": 270375
+    },
+    {
+      "iteration": 4,
+      "energyBefore": 2.7272773847606318,
+      "energyAfter": 2.5598419964227777,
+      "pcgStatus": 0,
+      "pcgRelativeResidual": 0.00015842456016596488,
+      "rawGradientDotStep": -1.0427295865467237,
+      "clippedGradientDotStep": -0.9269193684175235,
+      "feasibleGradientDotStep": -0.8481741022955283,
+      "actualGradientDotCandidate": -0.8481741022955281,
+      "usedGradientFallback": false,
+      "stepAccepted": true,
+      "stepScale": 1.0,
+      "supportBacktrackedVertices": 1649,
+      "supportFrozenVertices": 3,
+      "supportBacktracksUsed": 12,
+      "multiViewVertices": 8074,
+      "singleViewVertices": 181265,
+      "rejectedCrossViewVertices": 264488
+    },
+    {
+      "iteration": 5,
+      "energyBefore": 2.8059498820795548,
+      "energyAfter": 2.625467424032771,
+      "pcgStatus": 0,
+      "pcgRelativeResidual": 0.0001905370208868508,
+      "rawGradientDotStep": -1.065498167235779,
+      "clippedGradientDotStep": -0.9409457024547656,
+      "feasibleGradientDotStep": -0.8572643251006916,
+      "actualGradientDotCandidate": -0.8572643251006915,
+      "usedGradientFallback": false,
+      "stepAccepted": true,
+      "stepScale": 1.0,
+      "supportBacktrackedVertices": 1467,
+      "supportFrozenVertices": 5,
+      "supportBacktracksUsed": 12,
+      "multiViewVertices": 8446,
+      "singleViewVertices": 184548,
+      "rejectedCrossViewVertices": 260853
+    },
+    {
+      "iteration": 6,
+      "energyBefore": 2.874583499916942,
+      "energyAfter": 2.697268929919499,
+      "pcgStatus": 0,
+      "pcgRelativeResidual": 0.00011870338633363578,
+      "rawGradientDotStep": -1.100635771230102,
+      "clippedGradientDotStep": -0.9729800007647292,
+      "feasibleGradientDotStep": -0.8832703258768129,
+      "actualGradientDotCandidate": -0.8832703258768128,
+      "usedGradientFallback": false,
+      "stepAccepted": true,
+      "stepScale": 1.0,
+      "supportBacktrackedVertices": 1523,
+      "supportFrozenVertices": 9,
+      "supportBacktracksUsed": 12,
+      "multiViewVertices": 9372,
+      "singleViewVertices": 186483,
+      "rejectedCrossViewVertices": 257355
+    },
+    {
+      "iteration": 7,
+      "energyBefore": 2.9047475212557634,
+      "energyAfter": 2.718803659438827,
+      "pcgStatus": 120,
+      "pcgRelativeResidual": 0.0001960191815949601,
+      "rawGradientDotStep": -1.1011056554280816,
+      "clippedGradientDotStep": -0.970338328682415,
+      "feasibleGradientDotStep": -0.8778296041073952,
+      "actualGradientDotCandidate": -0.8778296041073952,
+      "usedGradientFallback": false,
+      "stepAccepted": true,
+      "stepScale": 1.0,
+      "supportBacktrackedVertices": 1455,
+      "supportFrozenVertices": 16,
+      "supportBacktracksUsed": 12,
+      "multiViewVertices": 9532,
+      "singleViewVertices": 188109,
+      "rejectedCrossViewVertices": 255850
+    }
+  ],
+  "stages": {
+    "initialization": {
+      "startedSeconds": 0,
+      "peakProcessTreeRSSKiB": 562380,
+      "seconds": 1.407
+    },
+    "jointGeometryFit": {
+      "startedSeconds": 1.407,
+      "peakProcessTreeRSSKiB": 1242944,
+      "seconds": 61.979
+    },
+    "nativeRebakeAndFixedRGB": {
+      "startedSeconds": 63.386,
+      "peakProcessTreeRSSKiB": 2742316,
+      "seconds": 37.108
+    }
+  },
+  "elapsedSeconds": 100.493,
+  "sampledPeakProcessTreeRSSKiB": 2742316,
+  "fixedFrame": {
+    "passed": true,
+    "checks": {
+      "resolution": true,
+      "tightBounds": true,
+      "bakeBox": true,
+      "transform": true,
+      "inverseTransform": true,
+      "faceOrder": true,
+      "coordinateSystem": true,
+      "+X:side": true,
+      "+X:up": true,
+      "+X:tile": true,
+      "+X:viewMatrix": true,
+      "+X:projectionMatrix": true,
+      "+X:frustum": true,
+      "+X:imageRowOrder": true,
+      "+X:depthEncoding": true,
+      "-X:side": true,
+      "-X:up": true,
+      "-X:tile": true,
+      "-X:viewMatrix": true,
+      "-X:projectionMatrix": true,
+      "-X:frustum": true,
+      "-X:imageRowOrder": true,
+      "-X:depthEncoding": true,
+      "+Y:side": true,
+      "+Y:up": true,
+      "+Y:tile": true,
+      "+Y:viewMatrix": true,
+      "+Y:projectionMatrix": true,
+      "+Y:frustum": true,
+      "+Y:imageRowOrder": true,
+      "+Y:depthEncoding": true,
+      "-Y:side": true,
+      "-Y:up": true,
+      "-Y:tile": true,
+      "-Y:viewMatrix": true,
+      "-Y:projectionMatrix": true,
+      "-Y:frustum": true,
+      "-Y:imageRowOrder": true,
+      "-Y:depthEncoding": true,
+      "+Z:side": true,
+      "+Z:up": true,
+      "+Z:tile": true,
+      "+Z:viewMatrix": true,
+      "+Z:projectionMatrix": true,
+      "+Z:frustum": true,
+      "+Z:imageRowOrder": true,
+      "+Z:depthEncoding": true,
+      "-Z:side": true,
+      "-Z:up": true,
+      "-Z:tile": true,
+      "-Z:viewMatrix": true,
+      "-Z:projectionMatrix": true,
+      "-Z:frustum": true,
+      "-Z:imageRowOrder": true,
+      "-Z:depthEncoding": true
+    }
+  },
+  "silhouetteQaPassed": true,
+  "mapChangeFlags": {
+    "normalMapChanged": true,
+    "intervalMapChanged": true,
+    "rangeMapChanged": true
+  },
+  "faces": {
+    "+X": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa",
+          "after": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa"
+        },
+        "source.npy": {
+          "before": "6920fe5a15f6b7fcce9739e6e3e49a83ed76cd3e0648abe2ae5417f1802417be",
+          "after": "6920fe5a15f6b7fcce9739e6e3e49a83ed76cd3e0648abe2ae5417f1802417be"
+        },
+        "aligned.npy": {
+          "before": "99ca90b0bc6cf2dd379ac212f37b2dc1a14cd2d2d87a9cf05e6298390c72033c",
+          "after": "99ca90b0bc6cf2dd379ac212f37b2dc1a14cd2d2d87a9cf05e6298390c72033c"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "ac7bdb232d8433091ec26022c1f65b60e6722e34f66d0826c2d417cfe71e2ac8",
+        "sourceFiles": {
+          "source.png": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa",
+          "source.npy": "6920fe5a15f6b7fcce9739e6e3e49a83ed76cd3e0648abe2ae5417f1802417be",
+          "aligned.npy": "99ca90b0bc6cf2dd379ac212f37b2dc1a14cd2d2d87a9cf05e6298390c72033c"
+        },
+        "sourceSilhouette": {
+          "iou": 0.9822779749359579,
+          "boundaryP95Px": 5.0
+        },
+        "revisedSilhouette": {
+          "iou": 0.96895584511796,
+          "boundaryP95Px": 10.812021405179657
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 8376,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 371732,
+      "sharedPixels": 371719,
+      "missingAfterPixels": 13,
+      "before": {
+        "samples": 371719,
+        "rmsHeight": 0.011086715342453679,
+        "lowFrequencySamples": 367997,
+        "lowFrequencyRmsHeight": 0.010419320842129855,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000000178802679
+      },
+      "after": {
+        "samples": 371719,
+        "rmsHeight": 0.01060941571079624,
+        "lowFrequencySamples": 367997,
+        "lowFrequencyRmsHeight": 0.00939370869784236,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000000178802679
+      }
+    },
+    "-X": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973",
+          "after": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973"
+        },
+        "source.npy": {
+          "before": "8f31ee8d16d865193cb48dc82791ee6321cbd7a8269c3aa7bcbed6e1a7c28633",
+          "after": "8f31ee8d16d865193cb48dc82791ee6321cbd7a8269c3aa7bcbed6e1a7c28633"
+        },
+        "aligned.npy": {
+          "before": "2e45a8979c4a8b0dfb3ab6fbe7c3e7ed01fe74d2d08b7d243bff7ac95378dcad",
+          "after": "2e45a8979c4a8b0dfb3ab6fbe7c3e7ed01fe74d2d08b7d243bff7ac95378dcad"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "6a497991aa0ff8f18551c1603dfe5e8880c4143abdcb81e33783da76a40e52df",
+        "sourceFiles": {
+          "source.png": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973",
+          "source.npy": "8f31ee8d16d865193cb48dc82791ee6321cbd7a8269c3aa7bcbed6e1a7c28633",
+          "aligned.npy": "2e45a8979c4a8b0dfb3ab6fbe7c3e7ed01fe74d2d08b7d243bff7ac95378dcad"
+        },
+        "sourceSilhouette": {
+          "iou": 0.9861383487503192,
+          "boundaryP95Px": 3.1622776601683795
+        },
+        "revisedSilhouette": {
+          "iou": 0.9705744978981784,
+          "boundaryP95Px": 11.180339887498949
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 9086,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 368754,
+      "sharedPixels": 368750,
+      "missingAfterPixels": 4,
+      "before": {
+        "samples": 368750,
+        "rmsHeight": 0.01148754096189035,
+        "lowFrequencySamples": 365118,
+        "lowFrequencyRmsHeight": 0.011171003645726431,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000000178802679
+      },
+      "after": {
+        "samples": 368750,
+        "rmsHeight": 0.011818547569115661,
+        "lowFrequencySamples": 365118,
+        "lowFrequencyRmsHeight": 0.010134408268436803,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015156855566806349
+      }
+    },
+    "+Y": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d",
+          "after": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d"
+        },
+        "source.npy": {
+          "before": "2efb4294efd3b69223145c08f7520aab1276242cf9922596e35704740cf9eaf6",
+          "after": "2efb4294efd3b69223145c08f7520aab1276242cf9922596e35704740cf9eaf6"
+        },
+        "aligned.npy": {
+          "before": "b8670517f6a84efc51802b0fd8e4dfbdfe0e9703032a37a15200542444db5854",
+          "after": "b8670517f6a84efc51802b0fd8e4dfbdfe0e9703032a37a15200542444db5854"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "5a7b4be152bcbb8898656e4db93a70f298a3f8185ae2ea2aa30e1e44a99f0b42",
+        "sourceFiles": {
+          "source.png": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d",
+          "source.npy": "2efb4294efd3b69223145c08f7520aab1276242cf9922596e35704740cf9eaf6",
+          "aligned.npy": "b8670517f6a84efc51802b0fd8e4dfbdfe0e9703032a37a15200542444db5854"
+        },
+        "sourceSilhouette": {
+          "iou": 0.9924306005163498,
+          "boundaryP95Px": 2.23606797749979
+        },
+        "revisedSilhouette": {
+          "iou": 0.9717591839091926,
+          "boundaryP95Px": 12.06853798541376
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 7166,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 356470,
+      "sharedPixels": 356445,
+      "missingAfterPixels": 25,
+      "before": {
+        "samples": 356445,
+        "rmsHeight": 0.014541062824540938,
+        "lowFrequencySamples": 353696,
+        "lowFrequencyRmsHeight": 0.013644779271659094,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.01500000298023224
+      },
+      "after": {
+        "samples": 356445,
+        "rmsHeight": 0.0228374334723917,
+        "lowFrequencySamples": 353696,
+        "lowFrequencyRmsHeight": 0.014648975752747258,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.017539057731628418
+      }
+    },
+    "-Y": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623",
+          "after": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623"
+        },
+        "source.npy": {
+          "before": "3902f306807845315e0b3e3c65c98a4cbf0ce04baf5bbd08a1bca0d4525cfa08",
+          "after": "3902f306807845315e0b3e3c65c98a4cbf0ce04baf5bbd08a1bca0d4525cfa08"
+        },
+        "aligned.npy": {
+          "before": "a2285b1647f69128e1e061185397790c24eae160606ca25fe9dda18cfab70bad",
+          "after": "a2285b1647f69128e1e061185397790c24eae160606ca25fe9dda18cfab70bad"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "345ebdb88372b6e8bd743eb11d71144e6f07d20e9f17a6f8a6d52d8d1e555ac6",
+        "sourceFiles": {
+          "source.png": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623",
+          "source.npy": "3902f306807845315e0b3e3c65c98a4cbf0ce04baf5bbd08a1bca0d4525cfa08",
+          "aligned.npy": "a2285b1647f69128e1e061185397790c24eae160606ca25fe9dda18cfab70bad"
+        },
+        "sourceSilhouette": {
+          "iou": 0.9757033481589691,
+          "boundaryP95Px": 5.0
+        },
+        "revisedSilhouette": {
+          "iou": 0.958733101583623,
+          "boundaryP95Px": 11.40175425099138
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 5014,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 367117,
+      "sharedPixels": 366536,
+      "missingAfterPixels": 581,
+      "before": {
+        "samples": 366536,
+        "rmsHeight": 0.013517130706251646,
+        "lowFrequencySamples": 363812,
+        "lowFrequencyRmsHeight": 0.012187911305456097,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.01500000298023224
+      },
+      "after": {
+        "samples": 366536,
+        "rmsHeight": 0.03859263573084537,
+        "lowFrequencySamples": 363812,
+        "lowFrequencyRmsHeight": 0.02479730041307679,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.03074218466877937
+      }
+    },
+    "+Z": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+          "after": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f"
+        },
+        "source.npy": {
+          "before": "af3f09c0d4780de0810a2cf83496c60a1dbc8933b0da2ca6166bc82bbafdc7ab",
+          "after": "af3f09c0d4780de0810a2cf83496c60a1dbc8933b0da2ca6166bc82bbafdc7ab"
+        },
+        "aligned.npy": {
+          "before": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488",
+          "after": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "eb87a07beaf3f9d3a6efe0482708c863160c37971dc89acc64ba857fd5564c39",
+        "sourceFiles": {
+          "source.png": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+          "source.npy": "af3f09c0d4780de0810a2cf83496c60a1dbc8933b0da2ca6166bc82bbafdc7ab",
+          "aligned.npy": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488"
+        },
+        "sourceSilhouette": {
+          "iou": 0.972648452831879,
+          "boundaryP95Px": 6.0
+        },
+        "revisedSilhouette": {
+          "iou": 0.9499040617070721,
+          "boundaryP95Px": 14.142135623730951
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 14905,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 323092,
+      "sharedPixels": 323089,
+      "missingAfterPixels": 3,
+      "before": {
+        "samples": 323089,
+        "rmsHeight": 0.013066967625996238,
+        "lowFrequencySamples": 319367,
+        "lowFrequencyRmsHeight": 0.01265336582533474,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000004075946406
+      },
+      "after": {
+        "samples": 323089,
+        "rmsHeight": 0.013455387533284706,
+        "lowFrequencySamples": 319367,
+        "lowFrequencyRmsHeight": 0.012082880169016638,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015731627183513834
+      }
+    },
+    "-Z": {
+      "sameSourceRGB": true,
+      "sameSourceSamples": true,
+      "sameAlignedRGB": true,
+      "imageHashes": {
+        "source.png": {
+          "before": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede",
+          "after": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede"
+        },
+        "source.npy": {
+          "before": "6938e167ff6c13a8021c1d97d5e3dc3f88bccf7e081534d45d6b8771f04614c4",
+          "after": "6938e167ff6c13a8021c1d97d5e3dc3f88bccf7e081534d45d6b8771f04614c4"
+        },
+        "aligned.npy": {
+          "before": "e0105542f31e3f7851b5f6fcd70d27b100f569f50dc912afc7082d4ef6369550",
+          "after": "e0105542f31e3f7851b5f6fcd70d27b100f569f50dc912afc7082d4ef6369550"
+        }
+      },
+      "samplingMappingUnchanged": true,
+      "alignmentStatus": "accepted",
+      "silhouetteQA": {
+        "sourceAlignmentKey": "0d14f6743f7963d5a57878895caa396e87e9df0ce8ac3ee006c8019fb41daec0",
+        "sourceFiles": {
+          "source.png": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede",
+          "source.npy": "6938e167ff6c13a8021c1d97d5e3dc3f88bccf7e081534d45d6b8771f04614c4",
+          "aligned.npy": "e0105542f31e3f7851b5f6fcd70d27b100f569f50dc912afc7082d4ef6369550"
+        },
+        "sourceSilhouette": {
+          "iou": 0.988862733186524,
+          "boundaryP95Px": 2.23606797749979
+        },
+        "revisedSilhouette": {
+          "iou": 0.9616108568480898,
+          "boundaryP95Px": 13.0
+        },
+        "minIoU": 0.85,
+        "status": "accepted",
+        "sameAlignedRGB": true,
+        "newGeometryUncoveredPixels": 11481,
+        "registrationChanged": false,
+        "resampled": false
+      },
+      "targetPixels": 324754,
+      "sharedPixels": 324751,
+      "missingAfterPixels": 3,
+      "before": {
+        "samples": 324751,
+        "rmsHeight": 0.01237801948823042,
+        "lowFrequencySamples": 321397,
+        "lowFrequencyRmsHeight": 0.011863739270608827,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015000004075946406
+      },
+      "after": {
+        "samples": 324751,
+        "rmsHeight": 0.013420736103799836,
+        "lowFrequencySamples": 321397,
+        "lowFrequencyRmsHeight": 0.011727415850526576,
+        "lowFrequencySigmaPixels": 16.0,
+        "p95AbsHeight": 0.015823080071959764
+      }
+    }
+  },
+  "assets": {
+    "B": {
+      "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "directory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "manifestSha256": "650893815ec21de1994ee47eb78469f157be43ee6aa8282bf7d45ee94d4bca0e",
+      "proxySha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+      "textures": {
+        "colorMap": {
+          "path": "maps/color_edited.rgba16f.bin",
+          "sha256": "c9aac4921ed65f225fc65c04abec13cc5750b46135fe25da2b4e0486213d4355",
+          "bytes": 50331648
+        },
+        "normalMap": {
+          "path": "maps/normal.rgba16f.bin",
+          "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+          "bytes": 50331648
+        },
+        "intervalMap": {
+          "path": "maps/interval.rgba16f.bin",
+          "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+          "bytes": 25165824
+        },
+        "rangeMap": {
+          "path": "maps/range.rgba16f.bin",
+          "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+          "bytes": 393216
+        }
+      },
+      "bakeBox": {
+        "min": [
+          -0.19968106269836425,
+          -0.52,
+          -0.18729551553726195
+        ],
+        "max": [
+          0.19968106269836425,
+          0.52,
+          0.18729551553726195
+        ]
+      },
+      "transform": [
+        1.1176511734153667,
+        0,
+        0,
+        0,
+        0,
+        1.1176511734153667,
+        0,
+        0,
+        0,
+        0,
+        1.1176511734153667,
+        0,
+        0.010881411855650119,
+        0.02839508237150308,
+        0.013759666322433382,
+        1
+      ]
+    },
+    "B-normal-only": {
+      "assetId": "cda76d9249679db4eac25221bd9b2ab313d0f203c4ce425ab45e1cbe578fcd74",
+      "directory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/cda76d9249679db4eac25221bd9b2ab313d0f203c4ce425ab45e1cbe578fcd74",
+      "manifestSha256": "b02a7bb1b13fcbb341df8435e04539c16a1d3da4cf5f8a1235453a1aaa074c4c",
+      "proxySha256": "020f6a29688393be11b62e6987c80f956abc5d5e28e80b7b3c9220f21d67093e",
+      "textures": {
+        "colorMap": {
+          "path": "maps/color_edited.rgba16f.bin",
+          "sha256": "c9aac4921ed65f225fc65c04abec13cc5750b46135fe25da2b4e0486213d4355",
+          "bytes": 50331648
+        },
+        "normalMap": {
+          "path": "maps/normal.rgba16f.bin",
+          "sha256": "0c882072aed7442c04fddb4dab9df748a2b870fec15c3835531a8bdac4cee0fc",
+          "bytes": 50331648
+        },
+        "intervalMap": {
+          "path": "maps/interval.rgba16f.bin",
+          "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+          "bytes": 25165824
+        },
+        "rangeMap": {
+          "path": "maps/range.rgba16f.bin",
+          "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+          "bytes": 393216
+        }
+      },
+      "bakeBox": {
+        "min": [
+          -0.19968106269836425,
+          -0.52,
+          -0.18729551553726195
+        ],
+        "max": [
+          0.19968106269836425,
+          0.52,
+          0.18729551553726195
+        ]
+      },
+      "transform": [
+        1.1176511734153667,
+        0,
+        0,
+        0,
+        0,
+        1.1176511734153667,
+        0,
+        0,
+        0,
+        0,
+        1.1176511734153667,
+        0,
+        0.010881411855650119,
+        0.02839508237150308,
+        0.013759666322433382,
+        1
+      ]
+    },
+    "C-initial": {
+      "assetId": "b84ecfff22e6ad96e9105d858731aafe3a667f8f99c52b1824ea9ac5560a3077",
+      "directory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/b84ecfff22e6ad96e9105d858731aafe3a667f8f99c52b1824ea9ac5560a3077",
+      "manifestSha256": "98a59c1dd00b9dae85419961d1f788322b8f9e8f4867eade13987d1b3f417d2d",
+      "proxySha256": "020f6a29688393be11b62e6987c80f956abc5d5e28e80b7b3c9220f21d67093e",
+      "textures": {
+        "colorMap": {
+          "path": "maps/color_edited.rgba16f.bin",
+          "sha256": "c9aac4921ed65f225fc65c04abec13cc5750b46135fe25da2b4e0486213d4355",
+          "bytes": 50331648
+        },
+        "normalMap": {
+          "path": "maps/normal.rgba16f.bin",
+          "sha256": "0c882072aed7442c04fddb4dab9df748a2b870fec15c3835531a8bdac4cee0fc",
+          "bytes": 50331648
+        },
+        "intervalMap": {
+          "path": "maps/interval.rgba16f.bin",
+          "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+          "bytes": 25165824
+        },
+        "rangeMap": {
+          "path": "maps/range.rgba16f.bin",
+          "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+          "bytes": 393216
+        }
+      },
+      "bakeBox": {
+        "min": [
+          -0.19968106269836425,
+          -0.52,
+          -0.18729551553726195
+        ],
+        "max": [
+          0.19968106269836425,
+          0.52,
+          0.18729551553726195
+        ]
+      },
+      "transform": [
+        1.1176511734153667,
+        0,
+        0,
+        0,
+        0,
+        1.1176511734153667,
+        0,
+        0,
+        0,
+        0,
+        1.1176511734153667,
+        0,
+        0.010881411855650119,
+        0.02839508237150308,
+        0.013759666322433382,
+        1
+      ]
+    },
+    "C": {
+      "assetId": "1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+      "directory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+      "manifestSha256": "9187bae012c757fc7bf0b7c3e8d9c906a2069844d65d8c3ac743faa049d300ce",
+      "proxySha256": "86f657dddf2ef5d25e3b8859d61e2750d4ac84ac0de6622bed5dda13acefb1f2",
+      "textures": {
+        "colorMap": {
+          "path": "maps/color_edited.rgba16f.bin",
+          "sha256": "da291bc07009b2d17e8bafca26b30c8a91720f84c96d32cc173d34f771113f2b",
+          "bytes": 50331648,
+          "sha256Verified": true
+        },
+        "normalMap": {
+          "path": "maps/normal.rgba16f.bin",
+          "sha256": "6747375ec4009e16cfdd2c28276e12d8f09a8ddb6de47437a0b5a2d723fa4a5a",
+          "bytes": 50331648,
+          "sha256Verified": true
+        },
+        "intervalMap": {
+          "path": "maps/interval.rgba16f.bin",
+          "sha256": "30c785cec636d1680f1bad9cf7d3ae117382c3c09658a4724c790c94880bc0ad",
+          "bytes": 25165824,
+          "sha256Verified": true
+        },
+        "rangeMap": {
+          "path": "maps/range.rgba16f.bin",
+          "sha256": "672ff3d9f448e5df0cec9eb523907ad67c782e85d0ee1ed2a5daaa55dd9ceba4",
+          "bytes": 393216,
+          "sha256Verified": true
+        }
+      },
+      "bakeBox": {
+        "min": [
+          -0.19968106269836425,
+          -0.52,
+          -0.18729551553726195
+        ],
+        "max": [
+          0.19968106269836425,
+          0.52,
+          0.18729551553726195
+        ]
+      },
+      "transform": [
+        1.1176511734153667,
+        0,
+        0,
+        0,
+        0,
+        1.1176511734153667,
+        0,
+        0,
+        0,
+        0,
+        1.1176511734153667,
+        0,
+        0.010881411855650119,
+        0.02839508237150308,
+        0.013759666322433382,
+        1
+      ]
+    }
+  },
+  "evidenceFiles": [
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/initial/result.json",
+      "bytes": 13638,
+      "sha256": "e12fff510c44cca7364bdcb17c135ff46f6d06425efb4dd33970c7c572a4ecc5"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/initial/refinement.json",
+      "bytes": 9190,
+      "sha256": "34a837ed1cd899303a755e5bd378f462dc51c3de8273aadda8598caac5c898df"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/initial/rebake-evaluation.json",
+      "bytes": 16191,
+      "sha256": "f30a2aebe37070a3fe16a67172880326ce663c34412f7c08f40c4fb6dd35818b"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/initial/fixed-rgb-qa.json",
+      "bytes": 6719,
+      "sha256": "2a3bc3cd9493fa0eb198757686d5dda708a39fc6f57923736554cd84d78b29b3"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/initial/inference-invocation.json",
+      "bytes": 2697,
+      "sha256": "5f7ac65c8832f00a2caee76adce6c757fd9a97d5bf35398b3220dbef3c8042e9"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/initial/inference-process.log",
+      "bytes": 1791,
+      "sha256": "f426e92c119dac6fc86356e8e011ebebe1dc71d65f29cac4fdb034585ae03c7c"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/initial/process.log",
+      "bytes": 1012,
+      "sha256": "9e5f5396652d6ea016391ec0cfc819bc78f1cf1691664808d10c0b354df24e14"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/initial/run-observation.json",
+      "bytes": 9260,
+      "sha256": "ce56a4e527ed54c9ad1f18ae7f16f9d772bc3f54837dc04256d2291c796ea7fd"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/initial/predictions/inference.json",
+      "bytes": 2561,
+      "sha256": "3c69ef722167243ee91fbe3655307a0cb98cef689dd379a18272d1dd6ff9cd65"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/fixed-support/result.json",
+      "bytes": 20551,
+      "sha256": "a11b596a640b38de0f0e91d6fe79d473b99555a64941ab66378749bc5bef39fc"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/fixed-support/refinement.json",
+      "bytes": 15443,
+      "sha256": "12e5eb82fb8fa723a49566e88b5feb7708fd03994a33283f386b46a108ffb754"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/fixed-support/rebake-evaluation.json",
+      "bytes": 16226,
+      "sha256": "afa6ba0c2cc82acd21dd516df5b7ad595bc045081f64fb389d331fa3079a156e"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/fixed-support/fixed-rgb-qa.json",
+      "bytes": 6756,
+      "sha256": "d8e4b2a7f052f3fadbcfbe3d76718a0b9b11dee6c04e378a8e7e7cfb8ba58a5c"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/fixed-support/process.log",
+      "bytes": 903,
+      "sha256": "eb92e93977114b796280763a5afbb1934a1c828ce90d5b925d8047ecb33bfa9b"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/fixed-support/run-observation.json",
+      "bytes": 8191,
+      "sha256": "eb13d762580075bbf04c2925a1bef3c4c721a359650e40d0b8a217e28b3ba79d"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/solver-first-step-diagnostic.json",
+      "bytes": 34661,
+      "sha256": "3cf5847b9116de7ee20b1e929e1d62be625074a1ab073387c494f08e5b9ad3ed"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/solver-first-step-diagnostic.log",
+      "bytes": 4243,
+      "sha256": "c8466c63467ee8cc92a843a809df40a994b5ded2c2e36caabe7eed05f823eac9"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/diagnose_first_step.py",
+      "bytes": 5030,
+      "sha256": "00c1d7f4419122e101f3ec3eecbd1a12b246de172af96fcf86ad7de35dfe7163"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/run_monitored.py",
+      "bytes": 6062,
+      "sha256": "201e4e4c7cf18e61be6124dbb2956b88fe57f8c3f7cc956426b77598662d1aa5"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/run_fixed_support.py",
+      "bytes": 5901,
+      "sha256": "01296427f958cac76a2aa079d0e40e6839c86abe115bad03c56ce6e731edf1a1"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/initial/full_depth-v1.py",
+      "bytes": 32956,
+      "sha256": "50236b87309e1786c0e2f815a685a5e03c0a24da6554e3382c57b29e7a8a2026"
+    },
+    {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/C-run/replay_initial_diagnostic.py",
+      "bytes": 783,
+      "sha256": "d41e985634831b8179b4b703e66f8dcec0a1180e1a88bb82232368aacf0ed8fb"
+    }
+  ],
+  "sourceCode": {
+    "box_nodes/full_depth.py": "3b054ce9e6970b8ccf67f4dd68b0bd1c6172cde2c6637a047564b659743f2a31",
+    "box_nodes/mesh_normals.py": "3ec0758bb13b44acddadb9cdc2e2c4a5ecd3d94290618ec492947b65124d201b",
+    "scripts/refine_full_depth.py": "4a43f9b7662317376c388b69d8cdc864df11f78a6af5e4f381d01c1e12b3f261",
+    "scripts/moge_face_depth_infer.py": "c55e0f1e1f962d4957bb319b1e76e47f5de93a58940d59201d45f3c81cb2ef2f",
+    "tests/test_full_depth.py": "e52592f754037c38154579651c47344977ce356bef6497696c5908403f402ff6"
+  },
+  "initialSolverSource": {
+    "gitRevision": "527f2d9676f15401325e269e94fe33309237a3f8",
+    "path": "box_nodes/full_depth.py",
+    "sha256": "50236b87309e1786c0e2f815a685a5e03c0a24da6554e3382c57b29e7a8a2026",
+    "snapshot": "initial/full_depth-v1.py",
+    "replay": "replay_initial_diagnostic.py"
+  }
+}

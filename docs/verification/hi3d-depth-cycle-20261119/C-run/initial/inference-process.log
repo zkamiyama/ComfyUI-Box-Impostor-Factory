@@ -1,0 +1,12 @@
+WARNING:root:WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
+WARNING WARNING WARNING
+If you are on nvidia 20 series and above it is required that you update your pytorch to cu130 or higher.
+
+MODEL v2 GPU NVIDIA GeForce RTX 4080
+FACE px {"source_sha256": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa", "crop": [306, 0, 715, 1024], "shape": [1024, 1024], "valid": 418816, "quantiles": [3.9913922548294067, 4.4133689403533936, 4.911995244026184], "seconds": 0.92}
+FACE nx {"source_sha256": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973", "crop": [307, 0, 715, 1024], "shape": [1024, 1024], "valid": 417792, "quantiles": [7.937935829162598, 8.360846519470215, 8.685653676986695], "seconds": 0.31}
+FACE py {"source_sha256": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d", "crop": [14, 46, 1010, 977], "shape": [1024, 1024], "valid": 927276, "quantiles": [2.3488612174987793, 3.031991720199585, 3.6624661684036255], "seconds": 0.37}
+FACE ny {"source_sha256": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623", "crop": [12, 28, 1013, 980], "shape": [1024, 1024], "valid": 952952, "quantiles": [1.2170399570465087, 1.7714735269546509, 2.4586744260787965], "seconds": 0.34}
+FACE pz {"source_sha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f", "crop": [294, 0, 729, 1024], "shape": [1024, 1024], "valid": 445440, "quantiles": [5.011045837402344, 5.470840215682983, 6.0036518764495845], "seconds": 0.32}
+FACE nz {"source_sha256": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede", "crop": [295, 0, 728, 1024], "shape": [1024, 1024], "valid": 443392, "quantiles": [3.754674186706543, 4.296421527862549, 4.814071197509765], "seconds": 0.33}
+SUCCESS 6

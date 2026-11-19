@@ -20,7 +20,7 @@ from .neural_depth import project_prediction
 from .revision import DEPTH_ENCODING, RebakeProxyRevision
 from .mesh_normals import geometry_normals, mesh_arrays, vertex_normals
 
-METHOD = 'joint-full-depth-v1'
+METHOD = 'joint-full-depth-v2'
 SLUGS = dict(zip(store.FACES, ('px', 'nx', 'py', 'ny', 'pz', 'nz')))
 
 
@@ -79,12 +79,6 @@ class DepthView:
         self.right = np.cross(self.up, self.side)
         self.r = self.coarse.shape[0]
         self.mask = self.mask & np.isfinite(self.coarse) & np.isfinite(self.target)
-        if self.mask.any():
-            indices = ndimage.distance_transform_edt(~self.mask, return_distances=False, return_indices=True)
-            filled = self.target[tuple(indices)]
-        else:
-            filled = np.zeros_like(self.target,dtype='f4')
-        self.gy, self.gx = [x.astype('f4') for x in np.gradient(filled)]
         self.target = np.where(self.mask, self.target, 0).astype('f4')
         self.coarse = np.where(np.isfinite(self.coarse), self.coarse, 0).astype('f4')
         self.coverage = self.mask.astype('f4')
@@ -100,10 +94,57 @@ class DepthView:
         kwargs = dict(order=1, mode='constant', cval=0., prefilter=False)
         covered = ndimage.map_coordinates(self.coverage, coords, **kwargs) > .999
         target = ndimage.map_coordinates(self.target, coords, **kwargs)
-        gx = ndimage.map_coordinates(self.gx, coords, **kwargs)*self.r
-        gy = ndimage.map_coordinates(self.gy, coords, **kwargs)*self.r
+        gx, gy = bilinear_gradient(self.target, coords)
+        gx, gy = gx*self.r, gy*self.r
         jacobian = -self.side[None, :] - gx[:, None]*self.right + gy[:, None]*self.up
         return axial-target, jacobian.astype('f4'), covered, coords
+
+    def covered(self, points):
+        coords, _ = self.project(points)
+        return ndimage.map_coordinates(self.coverage, coords, order=1,
+            mode='constant', cval=0., prefilter=False) > .999
+
+
+def bilinear_gradient(image, coords):
+    """Exact within-cell derivative of map_coordinates(order=1), in pixel units."""
+    h, w = image.shape
+    y, x = coords
+    inside = (y>=0)&(y<=h-1)&(x>=0)&(x<=w-1)
+    y0 = np.clip(np.floor(y).astype(np.int64), 0, max(h-2,0))
+    x0 = np.clip(np.floor(x).astype(np.int64), 0, max(w-2,0))
+    y1, x1 = np.minimum(y0+1,h-1), np.minimum(x0+1,w-1)
+    fy, fx = y-y0, x-x0
+    a,b,c,d = image[y0,x0],image[y0,x1],image[y1,x0],image[y1,x1]
+    gx = (b-a)*(1-fy)+(d-c)*fy
+    gy = (c-a)*(1-fx)+(d-b)*fx
+    return np.where(inside,gx,0), np.where(inside,gy,0)
+
+
+def feasible_support_step(current, step, views, rows, project, max_backtracks=12):
+    """Keep every positive-weight observation; shorten only support-exiting vertices."""
+    step = step.copy()
+    touched = np.zeros(len(current), dtype=bool)
+    invalid = np.zeros(len(current), dtype=bool)
+    for attempt in range(max_backtracks+1):
+        candidate = project(current+step)
+        invalid[:] = False
+        for view,(_,_,weight) in zip(views,rows):
+            invalid |= (weight>0)&~view.covered(candidate)
+        touched |= invalid
+        if not invalid.any():
+            break
+        if attempt == max_backtracks:
+            step[invalid] = 0
+            break
+        step[invalid] *= .5
+    candidate = project(current+step)
+    for view,(_,_,weight) in zip(views,rows):
+        if np.any((weight>0)&~view.covered(candidate)):
+            raise RuntimeError('Current positive-weight observations are not feasible.')
+    return candidate-current, {
+        'supportBacktrackedVertices':int(touched.sum()),
+        'supportFrozenVertices':int(invalid.sum()) if attempt==max_backtracks else 0,
+        'supportBacktracksUsed':attempt}
 
 
 def displacement_laplacian(triangles, count):
@@ -179,7 +220,7 @@ def constraints(points, views, seed_weights):
 
 
 def joint_fit(points, triangles, views, bounds, *, max_displacement_height=.015,
-              iterations=8, smoothness=.3, prior=.025, cg_iterations=120):
+              iterations=8, smoothness=.3, prior=.025, cg_iterations=120, support_backtracks=12):
     """IRLS/Gauss-Newton on one mesh with a matrix-free 3x3-block PCG system."""
     low, high = np.asarray(bounds['min']), np.asarray(bounds['max'])
     span = high-low
@@ -195,6 +236,13 @@ def joint_fit(points, triangles, views, bounds, *, max_displacement_height=.015,
     pins = np.isclose(base,base.min(axis=0),atol=1e-7)|np.isclose(base,base.max(axis=0),atol=1e-7)
     diagonal_prior = np.full_like(base,prior)+pins.astype('f4')*10000
     logs = []
+    def project(candidate):
+        delta = (candidate-base)*span
+        length = np.linalg.norm(delta,axis=1)
+        candidate = base+(candidate-base)*np.minimum(1.,max_world/np.maximum(length,1e-12))[:,None]
+        candidate = np.clip(candidate,base.min(axis=0),base.max(axis=0))
+        candidate[pins] = base[pins]
+        return candidate
     def energy(candidate, rows):
         displacement = candidate-base
         cost = float(np.sum(diagonal_prior*displacement**2))
@@ -219,25 +267,39 @@ def joint_fit(points, triangles, views, bounds, *, max_displacement_height=.015,
         operator = LinearOperator((base.size,base.size),matvec=product,dtype=np.float32)
         preconditioner = LinearOperator(operator.shape,matvec=lambda v:v/diag.ravel(),dtype=np.float32)
         step, status = cg(operator,rhs.ravel(),M=preconditioner,rtol=2e-4,atol=1e-8,maxiter=cg_iterations)
+        pcg_residual = float(np.linalg.norm(operator@step-rhs.ravel())/max(np.linalg.norm(rhs),1e-30))
+        raw_gradient_dot = -2*float(np.sum(rhs.ravel()*step,dtype='f8'))
         step = step.reshape(-1,3)
         length = np.linalg.norm(step*span,axis=1)
         step *= np.minimum(1.,max_world/3/np.maximum(length,1e-12))[:,None]
+        clipped_gradient_dot = -2*float(np.sum(rhs*step,dtype='f8'))
+        step, support = feasible_support_step(current,step,views,rows,project,support_backtracks)
+        gradient_dot = -2*float(np.sum(rhs*step,dtype='f8'))
+        used_gradient_fallback = False
+        if gradient_dot>=0 and np.linalg.norm(rhs)>1e-8:
+            # Projection can change the PCG direction. Try a descent direction,
+            # with the same bounds, observations and energy acceptance criterion.
+            step = rhs/np.maximum(diag,1e-12)
+            length = np.linalg.norm(step*span,axis=1)
+            step *= np.minimum(1.,max_world/3/np.maximum(length,1e-12))[:,None]
+            step, support = feasible_support_step(current,step,views,rows,project,support_backtracks)
+            gradient_dot = -2*float(np.sum(rhs*step,dtype='f8'))
+            used_gradient_fallback = True
         old_energy = energy(current,rows)
         accepted = False
         for backtrack in range(9):
-            candidate = current+step*(.5**backtrack)
-            delta = (candidate-base)*span
-            length = np.linalg.norm(delta,axis=1)
-            candidate = base+(candidate-base)*np.minimum(1.,max_world/np.maximum(length,1e-12))[:,None]
-            candidate = np.clip(candidate,base.min(axis=0),base.max(axis=0))
-            candidate[pins] = base[pins]
+            candidate = project(current+step*(.5**backtrack))
             new_energy = energy(candidate,rows)
             if new_energy <= old_energy+1e-10:
                 accepted = True
                 break
         logs.append({'iteration':iteration,'energyBefore':old_energy,'energyAfter':new_energy,
-                     'pcgStatus':int(status),'stepAccepted':accepted,
-                     'stepScale':float(.5**backtrack),**agreement})
+                     'pcgStatus':int(status),'pcgRelativeResidual':pcg_residual,
+                     'rawGradientDotStep':raw_gradient_dot,'clippedGradientDotStep':clipped_gradient_dot,
+                     'feasibleGradientDotStep':gradient_dot,
+                     'actualGradientDotCandidate':-2*float(np.sum(rhs*(candidate-current),dtype='f8')),
+                     'usedGradientFallback':used_gradient_fallback,
+                     'stepAccepted':accepted,'stepScale':float(.5**backtrack),**support,**agreement})
         if not accepted:
             break
         moved = float(np.max(np.linalg.norm((candidate-current)*span,axis=1)))
@@ -248,9 +310,12 @@ def joint_fit(points, triangles, views, bounds, *, max_displacement_height=.015,
     lengths = np.linalg.norm(output-points,axis=1)/height
     return output, {'solver':'joint-IRLS-GaussNewton-matrix-free-PCG',
         'visibility':'seed first-hit + current vertex-splat; not triangle rasterization',
+        'jacobian':'exact bilinear target derivative',
+        'stepPolicy':'retain all positive-weight support; locally shorten support-exiting vertices',
         'regularization':'graph Laplacian of displacement only',
         'parameters':{'maxDisplacementHeight':max_displacement_height,'iterations':iterations,
-                      'smoothness':smoothness,'prior':prior,'cgIterations':cg_iterations},
+                      'smoothness':smoothness,'prior':prior,'cgIterations':cg_iterations,
+                      'supportBacktracks':support_backtracks},
         'vertices':len(points),'triangles':len(triangles),'height':height,
         'normalizedDisplacement':{'p50':float(np.quantile(lengths,.5)),
                                   'p95':float(np.quantile(lengths,.95)),'max':float(lengths.max())},

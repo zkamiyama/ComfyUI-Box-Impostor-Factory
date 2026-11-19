@@ -1,0 +1,1074 @@
+{
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "predictionDirectory": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/predictions",
+  "solver": {
+    "solver": "joint-IRLS-GaussNewton-matrix-free-PCG",
+    "visibility": "seed first-hit + current vertex-splat; not triangle rasterization",
+    "regularization": "graph Laplacian of displacement only",
+    "parameters": {
+      "maxDisplacementHeight": 0.015,
+      "iterations": 1,
+      "smoothness": 0.3,
+      "prior": 0.025,
+      "cgIterations": 120
+    },
+    "vertices": 499920,
+    "triangles": 1000000,
+    "height": 1.0,
+    "normalizedDisplacement": {
+      "p50": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "iterations": [
+      {
+        "iteration": 0,
+        "energyBefore": 3.1398656517267227,
+        "energyAfter": 3.1760567465867986,
+        "pcgStatus": 120,
+        "stepAccepted": false,
+        "stepScale": 0.00390625,
+        "multiViewVertices": 4456,
+        "singleViewVertices": 149733,
+        "rejectedCrossViewVertices": 317221
+      }
+    ]
+  },
+  "agreement": {
+    "multiViewVertices": 4456,
+    "singleViewVertices": 149733,
+    "rejectedCrossViewVertices": 317221
+  },
+  "cg": {
+    "status": 120,
+    "seconds": 3.213072552000085,
+    "rhsL2": 0.8319919109344482,
+    "residualL2": 0.0002944021289869107,
+    "relativeResidualL2": 0.0003538521530290531,
+    "negativeGradientDotStep": 1.8621876239776611
+  },
+  "gradientDotClippedPinnedStep": -2.620520548308546,
+  "before": {
+    "prior": 0.0,
+    "smoothness": 0.0,
+    "data": 3.139865510388377,
+    "validData": 3.139865510388377,
+    "invalidPenalty": 0.0,
+    "faces": {
+      "+X": {
+        "supportedRows": 37390,
+        "invalidRows": 0,
+        "invalidPenalty": 0.0,
+        "validResidualCost": 0.7042028544911576,
+        "sampledResidualCost": 0.7042028544911576
+      },
+      "-X": {
+        "supportedRows": 31312,
+        "invalidRows": 0,
+        "invalidPenalty": 0.0,
+        "validResidualCost": 0.6608106186080249,
+        "sampledResidualCost": 0.6608106186080249
+      },
+      "+Y": {
+        "supportedRows": 7146,
+        "invalidRows": 0,
+        "invalidPenalty": 0.0,
+        "validResidualCost": 0.0806643093658754,
+        "sampledResidualCost": 0.0806643093658754
+      },
+      "-Y": {
+        "supportedRows": 16841,
+        "invalidRows": 0,
+        "invalidPenalty": 0.0,
+        "validResidualCost": 0.10573724866080553,
+        "sampledResidualCost": 0.10573724866080553
+      },
+      "+Z": {
+        "supportedRows": 43188,
+        "invalidRows": 0,
+        "invalidPenalty": 0.0,
+        "validResidualCost": 1.0563156084369547,
+        "sampledResidualCost": 1.0563156084369547
+      },
+      "-Z": {
+        "supportedRows": 22791,
+        "invalidRows": 0,
+        "invalidPenalty": 0.0,
+        "validResidualCost": 0.532134870825559,
+        "sampledResidualCost": 0.5321348708255589
+      }
+    },
+    "energy": 3.139865510388377
+  },
+  "backtracking": [
+    {
+      "prior": 0.2893611008871879,
+      "smoothness": 0.06452566528956315,
+      "data": 6.352706123105767,
+      "validData": 1.3723120822586676,
+      "invalidPenalty": 29.627322682514205,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 798,
+          "invalidPenalty": 8.672693361644633,
+          "validResidualCost": 0.27041948206807126,
+          "sampledResidualCost": 1.4607973406700747
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 482,
+          "invalidPenalty": 7.450765995643451,
+          "validResidualCost": 0.3398947358751321,
+          "sampledResidualCost": 1.571927747521564
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 10,
+          "invalidPenalty": 0.7346152123063803,
+          "validResidualCost": 0.03852375593244958,
+          "sampledResidualCost": 0.07590731720308812
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 17,
+          "invalidPenalty": 0.5978473827708513,
+          "validResidualCost": 0.04105408245513269,
+          "sampledResidualCost": 0.04455182057092089
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 151,
+          "invalidPenalty": 2.1209625682095066,
+          "validResidualCost": 0.45448180290754403,
+          "sampledResidualCost": 0.8928429374032041
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 158,
+          "invalidPenalty": 10.050438161939383,
+          "validResidualCost": 0.22793822302033792,
+          "sampledResidualCost": 2.3066789597369146
+        }
+      },
+      "energy": 31.353521530949624,
+      "scale": 1.0,
+      "backtrack": 0,
+      "energyChange": 28.21365602056125,
+      "sampledDataChange": 3.21284061271739,
+      "expectedFirstOrderChange": -2.620520548308546
+    },
+    {
+      "prior": 0.07241927011415158,
+      "smoothness": 0.01613036711009215,
+      "data": 3.3995572374819405,
+      "validData": 2.0172776859701593,
+      "invalidPenalty": 12.505571522036917,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 415,
+          "invalidPenalty": 4.144977314630523,
+          "validResidualCost": 0.4324653697322234,
+          "sampledResidualCost": 0.8560152103416553
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 236,
+          "invalidPenalty": 3.2072945445397636,
+          "validResidualCost": 0.42876151816011865,
+          "sampledResidualCost": 0.8012171527563448
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 5,
+          "invalidPenalty": 0.35383873526006937,
+          "validResidualCost": 0.05490606978188345,
+          "sampledResidualCost": 0.06595258015278929
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 11,
+          "invalidPenalty": 0.37915878975763917,
+          "validResidualCost": 0.06612792592315253,
+          "sampledResidualCost": 0.06797653336220216
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 77,
+          "invalidPenalty": 1.0550985821755603,
+          "validResidualCost": 0.6884794198127915,
+          "sampledResidualCost": 0.8401302038220733
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 64,
+          "invalidPenalty": 3.365203555673361,
+          "validResidualCost": 0.34653738255998984,
+          "sampledResidualCost": 0.7682655570468759
+        }
+      },
+      "energy": 14.611398845231319,
+      "scale": 0.5,
+      "backtrack": 1,
+      "energyChange": 11.471533334842942,
+      "sampledDataChange": 0.2596917270935637,
+      "expectedFirstOrderChange": -1.310260274154273
+    },
+    {
+      "prior": 0.018110420667666372,
+      "smoothness": 0.004032625467310053,
+      "data": 2.835293700995835,
+      "validData": 2.5268295683979787,
+      "invalidPenalty": 5.628958539979067,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 192,
+          "invalidPenalty": 1.7520715306163765,
+          "validResidualCost": 0.5578086306655536,
+          "sampledResidualCost": 0.6588029731015999
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 119,
+          "invalidPenalty": 1.5496508355718106,
+          "validResidualCost": 0.5306807321895607,
+          "sampledResidualCost": 0.5959724546057007
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 2,
+          "invalidPenalty": 0.028551642782986164,
+          "validResidualCost": 0.06687922562125455,
+          "sampledResidualCost": 0.06754625363501768
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 7,
+          "invalidPenalty": 0.24093811749480665,
+          "validResidualCost": 0.08440208161900717,
+          "sampledResidualCost": 0.08527498853433507
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 32,
+          "invalidPenalty": 0.41421356319915503,
+          "validResidualCost": 0.8557671228263752,
+          "sampledResidualCost": 0.9107099965813226
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 35,
+          "invalidPenalty": 1.6435328503139317,
+          "validResidualCost": 0.4312917754762273,
+          "sampledResidualCost": 0.516987034537859
+        }
+      },
+      "energy": 8.177931154512022,
+      "scale": 0.25,
+      "backtrack": 2,
+      "energyChange": 5.038065644123645,
+      "sampledDataChange": -0.3045718093925416,
+      "expectedFirstOrderChange": -0.6551301370771365
+    },
+    {
+      "prior": 0.004528170942619375,
+      "smoothness": 0.0010082363432542094,
+      "data": 2.869332596777377,
+      "validData": 2.8221985774691225,
+      "invalidPenalty": 3.004922548716422,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 85,
+          "invalidPenalty": 0.6800538895768113,
+          "validResidualCost": 0.628626132205212,
+          "sampledResidualCost": 0.6416413465323059
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 57,
+          "invalidPenalty": 0.6619456140324473,
+          "validResidualCost": 0.5930858051684107,
+          "sampledResidualCost": 0.6014029959798904
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 2,
+          "invalidPenalty": 0.028551642782986164,
+          "validResidualCost": 0.07355411139396535,
+          "sampledResidualCost": 0.07357016462802307
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 3,
+          "invalidPenalty": 0.11184404790401459,
+          "validResidualCost": 0.09470504978275028,
+          "sampledResidualCost": 0.09486081476395444
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 26,
+          "invalidPenalty": 0.3260696056531742,
+          "validResidualCost": 0.9525106339774596,
+          "sampledResidualCost": 0.9622254477824721
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 20,
+          "invalidPenalty": 1.1964577487669885,
+          "validResidualCost": 0.4797168449413248,
+          "sampledResidualCost": 0.49563182709073106
+        }
+      },
+      "energy": 5.832657533471418,
+      "scale": 0.125,
+      "backtrack": 3,
+      "energyChange": 2.6927920230830416,
+      "sampledDataChange": -0.27053291361099996,
+      "expectedFirstOrderChange": -0.32756506853856826
+    },
+    {
+      "prior": 0.0011320951151541484,
+      "smoothness": 0.00025204503997764565,
+      "data": 2.985305739107657,
+      "validData": 2.978374287630944,
+      "invalidPenalty": 1.2873498375411145,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 36,
+          "invalidPenalty": 0.2717557058786042,
+          "validResidualCost": 0.665896020565229,
+          "sampledResidualCost": 0.6678336501723398
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 22,
+          "invalidPenalty": 0.26924642524681985,
+          "validResidualCost": 0.6264049288349498,
+          "sampledResidualCost": 0.6273318183907827
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.07705971222864916,
+          "sampledResidualCost": 0.07705971222864917
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 2,
+          "invalidPenalty": 0.05996788293123245,
+          "validResidualCost": 0.10011132746295151,
+          "sampledResidualCost": 0.10012081159039699
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 17,
+          "invalidPenalty": 0.1982399207772687,
+          "validResidualCost": 1.0034294420794077,
+          "sampledResidualCost": 1.0049263744311623
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 8,
+          "invalidPenalty": 0.4881399027071893,
+          "validResidualCost": 0.505472856459757,
+          "sampledResidualCost": 0.5080333722943262
+        }
+      },
+      "energy": 4.26710826532719,
+      "scale": 0.0625,
+      "backtrack": 4,
+      "energyChange": 1.127242754938813,
+      "sampledDataChange": -0.15455977128071963,
+      "expectedFirstOrderChange": -0.16378253426928413
+    },
+    {
+      "prior": 0.000283028013546657,
+      "smoothness": 6.300385743965313e-05,
+      "data": 3.059878996922854,
+      "validData": 3.0584630636242944,
+      "invalidPenalty": 0.7144434509682469,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 16,
+          "invalidPenalty": 0.11861433152807876,
+          "validResidualCost": 0.684935941500605,
+          "sampledResidualCost": 0.6853770009107001
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 8,
+          "invalidPenalty": 0.12206971808336675,
+          "validResidualCost": 0.6434479708130729,
+          "sampledResidualCost": 0.6435725929009966
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.07885039702549809,
+          "sampledResidualCost": 0.07885039702549809
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 1,
+          "invalidPenalty": 0.045418765395879745,
+          "validResidualCost": 0.10289406163660997,
+          "sampledResidualCost": 0.10289417879463869
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 7,
+          "invalidPenalty": 0.09407378104515374,
+          "validResidualCost": 1.0296415198892426,
+          "sampledResidualCost": 1.0299353856835012
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 5,
+          "invalidPenalty": 0.3342668549157679,
+          "validResidualCost": 0.5186931727592659,
+          "sampledResidualCost": 0.5192494416075193
+        }
+      },
+      "energy": 3.7732525464635276,
+      "scale": 0.03125,
+      "backtrack": 5,
+      "energyChange": 0.6333870360751508,
+      "sampledDataChange": -0.07998651346552288,
+      "expectedFirstOrderChange": -0.08189126713464207
+    },
+    {
+      "prior": 7.075754041524111e-05,
+      "smoothness": 1.574983397182455e-05,
+      "data": 3.0994106653715603,
+      "validData": 3.09905479970576,
+      "invalidPenalty": 0.4259005736093968,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 9,
+          "invalidPenalty": 0.0648389095440507,
+          "validResidualCost": 0.694525517812101,
+          "sampledResidualCost": 0.694684080445306
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 3,
+          "invalidPenalty": 0.048786661587655544,
+          "validResidualCost": 0.6521341002732761,
+          "sampledResidualCost": 0.6521550970784618
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.07975467055048235,
+          "sampledResidualCost": 0.07975467055048235
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 1,
+          "invalidPenalty": 0.045418765395879745,
+          "validResidualCost": 0.10430466278734896,
+          "sampledResidualCost": 0.10430872332266733
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 2,
+          "invalidPenalty": 0.023860371438786387,
+          "validResidualCost": 1.0429621315055642,
+          "sampledResidualCost": 1.0430038141352835
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 3,
+          "invalidPenalty": 0.24299586564302444,
+          "validResidualCost": 0.5253737167769872,
+          "sampledResidualCost": 0.5255042798393597
+        }
+      },
+      "energy": 3.525041880689544,
+      "scale": 0.015625,
+      "backtrack": 6,
+      "energyChange": 0.385176370301167,
+      "sampledDataChange": -0.04045484501681651,
+      "expectedFirstOrderChange": -0.04094563356732103
+    },
+    {
+      "prior": 1.7689490925907232e-05,
+      "smoothness": 3.937455202066044e-06,
+      "data": 3.119541224557713,
+      "validData": 3.1194091874508127,
+      "invalidPenalty": 0.2838251949287951,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 5,
+          "invalidPenalty": 0.030511136632412672,
+          "validResidualCost": 0.6993580251749569,
+          "sampledResidualCost": 0.6994154775501046
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 1,
+          "invalidPenalty": 0.0069521768018603325,
+          "validResidualCost": 0.6564635686706508,
+          "sampledResidualCost": 0.6564717055077238
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.08020871640322169,
+          "sampledResidualCost": 0.08020871640322169
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 1,
+          "invalidPenalty": 0.045418765395879745,
+          "validResidualCost": 0.1050148544959031,
+          "sampledResidualCost": 0.10502298343341127
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 1,
+          "invalidPenalty": 0.020742040127515793,
+          "validResidualCost": 1.0496166700329574,
+          "sampledResidualCost": 1.0496438680428255
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 2,
+          "invalidPenalty": 0.18020107597112656,
+          "validResidualCost": 0.5287473526731227,
+          "sampledResidualCost": 0.528778473620426
+        }
+      },
+      "energy": 3.403256009325736,
+      "scale": 0.0078125,
+      "backtrack": 7,
+      "energyChange": 0.2633904989373592,
+      "sampledDataChange": -0.02032428583066359,
+      "expectedFirstOrderChange": -0.020472816783660516
+    },
+    {
+      "prior": 4.422373718772789e-06,
+      "smoothness": 9.844322708530537e-07,
+      "data": 3.1296793112613734,
+      "validData": 3.1296187291796222,
+      "invalidPenalty": 0.04643261060118675,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 3,
+          "invalidPenalty": 0.018738393671810627,
+          "validResidualCost": 0.7017738942248591,
+          "sampledResidualCost": 0.7018042685947253
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 1,
+          "invalidPenalty": 0.0069521768018603325,
+          "validResidualCost": 0.6586312231689285,
+          "sampledResidualCost": 0.6586380804026599
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.08043631458429835,
+          "sampledResidualCost": 0.08043631458429835
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.10538043298900375,
+          "sampledResidualCost": 0.10538043298900375
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 1,
+          "invalidPenalty": 0.020742040127515793,
+          "validResidualCost": 1.052952036960699,
+          "sampledResidualCost": 1.0529753874388526
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.5304448272518336,
+          "sampledResidualCost": 0.5304448272518336
+        }
+      },
+      "energy": 3.1760567465867986,
+      "scale": 0.00390625,
+      "backtrack": 8,
+      "energyChange": 0.036191236198421795,
+      "sampledDataChange": -0.01018619912700336,
+      "expectedFirstOrderChange": -0.010236408391830258
+    },
+    {
+      "prior": 1.105573159558561e-06,
+      "smoothness": 2.4616420464024106e-07,
+      "data": 3.134768129800363,
+      "validData": 3.1347345655166023,
+      "invalidPenalty": 0.02888130210340023,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 1,
+          "invalidPenalty": 0.008139261975884438,
+          "validResidualCost": 0.7029898422698748,
+          "sampledResidualCost": 0.7030018123359687
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.6597236262078597,
+          "sampledResidualCost": 0.6597236262078597
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.08055036642692431,
+          "sampledResidualCost": 0.08055036642692431
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.1055587642019397,
+          "sampledResidualCost": 0.10555876420193971
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 1,
+          "invalidPenalty": 0.020742040127515793,
+          "validResidualCost": 1.0546226201070505,
+          "sampledResidualCost": 1.0546442143247172
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.5312893463029532,
+          "sampledResidualCost": 0.5312893463029532
+        }
+      },
+      "energy": 3.163617219357367,
+      "scale": 0.001953125,
+      "backtrack": 9,
+      "energyChange": 0.023751708968990037,
+      "sampledDataChange": -0.005097380588013678,
+      "expectedFirstOrderChange": -0.005118204195915129
+    },
+    {
+      "prior": 2.7641492682864444e-07,
+      "smoothness": 6.159634686698133e-08,
+      "data": 3.137315496619884,
+      "validData": 3.1373154966198835,
+      "invalidPenalty": 0.0,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.7036018685853788,
+          "sampledResidualCost": 0.7036018685853788
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.6602669878025121,
+          "sampledResidualCost": 0.660266987802512
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.08060718637025382,
+          "sampledResidualCost": 0.08060718637025384
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.10564799063868285,
+          "sampledResidualCost": 0.10564799063868285
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 1.0554794454131924,
+          "sampledResidualCost": 1.0554794454131926
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.5317120178098635,
+          "sampledResidualCost": 0.5317120178098634
+        }
+      },
+      "energy": 3.137315834631157,
+      "scale": 0.0009765625,
+      "backtrack": 10,
+      "energyChange": -0.0025496757572196493,
+      "sampledDataChange": -0.0025500137684928426,
+      "expectedFirstOrderChange": -0.0025591020979575645
+    },
+    {
+      "prior": 6.909517149592155e-08,
+      "smoothness": 1.545058138007299e-08,
+      "data": 3.138590441187903,
+      "validData": 3.138590441187903,
+      "invalidPenalty": 0.0,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.703902323300911,
+          "sampledResidualCost": 0.7039023233009111
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.6605387729465312,
+          "sampledResidualCost": 0.6605387729465313
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.08063594005215574,
+          "sampledResidualCost": 0.08063594005215574
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.10569259941657072,
+          "sampledResidualCost": 0.1056925994165707
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 1.055897286098375,
+          "sampledResidualCost": 1.055897286098375
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.5319235193733595,
+          "sampledResidualCost": 0.5319235193733596
+        }
+      },
+      "energy": 3.138590525733656,
+      "scale": 0.00048828125,
+      "backtrack": 11,
+      "energyChange": -0.0012749846547208676,
+      "sampledDataChange": -0.0012750692004739328,
+      "expectedFirstOrderChange": -0.0012795510489787823
+    },
+    {
+      "prior": 1.7284486793349098e-08,
+      "smoothness": 3.910552596754308e-09,
+      "data": 3.1392278921346777,
+      "validData": 3.1392278921346777,
+      "invalidPenalty": 0.0,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.704052580081031,
+          "sampledResidualCost": 0.704052580081031
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.660674712023888,
+          "sampledResidualCost": 0.660674712023888
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.08064988001291351,
+          "sampledResidualCost": 0.08064988001291351
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.10571493119716621,
+          "sampledResidualCost": 0.10571493119716621
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 1.0561064688908968,
+          "sampledResidualCost": 1.0561064688908968
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.5320293199287822,
+          "sampledResidualCost": 0.5320293199287823
+        }
+      },
+      "energy": 3.139227913329717,
+      "scale": 0.000244140625,
+      "backtrack": 12,
+      "energyChange": -0.0006375970586596225,
+      "sampledDataChange": -0.0006376182536991237,
+      "expectedFirstOrderChange": -0.0006397755244893911
+    },
+    {
+      "prior": 4.326525462225746e-09,
+      "smoothness": 1.020611173206893e-09,
+      "data": 3.1395465898180257,
+      "validData": 3.1395465898180266,
+      "invalidPenalty": 0.0,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.7041277682408198,
+          "sampledResidualCost": 0.7041277682408197
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.6607425986647457,
+          "sampledResidualCost": 0.6607425986647457
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.08065708066893093,
+          "sampledResidualCost": 0.08065708066893092
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.10572603495012953,
+          "sampledResidualCost": 0.10572603495012953
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 1.0562108950970974,
+          "sampledResidualCost": 1.0562108950970974
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.532082212196303,
+          "sampledResidualCost": 0.5320822121963029
+        }
+      },
+      "energy": 3.139546595165163,
+      "scale": 0.0001220703125,
+      "backtrack": 13,
+      "energyChange": -0.00031891522321370047,
+      "sampledDataChange": -0.0003189205703511,
+      "expectedFirstOrderChange": -0.00031988776224469557
+    },
+    {
+      "prior": 1.0877171874025178e-09,
+      "smoothness": 2.903280760153172e-10,
+      "data": 3.139705570597685,
+      "validData": 3.139705570597685,
+      "invalidPenalty": 0.0,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.7041652134065752,
+          "sampledResidualCost": 0.7041652134065751
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.6607765550954212,
+          "sampledResidualCost": 0.6607765550954213
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.08066069165011988,
+          "sampledResidualCost": 0.08066069165011988
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.10573162203216488,
+          "sampledResidualCost": 0.10573162203216488
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 1.0562630988590356,
+          "sampledResidualCost": 1.0562630988590356
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.5321083895543686,
+          "sampledResidualCost": 0.5321083895543686
+        }
+      },
+      "energy": 3.13970557197573,
+      "scale": 6.103515625e-05,
+      "backtrack": 14,
+      "energyChange": -0.0001599384126467207,
+      "sampledDataChange": -0.0001599397906919542,
+      "expectedFirstOrderChange": -0.00015994388112234778
+    },
+    {
+      "prior": 2.6916057379809624e-10,
+      "smoothness": 9.538677567326616e-11,
+      "data": 3.139787269861948,
+      "validData": 3.1397872698619476,
+      "invalidPenalty": 0.0,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.7041842214175411,
+          "sampledResidualCost": 0.7041842214175411
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.6607937888965033,
+          "sampledResidualCost": 0.6607937888965033
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.0806627912601776,
+          "sampledResidualCost": 0.08066279126017761
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.10573450680680471,
+          "sampledResidualCost": 0.10573450680680473
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 1.0562899247056503,
+          "sampledResidualCost": 1.0562899247056508
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.5321220367752705,
+          "sampledResidualCost": 0.5321220367752704
+        }
+      },
+      "energy": 3.139787270226495,
+      "scale": 3.0517578125e-05,
+      "backtrack": 15,
+      "energyChange": -7.824016188173744e-05,
+      "sampledDataChange": -7.824052642879664e-05,
+      "expectedFirstOrderChange": -7.997194056117389e-05
+    },
+    {
+      "prior": 6.879271603915125e-11,
+      "smoothness": 3.890853454821413e-11,
+      "data": 3.139826543526395,
+      "validData": 3.139826543526395,
+      "invalidPenalty": 0.0,
+      "faces": {
+        "+X": {
+          "supportedRows": 37390,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.7041935721676263,
+          "sampledResidualCost": 0.7041935721676263
+        },
+        "-X": {
+          "supportedRows": 31312,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.6608022208949917,
+          "sampledResidualCost": 0.6608022208949916
+        },
+        "+Y": {
+          "supportedRows": 7146,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.08066356931227131,
+          "sampledResidualCost": 0.0806635693122713
+        },
+        "-Y": {
+          "supportedRows": 16841,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.10573594455965869,
+          "sampledResidualCost": 0.10573594455965868
+        },
+        "+Z": {
+          "supportedRows": 43188,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 1.056302809235191,
+          "sampledResidualCost": 1.056302809235191
+        },
+        "-Z": {
+          "supportedRows": 22791,
+          "invalidRows": 0,
+          "invalidPenalty": 0.0,
+          "validResidualCost": 0.5321284273566559,
+          "sampledResidualCost": 0.5321284273566559
+        }
+      },
+      "energy": 3.139826543634096,
+      "scale": 1.52587890625e-05,
+      "backtrack": 16,
+      "energyChange": -3.896675428061158e-05,
+      "sampledDataChange": -3.896686198201493e-05,
+      "expectedFirstOrderChange": -3.9985970280586946e-05
+    }
+  ]
+}
