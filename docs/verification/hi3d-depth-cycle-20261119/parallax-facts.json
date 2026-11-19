@@ -1,0 +1,119 @@
+{
+  "scope": "Preserve generated RGB with actual depth parallax in a Box Impostor",
+  "baseline": "F",
+  "geometryChanged": false,
+  "baseAsset": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "previousGeometryExperiments": {
+    "report": "RESUME-REPORT.ja.md",
+    "commit": "6ad8e5e29ffaccf8a17d2bd19f4b28802a2b4cc5",
+    "summary": "H and isolated I-head-local did not resolve the face; I-head-local was not merged into the full body or a new Box."
+  },
+  "J": {
+    "display": "unlit / NoToneMapping / native color blending",
+    "frontProof": "J-front-provenance.json",
+    "frontImage": "F-J-front-stages.webp",
+    "frontImageSha256": "5c9918ed94b376648b3ad9711fd306895a5f1c9846ce6602567f8c295bc2d84c",
+    "cameraPositionError": 5.136646663572719e-11,
+    "cameraExtentError": 1.869582266778025e-11,
+    "alphaByteExact": true,
+    "rootVisualAssessment": {
+      "observedImage": "F-J-front-stages.webp",
+      "finding": "The strong dark bands around eyes, below the nose and around the mouth decrease substantially; thin discontinuities, overlapping color around the brow, cheeks and chin, and hair noise remain. It does not exactly reproduce the registered +Z RGB.",
+      "status": "Front visually improved, geometry accuracy not improved by this display-only change."
+    },
+    "yawStatus": "Seven real views from -45 to +45 degrees and a 13-view small-angle sequence completed; face color discontinuities persist.",
+    "factoryCommit": "af0735d563ae1797c91e42b69bf35b5eacbba4b1",
+    "inspectorCommit": "c11df5f571ee49a8721f7bbf903b6ed6c62e5eed"
+  },
+  "K": {
+    "status": "Front, seven yaw views, and 13-view K-view small parallax sequence complete.",
+    "options": [
+      "view",
+      "dominant"
+    ],
+    "change": "Only RGB view selection after native hit calculation",
+    "knownLimit": "Angular blend can double inconsistent views at the 45-degree tie; dominant selection can pop. Visibility guard may fall back to native color.",
+    "selectedMode": "view",
+    "validatedUseRange": "This asset, front +/-15 degrees",
+    "frontMetrics": {
+      "F": {
+        "sRGBMAE255": 37.45708363813704,
+        "channelMAE255": [
+          44.560534016093634,
+          36.15599853694221,
+          31.654718361375274
+        ],
+        "medianPerPixelMAE255": 29.0,
+        "p95PerPixelMAE255": 96.33333333333333,
+        "sampledPixels": 10936
+      },
+      "J": {
+        "sRGBMAE255": 13.20126188734455,
+        "channelMAE255": [
+          11.390910753474762,
+          13.665508412582296,
+          14.547366495976592
+        ],
+        "medianPerPixelMAE255": 6.333333333333333,
+        "p95PerPixelMAE255": 50.333333333333336,
+        "sampledPixels": 10936
+      },
+      "K-view": {
+        "sRGBMAE255": 0.6079614728115094,
+        "channelMAE255": [
+          0.4799743964886613,
+          0.5771762984637894,
+          0.7667337234820776
+        ],
+        "medianPerPixelMAE255": 0.3333333333333333,
+        "p95PerPixelMAE255": 1.0,
+        "sampledPixels": 10936
+      },
+      "K-dominant": {
+        "sRGBMAE255": 0.6079614728115094,
+        "channelMAE255": [
+          0.4799743964886613,
+          0.5771762984637894,
+          0.7667337234820776
+        ],
+        "medianPerPixelMAE255": 0.3333333333333333,
+        "p95PerPixelMAE255": 1.0,
+        "sampledPixels": 10936
+      }
+    },
+    "metricMask": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-J-K-front-fidelity-mask.png",
+      "sha256": "cddf136d050f33b449a3e7a951ed6055b82d61bb2cae62d6a0caa20a692e0133",
+      "alphaThreshold": 250,
+      "operator": "Intersection of reference and every render alpha>250; three iterations of 3x3 binary erosion (Chebyshev radius 3), border=0.",
+      "pixelsBeforeErosion": 12471,
+      "pixelsAfterErosion": 10936
+    },
+    "frontPixelsCameraAndAlphaExact": true,
+    "rootFrontAssessment": "The eyes, nose, mouth and hair closely reproduce the registered +Z RGB. Sparse opaque RGB residuals remain.",
+    "rootYawAssessment": "Both K modes improve the face at +/-15 degrees and at +/-30 despite hair stripes. At +/-45, view produces mixing and dominant produces clear extra/doubled faces; the +45 side view has an extra face in the hair. Wide-angle appearance is unresolved.",
+    "loopProof": "J-K-parallax-loop-provenance.json",
+    "loopRootReview": "Examined the actual -15/0/+15 sequence frames and the seven-view board; K-view retains facial features while orientation and silhouette change.",
+    "geometryAccuracyImproved": false,
+    "sourceCommits": {
+      "factory": "734c915e6d89919ac9135e06476bff85b33954d6",
+      "inspector": "66614346c951b77652fc64be54efddeb758e2c52"
+    },
+    "viewerArchiveCommit": "c9ce9a72213f0d4ea4b7f4a576a27db7327b4bea"
+  },
+  "cautions": [
+    "An exact source-RGB comparison is an appearance metric, not ground-truth 3D accuracy.",
+    "Original 1024 RGB is a full-body image, not a 1024-pixel face crop.",
+    "All displayed comparison panels are actual renderings, with integer crops and nearest-neighbor enlargement; no AI image retouching."
+  ],
+  "residualClassification": {
+    "proof": "K-front-residual-classification.json",
+    "referenceOnlyErodedInteriorPixels": 10953,
+    "transparentPixels": 0,
+    "partialAlphaPixels": 0,
+    "opaqueRgbErrorGreaterThan16Pixels": 40,
+    "faceRectanglePixels": 4287,
+    "faceRectangleRgbErrorGreaterThan16Pixels": 24,
+    "causeNotDetermined": true
+  }
+}

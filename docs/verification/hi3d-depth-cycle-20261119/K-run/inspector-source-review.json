@@ -1,0 +1,6 @@
+{
+  "sourceWhitespaceCheck": "PASS",
+  "generatedRuntimeSyntaxCheck": "PASS",
+  "generatedRuntimeMatchesBuildReceipt": true,
+  "retainedGeneratedWhitespace": "The esbuild bundle contains trailing whitespace inside a third-party GLSL template literal on line 30. The generated runtime is kept byte-exact to the built and tested file; source edits pass git diff --check."
+}

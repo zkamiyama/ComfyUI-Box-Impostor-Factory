@@ -1,0 +1,13 @@
+{
+  "finalSha256": "4b82659c3174700ae4110b9a77757b4664aec9bd9d75e25dcb8405908bc0f62e",
+  "copyByteExact": true,
+  "source": "inspector-readme.source.md",
+  "checkedFinal": "inspector-readme.draft.md",
+  "actualFinal": "/home/dev/Projects/3D-Inspector-skills/README.md",
+  "review": {
+    "retainedWarnings": "Polite Japanese verb endings are consistent with the surrounding README; two warnings pre-existed.",
+    "examplePaths": "/path/to/asset.box.zip and /path/to/asset.inspector.html are explicitly command example placeholders.",
+    "claims": "New behavior matches the implemented public arguments, shader helper, and synthetic evidence.",
+    "newNumbers": "Six candidate directions and one dominant candidate are present in the helper source."
+  }
+}

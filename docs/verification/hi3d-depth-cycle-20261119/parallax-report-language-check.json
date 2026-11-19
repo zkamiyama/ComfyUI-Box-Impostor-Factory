@@ -1,0 +1,201 @@
+{
+ "format": "yomiyasu-check-record",
+ "format_version": 1,
+ "run_id": "20261119T125019Z-166a8b6d",
+ "attempt": 2,
+ "fix_count": 1,
+ "previous": {
+  "attempt": 1,
+  "final_sha256": "b6d28798693d2a6f39b1fde439d5bbf859fda4e57c7a44c276177de0faf836bb"
+ },
+ "created_at": "2026-11-19T12:51:57Z",
+ "mode": "compose",
+ "cwd": "/home/dev/Projects/box-impostor-lab",
+ "host": {
+  "session": null,
+  "codex_thread_id": null,
+  "armed_by": null
+ },
+ "skill": {
+  "found": true,
+  "dir": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/tooling/yomiyasu/skills/yomiyasu",
+  "skill_md_sha256": "e2aa73ae3bf4bd938cd0ef8b512eb6bd46339f9c87d0beda71c0512867bfda7f",
+  "version": "3.2.0"
+ },
+ "tools": {
+  "yomiyasu_check.py": {
+   "version": "3.2.0",
+   "sha256": "d959ccf93539b37a69c9166f5fa5ddf3a427eda2ee0236d72846fa6e7d3e1b1d"
+  },
+  "yomiyasu_lint.py": {
+   "version": "3.2.0",
+   "sha256": "0070dfa58ec427872e52c8255b195c3e53d4bee676bc9f8125c270ed0dc35e9d"
+  },
+  "yomiyasu_diff.py": {
+   "version": "3.2.0",
+   "sha256": "c78fdc402e27c86b78b84cf39e9b5d0aae2bc7f153107f91373d0a6db1da224e"
+  },
+  "markdown_visibility.py": {
+   "version": "3.2.0",
+   "sha256": "ef092c329dc2fc4006a13045513baa2f888dc95c41b4f89aa828ffaf3cc58a12"
+  },
+  "references/lists/nominalization.txt": {
+   "version": null,
+   "sha256": "cfe31060efc6d165c30b1619ab574ec405312a80bfb00387efc6557911614be0"
+  },
+  "references/lists/intensifiers.txt": {
+   "version": null,
+   "sha256": "b10e9fb077e76cd5a93ec6e27df943a03a3a08b4cf8dd5bd72910d0266e23fdb"
+  },
+  "references/lists/feelings.txt": {
+   "version": null,
+   "sha256": "37b6779b3ef8cf91260379b21d6b721bda362542a5702affd99d550879539e82"
+  },
+  "references/lists/hedges.txt": {
+   "version": null,
+   "sha256": "ed666036f63f4705d2c129d3fd30e971018d50732bbef2c18081412a61ccd771"
+  },
+  "references/lists/katakana-terms.txt": {
+   "version": null,
+   "sha256": "47c686e6a7a94590a97fa9e052b3dee9171dfc8a5f25da727111428cda978e2d"
+  },
+  "references/lists/thin-evaluation.txt": {
+   "version": null,
+   "sha256": "b2cf6a8e1fc424d1bcac15e2aa2045a98ec77a002e2830692922a8f97ee406e4"
+  },
+  "references/lists/renyo-nouns.txt": {
+   "version": null,
+   "sha256": "0642b6ba40e4707af4715463d7433c0215087a8e068b00e7894b73e89365997a"
+  },
+  "references/lists/fact-gaps.txt": {
+   "version": null,
+   "sha256": "c78da500dcddc76978fecd1a7a9f3318d9feabf0db78387a41662a4545e6964f"
+  }
+ },
+ "python": {
+  "version": "3.12.3",
+  "implementation": "CPython",
+  "unicode_version": "15.0.0"
+ },
+ "inputs": {
+  "source": null,
+  "materials": [
+   {
+    "role": "material",
+    "index": 1,
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/parallax-report-material.txt",
+    "via": "file",
+    "bytes": 199063,
+    "sha256": "c2c533facf3fcdb3aec93f6d73445fa523ae11748d6d856fd52d9b823f1e5286",
+    "text_sha256": "c2c533facf3fcdb3aec93f6d73445fa523ae11748d6d856fd52d9b823f1e5286",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/c2c533facf3fcdb3aec93f6d73445fa523ae11748d6d856fd52d9b823f1e5286.bin",
+    "label": null,
+    "treated_as_source": false,
+    "similarity": 0.014,
+    "treated_by": null
+   }
+  ],
+  "final": {
+   "role": "final",
+   "index": 0,
+   "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/PARALLAX-REPORT.ja.md",
+   "via": "file",
+   "bytes": 8760,
+   "sha256": "d996adff5bced173d1ceb395a7aacc5c836e25a2e21c6eb6f65926287a7c596c",
+   "text_sha256": "d996adff5bced173d1ceb395a7aacc5c836e25a2e21c6eb6f65926287a7c596c",
+   "bom": false,
+   "eol": "lf",
+   "snapshot": "inputs/d996adff5bced173d1ceb395a7aacc5c836e25a2e21c6eb6f65926287a7c596c.bin"
+  }
+ },
+ "options": {
+  "stance": "\u8aac\u660e",
+  "fail_on": [],
+  "timeout": 90,
+  "doc_type": "incident",
+  "reader": null,
+  "fact_gaps": true
+ },
+ "required_checks": [
+  "lint",
+  "materials"
+ ],
+ "checks": [
+  {
+   "name": "lint",
+   "status": "ran",
+   "exit_code": 0,
+   "duration_ms": 140,
+   "target": {
+    "final": "d996adff5bced173d1ceb395a7aacc5c836e25a2e21c6eb6f65926287a7c596c"
+   },
+   "report": "runs/20261119T125019Z-166a8b6d/attempt-2.lint.json",
+   "report_sha256": "87a7c17520d13d7bb2590d74da19bd550fc8260f8d476bbeacd6bb361d0e25ea",
+   "text": "runs/20261119T125019Z-166a8b6d/attempt-2.lint.txt",
+   "text_sha256": "ebdbc7b3960cc287ea508207a5313b489f81a87342f98b43e61665d7603bae0f",
+   "summary": {
+    "candidate_count": 1,
+    "counts": {
+     "error": 0,
+     "warn": 1,
+     "info": 0
+    },
+    "kept_marks": []
+   },
+   "stderr": "",
+   "error": null
+  },
+  {
+   "name": "materials",
+   "status": "ran",
+   "exit_code": null,
+   "duration_ms": 158,
+   "target": {
+    "materials": [
+     "c2c533facf3fcdb3aec93f6d73445fa523ae11748d6d856fd52d9b823f1e5286"
+    ],
+    "final": "d996adff5bced173d1ceb395a7aacc5c836e25a2e21c6eb6f65926287a7c596c"
+   },
+   "report": "runs/20261119T125019Z-166a8b6d/attempt-2.materials.json",
+   "report_sha256": "ffa3847076f1b746f379da4d3dcc4774871c3983d2a3d02bd620a81ce3d80304",
+   "text": "runs/20261119T125019Z-166a8b6d/attempt-2.materials.txt",
+   "text_sha256": "de0889b619f44054f9530f74cda09297740d13de955c30aadf7a38c97c2158c3",
+   "summary": {
+    "candidate_count": 28,
+    "meaning_risk_count": 27,
+    "from_materials": 63,
+    "not_in_sources": 214,
+    "dropped_certainty": 0
+   },
+   "stderr": "",
+   "error": null
+  }
+ ],
+ "materials_summary": {
+  "from_materials": 63,
+  "not_in_sources": 214,
+  "dropped_certainty": 0
+ },
+ "fact_gaps": {
+  "count": 0,
+  "skipped": null,
+  "by_kind": {},
+  "items": []
+ },
+ "result": {
+  "status": "executed",
+  "token": "yomiyasu-check: executed via=run run=20261119T125019Z-166a8b6d attempt=2 final=sha256:d996adff5bce mode=compose doc_type=incident checks=lint,materials meaning_risk=27",
+  "next": "finalize",
+  "fail_on_hit": false,
+  "meaning_risk_count": 27,
+  "fail_on_meaning_risk_count": 14,
+  "final_unchanged_during_run": true,
+  "not_judged": [
+   "meaning_preservation",
+   "reader_comprehension"
+  ]
+ },
+ "record_digest": "sha256:f929633660721c4d25a3d4fa5705fcb3ea5b8c1de45b6838abcf5213df7b1ab2"
+}

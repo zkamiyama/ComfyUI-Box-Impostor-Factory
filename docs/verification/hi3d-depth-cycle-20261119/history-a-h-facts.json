@@ -1,0 +1,887 @@
+{
+  "formatVersion": 2,
+  "createdUtc": "2026-11-19T11:54:47.289763+00:00",
+  "scope": "Read-only factual audit of A/B/B-normal/C/C2/D/E/F/color/H. It does not attribute every defect in the original user attachment or claim a complete face-quality solution.",
+  "evidenceRoot": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119",
+  "sourcePathConvention": "sources entries are relative to evidenceRoot unless absolute. Visual assessments are root/material_trials human-style image inspection reports, not ground-truth metrics.",
+  "common": {
+    "imageResolution": 1024,
+    "h3Models": {
+      "model": "minimax_h3_image_pruned_w4a8.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "matting": "birefnet.safetensors"
+    },
+    "h3Sampler": {
+      "steps": 6,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1
+    },
+    "faceSeeds": {
+      "+X": 101,
+      "-X": 102,
+      "+Y": 103,
+      "-Y": 104,
+      "+Z": 105,
+      "-Z": 106
+    },
+    "ABFacePromptsIdentical": true,
+    "ABFreshViewsEach": 6,
+    "ABControls": [
+      "RGBA-derived color guide",
+      "source photo",
+      "axis depth",
+      "world normal",
+      "foreground mask"
+    ],
+    "controlMechanism": "H3 VLM plus VAE image references; not ControlNet",
+    "viewConsistency": "none",
+    "SuperMatUsed": false,
+    "silhouetteIoUThreshold": 0.85,
+    "originalPhotoSha256": "e60d982c5b2e296a4d9c9e756da2b22c8341232f5e9df7e835bbb4730ed7e34c",
+    "coarseProxySha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3"
+  },
+  "stages": {
+    "A": {
+      "asset": "9b50c8152e51820366cd5a2529689513d3c7a13358ddbb68f48910b6f8f6f14e",
+      "baseline": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+      "geometry": "Pixal3D through TRELLIS2 nodes/VAEs, fixed existing coarse mesh; not a fresh pure TRELLIS.2 run",
+      "proxySha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+      "proxyTriangles": 81180,
+      "proxyVertices": 49522,
+      "freshH3Faces": 6,
+      "vlmPictures": 5,
+      "vaePictures": 5,
+      "acceptedFaces": 6,
+      "time": {
+        "perFaceSeconds": {
+          "pz": 1333.61,
+          "px": 252.64,
+          "nx": 226.21,
+          "py": 340.22,
+          "ny": 547.81,
+          "nz": 561.06
+        },
+        "sumSeconds": 3261.55,
+        "scope": "Sum of recorded face-request runtimes; excludes Hi3D, baking, inspection and intervening waits; not a throughput benchmark."
+      },
+      "visualReview": "Raw -X is nearly white statue; -Z turns the head away from its rear-view guide. +Z has clearer facial features but a white footwear artifact. Acceptance is silhouette-only.",
+      "sources": [
+        "A",
+        "A_recipe",
+        "A_raw_qa",
+        "AB_clay"
+      ],
+      "normalTextureControl": {
+        "asset": "e813b7e983a5ae7931e38ed2389064cd7ee4678db42b8937ed1a26d84c56774f",
+        "rgbExact": true,
+        "geometryExact": true,
+        "observedSolved": false,
+        "limit": "Normal map changes also affect incidence-based view weighting; not pure lighting isolation.",
+        "sources": [
+          "A_normal"
+        ]
+      }
+    },
+    "B": {
+      "asset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "baseline": "f6a5d91901f6745980cf73315bdacecc7e9db216b88784018cc7f8093d9dd404",
+      "proxySha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+      "proxyTriangles": 1000000,
+      "proxyVertices": 499920,
+      "hi3d": {
+        "model": "hi3d-official/Hi3Dv1.0",
+        "resolution": 1024,
+        "steps": 25,
+        "seed": 0,
+        "smoothingIterations": 0,
+        "cpuOffload": true,
+        "inferenceSeconds": 196.69,
+        "refineStageSeconds": 206.65,
+        "rawMeshSha256": "1f5cdd2eab59199d0c289e7ac9b218edf39232c5dc6b0ed943a7f5e5e0e1c364"
+      },
+      "freshH3Faces": 6,
+      "vlmPictures": 5,
+      "vaePictures": 5,
+      "acceptedFaces": 6,
+      "time": {
+        "perFaceSeconds": {
+          "pz": 815.46,
+          "px": 374.19,
+          "nx": 287.95,
+          "py": 288.36,
+          "ny": 537.91,
+          "nz": 325.71
+        },
+        "sumSeconds": 2629.58,
+        "scope": "Sum of recorded face-request runtimes; excludes Hi3D, baking, inspection and intervening waits; not a throughput benchmark."
+      },
+      "clayViewerTriangles": 1000000,
+      "clayViewerLimit": 1000000,
+      "visualReview": "Full-1M clay has more distinct eyes, lips, nose and hair than A. B raw +Z has detailed face and black heels; -X still has mostly white hair/clothes/limbs/shoes. Final Box still has facial bands and mixed-view artifacts.",
+      "sources": [
+        "B",
+        "B_recipe",
+        "Hi3D",
+        "AB_clay",
+        "B_raw_qa",
+        "Hi3D_process"
+      ]
+    },
+    "B_normal": {
+      "asset": "cda76d9249679db4eac25221bd9b2ab313d0f203c4ce425ab45e1cbe578fcd74",
+      "intermediateGeometryAsset": "69d8ff991f44f464f56928e3ae69048aade19b0c429a5119998d8035b662eb35",
+      "proxyTriangles": 1000000,
+      "method": "Add robust area-weighted geometry NORMAL to identical positions/indices/materials, then native rebake and exact B RGB reuse.",
+      "displacement": {
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "normalMapChanged": true,
+      "intervalMapChanged": false,
+      "rangeMapChanged": false,
+      "rgbExact": true,
+      "geometryPositionsExact": true,
+      "newInference": false,
+      "visualReview": "Normal-only control did not solve facial bands/double contours.",
+      "sources": [
+        "B_normal",
+        "B_normal_qa",
+        "B_normal_geometry",
+        "B_normal_visual"
+      ]
+    },
+    "C": {
+      "asset": "1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+      "proxySha256": "86f657dddf2ef5d25e3b8859d61e2750d4ac84ac0de6622bed5dda13acefb1f2",
+      "proxyTriangles": 1000000,
+      "proxyVertices": 499920,
+      "method": "joint-full-depth-v2",
+      "depthSource": "Same six B RGB views; full registered/calibrated MoGe depth, not a high-frequency-only residual",
+      "model": "moge_2_vitl_normal_fp16",
+      "depthResolution": 1024,
+      "level": 8,
+      "freshDepthInferenceThisSolverRun": false,
+      "predictionsOriginallyFreshForC": true,
+      "solverParameters": {
+        "maxDisplacementHeight": 0.015,
+        "iterations": 8,
+        "smoothness": 0.3,
+        "prior": 0.025,
+        "cgIterations": 120,
+        "supportBacktracks": 12
+      },
+      "maxActualDisplacementHeight": 0.014999998628048988,
+      "sameBSourceAndAlignedRGB": true,
+      "fixedCameraFramePassed": true,
+      "silhouetteQaPassed": true,
+      "timeSeconds": 100.493,
+      "stageSeconds": {
+        "initialization": 1.407,
+        "jointGeometryFit": 61.979,
+        "nativeRebakeAndFixedRGB": 37.108
+      },
+      "limitations": [
+        "Depth-to-orthographic registration is an anchored affine approximation.",
+        "Current occlusion uses vertex splats; final native rebake supplies exact rasterized depth."
+      ],
+      "visualReview": "Rejected as final result: facial/neck/limb geometry and appearance worsened despite depth-objective fitting.",
+      "sources": [
+        "C",
+        "C_refinement",
+        "C_runtime",
+        "depth_inference",
+        "C_visual"
+      ]
+    },
+    "C2": {
+      "asset": "f2b5c3f8b92a3b194ac77ad5d1424ce08ac68a8247d76ea546df96b2295ed10f",
+      "proxySha256": "2f6c49948e396aa04d183c3bf2fc5c0c3d291b82aed0b2e99555f998d79f1c99",
+      "proxyTriangles": 1000000,
+      "proxyVertices": 499920,
+      "method": "joint-full-depth-v3-boundary-dirichlet",
+      "depthSource": "Same six B RGB views; full registered/calibrated MoGe depth, not a high-frequency-only residual",
+      "model": "moge_2_vitl_normal_fp16",
+      "depthResolution": 1024,
+      "level": 8,
+      "freshDepthInferenceThisSolverRun": false,
+      "predictionsOriginallyFreshForC": true,
+      "solverParameters": {
+        "maxDisplacementHeight": 0.015,
+        "iterations": 8,
+        "smoothness": 0.3,
+        "prior": 0.025,
+        "cgIterations": 120,
+        "supportBacktracks": 12,
+        "boundaryPolicy": "axis-dirichlet-within-max-displacement-v1",
+        "boundaryBandHeight": 0.015
+      },
+      "maxActualDisplacementHeight": 0.014999998521792771,
+      "sameBSourceAndAlignedRGB": true,
+      "fixedCameraFramePassed": true,
+      "silhouetteQaPassed": true,
+      "timeSeconds": 100.585,
+      "stageSeconds": {
+        "initialization": 1.55,
+        "jointGeometryFit": 65.387,
+        "nativeRebakeAndFixedRGB": 33.649
+      },
+      "limitations": [
+        "Depth-to-orthographic registration is an anchored affine approximation.",
+        "Current occlusion uses vertex splats; final native rebake supplies exact rasterized depth."
+      ],
+      "visualReview": "Rejected as final result: face/hair/neck/limb quality does not surpass B; C2 repairs the head-top boundary artifact only.",
+      "sources": [
+        "C2",
+        "C2_refinement",
+        "C2_runtime",
+        "C2_qa",
+        "head_top",
+        "C2_visual"
+      ]
+    },
+    "D": {
+      "asset": "0f953f9644896bedbb561576cce0d41d5b32dc69046b635e9fcf76de2fb2a7e0",
+      "sourceBox": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "freshH3Faces": [
+        "-X"
+      ],
+      "vlmPictures": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "vaePictures": [
+        1,
+        2
+      ],
+      "sameOriginalBColorPNGs": true,
+      "proxySha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+      "proxyTriangles": 1000000,
+      "applied": true,
+      "iou": 0.9862925510315251,
+      "registration": {
+        "scale": 1.0,
+        "centerShiftYX": [
+          0.0,
+          0.0
+        ]
+      },
+      "otherFiveRGBAndSourcesExact": true,
+      "geometryBytesExact": true,
+      "nonColorMapsExact": true,
+      "coverageAlphaExact": true,
+      "elapsedSeconds": 628.22,
+      "rawSha256": "290d900dc6a71d2542ff2fe17c77bb8db590bfe116d86b6caab693ab2a922025",
+      "promptIdenticalToB": true,
+      "visualReview": "Raw whitening remains outside face/hands; this removes structural VAE latents only.",
+      "sources": [
+        "D",
+        "D_result",
+        "D_recipe"
+      ]
+    },
+    "F": {
+      "asset": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "sourceBox": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "freshH3Faces": [
+        "-X"
+      ],
+      "vlmPictures": [
+        1,
+        2
+      ],
+      "vaePictures": [
+        1,
+        2
+      ],
+      "sameOriginalBColorPNGs": true,
+      "proxySha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+      "proxyTriangles": 1000000,
+      "applied": true,
+      "iou": 0.9691154876997012,
+      "registration": {
+        "scale": 1.0,
+        "centerShiftYX": [
+          0.0,
+          0.0
+        ]
+      },
+      "otherFiveRGBAndSourcesExact": true,
+      "geometryBytesExact": true,
+      "nonColorMapsExact": true,
+      "coverageAlphaExact": true,
+      "elapsedSeconds": 440.17,
+      "rawSha256": "2ded737c9a26359759e74eefd74dfac0ae091c0586889ac3492c2426217d91f3",
+      "promptIdenticalToB": false,
+      "visualReview": "Raw -X restores blond hair, gray dress, skin-toned legs and black shoes. Actual Box FRONT/LEFT/ISO has less white hair/clothing leakage; FRONT/LEFT eye sockets, below-nose and mouth bands/double contours remain. RIGHT largely unchanged. Not a whole-face or six-view solution.",
+      "sources": [
+        "F",
+        "F_result",
+        "F_recipe",
+        "F_prompt_diff",
+        "F_front",
+        "F_views"
+      ]
+    },
+    "E": {
+      "asset": "40ad89d5629ff7359e8edb7fc53c4c0aa6facb8a4caa615c72261fd17bef36d7",
+      "sourceBox": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "method": "uniform-color-rgb-v1",
+      "grayLinear": 0.18,
+      "alphaBitsExact": true,
+      "allOtherFilesExact": true,
+      "proxyTriangles": 1000000,
+      "newInference": false,
+      "render": "Lit native PBR Box; not unlit and not direct mesh clay",
+      "visualReview": "Strong facial bands/grooves remain with all six-view RGB made uniform. RGB color disagreements are therefore insufficient to explain all artifacts; this does not uniquely identify geometry rather than normals, lighting or view weighting.",
+      "sources": [
+        "E",
+        "E_visual"
+      ]
+    },
+    "color": {
+      "asset": "306bc1e7ed13b3badbe32b3ff2da0b56f41e885f8038e06b4fb1b759b24be334",
+      "sourceBaseline": "f6a5d91901f6745980cf73315bdacecc7e9db216b88784018cc7f8093d9dd404",
+      "version": "linear-rgba-f32-v2",
+      "resolution": 1024,
+      "newInference": false,
+      "frozenH3OutputsModified": false,
+      "geometryPositionsAndIndicesExact": true,
+      "nonColorMapsExact": true,
+      "bakeSeconds": 9.178703204999692,
+      "scope": "Correct texture RGB EOTF before interpolation and export linear FLOAT32 COLOR_0; native guide/baseline control only, not a freshly regenerated six-view H3 result.",
+      "causalLimit": "Verified systematic B guide brightening bug, distinct from the white-statue H3 output also seen in A.",
+      "sources": [
+        "color_audit",
+        "color_bake",
+        "color_qa",
+        "canvas",
+        "production_color_code"
+      ]
+    },
+    "H": {
+      "method": "hi3d-generated-front-reference-with-frozen-f-appearance-v1",
+      "asset": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+      "geometryBaseline": "8a8b53d115fb52d838648df040475bf05c86fcbd1d84d4ce18ec8b2812df95f3",
+      "sourceAppearance": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "sourceAppearanceComposition": "All six F views: five original B generated views and the single F replacement -X view.",
+      "coarseInputSameAsB": true,
+      "coarseSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+      "referenceChange": "Original photograph replaced with the accepted B +Z RGBA source, retained identically in F; this is not the raw generated RGB PNG.",
+      "referenceEqualsBFront": true,
+      "referencePngSha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+      "inference": {
+        "status": "success",
+        "model": "hi3d-official/Hi3Dv1.0",
+        "resolution": 1024,
+        "steps": 25,
+        "source_faces": 81180,
+        "output_faces": 999999,
+        "output_vertices": 499896,
+        "elapsed_s": 351.06,
+        "torch_cuda": "12.4",
+        "gpu": "NVIDIA GeForce RTX 4080",
+        "gpu_max_allocated_mib": 1689.53,
+        "seed": 0,
+        "smoothingIterations": 0,
+        "cpuOffload": true
+      },
+      "rawMeshSha256": "a2c7c24127d10084f37c28af998818ed157b7966f6d5887c111ee03ab72f2305",
+      "proxySha256": "51377a54c906e8bd2c0a1b431352aa49a79ffe9c2a89bbcfdcc77d4b54f21126",
+      "sourceExtents": [
+        0.359193,
+        1.0,
+        0.341354
+      ],
+      "refinedExtents": [
+        0.360235,
+        1.0,
+        0.338562
+      ],
+      "extentRatioToCoarse": [
+        1.002901,
+        1.0,
+        0.991821
+      ],
+      "legacyPostprocessControl": {
+        "snapshot": "H-preparation/hi3d_postprocess_b.py",
+        "snapshotSha256": "f7daf0272926d51acbedcf6c188317eeafcafb6a977269c9a1f38d6828b119a4",
+        "snapshotCommit": "873ba9d90bfd794498a3211d0ceeaf8b003f7c56",
+        "BReplayPassed": true,
+        "BReplayByteIdentical": true,
+        "replayedBCanonicalSha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+        "decodedSemanticsAndSourceTransformsEqual": true,
+        "productionColorTransferVersion": "linear-rgba-f32-v2",
+        "note": "H intentionally uses the frozen B-time legacy transfer/export for this comparison; production color correction was not rolled back."
+      },
+      "freshH3Faces": [],
+      "freshMoGeInference": false,
+      "viewConsistency": "none",
+      "materialEstimation": "none",
+      "nativeBake": {
+        "resolution": 1024,
+        "backend": "webgl2",
+        "maps": [],
+        "elapsedSeconds": 10.9022827280005
+      },
+      "cameraRebase": {
+        "method": "parallel-orthographic-frozen-rgb-v1",
+        "passed": true,
+        "usesNewTrueGeometryBoundsAndNativeCameraMatrices": true,
+        "freeRegistrationOptimization": false,
+        "sourceTightBounds": {
+          "min": [
+            -0.17968106269836426,
+            -0.5,
+            -0.16729551553726196
+          ],
+          "max": [
+            0.17968106269836426,
+            0.5,
+            0.16729551553726196
+          ]
+        },
+        "targetTightBounds": {
+          "min": [
+            -0.1801174283027649,
+            -0.5,
+            -0.1692812293767929
+          ],
+          "max": [
+            0.1801174283027649,
+            0.5,
+            0.1692812293767929
+          ]
+        },
+        "sourceBakeBox": {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        },
+        "targetBakeBox": {
+          "min": [
+            -0.20011742830276488,
+            -0.52,
+            -0.1892812293767929
+          ],
+          "max": [
+            0.20011742830276488,
+            0.52,
+            0.1892812293767929
+          ]
+        },
+        "sourcePngAndNpyChecks": {
+          "+X": {
+            "source.png": true,
+            "source.npy": true
+          },
+          "-X": {
+            "source.png": true,
+            "source.npy": true
+          },
+          "+Y": {
+            "source.png": true,
+            "source.npy": true
+          },
+          "-Y": {
+            "source.png": true,
+            "source.npy": true
+          },
+          "+Z": {
+            "source.png": true,
+            "source.npy": true
+          },
+          "-Z": {
+            "source.png": true,
+            "source.npy": true
+          }
+        },
+        "alignedSampling": "One additional known camera affine resampling from F aligned images: premultiplied-linear bilinear sampling, restored to straight RGBA before composition.",
+        "alignedImagesByteIdentical": false,
+        "faces": {
+          "+X": {
+            "status": "accepted",
+            "after": {
+              "iou": 0.9745255078939751,
+              "boundaryP95Px": 7.0
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "alignedResampled": true,
+            "sameAlignedBytes": false,
+            "cameraTransformLimits": {
+              "passed": true,
+              "scaleXY": [
+                0.9895091877516388,
+                1.0
+              ],
+              "centerShiftXY": [
+                0.0,
+                0.0
+              ],
+              "centerShiftFractionXY": [
+                0.0,
+                0.0
+              ]
+            },
+            "newGeometryUncoveredPixels": 6417
+          },
+          "-X": {
+            "status": "accepted",
+            "after": {
+              "iou": 0.9602072863552802,
+              "boundaryP95Px": 10.770329614269007
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "alignedResampled": true,
+            "sameAlignedBytes": false,
+            "cameraTransformLimits": {
+              "passed": true,
+              "scaleXY": [
+                0.9895091877516388,
+                1.0
+              ],
+              "centerShiftXY": [
+                0.0,
+                0.0
+              ],
+              "centerShiftFractionXY": [
+                0.0,
+                0.0
+              ]
+            },
+            "newGeometryUncoveredPixels": 8025
+          },
+          "+Y": {
+            "status": "accepted",
+            "after": {
+              "iou": 0.9667411636355933,
+              "boundaryP95Px": 10.04987562112089
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "alignedResampled": true,
+            "sameAlignedBytes": false,
+            "cameraTransformLimits": {
+              "passed": true,
+              "scaleXY": [
+                0.9978194522680933,
+                0.9895091877516388
+              ],
+              "centerShiftXY": [
+                0.0,
+                0.0
+              ],
+              "centerShiftFractionXY": [
+                0.0,
+                0.0
+              ]
+            },
+            "newGeometryUncoveredPixels": 8566
+          },
+          "-Y": {
+            "status": "accepted",
+            "after": {
+              "iou": 0.9699743587728878,
+              "boundaryP95Px": 8.0
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "alignedResampled": true,
+            "sameAlignedBytes": false,
+            "cameraTransformLimits": {
+              "passed": true,
+              "scaleXY": [
+                0.9978194522680933,
+                0.9895091877516388
+              ],
+              "centerShiftXY": [
+                0.0,
+                0.0
+              ],
+              "centerShiftFractionXY": [
+                0.0,
+                0.0
+              ]
+            },
+            "newGeometryUncoveredPixels": 3306
+          },
+          "+Z": {
+            "status": "accepted",
+            "after": {
+              "iou": 0.9649398045220018,
+              "boundaryP95Px": 8.94427190999916
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "alignedResampled": true,
+            "sameAlignedBytes": false,
+            "cameraTransformLimits": {
+              "passed": true,
+              "scaleXY": [
+                0.9978194522680933,
+                1.0
+              ],
+              "centerShiftXY": [
+                0.0,
+                0.0
+              ],
+              "centerShiftFractionXY": [
+                0.0,
+                0.0
+              ]
+            },
+            "newGeometryUncoveredPixels": 7910
+          },
+          "-Z": {
+            "status": "accepted",
+            "after": {
+              "iou": 0.9767272360298941,
+              "boundaryP95Px": 5.0
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "alignedResampled": true,
+            "sameAlignedBytes": false,
+            "cameraTransformLimits": {
+              "passed": true,
+              "scaleXY": [
+                0.9978194522680933,
+                1.0
+              ],
+              "centerShiftXY": [
+                0.0,
+                0.0
+              ],
+              "centerShiftFractionXY": [
+                0.0,
+                0.0
+              ]
+            },
+            "newGeometryUncoveredPixels": 4543
+          }
+        },
+        "frontTargetToSourcePixelMatrix": [
+          [
+            1.0021853129110183,
+            0,
+            -1.1177875539858633
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "pixelConvention": "Integer pixel-center indices; rows top to bottom; depth-independent orthographic affine.",
+        "qualityGuardRelaxed": false
+      },
+      "runtime": {
+        "exitCode": 0,
+        "foregroundProcessPid": 2451223,
+        "totalDcElapsedSeconds": 400.58,
+        "childInferenceSeconds": 351.06,
+        "inferenceAndPostprocessStageSeconds": 353.07285099399996,
+        "postprocessJsonElapsedSecondsMeaning": "Cumulative subprocess inference plus legacy prepare/export/metadata. It includes the 351.06-second child inference; it is not standalone postprocess time.",
+        "explicitThreadEnvironment": {
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1"
+        },
+        "BExplicitlySetSameThreadEnvironment": false,
+        "comparisonPolicy": "Do not compare B/H runtime as model performance: H explicitly set OMP_NUM_THREADS=1 and OPENBLAS_NUM_THREADS=1 while B did not.",
+        "samplingAndDecodingSubstageTimesAvailable": false
+      },
+      "actualCodeCommit": "562c23575098e27f7d97be2024be725d48ce4d53",
+      "visualReview": {
+        "status": "Face remains unresolved",
+        "assessors": [
+          "root",
+          "material_trials"
+        ],
+        "basis": "Actual H Box and clay QA reported by parent after inspection; no ground-truth metric is asserted.",
+        "board": "H-front-stages.webp",
+        "evidenceCommitReportedByParent": "8055def",
+        "detailedPixelLevelCausalAttribution": "Not established"
+      },
+      "sources": [
+        "H_summary",
+        "H_plan",
+        "H_invocation",
+        "H_inference",
+        "H_postprocess",
+        "H_baseline",
+        "H_result",
+        "H_runtime",
+        "H_process",
+        "H_B_replay",
+        "H_camera_rebase",
+        "H_front_board"
+      ],
+      "numericSourceHashes": {
+        "plan.json": "20b2e96250929063dc0917528550f84efbf5f293563396fba680efeba60d818b",
+        "process.json": "083a5df8367ab5bb6eaab591145e828299a85e35c253f70da6a468cfc6a671f4",
+        "inference-invocation.json": "3356902e43dc65da8aec199b2b10631c30410ee3e959f071a06456c617279db8",
+        "inference.json": "254922572161bd55696d6dd67a271cdd2b1666a4b6756d74c9297a29e806c3a4",
+        "postprocess.json": "c8aef61a0c5f36741e35edcc7951b152b2a6ebc90fff927af493531ce2cc16f7",
+        "canonical.json": "d95d89a3dc4aed406e0a22f302884c0d817cf37364fcebe054150775c21143bd",
+        "proxy.json": "61c0448a1c12a752d34ba5e1e7470e22289378e07ea13593d6b5f9133be0b5c0",
+        "baseline.json": "ee3368e62310ca050362bd27494d76aca60a4c9f0c36a97bc98f0cf5f4464ea5",
+        "result.json": "011f5eab3e038895e0cb7bea4b8ecbc847eb966f1fd1af694655b96c85ccd79e",
+        "runtime-observations.json": "9bab2b91d279d1c57360d8582de31a83de1837a80f3164c6364ca3b02364c3d9",
+        "b-replay/proof.json": "d6639415148613d093766dc283e04ed566402f7170e514a89e87188a47c01011",
+        "camera-rebase/camera-rebase-proof.json": "1f8becf9ab2cb45d13e2a705b47ef780698b9de10d9a76f3d75ca297d1e0ade2",
+        "camera-rebase/nx/report.json": "1d2b170864dc8df78409f8735926bfb9cf818fb180a5d3fc88926add0bfc3620",
+        "camera-rebase/ny/report.json": "15660ed56bc9f513e7e3e5a266be7861ad159f034858389e27bc71be3d0b3a02",
+        "camera-rebase/nz/report.json": "88b8226702fab185956a92cccd995ac0d081c54808c57e5218d65e0d7ca33f4b",
+        "camera-rebase/px/report.json": "fae5d209cd36751677bd0404b62312a397ebf28a7c06594988a658774c128ca7",
+        "camera-rebase/py/report.json": "fa9084ee8a11e9355def36a98e3720fc7e276fca4da98ffb4a9b6bb5e665b81b",
+        "camera-rebase/pz/report.json": "84d8e012639c1b7cd3be21ddd97886599e62501e672dcab098a338aeb1fc1d95"
+      }
+    }
+  },
+  "C_depthTiming": {
+    "nativeInferenceSeconds": 3.86,
+    "initialProcessMogeStageSeconds": 7.003,
+    "note": "Depth predictions first generated during C initial run, then reused for corrected C v2 and C2. Do not count these as three fresh neural depth runs."
+  },
+  "headTop": {
+    "B": {
+      "exactMaximumYVertices": 1,
+      "within5eMinus8Vertices": 1,
+      "cropTopPaddingPixels": 8
+    },
+    "C": {
+      "exactMaximumYVertices": 1649,
+      "within5eMinus8Vertices": 3221,
+      "cropTopPaddingPixels": 8
+    },
+    "C2": {
+      "exactMaximumYVertices": 1,
+      "within5eMinus8Vertices": 1,
+      "cropTopPaddingPixels": 8
+    }
+  },
+  "auditCautions": [
+    "Do not label A as a fresh native TRELLIS.2 run; it uses fixed Pixal3D geometry through TRELLIS2 infrastructure.",
+    "All six accepted means silhouette QA only; raw color, view direction, identity and detail can still be wrong.",
+    "The discarded grainy B clay used the official converter default250k face sampling; the final comparison preserves all1000000 triangles. Do not attribute that display failure to Hi3D.",
+    "A/B use the same photo and H3 parameters but different geometry-derived guides and bake bounds. Native tile aspect is non-isotropic; H3 uses physical-aspect canvas and maps it back. Do not diagnose an uncorrected square-tile screenshot as actual world distortion.",
+    "B-normal final asset is cda76..., not its intermediate69d8... geometry asset. C2-preparation false run flags describe preparation; use final C2-run results.",
+    "Normal controls affect both lighting and incidence-based cross-view weights, not lighting alone.",
+    "C/C2 full-depth targets are learned estimates with anchored affine registration and vertex-splat occlusion, not ground-truth absolute geometry.",
+    "C2 corrects a verified boundary plane concentration. It does not establish improved overall face accuracy.",
+    "F changes only one generated view and also removes prompt instructions corresponding to omitted VLM pictures. Its success cannot isolate image removal from those prompt edits, and is not an all-six-view solution.",
+    "E keeps lighting, normals, alpha, geometry and blending active; persistent grooves with uniform RGB do not uniquely prove one remaining mechanism.",
+    "The production color fix and F conditioning test are separate; F keeps the original pale B guide unchanged.",
+    "New A/B and later controls do not by themselves identify every cause of the user original attachment. That attribution requires matching original pipeline/source provenance.",
+    "More triangles and plausible AI details are not a quantitative proof of fidelity to the real person; no measured ground-truth mesh is available.",
+    "H freezes the six-view F appearance set, not the original six-view B set: F has replaced -X only.",
+    "H source PNG/NPY bytes are preserved for all six views, but every aligned image is additionally affine-resampled for the new native cameras; final aligned/color atlas bytes are not identical to F.",
+    "H silhouette acceptance does not establish semantic/color/view consistency or solve the face. Parent/QA actual-image review reports the face remains unresolved.",
+    "The H postprocess elapsed field includes child inference. B and H explicitly differ in CPU thread limits, so their wall times must not be interpreted as model/reference performance comparisons.",
+    "H deliberately replays legacy B color transfer/export, verified by byte-identical B canonical replay; the production linear-rgba-f32-v2 correction remains separate and active."
+  ],
+  "sources": {
+    "A": "A-run/composed.json",
+    "A_recipe": "A-run/prepared.json",
+    "A_raw_qa": "A-six-view-source-provenance.json",
+    "A_normal": "A-full-normal-control-proof.json",
+    "B": "B-run/composed.json",
+    "B_recipe": "B-run/prepared.json",
+    "Hi3D": "B-run/hi3d-completed.json",
+    "AB_clay": "A-B-clay-comparison-provenance.json",
+    "B_raw_qa": "B-six-view-source-provenance.json",
+    "B_normal": "B-normal-only-result.json",
+    "B_normal_qa": "B-normal-only-rebake-evaluation.json",
+    "B_normal_geometry": "B-normal-only-refinement.json",
+    "C": "C-run/summary.json",
+    "C_refinement": "C-run/fixed-support/refinement.json",
+    "C_runtime": "C-run/fixed-support/run-observation.json",
+    "C_initial_runtime": "C-run/initial/run-observation.json",
+    "depth_inference": "C-run/initial/predictions/inference.json",
+    "C2": "C2-run/result.json",
+    "C2_refinement": "C2-run/refinement.json",
+    "C2_runtime": "C2-run/run-observation.json",
+    "C2_qa": "C2-run/rebake-evaluation.json",
+    "head_top": "C2-head-top-proof.json",
+    "D": "D-run/composed.json",
+    "D_result": "D-run/nx-result.json",
+    "D_recipe": "D-run/prepared.json",
+    "E": "E-uniform-color-proof.json",
+    "E_visual": "B-E-uniform-color-comparison-provenance.json",
+    "F": "F-run/composed.json",
+    "F_result": "F-run/nx-result.json",
+    "F_recipe": "F-run/prepared.json",
+    "F_prompt_diff": "F-run/prompt-diff.json",
+    "F_front": "F-front-stages-provenance.json",
+    "F_views": "B-D-F-stages-comparison-provenance.json",
+    "color_audit": "B-color-transfer-audit.json",
+    "color_bake": "color-linear/bake-result.json",
+    "color_qa": "color-linear/native-proof.json",
+    "canvas": "color-linear/guide-coordinate-proof.json",
+    "Hi3D_process": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/hi3d-process.json",
+    "B_normal_visual": "B-normal-only-front-stages-provenance.json",
+    "C_visual": "C-front-stages-provenance.json",
+    "C2_visual": "C2-front-stages-provenance.json",
+    "production_color_code": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/hi3d_postprocess.py",
+    "H_summary": "H-run/summary.json",
+    "H_plan": "H-run/plan.json",
+    "H_invocation": "H-run/inference-invocation.json",
+    "H_inference": "H-run/inference.json",
+    "H_postprocess": "H-run/postprocess.json",
+    "H_baseline": "H-run/baseline.json",
+    "H_result": "H-run/result.json",
+    "H_runtime": "H-run/runtime-observations.json",
+    "H_process": "H-run/process.json",
+    "H_B_replay": "H-run/b-replay/proof.json",
+    "H_camera_rebase": "H-run/camera-rebase/camera-rebase-proof.json",
+    "H_front_board": "H-front-stages.webp"
+  },
+  "preHAudit": {
+    "path": "final-facts-pre-h.json",
+    "sha256": "d8a5b3730faabd087fdbe75dadca15db799fd29c32bb88510eb38003ac0612fb",
+    "preservedUnchanged": true
+  },
+  "assembly": {
+    "location": "Shared local evidence mirror; remote device was unavailable during final assembly. Remote repo synchronization is not asserted.",
+    "HNumericEvidence": "Previously verified remote H JSON, cross-checked against local H-run/summary.json.",
+    "localHSummarySha256": "e81653ba27a5a958a9488176ee25e186c439ec295a90abf7471fde06403070b8"
+  }
+}

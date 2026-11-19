@@ -1,0 +1,36 @@
+{
+  "reportSha256": "d996adff5bced173d1ceb395a7aacc5c836e25a2e21c6eb6f65926287a7c596c",
+  "roundingChecks": {
+    "F": {
+      "source": 37.45708363813704,
+      "reported": "37.4571"
+    },
+    "J": {
+      "source": 13.20126188734455,
+      "reported": "13.2013"
+    },
+    "K-view": {
+      "source": 0.6079614728115094,
+      "reported": "0.6080"
+    },
+    "K-dominant": {
+      "source": 0.6079614728115094,
+      "reported": "0.6080"
+    }
+  },
+  "countChecks": {
+    "decodedOutputFrames": 48,
+    "opaqueResidualHeadPercent": 0.36519674974892724,
+    "opaqueResidualFacePercent": 0.5598320503848845
+  },
+  "retainedLanguageWarning": "The three polite verb endings in the settings paragraph state selection, comparison mode and actual arguments in sequence; retained for clarity.",
+  "sourceMatchReview": "Rounded decimals, unit-appended counts, PNG/SHA/MAE terminology and file/URL identifiers triggered literal-token warnings. Numeric rounding is checked above. The referenced images and proof files exist, and both archive downloads were byte-verified. This is not a claim of automatic semantic validation.",
+  "scopeReview": [
+    "RGB fidelity is separated from geometry accuracy.",
+    "J changes lighting and tone mapping together.",
+    "Small-angle success is limited to the tested asset and +/-15 degrees.",
+    "Wide-angle double faces remain.",
+    "Interior residual dots are opaque RGB errors; their causal branch is not determined."
+  ],
+  "verificationLine": "yomiyasu-check: executed via=verify run=20261119T125019Z-166a8b6d attempt=2 final=sha256:d996adff5bce mode=compose doc_type=incident checks=lint,materials meaning_risk=27 replay=skipped"
+}
