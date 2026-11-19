@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { inflateSync } from 'node:zlib';
 import { chromium } from 'playwright';
 
-const [htmlArg, outputArg, referenceArg, modesArg = 'lit', viewsArg = 'front,iso,left,right'] = process.argv.slice(2);
+const [htmlArg, outputArg, referenceArg, modesArg = 'lit', viewsArg = 'front,iso,left,right', expectedTrianglesArg] = process.argv.slice(2);
 assert(htmlArg && outputArg && referenceArg, 'Usage: node capture_inspector.mjs VIEWER OUTPUT_DIR REFERENCE_MANIFEST [lit,normals] [front,iso,left,right]');
 const html = resolve(htmlArg), output = resolve(outputArg);
 await mkdir(output, { recursive: true });
@@ -14,10 +14,12 @@ function viewerMetadata(bytes) {
   const payload = bytes.toString('utf8').match(/<script id="scene-payload"[^>]*>([\s\S]*?)<\/script>/)[1].trim();
   const packed = Buffer.from(payload, 'base64');
   const decoded = JSON.parse((packed[0] === 0x78 ? inflateSync(packed) : packed).toString('utf8'));
-  return { bounds: decoded.bounds, assetId: decoded.assetId };
+  const payloadTriangles = (decoded.meshes || []).filter(mesh => mesh.primitive !== "points").reduce((sum, mesh) => sum + Buffer.from(mesh.indices || "", "base64").length / 12, 0);
+  return { bounds: decoded.bounds, assetId: decoded.assetId, payloadTriangles, original: decoded.original };
 }
 let htmlBytes = await readFile(html);
 const scene = viewerMetadata(htmlBytes);
+if (expectedTrianglesArg) assert.equal(scene.payloadTriangles, Number(expectedTrianglesArg), "Viewer payload must contain every expected triangle");
 const referenceBytes = await readFile(resolve(referenceArg));
 const reference = JSON.parse(referenceBytes.toString('utf8'));
 const bounds = reference.bakeBox || reference.bounds;
@@ -34,6 +36,7 @@ const report = {
   html, htmlSHA256: hash(htmlBytes), referenceManifest: resolve(referenceArg),
   referenceManifestSHA256: hash(referenceBytes), assetId: scene.assetId || null,
   sourceBounds: scene.bounds, referenceBounds: bounds,
+  triangleCounts: { expected: expectedTrianglesArg ? Number(expectedTrianglesArg) : null, meshPayload: scene.payloadTriangles, sourceOriginal: scene.original || null },
   camera: { projection: 'orthographic', target, distance, halfExtent,
     fovBeforeOrthographic: 40, fitFormula: 'radius * 1.05 / sin(20deg)',
     sourceRadius, referenceRadius, perspectiveWheelDeltaY: wheelY,

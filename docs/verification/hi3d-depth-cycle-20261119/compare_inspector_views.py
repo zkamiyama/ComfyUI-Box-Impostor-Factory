@@ -15,9 +15,14 @@ parser.add_argument("--stages", default="A,A-normal-control")
 parser.add_argument("--control-proof", type=Path)
 args = parser.parse_args()
 stages = args.stages.split(",")
+is_control = stages == ["A", "A-normal-control"]
+assert is_control or all(stage in ("A", "B", "C") for stage in stages)
+assert len(stages) == 1 or stages[0] == "A", "Cross-stage crops must use A as the reference"
 args.output.mkdir(parents=True, exist_ok=True)
 views = {"front": [0, 0, 1], "iso": [1, 1, 1], "left": [-1, 0, 0], "right": [1, 0, 0]}
-labels = {"A": "Full A / original normal texture", "A-normal-control": "Same six RGB views / geometry normals only"}
+labels = {"A": "Full A / original normal texture", "A-normal-control": "Same six RGB views / geometry normals only",
+          "B": "B / Hi3D geometry + fresh six-view H3 RGB",
+          "C": "C / RGB-depth geometry refinement"}
 sha = lambda path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
 records = {}
 for stage in stages:
@@ -65,10 +70,12 @@ for name, vector in views.items():
                           height / 2 - centered @ up * height / (2 * camera["halfExtent"])))
     crops[name] = [*np.floor(xy.min(0)).astype(int).tolist(), *np.ceil(xy.max(0)).astype(int).tolist()]
 evidence = {
-    "kind": "Full six-view A" if len(stages) == 1 else "Full A versus same-RGB normalTexture control",
+    "kind": (f"Full six-view {stages[0]}" if len(stages) == 1 else
+             "Full A versus same-RGB normalTexture control" if is_control else
+             "Same-camera geometry stages: " + ", ".join(stages)),
     "renderer": "Unchanged official 3D-Inspector native Box PBR, CPU SwiftShader",
     "camera": camera, "actualFrameSize": [width, height], "headWorldBounds": head.tolist(), "headCrops": crops,
-    "headDefinition": "A upper 18 percent height within upper 8 percent X envelope; 0.01 bake-unit padding",
+    "headDefinition": stages[0] + " upper 18 percent height within upper 8 percent X envelope; 0.01 bake-unit padding",
     "stages": {}, "comparisons": {}, "panels": {},
     "processing": "Opaque backdrop for transparent PNGs, integer head crops enlarged 2x nearest-neighbor; full-body previews downsampled with Lanczos. No sharpening or AI postprocessing.",
 }
@@ -84,23 +91,34 @@ for stage in stages[1:]:
     other = records[stage]["manifest"]
     equal_maps = {name: description["sha256"] == other["textures"][name]["sha256"]
                   for name, description in manifest["textures"].items() if name != "normalMap"}
-    assert all(equal_maps.values())
+    if is_control:
+        assert all(equal_maps.values())
     geometry_equal = base["metadata"]["clay"]["geometry"] == records[stage]["metadata"]["clay"]["geometry"]
-    assert geometry_equal
+    if is_control:
+        assert geometry_equal
     normal_accessors_equal = (base["metadata"]["clay"]["normalPreservation"]["normalAccessors"]
                               == records[stage]["metadata"]["clay"]["normalPreservation"]["normalAccessors"])
-    assert normal_accessors_equal
-    assert manifest["bakeBox"] == other["bakeBox"]
+    if is_control:
+        assert normal_accessors_equal
+        assert manifest["bakeBox"] == other["bakeBox"]
+    else:
+        assert manifest["transform"] == other["transform"], "Stages are not in the same canonical frame"
     equal_depths = {face: manifest["faces"][face]["depthSha256"] == other["faces"][face]["depthSha256"] for face in manifest["faceOrder"]}
-    assert all(equal_depths.values())
+    if is_control:
+        assert all(equal_depths.values())
     evidence["comparisons"][stage] = {"allNonNormalMapHashesEqual": equal_maps, "allDepthHashesEqual": equal_depths,
                                      "proxyBytesEqual": manifest["proxySha256"] == other["proxySha256"],
                                      "geometryPositionsIndicesTransformsEqual": geometry_equal,
-                                     "vertexNormalAccessorsEqual": normal_accessors_equal, "bakeBoxEqual": True,
-                                     "proxyDifference": "Control removes normalTexture from material JSON; binary chunks are retained.",
-                                     "limitation": "normalMap also affects native cross-view incidence weighting; this is not solely a lighting ablation.",
-                                     "normalRGBOnlyVerification": "See separately recorded control invariant checks for normal alpha and registered RGB."}
+                                     "vertexNormalAccessorsEqual": normal_accessors_equal, "bakeBoxEqual": manifest["bakeBox"] == other["bakeBox"],
+                                     "canonicalFrameTransformEqual": manifest["transform"] == other["transform"],
+                                     "bakeBoxes": [manifest["bakeBox"], other["bakeBox"]],
+                                     "proxyDifference": ("Control removes normalTexture from material JSON; binary chunks are retained." if is_control
+                                                         else "Actual stage geometry changes are retained; no image-based shape alignment."),
+                                     "limitation": ("normalMap also affects native cross-view incidence weighting; this is not solely a lighting ablation." if is_control
+                                                    else "Appearance includes the stage geometry and its generated RGB; raw RGB and clay evidence must be considered separately."),
+                                     "normalRGBOnlyVerification": ("See separately recorded control invariant checks for normal alpha and registered RGB." if is_control else None)}
 if args.control_proof:
+    assert is_control, "--control-proof applies only to A,A-normal-control"
     proof = json.loads(args.control_proof.read_text())
     assert proof["passed"] and all(proof["checks"].values())
     evidence["controlInvariantProof"] = {"path": str(args.control_proof), "sha256": sha(args.control_proof),
@@ -116,7 +134,9 @@ cell_width = max((crop[2] - crop[0]) * 2 for crop in crops.values()) + 28
 cell_height = max((crop[3] - crop[1]) * 2 for crop in crops.values()) + 48
 board = Image.new("RGB", (4 * cell_width + 40, len(stages) * cell_height + 130), BG)
 draw = ImageDraw.Draw(board)
-title = "A / complete six-view Box" if len(stages) == 1 else "A / original normal texture vs geometry-normal control"
+title = (f"{stages[0]} / complete six-view Box" if len(stages) == 1 else
+         "A / original normal texture vs geometry-normal control" if is_control else
+         " / ".join(stages) + " / same-camera Box comparison")
 draw.text((20, 15), title, font=font(25), fill=(237, 241, 247))
 draw.text((20, 54), "Actual Inspector renders. Fixed camera and crops; no image enhancement.", font=font(17), fill=(177, 192, 211))
 for col, view in enumerate(views):
@@ -129,7 +149,7 @@ for row, stage in enumerate(stages):
         image = opaque(records[stage]["frames"][view].crop(crop))
         image = image.resize((image.width * 2, image.height * 2), Image.Resampling.NEAREST)
         board.paste(image, (20 + col * cell_width + (cell_width - image.width) // 2, y + 30))
-prefix = "A-full" if stages == ["A"] else "A-normal-control"
+prefix = f"{stages[0]}-full" if len(stages) == 1 else "A-normal-control" if is_control else "-".join(stages) + "-stages"
 path = args.output / f"{prefix}-faces.webp"
 board.save(path, "WEBP", lossless=True)
 evidence["panels"][path.name] = {"sha256": sha(path), "size": board.size, "bytes": path.stat().st_size}

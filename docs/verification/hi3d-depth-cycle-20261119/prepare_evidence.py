@@ -1,5 +1,8 @@
 """Prepare unchanged official Inspector viewers and a material-only clay derivative."""
 import argparse
+import base64
+import re
+import zlib
 import hashlib
 import json
 from pathlib import Path
@@ -17,6 +20,14 @@ from box_nodes.archive import pack_asset
 def sha(path):
     with Path(path).open("rb") as stream:
         return hashlib.file_digest(stream, "sha256").hexdigest()
+
+def viewer_mesh_counts(path):
+    html = Path(path).read_text()
+    text = re.search(r'<script id="scene-payload"[^>]*>(.*?)</script>', html, re.S).group(1).strip()
+    packed = base64.b64decode(text)
+    payload = json.loads(zlib.decompress(packed) if packed[:1] == b"\x78" else packed)
+    triangles = sum(len(base64.b64decode(mesh.get("indices", ""))) // 12 for mesh in payload["meshes"] if mesh.get("primitive") != "points")
+    return {"payloadTriangles": triangles, "payloadOriginal": payload.get("original")}
 
 def glb_chunks(path):
     data = Path(path).read_bytes()
@@ -117,6 +128,8 @@ proxy = args.asset / manifest["proxy"]
 assert sha(proxy) == manifest["proxySha256"]
 source = trimesh.load(proxy, force="scene", process=False)
 original_signature = geometry_signature(source)
+source_triangles = sum(item["triangles"] for item in original_signature)
+triangle_limit = max(250000, source_triangles)
 clay_path = args.output / f"{args.stage}-clay.glb"
 metadata_path = args.output / f"{args.stage}-provenance.json"
 previous = json.loads(metadata_path.read_text()) if metadata_path.exists() else {}
@@ -161,7 +174,10 @@ for name in manifest["faceOrder"]:
     metadata["faces"][name] = item
 metadata["acceptedCount"] = sum(item["status"] == "accepted" for item in metadata["faces"].values())
 clay_viewer = args.output / f"{args.stage}-clay.inspector.html"
-subprocess.run([sys.executable, str(args.inspector), str(clay_path), "-o", str(clay_viewer)], check=True)
+subprocess.run([sys.executable, str(args.inspector), str(clay_path), "-o", str(clay_viewer), "--max-triangles", str(triangle_limit)], check=True)
+viewer_counts = viewer_mesh_counts(clay_viewer)
+assert viewer_counts["payloadTriangles"] == source_triangles, "Official viewer must retain every source triangle"
+metadata["clay"].update(viewerTriangleLimit=triangle_limit, sourceTriangles=source_triangles, **viewer_counts)
 metadata["clay"]["viewer"] = str(clay_viewer.resolve())
 metadata["clay"]["viewerSHA256"] = sha(clay_viewer)
 metadata["clay"]["viewerBytes"] = clay_viewer.stat().st_size

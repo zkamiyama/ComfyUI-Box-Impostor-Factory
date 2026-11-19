@@ -1,0 +1,47 @@
+{
+  "status": "Corrected B evidence available; previous cap250k B captures invalid for geometry quality assessment",
+  "cause": "Official Inspector defaults max-triangles=250000 and selected faces[::4] for B 1000000 triangles; 75 percent of faces were absent. A 81180 triangles was unaffected.",
+  "retainedEvidenceDirectory": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/audit-inspector-250k-cap",
+  "affectedPanels": [
+    "A-B-clay-faces.webp",
+    "A-B-clay-body.webp",
+    "A-B-normal-only-front.webp"
+  ],
+  "correction": "Regenerate unchanged official HTML using --max-triangles 1000000 and assert payload triangle count equals source triangle count. Reuse A captures; recapture B.",
+  "normalClarification": "Official mesh converter always requests trimesh.vertex_normals, so missing source NORMAL does not imply flat shading in these Inspector mesh captures. Native Box is a separate renderer.",
+  "replacementPanels": {
+    "A-B-clay-faces.webp": {
+      "sha256": "4ddbd2b8fc8306ec9faedfd2685e7d781076f313161f091a2c5fa1ebd17164cc",
+      "bytes": 156154,
+      "size": [
+        1672,
+        1174
+      ]
+    },
+    "A-B-clay-body.webp": {
+      "sha256": "7174a966827deee8677fccb2a1bc7136395f3b00a36a7936b0af076ee88117e5",
+      "bytes": 90784,
+      "size": [
+        1000,
+        1230
+      ]
+    }
+  },
+  "replacementPayloadTriangles": 1000000,
+  "normalOnlyLimitedPreview": "A-B-normal-only-front.webp also used the 250k cap and is invalid for evaluating quality or normal-only effect; no conclusion from that preview is retained.",
+  "retiredNormalPreview": {
+    "status": "INVALID FOR QUALITY OR NORMAL-ONLY EFFECT ASSESSMENT",
+    "reason": "B and B-normal-only official mesh viewers contained only250000 of1000000 source triangles due default face stride. No quality or normal-effect conclusion from these images is retained.",
+    "artifacts": [
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/audit-inspector-250k-cap/A-B-normal-only-front.webp",
+        "sha256": "787aa24d785253876d75b9aa6dfe44876ab3a448d5ea4383e35b9144a1c488ab"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/audit-inspector-250k-cap/A-B-normal-only-front-provenance.json",
+        "sha256": "de97f484375cd0578e8df36bc94932536d3f6962a58dea56679d5d35d229cf8e"
+      }
+    ],
+    "stillValid": "Original numerical verification that B normal-only GLB positions, indices, materials, transforms and binary prefix are unchanged remains valid; source GLBs/proofs are untouched."
+  }
+}
