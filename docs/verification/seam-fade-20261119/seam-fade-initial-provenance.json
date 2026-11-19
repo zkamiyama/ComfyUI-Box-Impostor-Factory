@@ -1,0 +1,1531 @@
+{
+  "kind": "Compare unchanged Inspector snapshots for the seam-fade experiment.",
+  "stage": "initial",
+  "scriptSHA256": "5491ae82a0669749a540cc047e2a015a751efd48963bf936af93be7851bc2b9c",
+  "anglesDegrees": [
+    0,
+    -30,
+    45
+  ],
+  "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "fixedHeadCrop": [
+    378,
+    115,
+    654,
+    271
+  ],
+  "inspectionROIs": {
+    "head": [
+      378,
+      115,
+      654,
+      271
+    ],
+    "neck_m30": [
+      512,
+      202,
+      587,
+      258
+    ],
+    "hair_p45": [
+      411,
+      132,
+      501,
+      236
+    ],
+    "skirt_p45": [
+      462,
+      425,
+      548,
+      559
+    ]
+  },
+  "invariantChecks": {
+    "K-view/0": {
+      "alphaByteExactToK": true,
+      "maxMatrixDifference": {
+        "matrixWorld": 0.0,
+        "projectionMatrix": 0.0
+      },
+      "actualYawDegrees": 0
+    },
+    "K-view/-30": {
+      "alphaByteExactToK": true,
+      "maxMatrixDifference": {
+        "matrixWorld": 0.0,
+        "projectionMatrix": 0.0
+      },
+      "actualYawDegrees": -29.999995422363284
+    },
+    "K-view/45": {
+      "alphaByteExactToK": true,
+      "maxMatrixDifference": {
+        "matrixWorld": 0.0,
+        "projectionMatrix": 0.0
+      },
+      "actualYawDegrees": 45.00000000000001
+    },
+    "L1-view-fade/0": {
+      "alphaByteExactToK": true,
+      "maxMatrixDifference": {
+        "matrixWorld": 0.0,
+        "projectionMatrix": 0.0
+      },
+      "actualYawDegrees": 0
+    },
+    "L1-view-fade/-30": {
+      "alphaByteExactToK": true,
+      "maxMatrixDifference": {
+        "matrixWorld": 0.0,
+        "projectionMatrix": 0.0
+      },
+      "actualYawDegrees": -29.999995422363284
+    },
+    "L1-view-fade/45": {
+      "alphaByteExactToK": true,
+      "maxMatrixDifference": {
+        "matrixWorld": 0.0,
+        "projectionMatrix": 0.0
+      },
+      "actualYawDegrees": 45.00000000000001
+    },
+    "L2-view-soft/0": {
+      "alphaByteExactToK": true,
+      "maxMatrixDifference": {
+        "matrixWorld": 0.0,
+        "projectionMatrix": 0.0
+      },
+      "actualYawDegrees": 0
+    },
+    "L2-view-soft/-30": {
+      "alphaByteExactToK": true,
+      "maxMatrixDifference": {
+        "matrixWorld": 0.0,
+        "projectionMatrix": 0.0
+      },
+      "actualYawDegrees": -29.999995422363284
+    },
+    "L2-view-soft/45": {
+      "alphaByteExactToK": true,
+      "maxMatrixDifference": {
+        "matrixWorld": 0.0,
+        "projectionMatrix": 0.0
+      },
+      "actualYawDegrees": 45.00000000000001
+    }
+  },
+  "differencesToK": {
+    "K-view/0": {
+      "region": "common opaque head, eroded 3px",
+      "pixels": 14080,
+      "meanRGBByteDifferenceToK": 0.0,
+      "maxRGBByteDifferenceToK": 0.0,
+      "differentPixelsToK": 0
+    },
+    "L1-view-fade/0": {
+      "region": "common opaque head, eroded 3px",
+      "pixels": 14080,
+      "meanRGBByteDifferenceToK": 0.023058712121212122,
+      "maxRGBByteDifferenceToK": 48.0,
+      "differentPixelsToK": 27
+    },
+    "L2-view-soft/0": {
+      "region": "common opaque head, eroded 3px",
+      "pixels": 14080,
+      "meanRGBByteDifferenceToK": 0.02625473484848485,
+      "maxRGBByteDifferenceToK": 66.0,
+      "differentPixelsToK": 45
+    },
+    "K-view/-30": {
+      "region": "common opaque head, eroded 3px",
+      "pixels": 15557,
+      "meanRGBByteDifferenceToK": 0.0,
+      "maxRGBByteDifferenceToK": 0.0,
+      "differentPixelsToK": 0
+    },
+    "L1-view-fade/-30": {
+      "region": "common opaque head, eroded 3px",
+      "pixels": 15557,
+      "meanRGBByteDifferenceToK": 0.0,
+      "maxRGBByteDifferenceToK": 0.0,
+      "differentPixelsToK": 0
+    },
+    "L2-view-soft/-30": {
+      "region": "common opaque head, eroded 3px",
+      "pixels": 15557,
+      "meanRGBByteDifferenceToK": 3.0957553941419724,
+      "maxRGBByteDifferenceToK": 141.0,
+      "differentPixelsToK": 10586
+    },
+    "K-view/45": {
+      "region": "common opaque head, eroded 3px",
+      "pixels": 10801,
+      "meanRGBByteDifferenceToK": 0.0,
+      "maxRGBByteDifferenceToK": 0.0,
+      "differentPixelsToK": 0
+    },
+    "L1-view-fade/45": {
+      "region": "common opaque head, eroded 3px",
+      "pixels": 10801,
+      "meanRGBByteDifferenceToK": 0.0029626886399407464,
+      "maxRGBByteDifferenceToK": 19.0,
+      "differentPixelsToK": 5
+    },
+    "L2-view-soft/45": {
+      "region": "common opaque head, eroded 3px",
+      "pixels": 10801,
+      "meanRGBByteDifferenceToK": 0.41107304879177853,
+      "maxRGBByteDifferenceToK": 109.0,
+      "differentPixelsToK": 204
+    }
+  },
+  "reports": {
+    "K-view": [
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-front/capture.json",
+        "sha256": "d4c8909a63e57ab0377c84fc9c9912d047244c12df740320388098f0fff7f86b",
+        "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html",
+        "htmlSHA256": "4b1ee6af6e20a8e7ebe9fce88a01fce83af722551538499698fa70b01c570ce0",
+        "display": {
+          "label": "K-view",
+          "lighting": "unlit",
+          "toneMapping": "NoToneMapping",
+          "sampling": "native",
+          "colorSampling": "view"
+        },
+        "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+        "camera": {
+          "projection": "orthographic",
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "distance": 1.8073808642855147,
+          "halfExtent": 0.65783283658225,
+          "fovBeforeOrthographic": 40,
+          "fitFormula": "radius * 1.05 / sin(20deg)",
+          "sourceRadius": 0.5876666886430749,
+          "referenceRadius": 0.5887244402352406,
+          "perspectiveWheelDeltaY": 3.505915677124107,
+          "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "cssPixels": [
+            800,
+            800
+          ],
+          "deviceScaleFactor": 1.28001,
+          "wheelProtocolDeltaY": 4.4876070731820406,
+          "pans": [
+            {
+              "view": "front",
+              "dx": 0,
+              "dy": 0
+            },
+            {
+              "view": "right",
+              "dx": 0,
+              "dy": 0
+            }
+          ]
+        }
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-yaw/capture.json",
+        "sha256": "56493cd39c56c3a5177b473fb3ac77f72ca225108fa3a69cc9455d35e863de7f",
+        "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html",
+        "htmlSHA256": "4b1ee6af6e20a8e7ebe9fce88a01fce83af722551538499698fa70b01c570ce0",
+        "display": {
+          "label": "K-view",
+          "lighting": "unlit",
+          "toneMapping": "NoToneMapping",
+          "sampling": "native",
+          "colorSampling": "view"
+        },
+        "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+        "camera": {
+          "projection": "orthographic",
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "distance": 1.8073808642855147,
+          "halfExtent": 0.65783283658225,
+          "fovBeforeOrthographic": 40,
+          "fitFormula": "radius * 1.05 / sin(20deg)",
+          "sourceRadius": 0.5876666886430749,
+          "referenceRadius": 0.5887244402352406,
+          "perspectiveWheelDeltaY": 3.505915677124107,
+          "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "cssPixels": [
+            800,
+            800
+          ],
+          "deviceScaleFactor": 1.28001,
+          "wheelProtocolDeltaY": 4.4876070731820406,
+          "pans": [
+            {
+              "view": "front",
+              "dx": 0,
+              "dy": 0
+            },
+            {
+              "view": "right",
+              "dx": 0,
+              "dy": 0
+            }
+          ]
+        }
+      }
+    ],
+    "L1-view-fade": [
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade-first/capture.json",
+        "sha256": "ff18abd76e9c710ccab41cae36eaf53051de3b4461951c3297bcf5132c9e978a",
+        "html": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade.inspector.html",
+        "htmlSHA256": "c7d91ef5e04bbb8eb0b4f532fe9a4d259c3e345e5d82493d0e8d73b5d3591bae",
+        "display": {
+          "lighting": "unlit",
+          "sampling": "native",
+          "colorSampling": "view-fade"
+        },
+        "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+        "camera": {
+          "projection": "orthographic",
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "distance": 1.8073808642855147,
+          "halfExtent": 0.65783283658225,
+          "fovBeforeOrthographic": 40,
+          "fitFormula": "radius * 1.05 / sin(20deg)",
+          "sourceRadius": 0.5876666886430749,
+          "referenceRadius": 0.5887244402352406,
+          "perspectiveWheelDeltaY": 3.505915677124107,
+          "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "cssPixels": [
+            800,
+            800
+          ],
+          "deviceScaleFactor": 1.28001,
+          "wheelProtocolDeltaY": 4.4876070731820406,
+          "pans": [
+            {
+              "view": "front",
+              "dx": 0,
+              "dy": 0
+            },
+            {
+              "view": "right",
+              "dx": 0,
+              "dy": 0
+            }
+          ]
+        }
+      }
+    ],
+    "L2-view-soft": [
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft-first/capture.json",
+        "sha256": "bcda560719988bdd5af814ccebed3d188d15830f3528097959337e9c47596a4c",
+        "html": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft.inspector.html",
+        "htmlSHA256": "6e6c6e63c8882d6dbfcd26337e5365d607c3713ec73dac65366154fd896a7741",
+        "display": {
+          "lighting": "unlit",
+          "sampling": "native",
+          "colorSampling": "view-soft"
+        },
+        "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+        "camera": {
+          "projection": "orthographic",
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "distance": 1.8073808642855147,
+          "halfExtent": 0.65783283658225,
+          "fovBeforeOrthographic": 40,
+          "fitFormula": "radius * 1.05 / sin(20deg)",
+          "sourceRadius": 0.5876666886430749,
+          "referenceRadius": 0.5887244402352406,
+          "perspectiveWheelDeltaY": 3.505915677124107,
+          "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "cssPixels": [
+            800,
+            800
+          ],
+          "deviceScaleFactor": 1.28001,
+          "wheelProtocolDeltaY": 4.4876070731820406,
+          "pans": [
+            {
+              "view": "front",
+              "dx": 0,
+              "dy": 0
+            },
+            {
+              "view": "right",
+              "dx": 0,
+              "dy": 0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "frames": {
+    "K-view": {
+      "0": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-front/yaw-p0_000.png",
+        "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59",
+        "requestedYawDegrees": 0,
+        "actualYawDegrees": 0,
+        "actualPitchDegrees": 3.5083546492674384e-15,
+        "radialDistance": 1.8073808642341482,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482
+          ],
+          "quaternion": [
+            -3.061616997868383e-17,
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            -6.123233995736766e-17,
+            0,
+            0,
+            6.123233995736766e-17,
+            1,
+            0,
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482,
+            1
+          ],
+          "matrixWorldInverse": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            6.123233995736766e-17,
+            0,
+            0,
+            -6.123233995736766e-17,
+            1,
+            0,
+            0,
+            0,
+            -1.8073808642341482,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": []
+      },
+      "-30": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-yaw/yaw-m30_000.png",
+        "sha256": "231661dcf6c47b71ed69661327ceeea860ea21d94bd8af4b128295f45bc33ddc",
+        "requestedYawDegrees": -30,
+        "actualYawDegrees": -29.999995422363284,
+        "actualPitchDegrees": 3.5083546492674384e-15,
+        "radialDistance": 1.807380864234148,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            -0.9036903070626635,
+            1.1067015951122632e-16,
+            1.5652378149408366
+          ],
+          "quaternion": [
+            -2.9572949601011957e-17,
+            -0.2588190065162794,
+            -7.924046697216487e-18,
+            0.9659258366282196
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            0.8660254437318522,
+            3.0814879110195774e-33,
+            0.49999993080904365,
+            0,
+            3.0616165741959666e-17,
+            1,
+            -5.302876438231895e-17,
+            0,
+            -0.49999993080904365,
+            6.123233995736765e-17,
+            0.8660254437318522,
+            0,
+            -0.9036903070626635,
+            1.1067015951122632e-16,
+            1.5652378149408366,
+            1
+          ],
+          "matrixWorldInverse": [
+            0.8660254437318522,
+            3.061616574195966e-17,
+            -0.49999993080904365,
+            0,
+            0,
+            1,
+            6.123233995736765e-17,
+            0,
+            0.49999993080904365,
+            -5.3028764382318943e-17,
+            0.8660254437318522,
+            0,
+            -1.1102230246251565e-16,
+            -3.05936379377527e-32,
+            -1.807380864234148,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": [
+          66.66666666666667
+        ]
+      },
+      "45": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-yaw/yaw-p45_000.png",
+        "sha256": "c2ca5b4b6dd23e23d5f76710faca3d2637f535298bf9b5c0b2a125740d31abe8",
+        "requestedYawDegrees": 45,
+        "actualYawDegrees": 45.00000000000001,
+        "actualPitchDegrees": 3.5083546492674388e-15,
+        "radialDistance": 1.8073808642341485,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            1.278011265286769,
+            1.1067015951122633e-16,
+            1.278011265286769
+          ],
+          "quaternion": [
+            -2.828565280719251e-17,
+            0.3826834323650898,
+            1.1716301013315748e-17,
+            0.9238795325112867
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            0.7071067811865475,
+            0,
+            -0.7071067811865476,
+            0,
+            -4.329780281177467e-17,
+            1,
+            -4.329780281177467e-17,
+            0,
+            0.7071067811865476,
+            6.123233995736767e-17,
+            0.7071067811865475,
+            0,
+            1.278011265286769,
+            1.1067015951122633e-16,
+            1.278011265286769,
+            1
+          ],
+          "matrixWorldInverse": [
+            0.7071067811865475,
+            -4.3297802811774677e-17,
+            0.7071067811865476,
+            0,
+            -6.162975822039155e-33,
+            1,
+            6.123233995736767e-17,
+            0,
+            -0.7071067811865476,
+            -4.329780281177467e-17,
+            0.7071067811865475,
+            0,
+            2.220446049250313e-16,
+            8.715763992105246e-33,
+            -1.8073808642341482,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": [
+          -100
+        ]
+      }
+    },
+    "L1-view-fade": {
+      "0": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade-first/yaw-p0_000.png",
+        "sha256": "2853d918c245bc8e99817842bf544b22453ea32e50ed91e58057ae4d8de06f65",
+        "requestedYawDegrees": 0,
+        "actualYawDegrees": 0,
+        "actualPitchDegrees": 3.5083546492674384e-15,
+        "radialDistance": 1.8073808642341482,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482
+          ],
+          "quaternion": [
+            -3.061616997868383e-17,
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            -6.123233995736766e-17,
+            0,
+            0,
+            6.123233995736766e-17,
+            1,
+            0,
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482,
+            1
+          ],
+          "matrixWorldInverse": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            6.123233995736766e-17,
+            0,
+            0,
+            -6.123233995736766e-17,
+            1,
+            0,
+            0,
+            0,
+            -1.8073808642341482,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": []
+      },
+      "-30": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade-first/yaw-m30_000.png",
+        "sha256": "e2186387d8688744b6e156cdac6242605fa4f9bc9645e573cdc9753cc697bc5b",
+        "requestedYawDegrees": -30,
+        "actualYawDegrees": -29.999995422363284,
+        "actualPitchDegrees": 3.5083546492674384e-15,
+        "radialDistance": 1.807380864234148,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            -0.9036903070626635,
+            1.1067015951122632e-16,
+            1.5652378149408366
+          ],
+          "quaternion": [
+            -2.9572949601011957e-17,
+            -0.2588190065162794,
+            -7.924046697216487e-18,
+            0.9659258366282196
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            0.8660254437318522,
+            3.0814879110195774e-33,
+            0.49999993080904365,
+            0,
+            3.0616165741959666e-17,
+            1,
+            -5.302876438231895e-17,
+            0,
+            -0.49999993080904365,
+            6.123233995736765e-17,
+            0.8660254437318522,
+            0,
+            -0.9036903070626635,
+            1.1067015951122632e-16,
+            1.5652378149408366,
+            1
+          ],
+          "matrixWorldInverse": [
+            0.8660254437318522,
+            3.061616574195966e-17,
+            -0.49999993080904365,
+            0,
+            0,
+            1,
+            6.123233995736765e-17,
+            0,
+            0.49999993080904365,
+            -5.3028764382318943e-17,
+            0.8660254437318522,
+            0,
+            -1.1102230246251565e-16,
+            -3.05936379377527e-32,
+            -1.807380864234148,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": [
+          66.66666666666667
+        ]
+      },
+      "45": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade-first/yaw-p45_000.png",
+        "sha256": "4f37b62b22c18652f48f3ec62632365922f8642cc818260780ffd3f85d540bc8",
+        "requestedYawDegrees": 45,
+        "actualYawDegrees": 45.00000000000001,
+        "actualPitchDegrees": 3.5083546492674388e-15,
+        "radialDistance": 1.8073808642341485,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            1.278011265286769,
+            1.1067015951122633e-16,
+            1.278011265286769
+          ],
+          "quaternion": [
+            -2.828565280719251e-17,
+            0.3826834323650898,
+            1.1716301013315748e-17,
+            0.9238795325112867
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            0.7071067811865475,
+            0,
+            -0.7071067811865476,
+            0,
+            -4.329780281177467e-17,
+            1,
+            -4.329780281177467e-17,
+            0,
+            0.7071067811865476,
+            6.123233995736767e-17,
+            0.7071067811865475,
+            0,
+            1.278011265286769,
+            1.1067015951122633e-16,
+            1.278011265286769,
+            1
+          ],
+          "matrixWorldInverse": [
+            0.7071067811865475,
+            -4.3297802811774677e-17,
+            0.7071067811865476,
+            0,
+            -6.162975822039155e-33,
+            1,
+            6.123233995736767e-17,
+            0,
+            -0.7071067811865476,
+            -4.329780281177467e-17,
+            0.7071067811865475,
+            0,
+            2.220446049250313e-16,
+            8.715763992105246e-33,
+            -1.8073808642341482,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": [
+          -100
+        ]
+      }
+    },
+    "L2-view-soft": {
+      "0": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft-first/yaw-p0_000.png",
+        "sha256": "7bbdaa5477f3e595891eb7bcd83c3a0d558f177fa5e136c28f1020cda3306b9e",
+        "requestedYawDegrees": 0,
+        "actualYawDegrees": 0,
+        "actualPitchDegrees": 3.5083546492674384e-15,
+        "radialDistance": 1.8073808642341482,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482
+          ],
+          "quaternion": [
+            -3.061616997868383e-17,
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            -6.123233995736766e-17,
+            0,
+            0,
+            6.123233995736766e-17,
+            1,
+            0,
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482,
+            1
+          ],
+          "matrixWorldInverse": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            6.123233995736766e-17,
+            0,
+            0,
+            -6.123233995736766e-17,
+            1,
+            0,
+            0,
+            0,
+            -1.8073808642341482,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": []
+      },
+      "-30": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft-first/yaw-m30_000.png",
+        "sha256": "099ca1a23456f1d486e9d16d0aeebf89e67df877eddc4d6143cb058fe2b7ed4a",
+        "requestedYawDegrees": -30,
+        "actualYawDegrees": -29.999995422363284,
+        "actualPitchDegrees": 3.5083546492674384e-15,
+        "radialDistance": 1.807380864234148,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            -0.9036903070626635,
+            1.1067015951122632e-16,
+            1.5652378149408366
+          ],
+          "quaternion": [
+            -2.9572949601011957e-17,
+            -0.2588190065162794,
+            -7.924046697216487e-18,
+            0.9659258366282196
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            0.8660254437318522,
+            3.0814879110195774e-33,
+            0.49999993080904365,
+            0,
+            3.0616165741959666e-17,
+            1,
+            -5.302876438231895e-17,
+            0,
+            -0.49999993080904365,
+            6.123233995736765e-17,
+            0.8660254437318522,
+            0,
+            -0.9036903070626635,
+            1.1067015951122632e-16,
+            1.5652378149408366,
+            1
+          ],
+          "matrixWorldInverse": [
+            0.8660254437318522,
+            3.061616574195966e-17,
+            -0.49999993080904365,
+            0,
+            0,
+            1,
+            6.123233995736765e-17,
+            0,
+            0.49999993080904365,
+            -5.3028764382318943e-17,
+            0.8660254437318522,
+            0,
+            -1.1102230246251565e-16,
+            -3.05936379377527e-32,
+            -1.807380864234148,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": [
+          66.66666666666667
+        ]
+      },
+      "45": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft-first/yaw-p45_000.png",
+        "sha256": "6e029e37885022a4601b940d4049be39e790dcd1463a8afc188e64173ae51997",
+        "requestedYawDegrees": 45,
+        "actualYawDegrees": 45.00000000000001,
+        "actualPitchDegrees": 3.5083546492674388e-15,
+        "radialDistance": 1.8073808642341485,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            1.278011265286769,
+            1.1067015951122633e-16,
+            1.278011265286769
+          ],
+          "quaternion": [
+            -2.828565280719251e-17,
+            0.3826834323650898,
+            1.1716301013315748e-17,
+            0.9238795325112867
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            0.7071067811865475,
+            0,
+            -0.7071067811865476,
+            0,
+            -4.329780281177467e-17,
+            1,
+            -4.329780281177467e-17,
+            0,
+            0.7071067811865476,
+            6.123233995736767e-17,
+            0.7071067811865475,
+            0,
+            1.278011265286769,
+            1.1067015951122633e-16,
+            1.278011265286769,
+            1
+          ],
+          "matrixWorldInverse": [
+            0.7071067811865475,
+            -4.3297802811774677e-17,
+            0.7071067811865476,
+            0,
+            -6.162975822039155e-33,
+            1,
+            6.123233995736767e-17,
+            0,
+            -0.7071067811865476,
+            -4.329780281177467e-17,
+            0.7071067811865475,
+            0,
+            2.220446049250313e-16,
+            8.715763992105246e-33,
+            -1.8073808642341482,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": [
+          -100
+        ]
+      }
+    }
+  },
+  "outputs": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/seam-fade-faces.png",
+      "sha256": "6643e9c16dc0f0f7b9b54cfe10f82e7d5234dfc5238b37a155fdf0459d9dde33",
+      "bytes": 238801,
+      "size": [
+        1752,
+        1260
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/seam-fade-body.png",
+      "sha256": "7254d82617f12fad0b01ad023a4223bf11b8674f56c5542285031649d6440f94",
+      "bytes": 132545,
+      "size": [
+        1104,
+        1286
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/seam-fade-front-preservation.png",
+      "sha256": "5aa0f085675361ecc999ff468fc79fb226dcc8840510500cca3516cb893550cb",
+      "bytes": 107829,
+      "size": [
+        1452,
+        652
+      ]
+    }
+  ],
+  "frontFidelity": {
+    "referenceImage": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-reference-rgba.png",
+      "sha256": "bf562f2bc6aa194f6d642152b2a1f1ddfaf40b206effd826f163eba24a0a7949",
+      "bytes": 31933
+    },
+    "fidelityMask": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-J-K-front-fidelity-mask.png",
+      "sha256": "cddf136d050f33b449a3e7a951ed6055b82d61bb2cae62d6a0caa20a692e0133",
+      "alphaThreshold": 250,
+      "operator": "Intersection of reference and every render alpha>250; three iterations of 3x3 binary erosion (Chebyshev radius 3), border=0.",
+      "pixelsBeforeErosion": 12471,
+      "pixelsAfterErosion": 10936
+    },
+    "residualMask": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-source-interior-mask.png",
+      "sha256": "65ee9f77ec8aa94c099c7e96d9ccd7bc33aa972d35bb09fbccfbd1571c79fea9",
+      "bytes": 439
+    },
+    "headCrop": [
+      463,
+      115,
+      572,
+      271
+    ],
+    "faceRectangle": [
+      478,
+      165,
+      543,
+      231
+    ],
+    "metrics": {
+      "K-view": {
+        "sRGBMAE255FixedPriorMask": 0.6079614728115094,
+        "sampledPixels": 10936,
+        "sourceInterior": {
+          "head": {
+            "pixels": 10953,
+            "transparentAlpha0to5": 0,
+            "partialAlpha6to250": 0,
+            "opaqueMeanRGBErrorOver16": 40
+          },
+          "faceRectangle": {
+            "pixels": 4287,
+            "transparentAlpha0to5": 0,
+            "partialAlpha6to250": 0,
+            "opaqueMeanRGBErrorOver16": 24
+          }
+        }
+      },
+      "L1-view-fade": {
+        "sRGBMAE255FixedPriorMask": 0.6323152889539136,
+        "sampledPixels": 10936,
+        "sourceInterior": {
+          "head": {
+            "pixels": 10953,
+            "transparentAlpha0to5": 0,
+            "partialAlpha6to250": 0,
+            "opaqueMeanRGBErrorOver16": 47
+          },
+          "faceRectangle": {
+            "pixels": 4287,
+            "transparentAlpha0to5": 0,
+            "partialAlpha6to250": 0,
+            "opaqueMeanRGBErrorOver16": 29
+          }
+        }
+      },
+      "L2-view-soft": {
+        "sRGBMAE255FixedPriorMask": 0.5845220677883443,
+        "sampledPixels": 10936,
+        "sourceInterior": {
+          "head": {
+            "pixels": 10953,
+            "transparentAlpha0to5": 0,
+            "partialAlpha6to250": 0,
+            "opaqueMeanRGBErrorOver16": 37
+          },
+          "faceRectangle": {
+            "pixels": 4287,
+            "transparentAlpha0to5": 0,
+            "partialAlpha6to250": 0,
+            "opaqueMeanRGBErrorOver16": 23
+          }
+        }
+      }
+    },
+    "interpretation": "Same registered +Z image on the same camera grid and unchanged historical masks. Image fidelity and residual classification, not 3D ground-truth accuracy."
+  }
+}

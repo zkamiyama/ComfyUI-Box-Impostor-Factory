@@ -1,0 +1,38 @@
+{
+  "method": "official-inspector-opt-in-rgb-runtime-v4",
+  "baselineSource": {
+    "native-runtime.cdn.mjs": "ac0f29cd15b3bf9f3b6a95c216a34e39637474ca8c8b5613c51b94d2e10b7ff9",
+    "native-runtime.bundle.js": "4e24d6ee46962c3bb8a6dd5236467f40b13d3519fb3e7f4224c36ca4f693c7aa"
+  },
+  "dependencies": {
+    "three": "0.186.0",
+    "three-impostor": "0.4.1"
+  },
+  "colorSamplingOptions": [
+    "native",
+    "view",
+    "dominant",
+    "view-fade",
+    "view-soft",
+    "view-feather"
+  ],
+  "helperSha256": "b1cb7d3f7e0dd6bffe0101f3db9638e1bce2067d79c91b17380f0e0481c87df9",
+  "builderSha256": "6fd40f7926be9ccf3fa4802095a5fdb34fcf4455de987e0a6bf90f9f2535bea7",
+  "outputs": {
+    "native-rgb-runtime.bundle.js": {
+      "bytes": 1106324,
+      "sha256": "2c99aef29eafa58427f15a5e82399f74364507fffbbe502d923be24d8dcd66c6"
+    },
+    "native-rgb-runtime.cdn.mjs": {
+      "bytes": 12894,
+      "sha256": "4492af2609a9f148a9a7ca55eb4b4330a09fd25b6385da37f506b3c0b399d700"
+    }
+  },
+  "baselineRuntimesUnchanged": true,
+  "generatedHtmlPostprocessing": false,
+  "changes": [
+    "native material uses shared display helper",
+    "unlit renderer disables tone mapping",
+    "optional view-direction color selection preserves native depth"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "html": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather.inspector.html",
+  "htmlSHA256": "061d47263bb45dca17d1ce300449ff084c3b0d4c20944cb58c7b9ba7434bcb18",
+  "base": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html",
+  "baseSHA256": "4b1ee6af6e20a8e7ebe9fce88a01fce83af722551538499698fa70b01c570ce0",
+  "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "checks": {
+    "boundsEqualToK": true,
+    "manifestEqualToK": true,
+    "meshesEqualToK": true,
+    "assetIdEqualToK": true,
+    "displayMatches": true
+  },
+  "maps": {
+    "colorMap": {
+      "byteEqualToK": true,
+      "sha256": "647ec74f534bfb8de476663261f257a1d912179a4351d4f33e9f256fc1338ece",
+      "bytes": 50331648
+    },
+    "normalMap": {
+      "byteEqualToK": true,
+      "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+      "bytes": 50331648
+    },
+    "intervalMap": {
+      "byteEqualToK": true,
+      "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+      "bytes": 25165824
+    },
+    "rangeMap": {
+      "byteEqualToK": true,
+      "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+      "bytes": 393216
+    }
+  },
+  "display": {
+    "lighting": "unlit",
+    "sampling": "native",
+    "colorSampling": "view-feather"
+  },
+  "scriptSHA256": "915d75583cb58251fc72b6efe27e48119574a5d9148e77da29a5afd3a0441237"
+}

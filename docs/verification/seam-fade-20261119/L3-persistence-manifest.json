@@ -1,0 +1,156 @@
+{
+  "files": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/l3_qa.py",
+      "relativePath": "l3_qa.py",
+      "sha256": "915d75583cb58251fc72b6efe27e48119574a5d9148e77da29a5afd3a0441237",
+      "bytes": 7704
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/l3_final_qa.py",
+      "relativePath": "l3_final_qa.py",
+      "sha256": "a926b24c45168e51a75d0bd45c567629ccf5529174198e9d56a35d4afb393ce6",
+      "bytes": 7732
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-evidence/L3-initial-provenance.json",
+      "relativePath": "L3-initial-provenance.json",
+      "sha256": "de4f3326a4c8b81527e335b999de738703df5778aa7ce70ec20ba2b3bf43065c",
+      "bytes": 31872
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-final-evidence/L3-final-provenance.json",
+      "relativePath": "L3-final-provenance.json",
+      "sha256": "6004af6633e6427b01b5207b031c26e4fcc9024d57c2c02d09547a808c5ccae2",
+      "bytes": 32012
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-viewer-payload-identity.json",
+      "relativePath": "L3-initial-viewer-payload-identity.json",
+      "sha256": "937f91d62f3d96c4f6fac68f2c05a10247a967feea495c2452cfeae2d1a3b372",
+      "bytes": 1466
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-final-viewer-payload-identity.json",
+      "relativePath": "L3-final-viewer-payload-identity.json",
+      "sha256": "059d1dc036348a20c5e36a0ab7c7193fbf4d865158255a799d4f435f5c22c4ec",
+      "bytes": 1472
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/viewer-build-l3.json",
+      "relativePath": "viewer-build-l3.json",
+      "sha256": "0bac2881e24b355eeb81439f656329213023652e5323cece0d8a961e0874e79d",
+      "bytes": 1027
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/runtime-build-l3.json",
+      "relativePath": "runtime-build-l3.json",
+      "sha256": "6ec1c0161544c1c7430508ac4bb71d4ab1868d23b85b05b9b2f9450abbe87aa6",
+      "bytes": 1242
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/viewer-build-l3-final.json",
+      "relativePath": "viewer-build-l3-final.json",
+      "sha256": "d37ab2bbd5f4c770939e9fa91352eef4804d372b96f60f911fea7da22a552a90",
+      "bytes": 1045
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/runtime-build-l3-final.json",
+      "relativePath": "runtime-build-l3-final.json",
+      "sha256": "10cc0d3cbd339ac997bd607c6e4d275b403fe310e0d3711bfdc40d9052c481ee",
+      "bytes": 1242
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/qa-L3-view-feather-control.json",
+      "relativePath": "qa-L3-view-feather-control.json",
+      "sha256": "26afad576ed7f9157e32161c830d32e078dc2509ae888b4aca0af543174efa0e",
+      "bytes": 275
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/qa-L3-view-feather-final-control.json",
+      "relativePath": "qa-L3-view-feather-final-control.json",
+      "sha256": "60786af2816aecd7660dbfdbcd77ca72b00357e067f1474a2fd8a8dde6b8b1fd",
+      "bytes": 275
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/shader-review.json",
+      "relativePath": "shader-tests/shader-review.json",
+      "sha256": "67a29729160c55d5bed8b6001666994165cf45df88717c874764e888fba40989",
+      "bytes": 1629
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/full-native-final/synthetic-report.json",
+      "relativePath": "shader-tests/full-native-final/synthetic-report.json",
+      "sha256": "62a2c14fc7915e31412a1041d0a1e937eaac87b01921cec99d86eb480e6776d6",
+      "bytes": 93354
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/source-feather-final/source-feather-report.json",
+      "relativePath": "shader-tests/source-feather-final/source-feather-report.json",
+      "sha256": "afe8525a317cf7d7925fc242afe2d85cf7bda0182b160afeb65043fd0e6e06d0",
+      "bytes": 70251
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/source-feather-initial/source-feather-report.json",
+      "relativePath": "shader-tests/source-feather-initial/source-feather-report.json",
+      "sha256": "788daeb5e13f5f512e4dffa0e0dbec0f48fefa02ee080e01f2e9631a126503eb",
+      "bytes": 70047
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/boundary/source-depth-neighbors.json",
+      "relativePath": "shader-tests/boundary/source-depth-neighbors.json",
+      "sha256": "74c27a02e7e517178849f30331ae13a9e19e222e0091690c50e0b990ba1324dd",
+      "bytes": 9640
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather-first/capture.json",
+      "relativePath": "raw/L3-view-feather-initial/capture.json",
+      "sha256": "e5b45a7fa1a720fb8edc2cbf0203ba0d9a68716d310ce9fe45d7f0e9eed9f4d8",
+      "bytes": 16460
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather-first/yaw-p0_000.png",
+      "relativePath": "raw/L3-view-feather-initial/yaw-p0_000.png",
+      "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59",
+      "bytes": 257203
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather-first/yaw-m30_000.png",
+      "relativePath": "raw/L3-view-feather-initial/yaw-m30_000.png",
+      "sha256": "d41a5b0a2442d0ae8b7a4aee81d13fb4a6f711b25b6e5cd4383e078aa1e54a7e",
+      "bytes": 293316
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather-first/yaw-p45_000.png",
+      "relativePath": "raw/L3-view-feather-initial/yaw-p45_000.png",
+      "sha256": "9d5b636c572ffa11dd233964c3e83e2bb986a393f6e3624ff526497065f2ba77",
+      "bytes": 230663
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather-final-first/capture.json",
+      "relativePath": "raw/L3-view-feather-final/capture.json",
+      "sha256": "4f51b790d186a49ef4ff77d8ed8ea49cb01c78a5f159ef474008d314647fa181",
+      "bytes": 16490
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather-final-first/yaw-p0_000.png",
+      "relativePath": "raw/L3-view-feather-final/yaw-p0_000.png",
+      "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59",
+      "bytes": 257203
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather-final-first/yaw-m30_000.png",
+      "relativePath": "raw/L3-view-feather-final/yaw-m30_000.png",
+      "sha256": "189e8a237ca29610946eec5540be949d116933922fe57876e2ff83ba814c8f68",
+      "bytes": 293378
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather-final-first/yaw-p45_000.png",
+      "relativePath": "raw/L3-view-feather-final/yaw-p45_000.png",
+      "sha256": "7b274be608e7b8ca656875ef81ed54271a2252f381d40d85010942d08a7d1f1b",
+      "bytes": 230909
+    }
+  ],
+  "derivedCollagesCopied": false,
+  "mainCommittedByThisStep": false
+}

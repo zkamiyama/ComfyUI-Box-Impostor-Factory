@@ -1,0 +1,42 @@
+{
+  "html": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather-final.inspector.html",
+  "htmlSHA256": "15c8dbaf981f026fc89fdfcec6cf2d28178fdbc91be1467e48f9d0f7d8bc7757",
+  "base": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html",
+  "baseSHA256": "4b1ee6af6e20a8e7ebe9fce88a01fce83af722551538499698fa70b01c570ce0",
+  "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "checks": {
+    "boundsEqualToK": true,
+    "manifestEqualToK": true,
+    "meshesEqualToK": true,
+    "assetIdEqualToK": true,
+    "displayMatches": true
+  },
+  "maps": {
+    "colorMap": {
+      "byteEqualToK": true,
+      "sha256": "647ec74f534bfb8de476663261f257a1d912179a4351d4f33e9f256fc1338ece",
+      "bytes": 50331648
+    },
+    "normalMap": {
+      "byteEqualToK": true,
+      "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+      "bytes": 50331648
+    },
+    "intervalMap": {
+      "byteEqualToK": true,
+      "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+      "bytes": 25165824
+    },
+    "rangeMap": {
+      "byteEqualToK": true,
+      "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+      "bytes": 393216
+    }
+  },
+  "display": {
+    "lighting": "unlit",
+    "sampling": "native",
+    "colorSampling": "view-feather"
+  },
+  "scriptSHA256": "a926b24c45168e51a75d0bd45c567629ccf5529174198e9d56a35d4afb393ce6"
+}

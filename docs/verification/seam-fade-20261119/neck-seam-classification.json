@@ -1,0 +1,421 @@
+{
+  "kind": "Classify the visible -30 degree neck seam directly from saved RGBA pixels.",
+  "roiFullImage": [
+    510,
+    202,
+    591,
+    259
+  ],
+  "inputs": {
+    "K-view": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-yaw/yaw-m30_000.png",
+      "sha256": "231661dcf6c47b71ed69661327ceeea860ea21d94bd8af4b128295f45bc33ddc",
+      "probesRGBA": {
+        "wedge_dark": [
+          64,
+          41,
+          28,
+          255
+        ],
+        "wedge_transition": [
+          148,
+          102,
+          75,
+          255
+        ],
+        "neck_skin": [
+          232,
+          167,
+          145,
+          255
+        ],
+        "chin_above": [
+          207,
+          142,
+          104,
+          255
+        ],
+        "chin_below": [
+          236,
+          173,
+          152,
+          255
+        ]
+      }
+    },
+    "L1-view-fade": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade-first/yaw-m30_000.png",
+      "sha256": "e2186387d8688744b6e156cdac6242605fa4f9bc9645e573cdc9753cc697bc5b",
+      "probesRGBA": {
+        "wedge_dark": [
+          64,
+          41,
+          28,
+          255
+        ],
+        "wedge_transition": [
+          148,
+          102,
+          75,
+          255
+        ],
+        "neck_skin": [
+          232,
+          167,
+          145,
+          255
+        ],
+        "chin_above": [
+          207,
+          142,
+          104,
+          255
+        ],
+        "chin_below": [
+          236,
+          173,
+          152,
+          255
+        ]
+      }
+    },
+    "L2-view-soft": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft-first/yaw-m30_000.png",
+      "sha256": "099ca1a23456f1d486e9d16d0aeebf89e67df877eddc4d6143cb058fe2b7ed4a",
+      "probesRGBA": {
+        "wedge_dark": [
+          100,
+          82,
+          65,
+          255
+        ],
+        "wedge_transition": [
+          148,
+          102,
+          75,
+          255
+        ],
+        "neck_skin": [
+          232,
+          167,
+          145,
+          255
+        ],
+        "chin_above": [
+          207,
+          142,
+          104,
+          255
+        ],
+        "chin_below": [
+          234,
+          172,
+          149,
+          255
+        ]
+      }
+    }
+  },
+  "counts": {
+    "K-view": {
+      "roiPixels": 4617,
+      "transparentAlpha0to5": 0,
+      "partialAlpha6to250": 0,
+      "opaqueAlpha251to255": 4617,
+      "opaqueDarkComponents": [
+        {
+          "pixels": 66,
+          "bboxFullImage": [
+            522,
+            217,
+            527,
+            242
+          ]
+        },
+        {
+          "pixels": 7,
+          "bboxFullImage": [
+            569,
+            228,
+            575,
+            232
+          ]
+        },
+        {
+          "pixels": 6,
+          "bboxFullImage": [
+            575,
+            229,
+            578,
+            234
+          ]
+        },
+        {
+          "pixels": 4,
+          "bboxFullImage": [
+            548,
+            223,
+            551,
+            225
+          ]
+        },
+        {
+          "pixels": 3,
+          "bboxFullImage": [
+            569,
+            222,
+            572,
+            225
+          ]
+        },
+        {
+          "pixels": 2,
+          "bboxFullImage": [
+            563,
+            240,
+            564,
+            242
+          ]
+        },
+        {
+          "pixels": 1,
+          "bboxFullImage": [
+            580,
+            215,
+            581,
+            216
+          ]
+        },
+        {
+          "pixels": 1,
+          "bboxFullImage": [
+            521,
+            243,
+            522,
+            244
+          ]
+        },
+        {
+          "pixels": 1,
+          "bboxFullImage": [
+            586,
+            249,
+            587,
+            250
+          ]
+        }
+      ],
+      "meanRGBByteDifferenceToK": 0.0,
+      "differentPixelsToK": 0
+    },
+    "L1-view-fade": {
+      "roiPixels": 4617,
+      "transparentAlpha0to5": 0,
+      "partialAlpha6to250": 0,
+      "opaqueAlpha251to255": 4617,
+      "opaqueDarkComponents": [
+        {
+          "pixels": 66,
+          "bboxFullImage": [
+            522,
+            217,
+            527,
+            242
+          ]
+        },
+        {
+          "pixels": 7,
+          "bboxFullImage": [
+            569,
+            228,
+            575,
+            232
+          ]
+        },
+        {
+          "pixels": 6,
+          "bboxFullImage": [
+            575,
+            229,
+            578,
+            234
+          ]
+        },
+        {
+          "pixels": 4,
+          "bboxFullImage": [
+            548,
+            223,
+            551,
+            225
+          ]
+        },
+        {
+          "pixels": 3,
+          "bboxFullImage": [
+            569,
+            222,
+            572,
+            225
+          ]
+        },
+        {
+          "pixels": 2,
+          "bboxFullImage": [
+            563,
+            240,
+            564,
+            242
+          ]
+        },
+        {
+          "pixels": 1,
+          "bboxFullImage": [
+            580,
+            215,
+            581,
+            216
+          ]
+        },
+        {
+          "pixels": 1,
+          "bboxFullImage": [
+            521,
+            243,
+            522,
+            244
+          ]
+        },
+        {
+          "pixels": 1,
+          "bboxFullImage": [
+            586,
+            249,
+            587,
+            250
+          ]
+        }
+      ],
+      "meanRGBByteDifferenceToK": 0.0,
+      "differentPixelsToK": 0
+    },
+    "L2-view-soft": {
+      "roiPixels": 4617,
+      "transparentAlpha0to5": 0,
+      "partialAlpha6to250": 0,
+      "opaqueAlpha251to255": 4617,
+      "opaqueDarkComponents": [
+        {
+          "pixels": 22,
+          "bboxFullImage": [
+            522,
+            228,
+            527,
+            242
+          ]
+        },
+        {
+          "pixels": 6,
+          "bboxFullImage": [
+            569,
+            228,
+            574,
+            232
+          ]
+        },
+        {
+          "pixels": 4,
+          "bboxFullImage": [
+            548,
+            223,
+            551,
+            225
+          ]
+        },
+        {
+          "pixels": 3,
+          "bboxFullImage": [
+            569,
+            222,
+            572,
+            225
+          ]
+        },
+        {
+          "pixels": 2,
+          "bboxFullImage": [
+            563,
+            240,
+            564,
+            242
+          ]
+        },
+        {
+          "pixels": 1,
+          "bboxFullImage": [
+            580,
+            215,
+            581,
+            216
+          ]
+        },
+        {
+          "pixels": 1,
+          "bboxFullImage": [
+            521,
+            243,
+            522,
+            244
+          ]
+        },
+        {
+          "pixels": 1,
+          "bboxFullImage": [
+            586,
+            249,
+            587,
+            250
+          ]
+        }
+      ],
+      "meanRGBByteDifferenceToK": 3.6846437080355208,
+      "differentPixelsToK": 2902
+    }
+  },
+  "probeCoordinates": {
+    "wedge_dark": [
+      526,
+      225
+    ],
+    "wedge_transition": [
+      527,
+      225
+    ],
+    "neck_skin": [
+      528,
+      225
+    ],
+    "chin_above": [
+      541,
+      224
+    ],
+    "chin_below": [
+      541,
+      225
+    ]
+  },
+  "alphaByteIdentical": true,
+  "darkComponentDefinition": "Mean of 8-bit sRGB channels <60 and alpha>250; 8-connected components within the fixed ROI. This threshold only locates dark patches, not errors.",
+  "output": {
+    "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/neck-seam-classification.png",
+    "sha256": "82a2f9ed8029cc989e5af5f8444a09f2356953153ec5fb287a751935fc24e0e5",
+    "bytes": 60364
+  },
+  "scriptSHA256": "c74973ecdb7cba6b73f997528904720f7f94249ce113fd74be51bf5e3649cabb",
+  "renderingPerformed": false,
+  "limitations": [
+    "No reference image exists for this oblique view; the measurement classifies RGBA, not 3D accuracy.",
+    "This ROI contains no transparency; other silhouettes or hair-edge gaps are outside this statement.",
+    "Opaque pixels do not by themselves distinguish source image content, projection, candidate validity, or native fallback."
+  ]
+}

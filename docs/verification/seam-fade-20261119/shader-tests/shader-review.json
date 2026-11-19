@@ -1,0 +1,44 @@
+{
+  "finalHelperSha256": "b1cb7d3f7e0dd6bffe0101f3db9638e1bce2067d79c91b17380f0e0481c87df9",
+  "fullNative": {
+    "poses": 9,
+    "modes": [
+      "native",
+      "view",
+      "dominant",
+      "view-fade",
+      "view-soft",
+      "view-feather"
+    ],
+    "nativeDefaultMaxByteDelta": 0,
+    "allAlphaNormalDepthMaxByteDelta": 0,
+    "captureRGBMaxError": 0.536599506629102
+  },
+  "feather": {
+    "fixtures": 36,
+    "flatLinearMaxError": 0,
+    "symmetricStepMaxError": 0,
+    "parameters": {
+      "radiusTexels": 6,
+      "minJumpTexels": 16,
+      "outerSlopeMultiplier": 4,
+      "outerSlopeAllowanceTexels": 8,
+      "featherPower": 8,
+      "weightFloor": 0.001
+    }
+  },
+  "sourceFiles": {
+    "worker/box_display_material.mjs": "b1cb7d3f7e0dd6bffe0101f3db9638e1bce2067d79c91b17380f0e0481c87df9",
+    "tests/box_display_material.test.mjs": "5a388a5bea71928f421c706abec0e140111f3a8486e70be27f9bc1362c1305e0",
+    "tests/check_box_color_sampling.mjs": "ae2a9be35e91f4f15db7b2445bdaa23fe69dea627f887c05da367704ebf4247a",
+    "tests/check_box_color_fade.mjs": "1c3d94bfbd9ce9d4ec91bf3e619635c6a985a089e45740f6a7710f27ce0148f4",
+    "tests/check_box_source_feather.mjs": "c2880838fec9f0e9f29eaaeeeba79d534d8f8978933f5e9372b5d119da420cc6",
+    "tests/diagnose_box_color_boundary.mjs": "55bef8bb6fa094fc1c5762b7e019aad636ce9b69453179737fad11985ad3077e"
+  },
+  "launch": {
+    "BI_SOFTWARE_GPU": "1",
+    "BI_CHROMIUM": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/chromium-webgl2",
+    "TMPDIR": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/tmp"
+  },
+  "verified": true
+}

@@ -1,0 +1,77 @@
+{
+  "base": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html",
+  "baseSHA256": "4b1ee6af6e20a8e7ebe9fce88a01fce83af722551538499698fa70b01c570ce0",
+  "checks": {
+    "L1-view-fade": {
+      "html": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade.inspector.html",
+      "htmlSHA256": "c7d91ef5e04bbb8eb0b4f532fe9a4d259c3e345e5d82493d0e8d73b5d3591bae",
+      "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "boundsEqualToK": true,
+      "manifestEqualToK": true,
+      "meshesEqualToK": true,
+      "display": {
+        "lighting": "unlit",
+        "sampling": "native",
+        "colorSampling": "view-fade"
+      },
+      "maps": {
+        "colorMap": {
+          "rawByteEqualToK": true,
+          "sha256": "647ec74f534bfb8de476663261f257a1d912179a4351d4f33e9f256fc1338ece",
+          "bytes": 50331648
+        },
+        "normalMap": {
+          "rawByteEqualToK": true,
+          "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+          "bytes": 50331648
+        },
+        "intervalMap": {
+          "rawByteEqualToK": true,
+          "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+          "bytes": 25165824
+        },
+        "rangeMap": {
+          "rawByteEqualToK": true,
+          "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+          "bytes": 393216
+        }
+      }
+    },
+    "L2-view-soft": {
+      "html": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft.inspector.html",
+      "htmlSHA256": "6e6c6e63c8882d6dbfcd26337e5365d607c3713ec73dac65366154fd896a7741",
+      "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "boundsEqualToK": true,
+      "manifestEqualToK": true,
+      "meshesEqualToK": true,
+      "display": {
+        "lighting": "unlit",
+        "sampling": "native",
+        "colorSampling": "view-soft"
+      },
+      "maps": {
+        "colorMap": {
+          "rawByteEqualToK": true,
+          "sha256": "647ec74f534bfb8de476663261f257a1d912179a4351d4f33e9f256fc1338ece",
+          "bytes": 50331648
+        },
+        "normalMap": {
+          "rawByteEqualToK": true,
+          "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+          "bytes": 50331648
+        },
+        "intervalMap": {
+          "rawByteEqualToK": true,
+          "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+          "bytes": 25165824
+        },
+        "rangeMap": {
+          "rawByteEqualToK": true,
+          "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+          "bytes": 393216
+        }
+      }
+    }
+  },
+  "scriptSHA256": "75cbfb0af2b1b87606a97f99245efeec59221bc754ae7df7b6cb26c8b80b9947"
+}

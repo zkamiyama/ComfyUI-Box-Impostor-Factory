@@ -1,0 +1,59 @@
+{
+  "savedFrames": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-front/yaw-p0_000.png",
+      "relativePath": "raw/K-view/yaw-p0_000.png",
+      "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59",
+      "bytes": 257203
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-yaw/yaw-m30_000.png",
+      "relativePath": "raw/K-view/yaw-m30_000.png",
+      "sha256": "231661dcf6c47b71ed69661327ceeea860ea21d94bd8af4b128295f45bc33ddc",
+      "bytes": 291755
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-yaw/yaw-p45_000.png",
+      "relativePath": "raw/K-view/yaw-p45_000.png",
+      "sha256": "c2ca5b4b6dd23e23d5f76710faca3d2637f535298bf9b5c0b2a125740d31abe8",
+      "bytes": 229037
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade-first/yaw-p0_000.png",
+      "relativePath": "raw/L1-view-fade/yaw-p0_000.png",
+      "sha256": "2853d918c245bc8e99817842bf544b22453ea32e50ed91e58057ae4d8de06f65",
+      "bytes": 258054
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade-first/yaw-m30_000.png",
+      "relativePath": "raw/L1-view-fade/yaw-m30_000.png",
+      "sha256": "e2186387d8688744b6e156cdac6242605fa4f9bc9645e573cdc9753cc697bc5b",
+      "bytes": 292114
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade-first/yaw-p45_000.png",
+      "relativePath": "raw/L1-view-fade/yaw-p45_000.png",
+      "sha256": "4f37b62b22c18652f48f3ec62632365922f8642cc818260780ffd3f85d540bc8",
+      "bytes": 229419
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft-first/yaw-p0_000.png",
+      "relativePath": "raw/L2-view-soft/yaw-p0_000.png",
+      "sha256": "7bbdaa5477f3e595891eb7bcd83c3a0d558f177fa5e136c28f1020cda3306b9e",
+      "bytes": 257374
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft-first/yaw-m30_000.png",
+      "relativePath": "raw/L2-view-soft/yaw-m30_000.png",
+      "sha256": "099ca1a23456f1d486e9d16d0aeebf89e67df877eddc4d6143cb058fe2b7ed4a",
+      "bytes": 290111
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft-first/yaw-p45_000.png",
+      "relativePath": "raw/L2-view-soft/yaw-p45_000.png",
+      "sha256": "6e029e37885022a4601b940d4049be39e790dcd1463a8afc188e64173ae51997",
+      "bytes": 229176
+    }
+  ],
+  "note": "Byte-exact copies of original captures; raw metadata retains original source paths for traceability."
+}

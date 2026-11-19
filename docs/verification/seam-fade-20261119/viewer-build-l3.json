@@ -1,0 +1,24 @@
+{
+  "input": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F.box.zip",
+  "inputSHA256": "4878c363c4932e76ec9c5035abfa46d2b928ca4c16ab8d073a124912fa1273ce",
+  "helperSHA256": "70bc9cad8efc9c0256ce568e9114bdf2aa8a7c10e81bd0884eaf34f5500f8bc3",
+  "generatedHtmlPostprocessing": false,
+  "output": {
+    "stage": "L3-view-feather",
+    "mode": "view-feather",
+    "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather.inspector.html",
+    "bytes": 62301241,
+    "sha256": "061d47263bb45dca17d1ce300449ff084c3b0d4c20944cb58c7b9ba7434bcb18",
+    "command": [
+      "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+      "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+      "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F.box.zip",
+      "--box-lighting",
+      "unlit",
+      "--box-color-sampling",
+      "view-feather",
+      "-o",
+      "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather.inspector.html"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+Process started with PID 51397 (shell: /bin/bash)
+Initial output:
+この最終稿に必要な検査（lint、diff、資料との照合）を実行した記録があり、最終稿のハッシュが記録と合いました。合格の判定ではありません。完了報告を付けるときは、この出力の2行目を写してください。
+yomiyasu-check: executed via=verify run=20261119T135704Z-71ca34bd attempt=2 final=sha256:4cc2285a6114 mode=rewrite doc_type=incident checks=lint,diff,materials meaning_risk=21 replay=skipped
+記録: /mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/report-review/check-state/runs/20261119T135704Z-71ca34bd/attempt-2.json
+記録の中身: 見直し候補 最終稿 1件、直した箇所 13か所（原文の件数と元と後は run の出力にあります）
+
+✅ Process 51397 has finished execution
+
+[executed on device: 270-PC (f38f759c-650b-44ea-b8ac-e6db4ff30144)]

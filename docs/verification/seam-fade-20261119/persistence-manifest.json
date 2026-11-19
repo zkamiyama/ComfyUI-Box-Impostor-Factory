@@ -1,0 +1,228 @@
+{
+  "files": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/seam-fade-initial-provenance.json",
+      "relativePath": "seam-fade-initial-provenance.json",
+      "bytes": 40772,
+      "sha256": "c0c0a684ea4a4aea6964fce64f7249a01379cf85eaae58f3348c012e06ca4cc5"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/neck-seam-classification.json",
+      "relativePath": "neck-seam-classification.json",
+      "bytes": 8287,
+      "sha256": "f75c43f8eac231592f0508a5e8b1c58aa64bc31c3f1f689d9c8f7595ca7012aa"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/viewer-payload-identity.json",
+      "relativePath": "viewer-payload-identity.json",
+      "bytes": 2849,
+      "sha256": "8eea3a3663e77d6a46cbb1072d7ba1e32740a5704a03a477948ea87da6ac17ff"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw-frame-bundle.json",
+      "relativePath": "raw-frame-bundle.json",
+      "bytes": 2698,
+      "sha256": "281c1784e390fe8721b150105de6ace65cfaacaf5782e8d4626247f379da8847"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/verify_seam_viewers.py",
+      "relativePath": "verify_seam_viewers.py",
+      "bytes": 3698,
+      "sha256": "75cbfb0af2b1b87606a97f99245efeec59221bc754ae7df7b6cb26c8b80b9947"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/compare_seam_variants.py",
+      "relativePath": "compare_seam_variants.py",
+      "bytes": 14991,
+      "sha256": "5491ae82a0669749a540cc047e2a015a751efd48963bf936af93be7851bc2b9c"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/classify_neck_seam.py",
+      "relativePath": "classify_neck_seam.py",
+      "bytes": 4938,
+      "sha256": "c74973ecdb7cba6b73f997528904720f7f94249ce113fd74be51bf5e3649cabb"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/runtime-build.json",
+      "relativePath": "runtime-build.json",
+      "bytes": 1222,
+      "sha256": "5568d6ece30fc08460bbfebf8c5852c25f704bcdc76e06b89b15edeafc5579b4"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/viewer-builds.json",
+      "relativePath": "viewer-builds.json",
+      "bytes": 1795,
+      "sha256": "15061d72c4d255a36324a83380ae97876536fed35c259678940265ebd34373c6"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/integration-checks.json",
+      "relativePath": "integration-checks.json",
+      "bytes": 799,
+      "sha256": "7da5653fbc043c2c3df851bbc2832b4506c642493c63e85f803759a2177120a0"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/integration-patch.json",
+      "relativePath": "integration-patch.json",
+      "bytes": 1415,
+      "sha256": "41dbe45f988a33289522a8a25c21daba16c6f9027157eb7b7269c43278f447a0"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/qa-L1-view-fade-control.json",
+      "relativePath": "qa-L1-view-fade-control.json",
+      "bytes": 272,
+      "sha256": "e73cb59729829c0d46cca3e805dfb364a9173e1ae9932a25859b979b0dea4965"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/qa-L2-view-soft-control.json",
+      "relativePath": "qa-L2-view-soft-control.json",
+      "bytes": 272,
+      "sha256": "a7c49dc4a28d5797d09695f55adf5274fce948cadcf69544023128e1f6db510b"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/full-native/synthetic-report.json",
+      "relativePath": "shader-tests/full-native/synthetic-report.json",
+      "bytes": 75061,
+      "sha256": "8eddc56343cde2b6a7e7dcbd4b6c71a6c4c1494e4d31f6a679b2ee36cd7b17a6"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/controlled-dropout/fade-report.json",
+      "relativePath": "shader-tests/controlled-dropout/fade-report.json",
+      "bytes": 104318,
+      "sha256": "d8cf4d63cbd79b679359eba35da61f87f316ca03cf0be16c66ac44fecda2ee69"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/legacy-output-comparison.json",
+      "relativePath": "shader-tests/legacy-output-comparison.json",
+      "bytes": 606,
+      "sha256": "93978563bf7216f0788cbaa45b7b1b623c6b1fc9e1a5ce9c5ea8bfa38892a702"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/boundary/boundary-probes.json",
+      "relativePath": "shader-tests/boundary/boundary-probes.json",
+      "bytes": 29387,
+      "sha256": "70a3b7d85eac9f7f74698942d07e0061b01b7aeba7090831bbdc3a83863b3e7b"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/boundary/probes.json",
+      "relativePath": "shader-tests/boundary/probes.json",
+      "bytes": 1843,
+      "sha256": "a3780098a4ffd8183ce327dfb3e94727a03ba13510bda60eb461b5d161afb204"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/readme-review/README.language-check.json",
+      "relativePath": "readme-review/README.language-check.json",
+      "bytes": 7980,
+      "sha256": "904fb5a1accbeffe595eb5224edcfb791be9ff887aa4ba269832603bb76d58ee"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/readme-review/README.review.json",
+      "relativePath": "readme-review/README.review.json",
+      "bytes": 1458,
+      "sha256": "5af0aeff359d5c848113620f545c41d99fe6b45549fa778d7c539bf1f8f2db56"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/readme-review/README.verify.txt",
+      "relativePath": "readme-review/README.verify.txt",
+      "bytes": 910,
+      "sha256": "aa33bd42f10ad0e1fdd896ddcff346964c2efcc89e9e53176559389c31cee51d"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/readme-review/README.final.md",
+      "relativePath": "readme-review/README.final.md",
+      "bytes": 4336,
+      "sha256": "d91bab3003cfc4195422b829e24442494a68162ebff5fdf4102200dd29247240"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/readme-review/README.source.md",
+      "relativePath": "readme-review/README.source.md",
+      "bytes": 3947,
+      "sha256": "4b82659c3174700ae4110b9a77757b4664aec9bd9d75e25dcb8405908bc0f62e"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/readme-review/material.txt",
+      "relativePath": "readme-review/material.txt",
+      "bytes": 7412,
+      "sha256": "8f37717a00b7bee905a712bd6aab92d3287598a6c287e029f7466607dc58f1bc"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/K-view/yaw-p0_000.png",
+      "relativePath": "raw/K-view/yaw-p0_000.png",
+      "bytes": 257203,
+      "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/K-view/yaw-m30_000.png",
+      "relativePath": "raw/K-view/yaw-m30_000.png",
+      "bytes": 291755,
+      "sha256": "231661dcf6c47b71ed69661327ceeea860ea21d94bd8af4b128295f45bc33ddc"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/K-view/yaw-p45_000.png",
+      "relativePath": "raw/K-view/yaw-p45_000.png",
+      "bytes": 229037,
+      "sha256": "c2ca5b4b6dd23e23d5f76710faca3d2637f535298bf9b5c0b2a125740d31abe8"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/L1-view-fade/yaw-p0_000.png",
+      "relativePath": "raw/L1-view-fade/yaw-p0_000.png",
+      "bytes": 258054,
+      "sha256": "2853d918c245bc8e99817842bf544b22453ea32e50ed91e58057ae4d8de06f65"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/L1-view-fade/yaw-m30_000.png",
+      "relativePath": "raw/L1-view-fade/yaw-m30_000.png",
+      "bytes": 292114,
+      "sha256": "e2186387d8688744b6e156cdac6242605fa4f9bc9645e573cdc9753cc697bc5b"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/L1-view-fade/yaw-p45_000.png",
+      "relativePath": "raw/L1-view-fade/yaw-p45_000.png",
+      "bytes": 229419,
+      "sha256": "4f37b62b22c18652f48f3ec62632365922f8642cc818260780ffd3f85d540bc8"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/L2-view-soft/yaw-p0_000.png",
+      "relativePath": "raw/L2-view-soft/yaw-p0_000.png",
+      "bytes": 257374,
+      "sha256": "7bbdaa5477f3e595891eb7bcd83c3a0d558f177fa5e136c28f1020cda3306b9e"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/L2-view-soft/yaw-m30_000.png",
+      "relativePath": "raw/L2-view-soft/yaw-m30_000.png",
+      "bytes": 290111,
+      "sha256": "099ca1a23456f1d486e9d16d0aeebf89e67df877eddc4d6143cb058fe2b7ed4a"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/L2-view-soft/yaw-p45_000.png",
+      "relativePath": "raw/L2-view-soft/yaw-p45_000.png",
+      "bytes": 229176,
+      "sha256": "6e029e37885022a4601b940d4049be39e790dcd1463a8afc188e64173ae51997"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/K-view/capture-source-0.json",
+      "relativePath": "raw/K-view/capture-source-0.json",
+      "bytes": 11101,
+      "sha256": "d4c8909a63e57ab0377c84fc9c9912d047244c12df740320388098f0fff7f86b"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/K-view/capture-source-1.json",
+      "relativePath": "raw/K-view/capture-source-1.json",
+      "bytes": 24989,
+      "sha256": "56493cd39c56c3a5177b473fb3ac77f72ca225108fa3a69cc9455d35e863de7f"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/L1-view-fade/capture-source-0.json",
+      "relativePath": "raw/L1-view-fade/capture-source-0.json",
+      "bytes": 16442,
+      "sha256": "ff18abd76e9c710ccab41cae36eaf53051de3b4461951c3297bcf5132c9e978a"
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/raw/L2-view-soft/capture-source-0.json",
+      "relativePath": "raw/L2-view-soft/capture-source-0.json",
+      "bytes": 16442,
+      "sha256": "bcda560719988bdd5af814ccebed3d188d15830f3528097959337e9c47596a4c"
+    }
+  ],
+  "mainCommitted": false,
+  "derivedCollagesCopied": false
+}

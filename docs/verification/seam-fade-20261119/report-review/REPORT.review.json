@@ -1,0 +1,20 @@
+{
+  "document": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/seam-fade-20261119/REPORT.ja.md",
+  "sourceSha256": "2d8df5c9a1bdaa2fe7d77cb13d857ee2837ddd6d2657a3ad9cff635b07919d78",
+  "finalSha256": "4cc2285a6114e60b8cdb866e6b8021a4ba9f11891b7e8b05a67a529cc4f11da6",
+  "lines": 80,
+  "verifiedCopyByteExact": true,
+  "relativeLinksChecked": 26,
+  "missingLinks": [],
+  "manualReview": {
+    "purpose": "Finalize the pending verification draft after actual L3 QA; substantive evidence updates were requested, not merely linguistic paraphrase.",
+    "pendingToFinal": "Final L3 provenance SHA6004af6633e6427b01b5207b031c26e4fcc9024d57c2c02d09547a808c5ccae2 supplies final 3-angle camera/alpha, head and neck measurements. L2 unresolved full-boundary statement was retained.",
+    "roundedNumbers": "16.60/1.49 round observed first-depth distances; 12.33333 and36.33333 round recorded chin differences;11.7 is the exact mean over fixed columns537..546.787 and891 are source-depth neighbor values in texel units.",
+    "linksAndNames": "Depth refers to source interval data. K/L1/L2/L3 combines the explicitly recorded variant keys. Every relative source and frame link exists. New helper hash matches the fixed production file.",
+    "visualFindings": "Reviewed final face and neck comparison PNGs. Chin line is less conspicuous; dark neck wedge persists; +45 face/hair overlap persists and upper-hair dark patches increase. Non-adoption is the evaluation decision, not a claim of an independently measured geometry error.",
+    "limits": "Actual depth discontinuity is confirmed; correctness of the occlusion boundary and base geometry is unresolved. Color-only feather leaves Depth unchanged.",
+    "retainedLint": "One sentence_end_repetition warning in three consecutive factual implementation statements; retained to keep natural specification wording.",
+    "meaningOrQualityAutomaticallyCertified": false
+  },
+  "proof": "yomiyasu-check: executed via=verify run=20261119T135704Z-71ca34bd attempt=2 final=sha256:4cc2285a6114 mode=rewrite doc_type=incident checks=lint,diff,materials meaning_risk=21 replay=skipped"
+}

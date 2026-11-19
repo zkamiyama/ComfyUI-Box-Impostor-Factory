@@ -1,0 +1,9 @@
+{
+  "baseline": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-run/synthetic/synthetic.png",
+  "current": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/full-native/synthetic.png",
+  "comparison": "Entire first 3 columns, all 9 poses, original native/view/dominant outputs and labels",
+  "oldSha256": "40c0488935a3e50bcfe005e6f3031c8620dd855a99ad1c6ca3edc368d2ccb906",
+  "currentSha256": "64e798236a8760c83ca0809cff37b1f48323d0ebc036d8bb100278ece4005111",
+  "maxByteDelta": 1,
+  "differentPixels": 6231
+}

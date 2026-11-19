@@ -1,0 +1,3405 @@
+{
+  "sources": {
+    "seam-fade-initial-provenance.json": {
+      "sha256": "c0c0a684ea4a4aea6964fce64f7249a01379cf85eaae58f3348c012e06ca4cc5",
+      "excerpt": {
+        "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+        "invariantChecks": {
+          "K-view/0": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": 0
+          },
+          "K-view/-30": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": -29.999995422363284
+          },
+          "K-view/45": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": 45.00000000000001
+          },
+          "L1-view-fade/0": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": 0
+          },
+          "L1-view-fade/-30": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": -29.999995422363284
+          },
+          "L1-view-fade/45": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": 45.00000000000001
+          },
+          "L2-view-soft/0": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": 0
+          },
+          "L2-view-soft/-30": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": -29.999995422363284
+          },
+          "L2-view-soft/45": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": 45.00000000000001
+          }
+        },
+        "differencesToK": {
+          "K-view/0": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 14080,
+            "meanRGBByteDifferenceToK": 0.0,
+            "maxRGBByteDifferenceToK": 0.0,
+            "differentPixelsToK": 0
+          },
+          "L1-view-fade/0": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 14080,
+            "meanRGBByteDifferenceToK": 0.023058712121212122,
+            "maxRGBByteDifferenceToK": 48.0,
+            "differentPixelsToK": 27
+          },
+          "L2-view-soft/0": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 14080,
+            "meanRGBByteDifferenceToK": 0.02625473484848485,
+            "maxRGBByteDifferenceToK": 66.0,
+            "differentPixelsToK": 45
+          },
+          "K-view/-30": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 15557,
+            "meanRGBByteDifferenceToK": 0.0,
+            "maxRGBByteDifferenceToK": 0.0,
+            "differentPixelsToK": 0
+          },
+          "L1-view-fade/-30": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 15557,
+            "meanRGBByteDifferenceToK": 0.0,
+            "maxRGBByteDifferenceToK": 0.0,
+            "differentPixelsToK": 0
+          },
+          "L2-view-soft/-30": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 15557,
+            "meanRGBByteDifferenceToK": 3.0957553941419724,
+            "maxRGBByteDifferenceToK": 141.0,
+            "differentPixelsToK": 10586
+          },
+          "K-view/45": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 10801,
+            "meanRGBByteDifferenceToK": 0.0,
+            "maxRGBByteDifferenceToK": 0.0,
+            "differentPixelsToK": 0
+          },
+          "L1-view-fade/45": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 10801,
+            "meanRGBByteDifferenceToK": 0.0029626886399407464,
+            "maxRGBByteDifferenceToK": 19.0,
+            "differentPixelsToK": 5
+          },
+          "L2-view-soft/45": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 10801,
+            "meanRGBByteDifferenceToK": 0.41107304879177853,
+            "maxRGBByteDifferenceToK": 109.0,
+            "differentPixelsToK": 204
+          }
+        },
+        "frontFidelity": {
+          "referenceImage": {
+            "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-reference-rgba.png",
+            "sha256": "bf562f2bc6aa194f6d642152b2a1f1ddfaf40b206effd826f163eba24a0a7949",
+            "bytes": 31933
+          },
+          "fidelityMask": {
+            "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-J-K-front-fidelity-mask.png",
+            "sha256": "cddf136d050f33b449a3e7a951ed6055b82d61bb2cae62d6a0caa20a692e0133",
+            "alphaThreshold": 250,
+            "operator": "Intersection of reference and every render alpha>250; three iterations of 3x3 binary erosion (Chebyshev radius 3), border=0.",
+            "pixelsBeforeErosion": 12471,
+            "pixelsAfterErosion": 10936
+          },
+          "residualMask": {
+            "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-source-interior-mask.png",
+            "sha256": "65ee9f77ec8aa94c099c7e96d9ccd7bc33aa972d35bb09fbccfbd1571c79fea9",
+            "bytes": 439
+          },
+          "headCrop": [
+            463,
+            115,
+            572,
+            271
+          ],
+          "faceRectangle": [
+            478,
+            165,
+            543,
+            231
+          ],
+          "metrics": {
+            "K-view": {
+              "sRGBMAE255FixedPriorMask": 0.6079614728115094,
+              "sampledPixels": 10936,
+              "sourceInterior": {
+                "head": {
+                  "pixels": 10953,
+                  "transparentAlpha0to5": 0,
+                  "partialAlpha6to250": 0,
+                  "opaqueMeanRGBErrorOver16": 40
+                },
+                "faceRectangle": {
+                  "pixels": 4287,
+                  "transparentAlpha0to5": 0,
+                  "partialAlpha6to250": 0,
+                  "opaqueMeanRGBErrorOver16": 24
+                }
+              }
+            },
+            "L1-view-fade": {
+              "sRGBMAE255FixedPriorMask": 0.6323152889539136,
+              "sampledPixels": 10936,
+              "sourceInterior": {
+                "head": {
+                  "pixels": 10953,
+                  "transparentAlpha0to5": 0,
+                  "partialAlpha6to250": 0,
+                  "opaqueMeanRGBErrorOver16": 47
+                },
+                "faceRectangle": {
+                  "pixels": 4287,
+                  "transparentAlpha0to5": 0,
+                  "partialAlpha6to250": 0,
+                  "opaqueMeanRGBErrorOver16": 29
+                }
+              }
+            },
+            "L2-view-soft": {
+              "sRGBMAE255FixedPriorMask": 0.5845220677883443,
+              "sampledPixels": 10936,
+              "sourceInterior": {
+                "head": {
+                  "pixels": 10953,
+                  "transparentAlpha0to5": 0,
+                  "partialAlpha6to250": 0,
+                  "opaqueMeanRGBErrorOver16": 37
+                },
+                "faceRectangle": {
+                  "pixels": 4287,
+                  "transparentAlpha0to5": 0,
+                  "partialAlpha6to250": 0,
+                  "opaqueMeanRGBErrorOver16": 23
+                }
+              }
+            }
+          },
+          "interpretation": "Same registered +Z image on the same camera grid and unchanged historical masks. Image fidelity and residual classification, not 3D ground-truth accuracy."
+        }
+      }
+    },
+    "neck-seam-classification.json": {
+      "sha256": "f75c43f8eac231592f0508a5e8b1c58aa64bc31c3f1f689d9c8f7595ca7012aa",
+      "excerpt": {
+        "kind": "Classify the visible -30 degree neck seam directly from saved RGBA pixels.",
+        "roiFullImage": [
+          510,
+          202,
+          591,
+          259
+        ],
+        "inputs": {
+          "K-view": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-yaw/yaw-m30_000.png",
+            "sha256": "231661dcf6c47b71ed69661327ceeea860ea21d94bd8af4b128295f45bc33ddc",
+            "probesRGBA": {
+              "wedge_dark": [
+                64,
+                41,
+                28,
+                255
+              ],
+              "wedge_transition": [
+                148,
+                102,
+                75,
+                255
+              ],
+              "neck_skin": [
+                232,
+                167,
+                145,
+                255
+              ],
+              "chin_above": [
+                207,
+                142,
+                104,
+                255
+              ],
+              "chin_below": [
+                236,
+                173,
+                152,
+                255
+              ]
+            }
+          },
+          "L1-view-fade": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade-first/yaw-m30_000.png",
+            "sha256": "e2186387d8688744b6e156cdac6242605fa4f9bc9645e573cdc9753cc697bc5b",
+            "probesRGBA": {
+              "wedge_dark": [
+                64,
+                41,
+                28,
+                255
+              ],
+              "wedge_transition": [
+                148,
+                102,
+                75,
+                255
+              ],
+              "neck_skin": [
+                232,
+                167,
+                145,
+                255
+              ],
+              "chin_above": [
+                207,
+                142,
+                104,
+                255
+              ],
+              "chin_below": [
+                236,
+                173,
+                152,
+                255
+              ]
+            }
+          },
+          "L2-view-soft": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft-first/yaw-m30_000.png",
+            "sha256": "099ca1a23456f1d486e9d16d0aeebf89e67df877eddc4d6143cb058fe2b7ed4a",
+            "probesRGBA": {
+              "wedge_dark": [
+                100,
+                82,
+                65,
+                255
+              ],
+              "wedge_transition": [
+                148,
+                102,
+                75,
+                255
+              ],
+              "neck_skin": [
+                232,
+                167,
+                145,
+                255
+              ],
+              "chin_above": [
+                207,
+                142,
+                104,
+                255
+              ],
+              "chin_below": [
+                234,
+                172,
+                149,
+                255
+              ]
+            }
+          }
+        },
+        "counts": {
+          "K-view": {
+            "roiPixels": 4617,
+            "transparentAlpha0to5": 0,
+            "partialAlpha6to250": 0,
+            "opaqueAlpha251to255": 4617,
+            "opaqueDarkComponents": [
+              {
+                "pixels": 66,
+                "bboxFullImage": [
+                  522,
+                  217,
+                  527,
+                  242
+                ]
+              },
+              {
+                "pixels": 7,
+                "bboxFullImage": [
+                  569,
+                  228,
+                  575,
+                  232
+                ]
+              },
+              {
+                "pixels": 6,
+                "bboxFullImage": [
+                  575,
+                  229,
+                  578,
+                  234
+                ]
+              },
+              {
+                "pixels": 4,
+                "bboxFullImage": [
+                  548,
+                  223,
+                  551,
+                  225
+                ]
+              },
+              {
+                "pixels": 3,
+                "bboxFullImage": [
+                  569,
+                  222,
+                  572,
+                  225
+                ]
+              },
+              {
+                "pixels": 2,
+                "bboxFullImage": [
+                  563,
+                  240,
+                  564,
+                  242
+                ]
+              },
+              {
+                "pixels": 1,
+                "bboxFullImage": [
+                  580,
+                  215,
+                  581,
+                  216
+                ]
+              },
+              {
+                "pixels": 1,
+                "bboxFullImage": [
+                  521,
+                  243,
+                  522,
+                  244
+                ]
+              },
+              {
+                "pixels": 1,
+                "bboxFullImage": [
+                  586,
+                  249,
+                  587,
+                  250
+                ]
+              }
+            ],
+            "meanRGBByteDifferenceToK": 0.0,
+            "differentPixelsToK": 0
+          },
+          "L1-view-fade": {
+            "roiPixels": 4617,
+            "transparentAlpha0to5": 0,
+            "partialAlpha6to250": 0,
+            "opaqueAlpha251to255": 4617,
+            "opaqueDarkComponents": [
+              {
+                "pixels": 66,
+                "bboxFullImage": [
+                  522,
+                  217,
+                  527,
+                  242
+                ]
+              },
+              {
+                "pixels": 7,
+                "bboxFullImage": [
+                  569,
+                  228,
+                  575,
+                  232
+                ]
+              },
+              {
+                "pixels": 6,
+                "bboxFullImage": [
+                  575,
+                  229,
+                  578,
+                  234
+                ]
+              },
+              {
+                "pixels": 4,
+                "bboxFullImage": [
+                  548,
+                  223,
+                  551,
+                  225
+                ]
+              },
+              {
+                "pixels": 3,
+                "bboxFullImage": [
+                  569,
+                  222,
+                  572,
+                  225
+                ]
+              },
+              {
+                "pixels": 2,
+                "bboxFullImage": [
+                  563,
+                  240,
+                  564,
+                  242
+                ]
+              },
+              {
+                "pixels": 1,
+                "bboxFullImage": [
+                  580,
+                  215,
+                  581,
+                  216
+                ]
+              },
+              {
+                "pixels": 1,
+                "bboxFullImage": [
+                  521,
+                  243,
+                  522,
+                  244
+                ]
+              },
+              {
+                "pixels": 1,
+                "bboxFullImage": [
+                  586,
+                  249,
+                  587,
+                  250
+                ]
+              }
+            ],
+            "meanRGBByteDifferenceToK": 0.0,
+            "differentPixelsToK": 0
+          },
+          "L2-view-soft": {
+            "roiPixels": 4617,
+            "transparentAlpha0to5": 0,
+            "partialAlpha6to250": 0,
+            "opaqueAlpha251to255": 4617,
+            "opaqueDarkComponents": [
+              {
+                "pixels": 22,
+                "bboxFullImage": [
+                  522,
+                  228,
+                  527,
+                  242
+                ]
+              },
+              {
+                "pixels": 6,
+                "bboxFullImage": [
+                  569,
+                  228,
+                  574,
+                  232
+                ]
+              },
+              {
+                "pixels": 4,
+                "bboxFullImage": [
+                  548,
+                  223,
+                  551,
+                  225
+                ]
+              },
+              {
+                "pixels": 3,
+                "bboxFullImage": [
+                  569,
+                  222,
+                  572,
+                  225
+                ]
+              },
+              {
+                "pixels": 2,
+                "bboxFullImage": [
+                  563,
+                  240,
+                  564,
+                  242
+                ]
+              },
+              {
+                "pixels": 1,
+                "bboxFullImage": [
+                  580,
+                  215,
+                  581,
+                  216
+                ]
+              },
+              {
+                "pixels": 1,
+                "bboxFullImage": [
+                  521,
+                  243,
+                  522,
+                  244
+                ]
+              },
+              {
+                "pixels": 1,
+                "bboxFullImage": [
+                  586,
+                  249,
+                  587,
+                  250
+                ]
+              }
+            ],
+            "meanRGBByteDifferenceToK": 3.6846437080355208,
+            "differentPixelsToK": 2902
+          }
+        },
+        "probeCoordinates": {
+          "wedge_dark": [
+            526,
+            225
+          ],
+          "wedge_transition": [
+            527,
+            225
+          ],
+          "neck_skin": [
+            528,
+            225
+          ],
+          "chin_above": [
+            541,
+            224
+          ],
+          "chin_below": [
+            541,
+            225
+          ]
+        },
+        "alphaByteIdentical": true,
+        "darkComponentDefinition": "Mean of 8-bit sRGB channels <60 and alpha>250; 8-connected components within the fixed ROI. This threshold only locates dark patches, not errors.",
+        "output": {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/evidence/neck-seam-classification.png",
+          "sha256": "82a2f9ed8029cc989e5af5f8444a09f2356953153ec5fb287a751935fc24e0e5",
+          "bytes": 60364
+        },
+        "scriptSHA256": "c74973ecdb7cba6b73f997528904720f7f94249ce113fd74be51bf5e3649cabb",
+        "renderingPerformed": false,
+        "limitations": [
+          "No reference image exists for this oblique view; the measurement classifies RGBA, not 3D accuracy.",
+          "This ROI contains no transparency; other silhouettes or hair-edge gaps are outside this statement.",
+          "Opaque pixels do not by themselves distinguish source image content, projection, candidate validity, or native fallback."
+        ]
+      }
+    },
+    "shader-tests/boundary/boundary-probes.json": {
+      "sha256": "70a3b7d85eac9f7f74698942d07e0061b01b7aeba7090831bbdc3a83863b3e7b",
+      "excerpt": {
+        "size": [
+          1024,
+          1024
+        ],
+        "channelOrder": {
+          "weights0": [
+            "+X",
+            "-X",
+            "+Y"
+          ],
+          "weights1": [
+            "-Y",
+            "+Z",
+            "-Z"
+          ],
+          "coverage": [
+            "-X min alpha",
+            "+Z min alpha",
+            "total raw weight"
+          ],
+          "valid": [
+            "-X valid",
+            "+Z valid",
+            "native fallback fraction"
+          ]
+        },
+        "rows": [
+          {
+            "xy": [
+              522,
+              225
+            ],
+            "expected": [
+              103,
+              68,
+              42,
+              255
+            ],
+            "channels": {
+              "color": [
+                103,
+                68,
+                42,
+                255
+              ],
+              "hit": [
+                0.40292689204216003,
+                0.8539221882820129,
+                0.7514095306396484,
+                1
+              ],
+              "weights0": [
+                0,
+                0.012195092625916004,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                0.9878048896789551,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                246.88699340820312,
+                1.255584716796875,
+                98.15252685546875,
+                1
+              ],
+              "distances1": [
+                259.49322509765625,
+                1.0162353515625,
+                224.4825439453125,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.320313036441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.29908403754234314,
+                0.19804663956165314,
+                0.1177188977599144,
+                1
+              ],
+              "minusX": [
+                0.8974530696868896,
+                0.7105120420455933,
+                0.461562842130661,
+                1
+              ],
+              "plusZ": [
+                0.1249932050704956,
+                0.04894797503948212,
+                0.017679395154118538,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              523,
+              225
+            ],
+            "expected": [
+              68,
+              42,
+              27,
+              255
+            ],
+            "channels": {
+              "color": [
+                68,
+                42,
+                27,
+                255
+              ],
+              "hit": [
+                0.4064774215221405,
+                0.8539221882820129,
+                0.7517118453979492,
+                1
+              ],
+              "weights0": [
+                0,
+                0.012195092625916004,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                0.9878048896789551,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                243.09878540039062,
+                1.327667236328125,
+                100.08367919921875,
+                1
+              ],
+              "distances1": [
+                261.06365966796875,
+                0.16339111328125,
+                221.84356689453125,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.320313036441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.12712037563323975,
+                0.07988718897104263,
+                0.0484817735850811,
+                1
+              ],
+              "minusX": [
+                0.9010329842567444,
+                0.7162089943885803,
+                0.46733278036117554,
+                1
+              ],
+              "plusZ": [
+                0.04773404449224472,
+                0.014614352025091648,
+                0.005516675766557455,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              524,
+              225
+            ],
+            "expected": [
+              59,
+              38,
+              26,
+              255
+            ],
+            "channels": {
+              "color": [
+                59,
+                38,
+                26,
+                255
+              ],
+              "hit": [
+                0.41002270579338074,
+                0.8539221882820129,
+                0.7520265579223633,
+                1
+              ],
+              "weights0": [
+                0,
+                0.012195092625916004,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                0.9878048896789551,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                239.30728149414062,
+                1.487640380859375,
+                101.76531982421875,
+                1
+              ],
+              "distances1": [
+                262.12872314453125,
+                0.04937744140625,
+                222.9241943359375,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.320313036441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.07334224134683609,
+                0.0443108007311821,
+                0.026654141023755074,
+                1
+              ],
+              "minusX": [
+                0.9046924710273743,
+                0.7215466499328613,
+                0.4729193150997162,
+                1
+              ],
+              "plusZ": [
+                0.032587818801403046,
+                0.011111169122159481,
+                0.004777181427925825,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              525,
+              225
+            ],
+            "expected": [
+              64,
+              43,
+              30,
+              255
+            ],
+            "channels": {
+              "color": [
+                64,
+                43,
+                30,
+                255
+              ],
+              "hit": [
+                0.41357848048210144,
+                0.8539221882820129,
+                0.7523193359375,
+                1
+              ],
+              "weights0": [
+                0,
+                0.012195092625916004,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                0.9878048896789551,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                235.51626586914062,
+                1.373321533203125,
+                105.15032958984375,
+                1
+              ],
+              "distances1": [
+                262.98101806640625,
+                0.0831298828125,
+                223.0821533203125,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.320313036441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.05547649785876274,
+                0.027580715715885162,
+                0.015651127323508263,
+                1
+              ],
+              "minusX": [
+                0.9080969095230103,
+                0.7265123724937439,
+                0.4781164824962616,
+                1
+              ],
+              "plusZ": [
+                0.04034130647778511,
+                0.01517351996153593,
+                0.007441573776304722,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              526,
+              225
+            ],
+            "expected": [
+              64,
+              41,
+              28,
+              255
+            ],
+            "channels": {
+              "color": [
+                64,
+                41,
+                28,
+                255
+              ],
+              "hit": [
+                0.41719529032707214,
+                0.8539221882820129,
+                0.7525005340576172,
+                1
+              ],
+              "weights0": [
+                0,
+                0.012195092625916004,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                0.9878048896789551,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                231.72244262695312,
+                1.363494873046875,
+                107.93768310546875,
+                1
+              ],
+              "distances1": [
+                263.7186279296875,
+                0.173828125,
+                220.1453857421875,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.320313036441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.057445503771305084,
+                0.027216218411922455,
+                0.014738853089511395,
+                1
+              ],
+              "minusX": [
+                0.9101237058639526,
+                0.7287182807922363,
+                0.4807855188846588,
+                1
+              ],
+              "plusZ": [
+                0.04065927118062973,
+                0.013405880890786648,
+                0.005563843064010143,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              527,
+              225
+            ],
+            "expected": [
+              148,
+              102,
+              75,
+              255
+            ],
+            "channels": {
+              "color": [
+                148,
+                102,
+                75,
+                255
+              ],
+              "hit": [
+                0.42340561747550964,
+                0.8539221882820129,
+                0.7478923797607422,
+                1
+              ],
+              "weights0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                226.84896850585938,
+                35.354583740234375,
+                108.59521484375,
+                1
+              ],
+              "distances1": [
+                273.84173583984375,
+                1.49285888671875,
+                213.6456298828125,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.316406786441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.2978859543800354,
+                0.1336401104927063,
+                0.07058656215667725,
+                1
+              ],
+              "minusX": [
+                0.89192134141922,
+                0.6626667380332947,
+                0.4113714396953583,
+                1
+              ],
+              "plusZ": [
+                0.297891229391098,
+                0.13364246487617493,
+                0.07058780640363693,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              528,
+              225
+            ],
+            "expected": [
+              232,
+              167,
+              145,
+              255
+            ],
+            "channels": {
+              "color": [
+                232,
+                167,
+                145,
+                255
+              ],
+              "hit": [
+                0.43616577982902527,
+                0.8539221882820129,
+                0.7311897277832031,
+                1
+              ],
+              "weights0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                209.97543334960938,
+                63.524566650390625,
+                107.76971435546875,
+                1
+              ],
+              "distances1": [
+                413.31182861328125,
+                1.49200439453125,
+                191.380615234375,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.316406786441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.8104413151741028,
+                0.3871665596961975,
+                0.28381335735321045,
+                1
+              ],
+              "minusX": [
+                0.9218418002128601,
+                0.6387309432029724,
+                0.369221568107605,
+                1
+              ],
+              "plusZ": [
+                0.810469388961792,
+                0.387179970741272,
+                0.2838231921195984,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              529,
+              225
+            ],
+            "expected": [
+              238,
+              172,
+              149,
+              255
+            ],
+            "channels": {
+              "color": [
+                238,
+                172,
+                149,
+                255
+              ],
+              "hit": [
+                0.4394344985485077,
+                0.8539221882820129,
+                0.7320137023925781,
+                1
+              ],
+              "weights0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                206.97720336914062,
+                66.47830200195312,
+                109.62469482421875,
+                1
+              ],
+              "distances1": [
+                414.61578369140625,
+                1.46600341796875,
+                191.291259765625,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.316406786441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.852581799030304,
+                0.41165685653686523,
+                0.30059316754341125,
+                1
+              ],
+              "minusX": [
+                0.8800999522209167,
+                0.5797395706176758,
+                0.36678993701934814,
+                1
+              ],
+              "plusZ": [
+                0.8526235818862915,
+                0.4116770327091217,
+                0.3006078898906708,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              530,
+              225
+            ],
+            "expected": [
+              235,
+              166,
+              144,
+              255
+            ],
+            "channels": {
+              "color": [
+                235,
+                166,
+                144,
+                255
+              ],
+              "hit": [
+                0.44112154841423035,
+                0.8539221882820129,
+                0.7357578277587891,
+                1
+              ],
+              "weights0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                205.25320434570312,
+                66.21212768554688,
+                111.67919921875,
+                1
+              ],
+              "distances1": [
+                413.433837890625,
+                1.47845458984375,
+                194.66705322265625,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.316406786441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.8292742371559143,
+                0.38197630643844604,
+                0.2807014584541321,
+                1
+              ],
+              "minusX": [
+                0.9174209237098694,
+                0.7569680213928223,
+                0.476445734500885,
+                1
+              ],
+              "plusZ": [
+                0.8293287754058838,
+                0.38200142979621887,
+                0.28071990609169006,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              531,
+              225
+            ],
+            "expected": [
+              235,
+              165,
+              145,
+              255
+            ],
+            "channels": {
+              "color": [
+                235,
+                165,
+                145,
+                255
+              ],
+              "hit": [
+                0.4428100287914276,
+                0.8539221882820129,
+                0.7395009994506836,
+                1
+              ],
+              "weights0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                203.44754028320312,
+                62.793060302734375,
+                113.43475341796875,
+                1
+              ],
+              "distances1": [
+                408.83221435546875,
+                1.45770263671875,
+                198.070556640625,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.316406786441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.8299480676651001,
+                0.3754202127456665,
+                0.2816348671913147,
+                1
+              ],
+              "minusX": [
+                0.9575011134147644,
+                0.7966573238372803,
+                0.5193440914154053,
+                1
+              ],
+              "plusZ": [
+                0.829983115196228,
+                0.37543606758117676,
+                0.2816467583179474,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              532,
+              225
+            ],
+            "expected": [
+              236,
+              165,
+              147,
+              255
+            ],
+            "channels": {
+              "color": [
+                236,
+                165,
+                147,
+                255
+              ],
+              "hit": [
+                0.4445957839488983,
+                0.8539221882820129,
+                0.7430629730224609,
+                1
+              ],
+              "weights0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                204.30667114257812,
+                60.232879638671875,
+                115.23553466796875,
+                1
+              ],
+              "distances1": [
+                405.36932373046875,
+                1.47998046875,
+                200.49713134765625,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.316406786441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.837785542011261,
+                0.37870606780052185,
+                0.29080259799957275,
+                1
+              ],
+              "minusX": [
+                0.9651511907577515,
+                0.7538080215454102,
+                0.48599773645401,
+                1
+              ],
+              "plusZ": [
+                0.8378227353096008,
+                0.3787228763103485,
+                0.2908155024051666,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              541,
+              223
+            ],
+            "expected": [
+              198,
+              130,
+              95,
+              255
+            ],
+            "channels": {
+              "color": [
+                198,
+                130,
+                95,
+                255
+              ],
+              "hit": [
+                0.4611634910106659,
+                0.8563928604125977,
+                0.7742071151733398,
+                1
+              ],
+              "weights0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "distances0": [
+                195.50656127929688,
+                1.481842041015625,
+                120.5537109375,
+                1
+              ],
+              "distances1": [
+                384.668212890625,
+                101.0115966796875,
+                210.4263916015625,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.003906247206032276,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.5616593360900879,
+                0.22410421073436737,
+                0.1149715930223465,
+                1
+              ],
+              "minusX": [
+                0.5616691708564758,
+                0.22410815954208374,
+                0.11497361212968826,
+                1
+              ],
+              "plusZ": [
+                0.8625267148017883,
+                0.41259780526161194,
+                0.3246302902698517,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              541,
+              224
+            ],
+            "expected": [
+              207,
+              142,
+              104,
+              255
+            ],
+            "channels": {
+              "color": [
+                207,
+                142,
+                104,
+                255
+              ],
+              "hit": [
+                0.4619259536266327,
+                0.8551575541496277,
+                0.7727985382080078,
+                1
+              ],
+              "weights0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "distances0": [
+                194.16915893554688,
+                1.498870849609375,
+                122.1124267578125,
+                1
+              ],
+              "distances1": [
+                385.845947265625,
+                16.59796142578125,
+                215.57391357421875,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.003906247206032276,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.6219146847724915,
+                0.271658331155777,
+                0.13948993384838104,
+                1
+              ],
+              "minusX": [
+                0.6218662858009338,
+                0.27162352204322815,
+                0.13944388926029205,
+                1
+              ],
+              "plusZ": [
+                0.8464351296424866,
+                0.42111942172050476,
+                0.3222298324108124,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              541,
+              225
+            ],
+            "expected": [
+              236,
+              173,
+              152,
+              255
+            ],
+            "channels": {
+              "color": [
+                236,
+                173,
+                152,
+                255
+              ],
+              "hit": [
+                0.4627213180065155,
+                0.8539221882820129,
+                0.7713298797607422,
+                1
+              ],
+              "weights0": [
+                0,
+                0.012195092625916004,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                0.9878048896789551,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                191.74630737304688,
+                0.969757080078125,
+                123.74700927734375,
+                1
+              ],
+              "distances1": [
+                386.6162109375,
+                1.490966796875,
+                222.537353515625,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.320313036441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.7407218217849731,
+                0.34727975726127625,
+                0.2125837355852127,
+                1
+              ],
+              "minusX": [
+                0.6949904561042786,
+                0.3136689364910126,
+                0.16531051695346832,
+                1
+              ],
+              "plusZ": [
+                0.8411184549331665,
+                0.42105963826179504,
+                0.3163430392742157,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              541,
+              226
+            ],
+            "expected": [
+              240,
+              175,
+              152,
+              255
+            ],
+            "channels": {
+              "color": [
+                240,
+                175,
+                152,
+                255
+              ],
+              "hit": [
+                0.4634189307689667,
+                0.852686882019043,
+                0.7700424194335938,
+                1
+              ],
+              "weights0": [
+                0,
+                0.012195092625916004,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                0.9878048896789551,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                189.43606567382812,
+                0.831085205078125,
+                124.88037109375,
+                1
+              ],
+              "distances1": [
+                388.2490234375,
+                1.48486328125,
+                224.20977783203125,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.320313036441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.7821624279022217,
+                0.3662189245223999,
+                0.22182674705982208,
+                1
+              ],
+              "minusX": [
+                0.7399445176124573,
+                0.3372596800327301,
+                0.1783638596534729,
+                1
+              ],
+              "plusZ": [
+                0.8739876747131348,
+                0.42919921875,
+                0.31633615493774414,
+                1
+              ]
+            }
+          },
+          {
+            "xy": [
+              541,
+              227
+            ],
+            "expected": [
+              243,
+              175,
+              153,
+              255
+            ],
+            "channels": {
+              "color": [
+                243,
+                175,
+                153,
+                255
+              ],
+              "hit": [
+                0.4639692008495331,
+                0.8514515161514282,
+                0.7690258026123047,
+                1
+              ],
+              "weights0": [
+                0,
+                0.012195092625916004,
+                0,
+                1
+              ],
+              "weights1": [
+                0,
+                0.9878048896789551,
+                0,
+                1
+              ],
+              "visible0": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "visible1": [
+                0,
+                1,
+                0,
+                1
+              ],
+              "distances0": [
+                186.96090698242188,
+                1.301849365234375,
+                126.41058349609375,
+                1
+              ],
+              "distances1": [
+                389.90045166015625,
+                1.49615478515625,
+                226.71429443359375,
+                1
+              ],
+              "coverage": [
+                1,
+                1,
+                0.320313036441803,
+                1
+              ],
+              "valid": [
+                1,
+                1,
+                0,
+                1
+              ],
+              "native": [
+                0.8382237553596497,
+                0.39585253596305847,
+                0.25271210074424744,
+                1
+              ],
+              "minusX": [
+                0.7989043593406677,
+                0.37242794036865234,
+                0.20843297243118286,
+                1
+              ],
+              "plusZ": [
+                0.8989399671554565,
+                0.4320211410522461,
+                0.3210662007331848,
+                1
+              ]
+            }
+          }
+        ],
+        "productionHelperSha256": "d6236b9abb84340590fc812fb289fb5a15e5f49850b736c6d4ff82e646d72807",
+        "maxColorByteDelta": 0
+      }
+    },
+    "shader-tests/boundary/source-depth-neighbors.json": {
+      "sha256": "74c27a02e7e517178849f30331ae13a9e19e222e0091690c50e0b990ba1324dd",
+      "excerpt": {
+        "intervalDescriptor": {
+          "path": "maps/interval.rgba16f.bin",
+          "width": 3072,
+          "height": 1024,
+          "channels": 4,
+          "dtype": "float16",
+          "endian": "little",
+          "rowOrder": "increasingShaderV",
+          "rowBytes": 24576,
+          "byteLength": 25165824,
+          "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+          "minFilter": "linear",
+          "magFilter": "linear",
+          "wrap": "clamp-to-edge",
+          "mipmaps": false,
+          "colorSpace": "data",
+          "alpha": "gap-end"
+        },
+        "items": [
+          {
+            "xy": [
+              541,
+              223
+            ],
+            "sourceXY": [
+              471.7314147949219,
+              876.4462890625
+            ],
+            "sourceFirst": 0.8728512525558472,
+            "distanceTexels": 101.0115966796875,
+            "neighborGridFirstTexels": [
+              [
+                776.0,
+                777.5,
+                779.0,
+                780.5,
+                782.0,
+                783.5,
+                784.5,
+                786.0,
+                787.5
+              ],
+              [
+                777.5,
+                779.0,
+                780.5,
+                782.0,
+                783.5,
+                785.0,
+                786.5,
+                787.5,
+                789.0
+              ],
+              [
+                779.0,
+                780.5,
+                782.5,
+                783.5,
+                785.0,
+                786.5,
+                788.0,
+                789.5,
+                791.0
+              ],
+              [
+                781.0,
+                782.5,
+                784.0,
+                785.5,
+                787.0,
+                788.5,
+                790.0,
+                791.5,
+                793.0
+              ],
+              [
+                886.5,
+                888.0,
+                889.5,
+                890.5,
+                891.0,
+                892.0,
+                892.5,
+                893.5,
+                894.0
+              ],
+              [
+                893.5,
+                894.0,
+                894.5,
+                895.0,
+                896.0,
+                896.5,
+                896.5,
+                897.0,
+                897.5
+              ],
+              [
+                896.0,
+                897.0,
+                897.5,
+                898.0,
+                898.5,
+                898.5,
+                899.0,
+                899.5,
+                900.0
+              ],
+              [
+                898.0,
+                898.5,
+                899.0,
+                899.5,
+                900.0,
+                900.0,
+                900.5,
+                901.0,
+                901.0
+              ],
+              [
+                899.0,
+                899.5,
+                900.0,
+                900.0,
+                900.5,
+                901.0,
+                901.5,
+                901.5,
+                902.0
+              ]
+            ]
+          },
+          {
+            "xy": [
+              541,
+              224
+            ],
+            "sourceXY": [
+              472.5121765136719,
+              875.1813354492188
+            ],
+            "sourceFirst": 0.7890074253082275,
+            "distanceTexels": 16.597900390625,
+            "neighborGridFirstTexels": [
+              [
+                776.0,
+                777.5,
+                779.0,
+                780.5,
+                782.0,
+                783.0,
+                784.5,
+                786.0,
+                787.0
+              ],
+              [
+                777.5,
+                779.0,
+                780.5,
+                782.0,
+                783.5,
+                784.5,
+                786.0,
+                787.5,
+                788.5
+              ],
+              [
+                779.0,
+                780.5,
+                782.0,
+                783.5,
+                785.0,
+                786.5,
+                787.5,
+                789.0,
+                790.5
+              ],
+              [
+                780.5,
+                782.5,
+                783.5,
+                785.0,
+                786.5,
+                788.0,
+                789.5,
+                791.0,
+                792.0
+              ],
+              [
+                782.5,
+                784.0,
+                785.5,
+                787.0,
+                788.5,
+                790.0,
+                791.5,
+                793.0,
+                794.5
+              ],
+              [
+                888.0,
+                889.5,
+                890.5,
+                891.0,
+                892.0,
+                892.5,
+                893.5,
+                894.0,
+                894.5
+              ],
+              [
+                894.0,
+                894.5,
+                895.0,
+                896.0,
+                896.5,
+                896.5,
+                897.0,
+                897.5,
+                898.0
+              ],
+              [
+                897.0,
+                897.5,
+                898.0,
+                898.5,
+                898.5,
+                899.0,
+                899.5,
+                900.0,
+                900.0
+              ],
+              [
+                898.5,
+                899.0,
+                899.5,
+                900.0,
+                900.0,
+                900.5,
+                901.0,
+                901.0,
+                901.5
+              ]
+            ]
+          },
+          {
+            "xy": [
+              541,
+              225
+            ],
+            "sourceXY": [
+              473.3266296386719,
+              873.9163208007812
+            ],
+            "sourceFirst": 0.7698737978935242,
+            "distanceTexels": 1.49102783203125,
+            "neighborGridFirstTexels": [
+              [
+                775.0,
+                776.5,
+                777.5,
+                779.0,
+                780.5,
+                781.5,
+                783.0,
+                784.0,
+                785.5
+              ],
+              [
+                776.0,
+                777.5,
+                779.0,
+                780.5,
+                782.0,
+                783.0,
+                784.5,
+                785.5,
+                787.0
+              ],
+              [
+                777.5,
+                779.0,
+                780.5,
+                782.0,
+                783.0,
+                784.5,
+                786.0,
+                787.0,
+                788.5
+              ],
+              [
+                779.0,
+                780.5,
+                782.0,
+                783.5,
+                784.5,
+                786.0,
+                787.5,
+                788.5,
+                790.0
+              ],
+              [
+                780.5,
+                782.0,
+                783.5,
+                785.0,
+                786.5,
+                787.5,
+                789.0,
+                790.5,
+                792.0
+              ],
+              [
+                782.5,
+                783.5,
+                785.0,
+                786.5,
+                788.0,
+                789.5,
+                791.0,
+                792.0,
+                793.5
+              ],
+              [
+                784.0,
+                785.5,
+                787.0,
+                788.5,
+                790.0,
+                791.5,
+                793.0,
+                794.5,
+                796.0
+              ],
+              [
+                889.5,
+                890.5,
+                891.0,
+                892.0,
+                892.5,
+                893.5,
+                894.0,
+                894.5,
+                895.0
+              ],
+              [
+                894.5,
+                895.0,
+                896.0,
+                896.5,
+                896.5,
+                897.0,
+                897.5,
+                898.0,
+                898.5
+              ]
+            ]
+          },
+          {
+            "xy": [
+              541,
+              226
+            ],
+            "sourceXY": [
+              474.0409851074219,
+              872.6513671875
+            ],
+            "sourceFirst": 0.7685922980308533,
+            "distanceTexels": 1.48492431640625,
+            "neighborGridFirstTexels": [
+              [
+                775.0,
+                776.5,
+                778.0,
+                779.0,
+                780.5,
+                781.5,
+                783.0,
+                784.0,
+                785.5
+              ],
+              [
+                776.5,
+                777.5,
+                779.0,
+                780.5,
+                781.5,
+                783.0,
+                784.0,
+                785.5,
+                786.5
+              ],
+              [
+                777.5,
+                779.0,
+                780.5,
+                782.0,
+                783.0,
+                784.5,
+                785.5,
+                787.0,
+                788.0
+              ],
+              [
+                779.0,
+                780.5,
+                782.0,
+                783.0,
+                784.5,
+                786.0,
+                787.0,
+                788.5,
+                789.5
+              ],
+              [
+                780.5,
+                782.0,
+                783.5,
+                784.5,
+                786.0,
+                787.5,
+                788.5,
+                790.0,
+                791.5
+              ],
+              [
+                782.0,
+                783.5,
+                785.0,
+                786.5,
+                787.5,
+                789.0,
+                790.5,
+                792.0,
+                793.0
+              ],
+              [
+                783.5,
+                785.0,
+                786.5,
+                788.0,
+                789.5,
+                791.0,
+                792.0,
+                793.5,
+                795.0
+              ],
+              [
+                785.5,
+                787.0,
+                788.5,
+                790.0,
+                791.5,
+                793.0,
+                794.5,
+                796.0,
+                887.5
+              ],
+              [
+                890.5,
+                891.0,
+                892.0,
+                892.5,
+                893.5,
+                894.0,
+                894.5,
+                895.0,
+                895.5
+              ]
+            ]
+          },
+          {
+            "xy": [
+              541,
+              227
+            ],
+            "sourceXY": [
+              474.6044616699219,
+              871.3863525390625
+            ],
+            "sourceFirst": 0.7675646543502808,
+            "distanceTexels": 1.4962158203125,
+            "neighborGridFirstTexels": [
+              [
+                774.0,
+                775.5,
+                776.5,
+                778.0,
+                779.5,
+                780.5,
+                782.0,
+                783.0,
+                784.0
+              ],
+              [
+                775.0,
+                776.5,
+                778.0,
+                779.0,
+                780.5,
+                781.5,
+                783.0,
+                784.0,
+                785.5
+              ],
+              [
+                776.5,
+                777.5,
+                779.0,
+                780.5,
+                781.5,
+                783.0,
+                784.0,
+                785.5,
+                786.5
+              ],
+              [
+                777.5,
+                779.0,
+                780.5,
+                782.0,
+                783.0,
+                784.5,
+                785.5,
+                787.0,
+                788.0
+              ],
+              [
+                779.0,
+                780.5,
+                782.0,
+                783.0,
+                784.5,
+                786.0,
+                787.0,
+                788.5,
+                789.5
+              ],
+              [
+                780.5,
+                782.0,
+                783.5,
+                784.5,
+                786.0,
+                787.5,
+                788.5,
+                790.0,
+                791.5
+              ],
+              [
+                782.0,
+                783.5,
+                785.0,
+                786.5,
+                787.5,
+                789.0,
+                790.5,
+                792.0,
+                793.0
+              ],
+              [
+                783.5,
+                785.0,
+                786.5,
+                788.0,
+                789.5,
+                791.0,
+                792.0,
+                793.5,
+                795.0
+              ],
+              [
+                785.5,
+                787.0,
+                788.5,
+                790.0,
+                791.5,
+                793.0,
+                794.5,
+                796.0,
+                887.5
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "shader-tests/controlled-dropout/fade-report.json": {
+      "sha256": "d8cf4d63cbd79b679359eba35da61f87f316ca03cf0be16c66ac44fecda2ee69",
+      "excerpt": {
+        "fixture": "Production colour resolver; controlled plane hit, native fallback constant; native raymarch stubbed only in this isolated test",
+        "valid": [
+          {
+            "yaw": 0,
+            "rgba": {
+              "view": [
+                218,
+                56,
+                39,
+                255
+              ],
+              "view-fade": [
+                218,
+                56,
+                39,
+                255
+              ],
+              "view-soft": [
+                218,
+                56,
+                39,
+                255
+              ]
+            },
+            "maxError": {
+              "view": 0.33367244986654043,
+              "view-fade": 0.33367244986654043,
+              "view-soft": 0.33367244986654043
+            }
+          },
+          {
+            "yaw": 45,
+            "rgba": {
+              "view": [
+                218,
+                56,
+                39,
+                255
+              ],
+              "view-fade": [
+                218,
+                56,
+                39,
+                255
+              ],
+              "view-soft": [
+                218,
+                56,
+                39,
+                255
+              ]
+            },
+            "maxError": {
+              "view": 0.33367244986654043,
+              "view-fade": 0.33367244986654043,
+              "view-soft": 0.33367244986654043
+            }
+          }
+        ],
+        "endpointErrors": {
+          "view": 0.4450528571647254,
+          "view-fade": 0.4450528571647254,
+          "view-soft": 0.4450528571647254
+        },
+        "helperSha256": "d6236b9abb84340590fc812fb289fb5a15e5f49850b736c6d4ff82e646d72807",
+        "singleDepthDropout": {
+          "yaw": 45,
+          "maxAdjacentRGBByteStep": {
+            "view": 138,
+            "view-fade": 11,
+            "view-soft": 3
+          }
+        },
+        "twoCandidateCoverageDropout": {
+          "yaw": 45,
+          "maxAdjacentRGBByteStep": {
+            "view": 115,
+            "view-fade": 5,
+            "view-soft": 5
+          }
+        },
+        "unequalAngleCoverageDropout": {
+          "yaw": 11.309932474020213,
+          "maxAdjacentRGBByteStep": {
+            "view": 170,
+            "view-fade": 72,
+            "view-soft": 4
+          }
+        },
+        "incrementsFromRows": {
+          "singleDepthDropout": 0.050000000000000044,
+          "twoCandidateCoverageDropout": 0.001,
+          "unequalAngleCoverageDropout": 2.4999999999999957e-05
+        }
+      }
+    },
+    "shader-tests/legacy-output-comparison.json": {
+      "sha256": "93978563bf7216f0788cbaa45b7b1b623c6b1fc9e1a5ce9c5ea8bfa38892a702",
+      "excerpt": {
+        "baseline": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-run/synthetic/synthetic.png",
+        "current": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/shader-tests/full-native/synthetic.png",
+        "comparison": "Entire first 3 columns, all 9 poses, original native/view/dominant outputs and labels",
+        "oldSha256": "40c0488935a3e50bcfe005e6f3031c8620dd855a99ad1c6ca3edc368d2ccb906",
+        "currentSha256": "64e798236a8760c83ca0809cff37b1f48323d0ebc036d8bb100278ece4005111",
+        "maxByteDelta": 1,
+        "differentPixels": 6231
+      }
+    },
+    "L3-final-provenance.json": {
+      "sha256": "6004af6633e6427b01b5207b031c26e4fcc9024d57c2c02d09547a808c5ccae2",
+      "excerpt": {
+        "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+        "invariantChecks": {
+          "K-view/0": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": 0
+          },
+          "K-view/-30": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": -29.999995422363284
+          },
+          "K-view/45": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": 45.00000000000001
+          },
+          "L3-view-feather-final/0": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": 0
+          },
+          "L3-view-feather-final/-30": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": -29.999995422363284
+          },
+          "L3-view-feather-final/45": {
+            "alphaByteExactToK": true,
+            "maxMatrixDifference": {
+              "matrixWorld": 0.0,
+              "projectionMatrix": 0.0
+            },
+            "actualYawDegrees": 45.00000000000001
+          }
+        },
+        "frontFidelity": {
+          "referenceImage": {
+            "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-reference-rgba.png",
+            "sha256": "bf562f2bc6aa194f6d642152b2a1f1ddfaf40b206effd826f163eba24a0a7949",
+            "bytes": 31933
+          },
+          "fidelityMask": {
+            "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-J-K-front-fidelity-mask.png",
+            "sha256": "cddf136d050f33b449a3e7a951ed6055b82d61bb2cae62d6a0caa20a692e0133",
+            "alphaThreshold": 250,
+            "operator": "Intersection of reference and every render alpha>250; three iterations of 3x3 binary erosion (Chebyshev radius 3), border=0.",
+            "pixelsBeforeErosion": 12471,
+            "pixelsAfterErosion": 10936
+          },
+          "residualMask": {
+            "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/K-front-source-interior-mask.png",
+            "sha256": "65ee9f77ec8aa94c099c7e96d9ccd7bc33aa972d35bb09fbccfbd1571c79fea9",
+            "bytes": 439
+          },
+          "headCrop": [
+            463,
+            115,
+            572,
+            271
+          ],
+          "faceRectangle": [
+            478,
+            165,
+            543,
+            231
+          ],
+          "metrics": {
+            "K-view": {
+              "sRGBMAE255FixedPriorMask": 0.6079614728115094,
+              "sampledPixels": 10936,
+              "sourceInterior": {
+                "head": {
+                  "pixels": 10953,
+                  "transparentAlpha0to5": 0,
+                  "partialAlpha6to250": 0,
+                  "opaqueMeanRGBErrorOver16": 40
+                },
+                "faceRectangle": {
+                  "pixels": 4287,
+                  "transparentAlpha0to5": 0,
+                  "partialAlpha6to250": 0,
+                  "opaqueMeanRGBErrorOver16": 24
+                }
+              }
+            },
+            "L3-view-feather-final": {
+              "sRGBMAE255FixedPriorMask": 0.6079614728115094,
+              "sampledPixels": 10936,
+              "sourceInterior": {
+                "head": {
+                  "pixels": 10953,
+                  "transparentAlpha0to5": 0,
+                  "partialAlpha6to250": 0,
+                  "opaqueMeanRGBErrorOver16": 40
+                },
+                "faceRectangle": {
+                  "pixels": 4287,
+                  "transparentAlpha0to5": 0,
+                  "partialAlpha6to250": 0,
+                  "opaqueMeanRGBErrorOver16": 24
+                }
+              }
+            }
+          },
+          "interpretation": "Same registered +Z image on the same camera grid and unchanged historical masks. Image fidelity and residual classification, not 3D ground-truth accuracy."
+        },
+        "neckComparison": {
+          "roiFullImage": [
+            510,
+            202,
+            591,
+            259
+          ],
+          "pixels": 4617,
+          "probeCoordinates": {
+            "wedge_dark": [
+              526,
+              225
+            ],
+            "wedge_transition": [
+              527,
+              225
+            ],
+            "neck_skin": [
+              528,
+              225
+            ],
+            "chin_above": [
+              541,
+              224
+            ],
+            "chin_below": [
+              541,
+              225
+            ]
+          },
+          "measurements": {
+            "K-view": {
+              "opaquePixels": 4617,
+              "partialPixels": 0,
+              "transparentPixels": 0,
+              "probesRGBA": {
+                "wedge_dark": [
+                  64,
+                  41,
+                  28,
+                  255
+                ],
+                "wedge_transition": [
+                  148,
+                  102,
+                  75,
+                  255
+                ],
+                "neck_skin": [
+                  232,
+                  167,
+                  145,
+                  255
+                ],
+                "chin_above": [
+                  207,
+                  142,
+                  104,
+                  255
+                ],
+                "chin_below": [
+                  236,
+                  173,
+                  152,
+                  255
+                ]
+              },
+              "chinPairMeanAbsoluteRGBDifference": 36.0,
+              "chinRowPairDifferences": {
+                "537": 2.0,
+                "538": 1.6666666666666667,
+                "539": 15.0,
+                "540": 25.0,
+                "541": 36.0,
+                "542": 44.333333333333336,
+                "543": 51.0,
+                "544": 53.333333333333336,
+                "545": 62.0,
+                "546": 73.0
+              }
+            },
+            "L3-view-feather-final": {
+              "opaquePixels": 4617,
+              "partialPixels": 0,
+              "transparentPixels": 0,
+              "probesRGBA": {
+                "wedge_dark": [
+                  57,
+                  31,
+                  17,
+                  255
+                ],
+                "wedge_transition": [
+                  148,
+                  102,
+                  75,
+                  255
+                ],
+                "neck_skin": [
+                  232,
+                  167,
+                  145,
+                  255
+                ],
+                "chin_above": [
+                  207,
+                  142,
+                  104,
+                  255
+                ],
+                "chin_below": [
+                  219,
+                  154,
+                  117,
+                  255
+                ]
+              },
+              "chinPairMeanAbsoluteRGBDifference": 12.333333333333334,
+              "chinRowPairDifferences": {
+                "537": 4.666666666666667,
+                "538": 9.666666666666666,
+                "539": 7.666666666666667,
+                "540": 10.0,
+                "541": 12.333333333333334,
+                "542": 10.0,
+                "543": 10.666666666666666,
+                "544": 12.333333333333334,
+                "545": 17.666666666666668,
+                "546": 22.0
+              }
+            }
+          },
+          "meanRGBByteDifferenceToK": 2.5671792650350156,
+          "changedPixelsToK": 1140,
+          "interpretation": "The fixed chin-pair contrast describes a tested seam, not geometry accuracy. Inspect both the neck crop and +45 degree face ghost separately."
+        },
+        "differencesToK": {
+          "K-view/0": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 14080,
+            "meanRGBByteDifferenceToK": 0.0,
+            "maxRGBByteDifferenceToK": 0.0,
+            "differentPixelsToK": 0
+          },
+          "L3-view-feather-final/0": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 14080,
+            "meanRGBByteDifferenceToK": 0.0,
+            "maxRGBByteDifferenceToK": 0.0,
+            "differentPixelsToK": 0
+          },
+          "K-view/-30": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 15557,
+            "meanRGBByteDifferenceToK": 0.0,
+            "maxRGBByteDifferenceToK": 0.0,
+            "differentPixelsToK": 0
+          },
+          "L3-view-feather-final/-30": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 15557,
+            "meanRGBByteDifferenceToK": 2.1804546720661655,
+            "maxRGBByteDifferenceToK": 134.0,
+            "differentPixelsToK": 2503
+          },
+          "K-view/45": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 10801,
+            "meanRGBByteDifferenceToK": 0.0,
+            "maxRGBByteDifferenceToK": 0.0,
+            "differentPixelsToK": 0
+          },
+          "L3-view-feather-final/45": {
+            "region": "common opaque head, eroded 3px",
+            "pixels": 10801,
+            "meanRGBByteDifferenceToK": 2.4929790451501406,
+            "maxRGBByteDifferenceToK": 122.0,
+            "differentPixelsToK": 652
+          }
+        },
+        "outputs": [
+          {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-final-evidence/L3-final-seam-fade-faces.png",
+            "sha256": "a5ecc74de061ef8af1c6661c99d862fa2aae3a54e6f1a304ba7a33cf99915f34",
+            "bytes": 208801,
+            "size": [
+              1176,
+              1260
+            ]
+          },
+          {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-final-evidence/L3-final-seam-fade-body.png",
+            "sha256": "10dcc52e0437d30731cce375cfa184276577924817156809667db3a5321053ee",
+            "bytes": 115088,
+            "size": [
+              744,
+              1286
+            ]
+          },
+          {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-final-evidence/L3-final-seam-fade-front-preservation.png",
+            "sha256": "58faa98830b327f02f24145750fb4fb47282788c2b29e4e59ea191147a0fedbb",
+            "bytes": 100567,
+            "size": [
+              1093,
+              652
+            ]
+          },
+          {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-final-evidence/L3-final-neck-comparison.png",
+            "sha256": "c4be3067b6a619df96010fb8fb2c3714092c521ee50eb514e6c24f1c6a35e899",
+            "bytes": 42355,
+            "size": [
+              720,
+              412
+            ]
+          }
+        ]
+      }
+    },
+    "L3-final-viewer-payload-identity.json": {
+      "sha256": "059d1dc036348a20c5e36a0ab7c7193fbf4d865158255a799d4f435f5c22c4ec",
+      "excerpt": {
+        "html": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L3-view-feather-final.inspector.html",
+        "htmlSHA256": "15c8dbaf981f026fc89fdfcec6cf2d28178fdbc91be1467e48f9d0f7d8bc7757",
+        "base": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html",
+        "baseSHA256": "4b1ee6af6e20a8e7ebe9fce88a01fce83af722551538499698fa70b01c570ce0",
+        "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+        "checks": {
+          "boundsEqualToK": true,
+          "manifestEqualToK": true,
+          "meshesEqualToK": true,
+          "assetIdEqualToK": true,
+          "displayMatches": true
+        },
+        "maps": {
+          "colorMap": {
+            "byteEqualToK": true,
+            "sha256": "647ec74f534bfb8de476663261f257a1d912179a4351d4f33e9f256fc1338ece",
+            "bytes": 50331648
+          },
+          "normalMap": {
+            "byteEqualToK": true,
+            "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+            "bytes": 50331648
+          },
+          "intervalMap": {
+            "byteEqualToK": true,
+            "sha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+            "bytes": 25165824
+          },
+          "rangeMap": {
+            "byteEqualToK": true,
+            "sha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+            "bytes": 393216
+          }
+        },
+        "display": {
+          "lighting": "unlit",
+          "sampling": "native",
+          "colorSampling": "view-feather"
+        },
+        "scriptSHA256": "a926b24c45168e51a75d0bd45c567629ccf5529174198e9d56a35d4afb393ce6"
+      }
+    }
+  },
+  "pixelReadback": {
+    "K-view": {
+      "sha256": "231661dcf6c47b71ed69661327ceeea860ea21d94bd8af4b128295f45bc33ddc",
+      "points": {
+        "526,225": [
+          64,
+          41,
+          28,
+          255
+        ],
+        "527,225": [
+          148,
+          102,
+          75,
+          255
+        ],
+        "528,225": [
+          232,
+          167,
+          145,
+          255
+        ],
+        "541,224": [
+          207,
+          142,
+          104,
+          255
+        ],
+        "541,225": [
+          236,
+          173,
+          152,
+          255
+        ]
+      }
+    },
+    "L1-view-fade": {
+      "sha256": "e2186387d8688744b6e156cdac6242605fa4f9bc9645e573cdc9753cc697bc5b",
+      "points": {
+        "526,225": [
+          64,
+          41,
+          28,
+          255
+        ],
+        "527,225": [
+          148,
+          102,
+          75,
+          255
+        ],
+        "528,225": [
+          232,
+          167,
+          145,
+          255
+        ],
+        "541,224": [
+          207,
+          142,
+          104,
+          255
+        ],
+        "541,225": [
+          236,
+          173,
+          152,
+          255
+        ]
+      }
+    },
+    "L2-view-soft": {
+      "sha256": "099ca1a23456f1d486e9d16d0aeebf89e67df877eddc4d6143cb058fe2b7ed4a",
+      "points": {
+        "526,225": [
+          100,
+          82,
+          65,
+          255
+        ],
+        "527,225": [
+          148,
+          102,
+          75,
+          255
+        ],
+        "528,225": [
+          232,
+          167,
+          145,
+          255
+        ],
+        "541,224": [
+          207,
+          142,
+          104,
+          255
+        ],
+        "541,225": [
+          234,
+          172,
+          149,
+          255
+        ]
+      }
+    }
+  },
+  "derivedChinTenColumnMean": {
+    "K-view": 36.33333333333333,
+    "L3-view-feather-final": 11.7
+  },
+  "derivedChinTenColumnColumns": [
+    537,
+    538,
+    539,
+    540,
+    541,
+    542,
+    543,
+    544,
+    545,
+    546
+  ],
+  "sourceDepthCentralColumn": [
+    782.0,
+    783.5,
+    785.0,
+    787.0,
+    891.0,
+    896.0,
+    898.5,
+    900.0,
+    900.5
+  ],
+  "sourceDepthCentralStep": {
+    "fromTexels": 787.0,
+    "toTexels": 891.0,
+    "differenceTexels": 104.0,
+    "normalizationResolution": 1024
+  },
+  "helper": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/worker/box_display_material.mjs",
+    "sha256": "b1cb7d3f7e0dd6bffe0101f3db9638e1bce2067d79c91b17380f0e0481c87df9",
+    "text": "import {\n  Fn, If, abs, clamp, diffuseColor, dot, float, floor, materialColor, max, min, mix,\n  normalize, property, select, smoothstep, texture, vec2, vec3, vec4,\n} from 'three/tsl';\nimport { ImpostorNodeMaterial } from 'three-impostor';\n\n// Pinned three-impostor 0.4.1 Box projection convention. These functions only\n// locate colour samples; the upstream interval/range raymarch is unchanged.\nconst SIDES=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];\nconst VIEW_UV=[p=>vec2(p.z.oneMinus(),p.y),p=>vec2(p.z,p.y),\n  p=>vec2(p.x,p.z.oneMinus()),p=>vec2(p.x,p.z),\n  p=>vec2(p.x,p.y),p=>vec2(p.x.oneMinus(),p.y)];\nconst AXIS_UV=[p=>vec2(p.z,p.y),p=>vec2(p.x,p.z),p=>vec2(p.x,p.y)];\n\nfunction sourceDepthEdgeWeight(uv,axis,positive,resolution,intervalMap) {\n  const pixel=uv.mul(resolution).sub(.5).toVar(),cell=floor(pixel).toVar();\n  const nearest=float(6).toVar();\n  for(let direction=0;direction<2;direction++) {\n    const samples=[];\n    for(let offset=-7;offset<=8;offset++) {\n      const offsetUV=direction===0?vec2(offset,0):vec2(0,offset);\n      const location=cell.add(offsetUV),q=clamp(location,0,resolution-1).add(.5).div(resolution);\n      const interval=texture(intervalMap,vec2(q.x.add(axis),q.y).div(vec2(3,1))).level(0).toVar();\n      const first=(positive?interval.x:interval.y.oneMinus()).toVar();\n      const valid=location.x.greaterThanEqual(0).and(location.x.lessThan(resolution))\n        .and(location.y.greaterThanEqual(0)).and(location.y.lessThan(resolution))\n        .and(interval.x.greaterThanEqual(interval.y.oneMinus()))\n        .and(first.greaterThan(1e-6)).and(first.lessThan(1-1e-6));\n      samples.push({first,valid});\n    }\n    for(let i=1;i<14;i++) {\n      const [a,b,c,d]=samples.slice(i-1,i+3);\n      const jump=abs(b.first.sub(c.first));\n      const outer=max(abs(a.first.sub(b.first)),abs(c.first.sub(d.first)));\n      // Smooth steep slopes are not seams. Require an isolated depth jump\n      // with valid samples on both sides; open endpoints are not observations.\n      const step=a.valid.and(b.valid).and(c.valid).and(d.valid)\n        .and(jump.greaterThan(16/resolution)).and(jump.greaterThan(outer.mul(4).add(8/resolution)));\n      const distance=abs(pixel.element(direction).sub(cell.element(direction).add(i-7+.5)));\n      If(step,()=>nearest.assign(min(nearest,distance)));\n    }\n  }\n  return max(1e-3,smoothstep(0,6,nearest).pow(8));\n}\n\nclass ViewColorImpostorMaterial extends ImpostorNodeMaterial {\n  constructor(impostor,colorSampling) {\n    super(impostor);\n    this.boxColorSampling=colorSampling;\n  }\n\n  customProgramCacheKey() {\n    return super.customProgramCacheKey()+':box-color-'+this.boxColorSampling;\n  }\n\n  _setupSpace(builder,normal,hitDepth,hitView) {\n    const space=super._setupSpace(builder,normal,hitDepth,hitView);\n    const ray=space.ray,setDepth=space.setDepth;\n    space.boxDisplayHit=property('vec3');\n    space.boxDisplayToRay=property('vec3');\n    space.ray=()=>{\n      const result=ray();\n      // Physical local-space ray, not the anisotropically scaled unit-box ray.\n      space.boxDisplayToRay.assign(normalize(result.direction).negate());\n      return result;\n    };\n    space.setDepth=local=>{\n      space.boxDisplayHit.assign(local);\n      setDepth(local);\n    };\n    return space;\n  }\n\n  _setupBox(space) {\n    const nativeColor=super._setupBox(space);\n    const {box,resolution,colorMap,normalMap,intervalMap}=this.impostor;\n    const boxMin=vec3(...box.min.toArray());\n    const boxSize=vec3(box.max.x-box.min.x,box.max.y-box.min.y,box.max.z-box.min.z);\n    const dominant=this.boxColorSampling==='dominant';\n    const fade=this.boxColorSampling==='view-fade'||this.boxColorSampling==='view-soft';\n    const soft=this.boxColorSampling==='view-soft';\n    const feather=this.boxColorSampling==='view-feather';\n    return Fn(()=>{\n      // Evaluate the native resolver first, including discard, normal and depth.\n      const original=nativeColor.toVar();\n      const p=space.boxDisplayHit.sub(boxMin).div(boxSize).toVar();\n      const intervals=AXIS_UV.map((project,axis)=>{\n        const q=clamp(project(p),.5/resolution,1-.5/resolution);\n        return texture(intervalMap,vec2(q.x.add(axis),q.y).div(vec2(3,1))).level(0).toVar();\n      });\n      const selected=original.rgb.toVar();\n      const accumulated=vec3(0).toVar(),total=float(0).toVar(),best=float(0).toVar();\n      const confidence=float(0).toVar();\n      const baseTotal=float(0).toVar();\n      for(let i=0;i<6;i++) {\n        const axis=Math.floor(i/2),uv=VIEW_UV[i](p).toVar();\n        const q=clamp(uv,.5/resolution,1-.5/resolution);\n        const atlas=vec2(q.x.add(i%3),q.y.add(Math.floor(i/3))).div(vec2(3,2));\n        const c=texture(colorMap,atlas).level(0).toVar();\n        const n=texture(normalMap,atlas).level(0).toVar();\n        const interval=intervals[axis],high=interval.x,low=interval.y.oneMinus();\n        const first=i%2===0?high:low;\n        // Endpoints on the box boundary may be open-mesh sentinels. A normal\n        // alpha is coverage, never depth. Unknown visibility keeps native RGB.\n        const valid=uv.x.greaterThanEqual(0).and(uv.x.lessThanEqual(1))\n          .and(uv.y.greaterThanEqual(0)).and(uv.y.lessThanEqual(1))\n          .and(c.a.greaterThan(1e-3)).and(n.a.greaterThan(1e-3))\n          .and(high.greaterThanEqual(low)).and(first.greaterThan(1e-6)).and(first.lessThan(1-1e-6));\n        const distance=abs(p.element(axis).sub(first));\n        // Native surfaces are expanded by 1.5 texels. The old view mode keeps\n        // its narrow visibility ramp and abrupt fallback as a comparison.\n        const visible=select(valid,smoothstep(2/resolution,(soft?6:3)/resolution,distance).oneMinus(),0).toVar();\n        const angle=max(dot(space.boxDisplayToRay,vec3(...SIDES[i])),0).toVar();\n        const rgb=c.rgb.div(max(c.a,1e-3)).mul(materialColor);\n        if(dominant) {\n          // Strict comparison gives a deterministic face-order tie break.\n          If(visible.greaterThan(0).and(angle.greaterThan(best)),()=>{\n            best.assign(angle);selected.assign(rgb);\n          });\n        } else {\n          let reliability=visible;\n          if(fade) {\n            const edge=min(min(uv.x,uv.y),min(uv.x.oneMinus(),uv.y.oneMinus()));\n            const coverage=smoothstep(1e-3,.05,min(c.a,n.a));\n            const boundary=smoothstep(0,.5/resolution,edge)\n              .mul(smoothstep(1e-6,.5/resolution,min(first,first.oneMinus())));\n            // A fully reliable single view must keep full strength, even at\n            // 45 degrees. Normalized weights alone cannot fade a lone view.\n            reliability=visible.mul(coverage).mul(boundary).toVar();\n            confidence.assign(max(confidence,reliability.mul(smoothstep(0,.1,angle))));\n          }\n          const weight=angle.pow(soft?4:8).mul(reliability).mul(c.a).toVar();\n          if(feather) {\n            baseTotal.addAssign(weight);\n            // Feather only competing source weights, never opacity or fallback\n            // confidence. The small floor preserves a sole source at any edge.\n            If(weight.greaterThan(0),()=>weight.mulAssign(sourceDepthEdgeWeight(AXIS_UV[axis](p),axis,i%2===0,resolution,intervalMap)));\n          }\n          accumulated.addAssign(rgb.mul(weight));total.addAssign(weight);\n        }\n      }\n      if(fade) {\n        const resolved=accumulated.div(max(total,1e-12));\n        selected.assign(mix(original.rgb,resolved,confidence.mul(smoothstep(0,1e-8,total))));\n      } else if(!dominant) If((feather?baseTotal:total).greaterThan(1e-8),()=>selected.assign(accumulated.div(feather?max(total,1e-20):total)));\n      // Alpha and all geometry outputs remain those of the native resolver.\n      return vec4(selected,original.a);\n    })();\n  }\n}\n\n// Display-only: setupDiffuseColor still resolves the native hit, discard,\n// blended normal and fragment depth before NodeMaterial applies outputNode.\n// Tone mapping belongs to the renderer; WebGPURenderer ignores toneMapped.\nexport function createBoxDisplayMaterial(impostor, {lighting='lit', sampling='native',colorSampling='native'}={}) {\n  if (!['lit','unlit'].includes(lighting)) throw new Error('Unknown Box display lighting: '+lighting);\n  // Retain the original helper option for old display payloads. Texture\n  // interpolation is a separate Factory setting; this legacy value stays native.\n  if (sampling!=='native') throw new Error('Unknown Box view sampling: '+sampling);\n  if (!['native','view','dominant','view-fade','view-soft','view-feather'].includes(colorSampling)) throw new Error('Unknown Box colour sampling: '+colorSampling);\n  if (colorSampling!=='native' && impostor.layout!=='box') throw new Error('View colour sampling requires Box layout');\n  const material=colorSampling==='native' ? new ImpostorNodeMaterial(impostor) : new ViewColorImpostorMaterial(impostor,colorSampling);\n  if (lighting==='unlit') material.outputNode=vec4(diffuseColor.rgb,diffuseColor.a);\n  return material;\n}\n"
+  }
+}

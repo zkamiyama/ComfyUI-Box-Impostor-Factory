@@ -1,0 +1,255 @@
+{
+  "format": "yomiyasu-check-record",
+  "format_version": 1,
+  "run_id": "20261119T135704Z-71ca34bd",
+  "attempt": 2,
+  "fix_count": 1,
+  "previous": {
+    "attempt": 1,
+    "final_sha256": "39eeb350e29a2d7a607b8ee5aeda3aa651e7bf98939df3117cf2f8068f956162"
+  },
+  "created_at": "2026-11-19T13:58:15Z",
+  "mode": "rewrite",
+  "cwd": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/report-review",
+  "host": {
+    "session": null,
+    "codex_thread_id": null,
+    "armed_by": null
+  },
+  "skill": {
+    "found": true,
+    "dir": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/tooling/yomiyasu/skills/yomiyasu",
+    "skill_md_sha256": "e2aa73ae3bf4bd938cd0ef8b512eb6bd46339f9c87d0beda71c0512867bfda7f",
+    "version": "3.2.0"
+  },
+  "tools": {
+    "yomiyasu_check.py": {
+      "version": "3.2.0",
+      "sha256": "d959ccf93539b37a69c9166f5fa5ddf3a427eda2ee0236d72846fa6e7d3e1b1d"
+    },
+    "yomiyasu_lint.py": {
+      "version": "3.2.0",
+      "sha256": "0070dfa58ec427872e52c8255b195c3e53d4bee676bc9f8125c270ed0dc35e9d"
+    },
+    "yomiyasu_diff.py": {
+      "version": "3.2.0",
+      "sha256": "c78fdc402e27c86b78b84cf39e9b5d0aae2bc7f153107f91373d0a6db1da224e"
+    },
+    "markdown_visibility.py": {
+      "version": "3.2.0",
+      "sha256": "ef092c329dc2fc4006a13045513baa2f888dc95c41b4f89aa828ffaf3cc58a12"
+    },
+    "references/lists/nominalization.txt": {
+      "version": null,
+      "sha256": "cfe31060efc6d165c30b1619ab574ec405312a80bfb00387efc6557911614be0"
+    },
+    "references/lists/intensifiers.txt": {
+      "version": null,
+      "sha256": "b10e9fb077e76cd5a93ec6e27df943a03a3a08b4cf8dd5bd72910d0266e23fdb"
+    },
+    "references/lists/feelings.txt": {
+      "version": null,
+      "sha256": "37b6779b3ef8cf91260379b21d6b721bda362542a5702affd99d550879539e82"
+    },
+    "references/lists/hedges.txt": {
+      "version": null,
+      "sha256": "ed666036f63f4705d2c129d3fd30e971018d50732bbef2c18081412a61ccd771"
+    },
+    "references/lists/katakana-terms.txt": {
+      "version": null,
+      "sha256": "47c686e6a7a94590a97fa9e052b3dee9171dfc8a5f25da727111428cda978e2d"
+    },
+    "references/lists/thin-evaluation.txt": {
+      "version": null,
+      "sha256": "b2cf6a8e1fc424d1bcac15e2aa2045a98ec77a002e2830692922a8f97ee406e4"
+    },
+    "references/lists/renyo-nouns.txt": {
+      "version": null,
+      "sha256": "0642b6ba40e4707af4715463d7433c0215087a8e068b00e7894b73e89365997a"
+    },
+    "references/lists/fact-gaps.txt": {
+      "version": null,
+      "sha256": "c78da500dcddc76978fecd1a7a9f3318d9feabf0db78387a41662a4545e6964f"
+    }
+  },
+  "python": {
+    "version": "3.12.3",
+    "implementation": "CPython",
+    "unicode_version": "15.0.0"
+  },
+  "inputs": {
+    "source": {
+      "role": "source",
+      "index": 0,
+      "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/report-review/REPORT.source.md",
+      "via": "file",
+      "bytes": 6258,
+      "sha256": "2d8df5c9a1bdaa2fe7d77cb13d857ee2837ddd6d2657a3ad9cff635b07919d78",
+      "text_sha256": "2d8df5c9a1bdaa2fe7d77cb13d857ee2837ddd6d2657a3ad9cff635b07919d78",
+      "bom": false,
+      "eol": "lf",
+      "snapshot": "inputs/2d8df5c9a1bdaa2fe7d77cb13d857ee2837ddd6d2657a3ad9cff635b07919d78.bin"
+    },
+    "materials": [
+      {
+        "role": "material",
+        "index": 1,
+        "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/report-review/REPORT.final.md.material.txt",
+        "via": "file",
+        "bytes": 96559,
+        "sha256": "991dff104ef918a717ad95821be8878d39b306e45bc4afe3875893e51994b66c",
+        "text_sha256": "991dff104ef918a717ad95821be8878d39b306e45bc4afe3875893e51994b66c",
+        "bom": false,
+        "eol": "lf",
+        "snapshot": "inputs/991dff104ef918a717ad95821be8878d39b306e45bc4afe3875893e51994b66c.bin",
+        "label": null,
+        "treated_as_source": false,
+        "similarity": null,
+        "treated_by": null
+      }
+    ],
+    "final": {
+      "role": "final",
+      "index": 0,
+      "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/report-review/REPORT.final.md",
+      "via": "file",
+      "bytes": 7844,
+      "sha256": "4cc2285a6114e60b8cdb866e6b8021a4ba9f11891b7e8b05a67a529cc4f11da6",
+      "text_sha256": "4cc2285a6114e60b8cdb866e6b8021a4ba9f11891b7e8b05a67a529cc4f11da6",
+      "bom": false,
+      "eol": "lf",
+      "snapshot": "inputs/4cc2285a6114e60b8cdb866e6b8021a4ba9f11891b7e8b05a67a529cc4f11da6.bin"
+    }
+  },
+  "options": {
+    "stance": "説明",
+    "fail_on": [],
+    "timeout": 90,
+    "doc_type": "incident",
+    "reader": null,
+    "fact_gaps": true
+  },
+  "required_checks": [
+    "lint",
+    "diff",
+    "materials"
+  ],
+  "checks": [
+    {
+      "name": "lint",
+      "status": "ran",
+      "exit_code": 0,
+      "duration_ms": 96,
+      "target": {
+        "final": "4cc2285a6114e60b8cdb866e6b8021a4ba9f11891b7e8b05a67a529cc4f11da6"
+      },
+      "report": "runs/20261119T135704Z-71ca34bd/attempt-2.lint.json",
+      "report_sha256": "cc8d41b5cc77b66edb19d8a0d43369a9a66613d8204846b997bfed14d627f4ee",
+      "text": "runs/20261119T135704Z-71ca34bd/attempt-2.lint.txt",
+      "text_sha256": "e1bb1079ec68970e4b24dd4379357035a97c3df94d9ffb0cf877238c206d558b",
+      "summary": {
+        "candidate_count": 1,
+        "counts": {
+          "error": 0,
+          "warn": 1,
+          "info": 0
+        },
+        "kept_marks": []
+      },
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "diff",
+      "status": "ran",
+      "exit_code": 0,
+      "duration_ms": 311,
+      "target": {
+        "source": "2d8df5c9a1bdaa2fe7d77cb13d857ee2837ddd6d2657a3ad9cff635b07919d78",
+        "final": "4cc2285a6114e60b8cdb866e6b8021a4ba9f11891b7e8b05a67a529cc4f11da6"
+      },
+      "report": "runs/20261119T135704Z-71ca34bd/attempt-2.diff.json",
+      "report_sha256": "2e51732d5748d75490862eede939f503a5c5a9c951422b3ac1e4ffbe5b50dd93",
+      "text": "runs/20261119T135704Z-71ca34bd/attempt-2.diff.txt",
+      "text_sha256": "69b32c8d7052378e984f75c97bb3f51d8e53c11980f9a092b5aec11e00827274",
+      "summary": {
+        "status": "has_candidates",
+        "candidate_count": 24,
+        "meaning_risk_count": 16,
+        "fail_on_meaning_risk_count": 5,
+        "hunk_count": 13,
+        "stiffness_candidate_count": 0,
+        "stiffness_level": "info",
+        "stiffness_review_count": 0,
+        "tone_candidate_count": 0,
+        "tone_level": "info",
+        "tone_review_count": 0,
+        "hedges_candidate_count": 0,
+        "hedges_level": "review",
+        "hedges_review_count": 0,
+        "immutable_candidate_count": 0,
+        "immutable_level": "review",
+        "immutable_review_count": 0,
+        "politeness_candidate_count": 0,
+        "politeness_level": "review",
+        "politeness_review_count": 0,
+        "register_candidate_count": 0,
+        "register_level": "review",
+        "register_review_count": 0
+      },
+      "stderr": "",
+      "error": null
+    },
+    {
+      "name": "materials",
+      "status": "ran",
+      "exit_code": null,
+      "duration_ms": 48,
+      "target": {
+        "source": "2d8df5c9a1bdaa2fe7d77cb13d857ee2837ddd6d2657a3ad9cff635b07919d78",
+        "materials": [
+          "991dff104ef918a717ad95821be8878d39b306e45bc4afe3875893e51994b66c"
+        ],
+        "final": "4cc2285a6114e60b8cdb866e6b8021a4ba9f11891b7e8b05a67a529cc4f11da6"
+      },
+      "report": "runs/20261119T135704Z-71ca34bd/attempt-2.materials.json",
+      "report_sha256": "f16056cb71a1881fc94414e160c408bb5a99e4ff8e100af7d61ec65cf782efa7",
+      "text": "runs/20261119T135704Z-71ca34bd/attempt-2.materials.txt",
+      "text_sha256": "2c79e00b338acf97cb438e40e1cabe97f415e343be2e654be9461be0ee63982a",
+      "summary": {
+        "candidate_count": 6,
+        "meaning_risk_count": 5,
+        "from_materials": 9,
+        "not_in_sources": 29,
+        "dropped_certainty": 0
+      },
+      "stderr": "",
+      "error": null
+    }
+  ],
+  "materials_summary": {
+    "from_materials": 9,
+    "not_in_sources": 29,
+    "dropped_certainty": 0
+  },
+  "fact_gaps": {
+    "count": 0,
+    "skipped": null,
+    "by_kind": {},
+    "items": []
+  },
+  "result": {
+    "status": "executed",
+    "token": "yomiyasu-check: executed via=run run=20261119T135704Z-71ca34bd attempt=2 final=sha256:4cc2285a6114 mode=rewrite doc_type=incident checks=lint,diff,materials meaning_risk=21",
+    "next": "finalize",
+    "fail_on_hit": false,
+    "meaning_risk_count": 21,
+    "fail_on_meaning_risk_count": 5,
+    "final_unchanged_during_run": true,
+    "not_judged": [
+      "meaning_preservation",
+      "reader_comprehension"
+    ]
+  },
+  "record_digest": "sha256:789d46ee01d162ea84b7eb6c9e8dec69c2ed22b41d728019aac4f95707917a8e"
+}

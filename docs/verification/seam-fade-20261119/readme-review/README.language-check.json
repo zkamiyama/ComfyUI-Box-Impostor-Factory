@@ -1,0 +1,255 @@
+{
+ "format": "yomiyasu-check-record",
+ "format_version": 1,
+ "run_id": "20261119T133018Z-d77f78bc",
+ "attempt": 2,
+ "fix_count": 1,
+ "previous": {
+  "attempt": 1,
+  "final_sha256": "f65c010d45f401167aa717f50cdcb52614326b722909e829ea312704cb1b95bd"
+ },
+ "created_at": "2026-11-19T13:31:56Z",
+ "mode": "rewrite",
+ "cwd": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/readme-review",
+ "host": {
+  "session": null,
+  "codex_thread_id": null,
+  "armed_by": null
+ },
+ "skill": {
+  "found": true,
+  "dir": "/home/dev/Projects/box-impostor-lab/results/face-detail-recovery/tooling/yomiyasu/skills/yomiyasu",
+  "skill_md_sha256": "e2aa73ae3bf4bd938cd0ef8b512eb6bd46339f9c87d0beda71c0512867bfda7f",
+  "version": "3.2.0"
+ },
+ "tools": {
+  "yomiyasu_check.py": {
+   "version": "3.2.0",
+   "sha256": "d959ccf93539b37a69c9166f5fa5ddf3a427eda2ee0236d72846fa6e7d3e1b1d"
+  },
+  "yomiyasu_lint.py": {
+   "version": "3.2.0",
+   "sha256": "0070dfa58ec427872e52c8255b195c3e53d4bee676bc9f8125c270ed0dc35e9d"
+  },
+  "yomiyasu_diff.py": {
+   "version": "3.2.0",
+   "sha256": "c78fdc402e27c86b78b84cf39e9b5d0aae2bc7f153107f91373d0a6db1da224e"
+  },
+  "markdown_visibility.py": {
+   "version": "3.2.0",
+   "sha256": "ef092c329dc2fc4006a13045513baa2f888dc95c41b4f89aa828ffaf3cc58a12"
+  },
+  "references/lists/nominalization.txt": {
+   "version": null,
+   "sha256": "cfe31060efc6d165c30b1619ab574ec405312a80bfb00387efc6557911614be0"
+  },
+  "references/lists/intensifiers.txt": {
+   "version": null,
+   "sha256": "b10e9fb077e76cd5a93ec6e27df943a03a3a08b4cf8dd5bd72910d0266e23fdb"
+  },
+  "references/lists/feelings.txt": {
+   "version": null,
+   "sha256": "37b6779b3ef8cf91260379b21d6b721bda362542a5702affd99d550879539e82"
+  },
+  "references/lists/hedges.txt": {
+   "version": null,
+   "sha256": "ed666036f63f4705d2c129d3fd30e971018d50732bbef2c18081412a61ccd771"
+  },
+  "references/lists/katakana-terms.txt": {
+   "version": null,
+   "sha256": "47c686e6a7a94590a97fa9e052b3dee9171dfc8a5f25da727111428cda978e2d"
+  },
+  "references/lists/thin-evaluation.txt": {
+   "version": null,
+   "sha256": "b2cf6a8e1fc424d1bcac15e2aa2045a98ec77a002e2830692922a8f97ee406e4"
+  },
+  "references/lists/renyo-nouns.txt": {
+   "version": null,
+   "sha256": "0642b6ba40e4707af4715463d7433c0215087a8e068b00e7894b73e89365997a"
+  },
+  "references/lists/fact-gaps.txt": {
+   "version": null,
+   "sha256": "c78da500dcddc76978fecd1a7a9f3318d9feabf0db78387a41662a4545e6964f"
+  }
+ },
+ "python": {
+  "version": "3.12.3",
+  "implementation": "CPython",
+  "unicode_version": "15.0.0"
+ },
+ "inputs": {
+  "source": {
+   "role": "source",
+   "index": 0,
+   "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/readme-review/README.source.md",
+   "via": "file",
+   "bytes": 3947,
+   "sha256": "4b82659c3174700ae4110b9a77757b4664aec9bd9d75e25dcb8405908bc0f62e",
+   "text_sha256": "4b82659c3174700ae4110b9a77757b4664aec9bd9d75e25dcb8405908bc0f62e",
+   "bom": false,
+   "eol": "lf",
+   "snapshot": "inputs/4b82659c3174700ae4110b9a77757b4664aec9bd9d75e25dcb8405908bc0f62e.bin"
+  },
+  "materials": [
+   {
+    "role": "material",
+    "index": 1,
+    "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/readme-review/material.txt",
+    "via": "file",
+    "bytes": 7412,
+    "sha256": "8f37717a00b7bee905a712bd6aab92d3287598a6c287e029f7466607dc58f1bc",
+    "text_sha256": "8f37717a00b7bee905a712bd6aab92d3287598a6c287e029f7466607dc58f1bc",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/8f37717a00b7bee905a712bd6aab92d3287598a6c287e029f7466607dc58f1bc.bin",
+    "label": null,
+    "treated_as_source": false,
+    "similarity": null,
+    "treated_by": null
+   }
+  ],
+  "final": {
+   "role": "final",
+   "index": 0,
+   "path": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/readme-review/README.final.md",
+   "via": "file",
+   "bytes": 4336,
+   "sha256": "d91bab3003cfc4195422b829e24442494a68162ebff5fdf4102200dd29247240",
+   "text_sha256": "d91bab3003cfc4195422b829e24442494a68162ebff5fdf4102200dd29247240",
+   "bom": false,
+   "eol": "lf",
+   "snapshot": "inputs/d91bab3003cfc4195422b829e24442494a68162ebff5fdf4102200dd29247240.bin"
+  }
+ },
+ "options": {
+  "stance": "\u8aac\u660e",
+  "fail_on": [],
+  "timeout": 90,
+  "doc_type": "manual",
+  "reader": null,
+  "fact_gaps": true
+ },
+ "required_checks": [
+  "lint",
+  "diff",
+  "materials"
+ ],
+ "checks": [
+  {
+   "name": "lint",
+   "status": "ran",
+   "exit_code": 0,
+   "duration_ms": 101,
+   "target": {
+    "final": "d91bab3003cfc4195422b829e24442494a68162ebff5fdf4102200dd29247240"
+   },
+   "report": "runs/20261119T133018Z-d77f78bc/attempt-2.lint.json",
+   "report_sha256": "0b86ffaa21d7ccb7c14544438edb6a8b75a13a3febb8518b3c7987e9f5ca6837",
+   "text": "runs/20261119T133018Z-d77f78bc/attempt-2.lint.txt",
+   "text_sha256": "ef8118145e427e0a96ff9f901c401d0f2e099f367d98c9f5f307b6a152adc58a",
+   "summary": {
+    "candidate_count": 3,
+    "counts": {
+     "error": 0,
+     "warn": 3,
+     "info": 0
+    },
+    "kept_marks": []
+   },
+   "stderr": "",
+   "error": null
+  },
+  {
+   "name": "diff",
+   "status": "ran",
+   "exit_code": 0,
+   "duration_ms": 258,
+   "target": {
+    "source": "4b82659c3174700ae4110b9a77757b4664aec9bd9d75e25dcb8405908bc0f62e",
+    "final": "d91bab3003cfc4195422b829e24442494a68162ebff5fdf4102200dd29247240"
+   },
+   "report": "runs/20261119T133018Z-d77f78bc/attempt-2.diff.json",
+   "report_sha256": "70f6488dd457b30cb06885119d1d04ecb36c4cd63ce095381410b445af039656",
+   "text": "runs/20261119T133018Z-d77f78bc/attempt-2.diff.txt",
+   "text_sha256": "ef265d9667ac974aa3d6ddccc50a4a8be6b64a8e8005312ffe043f315840c28b",
+   "summary": {
+    "status": "has_candidates",
+    "candidate_count": 7,
+    "meaning_risk_count": 3,
+    "fail_on_meaning_risk_count": 0,
+    "hunk_count": 3,
+    "stiffness_candidate_count": 0,
+    "stiffness_level": "review",
+    "stiffness_review_count": 0,
+    "tone_candidate_count": 0,
+    "tone_level": "info",
+    "tone_review_count": 0,
+    "hedges_candidate_count": 0,
+    "hedges_level": "review",
+    "hedges_review_count": 0,
+    "immutable_candidate_count": 0,
+    "immutable_level": "review",
+    "immutable_review_count": 0,
+    "politeness_candidate_count": 0,
+    "politeness_level": "review",
+    "politeness_review_count": 0,
+    "register_candidate_count": 0,
+    "register_level": "review",
+    "register_review_count": 0
+   },
+   "stderr": "",
+   "error": null
+  },
+  {
+   "name": "materials",
+   "status": "ran",
+   "exit_code": null,
+   "duration_ms": 6,
+   "target": {
+    "source": "4b82659c3174700ae4110b9a77757b4664aec9bd9d75e25dcb8405908bc0f62e",
+    "materials": [
+     "8f37717a00b7bee905a712bd6aab92d3287598a6c287e029f7466607dc58f1bc"
+    ],
+    "final": "d91bab3003cfc4195422b829e24442494a68162ebff5fdf4102200dd29247240"
+   },
+   "report": "runs/20261119T133018Z-d77f78bc/attempt-2.materials.json",
+   "report_sha256": "000943e02a45f8ccc564f86fbfa5f7ea2b21d85c2f0c3b2482b5903a3e14494b",
+   "text": "runs/20261119T133018Z-d77f78bc/attempt-2.materials.txt",
+   "text_sha256": "12cf42850e61f3f43cf7b155f063e0816b5d8aa0ef6fff8f804cff67c3cd0b47",
+   "summary": {
+    "candidate_count": 1,
+    "meaning_risk_count": 0,
+    "from_materials": 2,
+    "not_in_sources": 9,
+    "dropped_certainty": 0
+   },
+   "stderr": "",
+   "error": null
+  }
+ ],
+ "materials_summary": {
+  "from_materials": 2,
+  "not_in_sources": 9,
+  "dropped_certainty": 0
+ },
+ "fact_gaps": {
+  "count": 0,
+  "skipped": null,
+  "by_kind": {},
+  "items": []
+ },
+ "result": {
+  "status": "executed",
+  "token": "yomiyasu-check: executed via=run run=20261119T133018Z-d77f78bc attempt=2 final=sha256:d91bab3003cf mode=rewrite doc_type=manual checks=lint,diff,materials meaning_risk=3",
+  "next": "finalize",
+  "fail_on_hit": false,
+  "meaning_risk_count": 3,
+  "fail_on_meaning_risk_count": 0,
+  "final_unchanged_during_run": true,
+  "not_judged": [
+   "meaning_preservation",
+   "reader_comprehension"
+  ]
+ },
+ "record_digest": "sha256:006d214286b264460f2fbcd005204eb2950fccc8c4f1da0e90893564181c9627"
+}

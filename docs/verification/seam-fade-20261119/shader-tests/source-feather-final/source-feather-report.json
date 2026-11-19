@@ -1,0 +1,3905 @@
+{
+  "backend": "webgl2",
+  "resolution": 128,
+  "description": "Production sourceDepthEdgeWeight compiled unchanged; synthetic interval data only",
+  "parameters": {
+    "radiusTexels": 6,
+    "minJumpTexels": 16,
+    "outerSlopeMultiplier": 4,
+    "outerSlopeAllowanceTexels": 8,
+    "featherPower": 8,
+    "weightFloor": 0.001
+  },
+  "rows": [
+    {
+      "gradientAxis": 0,
+      "kind": "flat",
+      "axis": 0,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "flat",
+      "axis": 0,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "flat",
+      "axis": 1,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "flat",
+      "axis": 1,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "flat",
+      "axis": 2,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "flat",
+      "axis": 2,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "linear",
+      "axis": 0,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "linear",
+      "axis": 0,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "linear",
+      "axis": 1,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "linear",
+      "axis": 1,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "linear",
+      "axis": 2,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "linear",
+      "axis": 2,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "step",
+      "axis": 0,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "step",
+      "axis": 0,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "step",
+      "axis": 1,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "step",
+      "axis": 1,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "step",
+      "axis": 2,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 0,
+      "kind": "step",
+      "axis": 2,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "flat",
+      "axis": 0,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "flat",
+      "axis": 0,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "flat",
+      "axis": 1,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "flat",
+      "axis": 1,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "flat",
+      "axis": 2,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "flat",
+      "axis": 2,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "linear",
+      "axis": 0,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "linear",
+      "axis": 0,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "linear",
+      "axis": 1,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "linear",
+      "axis": 1,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "linear",
+      "axis": 2,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "linear",
+      "axis": 2,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 1
+        },
+        {
+          "offset": -5.5,
+          "weight": 1
+        },
+        {
+          "offset": -5.25,
+          "weight": 1
+        },
+        {
+          "offset": -5,
+          "weight": 1
+        },
+        {
+          "offset": -4,
+          "weight": 1
+        },
+        {
+          "offset": -3,
+          "weight": 1
+        },
+        {
+          "offset": -2,
+          "weight": 1
+        },
+        {
+          "offset": -1,
+          "weight": 1
+        },
+        {
+          "offset": -0.5,
+          "weight": 1
+        },
+        {
+          "offset": -0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0,
+          "weight": 1
+        },
+        {
+          "offset": 0.25,
+          "weight": 1
+        },
+        {
+          "offset": 0.5,
+          "weight": 1
+        },
+        {
+          "offset": 1,
+          "weight": 1
+        },
+        {
+          "offset": 2,
+          "weight": 1
+        },
+        {
+          "offset": 3,
+          "weight": 1
+        },
+        {
+          "offset": 4,
+          "weight": 1
+        },
+        {
+          "offset": 5,
+          "weight": 1
+        },
+        {
+          "offset": 5.25,
+          "weight": 1
+        },
+        {
+          "offset": 5.5,
+          "weight": 1
+        },
+        {
+          "offset": 5.75,
+          "weight": 1
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "step",
+      "axis": 0,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "step",
+      "axis": 0,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "step",
+      "axis": 1,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "step",
+      "axis": 1,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "step",
+      "axis": 2,
+      "positive": true,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "gradientAxis": 1,
+      "kind": "step",
+      "axis": 2,
+      "positive": false,
+      "samples": [
+        {
+          "offset": -7,
+          "weight": 1
+        },
+        {
+          "offset": -6,
+          "weight": 1
+        },
+        {
+          "offset": -5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": -5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": -5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": -5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": -4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": -3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": -2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": -0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.25,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 0.5,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 1,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 2,
+          "weight": 0.0010000000474974513
+        },
+        {
+          "offset": 3,
+          "weight": 0.00390625
+        },
+        {
+          "offset": 4,
+          "weight": 0.09064210206270218
+        },
+        {
+          "offset": 5,
+          "weight": 0.5402688384056091
+        },
+        {
+          "offset": 5.25,
+          "weight": 0.7037352323532104
+        },
+        {
+          "offset": 5.5,
+          "weight": 0.853015661239624
+        },
+        {
+          "offset": 5.75,
+          "weight": 0.9602019190788269
+        },
+        {
+          "offset": 6,
+          "weight": 1
+        },
+        {
+          "offset": 7,
+          "weight": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "helperSha256": "b1cb7d3f7e0dd6bffe0101f3db9638e1bce2067d79c91b17380f0e0481c87df9"
+}

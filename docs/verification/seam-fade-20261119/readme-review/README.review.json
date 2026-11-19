@@ -1,0 +1,30 @@
+{
+  "source_sha256": "4b82659c3174700ae4110b9a77757b4664aec9bd9d75e25dcb8405908bc0f62e",
+  "final_sha256": "d91bab3003cfc4195422b829e24442494a68162ebff5fdf4102200dd29247240",
+  "delivered_path": "/home/dev/Projects/3D-Inspector-skills/README.md",
+  "byte_identical_to_verified_final": true,
+  "scope": "README only: view-fade/view-soft rows, fallback scope, mismatch caveat, short-topic comma removal",
+  "quality_claims_added": false,
+  "checks": {
+    "automatic": [
+      "lint",
+      "diff",
+      "materials",
+      "verify"
+    ],
+    "run_id": "20261119T133018Z-d77f78bc",
+    "attempt": 2,
+    "lint_remaining": 3,
+    "meaning_risk_remaining": 3
+  },
+  "manual_review": {
+    "lint": "Three existing consecutive polite endings retained as natural feature descriptions; the short-topic comma was removed.",
+    "code_terms": "native exclusion describes the four non-native source-verified modes; existing literal CLI values and defaults retained.",
+    "conditional_blur": "The new caveat states a possibility, not a measured result. Wider angular/depth blending is source verified. Misregistration-related blur/double exposure is supported by Guillemaut et al. 2007 DOI 10.1049/cp:20070043, fulltext lines216-233 read in research.",
+    "geometry_scope": "Helper returns native alpha and leaves native hit/depth/normal resolution unchanged.",
+    "not_automatically_judged": [
+      "meaning_preservation",
+      "reader_comprehension"
+    ]
+  }
+}

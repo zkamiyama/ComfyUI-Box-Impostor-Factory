@@ -1,0 +1,24 @@
+{
+  "kind": "source-and-delivery-commits",
+  "date": "2026-11-19",
+  "factory": {
+    "repository": "zkamiyama/ComfyUI-Box-Impostor-Factory",
+    "sourceCommit": "a36efcd311452dc943268fa3a9fb295c3f80524a"
+  },
+  "inspector": {
+    "repository": "zkamiyama/3D-Inspector-skills",
+    "sourceCommit": "4765f97ec343ffc0cc9798d6ce68b31bf941ac11",
+    "readmeSHA256": "929b8bca4e9e0504c474eccf72e564e64b1731fa427a9e69c1d0b0df5db4293c"
+  },
+  "viewerArchive": {
+    "repository": "zkamiyama/ComfyUI-Box-Impostor-Factory",
+    "branch": "verification/seam-fade-20261119-viewers",
+    "commit": "a6b2d4684d6f6f624d4fb4432e17d065bad14234",
+    "file": "docs/verification/seam-fade-20261119/L3-view-feather-final.inspector.html.gz",
+    "htmlSHA256": "15c8dbaf981f026fc89fdfcec6cf2d28178fdbc91be1467e48f9d0f7d8bc7757",
+    "gzipSHA256": "5f180f4d209e81be5d77c2f911442413202bb2846596756e82dcfb654d538384"
+  },
+  "finalHelperSHA256": "b1cb7d3f7e0dd6bffe0101f3db9638e1bce2067d79c91b17380f0e0481c87df9",
+  "finalReportSHA256": "4cc2285a6114e60b8cdb866e6b8021a4ba9f11891b7e8b05a67a529cc4f11da6",
+  "disposition": "Retain K (unlit + view) for this asset. L3 is opt-in experimental, reduces local chin seam contrast but does not resolve neck reprojection or wide-angle ghosting."
+}

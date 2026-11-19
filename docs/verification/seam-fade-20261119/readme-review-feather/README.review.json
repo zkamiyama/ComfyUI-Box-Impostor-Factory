@@ -1,0 +1,14 @@
+{
+  "document": "/home/dev/Projects/3D-Inspector-skills/README.md",
+  "sourceSha256": "d91bab3003cfc4195422b829e24442494a68162ebff5fdf4102200dd29247240",
+  "finalSha256": "929b8bca4e9e0504c474eccf72e564e64b1731fa427a9e69c1d0b0df5db4293c",
+  "sourceHelperSha256": "b1cb7d3f7e0dd6bffe0101f3db9638e1bce2067d79c91b17380f0e0481c87df9",
+  "scope": "Add one view-feather row only; no measured-quality claim",
+  "manualReview": {
+    "newNumberOne": "The helper uses a positive feather floor and divides the weighted RGB by total weight; a sole supported candidate keeps its RGB. Comment: The small floor preserves a sole source at any edge.",
+    "newEnumAndDepthEdge": "Allowed enum and sourceDepthEdgeWeight implementation match the row.",
+    "existingWarnings": "Three pre-existing sentence_end_repetition warnings describe distinct features naturally; retained.",
+    "meaningOrQualityAutomaticallyCertified": false
+  },
+  "verifiedCopyByteExact": true
+}

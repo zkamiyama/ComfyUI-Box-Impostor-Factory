@@ -1,0 +1,9 @@
+{
+  "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "htmlSHA256": "061d47263bb45dca17d1ce300449ff084c3b0d4c20944cb58c7b9ba7434bcb18",
+  "display": {
+    "lighting": "unlit",
+    "sampling": "native",
+    "colorSampling": "view-feather"
+  }
+}

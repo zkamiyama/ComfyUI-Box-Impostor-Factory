@@ -1,0 +1,41 @@
+[
+  {
+    "path": "worker/runtime.mjs",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "path": "worker/cli.mjs",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "path": "web/viewer.mjs",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "path": "worker/build_inspector_box_display.mjs",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "path": "worker/box_display_material.mjs",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "path": "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/scripts/build_viewer.py",
+    "astParse": true
+  },
+  {
+    "repo": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory",
+    "diffCheck": 0,
+    "output": ""
+  },
+  {
+    "repo": "/home/dev/Projects/3D-Inspector-skills",
+    "diffCheck": 0,
+    "output": ""
+  }
+]
