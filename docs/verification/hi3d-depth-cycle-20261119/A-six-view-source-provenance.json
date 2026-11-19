@@ -1,0 +1,221 @@
+{
+  "assetId": "9b50c8152e51820366cd5a2529689513d3c7a13358ddbb68f48910b6f8f6f14e",
+  "assetManifestSHA256": "008becd169320d4e77edf0910758f734cdd79f9fc0ace03b6ddf0d3162176333",
+  "stage": "A",
+  "recipePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/prepared.json",
+  "recipeSHA256": "4ca5df2b3c65eeca3f859c078a2b2a5ecbfbbc26fc18c87505a11846ea7b3fcf",
+  "kind": "Actual guide inputs versus raw AI output before matting and Box composition",
+  "faces": {
+    "+X": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "maskIoU": 0.9872554505433296,
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/px/guide.png",
+        "sha256": "a07ad0996d7896bc347cdcabf6d4a7b3b94418eff80a3e8495c76ef222d9931b",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "raw": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/px/generated.png",
+        "sha256": "faa13c4e8ce1145975371289213ba9172645aadfe0ac7372094e949aa8d8eef3",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "mask": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/px/mask.png",
+        "sha256": "f4981b3c33156b5b16a43423acc7a794ca6e70767b9d2afd0ecc6405b0f4dc08"
+      },
+      "seed": 101,
+      "graphSha256": "2f94686e1eebca4ac130b7a02a479997bb3397da67ded09d364c9c227f360ed5"
+    },
+    "-X": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "maskIoU": 0.9895011441882158,
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nx/guide.png",
+        "sha256": "379c8bf24e956166a8a2ec97b1cf8eb5032a5d296d7b832e2148a3cd7bc266a4",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "raw": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/nx/generated.png",
+        "sha256": "03a0486444c9f0637f82e2cc3c066e125dba9c25650a3060a1730178b9182fdf",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "mask": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nx/mask.png",
+        "sha256": "03c2bff68b193911e1a2ff493ee0970a4c944c5781de93f8db9ace5185b9c637"
+      },
+      "seed": 102,
+      "graphSha256": "b057dfa0f3dd5a5acc754a67db04e0d641afd2ef003d2072e87897670e7344a4"
+    },
+    "+Y": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "maskIoU": 0.9773924775788108,
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/py/guide.png",
+        "sha256": "6f16b5e6cb8d4032f1f5159948185643c37006f490082f4d4814853889083baa",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "raw": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/py/generated.png",
+        "sha256": "ccfe2f2457424473bcdeb6074a32c22dd2856cb4d22549807e8b5f1c39a28b02",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "mask": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/py/mask.png",
+        "sha256": "f92d893a4561ef4f7b06821add061d49c92893dcc3f7fb9806d55b0b47530f0a"
+      },
+      "seed": 103,
+      "graphSha256": "b55434633b2b5f53ac931104505d54b236a25ea4448a892c0e3a5e49bf5370b7"
+    },
+    "-Y": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "maskIoU": 0.9542183083862041,
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/ny/guide.png",
+        "sha256": "f849942c55e600ce17f6371bcfee85af860df08ef470c0470a3daef6b61b1ceb",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "raw": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/ny/generated.png",
+        "sha256": "86b78ee9f6a19dfee5228d6349a0826e52c4f8841c78e0e7320437a40b6047d4",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "mask": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/ny/mask.png",
+        "sha256": "1f6cf3f8e9044eb96b3dedb2a4dcb1dcd496e002e2d9f9b4467e0cf4352eb0f5"
+      },
+      "seed": 104,
+      "graphSha256": "85434c3e9e54422235e2e96f4a20da48c628787e44e01ccebed9bfb0f6e46b5d"
+    },
+    "+Z": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "maskIoU": 0.9527803162631439,
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/guide.png",
+        "sha256": "b56df3344641e20d4317afe3edced03b09d8b5d31e48a909c04fa11271bbb14c",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "raw": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/pz/generated.png",
+        "sha256": "4ef5861da67e3e19e34b8d888ea79a13f1ac8447da0e02e1d25a803e898c52f5",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "mask": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/mask.png",
+        "sha256": "62a86a81eb8397009e6642924ba74b65965c1ab83ff832beeb545675ef909ae4"
+      },
+      "seed": 105,
+      "graphSha256": "4b6ee4e5d6032625b728ccb3b12f3d436d72f74f4035437c94dff7599b32cab0"
+    },
+    "-Z": {
+      "status": "accepted",
+      "reason": "silhouette-passed",
+      "maskIoU": 0.9854852992503238,
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nz/guide.png",
+        "sha256": "4d7ea351855e62a09e0e006d56ef88913aaf97c7775342874c944a9d8c78fe6d",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "raw": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/nz/generated.png",
+        "sha256": "ac7566000dad0144988fc352223b9d5ccac0ec4c082fef47a85256eadf88dcd9",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "mask": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/nz/mask.png",
+        "sha256": "2cc12276e7f51e9db6ff2362a4684e6d8fab2de58019138158a8481549bd9018"
+      },
+      "seed": 106,
+      "graphSha256": "faa44f3543ca9bfdbd1385a36f7b39ed1db8a2b0f6cef5383fc16420e08ea8e1"
+    }
+  },
+  "panels": {
+    "A-six-view-guide-raw.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-six-view-guide-raw.webp",
+      "sha256": "b900758f2523964cbd530418d4c6ca23aac0bb3a545737c63807f3d65fa65632",
+      "bytes": 482574,
+      "size": [
+        1660,
+        790
+      ]
+    },
+    "A-raw-head-guide-comparison.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-raw-head-guide-comparison.webp",
+      "sha256": "a89eecb87d8a9f5ab50fc2cf962e900fa29f63f56af5e4c91d34cc922bfcb48e",
+      "bytes": 421344,
+      "size": [
+        2208,
+        1092
+      ]
+    }
+  },
+  "headCrops": {
+    "+X": [
+      336,
+      0,
+      560,
+      213
+    ],
+    "-X": [
+      463,
+      0,
+      687,
+      213
+    ],
+    "+Z": [
+      364,
+      0,
+      625,
+      213
+    ],
+    "-Z": [
+      398,
+      0,
+      659,
+      213
+    ]
+  },
+  "processing": "Full frames reduced 1024 to 256 by nearest-neighbor. Head crops enlarged exactly 2x nearest-neighbor. No sharpening, correction, AI postprocessing, or raw-image overwrite.",
+  "headCropDefinition": "Guide mask foreground >127 within top 205 rows; horizontal bounds plus 8px padding, y0..213. Same exact rectangle applied to raw output; no raw registration.",
+  "acceptanceMeaning": "Accepted is the existing silhouette QA result, not validation of view direction, color, identity, or facial detail."
+}
