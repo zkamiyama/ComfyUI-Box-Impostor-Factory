@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "nativeModule": "/home/dev/Projects/box-impostor-lab/ComfyUI/comfy_extras/nodes_minimax_h3.py",
+  "allVaeReferenceCount": 5,
+  "colorVaeReferenceCount": 2,
+  "vlmPictureCount": 5,
+  "vlmEmbeddingExact": true,
+  "firstTwoReferenceLatentsExact": true,
+  "outputLatentExact": true,
+  "pictureNumberLabelPreserved": true,
+  "cudaInitialized": false,
+  "nativeReferenceSizesForCpuTest": [
+    32,
+    64
+  ],
+  "checkedEpoch": 1795062938.3454132,
+  "encoders": "CPU test doubles; no model weights loaded",
+  "validationScope": "Installed native reference routing and output metadata"
+}

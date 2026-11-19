@@ -247,10 +247,10 @@ def request(origin, route, payload=None):
         raise RuntimeError(error.read().decode()) from error
 
 
-def run_face(run, recipe, fid, origin):
+def run_face(run, recipe, fid, origin, *, prompt_builder=None):
     case = run / recipe['branch'] / SLUGS[fid]
     case.mkdir(parents=True, exist_ok=True)
-    prompt = build_prompt(recipe, fid)
+    prompt = (prompt_builder or build_prompt)(recipe, fid)
     for picture in recipe['faces'][fid]['pictures'].values():
         if digest(picture['path']) != picture['sha256']:
             raise ValueError('Conditioning picture changed after preparation: ' + picture['path'])

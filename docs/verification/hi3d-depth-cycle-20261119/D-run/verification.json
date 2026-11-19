@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "checkedEpoch": 1795063432.0223682,
+  "files": [
+    "box_nodes/h3_reference_conditioning.py",
+    "box_nodes/nodes.py",
+    "scripts/run_geometry_ab.py",
+    "scripts/run_geometry_d.py",
+    "tests/test_h3_reference_conditioning.py",
+    "tests/test_geometry_d.py"
+  ],
+  "checks": [
+    {
+      "command": "python -m unittest discover -s tests -p 'test_geometry_*.py' -v",
+      "passed": 8,
+      "failed": 0,
+      "seconds": 14.071
+    },
+    {
+      "command": "python -m unittest discover -s tests -p test_h3_reference_conditioning.py -v",
+      "passed": 4,
+      "failed": 0,
+      "seconds": 0.001
+    },
+    {
+      "command": "python RUN/D/native-api-validation.py",
+      "result": "passed",
+      "cudaInitialized": false,
+      "details": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/native-api-validation.json"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "gpuInferenceStarted": false,
+  "targetFace": "-X",
+  "prepared": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/prepared.json",
+  "plannedComposeSource": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2"
+}

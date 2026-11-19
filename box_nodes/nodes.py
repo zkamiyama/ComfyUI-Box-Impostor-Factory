@@ -26,6 +26,7 @@ from .material_iid import EstimateFaceMaterialIID
 from .face_material import BIApplyFaceMaterial, BIApplyFaceScalarMaps, BILoadGeneratedFace
 from .material_pipeline import GenerateFaceMaterials
 from .secondary_references import SecondaryReferences, SecondaryReferenceSlots
+from .h3_reference_conditioning import H3ReferenceConditioning
 
 CATEGORY = 'Box Impostor'
 BACKENDS = ['auto', 'webgpu', 'webgl2']
@@ -666,6 +667,7 @@ NODE_CLASS_MAPPINGS['BIInspectFaceSilhouette'] = InspectFaceSilhouette
 NODE_CLASS_MAPPINGS['BIRebakeProxyRevision'] = RebakeProxyRevision
 NODE_CLASS_MAPPINGS['BIHi3DRefineProxy'] = RefineProxyHi3D
 NODE_CLASS_MAPPINGS['BINeuralDepthDetail'] = NeuralDepthDetail
+NODE_CLASS_MAPPINGS['BIH3ReferenceConditioning'] = H3ReferenceConditioning
 NODE_CLASS_MAPPINGS.update({
     'BIMaterialEstimate': MaterialEstimate,
     'BIEstimateFaceMaterialIID': EstimateFaceMaterialIID,
