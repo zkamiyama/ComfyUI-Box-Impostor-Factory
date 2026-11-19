@@ -1,0 +1,152 @@
+{
+  "kind": "B/D -X raw generation comparison before Box",
+  "isBoxRender": false,
+  "stages": {
+    "B": {
+      "rawPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/nx/generated.png",
+      "rawSHA256": "b1252bf14ca410884ef8f2cb2214893a372e994b59f31291995d73cf239f5103",
+      "unchangedCopy": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-nx-raw.png",
+      "copySHA256": "b1252bf14ca410884ef8f2cb2214893a372e994b59f31291995d73cf239f5103",
+      "recipePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/prepared.json",
+      "recipeSHA256": "7afc06ebcb8c7d0dd189475b1649762907463b15db6e587ec13c433700e7fc28",
+      "conditioning": "H3 image references (VLM plus VAE reference latents); no ControlNet",
+      "guide": {
+        "image": "B/nx/guide.png",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/nx/guide.png",
+        "sha256": "6962723f54d7a9a9e557e0b0cf37f1414393e846443d90285518a2b744dbe551"
+      },
+      "seed": 102
+    },
+    "D": {
+      "rawPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/D/nx/raw_00001_.png",
+      "rawSHA256": "290d900dc6a71d2542ff2fe17c77bb8db590bfe116d86b6caab693ab2a922025",
+      "unchangedCopy": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/D-nx-raw.png",
+      "copySHA256": "290d900dc6a71d2542ff2fe17c77bb8db590bfe116d86b6caab693ab2a922025",
+      "recipePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/prepared.json",
+      "recipeSHA256": "a95deba89078bd736b45444d5c6bcfcc7dc33a20218df2e675309dd6ff6ad14d",
+      "conditioning": "H3: five VLM pictures; VAE reference pictures 1 and 2 only; no ControlNet",
+      "guide": {
+        "image": "B/nx/guide.png",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/B/nx/guide.png",
+        "sha256": "6962723f54d7a9a9e557e0b0cf37f1414393e846443d90285518a2b744dbe551"
+      },
+      "seed": 102
+    }
+  },
+  "headCrop": [
+    463,
+    0,
+    687,
+    213
+  ],
+  "headCropReference": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-six-view-source-provenance.json",
+    "sha256": "f0a2af9a9068e2e5a50642e180ebadc18c88648c3627cbbfe239c8eb1130d064"
+  },
+  "controlledSettingsEqual": {
+    "models": {
+      "model": "minimax_h3_image_pruned_w4a8.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "matting": "birefnet.safetensors"
+    },
+    "sampler": {
+      "steps": 6,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1
+    },
+    "pictureOrder": [
+      "guide",
+      "source",
+      "axis-depth",
+      "normals",
+      "mask"
+    ],
+    "pictureSize": [
+      1024,
+      1024
+    ],
+    "outputSize": [
+      1024,
+      1024
+    ],
+    "baseline": "f6a5d91901f6745980cf73315bdacecc7e9db216b88784018cc7f8093d9dd404",
+    "proxySha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+    "bakeBox": {
+      "min": [
+        -0.19968106269836425,
+        -0.52,
+        -0.18729551553726195
+      ],
+      "max": [
+        0.19968106269836425,
+        0.52,
+        0.18729551553726195
+      ]
+    },
+    "transform": [
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0.010881411855650119,
+      0.02839508237150308,
+      0.013759666322433382,
+      1
+    ]
+  },
+  "fiveInputPictureSHA256": {
+    "guide": "6962723f54d7a9a9e557e0b0cf37f1414393e846443d90285518a2b744dbe551",
+    "source": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+    "axis-depth": "3d21cd8206243445500e370e205ad90469381b8c9bb014decfd7765036fbc58c",
+    "normals": "67e2f39c5dffdafdbd972f4fd9b09ac4b86a0bf098aa116a021502ed609fdfd7",
+    "mask": "b03f7cd3f0d6ea154edcb0fcdb5cc8eb18311ee2fe387d8ea5c6f29d67c8d1a6"
+  },
+  "singleDeclaredChange": "VAE reference pictures 1-5 -> pictures 1-2; VLM retains all five",
+  "experiment": {
+    "name": "h3-color-reference-latents-v1",
+    "targetFace": "-X",
+    "sourceBranch": "B",
+    "sourceRecipeSha256": "7afc06ebcb8c7d0dd189475b1649762907463b15db6e587ec13c433700e7fc28",
+    "sourceBox": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+    "sourceResultSha256": "c49c5ffcd75e6354090c5d351ef5b8a5e5b083a4a7365ac2b1a0f85b6a4dfa0d",
+    "sourceRaw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/nx/generated.png",
+    "sourceRawSha256": "b1252bf14ca410884ef8f2cb2214893a372e994b59f31291995d73cf239f5103",
+    "vlmPictureIndices": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "vaePictureIndices": [
+      1,
+      2
+    ],
+    "nativeConditioningSha256": "217f3b50ede649831c34be347196926211606904610bcb267c8725c18eb62498",
+    "wrapperSha256": "b862616e87a6ffdb129fc3bcb16a573c74b199e187e51653f25e3cba8ffd2f46"
+  },
+  "pixelPreservationVerifiedAfterWebPDecode": true,
+  "processing": "Identical crop, 2x nearest; full raw frames 1/4 nearest. No registration, sharpening, recoloring or AI postprocessing.",
+  "limitation": "One raw direction; does not establish final Box quality or six-view consistency.",
+  "panel": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-D-nx-raw-proof.webp",
+    "sha256": "66c2153d59e323b46772539178bc952b8b16f3421fe1d0f75a76579d0b92914b",
+    "bytes": 260676,
+    "size": [
+      984,
+      956
+    ]
+  },
+  "scriptSHA256": "21758d298cf2d44d8175c91d157160793655eae36e3994ed6092483758c0c5ab"
+}
