@@ -43,14 +43,15 @@ test('unknown display options fail before asset I/O or browser launch',async()=>
 test('view colour modes get separate shader programs while native stays the original class',()=>{
   const data={maps:[],layout:'box',resolution:64};
   const native=createBoxDisplayMaterial(data,{colorSampling:'native'});
-  const view=createBoxDisplayMaterial(data,{colorSampling:'view'});
-  const dominant=createBoxDisplayMaterial(data,{colorSampling:'dominant'});
+  const modes=['view','dominant','view-fade','view-soft','view-feather'].map(colorSampling=>createBoxDisplayMaterial(data,{colorSampling}));
   try {
     assert.equal(native.constructor,ImpostorNodeMaterial);
-    assert.notEqual(view.customProgramCacheKey(),dominant.customProgramCacheKey());
-    assert.equal(view.setupDiffuseColor,native.setupDiffuseColor);
-    assert.equal(view.setupDepth,native.setupDepth);
-    assert.equal(dominant.depthTest,native.depthTest);
-    assert.equal(dominant.depthWrite,native.depthWrite);
-  } finally {for(const m of [native,view,dominant])m.dispose();}
+    assert.equal(new Set(modes.map(m=>m.customProgramCacheKey())).size,modes.length);
+    for(const mode of modes) {
+      assert.equal(mode.setupDiffuseColor,native.setupDiffuseColor);
+      assert.equal(mode.setupDepth,native.setupDepth);
+      assert.equal(mode.depthTest,native.depthTest);
+      assert.equal(mode.depthWrite,native.depthWrite);
+    }
+  } finally {for(const m of [native,...modes])m.dispose();}
 });

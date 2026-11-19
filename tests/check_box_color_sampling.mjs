@@ -51,7 +51,7 @@ try {
     const bytes=encodeRaw(color),manifest=structuredClone(baked.manifest),files=new Map(baked.files);
     files.set(desc.path,bytes);manifest.textures.colorMap.sha256=await sha256(bytes);
     const objects={};
-    for(const mode of ['native','view','dominant'])
+    for(const mode of ['native','view','dominant','view-fade','view-soft','view-feather'])
       objects[mode]=await restoreBox(manifest,files,renderer,{lighting:'unlit',colorSampling:mode});
     const oldNative=new ImpostorNodeMaterial(objects.native.mesh.material.impostor);
     oldNative.steps=objects.native.mesh.material.steps;
@@ -92,7 +92,7 @@ try {
     const widthAxis=[2,2,0,0,0,0],heightAxis=[1,1,2,2,1,1];
     const probePixels=[[80,80],[64,80],[96,80],[80,64],[80,96]];
     const sheet=document.createElement('canvas'),ctx=sheet.getContext('2d');
-    sheet.width=size*3;sheet.height=(size+22)*poses.length;
+    sheet.width=size*6;sheet.height=(size+22)*poses.length;
     ctx.fillStyle='#20252b';ctx.fillRect(0,0,sheet.width,sheet.height);
     function draw(rgba,col,row,label){
       const pixels=new Uint8ClampedArray(rgba.length);
@@ -110,7 +110,7 @@ try {
       const reference=await capture(oldNative),base=await capture(objects.native.mesh.material);
       const result={name:pose.name,nativeDefaultMaxByteDelta:maxDelta(reference.rgba,base.rgba),modes:{}};
       const rendered={native:base};
-      for(const mode of ['view','dominant']){
+      for(const mode of ['view','dominant','view-fade','view-soft','view-feather']){
         const current=await capture(objects[mode].mesh.material);rendered[mode]=current;
         const data={alphaMaxByteDelta:alphaDelta(base.rgba,current.rgba),normalMaxByteDelta:maxDelta(base.normal,current.normal),
           depthMaxByteDelta:maxDelta(base.z,current.z),rgbMaxByteDeltaFromNative:maxDelta(base.rgba,current.rgba)};
@@ -129,13 +129,14 @@ try {
       }
       result.viewVsDominantMaxByteDelta=maxDelta(rendered.view.rgba,rendered.dominant.rgba);
       views.push(result);
-      ['native','view','dominant'].forEach((mode,col)=>draw(rendered[mode].rgba,col,row,pose.name+' / '+mode));
+      ['native','view','dominant','view-fade','view-soft','view-feather'].forEach((mode,col)=>draw(rendered[mode].rgba,col,row,pose.name+' / '+mode));
     }
     oldNative.dispose();Object.values(objects).forEach(o=>o.dispose());baked.live.dispose();
     target.dispose();normalTarget.dispose();depthTarget.dispose();depthMaterial.dispose();renderer.dispose();
     return {backend,resolution,size,lighting:'unlit',palette,gradient:['.12*u','.15*v','.05*u+.03*v'],
-      visibility:'absolute first-hit distance: full through 2 texels, zero at 3; unknown/open/inverted falls back to native',
-      angularWeight:'cosine^8 continuous; max positive cosine dominant with fixed face-order ties',
+      visibility:'view/view-fade/dominant/view-feather: full through2texels, zero at3; view-soft: full through2, zero at6; invalid endpoints excluded',
+      angularWeight:'view/view-fade cosine^8; view-soft cosine^4; dominant with fixed face-order ties',
+      fade:'view-fade/view-soft separately fade to native using max reliable angular candidate; normal/depth/alpha untouched',
       views,sheet:sheet.toDataURL('image/png')};
   },backend);
   report.diagnostics=diagnostics;

@@ -54,9 +54,9 @@ for (const [name, hash] of Object.entries(expected)) {
   if (sha(await readFile(resolve(assets, name))) !== hash) throw new Error('Lit baseline runtime was modified.');
 }
 const receipt = {
-  method: 'official-inspector-opt-in-rgb-runtime-v2',
+  method: 'official-inspector-opt-in-rgb-runtime-v4',
   baselineSource: expected, dependencies,
-  colorSamplingOptions: ['native', 'view', 'dominant'],
+  colorSamplingOptions: ['native', 'view', 'dominant', 'view-fade', 'view-soft', 'view-feather'],
   helperSha256: sha(await readFile(resolve(worker, 'box_display_material.mjs'))),
   builderSha256: sha(await readFile(fileURLToPath(import.meta.url))),
   outputs,

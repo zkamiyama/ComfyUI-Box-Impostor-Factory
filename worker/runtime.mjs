@@ -354,7 +354,7 @@ function validateManifest(m) {
 export async function restoreBox(manifest,files,renderer,{sampling='standard',lighting='lit',colorSampling='native'}={}) {
   if (!['standard','reduce_bleeding'].includes(sampling)) throw error('INVALID_SAMPLING','Unknown Box render sampling mode');
   if (!['lit','unlit'].includes(lighting)) throw error('INVALID_LIGHTING','Unknown Box display lighting');
-  if (!['native','view','dominant'].includes(colorSampling)) throw error('INVALID_COLOR_SAMPLING','Unknown Box colour sampling');
+  if (!['native','view','dominant','view-fade','view-soft','view-feather'].includes(colorSampling)) throw error('INVALID_COLOR_SAMPLING','Unknown Box colour sampling');
   validateManifest(manifest);
   const box=new THREE.Box3(new THREE.Vector3(...manifest.bakeBox.min),new THREE.Vector3(...manifest.bakeBox.max));
   const size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());
