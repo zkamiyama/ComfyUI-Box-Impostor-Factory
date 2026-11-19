@@ -1,0 +1,45 @@
+{
+  "kind": "resume-delivery-v1",
+  "artifacts": {
+    "H.inspector.html": {
+      "bytes": 61964882,
+      "sha256": "f3be6b7402642bc4a859812f4f19e66b8b0991ff0c30e9c556dbf912e20fb843",
+      "downloadedBytesVerified": true
+    },
+    "H-clay.inspector.html": {
+      "bytes": 23684341,
+      "sha256": "694c4005dba5d4513984be955793ecdadd70e83ae5bb18018ab5862f109f671b",
+      "downloadedBytesVerified": true
+    },
+    "I-head.inspector.html": {
+      "bytes": 24621577,
+      "sha256": "03bf56750b35930bf6b3fc339bc9eb0f1cd374bc4bdbe096f5cda59d1948523b",
+      "downloadedBytesVerified": true
+    },
+    "I-head-canonical.glb": {
+      "bytes": 18000980,
+      "sha256": "139f5505400b0ae5b16732b10a8f0ef2e408e09cbb7f7b20b58d6e04d69daf33",
+      "downloadedBytesVerified": true
+    }
+  },
+  "HArchive": {
+    "commit": "9459b30f58b1b3d71238c95d33d4a3f0c5e6b60d",
+    "directory": "docs/verification/hi3d-depth-cycle-20261119",
+    "archives": [
+      "H.inspector.html.gz",
+      "H-clay.inspector.html.gz"
+    ]
+  },
+  "IArchive": {
+    "commit": "f04fba0f5c511c8648c27ecbe98dbca1ae79d5d3",
+    "path": "docs/verification/hi3d-depth-cycle-20261119/I-run/I-head-local-20261119.tar.gz",
+    "sha256": "fe209116afd505d24cc1ea6c467efd4f3a5e46213ba8e4c2af7b81336f22e975",
+    "viewerMember": "I/evidence/result/clay.inspector.html",
+    "canonicalMember": "I/head-canonical.glb"
+  },
+  "officialInspectorHTMLModified": false,
+  "renderingVerifiedOn": "270-PC Chromium SwiftShader WebGL2",
+  "localEnvironment": "Archive bytes and selected delivery hashes verified; local WebGL rendering not claimed",
+  "IQualityDecision": "not adopted; source-like coarse head result",
+  "productionCodeModified": false
+}

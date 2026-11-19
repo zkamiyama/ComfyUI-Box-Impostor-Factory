@@ -1,0 +1,31 @@
+{
+  "kind": "H-and-I-visual-assessment-v1",
+  "viewedImagesSHA256": {
+    "F-RGB-H-I-front.webp": "d6a13d48b806f0c11bd762c21d514a75708fcf837c43c39354b02beba16f9624",
+    "A-H-I-head-lit.webp": "cf5e1bb189888a14c640267eebfb2807ede3ccfbfdb9b9aa1e6d767158f04f6e",
+    "A-H-I-head-normals.webp": "a16560a2fcdbe9707718410de56825484c9b37a43effde59fdc952ad4872652e",
+    "A-H-I-context-lit.webp": "73cb26acc1009604d340a85a0db0b87f79d4b3849ef2b88ef3998e11bf1da1ea",
+    "A-H-I-context-normals.webp": "167a65f0199fd7fea86896deb5516d2ae223d51251d03b4efe209135c7eafda6"
+  },
+  "H": {
+    "decision": "face issue unresolved",
+    "observations": [
+      "Front native lit Box has eyebrow/eye and nose/mouth bands absent from the source RGB.",
+      "Lighting removal improves appearance but residual albedo seams remain."
+    ],
+    "inference": "Geometry/normal lighting mismatch contributes substantially; no single renderer bug or residual seam cause isolated."
+  },
+  "I": {
+    "inferenceCompleted": true,
+    "decision": "not adopted into full body",
+    "observations": [
+      "Official matched gray-material I renders show broad smooth hair surfaces similar to coarse A; much of H hair strand detail is absent.",
+      "I eye/nose/mouth structure remains coarse and has not shown improved correspondence to the source RGB.",
+      "Normal and wider-context views agree with the coarse-surface observation."
+    ],
+    "claimNotMade": "Fewer fine bands or one million triangles do not establish better facial geometry.",
+    "fullBodyMergePerformed": false,
+    "BoxRebakePerformed": false,
+    "registration": "Approximate isotropic Y-height and bbox-center fit; no measured facial-landmark alignment or ground-truth mesh."
+  }
+}

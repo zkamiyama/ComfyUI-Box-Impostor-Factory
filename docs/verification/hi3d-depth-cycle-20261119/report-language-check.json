@@ -1,0 +1,388 @@
+{
+ "format": "yomiyasu-check-record",
+ "format_version": 1,
+ "run_id": "20261119T100441Z-2dffad27",
+ "attempt": 2,
+ "fix_count": 1,
+ "previous": {
+  "attempt": 1,
+  "final_sha256": "2b3d77bb0c1b39cc9e04090624fef3d0337a1abb1394d2c1ab46c75bdb202461"
+ },
+ "created_at": "2026-11-19T10:05:51Z",
+ "mode": "compose",
+ "cwd": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory",
+ "host": {
+  "session": null,
+  "codex_thread_id": "6afebf95-0a30-8191-8df1-b931fcdeb0b7",
+  "armed_by": null
+ },
+ "skill": {
+  "found": true,
+  "dir": "/workspace/scratch/87a4a8645d61/tooling/yomiyasu/skills/yomiyasu",
+  "skill_md_sha256": "6ce123ed08e487d131d0a992e7ffd20d1a3b5c80054d0cf9df6275fc0f462c75",
+  "version": "3.2.1"
+ },
+ "tools": {
+  "yomiyasu_check.py": {
+   "version": "3.2.1",
+   "sha256": "e01f1a17575a505888f8bed3b6a415e9285dd7f4316743462d0d15875ef5fe10"
+  },
+  "yomiyasu_lint.py": {
+   "version": "3.2.1",
+   "sha256": "187f6499b94a41edb676e92cc6d4bddf4b0f61f15b5be858a2d5d9b60178e2a4"
+  },
+  "yomiyasu_diff.py": {
+   "version": "3.2.1",
+   "sha256": "e187d9f97b90c7e64d961f628662e92f58714de68d5392765e510a085ba9021d"
+  },
+  "markdown_visibility.py": {
+   "version": "3.2.1",
+   "sha256": "a82bfc5885f060e010d9e3077e109bd2b693deba6729d1d62a984bcac1bf884a"
+  },
+  "references/lists/nominalization.txt": {
+   "version": null,
+   "sha256": "cfe31060efc6d165c30b1619ab574ec405312a80bfb00387efc6557911614be0"
+  },
+  "references/lists/intensifiers.txt": {
+   "version": null,
+   "sha256": "b10e9fb077e76cd5a93ec6e27df943a03a3a08b4cf8dd5bd72910d0266e23fdb"
+  },
+  "references/lists/feelings.txt": {
+   "version": null,
+   "sha256": "37b6779b3ef8cf91260379b21d6b721bda362542a5702affd99d550879539e82"
+  },
+  "references/lists/hedges.txt": {
+   "version": null,
+   "sha256": "ed666036f63f4705d2c129d3fd30e971018d50732bbef2c18081412a61ccd771"
+  },
+  "references/lists/katakana-terms.txt": {
+   "version": null,
+   "sha256": "47c686e6a7a94590a97fa9e052b3dee9171dfc8a5f25da727111428cda978e2d"
+  },
+  "references/lists/thin-evaluation.txt": {
+   "version": null,
+   "sha256": "b2cf6a8e1fc424d1bcac15e2aa2045a98ec77a002e2830692922a8f97ee406e4"
+  },
+  "references/lists/renyo-nouns.txt": {
+   "version": null,
+   "sha256": "0642b6ba40e4707af4715463d7433c0215087a8e068b00e7894b73e89365997a"
+  },
+  "references/lists/fact-gaps.txt": {
+   "version": null,
+   "sha256": "c78da500dcddc76978fecd1a7a9f3318d9feabf0db78387a41662a4545e6964f"
+  }
+ },
+ "python": {
+  "version": "3.12.14",
+  "implementation": "CPython",
+  "unicode_version": "15.0.0"
+ },
+ "inputs": {
+  "source": null,
+  "materials": [
+   {
+    "role": "material",
+    "index": 1,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 10846,
+    "sha256": "9abc20b9ff544e72a0f4bd6c6ced983abc1347f15c748e86a02d62af26fc63e4",
+    "text_sha256": "20b2e96250929063dc0917528550f84efbf5f293563396fba680efeba60d818b",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/9abc20b9ff544e72a0f4bd6c6ced983abc1347f15c748e86a02d62af26fc63e4.bin",
+    "label": "docs/verification/hi3d-depth-cycle-20261119/H-run/plan.json",
+    "treated_as_source": false,
+    "similarity": 0.089,
+    "treated_by": null
+   },
+   {
+    "role": "material",
+    "index": 2,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 2387,
+    "sha256": "6bb88aec284ba30f70bcc9289307e06eb5170d66785bf0d6338faf6cb7c12c04",
+    "text_sha256": "011f5eab3e038895e0cb7bea4b8ecbc847eb966f1fd1af694655b96c85ccd79e",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/6bb88aec284ba30f70bcc9289307e06eb5170d66785bf0d6338faf6cb7c12c04.bin",
+    "label": "docs/verification/hi3d-depth-cycle-20261119/H-run/result.json",
+    "treated_as_source": false,
+    "similarity": 0.09,
+    "treated_by": null
+   },
+   {
+    "role": "material",
+    "index": 3,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 4028,
+    "sha256": "a55a86632b0df5e8d42fcc0710003488636153017b176d6a1a04dccb41c909ac",
+    "text_sha256": "d6639415148613d093766dc283e04ed566402f7170e514a89e87188a47c01011",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/a55a86632b0df5e8d42fcc0710003488636153017b176d6a1a04dccb41c909ac.bin",
+    "label": "docs/verification/hi3d-depth-cycle-20261119/H-run/b-replay/proof.json",
+    "treated_as_source": false,
+    "similarity": 0.096,
+    "treated_by": null
+   },
+   {
+    "role": "material",
+    "index": 4,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 67066,
+    "sha256": "f4a45f35acbde0afd0b833934dcfacee567f2e86bb0a524d4a1dcf6e06b10613",
+    "text_sha256": "ca070bcf31aab7a9955aad88aaf1942f90ea5cea1a42dcce7a3bd5d4db50853d",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/f4a45f35acbde0afd0b833934dcfacee567f2e86bb0a524d4a1dcf6e06b10613.bin",
+    "label": "docs/verification/hi3d-depth-cycle-20261119/F-H-comparison-provenance.json",
+    "treated_as_source": false,
+    "similarity": 0.023,
+    "treated_by": null
+   },
+   {
+    "role": "material",
+    "index": 5,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 15256,
+    "sha256": "af3941800f27981f4ef1b2bde024cb949e1453f77e6bdad9996c3a6a6f262be6",
+    "text_sha256": "8d0e5f59b5edd17138d432609b34a8afb36d014928017e33f1a05666d0c8ea05",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/af3941800f27981f4ef1b2bde024cb949e1453f77e6bdad9996c3a6a6f262be6.bin",
+    "label": "docs/verification/hi3d-depth-cycle-20261119/resume-diagnostics/paired-diagnostics.json",
+    "treated_as_source": false,
+    "similarity": 0.076,
+    "treated_by": null
+   },
+   {
+    "role": "material",
+    "index": 6,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 8305,
+    "sha256": "9573e4e054134b938f7e20ce22d9f17f8464baf6d27925b66eafbae58a4b013d",
+    "text_sha256": "a667275eb0e66f7fd3489c3beae3bf59b1549c4bf8dddb189a0c19ee273fb0c3",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/9573e4e054134b938f7e20ce22d9f17f8464baf6d27925b66eafbae58a4b013d.bin",
+    "label": "docs/verification/hi3d-depth-cycle-20261119/resume-diagnostics/archive-recompute-check.json",
+    "treated_as_source": false,
+    "similarity": 0.09,
+    "treated_by": null
+   },
+   {
+    "role": "material",
+    "index": 7,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 12213,
+    "sha256": "a5a0c8cc3643866aef900d6b9468e097224427efa96fcb4960c1f0249805a6c5",
+    "text_sha256": "2fbaab58507820760b5e072a63a9ea95df5d97e6a1a6910d754ece3cbaf50425",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/a5a0c8cc3643866aef900d6b9468e097224427efa96fcb4960c1f0249805a6c5.bin",
+    "label": "docs/verification/hi3d-depth-cycle-20261119/I-run/head-plan.json",
+    "treated_as_source": false,
+    "similarity": 0.095,
+    "treated_by": null
+   },
+   {
+    "role": "material",
+    "index": 8,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 300,
+    "sha256": "e79906dfff012d8e96c86a3be66c55c2bd6145982d9830aa9027b58c4842e3f1",
+    "text_sha256": "d900e75f24b94b1e4e3fe4da079345f3908db9d1b22c8fdefd95359afa63f182",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/e79906dfff012d8e96c86a3be66c55c2bd6145982d9830aa9027b58c4842e3f1.bin",
+    "label": "docs/verification/hi3d-depth-cycle-20261119/I-run/hi3d-inference.json",
+    "treated_as_source": false,
+    "similarity": 0.021,
+    "treated_by": null
+   },
+   {
+    "role": "material",
+    "index": 9,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 3941,
+    "sha256": "1a6f101bf6cb278e941b65bcb19cb9b025ac0ae15cdcf07b5369e2c2511331aa",
+    "text_sha256": "58c055583831002ffc4ac82560fb2b0b6f3aaed6ff63daa01cabc573305443a0",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/1a6f101bf6cb278e941b65bcb19cb9b025ac0ae15cdcf07b5369e2c2511331aa.bin",
+    "label": "docs/verification/hi3d-depth-cycle-20261119/I-run/head-mapping.json",
+    "treated_as_source": false,
+    "similarity": 0.126,
+    "treated_by": null
+   },
+   {
+    "role": "material",
+    "index": 10,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 11439,
+    "sha256": "42c2eae44c49dfcced5c57dc7ca16c01160bbd33632cfe92419e5f1f843e2032",
+    "text_sha256": "782472f9494d4db97defd4f2e4dbb51ee165746b819dbb38adaf1210bb9f9f29",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/42c2eae44c49dfcced5c57dc7ca16c01160bbd33632cfe92419e5f1f843e2032.bin",
+    "label": "docs/verification/hi3d-depth-cycle-20261119/I-run/head-topology.json",
+    "treated_as_source": false,
+    "similarity": 0.09,
+    "treated_by": null
+   },
+   {
+    "role": "material",
+    "index": 11,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 42880,
+    "sha256": "a72a1f8ce76b8bac5a0ee2ec8b72cab85455d0fcaa52ec4ec3624e99d1eb8ed8",
+    "text_sha256": "839645039411ea255ae72b355b75f88266523008a5b2b48f796f2cf02290757a",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/a72a1f8ce76b8bac5a0ee2ec8b72cab85455d0fcaa52ec4ec3624e99d1eb8ed8.bin",
+    "label": "docs/verification/hi3d-depth-cycle-20261119/A-H-I-head-provenance.json",
+    "treated_as_source": false,
+    "similarity": 0.031,
+    "treated_by": null
+   },
+   {
+    "role": "material",
+    "index": 12,
+    "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md.material.txt",
+    "via": "file",
+    "bytes": 26,
+    "sha256": "3dbfbd8e960a534a6a9f72c7c70ebb2e3d95597273349e3e6d156da6b9e8085e",
+    "text_sha256": "3dbfbd8e960a534a6a9f72c7c70ebb2e3d95597273349e3e6d156da6b9e8085e",
+    "bom": false,
+    "eol": "lf",
+    "snapshot": "inputs/3dbfbd8e960a534a6a9f72c7c70ebb2e3d95597273349e3e6d156da6b9e8085e.bin",
+    "label": "\u30b3\u30de\u30f3\u30c9\u51fa\u529b python -m unittest discover -s tests -p test_refine_head_region.py -v",
+    "treated_as_source": false,
+    "similarity": 0.002,
+    "treated_by": null
+   }
+  ],
+  "final": {
+   "role": "final",
+   "index": 0,
+   "path": "/workspace/scratch/87a4a8645d61/ComfyUI-Box-Impostor-Factory/docs/verification/hi3d-depth-cycle-20261119/RESUME-REPORT.ja.md",
+   "via": "file",
+   "bytes": 12140,
+   "sha256": "5d6064bb86c12446d491dd02cc65a6f83e87c6af7c7c44f19a4d91c326c8f0fd",
+   "text_sha256": "5d6064bb86c12446d491dd02cc65a6f83e87c6af7c7c44f19a4d91c326c8f0fd",
+   "bom": false,
+   "eol": "lf",
+   "snapshot": "inputs/5d6064bb86c12446d491dd02cc65a6f83e87c6af7c7c44f19a4d91c326c8f0fd.bin"
+  }
+ },
+ "options": {
+  "stance": "\u8aac\u660e",
+  "fail_on": [],
+  "timeout": 90,
+  "doc_type": "article",
+  "reader": null,
+  "fact_gaps": true
+ },
+ "required_checks": [
+  "lint",
+  "materials"
+ ],
+ "checks": [
+  {
+   "name": "lint",
+   "status": "ran",
+   "exit_code": 0,
+   "duration_ms": 214,
+   "target": {
+    "final": "5d6064bb86c12446d491dd02cc65a6f83e87c6af7c7c44f19a4d91c326c8f0fd"
+   },
+   "report": "runs/20261119T100441Z-2dffad27/attempt-2.lint.json",
+   "report_sha256": "580f22ba4703b1a3976bc11d029135327e2468c6c43d898b194bf2ff49c54fba",
+   "text": "runs/20261119T100441Z-2dffad27/attempt-2.lint.txt",
+   "text_sha256": "e71f653827fbef562fdb687eb0c316fdaca3f881baa8592084344b0a4ec8f525",
+   "summary": {
+    "candidate_count": 2,
+    "counts": {
+     "error": 0,
+     "warn": 2,
+     "info": 0
+    },
+    "kept_marks": []
+   },
+   "stderr": "",
+   "error": null
+  },
+  {
+   "name": "materials",
+   "status": "ran",
+   "exit_code": null,
+   "duration_ms": 162,
+   "target": {
+    "materials": [
+     "9abc20b9ff544e72a0f4bd6c6ced983abc1347f15c748e86a02d62af26fc63e4",
+     "6bb88aec284ba30f70bcc9289307e06eb5170d66785bf0d6338faf6cb7c12c04",
+     "a55a86632b0df5e8d42fcc0710003488636153017b176d6a1a04dccb41c909ac",
+     "f4a45f35acbde0afd0b833934dcfacee567f2e86bb0a524d4a1dcf6e06b10613",
+     "af3941800f27981f4ef1b2bde024cb949e1453f77e6bdad9996c3a6a6f262be6",
+     "9573e4e054134b938f7e20ce22d9f17f8464baf6d27925b66eafbae58a4b013d",
+     "a5a0c8cc3643866aef900d6b9468e097224427efa96fcb4960c1f0249805a6c5",
+     "e79906dfff012d8e96c86a3be66c55c2bd6145982d9830aa9027b58c4842e3f1",
+     "1a6f101bf6cb278e941b65bcb19cb9b025ac0ae15cdcf07b5369e2c2511331aa",
+     "42c2eae44c49dfcced5c57dc7ca16c01160bbd33632cfe92419e5f1f843e2032",
+     "a72a1f8ce76b8bac5a0ee2ec8b72cab85455d0fcaa52ec4ec3624e99d1eb8ed8",
+     "3dbfbd8e960a534a6a9f72c7c70ebb2e3d95597273349e3e6d156da6b9e8085e"
+    ],
+    "final": "5d6064bb86c12446d491dd02cc65a6f83e87c6af7c7c44f19a4d91c326c8f0fd"
+   },
+   "report": "runs/20261119T100441Z-2dffad27/attempt-2.materials.json",
+   "report_sha256": "fdb267d39889f29e7fa88c123acc1966518a53328ab15d4b882dc2f02da8d144",
+   "text": "runs/20261119T100441Z-2dffad27/attempt-2.materials.txt",
+   "text_sha256": "f22bde7a183a5273bac58653f3c37cff6ad9eb96a49e8654d6ba9ef74ce757d9",
+   "summary": {
+    "candidate_count": 61,
+    "meaning_risk_count": 60,
+    "from_materials": 35,
+    "not_in_sources": 339,
+    "dropped_certainty": 0
+   },
+   "stderr": "",
+   "error": null
+  }
+ ],
+ "materials_summary": {
+  "from_materials": 35,
+  "not_in_sources": 339,
+  "dropped_certainty": 0
+ },
+ "fact_gaps": {
+  "count": 0,
+  "skipped": null,
+  "by_kind": {},
+  "items": []
+ },
+ "result": {
+  "status": "executed",
+  "token": "yomiyasu-check: executed via=run run=20261119T100441Z-2dffad27 attempt=2 final=sha256:5d6064bb86c1 mode=compose doc_type=article checks=lint,materials meaning_risk=60",
+  "next": "finalize",
+  "fail_on_hit": false,
+  "meaning_risk_count": 60,
+  "fail_on_meaning_risk_count": 34,
+  "final_unchanged_during_run": true,
+  "not_judged": [
+   "meaning_preservation",
+   "reader_comprehension"
+  ]
+ },
+ "record_digest": "sha256:5f171ae3ef8f2cadad9e286c7736cef150373ce12fc1218396e153a2bc5a6802"
+}

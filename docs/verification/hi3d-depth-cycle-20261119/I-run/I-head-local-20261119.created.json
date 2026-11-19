@@ -1,0 +1,14 @@
+{
+  "allSourceHashesRecheckedAfterArchiveWrite": true,
+  "archive": "/mnt/f/_dev/box-impostor-lab/archives/I-head-local-20261119.tar.gz",
+  "archiveSHA256": "fe209116afd505d24cc1ea6c467efd4f3a5e46213ba8e4c2af7b81336f22e975",
+  "compressedBytes": 57296861,
+  "independentReopenVerification": "pending",
+  "inventory": "/mnt/f/_dev/box-impostor-lab/archives/I-head-local-20261119.inventory.json",
+  "inventorySHA256": "3955e6ae99bb5562fcc54fac07d2dfffeb2fe2b707eda95fa214ec71dd4acd30",
+  "kind": "I-deterministic-archive-creation-receipt-v1",
+  "members": 84,
+  "officialResultFullTriangles": 1000000,
+  "sourceMemberBytes": 92952563,
+  "viewerSHA256": "03bf56750b35930bf6b3fc339bc9eb0f1cd374bc4bdbe096f5cda59d1948523b"
+}

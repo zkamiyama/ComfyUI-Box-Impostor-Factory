@@ -1,0 +1,36 @@
+{
+  "kind": "report-review-v1",
+  "report": "RESUME-REPORT.ja.md",
+  "reportSha256": "5d6064bb86c12446d491dd02cc65a6f83e87c6af7c7c44f19a4d91c326c8f0fd",
+  "materialSnapshot": "RESUME-REPORT.ja.md.material.txt",
+  "materialSnapshotSHA256": "ce426af929791e85e773ceaaac4848db9819ae2017369a446ff31407457b4514",
+  "allRelativeLinksExist": true,
+  "relativeLinksChecked": 20,
+  "languageReview": {
+    "skill": "yomiyasu",
+    "version": "3.2.1",
+    "mode": "compose",
+    "runId": "20261119T100441Z-2dffad27",
+    "attempt": 2,
+    "checksPerformed": [
+      "lint",
+      "materials",
+      "final-hash verification"
+    ],
+    "diffNotApplicable": "new composition without an original prose draft",
+    "lintRemaining": 2,
+    "remainingExpression": "解像度",
+    "reasonRetained": "Literal technical resolution of the geometry extraction setting; not a figurative expression.",
+    "materialCandidatesReviewed": 60,
+    "reviewNotes": [
+      "JSON decimal values are rounded in the table; percentages are100times the recorded extent ratios.",
+      "Japanese units suffix source JSON values, and relative links differ from absolute source paths.",
+      "Implementation names and links checked against actual scripts/files; table-row count is structural.",
+      "Qualitative claims assessed from actual unretouched Inspector/native-render images; not inferred as measured person accuracy."
+    ],
+    "verifyStatusLine": "yomiyasu-check: executed via=verify run=20261119T100441Z-2dffad27 attempt=2 final=sha256:5d6064bb86c1 mode=compose doc_type=article checks=lint,materials meaning_risk=60 replay=skipped",
+    "notJudgedByAutomation": "Meaning preservation and readability are not certified by the checker."
+  },
+  "qualityDecision": "H face mismatch unresolved; I not adopted after negative visual comparison",
+  "readOnlyReviewOfEvidence": true
+}

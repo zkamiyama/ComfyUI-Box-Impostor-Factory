@@ -1,0 +1,244 @@
+{
+  "method": "Recalculate statistics from archived byte-identical float readbacks; no new rendering",
+  "archiveCommit": "1f44dca8e1d9d4738b85ff8d9632d3e2c22030a0",
+  "archiveSHA256": "6d80e99cf3ca3e69664be571ee4ab28e242d3921ff0200b1504ba7da2f86f8f4",
+  "all28RenderedPNGAndFloatFileHashesMatch": true,
+  "comparisonScriptSHA256": "1fec94a38d1fe66751738b2cd72605b186ef3a139e6176ba207c6561132acbb9",
+  "numpyVersion": "2.3.5",
+  "metricsExactlyEqual": false,
+  "maxDepthStatisticDifference": 4.0978193283081055e-08,
+  "maxNormalAngleStatisticDifferenceDegrees": 7.2479248046875e-05,
+  "otherMetricsExactlyEqual": true,
+  "interpretation": "Small numerical differences between execution environments; source arrays and script bytes match. These are not changes in geometry or rendering.",
+  "differences": [
+    {
+      "path": "/F-mesh-vs-Box/body/depthWorldAbs/99",
+      "recomputed": 0.0013187724398449063,
+      "original": 0.001318775350227952,
+      "absoluteDifference": 2.9103830456733704e-09
+    },
+    {
+      "path": "/F-mesh-vs-Box/body/normalAngleDegrees/95",
+      "recomputed": 13.220476150512695,
+      "original": 13.22048282623291,
+      "absoluteDifference": 6.67572021484375e-06
+    },
+    {
+      "path": "/F-mesh-vs-Box/body/normalAngleDegrees/100",
+      "recomputed": 147.05914306640625,
+      "original": 147.0591278076172,
+      "absoluteDifference": 1.52587890625e-05
+    },
+    {
+      "path": "/F-mesh-vs-Box/head/depthWorldAbs/95",
+      "recomputed": 0.0007093303720466793,
+      "original": 0.0007093306048773229,
+      "absoluteDifference": 2.3283064365386963e-10
+    },
+    {
+      "path": "/F-mesh-vs-Box/head/depthWorldAbs/99",
+      "recomputed": 0.0021578248124569654,
+      "original": 0.002157824579626322,
+      "absoluteDifference": 2.3283064365386963e-10
+    },
+    {
+      "path": "/F-mesh-vs-Box/head/normalAngleDegrees/90",
+      "recomputed": 13.288572311401367,
+      "original": 13.28857421875,
+      "absoluteDifference": 1.9073486328125e-06
+    },
+    {
+      "path": "/F-mesh-vs-Box/head/normalAngleDegrees/95",
+      "recomputed": 18.488258361816406,
+      "original": 18.48826026916504,
+      "absoluteDifference": 1.9073486328125e-06
+    },
+    {
+      "path": "/F-mesh-vs-Box/head/normalAngleDegrees/99",
+      "recomputed": 33.18412780761719,
+      "original": 33.18410873413086,
+      "absoluteDifference": 1.9073486328125e-05
+    },
+    {
+      "path": "/H-mesh-vs-Box/body/depthWorldAbs/99",
+      "recomputed": 0.0012885755859315395,
+      "original": 0.0012885760515928268,
+      "absoluteDifference": 4.656612873077393e-10
+    },
+    {
+      "path": "/H-mesh-vs-Box/body/normalAngleDegrees/50",
+      "recomputed": 1.882216215133667,
+      "original": 1.8822160959243774,
+      "absoluteDifference": 1.1920928955078125e-07
+    },
+    {
+      "path": "/H-mesh-vs-Box/body/normalAngleDegrees/90",
+      "recomputed": 7.283899784088135,
+      "original": 7.283899307250977,
+      "absoluteDifference": 4.76837158203125e-07
+    },
+    {
+      "path": "/H-mesh-vs-Box/body/normalAngleDegrees/99",
+      "recomputed": 25.16940689086914,
+      "original": 25.16942596435547,
+      "absoluteDifference": 1.9073486328125e-05
+    },
+    {
+      "path": "/H-mesh-vs-Box/head/depthWorldAbs/99",
+      "recomputed": 0.002243976341560483,
+      "original": 0.0022439761087298393,
+      "absoluteDifference": 2.3283064365386963e-10
+    },
+    {
+      "path": "/H-mesh-vs-Box/head/normalAngleDegrees/95",
+      "recomputed": 19.43183708190918,
+      "original": 19.431838989257812,
+      "absoluteDifference": 1.9073486328125e-06
+    },
+    {
+      "path": "/H-mesh-vs-Box/head/normalAngleDegrees/99",
+      "recomputed": 33.49788284301758,
+      "original": 33.49787902832031,
+      "absoluteDifference": 3.814697265625e-06
+    },
+    {
+      "path": "/B-vs-H-mesh/body/depthWorldAbs/90",
+      "recomputed": 0.004275974817574024,
+      "original": 0.0042759752832353115,
+      "absoluteDifference": 4.656612873077393e-10
+    },
+    {
+      "path": "/B-vs-H-mesh/body/depthWorldAbs/95",
+      "recomputed": 0.0059762028977274895,
+      "original": 0.005976204294711351,
+      "absoluteDifference": 1.3969838619232178e-09
+    },
+    {
+      "path": "/B-vs-H-mesh/body/depthWorldAbs/99",
+      "recomputed": 0.013902546837925911,
+      "original": 0.013902547769248486,
+      "absoluteDifference": 9.313225746154785e-10
+    },
+    {
+      "path": "/B-vs-H-mesh/body/normalAngleDegrees/90",
+      "recomputed": 29.818462371826172,
+      "original": 29.818464279174805,
+      "absoluteDifference": 1.9073486328125e-06
+    },
+    {
+      "path": "/B-vs-H-mesh/body/normalAngleDegrees/95",
+      "recomputed": 43.77200698852539,
+      "original": 43.77207946777344,
+      "absoluteDifference": 7.2479248046875e-05
+    },
+    {
+      "path": "/B-vs-H-mesh/body/normalAngleDegrees/99",
+      "recomputed": 74.53933715820312,
+      "original": 74.53935241699219,
+      "absoluteDifference": 1.52587890625e-05
+    },
+    {
+      "path": "/B-vs-H-mesh/head/depthWorldAbs/90",
+      "recomputed": 0.005873157177120447,
+      "original": 0.0058731576427817345,
+      "absoluteDifference": 4.656612873077393e-10
+    },
+    {
+      "path": "/B-vs-H-mesh/head/depthWorldAbs/95",
+      "recomputed": 0.008209007792174816,
+      "original": 0.00820900872349739,
+      "absoluteDifference": 9.313225746154785e-10
+    },
+    {
+      "path": "/B-vs-H-mesh/head/depthWorldAbs/99",
+      "recomputed": 0.017496995627880096,
+      "original": 0.017497006803750992,
+      "absoluteDifference": 1.1175870895385742e-08
+    },
+    {
+      "path": "/B-vs-H-mesh/head/normalAngleDegrees/90",
+      "recomputed": 50.878997802734375,
+      "original": 50.87900161743164,
+      "absoluteDifference": 3.814697265625e-06
+    },
+    {
+      "path": "/B-vs-H-mesh/head/normalAngleDegrees/95",
+      "recomputed": 63.40766525268555,
+      "original": 63.40768051147461,
+      "absoluteDifference": 1.52587890625e-05
+    },
+    {
+      "path": "/F-vs-H-Box/body/depthWorldAbs/90",
+      "recomputed": 0.004187967628240585,
+      "original": 0.004187969025224447,
+      "absoluteDifference": 1.3969838619232178e-09
+    },
+    {
+      "path": "/F-vs-H-Box/body/depthWorldAbs/95",
+      "recomputed": 0.0058279926888644695,
+      "original": 0.005827992223203182,
+      "absoluteDifference": 4.656612873077393e-10
+    },
+    {
+      "path": "/F-vs-H-Box/body/depthWorldAbs/99",
+      "recomputed": 0.013545691967010498,
+      "original": 0.013545678928494453,
+      "absoluteDifference": 1.30385160446167e-08
+    },
+    {
+      "path": "/F-vs-H-Box/body/normalAngleDegrees/50",
+      "recomputed": 11.325268745422363,
+      "original": 11.325267791748047,
+      "absoluteDifference": 9.5367431640625e-07
+    },
+    {
+      "path": "/F-vs-H-Box/body/normalAngleDegrees/90",
+      "recomputed": 31.14920997619629,
+      "original": 31.14921760559082,
+      "absoluteDifference": 7.62939453125e-06
+    },
+    {
+      "path": "/F-vs-H-Box/body/normalAngleDegrees/95",
+      "recomputed": 42.92477798461914,
+      "original": 42.92477035522461,
+      "absoluteDifference": 7.62939453125e-06
+    },
+    {
+      "path": "/F-vs-H-Box/head/depthWorldAbs/90",
+      "recomputed": 0.005709096789360046,
+      "original": 0.005709098652005196,
+      "absoluteDifference": 1.862645149230957e-09
+    },
+    {
+      "path": "/F-vs-H-Box/head/depthWorldAbs/95",
+      "recomputed": 0.00789863895624876,
+      "original": 0.007898642681539059,
+      "absoluteDifference": 3.725290298461914e-09
+    },
+    {
+      "path": "/F-vs-H-Box/head/depthWorldAbs/99",
+      "recomputed": 0.016735561192035675,
+      "original": 0.016735520213842392,
+      "absoluteDifference": 4.0978193283081055e-08
+    },
+    {
+      "path": "/F-vs-H-Box/head/normalAngleDegrees/90",
+      "recomputed": 50.51564025878906,
+      "original": 50.51564407348633,
+      "absoluteDifference": 3.814697265625e-06
+    },
+    {
+      "path": "/F-vs-H-Box/head/normalAngleDegrees/95",
+      "recomputed": 62.705108642578125,
+      "original": 62.70512771606445,
+      "absoluteDifference": 1.9073486328125e-05
+    },
+    {
+      "path": "/F-vs-H-Box/head/normalAngleDegrees/99",
+      "recomputed": 88.73031616210938,
+      "original": 88.73028564453125,
+      "absoluteDifference": 3.0517578125e-05
+    }
+  ],
+  "localRenderingPerformed": false
+}

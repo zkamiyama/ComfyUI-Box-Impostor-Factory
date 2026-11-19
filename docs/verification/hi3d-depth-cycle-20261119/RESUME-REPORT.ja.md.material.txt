@@ -1,0 +1,5236 @@
+<<<yomiyasu:material docs/verification/hi3d-depth-cycle-20261119/H-run/plan.json>>>
+{
+  "method": "hi3d-generated-front-reference-with-frozen-f-appearance-v1",
+  "sourceAppearance": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "referenceSourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "comparison": "F to H; F six source RGB retained, Hi3D reference/geometry changed",
+  "sourceB": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "coarseAsset": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+  "coarseMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+  "coarseSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+  "reference": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/source.png",
+  "referencePngSha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+  "referenceEqualsBFront": true,
+  "referenceCanvas": {
+    "version": 1,
+    "size": 1024,
+    "faceId": "+Z",
+    "guideRect": [
+      315,
+      0,
+      393,
+      1024
+    ],
+    "guideInputSha256": "cbcf6b5c68a7c87f7987bd2874f124a8940aa3356f557534f9c2bb03f1e0d978",
+    "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+    "sourceRect": [
+      0,
+      0,
+      1024,
+      1024
+    ],
+    "physicalWidthHeight": [
+      0.3993621253967285,
+      1.04
+    ],
+    "imageRowOrder": "top-to-bottom",
+    "backgroundSRGB": 0.5
+  },
+  "sourceTransform": [
+    1.1176511734153667,
+    0,
+    0,
+    0,
+    0,
+    1.1176511734153667,
+    0,
+    0,
+    0,
+    0,
+    1.1176511734153667,
+    0,
+    0.010881411855650119,
+    0.02839508237150308,
+    0.013759666322433382,
+    1
+  ],
+  "sourceInverseTransform": [
+    0.8947335481643676,
+    0,
+    0,
+    0,
+    0,
+    0.8947335481643676,
+    0,
+    0,
+    0,
+    0,
+    0.8947335481643676,
+    0,
+    -0.009735964238643648,
+    -0.025406032800674435,
+    -0.012311235070228575,
+    1
+  ],
+  "BTransform": [
+    1.1176511734153667,
+    0,
+    0,
+    0,
+    0,
+    1.1176511734153667,
+    0,
+    0,
+    0,
+    0,
+    1.1176511734153667,
+    0,
+    0.010881411855650119,
+    0.02839508237150308,
+    0.013759666322433382,
+    1
+  ],
+  "BInverseTransform": [
+    0.8947335481643676,
+    0,
+    0,
+    0,
+    0,
+    0.8947335481643676,
+    0,
+    0,
+    0,
+    0,
+    0.8947335481643676,
+    0,
+    -0.009735964238643648,
+    -0.025406032800674435,
+    -0.012311235070228575,
+    1
+  ],
+  "legacyPostprocess": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/H-preparation/hi3d_postprocess_b.py",
+    "sha256": "f7daf0272926d51acbedcf6c188317eeafcafb6a977269c9a1f38d6828b119a4",
+    "commit": "873ba9d90bfd794498a3211d0ceeaf8b003f7c56",
+    "policy": "B-time uint8 color transfer/export retained only for this control"
+  },
+  "inference": {
+    "model": "hi3d-official/Hi3Dv1.0",
+    "resolution": 1024,
+    "steps": 25,
+    "seed": 0,
+    "smoothing": 0,
+    "cpuOffload": true
+  },
+  "inferScript": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/hi3d_infer.py",
+  "inferScriptSha256": "2ac8a84947596725d7500d308d3b4297f7e60778da2fb5dadd7f09847af34715",
+  "bRawMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/.stages/hi3d-refine/939bf71cab3adc54abbb9aa770917b685058470cf5f4c3d4bf7c192ca952d9ac/hi3d-raw.glb",
+  "bRawSha256": "1f5cdd2eab59199d0c289e7ac9b218edf39232c5dc6b0ed943a7f5e5e0e1c364",
+  "bCanonicalMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/geometry/proxy.glb",
+  "bCanonicalSha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+  "appearanceDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "coarseDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+  "run": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119",
+  "case": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/H",
+  "work": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H",
+  "cameraPolicy": "native true bounds/cameras; deterministic parallel-orthographic RGB affine",
+  "nativeResolution": 1024,
+  "backend": "webgl2",
+  "materialMaps": [],
+  "executionEnvironment": {
+    "successfulBProcessEvidence": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/hi3d-process.json",
+    "successfulBProcessEvidenceSha256": "73c80c903c22d9675daaefead03b51e428840a264f736b051705e5a42653d031",
+    "pythonExecutable": "/home/dev/Projects/box-impostor-lab/third_party/.venv-hi3d/bin/python",
+    "executablePathResolved": false,
+    "sameRegularModelHub": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub",
+    "modelFiles": [
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/model_index.json",
+        "regularFile": true,
+        "bytes": 224,
+        "expectedBytes": 224,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "e24988612733dad44b7354fbfa0b2ef50073ba6ef8d7a677e41023dc2d651386"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/scheduler/scheduler_config.json",
+        "regularFile": true,
+        "bytes": 127,
+        "expectedBytes": 127,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "40cdcdaaa6149dea32b86a5ff730e581b069ae619d7f580444ef503737fb0bf3"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_1024/config.json",
+        "regularFile": true,
+        "bytes": 1337,
+        "expectedBytes": 1337,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "2f96d851844e159523cb6cf5e5b29ddbc1354e222a333232612c19e1eaf278c2"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_1024/model.safetensors",
+        "regularFile": true,
+        "bytes": 3675679280,
+        "expectedBytes": 3675679280,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "a2ca5e44dde51cacecd59b42fceeb5f14e75d55e6dd047337752c4e6f281008c"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_512/config.json",
+        "regularFile": true,
+        "bytes": 1336,
+        "expectedBytes": 1336,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "809189b8183c3f44118751322f2cb6fe6fa4ca1922ea16c88cd032970d4bc937"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/transformer_512/model.safetensors",
+        "regularFile": true,
+        "bytes": 3675679280,
+        "expectedBytes": 3675679280,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "8ba88311dccf23463c6e10dd0d3bd5e0c5c35d1608c6f466413b6428b5ad8e56"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/vae/config.json",
+        "regularFile": true,
+        "bytes": 131,
+        "expectedBytes": 131,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "71c629eb188485786227277c7bb5b0fa0a1bfcf07a3d21316174da6b4d04f92f"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--hi3d-official--Hi3Dv1.0/snapshots/23d1bace196f618265b4b0b9c90d95fa9a9b1df5/vae/model.safetensors",
+        "regularFile": true,
+        "bytes": 376629712,
+        "expectedBytes": 376629712,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "605d207c77f8db0b33c567a5861252f0090cf3c3604dfda1cfee09e8f0b53f3e"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/config.json",
+        "regularFile": true,
+        "bytes": 549,
+        "expectedBytes": 549,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "12df51c069a2dc1305e34ba71ef58bc2407ea553b75f4722a1715c1bce3bbed0"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--facebook--dinov2-large/snapshots/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/model.safetensors",
+        "regularFile": true,
+        "bytes": 1217522888,
+        "expectedBytes": 1217522888,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "399fba97a95f22c36834418bc69373364a99af3a1153da1c0fb31db567c92e23"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--openai--clip-vit-large-patch14/snapshots/32bd64288804d66eefd0ccbe215aa642df71cc41/config.json",
+        "regularFile": true,
+        "bytes": 4519,
+        "expectedBytes": 4519,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "8a09b467700c58138c29d53c605b34ebc69beaadd13274a8a2af8ad2c2f4032a"
+      },
+      {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub/models--openai--clip-vit-large-patch14/snapshots/32bd64288804d66eefd0ccbe215aa642df71cc41/model.safetensors",
+        "regularFile": true,
+        "bytes": 1710540580,
+        "expectedBytes": 1710540580,
+        "sameHardlinkedFile": true,
+        "bVerifiedSha256": "a2bf730a0c7debf160f7a6b50b3aaf3703e7e88ac73de7a314903141db026dcb"
+      }
+    ],
+    "modelHashPolicy": "B verified SHA256 retained; current regular-file/size/hardlink stat only",
+    "cpuOffload": true,
+    "hfOffline": "1",
+    "wslNvmlGuardBeforeCudaAndPipelineImport": true
+  },
+  "newH3Inference": false,
+  "freeRegistration": false
+}
+
+<<<yomiyasu:material docs/verification/hi3d-depth-cycle-20261119/H-run/result.json>>>
+{
+  "method": "hi3d-generated-front-reference-with-frozen-f-appearance-v1",
+  "asset": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+  "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+  "sourceAppearance": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "geometryBaseline": "8a8b53d115fb52d838648df040475bf05c86fcbd1d84d4ce18ec8b2812df95f3",
+  "proxySha256": "51377a54c906e8bd2c0a1b431352aa49a79ffe9c2a89bbcfdcc77d4b54f21126",
+  "sourcePngAndNpyChecks": {
+    "+X": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "-X": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "+Y": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "-Y": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "+Z": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "-Z": {
+      "source.png": true,
+      "source.npy": true
+    }
+  },
+  "cameraRebaseProof": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/camera-rebase/camera-rebase-proof.json",
+  "trueTightBounds": {
+    "min": [
+      -0.1801174283027649,
+      -0.5,
+      -0.1692812293767929
+    ],
+    "max": [
+      0.1801174283027649,
+      0.5,
+      0.1692812293767929
+    ]
+  },
+  "nativeBakeBox": {
+    "min": [
+      -0.20011742830276488,
+      -0.52,
+      -0.1892812293767929
+    ],
+    "max": [
+      0.20011742830276488,
+      0.52,
+      0.1892812293767929
+    ]
+  },
+  "textures": {
+    "colorMap": "294be4e4f13d8af6f8f991bf0b70923f9bbbbd7db2693e742476c896bb8834b3",
+    "normalMap": "8ae1080205c3a04921de75cd5e79d25f07be42e2f742f754a64f177aff7a5102",
+    "intervalMap": "bfab6910865a1a2e5c9d0c2b46a1be9a4a4fcb18b4f13b810a2ec852f39c415c",
+    "rangeMap": "751a06fc022bbeb77197f1d11b42cf1cab771c96b79bde14a9c97b31a3637669"
+  },
+  "viewConsistency": "none",
+  "materialEstimation": "none",
+  "registrationOptimized": false,
+  "acceptedFaces": [
+    "+X",
+    "-X",
+    "+Y",
+    "-Y",
+    "+Z",
+    "-Z"
+  ],
+  "postprocessSnapshotSha256": "f7daf0272926d51acbedcf6c188317eeafcafb6a977269c9a1f38d6828b119a4",
+  "codeSha256": {
+    "runner": "48b93f5d8c430139cf7022e053409ad7df546267fd9c302333a0fa5585fa390c",
+    "cameraRebase": "1462d8becde53886e697321d9e37795f40c37ac8c0f0673c6b094ec237926c3b"
+  }
+}
+
+<<<yomiyasu:material docs/verification/hi3d-depth-cycle-20261119/H-run/b-replay/proof.json>>>
+{
+  "snapshotSha256": "f7daf0272926d51acbedcf6c188317eeafcafb6a977269c9a1f38d6828b119a4",
+  "sourceSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+  "rawSha256": "1f5cdd2eab59199d0c289e7ac9b218edf39232c5dc6b0ed943a7f5e5e0e1c364",
+  "expectedSha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+  "replayedSha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+  "byteIdentical": true,
+  "decodedSemanticsEqual": true,
+  "expectedSemantics": {
+    "meshes": [
+      [
+        {
+          "mode": 4,
+          "material": null,
+          "attributes": {
+            "POSITION": {
+              "componentType": 5126,
+              "type": "VEC3",
+              "normalized": false,
+              "count": 499920,
+              "decodedBytesSha256": "606ecc1cbf318637ed517503bb2f4d88f39d61c2c4eb43938105b76a920f7391"
+            },
+            "COLOR_0": {
+              "componentType": 5121,
+              "type": "VEC4",
+              "normalized": true,
+              "count": 499920,
+              "decodedBytesSha256": "c565403d0ea4a522d4c26736317cf35435753f24e07993fed9488725114ab90d"
+            },
+            "indices": {
+              "componentType": 5125,
+              "type": "SCALAR",
+              "normalized": false,
+              "count": 3000000,
+              "decodedBytesSha256": "4e6605b02a85feebf5527e7377aa0be42184a85d287ebe61d8fa4884f60cef76"
+            }
+          }
+        }
+      ]
+    ],
+    "nodes": [
+      {
+        "mesh": 0
+      }
+    ],
+    "scenes": [
+      {
+        "nodes": [
+          0
+        ]
+      }
+    ],
+    "scene": 0,
+    "materials": [],
+    "textures": [],
+    "images": []
+  },
+  "actualSemantics": {
+    "meshes": [
+      [
+        {
+          "mode": 4,
+          "material": null,
+          "attributes": {
+            "POSITION": {
+              "componentType": 5126,
+              "type": "VEC3",
+              "normalized": false,
+              "count": 499920,
+              "decodedBytesSha256": "606ecc1cbf318637ed517503bb2f4d88f39d61c2c4eb43938105b76a920f7391"
+            },
+            "COLOR_0": {
+              "componentType": 5121,
+              "type": "VEC4",
+              "normalized": true,
+              "count": 499920,
+              "decodedBytesSha256": "c565403d0ea4a522d4c26736317cf35435753f24e07993fed9488725114ab90d"
+            },
+            "indices": {
+              "componentType": 5125,
+              "type": "SCALAR",
+              "normalized": false,
+              "count": 3000000,
+              "decodedBytesSha256": "4e6605b02a85feebf5527e7377aa0be42184a85d287ebe61d8fa4884f60cef76"
+            }
+          }
+        }
+      ]
+    ],
+    "nodes": [
+      {
+        "mesh": 0
+      }
+    ],
+    "scenes": [
+      {
+        "nodes": [
+          0
+        ]
+      }
+    ],
+    "scene": 0,
+    "materials": [],
+    "textures": [],
+    "images": []
+  },
+  "sourceTransformEqual": true,
+  "sourceInverseTransformEqual": true,
+  "postprocessReport": {
+    "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+    "hi3d_input": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/.stages/hi3d-refine/939bf71cab3adc54abbb9aa770917b685058470cf5f4c3d4bf7c192ca952d9ac/hi3d-raw.glb",
+    "source_sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "hi3d_sha256": "1f5cdd2eab59199d0c289e7ac9b218edf39232c5dc6b0ed943a7f5e5e0e1c364",
+    "smooth_iterations": 0,
+    "scale": 0.6279206758924942,
+    "source_extents": [
+      0.359193,
+      1.0,
+      0.341354
+    ],
+    "refined_extents": [
+      0.359362,
+      1.0,
+      0.334591
+    ],
+    "extent_ratio": [
+      1.000472,
+      1.0,
+      0.980187
+    ],
+    "nearest_dist_p50_p95": [
+      0.002918,
+      0.007377
+    ],
+    "vertices": 499920,
+    "faces": 1000000,
+    "has_vertex_color": true
+  },
+  "passed": true
+}
+
+<<<yomiyasu:material docs/verification/hi3d-depth-cycle-20261119/F-H-comparison-provenance.json>>>
+{
+  "kind": "F/H visual proof: common world-frame viewer camera, preserved source RGB, actual geometry.\nH has different native bake cameras and camera-affine RGB resampling. Neither\naligned RGB bytes nor the final color atlas are required to equal F.\n",
+  "scope": "four-view Box and clay",
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "fovBeforeOrthographic": 40,
+    "fitFormula": "radius * 1.05 / sin(20deg)",
+    "sourceRadius": 0.5876666886430749,
+    "referenceRadius": 0.5887244402352406,
+    "perspectiveWheelDeltaY": 3.505915677124107,
+    "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001,
+    "wheelProtocolDeltaY": 4.4876070731820406,
+    "pans": [
+      {
+        "view": "front",
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "view": "right",
+        "dx": 0,
+        "dy": 0
+      }
+    ]
+  },
+  "headWorldBounds": [
+    [
+      -0.06190345578729607,
+      0.3100160773953314,
+      -0.024992582091377752
+    ],
+    [
+      0.07604182008052954,
+      0.51,
+      0.18067711655172314
+    ]
+  ],
+  "headCrops": {
+    "front": [
+      463,
+      115,
+      572,
+      271
+    ],
+    "left": [
+      492,
+      115,
+      653,
+      271
+    ],
+    "back": [
+      452,
+      115,
+      561,
+      271
+    ],
+    "right": [
+      371,
+      115,
+      532,
+      271
+    ]
+  },
+  "headCropSource": {
+    "path": "docs/verification/hi3d-depth-cycle-20261119/A-full-comparison-provenance.json",
+    "sha256": "aaa864bdead10ddd8f9afd85f46d77e922c96f5e11236ec3bd12cc9c4af64401"
+  },
+  "assets": {
+    "F": {
+      "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "manifestSHA256": "48d4630f488731650c5288d2242be6eec58a241fe760d594dcc7eb4736f67214",
+      "proxySHA256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+      "bakeBox": {
+        "min": [
+          -0.19968106269836425,
+          -0.52,
+          -0.18729551553726195
+        ],
+        "max": [
+          0.19968106269836425,
+          0.52,
+          0.18729551553726195
+        ]
+      },
+      "clayNormalPolicy": {
+        "method": "GLB JSON material replacement; binary chunks and geometry accessors retained byte-for-byte",
+        "normalRecomputed": false,
+        "normalAccessors": [
+          {
+            "present": false
+          }
+        ],
+        "removedColorBindings": [
+          {
+            "COLOR_0": 2
+          }
+        ],
+        "binaryChunksIdentical": true,
+        "binaryChunkSHA256": [
+          "fcb7b1a5c400f01627ae52bcd1931066ea7cdd7543f1b14789d7aaa00446a049"
+        ],
+        "positionNormalIndexBindingsIdentical": true,
+        "nodeTransformsIdentical": true,
+        "sourceMaterialNormalTextures": [],
+        "materialTextureMode": "All color and tangent normal textures removed; original geometry NORMAL retained",
+        "note": "If NORMAL is absent in the source, it remains absent and the official renderer computes shading normals."
+      }
+    },
+    "H": {
+      "assetId": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+      "manifestSHA256": "ae235e80807456cbe1e02aba42d1219820b03657898f3b697af7f6cfb2a6878c",
+      "proxySHA256": "51377a54c906e8bd2c0a1b431352aa49a79ffe9c2a89bbcfdcc77d4b54f21126",
+      "bakeBox": {
+        "min": [
+          -0.20011742830276488,
+          -0.52,
+          -0.1892812293767929
+        ],
+        "max": [
+          0.20011742830276488,
+          0.52,
+          0.1892812293767929
+        ]
+      },
+      "clayNormalPolicy": {
+        "method": "GLB JSON material replacement; binary chunks and geometry accessors retained byte-for-byte",
+        "normalRecomputed": false,
+        "normalAccessors": [
+          {
+            "present": false
+          }
+        ],
+        "removedColorBindings": [
+          {
+            "COLOR_0": 2
+          }
+        ],
+        "binaryChunksIdentical": true,
+        "binaryChunkSHA256": [
+          "dd616217bbabf24bef56070f6351b57abaf81c4dc22ee94e55f20d034e6ae23a"
+        ],
+        "positionNormalIndexBindingsIdentical": true,
+        "nodeTransformsIdentical": true,
+        "sourceMaterialNormalTextures": [],
+        "materialTextureMode": "All color and tangent normal textures removed; original geometry NORMAL retained",
+        "note": "If NORMAL is absent in the source, it remains absent and the official renderer computes shading normals."
+      }
+    }
+  },
+  "sameCanonicalTransform": true,
+  "sourceRGB": {
+    "+X": {
+      "sourcePNG": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/px/source.png",
+          "sha256": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/px/source.png",
+          "sha256": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa"
+        }
+      },
+      "sourceNPY": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/px/source.npy",
+          "sha256": "6920fe5a15f6b7fcce9739e6e3e49a83ed76cd3e0648abe2ae5417f1802417be"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/px/source.npy",
+          "sha256": "6920fe5a15f6b7fcce9739e6e3e49a83ed76cd3e0648abe2ae5417f1802417be"
+        }
+      },
+      "sourcePNGAndNPYByteExact": true,
+      "alignedSHA256": {
+        "F": "99ca90b0bc6cf2dd379ac212f37b2dc1a14cd2d2d87a9cf05e6298390c72033c",
+        "H": "27380ea3590ca7eb3000df24dfdb77ff611f3a8f5f82e23eb34024ff219ea854"
+      },
+      "alignedBytesEqual": false,
+      "nativeCamera": {
+        "F": {
+          "viewMatrix": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            -6.743074159007195e-17,
+            0,
+            -0.30368106269836426,
+            1
+          ],
+          "projectionMatrix": [
+            5.339156130521729,
+            0,
+            0,
+            0,
+            0,
+            1.923076923076923,
+            0,
+            0,
+            0,
+            0,
+            -3.9732826509815085,
+            0,
+            0,
+            0,
+            -1.2066106978510387,
+            1
+          ]
+        },
+        "H": {
+          "viewMatrix": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            -6.752763421830396e-17,
+            0,
+            -0.3041174283027649,
+            1
+          ],
+          "projectionMatrix": [
+            5.2831440459917385,
+            0,
+            0,
+            0,
+            0,
+            1.923076923076923,
+            0,
+            0,
+            0,
+            0,
+            -3.966405681399826,
+            0,
+            0,
+            0,
+            -1.2062530954327912,
+            1
+          ]
+        }
+      }
+    },
+    "-X": {
+      "sourcePNG": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/nx/source.png",
+          "sha256": "93cf42257007f47b17abed1d8abcea6e4b43fdcccc80783211b7f47baf05088e"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/nx/source.png",
+          "sha256": "93cf42257007f47b17abed1d8abcea6e4b43fdcccc80783211b7f47baf05088e"
+        }
+      },
+      "sourceNPY": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/nx/source.npy",
+          "sha256": "c23ec380e8e71097082080bbe27183dc3425150535ddbf7dfcf292d2885f382a"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/nx/source.npy",
+          "sha256": "c23ec380e8e71097082080bbe27183dc3425150535ddbf7dfcf292d2885f382a"
+        }
+      },
+      "sourcePNGAndNPYByteExact": true,
+      "alignedSHA256": {
+        "F": "c9227b00584e3f0d016f94f29c42ea1773459ce4c79ad3d46dbcec0c6bb0a4ff",
+        "H": "4f46fdb49c3f3b6fcfd3efd1f93f3f1f094f91e5cd8e29816baf6d0cf1ad680c"
+      },
+      "alignedBytesEqual": false,
+      "nativeCamera": {
+        "F": {
+          "viewMatrix": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            6.743074159007195e-17,
+            0,
+            -0.30368106269836426,
+            1
+          ],
+          "projectionMatrix": [
+            5.339156130521729,
+            0,
+            0,
+            0,
+            0,
+            1.923076923076923,
+            0,
+            0,
+            0,
+            0,
+            -3.9732826509815085,
+            0,
+            0,
+            0,
+            -1.2066106978510387,
+            1
+          ]
+        },
+        "H": {
+          "viewMatrix": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            6.752763421830396e-17,
+            0,
+            -0.3041174283027649,
+            1
+          ],
+          "projectionMatrix": [
+            5.2831440459917385,
+            0,
+            0,
+            0,
+            0,
+            1.923076923076923,
+            0,
+            0,
+            0,
+            0,
+            -3.966405681399826,
+            0,
+            0,
+            0,
+            -1.2062530954327912,
+            1
+          ]
+        }
+      }
+    },
+    "+Y": {
+      "sourcePNG": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/py/source.png",
+          "sha256": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/py/source.png",
+          "sha256": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d"
+        }
+      },
+      "sourceNPY": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/py/source.npy",
+          "sha256": "2efb4294efd3b69223145c08f7520aab1276242cf9922596e35704740cf9eaf6"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/py/source.npy",
+          "sha256": "2efb4294efd3b69223145c08f7520aab1276242cf9922596e35704740cf9eaf6"
+        }
+      },
+      "sourcePNGAndNPYByteExact": true,
+      "alignedSHA256": {
+        "F": "b8670517f6a84efc51802b0fd8e4dfbdfe0e9703032a37a15200542444db5854",
+        "H": "52d670f5223886da576e5b699f35213de4f84d6e12c519fe855065a94d2335de"
+      },
+      "alignedBytesEqual": false,
+      "nativeCamera": {
+        "F": {
+          "viewMatrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            2.220446049250313e-16,
+            1,
+            0,
+            0,
+            -1,
+            2.220446049250313e-16,
+            0,
+            0,
+            -1.3855583347321954e-16,
+            -0.624,
+            1
+          ],
+          "projectionMatrix": [
+            5.007986167975216,
+            0,
+            0,
+            0,
+            0,
+            5.339156130521729,
+            0,
+            0,
+            0,
+            0,
+            -1.7482517482517481,
+            0,
+            0,
+            0,
+            -1.090909090909091,
+            1
+          ]
+        },
+        "H": {
+          "viewMatrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            2.220446049250313e-16,
+            1,
+            0,
+            0,
+            -1,
+            2.220446049250313e-16,
+            0,
+            0,
+            -1.3855583347321954e-16,
+            -0.624,
+            1
+          ],
+          "projectionMatrix": [
+            4.997066015095217,
+            0,
+            0,
+            0,
+            0,
+            5.2831440459917385,
+            0,
+            0,
+            0,
+            0,
+            -1.7482517482517481,
+            0,
+            0,
+            0,
+            -1.090909090909091,
+            1
+          ]
+        }
+      }
+    },
+    "-Y": {
+      "sourcePNG": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/ny/source.png",
+          "sha256": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/ny/source.png",
+          "sha256": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623"
+        }
+      },
+      "sourceNPY": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/ny/source.npy",
+          "sha256": "3902f306807845315e0b3e3c65c98a4cbf0ce04baf5bbd08a1bca0d4525cfa08"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/ny/source.npy",
+          "sha256": "3902f306807845315e0b3e3c65c98a4cbf0ce04baf5bbd08a1bca0d4525cfa08"
+        }
+      },
+      "sourcePNGAndNPYByteExact": true,
+      "alignedSHA256": {
+        "F": "a2285b1647f69128e1e061185397790c24eae160606ca25fe9dda18cfab70bad",
+        "H": "624d91a070bbe0b24fa3168a8a739231200d2e76a1541ec61da60757cb67cfe2"
+      },
+      "alignedBytesEqual": false,
+      "nativeCamera": {
+        "F": {
+          "viewMatrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            2.220446049250313e-16,
+            -1,
+            0,
+            0,
+            1,
+            2.220446049250313e-16,
+            0,
+            0,
+            1.3855583347321954e-16,
+            -0.624,
+            1
+          ],
+          "projectionMatrix": [
+            5.007986167975216,
+            0,
+            0,
+            0,
+            0,
+            5.339156130521729,
+            0,
+            0,
+            0,
+            0,
+            -1.7482517482517481,
+            0,
+            0,
+            0,
+            -1.090909090909091,
+            1
+          ]
+        },
+        "H": {
+          "viewMatrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            2.220446049250313e-16,
+            -1,
+            0,
+            0,
+            1,
+            2.220446049250313e-16,
+            0,
+            0,
+            1.3855583347321954e-16,
+            -0.624,
+            1
+          ],
+          "projectionMatrix": [
+            4.997066015095217,
+            0,
+            0,
+            0,
+            0,
+            5.2831440459917385,
+            0,
+            0,
+            0,
+            0,
+            -1.7482517482517481,
+            0,
+            0,
+            0,
+            -1.090909090909091,
+            1
+          ]
+        }
+      }
+    },
+    "+Z": {
+      "sourcePNG": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/source.png",
+          "sha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/pz/source.png",
+          "sha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f"
+        }
+      },
+      "sourceNPY": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/source.npy",
+          "sha256": "af3f09c0d4780de0810a2cf83496c60a1dbc8933b0da2ca6166bc82bbafdc7ab"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/pz/source.npy",
+          "sha256": "af3f09c0d4780de0810a2cf83496c60a1dbc8933b0da2ca6166bc82bbafdc7ab"
+        }
+      },
+      "sourcePNGAndNPYByteExact": true,
+      "alignedSHA256": {
+        "F": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488",
+        "H": "12842eb8fb5e643e35926abbc8a06829d9d54f14de4397d21e65e8a24d6468ee"
+      },
+      "alignedBytesEqual": false,
+      "nativeCamera": {
+        "F": {
+          "viewMatrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -0.29129551553726196,
+            1
+          ],
+          "projectionMatrix": [
+            5.007986167975216,
+            0,
+            0,
+            0,
+            0,
+            1.923076923076923,
+            0,
+            0,
+            0,
+            0,
+            -4.178933306605508,
+            0,
+            0,
+            0,
+            -1.2173045319434865,
+            1
+          ]
+        },
+        "H": {
+          "viewMatrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -0.2932812293767929,
+            1
+          ],
+          "projectionMatrix": [
+            4.997066015095217,
+            0,
+            0,
+            0,
+            0,
+            1.923076923076923,
+            0,
+            0,
+            0,
+            0,
+            -4.14454121683194,
+            0,
+            0,
+            0,
+            -1.215516143275261,
+            1
+          ]
+        }
+      }
+    },
+    "-Z": {
+      "sourcePNG": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/nz/source.png",
+          "sha256": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/nz/source.png",
+          "sha256": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede"
+        }
+      },
+      "sourceNPY": {
+        "F": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/nz/source.npy",
+          "sha256": "6938e167ff6c13a8021c1d97d5e3dc3f88bccf7e081534d45d6b8771f04614c4"
+        },
+        "H": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/views/nz/source.npy",
+          "sha256": "6938e167ff6c13a8021c1d97d5e3dc3f88bccf7e081534d45d6b8771f04614c4"
+        }
+      },
+      "sourcePNGAndNPYByteExact": true,
+      "alignedSHA256": {
+        "F": "e0105542f31e3f7851b5f6fcd70d27b100f569f50dc912afc7082d4ef6369550",
+        "H": "846dbfb010a47126e3e8a49e5fb1636bde90943d1ee52c1e4e00e2aa5ba13e9e"
+      },
+      "alignedBytesEqual": false,
+      "nativeCamera": {
+        "F": {
+          "viewMatrix": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            -0.29129551553726196,
+            1
+          ],
+          "projectionMatrix": [
+            5.007986167975216,
+            0,
+            0,
+            0,
+            0,
+            1.923076923076923,
+            0,
+            0,
+            0,
+            0,
+            -4.178933306605508,
+            0,
+            0,
+            0,
+            -1.2173045319434865,
+            1
+          ]
+        },
+        "H": {
+          "viewMatrix": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            -0.2932812293767929,
+            1
+          ],
+          "projectionMatrix": [
+            4.997066015095217,
+            0,
+            0,
+            0,
+            0,
+            1.923076923076923,
+            0,
+            0,
+            0,
+            0,
+            -4.14454121683194,
+            0,
+            0,
+            0,
+            -1.215516143275261,
+            1
+          ]
+        }
+      }
+    }
+  },
+  "rgbMapping": "F source PNG and source NPY bytes retained. H uses a known camera-affine bilinear resample for its actual native cameras; aligned bytes and color atlas may differ.",
+  "FClayReuse": {
+    "sameProxySHA256AsB": true,
+    "sameClayGLBSHA256": "c0457a74ea6537333e5431a3cafb2a9828f9407f19fc87a9da07202aef80c043",
+    "normalPolicy": "Original NORMAL absence retained; official mesh converter computes normals."
+  },
+  "captures": {
+    "box": {
+      "F": {
+        "front": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/capture.json",
+          "captureSHA256": "e145504dc7da03bd4a8a4765b76570bb9a1b8f6a2580cd006dba4004e4b7d650",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/lit-front.png",
+            "sha256": "c6dd7feafd68a8509c3668f29e2a2c6dea05e1cbf1c0323f224f3eb4ad6291df",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F.inspector.html",
+          "htmlSHA256": "2bff2ec86f73ba5f5e011be9d306b3904a71c6a5da236b5445c2c83b9d7c3f69",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5876666886430749,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 3.505915677124107,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 4.4876070731820406,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": true
+        },
+        "left": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/capture.json",
+          "captureSHA256": "e145504dc7da03bd4a8a4765b76570bb9a1b8f6a2580cd006dba4004e4b7d650",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/lit-left.png",
+            "sha256": "80ff657987f7fdea5f25d4028d355306b47db1757cd0b259def2c9fa7a14402c",
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              -1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F.inspector.html",
+          "htmlSHA256": "2bff2ec86f73ba5f5e011be9d306b3904a71c6a5da236b5445c2c83b9d7c3f69",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5876666886430749,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 3.505915677124107,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 4.4876070731820406,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": true
+        },
+        "back": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box-back/capture.json",
+          "captureSHA256": "a600e6bf720b5eb64946c17b6a4d1d68360cb862f7fb12222bd73878593df948",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box-back/lit-back.png",
+            "sha256": "c1e0fbafa9c5f419f742ed1267b63aab537a92cc24ea79ae01c18957a2443d6a",
+            "direction": [
+              0,
+              0,
+              -1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              -1.8073808642855147
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F.inspector.html",
+          "htmlSHA256": "2bff2ec86f73ba5f5e011be9d306b3904a71c6a5da236b5445c2c83b9d7c3f69",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5876666886430749,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 3.505915677124107,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 4.4876070731820406,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": false
+        },
+        "right": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/capture.json",
+          "captureSHA256": "e145504dc7da03bd4a8a4765b76570bb9a1b8f6a2580cd006dba4004e4b7d650",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/lit-right.png",
+            "sha256": "b494eec1b7b2255e548836e62dd68d73fc5ed57ff79776a5b8d4a380275d76e9",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F.inspector.html",
+          "htmlSHA256": "2bff2ec86f73ba5f5e011be9d306b3904a71c6a5da236b5445c2c83b9d7c3f69",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5876666886430749,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 3.505915677124107,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 4.4876070731820406,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": true
+        }
+      },
+      "H": {
+        "front": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-box/capture.json",
+          "captureSHA256": "f98eb63f6f3dbdfd18adaafe2314cd4533e5becd891db671f5036c866b16c3e4",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-box/lit-front.png",
+            "sha256": "c82d1eae20838ef975d35b596d5896d0b0707c4e0ff795f60a08bef4a7be421f",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H.inspector.html",
+          "htmlSHA256": "f3be6b7402642bc4a859812f4f19e66b8b0991ff0c30e9c556dbf912e20fb843",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5884508211438764,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 0.906305634385603,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 1.160080261448226,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": false
+        },
+        "left": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-box/capture.json",
+          "captureSHA256": "f98eb63f6f3dbdfd18adaafe2314cd4533e5becd891db671f5036c866b16c3e4",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-box/lit-left.png",
+            "sha256": "768d10114170ef4e28dbfab51a6c8ecf5d589c5d53ac447a4ca15c09c414ee74",
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              -1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H.inspector.html",
+          "htmlSHA256": "f3be6b7402642bc4a859812f4f19e66b8b0991ff0c30e9c556dbf912e20fb843",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5884508211438764,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 0.906305634385603,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 1.160080261448226,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": false
+        },
+        "back": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-box/capture.json",
+          "captureSHA256": "f98eb63f6f3dbdfd18adaafe2314cd4533e5becd891db671f5036c866b16c3e4",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-box/lit-back.png",
+            "sha256": "484d75cc82610efa0d2fc80535c447bcf829e3c9e317587a3ea5fd3d3ff9ca53",
+            "direction": [
+              0,
+              0,
+              -1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              -1.8073808642855147
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H.inspector.html",
+          "htmlSHA256": "f3be6b7402642bc4a859812f4f19e66b8b0991ff0c30e9c556dbf912e20fb843",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5884508211438764,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 0.906305634385603,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 1.160080261448226,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": false
+        },
+        "right": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-box/capture.json",
+          "captureSHA256": "f98eb63f6f3dbdfd18adaafe2314cd4533e5becd891db671f5036c866b16c3e4",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-box/lit-right.png",
+            "sha256": "da1357d9589371c06e80f2eec0880fe8c8d288d7990998c9d89167ec0ffb688a",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H.inspector.html",
+          "htmlSHA256": "f3be6b7402642bc4a859812f4f19e66b8b0991ff0c30e9c556dbf912e20fb843",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5884508211438764,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 0.906305634385603,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 1.160080261448226,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": false
+        }
+      }
+    },
+    "clay": {
+      "F": {
+        "front": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/capture.json",
+          "captureSHA256": "c0efa87471cff7b192f15aba74aaea478f932bbaae18a7c429a079e41c25732b",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/lit-front.png",
+            "sha256": "8400ca4fa74716b5be7e3caf667d33c495254fb093d56d29c626ae4123ad314d",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay.inspector.html",
+          "htmlSHA256": "3ae13f97adee0bd522d5c84f81d627a9ed944715701217c10661d5f3f0b1f32f",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5570216098243332,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 107.91702004948496,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 138.13486321155844,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": true,
+          "sourceTriangles": 1000000,
+          "payloadTriangles": 1000000,
+          "projectedBounds": [
+            372.15185167780845,
+            122.8433848786874,
+            651.8481483221915,
+            901.1566151213126
+          ],
+          "alphaBounds": [
+            372,
+            123,
+            652,
+            901
+          ],
+          "projectionMaxErrorPx": 0.1566151213125977
+        },
+        "left": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/capture.json",
+          "captureSHA256": "c0efa87471cff7b192f15aba74aaea478f932bbaae18a7c429a079e41c25732b",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/lit-left.png",
+            "sha256": "1751ff1c02fc0a677efeb239875251824002e468ffd5f7a3c717f2644d2b1bf6",
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              -1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay.inspector.html",
+          "htmlSHA256": "3ae13f97adee0bd522d5c84f81d627a9ed944715701217c10661d5f3f0b1f32f",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5570216098243332,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 107.91702004948496,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 138.13486321155844,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": true,
+          "sourceTriangles": 1000000,
+          "payloadTriangles": 1000000,
+          "projectedBounds": [
+            381.7916868970883,
+            122.8433848786874,
+            642.2083131029117,
+            901.1566151213126
+          ],
+          "alphaBounds": [
+            382,
+            123,
+            642,
+            901
+          ],
+          "projectionMaxErrorPx": 0.20831310291168847
+        },
+        "back": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay-back/capture.json",
+          "captureSHA256": "a44a814c54eda74f0dd6c540a0551a2fca25eaf208336aa06e96289a25c71fa4",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay-back/lit-back.png",
+            "sha256": "72b85e5fb5d779fd3aca6f21eab16df30b5d2e3eefb235ad167494b6406f211c",
+            "direction": [
+              0,
+              0,
+              -1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              -1.8073808642855147
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay.inspector.html",
+          "htmlSHA256": "3ae13f97adee0bd522d5c84f81d627a9ed944715701217c10661d5f3f0b1f32f",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5570216098243332,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 107.91702004948496,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 138.13486321155844,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": false,
+          "sourceTriangles": 1000000,
+          "payloadTriangles": 1000000,
+          "projectedBounds": [
+            372.15185167780845,
+            122.8433848786874,
+            651.8481483221915,
+            901.1566151213126
+          ],
+          "alphaBounds": [
+            372,
+            123,
+            652,
+            901
+          ],
+          "projectionMaxErrorPx": 0.1566151213125977
+        },
+        "right": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/capture.json",
+          "captureSHA256": "c0efa87471cff7b192f15aba74aaea478f932bbaae18a7c429a079e41c25732b",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/lit-right.png",
+            "sha256": "f4713b423060a6d145e15ed75d362e4e0771538c761821d3007139d7c24ff33b",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay.inspector.html",
+          "htmlSHA256": "3ae13f97adee0bd522d5c84f81d627a9ed944715701217c10661d5f3f0b1f32f",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5570216098243332,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 107.91702004948496,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 138.13486321155844,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": true,
+          "sourceTriangles": 1000000,
+          "payloadTriangles": 1000000,
+          "projectedBounds": [
+            381.7916868970883,
+            122.8433848786874,
+            642.2083131029117,
+            901.1566151213126
+          ],
+          "alphaBounds": [
+            382,
+            123,
+            642,
+            901
+          ],
+          "projectionMaxErrorPx": 0.20831310291168847
+        }
+      },
+      "H": {
+        "front": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay/capture.json",
+          "captureSHA256": "b6e7fc656342cbba9ed8f3f32f1fc9fbd330a52262e257be7dffc3e51fefd724",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay/lit-front.png",
+            "sha256": "f4f1f8b4476384892ae23f9997541a71cce37b8e8ec8144f84640f42792ff32b",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay.inspector.html",
+          "htmlSHA256": "694c4005dba5d4513984be955793ecdadd70e83ae5bb18018ab5862f109f671b",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5577619766510801,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 105.32746080172946,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 134.82020151775976,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": false,
+          "sourceTriangles": 999999,
+          "payloadTriangles": 999999,
+          "projectedBounds": [
+            371.8122225546806,
+            122.8433848786874,
+            652.1877774453194,
+            901.1566151213126
+          ],
+          "alphaBounds": [
+            372,
+            123,
+            652,
+            901
+          ],
+          "projectionMaxErrorPx": 0.18777744531939788
+        },
+        "left": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay/capture.json",
+          "captureSHA256": "b6e7fc656342cbba9ed8f3f32f1fc9fbd330a52262e257be7dffc3e51fefd724",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay/lit-left.png",
+            "sha256": "926d649f1fe6ed9e026cba7000da5e9622c2b4b5e24f9d2cd0911977bceb561b",
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              -1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay.inspector.html",
+          "htmlSHA256": "694c4005dba5d4513984be955793ecdadd70e83ae5bb18018ab5862f109f671b",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5577619766510801,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 105.32746080172946,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 134.82020151775976,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": false,
+          "sourceTriangles": 999999,
+          "payloadTriangles": 999999,
+          "projectedBounds": [
+            380.2461795443055,
+            122.8433848786874,
+            643.7538204556945,
+            901.1566151213126
+          ],
+          "alphaBounds": [
+            380,
+            123,
+            644,
+            901
+          ],
+          "projectionMaxErrorPx": 0.24617954430550526
+        },
+        "back": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay/capture.json",
+          "captureSHA256": "b6e7fc656342cbba9ed8f3f32f1fc9fbd330a52262e257be7dffc3e51fefd724",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay/lit-back.png",
+            "sha256": "cb378416a489ba57996ff533cda160c10b244465e782bb14f576565e8831b8df",
+            "direction": [
+              0,
+              0,
+              -1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              -1.8073808642855147
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay.inspector.html",
+          "htmlSHA256": "694c4005dba5d4513984be955793ecdadd70e83ae5bb18018ab5862f109f671b",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5577619766510801,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 105.32746080172946,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 134.82020151775976,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": false,
+          "sourceTriangles": 999999,
+          "payloadTriangles": 999999,
+          "projectedBounds": [
+            371.8122225546806,
+            122.8433848786874,
+            652.1877774453194,
+            901.1566151213126
+          ],
+          "alphaBounds": [
+            372,
+            123,
+            652,
+            901
+          ],
+          "projectionMaxErrorPx": 0.18777744531939788
+        },
+        "right": {
+          "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay/capture.json",
+          "captureSHA256": "b6e7fc656342cbba9ed8f3f32f1fc9fbd330a52262e257be7dffc3e51fefd724",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay/lit-right.png",
+            "sha256": "aad1468f37a2f3bd2041315dc05d149f2549c4ca6c1d13d56249870df50b3fc7",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay.inspector.html",
+          "htmlSHA256": "694c4005dba5d4513984be955793ecdadd70e83ae5bb18018ab5862f109f671b",
+          "camera": {
+            "projection": "orthographic",
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "distance": 1.8073808642855147,
+            "halfExtent": 0.65783283658225,
+            "fovBeforeOrthographic": 40,
+            "fitFormula": "radius * 1.05 / sin(20deg)",
+            "sourceRadius": 0.5577619766510801,
+            "referenceRadius": 0.5887244402352406,
+            "perspectiveWheelDeltaY": 105.32746080172946,
+            "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+            "pixels": [
+              1024,
+              1024
+            ],
+            "cssPixels": [
+              800,
+              800
+            ],
+            "deviceScaleFactor": 1.28001,
+            "wheelProtocolDeltaY": 134.82020151775976,
+            "pans": [
+              {
+                "view": "front",
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "view": "right",
+                "dx": 0,
+                "dy": 0
+              }
+            ]
+          },
+          "lighting": {
+            "viewerDefaults": true,
+            "studio": "neutral where supported",
+            "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+            "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+          },
+          "reusedExistingFrame": false,
+          "sourceTriangles": 999999,
+          "payloadTriangles": 999999,
+          "projectedBounds": [
+            380.2461795443055,
+            122.8433848786874,
+            643.7538204556945,
+            901.1566151213126
+          ],
+          "alphaBounds": [
+            380,
+            123,
+            644,
+            901
+          ],
+          "projectionMaxErrorPx": 0.24617954430550526
+        }
+      }
+    }
+  },
+  "panels": {
+    "F-H-box-faces.webp": {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/F-H-box-faces.webp",
+      "sha256": "bbd366dd0f7a73d4bedb30fa549632ab11c8b11d1412231b94527f65dec34cf5",
+      "bytes": 234970,
+      "size": [
+        1440,
+        850
+      ]
+    },
+    "F-H-box-body.webp": {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/F-H-box-body.webp",
+      "sha256": "a431eb710bd5f6c30e742ef0503ed8081054259660ea49ce4479a4135660c241",
+      "bytes": 132652,
+      "size": [
+        1000,
+        1230
+      ]
+    },
+    "F-H-clay-faces.webp": {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/F-H-clay-faces.webp",
+      "sha256": "90de2f2ef3567f3de753d2b39712fa3a2dc3f66a4baeb83bbd7a2fdfb84a77b7",
+      "bytes": 173580,
+      "size": [
+        1440,
+        850
+      ]
+    },
+    "F-H-clay-body.webp": {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/F-H-clay-body.webp",
+      "sha256": "bd48a9fe07e56458d3640df278fd577920fd4f94f623de9627766832a5106c98",
+      "bytes": 104872,
+      "size": [
+        1000,
+        1230
+      ]
+    },
+    "H-front-stages.webp": {
+      "path": "docs/verification/hi3d-depth-cycle-20261119/H-front-stages.webp",
+      "sha256": "8b40bcf789d93afc3a9d5e34d4555d21dc3a8144de8cfb60427645d8b8c14a21",
+      "bytes": 107920,
+      "size": [
+        1140,
+        652
+      ]
+    }
+  },
+  "pipelineArtifacts": {
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/result.json": "011f5eab3e038895e0cb7bea4b8ecbc847eb966f1fd1af694655b96c85ccd79e",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/plan.json": "20b2e96250929063dc0917528550f84efbf5f293563396fba680efeba60d818b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/H/composed.json": "011f5eab3e038895e0cb7bea4b8ecbc847eb966f1fd1af694655b96c85ccd79e"
+  },
+  "processing": "Fixed integer head ROI. 2x nearest for face boards, 3x nearest for front-stage board. Whole frames 480px Lanczos. No sharpening or AI postprocessing.",
+  "limitation": "Mesh and native Box are distinct official rendering paths. Camera and lighting comparisons apply within each path, not across them.",
+  "scriptSHA256": "38a444ad22e0d176ffbe79be93c37902660ac1fea3347b51cea8f681e8da4732"
+}
+
+<<<yomiyasu:material docs/verification/hi3d-depth-cycle-20261119/resume-diagnostics/paired-diagnostics.json>>>
+{
+  "method": "paired-native-box-render-diagnostics-v1",
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "near": 0.0005876666886430749,
+    "far": 70.52000263716899,
+    "sourceRadius": 0.5876666886430749,
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      1024,
+      1024
+    ],
+    "deviceScaleFactor": 1,
+    "matching": "Numerically equal camera target, position, and half-extent from recorded H-front-provenance.json"
+  },
+  "headCrop": [
+    463,
+    115,
+    572,
+    271
+  ],
+  "commonLighting": {
+    "directional": {
+      "color": 16777215,
+      "intensity": 2.1,
+      "position": [
+        1.1753333772861498,
+        1.7630000659292246,
+        1.1753333772861498
+      ]
+    },
+    "hemisphere": {
+      "sky": 16250349,
+      "ground": 8947855,
+      "intensity": 1.55
+    },
+    "toneMapping": "ACESFilmicToneMapping",
+    "exposure": 1
+  },
+  "units": "Canonical object height=1; no measured real-world scale",
+  "sourceReports": {
+    "F": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/diagnostic-report.json",
+      "sha256": "51db16e0cb93bfc4df285da4c4bbf5425369d37cf4bf0b2b4414ea704a434843"
+    },
+    "H": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/diagnostic-report.json",
+      "sha256": "6826f6899f34691b6c7f488d4857cd75fda00d7c322ae1357d987478d1961682"
+    }
+  },
+  "sameHarnessSHA256": "8c3eac5fcea1c5b5968168922d625bebdd1ff85d57c38be8eaa07ed656adbe2e",
+  "metrics": {
+    "F-mesh-vs-Box": {
+      "body": {
+        "roi": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "overlapPixels": 84847,
+        "referencePixels": 84993,
+        "candidatePixels": 84895,
+        "silhouetteIoU": 0.9977187474277114,
+        "depthWorldAbs": {
+          "50": 0.00031997504993341863,
+          "90": 0.0005897734081372619,
+          "95": 0.0006408696062862873,
+          "99": 0.001318775350227952,
+          "100": 0.11680153757333755
+        },
+        "signedDepthMean": -0.0002109805791405961,
+        "normalAngleDegrees": {
+          "50": 2.922684669494629,
+          "90": 9.88491439819336,
+          "95": 13.22048282623291,
+          "99": 24.604488372802734,
+          "100": 147.0591278076172
+        },
+        "depthValuesFinite": true
+      },
+      "head": {
+        "roi": [
+          463,
+          115,
+          572,
+          271
+        ],
+        "overlapPixels": 13393,
+        "referencePixels": 13422,
+        "candidatePixels": 13396,
+        "silhouetteIoU": 0.9976163873370577,
+        "depthWorldAbs": {
+          "50": 0.00036187656223773956,
+          "90": 0.0006096076685935259,
+          "95": 0.0007093306048773229,
+          "99": 0.002157824579626322,
+          "100": 0.04235794395208359
+        },
+        "signedDepthMean": -0.0002662787155713886,
+        "normalAngleDegrees": {
+          "50": 3.505204677581787,
+          "90": 13.28857421875,
+          "95": 18.48826026916504,
+          "99": 33.18410873413086,
+          "100": 97.61622619628906
+        },
+        "depthValuesFinite": true
+      }
+    },
+    "H-mesh-vs-Box": {
+      "body": {
+        "roi": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "overlapPixels": 84740,
+        "referencePixels": 84891,
+        "candidatePixels": 84778,
+        "silhouetteIoU": 0.9977746117345077,
+        "depthWorldAbs": {
+          "50": 0.00030743086244910955,
+          "90": 0.0005784770473837852,
+          "95": 0.0006203785887919366,
+          "99": 0.0012885760515928268,
+          "100": 0.09829723089933395
+        },
+        "signedDepthMean": -0.000190222795936279,
+        "normalAngleDegrees": {
+          "50": 1.8822160959243774,
+          "90": 7.283899307250977,
+          "95": 10.991546630859375,
+          "99": 25.16942596435547,
+          "100": 126.28571319580078
+        },
+        "depthValuesFinite": true
+      },
+      "head": {
+        "roi": [
+          463,
+          115,
+          572,
+          271
+        ],
+        "overlapPixels": 13381,
+        "referencePixels": 13394,
+        "candidatePixels": 13384,
+        "silhouetteIoU": 0.9988057027692767,
+        "depthWorldAbs": {
+          "50": 0.0003893292450811714,
+          "90": 0.0006209039711393416,
+          "95": 0.0007321596494875848,
+          "99": 0.0022439761087298393,
+          "100": 0.0441855862736702
+        },
+        "signedDepthMean": -0.00026640581199899316,
+        "normalAngleDegrees": {
+          "50": 3.413517475128174,
+          "90": 14.164874076843262,
+          "95": 19.431838989257812,
+          "99": 33.49787902832031,
+          "100": 126.28571319580078
+        },
+        "depthValuesFinite": true
+      }
+    },
+    "B-vs-H-mesh": {
+      "body": {
+        "roi": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "overlapPixels": 83947,
+        "referencePixels": 84993,
+        "candidatePixels": 84891,
+        "silhouetteIoU": 0.9768435016349186,
+        "depthWorldAbs": {
+          "50": 0.0013044631341472268,
+          "90": 0.0042759752832353115,
+          "95": 0.005976204294711351,
+          "99": 0.013902547769248486,
+          "100": 0.11929408460855484
+        },
+        "signedDepthMean": 0.0001412098208675161,
+        "normalAngleDegrees": {
+          "50": 10.198114395141602,
+          "90": 29.818464279174805,
+          "95": 43.77207946777344,
+          "99": 74.53935241699219,
+          "100": 138.2226104736328
+        },
+        "depthValuesFinite": true
+      },
+      "head": {
+        "roi": [
+          463,
+          115,
+          572,
+          271
+        ],
+        "overlapPixels": 13338,
+        "referencePixels": 13422,
+        "candidatePixels": 13394,
+        "silhouetteIoU": 0.9896127021813326,
+        "depthWorldAbs": {
+          "50": 0.0017593373777344823,
+          "90": 0.0058731576427817345,
+          "95": 0.00820900872349739,
+          "99": 0.017497006803750992,
+          "100": 0.046144843101501465
+        },
+        "signedDepthMean": 0.0006929064984433353,
+        "normalAngleDegrees": {
+          "50": 18.0706787109375,
+          "90": 50.87900161743164,
+          "95": 63.40768051147461,
+          "99": 90.20530700683594,
+          "100": 137.519775390625
+        },
+        "depthValuesFinite": true
+      }
+    },
+    "F-vs-H-Box": {
+      "body": {
+        "roi": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "overlapPixels": 83834,
+        "referencePixels": 84895,
+        "candidatePixels": 84778,
+        "silhouetteIoU": 0.9766423187595382,
+        "depthWorldAbs": {
+          "50": 0.0012843005824834108,
+          "90": 0.004187969025224447,
+          "95": 0.005827992223203182,
+          "99": 0.013545678928494453,
+          "100": 0.11908601969480515
+        },
+        "signedDepthMean": 0.00017026226851157844,
+        "normalAngleDegrees": {
+          "50": 11.325267791748047,
+          "90": 31.14921760559082,
+          "95": 42.92477035522461,
+          "99": 71.78825378417969,
+          "100": 136.9021453857422
+        },
+        "depthValuesFinite": true
+      },
+      "head": {
+        "roi": [
+          463,
+          115,
+          572,
+          271
+        ],
+        "overlapPixels": 13324,
+        "referencePixels": 13396,
+        "candidatePixels": 13384,
+        "silhouetteIoU": 0.9901902497027348,
+        "depthWorldAbs": {
+          "50": 0.0017076500225812197,
+          "90": 0.005709098652005196,
+          "95": 0.007898642681539059,
+          "99": 0.016735520213842392,
+          "100": 0.047864772379398346
+        },
+        "signedDepthMean": 0.0007037937757559121,
+        "normalAngleDegrees": {
+          "50": 18.92885971069336,
+          "90": 50.51564407348633,
+          "95": 62.70512771606445,
+          "99": 88.73028564453125,
+          "100": 136.9021453857422
+        },
+        "depthValuesFinite": true
+      }
+    }
+  },
+  "images": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/paired/F-diagnostic-heads.webp",
+      "sha256": "6417f4e438870ca1a8f40c2262cbd0ebe7cd43d81c582124ea9960dc4302af80",
+      "sources": [
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/B-mesh-front-lit.png",
+          "sha256": "2f252e6b9f9966777f5fe198fa1d0dced20e9996ddc24981939b03dcc9b55812"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/B-mesh-front-albedo.png",
+          "sha256": "36b79095c61074075846d0e98cee11cf0aa78ee864571fc363c1ed1ab81d85bc"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/B-mesh-front-normal.png",
+          "sha256": "03e920fc49ea976940a2e750e669f24ded23b0434c732ba79c314f76b7285105"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/B-mesh-front-depth.png",
+          "sha256": "035c1bd1b05c13179fed38cfc6b62d525c6b955b90017c140670011d520d3310"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-lit.png",
+          "sha256": "5f1a41e3957f5c25c18d37ac135f535732f3eecc504d326ba86c8b97d1a2d9e6"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-albedo.png",
+          "sha256": "19374878fe41fc42dcfb98f80b5739475404a929cafb5dfe489c11af9a2dc2c8"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-normal.png",
+          "sha256": "fe760a6358507fa00b0578f3b1beb99b03eb4ed0ccc27790bf8d6adcfef03226"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-depth.png",
+          "sha256": "82639da48f9669cbfb65e68eebe244271523a2bf3cf5a60023e5073896ebf8bb"
+        }
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/paired/H-diagnostic-heads.webp",
+      "sha256": "6c48bd050340cbc036adb2a366064787f2c57c8d8b72bc1c01b1b1ae8715af28",
+      "sources": [
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-mesh-front-lit.png",
+          "sha256": "858feb993705ad348a2324a58e2008063721d1d7b86add49a5cfdfa41e26ca23"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-mesh-front-albedo.png",
+          "sha256": "209e340b5b8b8bbc780ef3dcee22496365ed276b9d17d29f8f286605149820d4"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-mesh-front-normal.png",
+          "sha256": "d58d8c65e3a0d0a0f09a90957c13e85863990ed65999db8c237cf035b327a753"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-mesh-front-depth.png",
+          "sha256": "107deff8f58a439f82fd53da2fc99fa19bfc80b1413c9c05a37116749844d959"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-lit.png",
+          "sha256": "5e73fa25515d68d5230b2eafed1f5f70bccd68de27ebb67433a0343d9507bc3a"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-albedo.png",
+          "sha256": "82ff65c06cae1ba7f2cc855e485092d855ffdbe064761a4604756fbea12697ba"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-normal.png",
+          "sha256": "23a70759a8574bfd8c086786fb62d57223f7a91a8e73c99cea1a9f4978f5bec7"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-depth.png",
+          "sha256": "eb8a20ed40fafd2928c4ad7bfdd64560597bcb7a59a08f1eb84254c41d121fc9"
+        }
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/paired/F-H-shading-heads.webp",
+      "sha256": "551c0cb85f58fa67cf97b9f48e112382c3168782c9028ea2308a4a5f836562ff",
+      "sources": [
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-lit.png",
+          "sha256": "5f1a41e3957f5c25c18d37ac135f535732f3eecc504d326ba86c8b97d1a2d9e6"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-albedo.png",
+          "sha256": "19374878fe41fc42dcfb98f80b5739475404a929cafb5dfe489c11af9a2dc2c8"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-lit.png",
+          "sha256": "5e73fa25515d68d5230b2eafed1f5f70bccd68de27ebb67433a0343d9507bc3a"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-albedo.png",
+          "sha256": "82ff65c06cae1ba7f2cc855e485092d855ffdbe064761a4604756fbea12697ba"
+        }
+      ]
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/paired/F-H-normals-heads.webp",
+      "sha256": "fb8e17d9e557cfaa3476553736a1a97c23d3df3bb80c9db01ce25f27be86fc4a",
+      "sources": [
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/B-mesh-front-normal.png",
+          "sha256": "03e920fc49ea976940a2e750e669f24ded23b0434c732ba79c314f76b7285105"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F/F-box-front-normal.png",
+          "sha256": "fe760a6358507fa00b0578f3b1beb99b03eb4ed0ccc27790bf8d6adcfef03226"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-mesh-front-normal.png",
+          "sha256": "d58d8c65e3a0d0a0f09a90957c13e85863990ed65999db8c237cf035b327a753"
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H/H-box-front-normal.png",
+          "sha256": "23a70759a8574bfd8c086786fb62d57223f7a91a8e73c99cea1a9f4978f5bec7"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Only front camera evaluated; side and oblique conclusions need separate captures.",
+    "Depth metrics measure Box reconstruction relative to its own mesh, not accuracy to the person.",
+    "Both silhouettes must cover a pixel for depth/normal metrics; edge maxima are reported.",
+    "Mesh normals come from full-triangle Inspector payloads; baked normals can differ.",
+    "Albedo removes lighting but preserves geometry and normal-dependent view selection."
+  ]
+}
+
+<<<yomiyasu:material docs/verification/hi3d-depth-cycle-20261119/resume-diagnostics/archive-recompute-check.json>>>
+{
+  "method": "Recalculate statistics from archived byte-identical float readbacks; no new rendering",
+  "archiveCommit": "1f44dca8e1d9d4738b85ff8d9632d3e2c22030a0",
+  "archiveSHA256": "6d80e99cf3ca3e69664be571ee4ab28e242d3921ff0200b1504ba7da2f86f8f4",
+  "all28RenderedPNGAndFloatFileHashesMatch": true,
+  "comparisonScriptSHA256": "1fec94a38d1fe66751738b2cd72605b186ef3a139e6176ba207c6561132acbb9",
+  "numpyVersion": "2.3.5",
+  "metricsExactlyEqual": false,
+  "maxDepthStatisticDifference": 4.0978193283081055e-08,
+  "maxNormalAngleStatisticDifferenceDegrees": 7.2479248046875e-05,
+  "otherMetricsExactlyEqual": true,
+  "interpretation": "Small numerical differences between execution environments; source arrays and script bytes match. These are not changes in geometry or rendering.",
+  "differences": [
+    {
+      "path": "/F-mesh-vs-Box/body/depthWorldAbs/99",
+      "recomputed": 0.0013187724398449063,
+      "original": 0.001318775350227952,
+      "absoluteDifference": 2.9103830456733704e-09
+    },
+    {
+      "path": "/F-mesh-vs-Box/body/normalAngleDegrees/95",
+      "recomputed": 13.220476150512695,
+      "original": 13.22048282623291,
+      "absoluteDifference": 6.67572021484375e-06
+    },
+    {
+      "path": "/F-mesh-vs-Box/body/normalAngleDegrees/100",
+      "recomputed": 147.05914306640625,
+      "original": 147.0591278076172,
+      "absoluteDifference": 1.52587890625e-05
+    },
+    {
+      "path": "/F-mesh-vs-Box/head/depthWorldAbs/95",
+      "recomputed": 0.0007093303720466793,
+      "original": 0.0007093306048773229,
+      "absoluteDifference": 2.3283064365386963e-10
+    },
+    {
+      "path": "/F-mesh-vs-Box/head/depthWorldAbs/99",
+      "recomputed": 0.0021578248124569654,
+      "original": 0.002157824579626322,
+      "absoluteDifference": 2.3283064365386963e-10
+    },
+    {
+      "path": "/F-mesh-vs-Box/head/normalAngleDegrees/90",
+      "recomputed": 13.288572311401367,
+      "original": 13.28857421875,
+      "absoluteDifference": 1.9073486328125e-06
+    },
+    {
+      "path": "/F-mesh-vs-Box/head/normalAngleDegrees/95",
+      "recomputed": 18.488258361816406,
+      "original": 18.48826026916504,
+      "absoluteDifference": 1.9073486328125e-06
+    },
+    {
+      "path": "/F-mesh-vs-Box/head/normalAngleDegrees/99",
+      "recomputed": 33.18412780761719,
+      "original": 33.18410873413086,
+      "absoluteDifference": 1.9073486328125e-05
+    },
+    {
+      "path": "/H-mesh-vs-Box/body/depthWorldAbs/99",
+      "recomputed": 0.0012885755859315395,
+      "original": 0.0012885760515928268,
+      "absoluteDifference": 4.656612873077393e-10
+    },
+    {
+      "path": "/H-mesh-vs-Box/body/normalAngleDegrees/50",
+      "recomputed": 1.882216215133667,
+      "original": 1.8822160959243774,
+      "absoluteDifference": 1.1920928955078125e-07
+    },
+    {
+      "path": "/H-mesh-vs-Box/body/normalAngleDegrees/90",
+      "recomputed": 7.283899784088135,
+      "original": 7.283899307250977,
+      "absoluteDifference": 4.76837158203125e-07
+    },
+    {
+      "path": "/H-mesh-vs-Box/body/normalAngleDegrees/99",
+      "recomputed": 25.16940689086914,
+      "original": 25.16942596435547,
+      "absoluteDifference": 1.9073486328125e-05
+    },
+    {
+      "path": "/H-mesh-vs-Box/head/depthWorldAbs/99",
+      "recomputed": 0.002243976341560483,
+      "original": 0.0022439761087298393,
+      "absoluteDifference": 2.3283064365386963e-10
+    },
+    {
+      "path": "/H-mesh-vs-Box/head/normalAngleDegrees/95",
+      "recomputed": 19.43183708190918,
+      "original": 19.431838989257812,
+      "absoluteDifference": 1.9073486328125e-06
+    },
+    {
+      "path": "/H-mesh-vs-Box/head/normalAngleDegrees/99",
+      "recomputed": 33.49788284301758,
+      "original": 33.49787902832031,
+      "absoluteDifference": 3.814697265625e-06
+    },
+    {
+      "path": "/B-vs-H-mesh/body/depthWorldAbs/90",
+      "recomputed": 0.004275974817574024,
+      "original": 0.0042759752832353115,
+      "absoluteDifference": 4.656612873077393e-10
+    },
+    {
+      "path": "/B-vs-H-mesh/body/depthWorldAbs/95",
+      "recomputed": 0.0059762028977274895,
+      "original": 0.005976204294711351,
+      "absoluteDifference": 1.3969838619232178e-09
+    },
+    {
+      "path": "/B-vs-H-mesh/body/depthWorldAbs/99",
+      "recomputed": 0.013902546837925911,
+      "original": 0.013902547769248486,
+      "absoluteDifference": 9.313225746154785e-10
+    },
+    {
+      "path": "/B-vs-H-mesh/body/normalAngleDegrees/90",
+      "recomputed": 29.818462371826172,
+      "original": 29.818464279174805,
+      "absoluteDifference": 1.9073486328125e-06
+    },
+    {
+      "path": "/B-vs-H-mesh/body/normalAngleDegrees/95",
+      "recomputed": 43.77200698852539,
+      "original": 43.77207946777344,
+      "absoluteDifference": 7.2479248046875e-05
+    },
+    {
+      "path": "/B-vs-H-mesh/body/normalAngleDegrees/99",
+      "recomputed": 74.53933715820312,
+      "original": 74.53935241699219,
+      "absoluteDifference": 1.52587890625e-05
+    },
+    {
+      "path": "/B-vs-H-mesh/head/depthWorldAbs/90",
+      "recomputed": 0.005873157177120447,
+      "original": 0.0058731576427817345,
+      "absoluteDifference": 4.656612873077393e-10
+    },
+    {
+      "path": "/B-vs-H-mesh/head/depthWorldAbs/95",
+      "recomputed": 0.008209007792174816,
+      "original": 0.00820900872349739,
+      "absoluteDifference": 9.313225746154785e-10
+    },
+    {
+      "path": "/B-vs-H-mesh/head/depthWorldAbs/99",
+      "recomputed": 0.017496995627880096,
+      "original": 0.017497006803750992,
+      "absoluteDifference": 1.1175870895385742e-08
+    },
+    {
+      "path": "/B-vs-H-mesh/head/normalAngleDegrees/90",
+      "recomputed": 50.878997802734375,
+      "original": 50.87900161743164,
+      "absoluteDifference": 3.814697265625e-06
+    },
+    {
+      "path": "/B-vs-H-mesh/head/normalAngleDegrees/95",
+      "recomputed": 63.40766525268555,
+      "original": 63.40768051147461,
+      "absoluteDifference": 1.52587890625e-05
+    },
+    {
+      "path": "/F-vs-H-Box/body/depthWorldAbs/90",
+      "recomputed": 0.004187967628240585,
+      "original": 0.004187969025224447,
+      "absoluteDifference": 1.3969838619232178e-09
+    },
+    {
+      "path": "/F-vs-H-Box/body/depthWorldAbs/95",
+      "recomputed": 0.0058279926888644695,
+      "original": 0.005827992223203182,
+      "absoluteDifference": 4.656612873077393e-10
+    },
+    {
+      "path": "/F-vs-H-Box/body/depthWorldAbs/99",
+      "recomputed": 0.013545691967010498,
+      "original": 0.013545678928494453,
+      "absoluteDifference": 1.30385160446167e-08
+    },
+    {
+      "path": "/F-vs-H-Box/body/normalAngleDegrees/50",
+      "recomputed": 11.325268745422363,
+      "original": 11.325267791748047,
+      "absoluteDifference": 9.5367431640625e-07
+    },
+    {
+      "path": "/F-vs-H-Box/body/normalAngleDegrees/90",
+      "recomputed": 31.14920997619629,
+      "original": 31.14921760559082,
+      "absoluteDifference": 7.62939453125e-06
+    },
+    {
+      "path": "/F-vs-H-Box/body/normalAngleDegrees/95",
+      "recomputed": 42.92477798461914,
+      "original": 42.92477035522461,
+      "absoluteDifference": 7.62939453125e-06
+    },
+    {
+      "path": "/F-vs-H-Box/head/depthWorldAbs/90",
+      "recomputed": 0.005709096789360046,
+      "original": 0.005709098652005196,
+      "absoluteDifference": 1.862645149230957e-09
+    },
+    {
+      "path": "/F-vs-H-Box/head/depthWorldAbs/95",
+      "recomputed": 0.00789863895624876,
+      "original": 0.007898642681539059,
+      "absoluteDifference": 3.725290298461914e-09
+    },
+    {
+      "path": "/F-vs-H-Box/head/depthWorldAbs/99",
+      "recomputed": 0.016735561192035675,
+      "original": 0.016735520213842392,
+      "absoluteDifference": 4.0978193283081055e-08
+    },
+    {
+      "path": "/F-vs-H-Box/head/normalAngleDegrees/90",
+      "recomputed": 50.51564025878906,
+      "original": 50.51564407348633,
+      "absoluteDifference": 3.814697265625e-06
+    },
+    {
+      "path": "/F-vs-H-Box/head/normalAngleDegrees/95",
+      "recomputed": 62.705108642578125,
+      "original": 62.70512771606445,
+      "absoluteDifference": 1.9073486328125e-05
+    },
+    {
+      "path": "/F-vs-H-Box/head/normalAngleDegrees/99",
+      "recomputed": 88.73031616210938,
+      "original": 88.73028564453125,
+      "absoluteDifference": 3.0517578125e-05
+    }
+  ],
+  "localRenderingPerformed": false
+}
+
+<<<yomiyasu:material docs/verification/hi3d-depth-cycle-20261119/I-run/head-plan.json>>>
+{
+  "method": "standalone-hi3d-head-region-v1",
+  "stage": "prepared-only",
+  "parentHPlan": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/H/plan.json",
+  "parentHPlanSha256": "20b2e96250929063dc0917528550f84efbf5f293563396fba680efeba60d818b",
+  "outputDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local",
+  "sourceCoarse": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+    "sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "manifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+    "manifestSha256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+    "asset": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+    "bounds": [
+      [
+        -0.17959635205538715,
+        -0.5,
+        -0.17067711655172313
+      ],
+      [
+        0.17959635205538715,
+        0.5,
+        0.17067711655172313
+      ]
+    ]
+  },
+  "sourceReference": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/source.png",
+    "sha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+    "manifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/manifest.json",
+    "manifestSha256": "48d4630f488731650c5288d2242be6eec58a241fe760d594dcc7eb4736f67214",
+    "qa": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/qa/report.json",
+    "qaSha256": "bb6cf0dc2ecbd259e82a56e6113056378735384a8077db9a1438b2a05def405b",
+    "asset": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+    "face": "+Z",
+    "registration": {
+      "scale": 1.0,
+      "centerShiftYX": [
+        0.0,
+        0.0
+      ]
+    },
+    "canvas": {
+      "version": 1,
+      "size": 1024,
+      "faceId": "+Z",
+      "guideRect": [
+        315,
+        0,
+        393,
+        1024
+      ],
+      "guideInputSha256": "cbcf6b5c68a7c87f7987bd2874f124a8940aa3356f557534f9c2bb03f1e0d978",
+      "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+      "sourceRect": [
+        0,
+        0,
+        1024,
+        1024
+      ],
+      "physicalWidthHeight": [
+        0.3993621253967285,
+        1.04
+      ],
+      "imageRowOrder": "top-to-bottom",
+      "backgroundSRGB": 0.5
+    }
+  },
+  "canonicalFrame": {
+    "transform": [
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0.010881411855650119,
+      0.02839508237150308,
+      0.013759666322433382,
+      1
+    ],
+    "inverseTransform": [
+      0.8947335481643676,
+      0,
+      0,
+      0,
+      0,
+      0.8947335481643676,
+      0,
+      0,
+      0,
+      0,
+      0.8947335481643676,
+      0,
+      -0.009735964238643648,
+      -0.025406032800674435,
+      -0.012311235070228575,
+      1
+    ],
+    "coordinateSystem": "right-handed-y-up"
+  },
+  "crop": {
+    "cutPlane": {
+      "axis": "canonical-world-Y",
+      "keep": "Y >= cut",
+      "value": 0.27
+    },
+    "sourceTriangles": 81180,
+    "fullyRetainedTriangles": 19507,
+    "crossingSourceTriangles": 519,
+    "intersectionVertices": 519,
+    "degenerateTrianglesDropped": 0,
+    "cropTriangles": 20287,
+    "cropVertices": 10402,
+    "syntheticCap": false,
+    "bounds": [
+      [
+        -0.17159519073988574,
+        0.27,
+        -0.06711178382782003
+      ],
+      [
+        0.14406719917419245,
+        0.5,
+        0.17067711655172313
+      ]
+    ],
+    "boundary": {
+      "boundaryEdges": 519,
+      "nonmanifoldEdges": 0,
+      "boundaryEdgesOnCutPlane": 519
+    },
+    "storedFloat32Bounds": [
+      [
+        -0.17159518599510193,
+        0.27000001072883606,
+        -0.0671117827296257
+      ],
+      [
+        0.1440671980381012,
+        0.5,
+        0.17067711055278778
+      ]
+    ]
+  },
+  "referenceCrop": {
+    "sourceSizePixels": [
+      1024,
+      1024
+    ],
+    "sourcePNGMode": "RGBA",
+    "sourceGuideRectXYWH": [
+      315,
+      0,
+      393,
+      1024
+    ],
+    "sourceCropRectXYXY": [
+      328,
+      9,
+      669,
+      255
+    ],
+    "cropSizePixels": [
+      341,
+      246
+    ],
+    "subjectBoundsInCropXYXY": [
+      8,
+      8,
+      333,
+      237
+    ],
+    "subjectSizePixels": [
+      325,
+      229
+    ],
+    "retainedSubjectPixels": 38108,
+    "sourcePixelYAtCutEdge": 246.15384615384613,
+    "canonicalWorldXYZ1ToSourcePixelXY1RowMajor": [
+      [
+        984.0692820071299,
+        0.0,
+        0.0,
+        511.0
+      ],
+      [
+        0.0,
+        -984.6153846153845,
+        0.0,
+        511.5
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "sourcePixelsPerCanonicalUnitXY": [
+      984.0692820071299,
+      984.6153846153845
+    ],
+    "sourceLetterboxRoundingAnisotropy": 0.9994453645384914,
+    "pixelCenters": "integer indices; rows top-to-bottom",
+    "transparentMarginOriginalPixelsRequested": 8,
+    "resampled": false,
+    "newImageInference": false,
+    "maskPolicy": "retain original RGBA pixels inside guideRect and above canonical cut; zero all others",
+    "detailPolicy": "native crop of existing full-body source; no new head pixels generated",
+    "upstreamPreparedSizePixels": [
+      390,
+      390
+    ],
+    "upstreamPreparedMode": "RGB",
+    "upstreamSubjectPaddingFactor": 1.2
+  },
+  "upstream": {
+    "root": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0",
+    "sourceFiles": {
+      "voxelizer": {
+        "path": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0/sparc3d/ops/voxelize.py",
+        "sha256": "fb06309ffd8fbec4145672b4b72ee1a88b8458154afd7f466ccfc664a3bc2ac0"
+      },
+      "pipeline": {
+        "path": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0/sparc3d/pipelines/sparc3d_pipeline.py",
+        "sha256": "db45af6326c167a68273acb80b8fa81f72431854652927314d8d7d20fe67834e"
+      },
+      "postprocess": {
+        "path": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0/sparc3d/sparcubes/postprocess.py",
+        "sha256": "703578b9989f8e5a138b4d8a4eb293768f1919bf3defb6d6fd9c6576b9470bf9"
+      },
+      "imagePreparation": {
+        "path": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0/sparc3d/utils/image.py",
+        "sha256": "97c9273491be54ddb0946c41f8af2b74ac1487094e5dc0837a7f61fa512351ff"
+      },
+      "imageConditioner": {
+        "path": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0/sparc3d/models/conditioners/image.py",
+        "sha256": "8f4dc1de8c6cd3da500c5bee72ac7798e687b79caeb81588ccb7e58d4f4139fa"
+      }
+    },
+    "initialVoxelizer": {
+      "requestedResolution": 64,
+      "pad": 3,
+      "eps": 1e-06,
+      "tokenBudget": 80000
+    },
+    "structureResolutions": [
+      64,
+      128
+    ],
+    "geometryExtractionResolutions": [
+      512,
+      1024
+    ],
+    "imageSubjectPaddingFactor": 1.2,
+    "imageEncoderInputPixels": {
+      "DINO": 756,
+      "CLIP": 224
+    },
+    "betweenPasses": "fresh bbox-center/uniform-scale adaptive voxelization of the preceding generated mesh",
+    "finalNormalization": "subtract final vertex mean; divide by maximum radial norm about that mean",
+    "exactInverseAvailableFromExportedGLB": false,
+    "reason": "inference exports only final normalized geometry, without per-pass transforms or final mean/radius"
+  },
+  "nominalFirstVoxelMapping": {
+    "requestedResolution": 64,
+    "pad": 3,
+    "eps": 1e-06,
+    "tokenBudget": 80000,
+    "expandedBoundsFloat32": [
+      [
+        -0.17159618437290192,
+        0.2699989974498749,
+        -0.06711278110742569
+      ],
+      [
+        0.14406819641590118,
+        0.5000010132789612,
+        0.17067810893058777
+      ]
+    ],
+    "centerFloat32": [
+      -0.013763993978500366,
+      0.38499999046325684,
+      0.05178266391158104
+    ],
+    "scaleFloat32": 183.73944091796875,
+    "canonicalWorldToNominalVoxelRowMajor": [
+      [
+        183.73944091796875,
+        0.0,
+        0.0,
+        34.528987884521484
+      ],
+      [
+        0.0,
+        183.73944091796875,
+        0.0,
+        -38.73968505859375
+      ],
+      [
+        0.0,
+        0.0,
+        183.73944091796875,
+        22.48548126220703
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "nominalVoxelToCanonicalWorldRowMajor": [
+      [
+        0.005442489620105322,
+        0.0,
+        0.0,
+        -0.1879236581542506
+      ],
+      [
+        0.0,
+        0.005442489620105322,
+        0.0,
+        0.21084033381754572
+      ],
+      [
+        0.0,
+        0.0,
+        0.005442489620105322,
+        -0.12237699837263448
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "observedVoxelization": false,
+    "limitation": "adaptive_vox may shrink the actual first grid to meet its token budget; later passes renormalize"
+  },
+  "nominalLongestSpanAllocationRatio": 3.167941606545094,
+  "artifacts": {
+    "head-source.glb": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-source.glb",
+      "sha256": "0674a6a68d06839bf79e0488758170cce92ed669a98b00710c50fa1e309be0a7",
+      "bytes": 369104
+    },
+    "head-reference.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-reference.png",
+      "sha256": "dfe91c501a564224634c0f91ab4c39d82ec78094012342599bc12765397baa41",
+      "bytes": 136427
+    },
+    "head-reference-prepared.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-reference-prepared.png",
+      "sha256": "f7933fb478044ce880c7532e767526fb39fc041289885591a8d4ede91ac68a38",
+      "bytes": 80877
+    },
+    "head-reference-context.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-reference-context.png",
+      "sha256": "e3c08f85a19f677ba97e1ad2ef4d1ddb4f77e5da67186124b9ed0950c2833431",
+      "bytes": 952605
+    }
+  },
+  "inference": {
+    "argv": [
+      "/home/dev/Projects/box-impostor-lab/third_party/.venv-hi3d/bin/python",
+      "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/hi3d_infer.py",
+      "--source",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-source.glb",
+      "--reference",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-reference.png",
+      "--output",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb",
+      "--report",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-inference.json",
+      "--resolution",
+      "1024",
+      "--steps",
+      "25",
+      "--offload"
+    ],
+    "scriptSha256": "2ac8a84947596725d7500d308d3b4297f7e60778da2fb5dadd7f09847af34715",
+    "resolution": 1024,
+    "steps": 25,
+    "seed": 0,
+    "offload": true,
+    "rawOutput": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb",
+    "report": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-inference.json",
+    "hasRun": false,
+    "environmentPolicy": "reuse verified H/B model and offline environment; move all caches/temp to F volume"
+  },
+  "geometryPolicy": "standalone geometry-only input and QA output; no synthesized normals, vertex colors or neck cap",
+  "mappingPolicy": "approximate isotropic Y-height and bbox-center fit only; never an exact inverse of upstream normalization",
+  "fullBodyMergeAllowed": false,
+  "fullBodyPolicy": "source/body assets stay untouched; standalone result must be visually assessed before any new splice design"
+}
+
+<<<yomiyasu:material docs/verification/hi3d-depth-cycle-20261119/I-run/hi3d-inference.json>>>
+{
+  "status": "success",
+  "model": "hi3d-official/Hi3Dv1.0",
+  "resolution": 1024,
+  "steps": 25,
+  "source_faces": 20287,
+  "output_faces": 1000000,
+  "output_vertices": 500011,
+  "elapsed_s": 353.45,
+  "torch_cuda": "12.4",
+  "gpu": "NVIDIA GeForce RTX 4080",
+  "gpu_max_allocated_mib": 4068.5
+}
+
+<<<yomiyasu:material docs/verification/hi3d-depth-cycle-20261119/I-run/head-mapping.json>>>
+{
+  "method": "standalone-hi3d-head-region-v1",
+  "stage": "standalone-result-mapped",
+  "plan": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-plan.json",
+  "planSha256": "2fbaab58507820760b5e072a63a9ea95df5d97e6a1a6910d754ece3cbaf50425",
+  "rawMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb",
+  "rawMeshSha256": "809689a663fda131b18ddb7626f235e2563b0e280ea7f98720f02eea0739d1af",
+  "outputMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-canonical.glb",
+  "outputMeshSha256": "139f5505400b0ae5b16732b10a8f0ef2e408e09cbb7f7b20b58d6e04d69daf33",
+  "outputVertices": 500011,
+  "outputTriangles": 1000000,
+  "sourceHeadVertices": 10402,
+  "rawVertices": 500011,
+  "rawTriangles": 1000000,
+  "mapping": {
+    "method": "isotropic-y-height-bbox-center-fit",
+    "exactInverse": false,
+    "rotationEstimated": false,
+    "axisSpecificStretch": false,
+    "sourceBounds": [
+      [
+        -0.17159518599510193,
+        0.27000001072883606,
+        -0.0671117827296257
+      ],
+      [
+        0.1440671980381012,
+        0.5,
+        0.17067711055278778
+      ]
+    ],
+    "rawBounds": [
+      [
+        -0.7450441718101501,
+        -0.34813758730888367,
+        -0.6270082592964172
+      ],
+      [
+        0.6330642104148865,
+        0.6625733971595764,
+        0.4136176109313965
+      ]
+    ],
+    "scale": 0.22756257011703748,
+    "translation": [
+      -0.0010227700701439472,
+      0.3492230948511902,
+      0.0760625261020236
+    ],
+    "rawToCanonicalWorldRowMajor": [
+      [
+        0.22756257011703748,
+        0.0,
+        0.0,
+        -0.0010227700701439472
+      ],
+      [
+        0.0,
+        0.22756257011703748,
+        0.0,
+        0.3492230948511902
+      ],
+      [
+        0.0,
+        0.0,
+        0.22756257011703748,
+        0.0760625261020236
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "canonicalWorldToRawRowMajor": [
+      [
+        4.394395789631357,
+        0.0,
+        0.0,
+        0.004494456490001529
+      ],
+      [
+        0.0,
+        4.394395789631357,
+        0.0,
+        -1.534624497656102
+      ],
+      [
+        0.0,
+        0.0,
+        4.394395789631357,
+        -0.3342488444514577
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "extentRatioXYZ": [
+      0.9934851322860667,
+      1.0,
+      0.9958728277441962
+    ],
+    "extentResidualXYZ": [
+      -0.002056498674241125,
+      0.0,
+      -0.00098139572309347
+    ],
+    "warning": "bbox registration can shift anatomy when generated neck/hair bounds differ; not approved for splicing"
+  },
+  "rawExportNormalizationMeasurements": {
+    "meanXYZ": [
+      3.328240829733812e-12,
+      -7.568870309714727e-12,
+      3.4517984236708086e-12
+    ],
+    "maxRadiusAboutMean": 1.0000000375393356,
+    "measurementDoesNotRecoverPreNormalizationMeanOrScale": true
+  },
+  "storedFloat32Bounds": [
+    [
+      -0.17056693136692047,
+      0.27000001072883606,
+      -0.0666210874915123
+    ],
+    [
+      0.14303894340991974,
+      0.5,
+      0.17018641531467438
+    ]
+  ],
+  "nearestVertexDistanceDiagnostic": {
+    "mappedToSourceP50P95Max": [
+      0.0016458179646854033,
+      0.010152219038644973,
+      0.054837314615362516
+    ],
+    "sourceToMappedP50P95Max": [
+      0.000571473281528328,
+      0.0014660278443817008,
+      0.0035432749649843406
+    ],
+    "normalizedBySourceYSpan": 0.22999998927116394,
+    "notSurfaceOrLandmarkAccuracy": true
+  },
+  "outputBoundary": {
+    "boundaryEdges": 18,
+    "nonmanifoldEdges": 147
+  },
+  "inputSourceHashesRechecked": true,
+  "fullBodyMergeAllowed": false,
+  "assessment": "not visually evaluated; geometry and face correspondence must be judged from the standalone output",
+  "normalPolicy": "no NORMAL accessor synthesized in either standalone source or result; identical clay material"
+}
+
+<<<yomiyasu:material docs/verification/hi3d-depth-cycle-20261119/I-run/head-topology.json>>>
+{
+  "kind": "supplemental-I-head-result-topology-and-mapping-audit-v1",
+  "sourcePlan": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-plan.json",
+  "sourcePlanSHA256": "2fbaab58507820760b5e072a63a9ea95df5d97e6a1a6910d754ece3cbaf50425",
+  "sourceMapping": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-mapping.json",
+  "sourceMappingSHA256": "58c055583831002ffc4ac82560fb2b0b6f3aaed6ff63daa01cabc573305443a0",
+  "auditScript": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/check-head-topology.py",
+  "auditScriptSHA256": "691e563daaa49c9f43d44bd98c4e2b4030bc1175405dd34cad1f261f51f9d6fd",
+  "helperScript": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/refine_head_region.py",
+  "helperScriptSHA256": "e83038317cb5b0cf8c772e8e557d290c3bdec453420a84ca3ca90219840037f0",
+  "inputOutputChecks": {
+    "rawHashMatchesMapping": true,
+    "mappedHashMatchesMapping": true,
+    "planHashMatchesMapping": true,
+    "inferenceFacesMatchRaw": true,
+    "inferenceVerticesMatchRawAccessors": true,
+    "mappedStoredIndicesEqualRawUniquePositionIndices": true,
+    "mappedStoredPositionsEqualDeclaredAffineAtFloat32": true,
+    "coarseWholebodyInputUnchanged": true,
+    "fullbodyReferencePNGUnchanged": true,
+    "sourceCutMeshUnchanged": true
+  },
+  "meshes": {
+    "source": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-source.glb",
+      "sha256": "0674a6a68d06839bf79e0488758170cce92ed669a98b00710c50fa1e309be0a7",
+      "fileBytes": 369104,
+      "activeAccessorVertices": 10402,
+      "uniquePositions": 10402,
+      "triangles": 20287,
+      "allPositionsFinite": true,
+      "allIndicesInBounds": true,
+      "unreferencedUniquePositions": 0,
+      "bounds": [
+        [
+          -0.17159518599510193,
+          0.27000001072883606,
+          -0.0671117827296257
+        ],
+        [
+          0.1440671980381012,
+          0.5,
+          0.17067711055278778
+        ]
+      ],
+      "zeroAreaTriangles": 0,
+      "repeatedCornerTriangles": 0,
+      "triangleAreaMinMedianP95Max": [
+        1.6046197160534007e-09,
+        5.985576211489325e-06,
+        9.672048749930616e-06,
+        1.521469569266524e-05
+      ],
+      "duplicateUnorientedTriangleGroups": 0,
+      "extraDuplicateUnorientedTriangles": 0,
+      "uniqueEdges": 30690,
+      "boundaryEdges": 519,
+      "nonmanifoldEdges": 0,
+      "maxFacesPerEdge": 2,
+      "twoFaceEdgesWithSameDirectedWinding": 0,
+      "closedTwoManifoldByEdgeIncidence": false,
+      "vertexConnectedComponents": 1,
+      "componentsByTriangleCount": [
+        {
+          "vertices": 10402,
+          "triangles": 20287,
+          "triangleFraction": 1.0
+        }
+      ],
+      "eulerVminusEplusF": -1,
+      "eulerDoesNotEstablishGenusWithNonmanifoldEdges": true,
+      "selfIntersectionsEvaluated": false,
+      "cutPlane": {
+        "canonicalY": 0.27,
+        "planeTolerance": 2.384185791015625e-07,
+        "verticesBelowPlaneBeyondTolerance": 0,
+        "verticesOnPlaneWithinTolerance": 519,
+        "allThreeCornersOnPlaneTriangles": 0,
+        "boundaryEdgesOnPlane": 519,
+        "boundaryEndpointYMinMedianP95Max": [
+          0.27000001072883606,
+          0.27000001072883606,
+          0.27000001072883606,
+          0.27000001072883606
+        ],
+        "nonmanifoldMidpointYMinMedianP95Max": null,
+        "nonmanifoldEdgesInLower5PercentSlab": 0,
+        "nonmanifoldEdgesInsidePriorHeadQABox": 0,
+        "lowerSlabsByFractionOfSourceYSpan": {
+          "0.01": {
+            "upperY": 0.27229999989271164,
+            "trianglesByCentroid": 837,
+            "downwardFacingTriangles": 17,
+            "downwardFacingArea": 9.808460917088959e-05
+          },
+          "0.02": {
+            "upperY": 0.2745999997854233,
+            "trianglesByCentroid": 1163,
+            "downwardFacingTriangles": 44,
+            "downwardFacingArea": 0.0003078174626466724
+          },
+          "0.05": {
+            "upperY": 0.2814999994635582,
+            "trianglesByCentroid": 2209,
+            "downwardFacingTriangles": 61,
+            "downwardFacingArea": 0.00040711856434709134
+          }
+        }
+      }
+    },
+    "raw": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb",
+      "sha256": "809689a663fda131b18ddb7626f235e2563b0e280ea7f98720f02eea0739d1af",
+      "fileBytes": 18000940,
+      "activeAccessorVertices": 500011,
+      "uniquePositions": 500011,
+      "triangles": 1000000,
+      "allPositionsFinite": true,
+      "allIndicesInBounds": true,
+      "unreferencedUniquePositions": 0,
+      "bounds": [
+        [
+          -0.7450441718101501,
+          -0.34813758730888367,
+          -0.6270082592964172
+        ],
+        [
+          0.6330642104148865,
+          0.6625733971595764,
+          0.4136176109313965
+        ]
+      ],
+      "zeroAreaTriangles": 0,
+      "repeatedCornerTriangles": 0,
+      "triangleAreaMinMedianP95Max": [
+        3.0042798220085917e-09,
+        2.3735556439433547e-06,
+        6.419126790844906e-06,
+        0.023446000772620976
+      ],
+      "duplicateUnorientedTriangleGroups": 119,
+      "extraDuplicateUnorientedTriangles": 119,
+      "uniqueEdges": 1499861,
+      "boundaryEdges": 18,
+      "nonmanifoldEdges": 147,
+      "maxFacesPerEdge": 6,
+      "twoFaceEdgesWithSameDirectedWinding": 0,
+      "closedTwoManifoldByEdgeIncidence": false,
+      "vertexConnectedComponents": 1,
+      "componentsByTriangleCount": [
+        {
+          "vertices": 500011,
+          "triangles": 1000000,
+          "triangleFraction": 1.0
+        }
+      ],
+      "eulerVminusEplusF": 150,
+      "eulerDoesNotEstablishGenusWithNonmanifoldEdges": true,
+      "selfIntersectionsEvaluated": false
+    },
+    "mapped": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-canonical.glb",
+      "sha256": "139f5505400b0ae5b16732b10a8f0ef2e408e09cbb7f7b20b58d6e04d69daf33",
+      "fileBytes": 18000980,
+      "activeAccessorVertices": 500011,
+      "uniquePositions": 500011,
+      "triangles": 1000000,
+      "allPositionsFinite": true,
+      "allIndicesInBounds": true,
+      "unreferencedUniquePositions": 0,
+      "bounds": [
+        [
+          -0.17056693136692047,
+          0.27000001072883606,
+          -0.0666210874915123
+        ],
+        [
+          0.14303894340991974,
+          0.5,
+          0.17018641531467438
+        ]
+      ],
+      "zeroAreaTriangles": 0,
+      "repeatedCornerTriangles": 0,
+      "triangleAreaMinMedianP95Max": [
+        1.554730813436137e-10,
+        1.229136005961361e-07,
+        3.324115001016266e-07,
+        0.0012141445145658534
+      ],
+      "duplicateUnorientedTriangleGroups": 119,
+      "extraDuplicateUnorientedTriangles": 119,
+      "uniqueEdges": 1499861,
+      "boundaryEdges": 18,
+      "nonmanifoldEdges": 147,
+      "maxFacesPerEdge": 6,
+      "twoFaceEdgesWithSameDirectedWinding": 0,
+      "closedTwoManifoldByEdgeIncidence": false,
+      "vertexConnectedComponents": 1,
+      "componentsByTriangleCount": [
+        {
+          "vertices": 500011,
+          "triangles": 1000000,
+          "triangleFraction": 1.0
+        }
+      ],
+      "eulerVminusEplusF": 150,
+      "eulerDoesNotEstablishGenusWithNonmanifoldEdges": true,
+      "selfIntersectionsEvaluated": false,
+      "cutPlane": {
+        "canonicalY": 0.27,
+        "planeTolerance": 2.384185791015625e-07,
+        "verticesBelowPlaneBeyondTolerance": 0,
+        "verticesOnPlaneWithinTolerance": 1,
+        "allThreeCornersOnPlaneTriangles": 0,
+        "boundaryEdgesOnPlane": 0,
+        "boundaryEndpointYMinMedianP95Max": [
+          0.275347501039505,
+          0.3627263456583023,
+          0.480524517595768,
+          0.48063915967941284
+        ],
+        "nonmanifoldMidpointYMinMedianP95Max": [
+          0.2703128606081009,
+          0.27032701671123505,
+          0.2703328311443329,
+          0.270336776971817
+        ],
+        "nonmanifoldEdgesInLower5PercentSlab": 147,
+        "nonmanifoldEdgesInsidePriorHeadQABox": 0,
+        "lowerSlabsByFractionOfSourceYSpan": {
+          "0.01": {
+            "upperY": 0.27229999989271164,
+            "trianglesByCentroid": 119397,
+            "downwardFacingTriangles": 101709,
+            "downwardFacingArea": 0.02518187656157982
+          },
+          "0.02": {
+            "upperY": 0.2745999997854233,
+            "trianglesByCentroid": 137875,
+            "downwardFacingTriangles": 104106,
+            "downwardFacingArea": 0.025398114714502998
+          },
+          "0.05": {
+            "upperY": 0.2814999994635582,
+            "trianglesByCentroid": 188057,
+            "downwardFacingTriangles": 105550,
+            "downwardFacingArea": 0.025513974516331476
+          }
+        }
+      }
+    }
+  },
+  "distanceMetricClarification": {
+    "valuesInOriginalMapAre": "raw canonical-world coordinate units",
+    "normalizedBySourceYSpanMeaning": "a scalar divisor only; stored triplets have NOT already been divided",
+    "divisorCanonicalUnits": 0.22999998927116394,
+    "mappedToSourceRawCanonicalUnitsP50P95Max": [
+      0.0016458179646854033,
+      0.010152219038644973,
+      0.054837314615362516
+    ],
+    "sourceToMappedRawCanonicalUnitsP50P95Max": [
+      0.000571473281528328,
+      0.0014660278443817008,
+      0.0035432749649843406
+    ],
+    "mappedToSourceFractionsOfYSpanP50P95Max": [
+      0.007155730615035061,
+      0.04414008483572481,
+      0.2384231181450655
+    ],
+    "sourceToMappedFractionsOfYSpanP50P95Max": [
+      0.0024846665573300354,
+      0.0063740344033377,
+      0.01540554404464303
+    ],
+    "metricLimitation": "nearest input vertex, not nearest surface; not a facial-landmark or identity accuracy measurement",
+    "worstMappedToSource": {
+      "distanceCanonicalUnits": 0.054837314615362516,
+      "mappedVertexXYZ": [
+        -0.031219342723488808,
+        0.270326167345047,
+        0.052545469254255295
+      ],
+      "inLower5PercentSlab": true
+    },
+    "mappedToSourceLower5PercentSlabRawMinMedianP95Max": [
+      3.617776853251317e-05,
+      0.0022415763521080856,
+      0.027557552240862457,
+      0.054837314615362516
+    ],
+    "mappedToSourceAboveLower5PercentSlabRawMinMedianP95Max": [
+      1.4916570340523066e-05,
+      0.0015912397865224916,
+      0.0024596499739613273,
+      0.004445959701236534
+    ]
+  },
+  "priorHeadQABoxCanonical": [
+    [
+      -0.06190345578729607,
+      0.3100160773953314,
+      -0.024992582091377752
+    ],
+    [
+      0.07604182008052954,
+      0.51,
+      0.18067711655172314
+    ]
+  ],
+  "cutPlaneInterpretation": "source has an intentionally open plane; generated result reconstructs the lower region. Mapped minimum Y matches the source by bbox-height fit and does not prove anatomical neck correspondence or cut-boundary preservation.",
+  "assessment": "finite indexed geometry and declared affine verified; output is not a closed two-manifold by edge incidence. No topology repair, full-body merge, or self-intersection test performed.",
+  "diagnosticIndexingNote": "Topology helper sorts unique positions. Float32 rounding can reorder tied XYZ values; exact transform verification therefore uses stored mapped accessor order and indices against the raw unique-position indexing used by map_result.",
+  "originalMapEdited": false,
+  "fullBodyMergeAllowed": false
+}
+
+<<<yomiyasu:material docs/verification/hi3d-depth-cycle-20261119/A-H-I-head-provenance.json>>>
+{
+  "status": "verified existing official captures",
+  "columns": {
+    "source": "A / source head and shoulder crop",
+    "H": "H / full-body Hi3D",
+    "I": "I / head-local Hi3D; approximate fit"
+  },
+  "views": {
+    "front": [
+      0,
+      0,
+      1
+    ],
+    "iso": [
+      1,
+      1,
+      1
+    ],
+    "right": [
+      1,
+      0,
+      0
+    ]
+  },
+  "modes": [
+    "lit",
+    "normals"
+  ],
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "halfExtent": 0.65783283658225,
+    "distance": 1.8073808642855147,
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001
+  },
+  "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+  "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+  "headWorldBounds": [
+    [
+      -0.06190345578729607,
+      0.3100160773953314,
+      -0.024992582091377752
+    ],
+    [
+      0.07604182008052954,
+      0.51,
+      0.18067711655172314
+    ]
+  ],
+  "headROIs": {
+    "front": [
+      463,
+      115,
+      572,
+      271
+    ],
+    "iso": [
+      378,
+      160,
+      568,
+      397
+    ],
+    "right": [
+      371,
+      115,
+      532,
+      271
+    ]
+  },
+  "contextROIs": {
+    "front": [
+      370,
+      107,
+      632,
+      310
+    ],
+    "iso": [
+      370,
+      152,
+      576,
+      434
+    ],
+    "right": [
+      363,
+      107,
+      572,
+      310
+    ]
+  },
+  "contextPolicy": "Common union of source/I nonzero-alpha bounds and fixed head ROI, padded8px and limited to viewport. H body extends outside this bust crop.",
+  "material": {
+    "baseColorFactor": [
+      180,
+      180,
+      180,
+      255
+    ],
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+  },
+  "normalAccessors": {
+    "source": [
+      {
+        "present": false
+      }
+    ],
+    "H": [
+      {
+        "present": false
+      }
+    ],
+    "I": [
+      {
+        "present": false
+      }
+    ]
+  },
+  "sourceTriangles": {
+    "source": 20287,
+    "H": 999999,
+    "I": 1000000
+  },
+  "mapping": {
+    "method": "standalone-hi3d-head-region-v1",
+    "stage": "standalone-result-mapped",
+    "plan": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-plan.json",
+    "planSha256": "2fbaab58507820760b5e072a63a9ea95df5d97e6a1a6910d754ece3cbaf50425",
+    "rawMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb",
+    "rawMeshSha256": "809689a663fda131b18ddb7626f235e2563b0e280ea7f98720f02eea0739d1af",
+    "outputMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-canonical.glb",
+    "outputMeshSha256": "139f5505400b0ae5b16732b10a8f0ef2e408e09cbb7f7b20b58d6e04d69daf33",
+    "outputVertices": 500011,
+    "outputTriangles": 1000000,
+    "sourceHeadVertices": 10402,
+    "rawVertices": 500011,
+    "rawTriangles": 1000000,
+    "mapping": {
+      "method": "isotropic-y-height-bbox-center-fit",
+      "exactInverse": false,
+      "rotationEstimated": false,
+      "axisSpecificStretch": false,
+      "sourceBounds": [
+        [
+          -0.17159518599510193,
+          0.27000001072883606,
+          -0.0671117827296257
+        ],
+        [
+          0.1440671980381012,
+          0.5,
+          0.17067711055278778
+        ]
+      ],
+      "rawBounds": [
+        [
+          -0.7450441718101501,
+          -0.34813758730888367,
+          -0.6270082592964172
+        ],
+        [
+          0.6330642104148865,
+          0.6625733971595764,
+          0.4136176109313965
+        ]
+      ],
+      "scale": 0.22756257011703748,
+      "translation": [
+        -0.0010227700701439472,
+        0.3492230948511902,
+        0.0760625261020236
+      ],
+      "rawToCanonicalWorldRowMajor": [
+        [
+          0.22756257011703748,
+          0.0,
+          0.0,
+          -0.0010227700701439472
+        ],
+        [
+          0.0,
+          0.22756257011703748,
+          0.0,
+          0.3492230948511902
+        ],
+        [
+          0.0,
+          0.0,
+          0.22756257011703748,
+          0.0760625261020236
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "canonicalWorldToRawRowMajor": [
+        [
+          4.394395789631357,
+          0.0,
+          0.0,
+          0.004494456490001529
+        ],
+        [
+          0.0,
+          4.394395789631357,
+          0.0,
+          -1.534624497656102
+        ],
+        [
+          0.0,
+          0.0,
+          4.394395789631357,
+          -0.3342488444514577
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "extentRatioXYZ": [
+        0.9934851322860667,
+        1.0,
+        0.9958728277441962
+      ],
+      "extentResidualXYZ": [
+        -0.002056498674241125,
+        0.0,
+        -0.00098139572309347
+      ],
+      "warning": "bbox registration can shift anatomy when generated neck/hair bounds differ; not approved for splicing"
+    },
+    "rawExportNormalizationMeasurements": {
+      "meanXYZ": [
+        3.328240829733812e-12,
+        -7.568870309714727e-12,
+        3.4517984236708086e-12
+      ],
+      "maxRadiusAboutMean": 1.0000000375393356,
+      "measurementDoesNotRecoverPreNormalizationMeanOrScale": true
+    },
+    "storedFloat32Bounds": [
+      [
+        -0.17056693136692047,
+        0.27000001072883606,
+        -0.0666210874915123
+      ],
+      [
+        0.14303894340991974,
+        0.5,
+        0.17018641531467438
+      ]
+    ],
+    "nearestVertexDistanceDiagnostic": {
+      "mappedToSourceP50P95Max": [
+        0.0016458179646854033,
+        0.010152219038644973,
+        0.054837314615362516
+      ],
+      "sourceToMappedP50P95Max": [
+        0.000571473281528328,
+        0.0014660278443817008,
+        0.0035432749649843406
+      ],
+      "normalizedBySourceYSpan": 0.22999998927116394,
+      "notSurfaceOrLandmarkAccuracy": true
+    },
+    "outputBoundary": {
+      "boundaryEdges": 18,
+      "nonmanifoldEdges": 147
+    },
+    "inputSourceHashesRechecked": true,
+    "fullBodyMergeAllowed": false,
+    "assessment": "not visually evaluated; geometry and face correspondence must be judged from the standalone output",
+    "normalPolicy": "no NORMAL accessor synthesized in either standalone source or result; identical clay material"
+  },
+  "captures": {
+    "source": {
+      "lit": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-front.png",
+            "sha256": "08e5ce9dde4a6ac19dd88c34994cdae2606d36a7719728cfc0bf0f0f4bbcc7ae",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            378.4451964940681,
+            122.8433848786874,
+            624.1294062770386,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            624,
+            302
+          ],
+          "alphaBoundsOver0": [
+            378,
+            122,
+            624,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5548035059318863,
+          "nonzeroAlphaPixelsOutsideHeadROI": 9527,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-iso.png",
+            "sha256": "7190a53bfa9680238ef11037e1caebd6cde4f0edf5d89a31408125b86db3cf5c",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            410.53359507955065,
+            226.06660776542077,
+            532.6459623541945,
+            425.51248687422924
+          ],
+          "alphaBoundsOver127": [
+            410,
+            226,
+            533,
+            426
+          ],
+          "alphaBoundsOver0": [
+            410,
+            226,
+            533,
+            426
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5335950795506506,
+          "nonzeroAlphaPixelsOutsideHeadROI": 1072,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-right.png",
+            "sha256": "59bd441997e2e2fee34ba6aaf8ff57075525206dc7e367df116ea5be24682b95",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            379.1597467571821,
+            122.8433848786874,
+            564.2339884036362,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            564,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            564,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.23398840363620366,
+          "nonzeroAlphaPixelsOutsideHeadROI": 5099,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      },
+      "normals": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-front.png",
+            "sha256": "eecd547c69b556e67e3912a00167363e2d18e6f8ba3e7ceb581025472ed7cb1f",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            378.4451964940681,
+            122.8433848786874,
+            624.1294062770386,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            624,
+            302
+          ],
+          "alphaBoundsOver0": [
+            378,
+            122,
+            624,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5548035059318863,
+          "nonzeroAlphaPixelsOutsideHeadROI": 9527,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-iso.png",
+            "sha256": "d302970f61cd3e009675ffc0e57268fe3e19987231227e84884aa0bc7a86c956",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            410.53359507955065,
+            226.06660776542077,
+            532.6459623541945,
+            425.51248687422924
+          ],
+          "alphaBoundsOver127": [
+            410,
+            226,
+            533,
+            426
+          ],
+          "alphaBoundsOver0": [
+            410,
+            226,
+            533,
+            426
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5335950795506506,
+          "nonzeroAlphaPixelsOutsideHeadROI": 1072,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-right.png",
+            "sha256": "f58b8426db934f317e007aac19f0707d5a67d8e7776638c2e4c7b816a15c0a20",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            379.1597467571821,
+            122.8433848786874,
+            564.2339884036362,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            564,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            564,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.23398840363620366,
+          "nonzeroAlphaPixelsOutsideHeadROI": 5099,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      }
+    },
+    "H": {
+      "lit": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-front.png",
+            "sha256": "f4f1f8b4476384892ae23f9997541a71cce37b8e8ec8144f84640f42792ff32b",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            371.8122225546806,
+            122.8433848786874,
+            652.1877774453194,
+            901.1566151213126
+          ],
+          "alphaBoundsOver127": [
+            372,
+            123,
+            652,
+            901
+          ],
+          "alphaBoundsOver0": [
+            371,
+            122,
+            653,
+            902
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.18777744531939788,
+          "nonzeroAlphaPixelsOutsideHeadROI": 72219,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-iso.png",
+            "sha256": "e8371e9cff212b75417aa378c8fc6429f92fe04652cc8e357991a6ec30329856",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            407.1306882092955,
+            223.64616870598218,
+            628.0020194735355,
+            819.4260521284722
+          ],
+          "alphaBoundsOver127": [
+            407,
+            224,
+            628,
+            820
+          ],
+          "alphaBoundsOver0": [
+            407,
+            223,
+            628,
+            820
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.573947871527821,
+          "nonzeroAlphaPixelsOutsideHeadROI": 45053,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-right.png",
+            "sha256": "aad1468f37a2f3bd2041315dc05d149f2549c4ca6c1d13d56249870df50b3fc7",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            380.2461795443055,
+            122.8433848786874,
+            643.7538204556945,
+            901.1566151213126
+          ],
+          "alphaBoundsOver127": [
+            380,
+            123,
+            644,
+            901
+          ],
+          "alphaBoundsOver0": [
+            380,
+            122,
+            644,
+            902
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.24617954430550526,
+          "nonzeroAlphaPixelsOutsideHeadROI": 77183,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      },
+      "normals": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-front.png",
+            "sha256": "4a2c8ed829216ab24ff15d51a56d87da7d119d5282100cfe649165f348a2904d",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            371.8122225546806,
+            122.8433848786874,
+            652.1877774453194,
+            901.1566151213126
+          ],
+          "alphaBoundsOver127": [
+            372,
+            123,
+            652,
+            901
+          ],
+          "alphaBoundsOver0": [
+            371,
+            122,
+            653,
+            902
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.18777744531939788,
+          "nonzeroAlphaPixelsOutsideHeadROI": 72219,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-iso.png",
+            "sha256": "e7cc2d5f23ff8efaebe3bc46fb2816fe5caa8c94ad7f26368fac25193fcc2b90",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            407.1306882092955,
+            223.64616870598218,
+            628.0020194735355,
+            819.4260521284722
+          ],
+          "alphaBoundsOver127": [
+            407,
+            224,
+            628,
+            820
+          ],
+          "alphaBoundsOver0": [
+            407,
+            223,
+            628,
+            820
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.573947871527821,
+          "nonzeroAlphaPixelsOutsideHeadROI": 45053,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-right.png",
+            "sha256": "3dddc766f407b694c984af97a981398ee88a311c1b11a0f751acf25147fade0b",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            380.2461795443055,
+            122.8433848786874,
+            643.7538204556945,
+            901.1566151213126
+          ],
+          "alphaBoundsOver127": [
+            380,
+            123,
+            644,
+            901
+          ],
+          "alphaBoundsOver0": [
+            380,
+            122,
+            644,
+            902
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.24617954430550526,
+          "nonzeroAlphaPixelsOutsideHeadROI": 77183,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      }
+    },
+    "I": {
+      "lit": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-front.png",
+            "sha256": "8fe6527659e2a7997bd18676e9ea6d6c1fb8ac9a960a84b84dd63597fa1896b2",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            379.24550067524,
+            122.8433848786874,
+            623.3291020958667,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            623,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            624,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.3291020958666877,
+          "nonzeroAlphaPixelsOutsideHeadROI": 9547,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-iso.png",
+            "sha256": "3fa06de23b3b60e71d805e47ee29c25cd38d45cb69de7747625cdac1edc625d1",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            411.01389909122366,
+            225.85516003292702,
+            531.8266838939196,
+            424.80778262501696
+          ],
+          "alphaBoundsOver127": [
+            411,
+            226,
+            532,
+            425
+          ],
+          "alphaBoundsOver0": [
+            411,
+            226,
+            532,
+            425
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.19221737498304492,
+          "nonzeroAlphaPixelsOutsideHeadROI": 1026,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-right.png",
+            "sha256": "ca2f6bad02d8d451680aea6e4abf5d2be6297dae16836af2e437fac8895861e1",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            379.5416613530228,
+            122.8433848786874,
+            563.8520738077955,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            564,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            564,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5416613530227892,
+          "nonzeroAlphaPixelsOutsideHeadROI": 5121,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      },
+      "normals": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-front.png",
+            "sha256": "96cf13e48b25562f78d911a1f8e785d1df8b78c9535c5c963f48db25fd6ed54c",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            379.24550067524,
+            122.8433848786874,
+            623.3291020958667,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            623,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            624,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.3291020958666877,
+          "nonzeroAlphaPixelsOutsideHeadROI": 9547,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-iso.png",
+            "sha256": "7e83891465b61297676ae9038952609e30c5a0ed784233570ed287a7147b3e10",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            411.01389909122366,
+            225.85516003292702,
+            531.8266838939196,
+            424.80778262501696
+          ],
+          "alphaBoundsOver127": [
+            411,
+            226,
+            532,
+            425
+          ],
+          "alphaBoundsOver0": [
+            411,
+            226,
+            532,
+            425
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.19221737498304492,
+          "nonzeroAlphaPixelsOutsideHeadROI": 1026,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-right.png",
+            "sha256": "59c563edf4c2379d62a23848218579559649cebab62edc7ee50c60b4869a4154",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            379.5416613530228,
+            122.8433848786874,
+            563.8520738077955,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            564,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            564,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5416613530227892,
+          "nonzeroAlphaPixelsOutsideHeadROI": 5121,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      }
+    }
+  },
+  "inputsSHA256": {
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/provenance.json": "5a8553aedd6d65052e6eb8e39d246d1f7c4f98a55f21c2b2d88f994bfd91bc27",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-provenance.json": "15e9fdb5b175af1a81709958644e4905e2da74254ff120c757ab81e432202c44",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/provenance.json": "174b6c162f2291fdc92ec97cb9d836eb772866603a44436d646a0ea20828950b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-plan.json": "2fbaab58507820760b5e072a63a9ea95df5d97e6a1a6910d754ece3cbaf50425",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-mapping.json": "58c055583831002ffc4ac82560fb2b0b6f3aaed6ff63daa01cabc573305443a0",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb": "809689a663fda131b18ddb7626f235e2563b0e280ea7f98720f02eea0739d1af",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/manifest.json": "ae235e80807456cbe1e02aba42d1219820b03657898f3b697af7f6cfb2a6878c",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-full-comparison-provenance.json": "aaa864bdead10ddd8f9afd85f46d77e922c96f5e11236ec3bd12cc9c4af64401",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/prepare_evidence.py": "17b0ee8018b3732f6d19e3d94623f6bd993d81f1b8f65b0aa2862b3aa1b60d01",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-source.glb": "0674a6a68d06839bf79e0488758170cce92ed669a98b00710c50fa1e309be0a7",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.glb": "ee9d0f4a0261878aed4b03ccd5b28cf85518253d6c8b0f8d202f86be15eacb4c",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.inspector.html": "a89c448a786a4fd799cf715b07d7420f4a6584f1d9af19961d41365180e148ad",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/geometry/proxy.glb": "51377a54c906e8bd2c0a1b431352aa49a79ffe9c2a89bbcfdcc77d4b54f21126",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay.glb": "cf9edb5a149ad9623770010576d63b1a06e9737ad4191a0d533001ed4620b12e",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay.inspector.html": "694c4005dba5d4513984be955793ecdadd70e83ae5bb18018ab5862f109f671b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-canonical.glb": "139f5505400b0ae5b16732b10a8f0ef2e408e09cbb7f7b20b58d6e04d69daf33",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/clay.glb": "682ba2475b27f0f7f2f7439d74ff3a668dcc1738da76e3930364dca23111e226",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/clay.inspector.html": "03bf56750b35930bf6b3fc339bc9eb0f1cd374bc4bdbe096f5cda59d1948523b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-front.png": "08e5ce9dde4a6ac19dd88c34994cdae2606d36a7719728cfc0bf0f0f4bbcc7ae",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-iso.png": "7190a53bfa9680238ef11037e1caebd6cde4f0edf5d89a31408125b86db3cf5c",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-right.png": "59bd441997e2e2fee34ba6aaf8ff57075525206dc7e367df116ea5be24682b95",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-front.png": "eecd547c69b556e67e3912a00167363e2d18e6f8ba3e7ceb581025472ed7cb1f",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-iso.png": "d302970f61cd3e009675ffc0e57268fe3e19987231227e84884aa0bc7a86c956",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-right.png": "f58b8426db934f317e007aac19f0707d5a67d8e7776638c2e4c7b816a15c0a20",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-front.png": "f4f1f8b4476384892ae23f9997541a71cce37b8e8ec8144f84640f42792ff32b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-iso.png": "e8371e9cff212b75417aa378c8fc6429f92fe04652cc8e357991a6ec30329856",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-right.png": "aad1468f37a2f3bd2041315dc05d149f2549c4ca6c1d13d56249870df50b3fc7",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-front.png": "4a2c8ed829216ab24ff15d51a56d87da7d119d5282100cfe649165f348a2904d",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-iso.png": "e7cc2d5f23ff8efaebe3bc46fb2816fe5caa8c94ad7f26368fac25193fcc2b90",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-right.png": "3dddc766f407b694c984af97a981398ee88a311c1b11a0f751acf25147fade0b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-front.png": "8fe6527659e2a7997bd18676e9ea6d6c1fb8ac9a960a84b84dd63597fa1896b2",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-iso.png": "3fa06de23b3b60e71d805e47ee29c25cd38d45cb69de7747625cdac1edc625d1",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-right.png": "ca2f6bad02d8d451680aea6e4abf5d2be6297dae16836af2e437fac8895861e1",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-front.png": "96cf13e48b25562f78d911a1f8e785d1df8b78c9535c5c963f48db25fd6ed54c",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-iso.png": "7e83891465b61297676ae9038952609e30c5a0ed784233570ed287a7147b3e10",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-right.png": "59c563edf4c2379d62a23848218579559649cebab62edc7ee50c60b4869a4154"
+  },
+  "panels": {
+    "A-H-I-head-lit.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-H-I-head-lit.webp",
+      "sha256": "cf5e1bb189888a14c640267eebfb2807ede3ccfbfdb9b9aa1e6d767158f04f6e",
+      "bytes": 195900,
+      "size": [
+        1790,
+        1957
+      ]
+    },
+    "A-H-I-head-normals.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-H-I-head-normals.webp",
+      "sha256": "a16560a2fcdbe9707718410de56825484c9b37a43effde59fdc952ad4872652e",
+      "bytes": 299296,
+      "size": [
+        1790,
+        1957
+      ]
+    },
+    "A-H-I-context-lit.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-H-I-context-lit.webp",
+      "sha256": "73cb26acc1009604d340a85a0db0b87f79d4b3849ef2b88ef3998e11bf1da1ea",
+      "bytes": 241814,
+      "size": [
+        1652,
+        1686
+      ]
+    },
+    "A-H-I-context-normals.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-H-I-context-normals.webp",
+      "sha256": "167a65f0199fd7fea86896deb5516d2ae223d51251d03b4efe209135c7eafda6",
+      "bytes": 382580,
+      "size": [
+        1652,
+        1686
+      ]
+    }
+  },
+  "processing": "Original frames unchanged; common per-view ROI, neutral alpha backdrop, integer nearest enlargement, lossless WebP.",
+  "limitations": [
+    "I mapping is approximate; no anatomical landmark registration or body merge.",
+    "Normal images describe the renderer's per-mesh computed normals, including crop-boundary changes.",
+    "A viewport-clipped mesh cannot pass the full projected-silhouette camera check; clipping is reported explicitly."
+  ],
+  "scriptSHA256": "ff1e5aff5a782ed912281d54ab70e5a21d181bd2339da56d7ad7f50bd8375b77"
+}
+
+<<<yomiyasu:material コマンド出力 python -m unittest discover -s tests -p test_refine_head_region.py -v>>>
+Ran 9 tests in 0.014s
+
+OK

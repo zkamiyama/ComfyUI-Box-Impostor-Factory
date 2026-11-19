@@ -89,7 +89,7 @@
   "recomputeFromArchive": {
     "command": "python3 scripts/compare_box_diagnostics.py . recomputed-paired",
     "requirements": "Python 3, numpy, Pillow, DejaVuSans font at default path or --font override",
-    "expectedReport": "metrics should agree exactly; output path fields vary with extraction path"
+    "expectedReport": "Same archived inputs; floating-point statistics may differ slightly across numerical runtimes. See archive-recompute-check.json for measured differences."
   },
   "sourceGeometryRecovery": "Input scene.json is the exact decompressed scene-data JSON from the full-triangle B-clay/H-clay official Inspector HTML. Source HTML and scene hashes are in each render report. The 3D input assets remain in their separate archive, not duplicated in this numerical bundle.",
   "preservedFirstFRun": {
