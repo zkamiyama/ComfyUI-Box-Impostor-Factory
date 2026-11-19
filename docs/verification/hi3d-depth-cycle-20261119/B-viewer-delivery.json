@@ -1,0 +1,24 @@
+{
+  "source": "B.inspector.html",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B.inspector.html",
+  "htmlBytes": 61841410,
+  "htmlSHA256": "e8421c1609879a8b7a4ae7b1dc15559cef15a00f05a0b81d89a8c82fdd8a8c2b",
+  "gzip": "B.inspector.html.gz",
+  "gzipSourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B.inspector.html.gz",
+  "gzipBytes": 45689030,
+  "gzipSHA256": "f560a21cbcac588977a500dfdf751a0fe3e9b0068ddec42d473f8f5da79312a9",
+  "officialViewerUnmodified": true,
+  "asset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "decompressedSHA256": "e8421c1609879a8b7a4ae7b1dc15559cef15a00f05a0b81d89a8c82fdd8a8c2b",
+  "decompressedBytes": 61841410,
+  "roundTripByteIdentityVerified": true,
+  "deliveryCopySHA256Verified": true,
+  "delivery": "Lossless gzip packaging; decompress to recover exact official HTML",
+  "packaging": {
+    "compressionLevel": 9,
+    "mtime": 0,
+    "rawHTMLCopiedToRepo": false
+  },
+  "captureStageState": "Native Box",
+  "repoFilesystemFreeAfter": 579567616
+}
