@@ -1,0 +1,404 @@
+{
+  "method": "standalone-hi3d-head-region-v1",
+  "stage": "prepared-only",
+  "parentHPlan": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/H/plan.json",
+  "parentHPlanSha256": "20b2e96250929063dc0917528550f84efbf5f293563396fba680efeba60d818b",
+  "outputDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local",
+  "sourceCoarse": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+    "sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "manifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+    "manifestSha256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+    "asset": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+    "bounds": [
+      [
+        -0.17959635205538715,
+        -0.5,
+        -0.17067711655172313
+      ],
+      [
+        0.17959635205538715,
+        0.5,
+        0.17067711655172313
+      ]
+    ]
+  },
+  "sourceReference": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/source.png",
+    "sha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+    "manifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/manifest.json",
+    "manifestSha256": "48d4630f488731650c5288d2242be6eec58a241fe760d594dcc7eb4736f67214",
+    "qa": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/qa/report.json",
+    "qaSha256": "bb6cf0dc2ecbd259e82a56e6113056378735384a8077db9a1438b2a05def405b",
+    "asset": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+    "face": "+Z",
+    "registration": {
+      "scale": 1.0,
+      "centerShiftYX": [
+        0.0,
+        0.0
+      ]
+    },
+    "canvas": {
+      "version": 1,
+      "size": 1024,
+      "faceId": "+Z",
+      "guideRect": [
+        315,
+        0,
+        393,
+        1024
+      ],
+      "guideInputSha256": "cbcf6b5c68a7c87f7987bd2874f124a8940aa3356f557534f9c2bb03f1e0d978",
+      "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+      "sourceRect": [
+        0,
+        0,
+        1024,
+        1024
+      ],
+      "physicalWidthHeight": [
+        0.3993621253967285,
+        1.04
+      ],
+      "imageRowOrder": "top-to-bottom",
+      "backgroundSRGB": 0.5
+    }
+  },
+  "canonicalFrame": {
+    "transform": [
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0,
+      0,
+      0,
+      1.1176511734153667,
+      0,
+      0.010881411855650119,
+      0.02839508237150308,
+      0.013759666322433382,
+      1
+    ],
+    "inverseTransform": [
+      0.8947335481643676,
+      0,
+      0,
+      0,
+      0,
+      0.8947335481643676,
+      0,
+      0,
+      0,
+      0,
+      0.8947335481643676,
+      0,
+      -0.009735964238643648,
+      -0.025406032800674435,
+      -0.012311235070228575,
+      1
+    ],
+    "coordinateSystem": "right-handed-y-up"
+  },
+  "crop": {
+    "cutPlane": {
+      "axis": "canonical-world-Y",
+      "keep": "Y >= cut",
+      "value": 0.27
+    },
+    "sourceTriangles": 81180,
+    "fullyRetainedTriangles": 19507,
+    "crossingSourceTriangles": 519,
+    "intersectionVertices": 519,
+    "degenerateTrianglesDropped": 0,
+    "cropTriangles": 20287,
+    "cropVertices": 10402,
+    "syntheticCap": false,
+    "bounds": [
+      [
+        -0.17159519073988574,
+        0.27,
+        -0.06711178382782003
+      ],
+      [
+        0.14406719917419245,
+        0.5,
+        0.17067711655172313
+      ]
+    ],
+    "boundary": {
+      "boundaryEdges": 519,
+      "nonmanifoldEdges": 0,
+      "boundaryEdgesOnCutPlane": 519
+    },
+    "storedFloat32Bounds": [
+      [
+        -0.17159518599510193,
+        0.27000001072883606,
+        -0.0671117827296257
+      ],
+      [
+        0.1440671980381012,
+        0.5,
+        0.17067711055278778
+      ]
+    ]
+  },
+  "referenceCrop": {
+    "sourceSizePixels": [
+      1024,
+      1024
+    ],
+    "sourcePNGMode": "RGBA",
+    "sourceGuideRectXYWH": [
+      315,
+      0,
+      393,
+      1024
+    ],
+    "sourceCropRectXYXY": [
+      328,
+      9,
+      669,
+      255
+    ],
+    "cropSizePixels": [
+      341,
+      246
+    ],
+    "subjectBoundsInCropXYXY": [
+      8,
+      8,
+      333,
+      237
+    ],
+    "subjectSizePixels": [
+      325,
+      229
+    ],
+    "retainedSubjectPixels": 38108,
+    "sourcePixelYAtCutEdge": 246.15384615384613,
+    "canonicalWorldXYZ1ToSourcePixelXY1RowMajor": [
+      [
+        984.0692820071299,
+        0.0,
+        0.0,
+        511.0
+      ],
+      [
+        0.0,
+        -984.6153846153845,
+        0.0,
+        511.5
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "sourcePixelsPerCanonicalUnitXY": [
+      984.0692820071299,
+      984.6153846153845
+    ],
+    "sourceLetterboxRoundingAnisotropy": 0.9994453645384914,
+    "pixelCenters": "integer indices; rows top-to-bottom",
+    "transparentMarginOriginalPixelsRequested": 8,
+    "resampled": false,
+    "newImageInference": false,
+    "maskPolicy": "retain original RGBA pixels inside guideRect and above canonical cut; zero all others",
+    "detailPolicy": "native crop of existing full-body source; no new head pixels generated",
+    "upstreamPreparedSizePixels": [
+      390,
+      390
+    ],
+    "upstreamPreparedMode": "RGB",
+    "upstreamSubjectPaddingFactor": 1.2
+  },
+  "upstream": {
+    "root": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0",
+    "sourceFiles": {
+      "voxelizer": {
+        "path": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0/sparc3d/ops/voxelize.py",
+        "sha256": "fb06309ffd8fbec4145672b4b72ee1a88b8458154afd7f466ccfc664a3bc2ac0"
+      },
+      "pipeline": {
+        "path": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0/sparc3d/pipelines/sparc3d_pipeline.py",
+        "sha256": "db45af6326c167a68273acb80b8fa81f72431854652927314d8d7d20fe67834e"
+      },
+      "postprocess": {
+        "path": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0/sparc3d/sparcubes/postprocess.py",
+        "sha256": "703578b9989f8e5a138b4d8a4eb293768f1919bf3defb6d6fd9c6576b9470bf9"
+      },
+      "imagePreparation": {
+        "path": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0/sparc3d/utils/image.py",
+        "sha256": "97c9273491be54ddb0946c41f8af2b74ac1487094e5dc0837a7f61fa512351ff"
+      },
+      "imageConditioner": {
+        "path": "/home/dev/Projects/box-impostor-lab/third_party/Hi3Dv1.0/sparc3d/models/conditioners/image.py",
+        "sha256": "8f4dc1de8c6cd3da500c5bee72ac7798e687b79caeb81588ccb7e58d4f4139fa"
+      }
+    },
+    "initialVoxelizer": {
+      "requestedResolution": 64,
+      "pad": 3,
+      "eps": 1e-06,
+      "tokenBudget": 80000
+    },
+    "structureResolutions": [
+      64,
+      128
+    ],
+    "geometryExtractionResolutions": [
+      512,
+      1024
+    ],
+    "imageSubjectPaddingFactor": 1.2,
+    "imageEncoderInputPixels": {
+      "DINO": 756,
+      "CLIP": 224
+    },
+    "betweenPasses": "fresh bbox-center/uniform-scale adaptive voxelization of the preceding generated mesh",
+    "finalNormalization": "subtract final vertex mean; divide by maximum radial norm about that mean",
+    "exactInverseAvailableFromExportedGLB": false,
+    "reason": "inference exports only final normalized geometry, without per-pass transforms or final mean/radius"
+  },
+  "nominalFirstVoxelMapping": {
+    "requestedResolution": 64,
+    "pad": 3,
+    "eps": 1e-06,
+    "tokenBudget": 80000,
+    "expandedBoundsFloat32": [
+      [
+        -0.17159618437290192,
+        0.2699989974498749,
+        -0.06711278110742569
+      ],
+      [
+        0.14406819641590118,
+        0.5000010132789612,
+        0.17067810893058777
+      ]
+    ],
+    "centerFloat32": [
+      -0.013763993978500366,
+      0.38499999046325684,
+      0.05178266391158104
+    ],
+    "scaleFloat32": 183.73944091796875,
+    "canonicalWorldToNominalVoxelRowMajor": [
+      [
+        183.73944091796875,
+        0.0,
+        0.0,
+        34.528987884521484
+      ],
+      [
+        0.0,
+        183.73944091796875,
+        0.0,
+        -38.73968505859375
+      ],
+      [
+        0.0,
+        0.0,
+        183.73944091796875,
+        22.48548126220703
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "nominalVoxelToCanonicalWorldRowMajor": [
+      [
+        0.005442489620105322,
+        0.0,
+        0.0,
+        -0.1879236581542506
+      ],
+      [
+        0.0,
+        0.005442489620105322,
+        0.0,
+        0.21084033381754572
+      ],
+      [
+        0.0,
+        0.0,
+        0.005442489620105322,
+        -0.12237699837263448
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "observedVoxelization": false,
+    "limitation": "adaptive_vox may shrink the actual first grid to meet its token budget; later passes renormalize"
+  },
+  "nominalLongestSpanAllocationRatio": 3.167941606545094,
+  "artifacts": {
+    "head-source.glb": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-source.glb",
+      "sha256": "0674a6a68d06839bf79e0488758170cce92ed669a98b00710c50fa1e309be0a7",
+      "bytes": 369104
+    },
+    "head-reference.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-reference.png",
+      "sha256": "dfe91c501a564224634c0f91ab4c39d82ec78094012342599bc12765397baa41",
+      "bytes": 136427
+    },
+    "head-reference-prepared.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-reference-prepared.png",
+      "sha256": "f7933fb478044ce880c7532e767526fb39fc041289885591a8d4ede91ac68a38",
+      "bytes": 80877
+    },
+    "head-reference-context.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-reference-context.png",
+      "sha256": "e3c08f85a19f677ba97e1ad2ef4d1ddb4f77e5da67186124b9ed0950c2833431",
+      "bytes": 952605
+    }
+  },
+  "inference": {
+    "argv": [
+      "/home/dev/Projects/box-impostor-lab/third_party/.venv-hi3d/bin/python",
+      "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/hi3d_infer.py",
+      "--source",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-source.glb",
+      "--reference",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-reference.png",
+      "--output",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb",
+      "--report",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-inference.json",
+      "--resolution",
+      "1024",
+      "--steps",
+      "25",
+      "--offload"
+    ],
+    "scriptSha256": "2ac8a84947596725d7500d308d3b4297f7e60778da2fb5dadd7f09847af34715",
+    "resolution": 1024,
+    "steps": 25,
+    "seed": 0,
+    "offload": true,
+    "rawOutput": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb",
+    "report": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-inference.json",
+    "hasRun": false,
+    "environmentPolicy": "reuse verified H/B model and offline environment; move all caches/temp to F volume"
+  },
+  "geometryPolicy": "standalone geometry-only input and QA output; no synthesized normals, vertex colors or neck cap",
+  "mappingPolicy": "approximate isotropic Y-height and bbox-center fit only; never an exact inverse of upstream normalization",
+  "fullBodyMergeAllowed": false,
+  "fullBodyPolicy": "source/body assets stay untouched; standalone result must be visually assessed before any new splice design"
+}

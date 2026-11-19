@@ -1,0 +1,1138 @@
+{
+  "status": "verified existing official captures",
+  "columns": {
+    "source": "A / source head and shoulder crop",
+    "H": "H / full-body Hi3D",
+    "I": "I / head-local Hi3D; approximate fit"
+  },
+  "views": {
+    "front": [
+      0,
+      0,
+      1
+    ],
+    "iso": [
+      1,
+      1,
+      1
+    ],
+    "right": [
+      1,
+      0,
+      0
+    ]
+  },
+  "modes": [
+    "lit",
+    "normals"
+  ],
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "halfExtent": 0.65783283658225,
+    "distance": 1.8073808642855147,
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001
+  },
+  "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+  "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+  "headWorldBounds": [
+    [
+      -0.06190345578729607,
+      0.3100160773953314,
+      -0.024992582091377752
+    ],
+    [
+      0.07604182008052954,
+      0.51,
+      0.18067711655172314
+    ]
+  ],
+  "headROIs": {
+    "front": [
+      463,
+      115,
+      572,
+      271
+    ],
+    "iso": [
+      378,
+      160,
+      568,
+      397
+    ],
+    "right": [
+      371,
+      115,
+      532,
+      271
+    ]
+  },
+  "contextROIs": {
+    "front": [
+      370,
+      107,
+      632,
+      310
+    ],
+    "iso": [
+      370,
+      152,
+      576,
+      434
+    ],
+    "right": [
+      363,
+      107,
+      572,
+      310
+    ]
+  },
+  "contextPolicy": "Common union of source/I nonzero-alpha bounds and fixed head ROI, padded8px and limited to viewport. H body extends outside this bust crop.",
+  "material": {
+    "baseColorFactor": [
+      180,
+      180,
+      180,
+      255
+    ],
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+  },
+  "normalAccessors": {
+    "source": [
+      {
+        "present": false
+      }
+    ],
+    "H": [
+      {
+        "present": false
+      }
+    ],
+    "I": [
+      {
+        "present": false
+      }
+    ]
+  },
+  "sourceTriangles": {
+    "source": 20287,
+    "H": 999999,
+    "I": 1000000
+  },
+  "mapping": {
+    "method": "standalone-hi3d-head-region-v1",
+    "stage": "standalone-result-mapped",
+    "plan": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-plan.json",
+    "planSha256": "2fbaab58507820760b5e072a63a9ea95df5d97e6a1a6910d754ece3cbaf50425",
+    "rawMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb",
+    "rawMeshSha256": "809689a663fda131b18ddb7626f235e2563b0e280ea7f98720f02eea0739d1af",
+    "outputMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-canonical.glb",
+    "outputMeshSha256": "139f5505400b0ae5b16732b10a8f0ef2e408e09cbb7f7b20b58d6e04d69daf33",
+    "outputVertices": 500011,
+    "outputTriangles": 1000000,
+    "sourceHeadVertices": 10402,
+    "rawVertices": 500011,
+    "rawTriangles": 1000000,
+    "mapping": {
+      "method": "isotropic-y-height-bbox-center-fit",
+      "exactInverse": false,
+      "rotationEstimated": false,
+      "axisSpecificStretch": false,
+      "sourceBounds": [
+        [
+          -0.17159518599510193,
+          0.27000001072883606,
+          -0.0671117827296257
+        ],
+        [
+          0.1440671980381012,
+          0.5,
+          0.17067711055278778
+        ]
+      ],
+      "rawBounds": [
+        [
+          -0.7450441718101501,
+          -0.34813758730888367,
+          -0.6270082592964172
+        ],
+        [
+          0.6330642104148865,
+          0.6625733971595764,
+          0.4136176109313965
+        ]
+      ],
+      "scale": 0.22756257011703748,
+      "translation": [
+        -0.0010227700701439472,
+        0.3492230948511902,
+        0.0760625261020236
+      ],
+      "rawToCanonicalWorldRowMajor": [
+        [
+          0.22756257011703748,
+          0.0,
+          0.0,
+          -0.0010227700701439472
+        ],
+        [
+          0.0,
+          0.22756257011703748,
+          0.0,
+          0.3492230948511902
+        ],
+        [
+          0.0,
+          0.0,
+          0.22756257011703748,
+          0.0760625261020236
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "canonicalWorldToRawRowMajor": [
+        [
+          4.394395789631357,
+          0.0,
+          0.0,
+          0.004494456490001529
+        ],
+        [
+          0.0,
+          4.394395789631357,
+          0.0,
+          -1.534624497656102
+        ],
+        [
+          0.0,
+          0.0,
+          4.394395789631357,
+          -0.3342488444514577
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "extentRatioXYZ": [
+        0.9934851322860667,
+        1.0,
+        0.9958728277441962
+      ],
+      "extentResidualXYZ": [
+        -0.002056498674241125,
+        0.0,
+        -0.00098139572309347
+      ],
+      "warning": "bbox registration can shift anatomy when generated neck/hair bounds differ; not approved for splicing"
+    },
+    "rawExportNormalizationMeasurements": {
+      "meanXYZ": [
+        3.328240829733812e-12,
+        -7.568870309714727e-12,
+        3.4517984236708086e-12
+      ],
+      "maxRadiusAboutMean": 1.0000000375393356,
+      "measurementDoesNotRecoverPreNormalizationMeanOrScale": true
+    },
+    "storedFloat32Bounds": [
+      [
+        -0.17056693136692047,
+        0.27000001072883606,
+        -0.0666210874915123
+      ],
+      [
+        0.14303894340991974,
+        0.5,
+        0.17018641531467438
+      ]
+    ],
+    "nearestVertexDistanceDiagnostic": {
+      "mappedToSourceP50P95Max": [
+        0.0016458179646854033,
+        0.010152219038644973,
+        0.054837314615362516
+      ],
+      "sourceToMappedP50P95Max": [
+        0.000571473281528328,
+        0.0014660278443817008,
+        0.0035432749649843406
+      ],
+      "normalizedBySourceYSpan": 0.22999998927116394,
+      "notSurfaceOrLandmarkAccuracy": true
+    },
+    "outputBoundary": {
+      "boundaryEdges": 18,
+      "nonmanifoldEdges": 147
+    },
+    "inputSourceHashesRechecked": true,
+    "fullBodyMergeAllowed": false,
+    "assessment": "not visually evaluated; geometry and face correspondence must be judged from the standalone output",
+    "normalPolicy": "no NORMAL accessor synthesized in either standalone source or result; identical clay material"
+  },
+  "captures": {
+    "source": {
+      "lit": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-front.png",
+            "sha256": "08e5ce9dde4a6ac19dd88c34994cdae2606d36a7719728cfc0bf0f0f4bbcc7ae",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            378.4451964940681,
+            122.8433848786874,
+            624.1294062770386,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            624,
+            302
+          ],
+          "alphaBoundsOver0": [
+            378,
+            122,
+            624,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5548035059318863,
+          "nonzeroAlphaPixelsOutsideHeadROI": 9527,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-iso.png",
+            "sha256": "7190a53bfa9680238ef11037e1caebd6cde4f0edf5d89a31408125b86db3cf5c",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            410.53359507955065,
+            226.06660776542077,
+            532.6459623541945,
+            425.51248687422924
+          ],
+          "alphaBoundsOver127": [
+            410,
+            226,
+            533,
+            426
+          ],
+          "alphaBoundsOver0": [
+            410,
+            226,
+            533,
+            426
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5335950795506506,
+          "nonzeroAlphaPixelsOutsideHeadROI": 1072,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-right.png",
+            "sha256": "59bd441997e2e2fee34ba6aaf8ff57075525206dc7e367df116ea5be24682b95",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            379.1597467571821,
+            122.8433848786874,
+            564.2339884036362,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            564,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            564,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.23398840363620366,
+          "nonzeroAlphaPixelsOutsideHeadROI": 5099,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      },
+      "normals": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-front.png",
+            "sha256": "eecd547c69b556e67e3912a00167363e2d18e6f8ba3e7ceb581025472ed7cb1f",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            378.4451964940681,
+            122.8433848786874,
+            624.1294062770386,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            624,
+            302
+          ],
+          "alphaBoundsOver0": [
+            378,
+            122,
+            624,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5548035059318863,
+          "nonzeroAlphaPixelsOutsideHeadROI": 9527,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-iso.png",
+            "sha256": "d302970f61cd3e009675ffc0e57268fe3e19987231227e84884aa0bc7a86c956",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            410.53359507955065,
+            226.06660776542077,
+            532.6459623541945,
+            425.51248687422924
+          ],
+          "alphaBoundsOver127": [
+            410,
+            226,
+            533,
+            426
+          ],
+          "alphaBoundsOver0": [
+            410,
+            226,
+            533,
+            426
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5335950795506506,
+          "nonzeroAlphaPixelsOutsideHeadROI": 1072,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+          "captureSHA256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-right.png",
+            "sha256": "f58b8426db934f317e007aac19f0707d5a67d8e7776638c2e4c7b816a15c0a20",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            379.1597467571821,
+            122.8433848786874,
+            564.2339884036362,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            564,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            564,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.23398840363620366,
+          "nonzeroAlphaPixelsOutsideHeadROI": 5099,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      }
+    },
+    "H": {
+      "lit": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-front.png",
+            "sha256": "f4f1f8b4476384892ae23f9997541a71cce37b8e8ec8144f84640f42792ff32b",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            371.8122225546806,
+            122.8433848786874,
+            652.1877774453194,
+            901.1566151213126
+          ],
+          "alphaBoundsOver127": [
+            372,
+            123,
+            652,
+            901
+          ],
+          "alphaBoundsOver0": [
+            371,
+            122,
+            653,
+            902
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.18777744531939788,
+          "nonzeroAlphaPixelsOutsideHeadROI": 72219,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-iso.png",
+            "sha256": "e8371e9cff212b75417aa378c8fc6429f92fe04652cc8e357991a6ec30329856",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            407.1306882092955,
+            223.64616870598218,
+            628.0020194735355,
+            819.4260521284722
+          ],
+          "alphaBoundsOver127": [
+            407,
+            224,
+            628,
+            820
+          ],
+          "alphaBoundsOver0": [
+            407,
+            223,
+            628,
+            820
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.573947871527821,
+          "nonzeroAlphaPixelsOutsideHeadROI": 45053,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-right.png",
+            "sha256": "aad1468f37a2f3bd2041315dc05d149f2549c4ca6c1d13d56249870df50b3fc7",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            380.2461795443055,
+            122.8433848786874,
+            643.7538204556945,
+            901.1566151213126
+          ],
+          "alphaBoundsOver127": [
+            380,
+            123,
+            644,
+            901
+          ],
+          "alphaBoundsOver0": [
+            380,
+            122,
+            644,
+            902
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.24617954430550526,
+          "nonzeroAlphaPixelsOutsideHeadROI": 77183,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      },
+      "normals": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-front.png",
+            "sha256": "4a2c8ed829216ab24ff15d51a56d87da7d119d5282100cfe649165f348a2904d",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            371.8122225546806,
+            122.8433848786874,
+            652.1877774453194,
+            901.1566151213126
+          ],
+          "alphaBoundsOver127": [
+            372,
+            123,
+            652,
+            901
+          ],
+          "alphaBoundsOver0": [
+            371,
+            122,
+            653,
+            902
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.18777744531939788,
+          "nonzeroAlphaPixelsOutsideHeadROI": 72219,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-iso.png",
+            "sha256": "e7cc2d5f23ff8efaebe3bc46fb2816fe5caa8c94ad7f26368fac25193fcc2b90",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            407.1306882092955,
+            223.64616870598218,
+            628.0020194735355,
+            819.4260521284722
+          ],
+          "alphaBoundsOver127": [
+            407,
+            224,
+            628,
+            820
+          ],
+          "alphaBoundsOver0": [
+            407,
+            223,
+            628,
+            820
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.573947871527821,
+          "nonzeroAlphaPixelsOutsideHeadROI": 45053,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json",
+          "captureSHA256": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-right.png",
+            "sha256": "3dddc766f407b694c984af97a981398ee88a311c1b11a0f751acf25147fade0b",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            380.2461795443055,
+            122.8433848786874,
+            643.7538204556945,
+            901.1566151213126
+          ],
+          "alphaBoundsOver127": [
+            380,
+            123,
+            644,
+            901
+          ],
+          "alphaBoundsOver0": [
+            380,
+            122,
+            644,
+            902
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.24617954430550526,
+          "nonzeroAlphaPixelsOutsideHeadROI": 77183,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      }
+    },
+    "I": {
+      "lit": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-front.png",
+            "sha256": "8fe6527659e2a7997bd18676e9ea6d6c1fb8ac9a960a84b84dd63597fa1896b2",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            379.24550067524,
+            122.8433848786874,
+            623.3291020958667,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            623,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            624,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.3291020958666877,
+          "nonzeroAlphaPixelsOutsideHeadROI": 9547,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-iso.png",
+            "sha256": "3fa06de23b3b60e71d805e47ee29c25cd38d45cb69de7747625cdac1edc625d1",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            411.01389909122366,
+            225.85516003292702,
+            531.8266838939196,
+            424.80778262501696
+          ],
+          "alphaBoundsOver127": [
+            411,
+            226,
+            532,
+            425
+          ],
+          "alphaBoundsOver0": [
+            411,
+            226,
+            532,
+            425
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.19221737498304492,
+          "nonzeroAlphaPixelsOutsideHeadROI": 1026,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-right.png",
+            "sha256": "ca2f6bad02d8d451680aea6e4abf5d2be6297dae16836af2e437fac8895861e1",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            379.5416613530228,
+            122.8433848786874,
+            563.8520738077955,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            564,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            564,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5416613530227892,
+          "nonzeroAlphaPixelsOutsideHeadROI": 5121,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      },
+      "normals": {
+        "front": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-front.png",
+            "sha256": "96cf13e48b25562f78d911a1f8e785d1df8b78c9535c5c963f48db25fd6ed54c",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "projectedBounds": [
+            379.24550067524,
+            122.8433848786874,
+            623.3291020958667,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            623,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            624,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.3291020958666877,
+          "nonzeroAlphaPixelsOutsideHeadROI": 9547,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "iso": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-iso.png",
+            "sha256": "7e83891465b61297676ae9038952609e30c5a0ed784233570ed287a7147b3e10",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "projectedBounds": [
+            411.01389909122366,
+            225.85516003292702,
+            531.8266838939196,
+            424.80778262501696
+          ],
+          "alphaBoundsOver127": [
+            411,
+            226,
+            532,
+            425
+          ],
+          "alphaBoundsOver0": [
+            411,
+            226,
+            532,
+            425
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.19221737498304492,
+          "nonzeroAlphaPixelsOutsideHeadROI": 1026,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        },
+        "right": {
+          "capture": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json",
+          "captureSHA256": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+          "image": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-right.png",
+            "sha256": "59c563edf4c2379d62a23848218579559649cebab62edc7ee50c60b4869a4154",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "projectedBounds": [
+            379.5416613530228,
+            122.8433848786874,
+            563.8520738077955,
+            301.85541948409616
+          ],
+          "alphaBoundsOver127": [
+            379,
+            123,
+            564,
+            302
+          ],
+          "alphaBoundsOver0": [
+            379,
+            122,
+            564,
+            302
+          ],
+          "geometryExtendsOutsideViewport": false,
+          "cameraProjectionValidated": true,
+          "projectionMaxErrorPx": 0.5416613530227892,
+          "nonzeroAlphaPixelsOutsideHeadROI": 5121,
+          "outsideROIInterpretation": "Includes intentionally excluded shoulders/body; not an accuracy score."
+        }
+      }
+    }
+  },
+  "inputsSHA256": {
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/provenance.json": "5a8553aedd6d65052e6eb8e39d246d1f7c4f98a55f21c2b2d88f994bfd91bc27",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-provenance.json": "15e9fdb5b175af1a81709958644e4905e2da74254ff120c757ab81e432202c44",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/provenance.json": "174b6c162f2291fdc92ec97cb9d836eb772866603a44436d646a0ea20828950b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-plan.json": "2fbaab58507820760b5e072a63a9ea95df5d97e6a1a6910d754ece3cbaf50425",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-mapping.json": "58c055583831002ffc4ac82560fb2b0b6f3aaed6ff63daa01cabc573305443a0",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb": "809689a663fda131b18ddb7626f235e2563b0e280ea7f98720f02eea0739d1af",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/manifest.json": "ae235e80807456cbe1e02aba42d1219820b03657898f3b697af7f6cfb2a6878c",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-full-comparison-provenance.json": "aaa864bdead10ddd8f9afd85f46d77e922c96f5e11236ec3bd12cc9c4af64401",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/prepare_evidence.py": "17b0ee8018b3732f6d19e3d94623f6bd993d81f1b8f65b0aa2862b3aa1b60d01",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-source.glb": "0674a6a68d06839bf79e0488758170cce92ed669a98b00710c50fa1e309be0a7",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.glb": "ee9d0f4a0261878aed4b03ccd5b28cf85518253d6c8b0f8d202f86be15eacb4c",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.inspector.html": "a89c448a786a4fd799cf715b07d7420f4a6584f1d9af19961d41365180e148ad",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/geometry/proxy.glb": "51377a54c906e8bd2c0a1b431352aa49a79ffe9c2a89bbcfdcc77d4b54f21126",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay.glb": "cf9edb5a149ad9623770010576d63b1a06e9737ad4191a0d533001ed4620b12e",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay.inspector.html": "694c4005dba5d4513984be955793ecdadd70e83ae5bb18018ab5862f109f671b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-canonical.glb": "139f5505400b0ae5b16732b10a8f0ef2e408e09cbb7f7b20b58d6e04d69daf33",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/clay.glb": "682ba2475b27f0f7f2f7439d74ff3a668dcc1738da76e3930364dca23111e226",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/clay.inspector.html": "03bf56750b35930bf6b3fc339bc9eb0f1cd374bc4bdbe096f5cda59d1948523b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-front.png": "08e5ce9dde4a6ac19dd88c34994cdae2606d36a7719728cfc0bf0f0f4bbcc7ae",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-iso.png": "7190a53bfa9680238ef11037e1caebd6cde4f0edf5d89a31408125b86db3cf5c",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-right.png": "59bd441997e2e2fee34ba6aaf8ff57075525206dc7e367df116ea5be24682b95",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-front.png": "eecd547c69b556e67e3912a00167363e2d18e6f8ba3e7ceb581025472ed7cb1f",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-iso.png": "d302970f61cd3e009675ffc0e57268fe3e19987231227e84884aa0bc7a86c956",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-right.png": "f58b8426db934f317e007aac19f0707d5a67d8e7776638c2e4c7b816a15c0a20",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/capture.json": "9c68f8c7349ddf8c2e2c7c03a81ca50613323e7b24bd4c872d698c5f7bb21ddc",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-front.png": "f4f1f8b4476384892ae23f9997541a71cce37b8e8ec8144f84640f42792ff32b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-iso.png": "e8371e9cff212b75417aa378c8fc6429f92fe04652cc8e357991a6ec30329856",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/lit-right.png": "aad1468f37a2f3bd2041315dc05d149f2549c4ca6c1d13d56249870df50b3fc7",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-front.png": "4a2c8ed829216ab24ff15d51a56d87da7d119d5282100cfe649165f348a2904d",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-iso.png": "e7cc2d5f23ff8efaebe3bc46fb2816fe5caa8c94ad7f26368fac25193fcc2b90",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/H-control/normals-right.png": "3dddc766f407b694c984af97a981398ee88a311c1b11a0f751acf25147fade0b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/capture.json": "463450a354599715f39bc0b9e74217041647c15727eed9477870fcb74ccac33f",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-front.png": "8fe6527659e2a7997bd18676e9ea6d6c1fb8ac9a960a84b84dd63597fa1896b2",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-iso.png": "3fa06de23b3b60e71d805e47ee29c25cd38d45cb69de7747625cdac1edc625d1",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/lit-right.png": "ca2f6bad02d8d451680aea6e4abf5d2be6297dae16836af2e437fac8895861e1",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-front.png": "96cf13e48b25562f78d911a1f8e785d1df8b78c9535c5c963f48db25fd6ed54c",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-iso.png": "7e83891465b61297676ae9038952609e30c5a0ed784233570ed287a7147b3e10",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/result/captures/normals-right.png": "59c563edf4c2379d62a23848218579559649cebab62edc7ee50c60b4869a4154"
+  },
+  "panels": {
+    "A-H-I-head-lit.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-H-I-head-lit.webp",
+      "sha256": "cf5e1bb189888a14c640267eebfb2807ede3ccfbfdb9b9aa1e6d767158f04f6e",
+      "bytes": 195900,
+      "size": [
+        1790,
+        1957
+      ]
+    },
+    "A-H-I-head-normals.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-H-I-head-normals.webp",
+      "sha256": "a16560a2fcdbe9707718410de56825484c9b37a43effde59fdc952ad4872652e",
+      "bytes": 299296,
+      "size": [
+        1790,
+        1957
+      ]
+    },
+    "A-H-I-context-lit.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-H-I-context-lit.webp",
+      "sha256": "73cb26acc1009604d340a85a0db0b87f79d4b3849ef2b88ef3998e11bf1da1ea",
+      "bytes": 241814,
+      "size": [
+        1652,
+        1686
+      ]
+    },
+    "A-H-I-context-normals.webp": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-H-I-context-normals.webp",
+      "sha256": "167a65f0199fd7fea86896deb5516d2ae223d51251d03b4efe209135c7eafda6",
+      "bytes": 382580,
+      "size": [
+        1652,
+        1686
+      ]
+    }
+  },
+  "processing": "Original frames unchanged; common per-view ROI, neutral alpha backdrop, integer nearest enlargement, lossless WebP.",
+  "limitations": [
+    "I mapping is approximate; no anatomical landmark registration or body merge.",
+    "Normal images describe the renderer's per-mesh computed normals, including crop-boundary changes.",
+    "A viewport-clipped mesh cannot pass the full projected-silhouette camera check; clipping is reported explicitly."
+  ],
+  "scriptSHA256": "ff1e5aff5a782ed912281d54ab70e5a21d181bd2339da56d7ad7f50bd8375b77"
+}

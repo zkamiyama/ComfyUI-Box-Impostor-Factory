@@ -1,0 +1,84 @@
+{
+  "kind": "I-small-evidence-copy-proof-v1",
+  "files": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-plan.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/I-run/head-plan.json",
+      "bytes": 12212,
+      "sha256": "2fbaab58507820760b5e072a63a9ea95df5d97e6a1a6910d754ece3cbaf50425",
+      "byteIdentical": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-execution.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/I-run/head-execution.json",
+      "bytes": 3385,
+      "sha256": "cd6a40dc7b93e4bf6be7d375e2e966d91fedc440ba64caec69aa20a27f41f8a2",
+      "byteIdentical": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-inference.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/I-run/hi3d-inference.json",
+      "bytes": 299,
+      "sha256": "d900e75f24b94b1e4e3fe4da079345f3908db9d1b22c8fdefd95359afa63f182",
+      "byteIdentical": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-mapping.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/I-run/head-mapping.json",
+      "bytes": 3940,
+      "sha256": "58c055583831002ffc4ac82560fb2b0b6f3aaed6ff63daa01cabc573305443a0",
+      "byteIdentical": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-topology.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/I-run/head-topology.json",
+      "bytes": 11438,
+      "sha256": "782472f9494d4db97defd4f2e4dbb51ee165746b819dbb38adaf1210bb9f9f29",
+      "byteIdentical": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-reference.png",
+      "destination": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/I-run/head-reference.png",
+      "bytes": 136427,
+      "sha256": "dfe91c501a564224634c0f91ab4c39d82ec78094012342599bc12765397baa41",
+      "byteIdentical": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-reference-prepared.png",
+      "destination": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/I-run/head-reference-prepared.png",
+      "bytes": 80877,
+      "sha256": "f7933fb478044ce880c7532e767526fb39fc041289885591a8d4ede91ac68a38",
+      "byteIdentical": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-reference-context.png",
+      "destination": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/I-run/head-reference-context.png",
+      "bytes": 952605,
+      "sha256": "e3c08f85a19f677ba97e1ad2ef4d1ddb4f77e5da67186124b9ed0950c2833431",
+      "byteIdentical": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-inference.log",
+      "destination": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/I-run/head-inference.log",
+      "bytes": 2663,
+      "sha256": "b783904f769489ca213be56f6a70e515f4f13e8bf70f4a4b5b549a0ae7b5fed3",
+      "byteIdentical": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/check-head-topology.py",
+      "destination": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/I-run/check-head-topology.py",
+      "bytes": 11482,
+      "sha256": "691e563daaa49c9f43d44bd98c4e2b4030bc1175405dd34cad1f261f51f9d6fd",
+      "byteIdentical": true
+    }
+  ],
+  "totalBytes": 1215328,
+  "testSource": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/tests/test_refine_head_region.py",
+    "sha256": "79b6c98330f79008be7fe830cd42ab4c51fb45758f58f11eeabc99458109a9b9",
+    "validation": "9 focused CPU tests passed on270-PC in0.010s; observed process23687"
+  },
+  "originalMappingUnchanged": true,
+  "largeMeshViewerFilesRemainOnF": true,
+  "gitCommitOrPushPerformed": false
+}

@@ -1,0 +1,318 @@
+{
+  "kind": "supplemental-I-head-result-topology-and-mapping-audit-v1",
+  "sourcePlan": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-plan.json",
+  "sourcePlanSHA256": "2fbaab58507820760b5e072a63a9ea95df5d97e6a1a6910d754ece3cbaf50425",
+  "sourceMapping": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-mapping.json",
+  "sourceMappingSHA256": "58c055583831002ffc4ac82560fb2b0b6f3aaed6ff63daa01cabc573305443a0",
+  "auditScript": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/check-head-topology.py",
+  "auditScriptSHA256": "691e563daaa49c9f43d44bd98c4e2b4030bc1175405dd34cad1f261f51f9d6fd",
+  "helperScript": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/refine_head_region.py",
+  "helperScriptSHA256": "e83038317cb5b0cf8c772e8e557d290c3bdec453420a84ca3ca90219840037f0",
+  "inputOutputChecks": {
+    "rawHashMatchesMapping": true,
+    "mappedHashMatchesMapping": true,
+    "planHashMatchesMapping": true,
+    "inferenceFacesMatchRaw": true,
+    "inferenceVerticesMatchRawAccessors": true,
+    "mappedStoredIndicesEqualRawUniquePositionIndices": true,
+    "mappedStoredPositionsEqualDeclaredAffineAtFloat32": true,
+    "coarseWholebodyInputUnchanged": true,
+    "fullbodyReferencePNGUnchanged": true,
+    "sourceCutMeshUnchanged": true
+  },
+  "meshes": {
+    "source": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-source.glb",
+      "sha256": "0674a6a68d06839bf79e0488758170cce92ed669a98b00710c50fa1e309be0a7",
+      "fileBytes": 369104,
+      "activeAccessorVertices": 10402,
+      "uniquePositions": 10402,
+      "triangles": 20287,
+      "allPositionsFinite": true,
+      "allIndicesInBounds": true,
+      "unreferencedUniquePositions": 0,
+      "bounds": [
+        [
+          -0.17159518599510193,
+          0.27000001072883606,
+          -0.0671117827296257
+        ],
+        [
+          0.1440671980381012,
+          0.5,
+          0.17067711055278778
+        ]
+      ],
+      "zeroAreaTriangles": 0,
+      "repeatedCornerTriangles": 0,
+      "triangleAreaMinMedianP95Max": [
+        1.6046197160534007e-09,
+        5.985576211489325e-06,
+        9.672048749930616e-06,
+        1.521469569266524e-05
+      ],
+      "duplicateUnorientedTriangleGroups": 0,
+      "extraDuplicateUnorientedTriangles": 0,
+      "uniqueEdges": 30690,
+      "boundaryEdges": 519,
+      "nonmanifoldEdges": 0,
+      "maxFacesPerEdge": 2,
+      "twoFaceEdgesWithSameDirectedWinding": 0,
+      "closedTwoManifoldByEdgeIncidence": false,
+      "vertexConnectedComponents": 1,
+      "componentsByTriangleCount": [
+        {
+          "vertices": 10402,
+          "triangles": 20287,
+          "triangleFraction": 1.0
+        }
+      ],
+      "eulerVminusEplusF": -1,
+      "eulerDoesNotEstablishGenusWithNonmanifoldEdges": true,
+      "selfIntersectionsEvaluated": false,
+      "cutPlane": {
+        "canonicalY": 0.27,
+        "planeTolerance": 2.384185791015625e-07,
+        "verticesBelowPlaneBeyondTolerance": 0,
+        "verticesOnPlaneWithinTolerance": 519,
+        "allThreeCornersOnPlaneTriangles": 0,
+        "boundaryEdgesOnPlane": 519,
+        "boundaryEndpointYMinMedianP95Max": [
+          0.27000001072883606,
+          0.27000001072883606,
+          0.27000001072883606,
+          0.27000001072883606
+        ],
+        "nonmanifoldMidpointYMinMedianP95Max": null,
+        "nonmanifoldEdgesInLower5PercentSlab": 0,
+        "nonmanifoldEdgesInsidePriorHeadQABox": 0,
+        "lowerSlabsByFractionOfSourceYSpan": {
+          "0.01": {
+            "upperY": 0.27229999989271164,
+            "trianglesByCentroid": 837,
+            "downwardFacingTriangles": 17,
+            "downwardFacingArea": 9.808460917088959e-05
+          },
+          "0.02": {
+            "upperY": 0.2745999997854233,
+            "trianglesByCentroid": 1163,
+            "downwardFacingTriangles": 44,
+            "downwardFacingArea": 0.0003078174626466724
+          },
+          "0.05": {
+            "upperY": 0.2814999994635582,
+            "trianglesByCentroid": 2209,
+            "downwardFacingTriangles": 61,
+            "downwardFacingArea": 0.00040711856434709134
+          }
+        }
+      }
+    },
+    "raw": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb",
+      "sha256": "809689a663fda131b18ddb7626f235e2563b0e280ea7f98720f02eea0739d1af",
+      "fileBytes": 18000940,
+      "activeAccessorVertices": 500011,
+      "uniquePositions": 500011,
+      "triangles": 1000000,
+      "allPositionsFinite": true,
+      "allIndicesInBounds": true,
+      "unreferencedUniquePositions": 0,
+      "bounds": [
+        [
+          -0.7450441718101501,
+          -0.34813758730888367,
+          -0.6270082592964172
+        ],
+        [
+          0.6330642104148865,
+          0.6625733971595764,
+          0.4136176109313965
+        ]
+      ],
+      "zeroAreaTriangles": 0,
+      "repeatedCornerTriangles": 0,
+      "triangleAreaMinMedianP95Max": [
+        3.0042798220085917e-09,
+        2.3735556439433547e-06,
+        6.419126790844906e-06,
+        0.023446000772620976
+      ],
+      "duplicateUnorientedTriangleGroups": 119,
+      "extraDuplicateUnorientedTriangles": 119,
+      "uniqueEdges": 1499861,
+      "boundaryEdges": 18,
+      "nonmanifoldEdges": 147,
+      "maxFacesPerEdge": 6,
+      "twoFaceEdgesWithSameDirectedWinding": 0,
+      "closedTwoManifoldByEdgeIncidence": false,
+      "vertexConnectedComponents": 1,
+      "componentsByTriangleCount": [
+        {
+          "vertices": 500011,
+          "triangles": 1000000,
+          "triangleFraction": 1.0
+        }
+      ],
+      "eulerVminusEplusF": 150,
+      "eulerDoesNotEstablishGenusWithNonmanifoldEdges": true,
+      "selfIntersectionsEvaluated": false
+    },
+    "mapped": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-canonical.glb",
+      "sha256": "139f5505400b0ae5b16732b10a8f0ef2e408e09cbb7f7b20b58d6e04d69daf33",
+      "fileBytes": 18000980,
+      "activeAccessorVertices": 500011,
+      "uniquePositions": 500011,
+      "triangles": 1000000,
+      "allPositionsFinite": true,
+      "allIndicesInBounds": true,
+      "unreferencedUniquePositions": 0,
+      "bounds": [
+        [
+          -0.17056693136692047,
+          0.27000001072883606,
+          -0.0666210874915123
+        ],
+        [
+          0.14303894340991974,
+          0.5,
+          0.17018641531467438
+        ]
+      ],
+      "zeroAreaTriangles": 0,
+      "repeatedCornerTriangles": 0,
+      "triangleAreaMinMedianP95Max": [
+        1.554730813436137e-10,
+        1.229136005961361e-07,
+        3.324115001016266e-07,
+        0.0012141445145658534
+      ],
+      "duplicateUnorientedTriangleGroups": 119,
+      "extraDuplicateUnorientedTriangles": 119,
+      "uniqueEdges": 1499861,
+      "boundaryEdges": 18,
+      "nonmanifoldEdges": 147,
+      "maxFacesPerEdge": 6,
+      "twoFaceEdgesWithSameDirectedWinding": 0,
+      "closedTwoManifoldByEdgeIncidence": false,
+      "vertexConnectedComponents": 1,
+      "componentsByTriangleCount": [
+        {
+          "vertices": 500011,
+          "triangles": 1000000,
+          "triangleFraction": 1.0
+        }
+      ],
+      "eulerVminusEplusF": 150,
+      "eulerDoesNotEstablishGenusWithNonmanifoldEdges": true,
+      "selfIntersectionsEvaluated": false,
+      "cutPlane": {
+        "canonicalY": 0.27,
+        "planeTolerance": 2.384185791015625e-07,
+        "verticesBelowPlaneBeyondTolerance": 0,
+        "verticesOnPlaneWithinTolerance": 1,
+        "allThreeCornersOnPlaneTriangles": 0,
+        "boundaryEdgesOnPlane": 0,
+        "boundaryEndpointYMinMedianP95Max": [
+          0.275347501039505,
+          0.3627263456583023,
+          0.480524517595768,
+          0.48063915967941284
+        ],
+        "nonmanifoldMidpointYMinMedianP95Max": [
+          0.2703128606081009,
+          0.27032701671123505,
+          0.2703328311443329,
+          0.270336776971817
+        ],
+        "nonmanifoldEdgesInLower5PercentSlab": 147,
+        "nonmanifoldEdgesInsidePriorHeadQABox": 0,
+        "lowerSlabsByFractionOfSourceYSpan": {
+          "0.01": {
+            "upperY": 0.27229999989271164,
+            "trianglesByCentroid": 119397,
+            "downwardFacingTriangles": 101709,
+            "downwardFacingArea": 0.02518187656157982
+          },
+          "0.02": {
+            "upperY": 0.2745999997854233,
+            "trianglesByCentroid": 137875,
+            "downwardFacingTriangles": 104106,
+            "downwardFacingArea": 0.025398114714502998
+          },
+          "0.05": {
+            "upperY": 0.2814999994635582,
+            "trianglesByCentroid": 188057,
+            "downwardFacingTriangles": 105550,
+            "downwardFacingArea": 0.025513974516331476
+          }
+        }
+      }
+    }
+  },
+  "distanceMetricClarification": {
+    "valuesInOriginalMapAre": "raw canonical-world coordinate units",
+    "normalizedBySourceYSpanMeaning": "a scalar divisor only; stored triplets have NOT already been divided",
+    "divisorCanonicalUnits": 0.22999998927116394,
+    "mappedToSourceRawCanonicalUnitsP50P95Max": [
+      0.0016458179646854033,
+      0.010152219038644973,
+      0.054837314615362516
+    ],
+    "sourceToMappedRawCanonicalUnitsP50P95Max": [
+      0.000571473281528328,
+      0.0014660278443817008,
+      0.0035432749649843406
+    ],
+    "mappedToSourceFractionsOfYSpanP50P95Max": [
+      0.007155730615035061,
+      0.04414008483572481,
+      0.2384231181450655
+    ],
+    "sourceToMappedFractionsOfYSpanP50P95Max": [
+      0.0024846665573300354,
+      0.0063740344033377,
+      0.01540554404464303
+    ],
+    "metricLimitation": "nearest input vertex, not nearest surface; not a facial-landmark or identity accuracy measurement",
+    "worstMappedToSource": {
+      "distanceCanonicalUnits": 0.054837314615362516,
+      "mappedVertexXYZ": [
+        -0.031219342723488808,
+        0.270326167345047,
+        0.052545469254255295
+      ],
+      "inLower5PercentSlab": true
+    },
+    "mappedToSourceLower5PercentSlabRawMinMedianP95Max": [
+      3.617776853251317e-05,
+      0.0022415763521080856,
+      0.027557552240862457,
+      0.054837314615362516
+    ],
+    "mappedToSourceAboveLower5PercentSlabRawMinMedianP95Max": [
+      1.4916570340523066e-05,
+      0.0015912397865224916,
+      0.0024596499739613273,
+      0.004445959701236534
+    ]
+  },
+  "priorHeadQABoxCanonical": [
+    [
+      -0.06190345578729607,
+      0.3100160773953314,
+      -0.024992582091377752
+    ],
+    [
+      0.07604182008052954,
+      0.51,
+      0.18067711655172314
+    ]
+  ],
+  "cutPlaneInterpretation": "source has an intentionally open plane; generated result reconstructs the lower region. Mapped minimum Y matches the source by bbox-height fit and does not prove anatomical neck correspondence or cut-boundary preservation.",
+  "assessment": "finite indexed geometry and declared affine verified; output is not a closed two-manifold by edge incidence. No topology repair, full-body merge, or self-intersection test performed.",
+  "diagnosticIndexingNote": "Topology helper sorts unique positions. Float32 rounding can reorder tied XYZ values; exact transform verification therefore uses stored mapped accessor order and indices against the raw unique-position indexing used by map_result.",
+  "originalMapEdited": false,
+  "fullBodyMergeAllowed": false
+}

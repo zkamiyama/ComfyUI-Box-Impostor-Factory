@@ -1,0 +1,423 @@
+{
+  "stage": "I-source",
+  "status": "captured and verified",
+  "source": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-source.glb",
+    "sha256": "0674a6a68d06839bf79e0488758170cce92ed669a98b00710c50fa1e309be0a7",
+    "bytes": 369104,
+    "triangles": 20287,
+    "geometry": [
+      {
+        "vertices": 10402,
+        "triangles": 20287,
+        "positionsSHA256": "89d9d9ec8c4973a594e699ba255c9ee22af135b4a960c90e362d809ea69481b6",
+        "indicesSHA256": "d8c72256d77864302a3408ef726947385338f73a02d33ea446a6a31a3bd7f656",
+        "transform": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "bounds": [
+      [
+        -0.17159518599510193,
+        0.27000001072883606,
+        -0.0671117827296257
+      ],
+      [
+        0.1440671980381012,
+        0.5,
+        0.17067711055278778
+      ]
+    ]
+  },
+  "clay": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.glb",
+    "sha256": "ee9d0f4a0261878aed4b03ccd5b28cf85518253d6c8b0f8d202f86be15eacb4c",
+    "material": {
+      "baseColorFactor": [
+        180,
+        180,
+        180,
+        255
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 1
+    },
+    "normalPreservation": {
+      "method": "GLB JSON material replacement; binary chunks and geometry accessors retained byte-for-byte",
+      "normalRecomputed": false,
+      "normalAccessors": [
+        {
+          "present": false
+        }
+      ],
+      "removedColorBindings": [
+        {}
+      ],
+      "binaryChunksIdentical": true,
+      "binaryChunkSHA256": [
+        "f067d005d7b585466833c35f7875fe214869da74f4282b37c3b931203a9e876c"
+      ],
+      "positionNormalIndexBindingsIdentical": true,
+      "nodeTransformsIdentical": true,
+      "sourceMaterialNormalTextures": [
+        null
+      ],
+      "materialTextureMode": "All color and tangent normal textures removed; original geometry NORMAL retained",
+      "note": "If NORMAL is absent in the source, it remains absent and the official renderer computes shading normals."
+    },
+    "geometryIdenticalAfterReload": true,
+    "sourceTriangles": 20287,
+    "viewerTriangleLimit": 20287,
+    "payloadTriangles": 20287,
+    "payloadOriginal": {
+      "vertices": 10402,
+      "triangles": 20287
+    },
+    "viewer": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.inspector.html",
+    "viewerSHA256": "a89c448a786a4fd799cf715b07d7420f4a6584f1d9af19961d41365180e148ad",
+    "viewerBytes": 1535625
+  },
+  "reference": {
+    "manifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+    "sha256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c"
+  },
+  "comparisonH": {
+    "provenance": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-provenance.json",
+    "provenanceSHA256": "15e9fdb5b175af1a81709958644e4905e2da74254ff120c757ab81e432202c44",
+    "capture": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay/capture.json",
+    "captureSHA256": "b6e7fc656342cbba9ed8f3f32f1fc9fbd330a52262e257be7dffc3e51fefd724",
+    "materialIdentical": true,
+    "normalAccessors": [
+      {
+        "present": false
+      }
+    ]
+  },
+  "tools": {
+    "preparationScript": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/prepare_head_clay.py",
+      "sha256": "86f4c05002de1d1a57f3822454567fb2ce867164c56c279b26ba3ea2b85a18a2"
+    },
+    "originalHelpers": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/prepare_evidence.py",
+      "sha256": "17b0ee8018b3732f6d19e3d94623f6bd993d81f1b8f65b0aa2862b3aa1b60d01"
+    },
+    "inspector": {
+      "path": "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+      "sha256": "ac5582e709b88c5d02aad2c999147237f077f3dc56850c8d8e139abaec947ada"
+    },
+    "captureScript": {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/capture_inspector.mjs",
+      "sha256": "f3111e78dee531a15dadc5b15a1957aeb22334d7a4ea6f7e7867fe646673e54c"
+    }
+  },
+  "commands": {
+    "viewer": [
+      "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+      "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.glb",
+      "-o",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.inspector.html",
+      "--max-triangles",
+      "20287"
+    ],
+    "capture": [
+      "node",
+      "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/capture_inspector.mjs",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.inspector.html",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures",
+      "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+      "lit,normals",
+      "front,iso,left,right",
+      "20287"
+    ],
+    "viewerShell": "/home/dev/Projects/box-impostor-lab/.venv/bin/python /home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py /mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.glb -o /mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.inspector.html --max-triangles 20287",
+    "captureShell": "node /home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/capture_inspector.mjs /mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.inspector.html /mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures /mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json lit,normals front,iso,left,right 20287"
+  },
+  "policy": "Material-only derivative; geometry binary unchanged. Original input and official viewer are unchanged.",
+  "sourceUnchanged": true,
+  "viewerUnchanged": true,
+  "commonCameraWithH": true,
+  "sameLightingAsH": true,
+  "capture": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/capture.json",
+    "sha256": "7274f243d41b6f7c6843d5a39f4731be10fab9adc125d54abd48b935610c1fbe",
+    "report": {
+      "html": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/clay.inspector.html",
+      "htmlSHA256": "a89c448a786a4fd799cf715b07d7420f4a6584f1d9af19961d41365180e148ad",
+      "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+      "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+      "assetId": null,
+      "sourceBounds": {
+        "min": [
+          -0.17159518599510193,
+          0.27000001072883606,
+          -0.0671117827296257
+        ],
+        "max": [
+          0.1440671980381012,
+          0.5,
+          0.17067711055278778
+        ]
+      },
+      "referenceBounds": {
+        "min": [
+          -0.19959635205538714,
+          -0.52,
+          -0.19067711655172312
+        ],
+        "max": [
+          0.19959635205538714,
+          0.52,
+          0.19067711655172312
+        ]
+      },
+      "triangleCounts": {
+        "expected": 20287,
+        "meshPayload": 20287,
+        "sourceOriginal": {
+          "vertices": 10402,
+          "triangles": 20287
+        }
+      },
+      "camera": {
+        "projection": "orthographic",
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "distance": 1.8073808642855147,
+        "halfExtent": 0.65783283658225,
+        "fovBeforeOrthographic": 40,
+        "fitFormula": "radius * 1.05 / sin(20deg)",
+        "sourceRadius": 0.22862977361158365,
+        "referenceRadius": 0.5887244402352406,
+        "perspectiveWheelDeltaY": 1844.0114949110325,
+        "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "cssPixels": [
+          800,
+          800
+        ],
+        "deviceScaleFactor": 1.28001,
+        "wheelProtocolDeltaY": 2360.3531258857493,
+        "pans": [
+          {
+            "view": "front",
+            "dx": -8.369295792536455,
+            "dy": -234.1020295457877
+          },
+          {
+            "view": "right",
+            "dx": -31.486822202805357,
+            "dy": 0
+          }
+        ]
+      },
+      "lighting": {
+        "viewerDefaults": true,
+        "studio": "neutral where supported",
+        "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+        "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+      },
+      "modes": {
+        "lit": {
+          "front": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-front.png",
+            "sha256": "08e5ce9dde4a6ac19dd88c34994cdae2606d36a7719728cfc0bf0f0f4bbcc7ae",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "iso": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-iso.png",
+            "sha256": "7190a53bfa9680238ef11037e1caebd6cde4f0edf5d89a31408125b86db3cf5c",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "left": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-left.png",
+            "sha256": "7cd2d736b46db1e269f6ba5ae5d05007c26ee3fb6c2ca426db42f5ab3072d5e4",
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              -1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "right": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/lit-right.png",
+            "sha256": "59bd441997e2e2fee34ba6aaf8ff57075525206dc7e367df116ea5be24682b95",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          }
+        },
+        "normals": {
+          "front": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-front.png",
+            "sha256": "eecd547c69b556e67e3912a00167363e2d18e6f8ba3e7ceb581025472ed7cb1f",
+            "direction": [
+              0,
+              0,
+              1
+            ],
+            "expectedPosition": [
+              0,
+              0,
+              1.8073808642855147
+            ]
+          },
+          "iso": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-iso.png",
+            "sha256": "d302970f61cd3e009675ffc0e57268fe3e19987231227e84884aa0bc7a86c956",
+            "direction": [
+              0.5773502691896258,
+              0.5773502691896258,
+              0.5773502691896258
+            ],
+            "expectedPosition": [
+              1.0434918285234205,
+              1.0434918285234205,
+              1.0434918285234205
+            ]
+          },
+          "left": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-left.png",
+            "sha256": "1265ca46dfe4a09ec1c568f7e430d64c88e4b9c767fbed98638456f06cb6c956",
+            "direction": [
+              -1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              -1.8073808642855147,
+              0,
+              0
+            ]
+          },
+          "right": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/evidence/source/captures/normals-right.png",
+            "sha256": "f58b8426db934f317e007aac19f0707d5a67d8e7776638c2e4c7b816a15c0a20",
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "expectedPosition": [
+              1.8073808642855147,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "errors": [],
+      "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "hardwareGPUUsed": false,
+      "browserVersion": "158.0.8127.18",
+      "viewport": {
+        "width": 800,
+        "height": 800
+      },
+      "canvasRect": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 800
+      },
+      "devicePixelRatio": 1.2800099849700928,
+      "canvasPixels": [
+        1024,
+        1024
+      ],
+      "backend": "Three.js / WebGL2",
+      "stageState": "Three.js PBR"
+    }
+  },
+  "normalPolicy": {
+    "sourceAccessors": [
+      {
+        "present": false
+      }
+    ],
+    "derivedAccessors": [
+      {
+        "present": false
+      }
+    ],
+    "hAccessors": [
+      {
+        "present": false
+      }
+    ],
+    "hProxyAccessors": [
+      {
+        "present": false
+      }
+    ],
+    "allAccessorsAbsent": true,
+    "normalRecomputedBeforeInspector": false,
+    "note": "Actual source, derived, H proxy and H clay GLBs all have no NORMAL accessor. The unchanged official Inspector computes shading normals in every case."
+  },
+  "normalPolicyVerification": {
+    "priorProvenanceSHA256": "09302e37aec452e74b15ee9d18145bd35f334eca5c958f5c9300309e20c9e194",
+    "reason": "Replaced speculative H normal provenance note with direct GLB accessor verification; captures and viewers unchanged.",
+    "verificationScript": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/prepare_head_clay.py",
+    "verificationScriptSHA256": "01c13119a0958edb5395c335fb359c32b4ac63c1394f2730cd87d9bb1e016254"
+  }
+}

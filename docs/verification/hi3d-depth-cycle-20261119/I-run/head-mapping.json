@@ -1,0 +1,157 @@
+{
+  "method": "standalone-hi3d-head-region-v1",
+  "stage": "standalone-result-mapped",
+  "plan": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-plan.json",
+  "planSha256": "2fbaab58507820760b5e072a63a9ea95df5d97e6a1a6910d754ece3cbaf50425",
+  "rawMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/hi3d-raw.glb",
+  "rawMeshSha256": "809689a663fda131b18ddb7626f235e2563b0e280ea7f98720f02eea0739d1af",
+  "outputMesh": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/I-head-local/head-canonical.glb",
+  "outputMeshSha256": "139f5505400b0ae5b16732b10a8f0ef2e408e09cbb7f7b20b58d6e04d69daf33",
+  "outputVertices": 500011,
+  "outputTriangles": 1000000,
+  "sourceHeadVertices": 10402,
+  "rawVertices": 500011,
+  "rawTriangles": 1000000,
+  "mapping": {
+    "method": "isotropic-y-height-bbox-center-fit",
+    "exactInverse": false,
+    "rotationEstimated": false,
+    "axisSpecificStretch": false,
+    "sourceBounds": [
+      [
+        -0.17159518599510193,
+        0.27000001072883606,
+        -0.0671117827296257
+      ],
+      [
+        0.1440671980381012,
+        0.5,
+        0.17067711055278778
+      ]
+    ],
+    "rawBounds": [
+      [
+        -0.7450441718101501,
+        -0.34813758730888367,
+        -0.6270082592964172
+      ],
+      [
+        0.6330642104148865,
+        0.6625733971595764,
+        0.4136176109313965
+      ]
+    ],
+    "scale": 0.22756257011703748,
+    "translation": [
+      -0.0010227700701439472,
+      0.3492230948511902,
+      0.0760625261020236
+    ],
+    "rawToCanonicalWorldRowMajor": [
+      [
+        0.22756257011703748,
+        0.0,
+        0.0,
+        -0.0010227700701439472
+      ],
+      [
+        0.0,
+        0.22756257011703748,
+        0.0,
+        0.3492230948511902
+      ],
+      [
+        0.0,
+        0.0,
+        0.22756257011703748,
+        0.0760625261020236
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "canonicalWorldToRawRowMajor": [
+      [
+        4.394395789631357,
+        0.0,
+        0.0,
+        0.004494456490001529
+      ],
+      [
+        0.0,
+        4.394395789631357,
+        0.0,
+        -1.534624497656102
+      ],
+      [
+        0.0,
+        0.0,
+        4.394395789631357,
+        -0.3342488444514577
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "extentRatioXYZ": [
+      0.9934851322860667,
+      1.0,
+      0.9958728277441962
+    ],
+    "extentResidualXYZ": [
+      -0.002056498674241125,
+      0.0,
+      -0.00098139572309347
+    ],
+    "warning": "bbox registration can shift anatomy when generated neck/hair bounds differ; not approved for splicing"
+  },
+  "rawExportNormalizationMeasurements": {
+    "meanXYZ": [
+      3.328240829733812e-12,
+      -7.568870309714727e-12,
+      3.4517984236708086e-12
+    ],
+    "maxRadiusAboutMean": 1.0000000375393356,
+    "measurementDoesNotRecoverPreNormalizationMeanOrScale": true
+  },
+  "storedFloat32Bounds": [
+    [
+      -0.17056693136692047,
+      0.27000001072883606,
+      -0.0666210874915123
+    ],
+    [
+      0.14303894340991974,
+      0.5,
+      0.17018641531467438
+    ]
+  ],
+  "nearestVertexDistanceDiagnostic": {
+    "mappedToSourceP50P95Max": [
+      0.0016458179646854033,
+      0.010152219038644973,
+      0.054837314615362516
+    ],
+    "sourceToMappedP50P95Max": [
+      0.000571473281528328,
+      0.0014660278443817008,
+      0.0035432749649843406
+    ],
+    "normalizedBySourceYSpan": 0.22999998927116394,
+    "notSurfaceOrLandmarkAccuracy": true
+  },
+  "outputBoundary": {
+    "boundaryEdges": 18,
+    "nonmanifoldEdges": 147
+  },
+  "inputSourceHashesRechecked": true,
+  "fullBodyMergeAllowed": false,
+  "assessment": "not visually evaluated; geometry and face correspondence must be judged from the standalone output",
+  "normalPolicy": "no NORMAL accessor synthesized in either standalone source or result; identical clay material"
+}
