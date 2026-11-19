@@ -1,0 +1,149 @@
+{
+  "sourceProxy": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+  "sourceProxySHA256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+  "sourceNormalSHA256": "54f8b8b7c9c3a7e8e07aff695517f54fbf8f26b6c1ddbceedf6bdd7458a559dd",
+  "headBounds": [
+    [
+      -0.06190345578729607,
+      0.3100160773953314,
+      -0.024992582091377752
+    ],
+    [
+      0.07604182008052954,
+      0.51,
+      0.18067711655172314
+    ]
+  ],
+  "headDefinition": "A upper 18 percent height within upper 8 percent X envelope; 0.01 bake-unit padding",
+  "primaryMethod": "Sum unnormalized triangle cross products per vertex index, then normalize; area-weighted.",
+  "secondaryMethod": "Same sums merged only at exactly identical vertex positions; seam diagnostic, not an output modification.",
+  "geometryOrNormalsModified": false,
+  "uniformClayPreservesSourceNormals": true,
+  "perIndex": {
+    "head": {
+      "vertices": 7281,
+      "meanDegrees": 2.4531608028732097,
+      "p50Degrees": 1.4787793334710982e-06,
+      "p95Degrees": 12.070690471648303,
+      "maxDegrees": 39.014633402927835,
+      "fractionAbove10Degrees": 0.07787391841779975,
+      "fractionAbove30Degrees": 0.0005493750858398572
+    },
+    "frontFacingHead": {
+      "vertices": 3420,
+      "meanDegrees": 3.691759340689536,
+      "p50Degrees": 2.091309789151873e-06,
+      "p95Degrees": 14.573095597774792,
+      "maxDegrees": 39.014633402927835,
+      "fractionAbove10Degrees": 0.13450292397660818,
+      "fractionAbove30Degrees": 0.0011695906432748538
+    }
+  },
+  "exactPositionWelded": {
+    "head": {
+      "vertices": 7281,
+      "meanDegrees": 8.111564223880898e-07,
+      "p50Degrees": 8.537736462515939e-07,
+      "p95Degrees": 2.091309789151873e-06,
+      "maxDegrees": 3.4150945850063763e-06,
+      "fractionAbove10Degrees": 0.0,
+      "fractionAbove30Degrees": 0.0
+    },
+    "frontFacingHead": {
+      "vertices": 3420,
+      "meanDegrees": 8.511274135076319e-07,
+      "p50Degrees": 8.537736462515939e-07,
+      "p95Degrees": 2.091309789151873e-06,
+      "maxDegrees": 3.4150945850063763e-06,
+      "fractionAbove10Degrees": 0.0,
+      "fractionAbove30Degrees": 0.0
+    }
+  },
+  "sourceMaterialNormalTextures": [
+    {
+      "index": 2,
+      "texCoord": 0,
+      "scale": 1
+    }
+  ],
+  "clayPreparation": {
+    "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/A-clay.glb",
+    "sha256": "381469aaa3a5e46600ab4b28e5195f5cb023685201113f730c2bc8299797fa85",
+    "material": {
+      "baseColorFactor": [
+        180,
+        180,
+        180,
+        255
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 1
+    },
+    "geometryIdenticalAfterReload": true,
+    "geometry": [
+      {
+        "vertices": 49522,
+        "triangles": 81180,
+        "positionsSHA256": "3f4046134012892bd887c884934c59310587b102a302a7fb6a7a9d86badb671c",
+        "indicesSHA256": "12de4070dcef4f51962d2d983bd0c5501b6f03457bc2ddf9951e083357af73b7",
+        "transform": [
+          [
+            1.1176511734153667,
+            0.0,
+            0.0,
+            0.010881411855650119
+          ],
+          [
+            0.0,
+            1.1176511734153667,
+            0.0,
+            0.02839508237150308
+          ],
+          [
+            0.0,
+            0.0,
+            1.1176511734153667,
+            0.013759666322433382
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "normalPreservation": {
+      "method": "GLB JSON material replacement; binary chunks and geometry accessors retained byte-for-byte",
+      "normalRecomputed": false,
+      "normalAccessors": [
+        {
+          "present": true,
+          "count": 49522,
+          "sha256": "54f8b8b7c9c3a7e8e07aff695517f54fbf8f26b6c1ddbceedf6bdd7458a559dd"
+        }
+      ],
+      "removedColorBindings": [
+        {}
+      ],
+      "binaryChunksIdentical": true,
+      "binaryChunkSHA256": [
+        "5828176119b269fc754de16868eb00ebe19aaf7be9170706cccd42d21a1babb1"
+      ],
+      "positionNormalIndexBindingsIdentical": true,
+      "nodeTransformsIdentical": true,
+      "note": "If NORMAL is absent in the source, it remains absent and the official renderer computes shading normals."
+    },
+    "preparationHistory": [
+      {
+        "previousGLBSHA256": "73ee241bfe8d3f11ce7200dfc999b26b14184afafeb6fc801afe9b47a212432c",
+        "previousViewerSHA256": "9ee29e0b2f8d80ca0e7d2a69c3c84782cbbe084b41012f82b2dfbc36225f206b",
+        "issue": "Initial trimesh export dropped original NORMAL; replaced before any screenshot was captured."
+      }
+    ],
+    "note": "Only the material was replaced. Original asset unchanged; no smoothing or remeshing.",
+    "viewer": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/A-clay.inspector.html",
+    "viewerSHA256": "115fd41a54f23e20356175f37e4ed202fc49103afaff21fc603cfa3651e2b6a6"
+  }
+}

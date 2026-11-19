@@ -2,7 +2,7 @@
   "kind": "actual A inputs; no generated result",
   "face": "+Z",
   "preparedPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/prepared.json",
-  "preparedSHA256": "127a14c5843a6990b9f70bed3c76ff9f61ec0ec88e4b3d613b7cacd964501339",
+  "preparedSHA256": "4ca5df2b3c65eeca3f859c078a2b2a5ecbfbbc26fc18c87505a11846ea7b3fcf",
   "recipe": {
     "branch": "A",
     "baseline": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
@@ -204,7 +204,7 @@
   },
   "pixelPreservationVerifiedAfterWebPDecode": true,
   "proof": {
-    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-input-heads.webp",
+    "path": "docs/verification/hi3d-depth-cycle-20261119/A-input-heads.webp",
     "sha256": "20c06664d3f24cb987f5df09a7f65240f6d2b21ce4341345f5cc658ec0fa1374",
     "size": [
       1368,

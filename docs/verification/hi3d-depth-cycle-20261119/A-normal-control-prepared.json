@@ -1,0 +1,36 @@
+{
+  "version": "normal-texture-control-v1",
+  "sourceBaseline": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+  "sourceBaselinePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+  "cacheKey": "d62c9f3c2550c429aea945af9f078e805b03380b3b68e4ad198069c54260b460",
+  "resolution": 1024,
+  "backend": "webgl2",
+  "proxy": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/normal-control/baselines/d62c9f3c2550c429aea945af9f078e805b03380b3b68e4ad198069c54260b460/canonical.glb",
+  "metadata": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/normal-control/baselines/d62c9f3c2550c429aea945af9f078e805b03380b3b68e4ad198069c54260b460/canonical.json",
+  "geometry": {
+    "jsonOnlyNormalTextureRemoved": true,
+    "nonJsonChunksByteIdentical": true,
+    "geometrySignatureEqual": true,
+    "sourceGeometrySignature": "41cdafe62841b71b13a8f21f6a58f1c2c123052f4ae21fe0fb5a64a1c6058dd9",
+    "controlGeometrySignature": "41cdafe62841b71b13a8f21f6a58f1c2c123052f4ae21fe0fb5a64a1c6058dd9",
+    "removedNormalTextures": [
+      {
+        "material": 0,
+        "normalTexture": {
+          "index": 2,
+          "texCoord": 0,
+          "scale": 1
+        }
+      }
+    ],
+    "sourceGlbSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "controlGlbSha256": "fd7ec8f5b5de3fc8e8a03890da29369876877fd0b707088e577cd09178721055",
+    "binaryChunks": [
+      {
+        "type": 5130562,
+        "byteLength": 4864600,
+        "sha256": "5828176119b269fc754de16868eb00ebe19aaf7be9170706cccd42d21a1babb1"
+      }
+    ]
+  }
+}

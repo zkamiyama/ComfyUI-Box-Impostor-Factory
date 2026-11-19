@@ -47,7 +47,7 @@
   },
   "rawSource": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/A/pz/raw_00001_.png",
   "rawSHA256": "4ef5861da67e3e19e34b8d888ea79a13f1ac8447da0e02e1d25a803e898c52f5",
-  "rawUnchangedCopy": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-pz-raw.png",
+  "rawUnchangedCopy": "docs/verification/hi3d-depth-cycle-20261119/A-pz-raw.png",
   "rawCopySHA256": "4ef5861da67e3e19e34b8d888ea79a13f1ac8447da0e02e1d25a803e898c52f5",
   "rawBytes": 1002301,
   "guideSource": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/guide.png",
@@ -67,7 +67,7 @@
   "processing": "Integer crops and nearest-neighbor sampling only. No registration, sharpening, recoloring or AI postprocessing.",
   "pixelPreservationVerifiedAfterWebPDecode": true,
   "proof": {
-    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-raw-front-proof.webp",
+    "path": "docs/verification/hi3d-depth-cycle-20261119/A-raw-front-proof.webp",
     "sha256": "9d2dd29183f73ffb5e5f9196dcbbd7c0395085bb09f9a0d87ac3ce3a2da4127c",
     "size": [
       996,

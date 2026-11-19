@@ -1,0 +1,199 @@
+{
+  "passed": true,
+  "checks": {
+    "resolutionEqual": true,
+    "tightBoundsEqual": true,
+    "bakeBoxEqual": true,
+    "transformEqual": true,
+    "inverseTransformEqual": true,
+    "faceOrderEqual": true,
+    "backendEqual": true,
+    "mapsEqual": true,
+    "versionsEqual": true,
+    "textureNamesEqual": true,
+    "colorMapEqual": true,
+    "colorMapDescriptorEqual": true,
+    "intervalMapEqual": true,
+    "intervalMapDescriptorEqual": true,
+    "normalMapChanged": true,
+    "normalMapDescriptorEqual": true,
+    "rangeMapEqual": true,
+    "rangeMapDescriptorEqual": true,
+    "normalCoverageEqual": true,
+    "baseColorEqual": true,
+    "+XCameraEqual": true,
+    "+XguideEqual": true,
+    "+XdepthEqual": true,
+    "-XCameraEqual": true,
+    "-XguideEqual": true,
+    "-XdepthEqual": true,
+    "+YCameraEqual": true,
+    "+YguideEqual": true,
+    "+YdepthEqual": true,
+    "-YCameraEqual": true,
+    "-YguideEqual": true,
+    "-YdepthEqual": true,
+    "+ZCameraEqual": true,
+    "+ZguideEqual": true,
+    "+ZdepthEqual": true,
+    "-ZCameraEqual": true,
+    "-ZguideEqual": true,
+    "-ZdepthEqual": true,
+    "jsonOnlyNormalTextureRemoved": true,
+    "nonJsonChunksByteIdentical": true,
+    "geometrySignatureEqual": true,
+    "normalTextureRemoved": true,
+    "+Zsource.pngReplayEqual": true,
+    "+Zsource.npyReplayEqual": true,
+    "+Zaligned.npyReplayEqual": true
+  },
+  "textures": {
+    "colorMap": {
+      "source": "fde93cb74ce4cfc4b9678aef9a260aace5cc738408112a947e94f7eb11b19375",
+      "control": "fde93cb74ce4cfc4b9678aef9a260aace5cc738408112a947e94f7eb11b19375",
+      "equal": true
+    },
+    "intervalMap": {
+      "source": "2f7cfafef8635afd0babc9ccf3bcbce121ccb57d4ffcb8b6291dbce668ec9089",
+      "control": "2f7cfafef8635afd0babc9ccf3bcbce121ccb57d4ffcb8b6291dbce668ec9089",
+      "equal": true
+    },
+    "normalMap": {
+      "source": "3f21281a6130ea65d0e7b593775e66ac1af8c131d125e83a3c1951a971be9373",
+      "control": "798c1d062a720d988a35d46f7fcfabf855c8b1862d12f910fe3d067816c323c7",
+      "equal": false
+    },
+    "rangeMap": {
+      "source": "06f75bba54198bf24359b8c21f771ab810726535f2ac94220d959bd2fe4eaf1a",
+      "control": "06f75bba54198bf24359b8c21f771ab810726535f2ac94220d959bd2fe4eaf1a",
+      "equal": true
+    }
+  },
+  "guides": {
+    "+X": {
+      "guide": {
+        "source": "7ce58a37e34c6fdd21d696ec82317e10f671315107ff89d6159fcd9f47445afa",
+        "control": "7ce58a37e34c6fdd21d696ec82317e10f671315107ff89d6159fcd9f47445afa",
+        "equal": true
+      },
+      "depth": {
+        "source": "bb00640a7dd63f35f00302eb7e7f5a109b8335d9a1245eaa4eefba8af88fbe68",
+        "control": "bb00640a7dd63f35f00302eb7e7f5a109b8335d9a1245eaa4eefba8af88fbe68",
+        "equal": true
+      }
+    },
+    "-X": {
+      "guide": {
+        "source": "f454565cac3f7389312bc533e89630bc5f693dfc2761a5e8b1471cebddd74493",
+        "control": "f454565cac3f7389312bc533e89630bc5f693dfc2761a5e8b1471cebddd74493",
+        "equal": true
+      },
+      "depth": {
+        "source": "9b5aa3019c55b805987197f4e37d3f0ee5253933f56e8c831fec7f77e6bfb1a3",
+        "control": "9b5aa3019c55b805987197f4e37d3f0ee5253933f56e8c831fec7f77e6bfb1a3",
+        "equal": true
+      }
+    },
+    "+Y": {
+      "guide": {
+        "source": "6ff4b5953e588418c5a7cd7104153cbbf39275252f3692fb22ae91788afcbc6d",
+        "control": "6ff4b5953e588418c5a7cd7104153cbbf39275252f3692fb22ae91788afcbc6d",
+        "equal": true
+      },
+      "depth": {
+        "source": "815d79e32ccce74f86393401159873e687503b10969a613b25581174c6f2679b",
+        "control": "815d79e32ccce74f86393401159873e687503b10969a613b25581174c6f2679b",
+        "equal": true
+      }
+    },
+    "-Y": {
+      "guide": {
+        "source": "71ed1fc6ac2906ce646cdabd4bfe55e06c487e35a22f18ad2e3e017644d1c1af",
+        "control": "71ed1fc6ac2906ce646cdabd4bfe55e06c487e35a22f18ad2e3e017644d1c1af",
+        "equal": true
+      },
+      "depth": {
+        "source": "a30d5eb71b1f377a9e329fd0a6b62c8ba1b42d53b51f51ab80e5cfbf913f1f46",
+        "control": "a30d5eb71b1f377a9e329fd0a6b62c8ba1b42d53b51f51ab80e5cfbf913f1f46",
+        "equal": true
+      }
+    },
+    "+Z": {
+      "guide": {
+        "source": "79702ba86e19d6a1bae5f105f86d1e2d6fba3fcad7d2e28d1d58088916225211",
+        "control": "79702ba86e19d6a1bae5f105f86d1e2d6fba3fcad7d2e28d1d58088916225211",
+        "equal": true
+      },
+      "depth": {
+        "source": "dced7fafa239fd945cd15fd41b6551e2ab238141dfed3620429a329c2653d274",
+        "control": "dced7fafa239fd945cd15fd41b6551e2ab238141dfed3620429a329c2653d274",
+        "equal": true
+      }
+    },
+    "-Z": {
+      "guide": {
+        "source": "465ae47fa84fb0365aa5e5de2cec69bb00d817b662dfed27a0ba5963ffa6d0a4",
+        "control": "465ae47fa84fb0365aa5e5de2cec69bb00d817b662dfed27a0ba5963ffa6d0a4",
+        "equal": true
+      },
+      "depth": {
+        "source": "8bd60ffe2d409e6008646e39eeac5c71c795d90911bdf8dedabcad393785caf6",
+        "control": "8bd60ffe2d409e6008646e39eeac5c71c795d90911bdf8dedabcad393785caf6",
+        "equal": true
+      }
+    }
+  },
+  "geometry": {
+    "jsonOnlyNormalTextureRemoved": true,
+    "nonJsonChunksByteIdentical": true,
+    "geometrySignatureEqual": true,
+    "sourceGeometrySignature": "41cdafe62841b71b13a8f21f6a58f1c2c123052f4ae21fe0fb5a64a1c6058dd9",
+    "controlGeometrySignature": "41cdafe62841b71b13a8f21f6a58f1c2c123052f4ae21fe0fb5a64a1c6058dd9",
+    "removedNormalTextures": [
+      {
+        "material": 0,
+        "normalTexture": {
+          "index": 2,
+          "texCoord": 0,
+          "scale": 1
+        }
+      }
+    ],
+    "sourceGlbSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "controlGlbSha256": "fd7ec8f5b5de3fc8e8a03890da29369876877fd0b707088e577cd09178721055",
+    "binaryChunks": [
+      {
+        "type": 5130562,
+        "byteLength": 4864600,
+        "sha256": "5828176119b269fc754de16868eb00ebe19aaf7be9170706cccd42d21a1babb1"
+      }
+    ]
+  },
+  "version": "normal-texture-control-v1",
+  "sourceAsset": "5a6c458ff8d58943236413443adfd17adcd00bb873732f62fa745e41ccaf33d5",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/5a6c458ff8d58943236413443adfd17adcd00bb873732f62fa745e41ccaf33d5",
+  "asset": "43642ae6a0acc824f06fd017f7d0467d3a1cd84a139922e40072d798facd761c",
+  "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/normal-control/output/box_impostor/43642ae6a0acc824f06fd017f7d0467d3a1cd84a139922e40072d798facd761c",
+  "baselineAsset": "60c1c7564132e5391d9856d667cf6bba8a7aef391d8e784e1b82785dab2ff93f",
+  "baselinePath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/normal-control/output/box_impostor/60c1c7564132e5391d9856d667cf6bba8a7aef391d8e784e1b82785dab2ff93f",
+  "baselineCache": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/normal-control/baselines/d62c9f3c2550c429aea945af9f078e805b03380b3b68e4ad198069c54260b460",
+  "generatedFaces": [
+    "+Z"
+  ],
+  "replay": {
+    "+Z": {
+      "status": "accepted",
+      "alignmentKey": "ddd5fc8e348148fda696290b48b468afae8a62a6d2f6bda693f4e8d03485d115",
+      "sourceFiles": {
+        "source.png": "01b4db8ea1d91bd126ce105407f8aca8dd53944b332b4cccc4cd48dc6fc5032c",
+        "source.npy": "b56c37e6c9b641f0be33f47770e230e46e681414d161327e04cb6920122d29c3",
+        "aligned.npy": "d9a90e5f53b28cf2c5a7a8e229c763211d2c181e53f9c558c34cc87f8ed140ae"
+      },
+      "registration": "reused-byte-identical"
+    }
+  },
+  "sourceManifestSha256": "f2455ba958f251d2b872ee3db150f5ae25a4121b88d591648c98dcde29bdbda2",
+  "scriptSha256": "163916dfbd58394395ea12444e4a08caf8b999bec86497d6e1b91bc8ab59c7c1",
+  "limitation": "Normal maps also affect native cross-view incidence weighting; this is not solely a lighting ablation.",
+  "noNewInference": true
+}
