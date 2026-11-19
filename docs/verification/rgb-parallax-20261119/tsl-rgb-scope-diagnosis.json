@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "issue": "Conditional initialization of a reused TSL RGB expression",
+  "status": "verified-fixed",
+  "libraryVersions": {
+    "three": "0.186.0",
+    "three-impostor": "0.4.1"
+  },
+  "sourceBefore": {
+    "module": "worker/parallax_material.mjs",
+    "sha256": "a98adc7d2f0c34e052a0468cb1a1ebbd582d0b5b035a19812caf0f98e3ee4cfd",
+    "exactSnapshot": "snapshots/parallax-material-hybrid-bug.mjs"
+  },
+  "sourceAfter": {
+    "module": "worker/parallax_material.mjs",
+    "sha256": "a96bbd0630f8e61398924a89e077b930e67e1c4a0abf6aa82fca93f007740065",
+    "exactSnapshot": "snapshots/parallax-material-scope-fixed.mjs"
+  },
+  "beforeEvidence": {
+    "sweep": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-hybrid-debug-001/sweep.json",
+    "shader": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-hybrid-debug-001/compiled-fragment-04.glsl",
+    "shaderSha256": "424e97722e79d63fb3b0477c4afd0baa4bb2150a4e547a4b1426f3070dec8e5b",
+    "variant": "camera-hybrid",
+    "yawDegrees": 45,
+    "sourceMapsFinite": true,
+    "renderRGBNaN": 0,
+    "renderRGBInf": 0,
+    "minimumRenderedRGB": 0,
+    "alphaAndDepthEqualToNative": true
+  },
+  "generatedGLSLBefore": [
+    "if ( ( ( nodeVar485.w > 0.001 ) && ( nodeVar404 < nodeVar515 ) ) ) {",
+    "    nodeVar515 = nodeVar404;",
+    "    nodeVar524 = ( nodeVar485.xyz / vec3( max( nodeVar485.w, 0.001 ) ) );",
+    "    nodeVar514 = nodeVar524;",
+    "}",
+    "...",
+    "nodeVar532 = ( ( ( nodeVar495 * nodeVar485.w ) * exp( ( max( ( ( nodeVar404 - nodeVar516 ) - 4.0 ), 0.0 ) / -4.0 ) ) ) * nodeVar494 );",
+    "nodeVar526 = ( nodeVar526 + ( nodeVar524 * vec3( nodeVar532 ) ) );"
+  ],
+  "causalExplanation": "The same unpremultiplied RGB node is reused in single-view/fallback branches and unconditional blending. Generated GLSL caches RGB in nodeVar520..525 inside nearest-fallback conditions, then uses these variables outside those conditions. A view that does not replace the nearest fallback has no RGB assignment on that execution path even though its blend weight can be positive. The observed artifact is finite black output, not NaN conversion, missing alpha, changed geometry or invalid source normal-map bytes.",
+  "fix": {
+    "before": "rgb:c.rgb.div(max(c.a,1e-3)),",
+    "after": "rgb:c.rgb.div(max(c.a,1e-3)).toVar(),",
+    "placement": "Unconditional sample construction before every If branch",
+    "parameterChanges": false,
+    "geometryChanges": false,
+    "sourceMapChanges": false
+  },
+  "remainingVerification": [
+    "Final quality/preset selection is separate from this confirmed shader-scope repair."
+  ],
+  "afterEvidence": {
+    "shader": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-hybrid-debug-002/compiled-fragment-06.glsl",
+    "shaderSHA256": "d9aae9244d9914f548ae3986a8df4bfeaadeef25221508a3a2c917060eb55701",
+    "coveredPixels": 78009,
+    "allZeroRGBPixels": 0,
+    "minimumCoveredRGB": 0.0008691661059856415,
+    "nonFiniteCoveredRGBValues": 0,
+    "geometryEqualityPassed": true
+  },
+  "generatedGLSLAfter": [
+    {
+      "line": 1815,
+      "braceDepth": 1,
+      "code": "nodeVar423 = ( nodeVar413.xyz / vec3( max( nodeVar413.w, 0.001 ) ) );"
+    },
+    {
+      "line": 1854,
+      "braceDepth": 1,
+      "code": "nodeVar442 = ( nodeVar432.xyz / vec3( max( nodeVar432.w, 0.001 ) ) );"
+    },
+    {
+      "line": 1893,
+      "braceDepth": 1,
+      "code": "nodeVar461 = ( nodeVar451.xyz / vec3( max( nodeVar451.w, 0.001 ) ) );"
+    },
+    {
+      "line": 1932,
+      "braceDepth": 1,
+      "code": "nodeVar480 = ( nodeVar470.xyz / vec3( max( nodeVar470.w, 0.001 ) ) );"
+    },
+    {
+      "line": 1971,
+      "braceDepth": 1,
+      "code": "nodeVar499 = ( nodeVar489.xyz / vec3( max( nodeVar489.w, 0.001 ) ) );"
+    },
+    {
+      "line": 2010,
+      "braceDepth": 1,
+      "code": "nodeVar518 = ( nodeVar508.xyz / vec3( max( nodeVar508.w, 0.001 ) ) );"
+    }
+  ],
+  "verification": "tsl-rgb-scope-verification.json",
+  "verifiedOutcomes": {
+    "zeroBlackPixelsBefore": 988,
+    "zeroBlackPixelsAfter": 0,
+    "nativeAndDepthRawRGBAUnchanged": {
+      "native": true,
+      "camera-depth": true
+    },
+    "frontDepthHybridPNGIdentical": true,
+    "frontPNG_SHA256": "21715e52d8d8b6717f21ca1035ce156c24b686ea2e995eb53ebff62f79c8eeb3",
+    "fullSweepGeometryEqualityPassed": true
+  }
+}

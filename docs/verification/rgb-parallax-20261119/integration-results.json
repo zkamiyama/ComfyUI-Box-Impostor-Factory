@@ -1,0 +1,146 @@
+{
+  "status": "verified",
+  "commit": "d2a916c209f7321b296a1a08f8f1285f5af1c8e6",
+  "fixture": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/fixture-lantern",
+  "sourceMapSHA256": {
+    "colorMap": "5d776369855ec5947d43a832dcc3b561e355be00f9871ec596ca59ef1a468f41",
+    "normalMap": "bb52d1b45a62f6f28e0f8cda06961039b612bf0f22a2fca89c0bfd1da296f49b",
+    "intervalMap": "6095d98e5ad0e0165b4a3a8d4d365b66fcf2a1c8908e7dc1225ca8b4b322e0bd",
+    "rangeMap": "fe98536b5379dc693b364c4ff502b37d6f5f1828b1f25e0e0ed7d9f694623008",
+    "materialMap": "152e86862feb8af2e0137b68a7e4ab50835bcc3b57e5c06edd476ba9d406988d",
+    "emissiveMap": "0f51cf2b35ee40469be365512fdb57d4cc1f7f68d504c4d7e03535f2197e3c46"
+  },
+  "moduleSHA256": "d31280ae12fd43f92bd783a2a9c3c22351c2efa07f94e86a1ecf81b6d51897e0",
+  "renderer": "webgl2/software",
+  "commands": [
+    {
+      "name": "viewer",
+      "argv": [
+        "/home/dev/.nvm/versions/node/v22.23.3/bin/node",
+        "--test",
+        "--test-name-pattern=saved Box preview switches",
+        "tests/viewer_integration.test.mjs"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 5.597,
+      "log": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/viewer.log"
+    },
+    {
+      "name": "render-lit",
+      "argv": [
+        "/home/dev/.nvm/versions/node/v22.23.3/bin/node",
+        "worker/cli.mjs",
+        "render",
+        "--asset",
+        "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/fixture-lantern",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/render-lit.png",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--view",
+        "+Z",
+        "--projection",
+        "orthographic",
+        "--backend",
+        "webgl2",
+        "--shading",
+        "lit"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 1.769,
+      "log": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/render-lit.log"
+    },
+    {
+      "name": "render-rgb",
+      "argv": [
+        "/home/dev/.nvm/versions/node/v22.23.3/bin/node",
+        "worker/cli.mjs",
+        "render",
+        "--asset",
+        "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/fixture-lantern",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/render-rgb.png",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--view",
+        "+Z",
+        "--projection",
+        "orthographic",
+        "--backend",
+        "webgl2",
+        "--shading",
+        "rgb"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 1.72,
+      "log": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/render-rgb.log"
+    },
+    {
+      "name": "thumbnail-rgb",
+      "argv": [
+        "/home/dev/.nvm/versions/node/v22.23.3/bin/node",
+        "worker/cli.mjs",
+        "thumbnail",
+        "--asset",
+        "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/fixture-lantern",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/thumbnail-rgb.png",
+        "--backend",
+        "webgl2",
+        "--shading",
+        "rgb"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 1.568,
+      "log": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/thumbnail-rgb.log"
+    }
+  ],
+  "sourceMapsUnchanged": true,
+  "pngChecks": {
+    "render-lit": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/render-lit.png",
+      "sha256": "380c443bba0222b6de4b9c85e22f7e415ab0f346c5664906a80c3400bd5f00c0",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "coveredPixels": 3793,
+      "transparentPixels": 61743
+    },
+    "render-rgb": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/render-rgb.png",
+      "sha256": "02b4181572ee859c9b68ef107ba61b3f67c705191d1f3156361f2b595be48ffa",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "coveredPixels": 3793,
+      "transparentPixels": 61743
+    },
+    "thumbnail-rgb": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/integration-checks/thumbnail-rgb.png",
+      "sha256": "67d54d40be36eb01b34f6290ffa9aa1fb1c2ab52737b5cd9653e91e767b2df05",
+      "size": [
+        642,
+        384
+      ],
+      "mode": "RGB",
+      "coveredPixels": 246528,
+      "transparentPixels": 0
+    }
+  },
+  "pixelComparison": {
+    "differentRGBA": true,
+    "opaqueMaskIoU": 1,
+    "alphaChangedPixels": 0,
+    "note": "Lit canvas MSAA and RGB diagnostic MRT have different edge antialiasing; exact native hit/depth equality is verified in the separate float sweep."
+  },
+  "thumbnailSizeNote": "Thumbnail captures the fitted viewer canvas; viewport680x580 does not prescribe PNGdimensions."
+}
+

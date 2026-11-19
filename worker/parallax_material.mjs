@@ -5,11 +5,11 @@ import { Vector3 } from 'three/webgpu';
 import { ImpostorNodeMaterial } from 'three-impostor';
 import {
   Fn, If, abs, clamp, diffuseColor, dot, exp, float, materialColor,
-  max, min, normalize, property, select, texture, vec2, vec3, vec4,
+  max, min, normalize, property, select, smoothstep, texture, vec2, vec3, vec4,
 } from 'three/tsl';
 
 export const PARALLAX_MODES = Object.freeze([
-  'native', 'camera-single', 'camera-blend', 'camera-depth',
+  'native', 'camera-single', 'camera-blend', 'camera-depth', 'camera-hybrid',
 ]);
 
 export const PARALLAX_MODE_DESCRIPTIONS = Object.freeze({
@@ -17,12 +17,19 @@ export const PARALLAX_MODE_DESCRIPTIONS = Object.freeze({
   'camera-single': 'One covered view with the greatest camera-axis weight; no RGB blending or normal weights.',
   'camera-blend': 'Camera-axis and coverage weighted RGB; no depth or normal weights except a no-coverage fallback.',
   'camera-depth': 'Camera-axis and coverage weighted RGB with relative captured-depth confidence; no normal weights.',
+  'camera-hybrid': 'Camera-axis, coverage and relative depth RGB weights with bounded captured-normal facing confidence; no lighting.',
+});
+
+export const HYBRID_NORMAL_CONFIDENCE = Object.freeze({
+  floor:.02,facingStart:.05,facingEnd:.6,towardRayStart:-.15,towardRayEnd:.25,
+  facingPower:2,normalSampling:'native linear level0, no extra blur or renormalization',
+  axisPreservation:'One active camera-axis view returns covered source RGB directly.',
 });
 
 // Shared presentation preset. Changing this does not rewrite the Box maps.
 // Keep the experiment controls available separately for recorded comparisons.
 export const RGB_PARALLAX_PRESET = Object.freeze({
-  mode:'camera-depth',cameraPower:8,depthToleranceTexels:4,
+  mode:'camera-hybrid',cameraPower:8,depthToleranceTexels:4,
 });
 
 // Match the pinned baker's atlas order and UV conventions exactly.
@@ -42,7 +49,8 @@ function checkedOptions({mode='native', cameraPower=8, depthToleranceTexels=4}={
   if (!Number.isFinite(depthToleranceTexels) || depthToleranceTexels <= 0 || depthToleranceTexels > 64) {
     throw new RangeError('depthToleranceTexels must be finite, positive and at most 64');
   }
-  return Object.freeze({mode,cameraPower,depthToleranceTexels});
+  return Object.freeze({mode,cameraPower,depthToleranceTexels,
+    ...(mode==='camera-hybrid'?{normalConfidence:HYBRID_NORMAL_CONFIDENCE}:{})});
 }
 
 /**
@@ -51,8 +59,10 @@ function checkedOptions({mode='native', cameraPower=8, depthToleranceTexels=4}={
  * separately from the native data/textures, which it does not own.
  *
  * This deliberately calls upstream _setupBox, including its normal sampling.
- * Those normals do not affect RGB in camera-* modes, but remain available to
- * diagnostic outputs. This is an isolation experiment, not a performance
+ * Those normals do not affect RGB in camera-single/blend/depth modes. The
+ * explicitly named hybrid mode uses bounded normal confidence for RGB view
+ * selection, never for lighting. Normals remain available to diagnostic
+ * outputs. This is an isolation experiment, not a performance
  * optimization or a replacement native ray marcher.
  */
 export class ParallaxColorMaterial extends ImpostorNodeMaterial {
@@ -88,7 +98,7 @@ export class ParallaxColorMaterial extends ImpostorNodeMaterial {
     const {mode,cameraPower,depthToleranceTexels}=this.parallaxOptions;
     if (mode==='native') return super._setupBox(space);
 
-    const {box,resolution,colorMap,intervalMap}=this.impostor;
+    const {box,resolution,colorMap,normalMap,intervalMap}=this.impostor;
     const boxMin=vec3(...box.min.toArray());
     const boxSize=vec3(...box.getSize(new Vector3()).toArray());
     const localHit=property('vec3','ParallaxNativeHitPosition');
@@ -107,6 +117,10 @@ export class ParallaxColorMaterial extends ImpostorNodeMaterial {
       const uv=clamp(viewUV[i](b),half,1-half);
       return texture(colorMap,vec2(uv.x.add(i%3),uv.y.add(Math.floor(i/3))).div(vec2(3,2))).level(0);
     };
+    const sampleNormal=(b,i)=>{
+      const uv=clamp(viewUV[i](b),half,1-half);
+      return texture(normalMap,vec2(uv.x.add(i%3),uv.y.add(Math.floor(i/3))).div(vec2(3,2))).level(0);
+    };
 
     return Fn(()=>{
       // Using native alpha forces evaluation of the complete upstream hit
@@ -122,11 +136,24 @@ export class ParallaxColorMaterial extends ImpostorNodeMaterial {
       ].map(d=>d.mul(resolution).toVar());
       const samples=SIDES.map((side,i)=>{
         const c=sampleColor(p,i).toVar();
+        let confidence=null;
+        if(mode==='camera-hybrid') {
+          const policy=HYBRID_NORMAL_CONFIDENCE;
+          const n=sampleNormal(p,i).rgb.div(max(c.a,1e-3)).mul(2).sub(1).toVar();
+          const facing=smoothstep(policy.facingStart,policy.facingEnd,max(dot(n,vec3(...side)),0));
+          const toward=smoothstep(policy.towardRayStart,policy.towardRayEnd,dot(n,toCamera));
+          confidence=facing.pow(policy.facingPower).mul(toward).mul(1-policy.floor).add(policy.floor).toVar();
+        }
         return {
           coverage:c.a,
-          rgb:c.rgb.div(max(c.a,1e-3)),
+          // This value is reused inside conditional fallbacks and later in
+          // unconditional blending. Materialize it here: otherwise TSL may
+          // cache its first evaluation inside an If branch and reuse an
+          // uninitialized GLSL variable when that branch does not execute.
+          rgb:c.rgb.div(max(c.a,1e-3)).toVar(),
           camera:max(dot(toCamera,vec3(...side)),0).pow(cameraPower).toVar(),
           distance:distances[i],
+          confidence,
         };
       });
 
@@ -137,7 +164,17 @@ export class ParallaxColorMaterial extends ImpostorNodeMaterial {
       const fallback=vec3(0).toVar();
       const nearestCovered=float(1e6).toVar();
       const nearestCameraCandidate=float(1e6).toVar();
+      const activeCameraViews=mode==='camera-hybrid'?float(0).toVar():null;
+      const singleViewColor=mode==='camera-hybrid'?vec3(0).toVar():null;
+      const singleViewCoverage=mode==='camera-hybrid'?float(0).toVar():null;
       for(const s of samples) {
+        if(mode==='camera-hybrid') {
+          If(s.camera.greaterThan(1e-8),()=>{
+            activeCameraViews.addAssign(1);
+            singleViewColor.assign(s.rgb);
+            singleViewCoverage.assign(s.coverage);
+          });
+        }
         If(s.coverage.greaterThan(1e-3).and(s.distance.lessThan(nearestCovered)),()=>{
           nearestCovered.assign(s.distance);
           fallback.assign(s.rgb);
@@ -162,7 +199,7 @@ export class ParallaxColorMaterial extends ImpostorNodeMaterial {
       } else {
         for(const s of samples) {
           let w=s.camera.mul(s.coverage);
-          if(mode==='camera-depth') {
+          if(mode==='camera-depth'||mode==='camera-hybrid') {
             // Relative confidence avoids an all-zero result when every
             // captured surface is displaced by the native hit tolerance.
             // Allow a plateau of depthToleranceTexels past the nearest
@@ -171,12 +208,20 @@ export class ParallaxColorMaterial extends ImpostorNodeMaterial {
             const excess=max(s.distance.sub(nearestCameraCandidate).sub(depthToleranceTexels),0);
             w=w.mul(exp(excess.div(-depthToleranceTexels)));
           }
+          if(mode==='camera-hybrid') w=w.mul(s.confidence);
           color.addAssign(s.rgb.mul(w));
           weight.addAssign(w);
         }
         color.divAssign(max(weight,1e-8));
       }
-      const rgb=select(weight.greaterThan(1e-8),color,fallback);
+      let rgb=select(weight.greaterThan(1e-8),color,fallback);
+      if(mode==='camera-hybrid') {
+        // Do not multiply/divide by normal confidence at the exact source
+        // axes: even a mathematically cancelling factor can change an 8-bit
+        // output through floating-point rounding. A direct covered sample
+        // preserves the generated axial RGB, including facial detail.
+        rgb=select(activeCameraViews.equal(1).and(singleViewCoverage.greaterThan(1e-8)),singleViewColor,rgb);
+      }
       return vec4(rgb.mul(materialColor),native.a);
     })();
   }

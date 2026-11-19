@@ -1,0 +1,159 @@
+{
+  "status": "verified",
+  "method": "compiled-glsl-scope-and-raw-float-verification-v1",
+  "before": {
+    "run": "H-hybrid-debug-001",
+    "moduleSHA256": "a98adc7d2f0c34e052a0468cb1a1ebbd582d0b5b035a19812caf0f98e3ee4cfd",
+    "shader": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-hybrid-debug-001/compiled-fragment-04.glsl",
+    "shaderSHA256": "424e97722e79d63fb3b0477c4afd0baa4bb2150a4e547a4b1426f3070dec8e5b",
+    "rgbAssignments": [
+      {
+        "line": 2016,
+        "braceDepth": 2,
+        "code": "nodeVar518 = ( nodeVar413.xyz / vec3( max( nodeVar413.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2026,
+        "braceDepth": 2,
+        "code": "nodeVar520 = ( nodeVar413.xyz / vec3( max( nodeVar413.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2044,
+        "braceDepth": 2,
+        "code": "nodeVar518 = ( nodeVar431.xyz / vec3( max( nodeVar431.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2054,
+        "braceDepth": 2,
+        "code": "nodeVar521 = ( nodeVar431.xyz / vec3( max( nodeVar431.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2072,
+        "braceDepth": 2,
+        "code": "nodeVar518 = ( nodeVar449.xyz / vec3( max( nodeVar449.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2082,
+        "braceDepth": 2,
+        "code": "nodeVar522 = ( nodeVar449.xyz / vec3( max( nodeVar449.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2100,
+        "braceDepth": 2,
+        "code": "nodeVar518 = ( nodeVar467.xyz / vec3( max( nodeVar467.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2110,
+        "braceDepth": 2,
+        "code": "nodeVar523 = ( nodeVar467.xyz / vec3( max( nodeVar467.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2128,
+        "braceDepth": 2,
+        "code": "nodeVar518 = ( nodeVar485.xyz / vec3( max( nodeVar485.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2138,
+        "braceDepth": 2,
+        "code": "nodeVar524 = ( nodeVar485.xyz / vec3( max( nodeVar485.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2156,
+        "braceDepth": 2,
+        "code": "nodeVar518 = ( nodeVar503.xyz / vec3( max( nodeVar503.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2166,
+        "braceDepth": 2,
+        "code": "nodeVar525 = ( nodeVar503.xyz / vec3( max( nodeVar503.w, 0.001 ) ) );"
+      }
+    ],
+    "rawRGBA": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-hybrid-debug-001/000-camera-hybrid-yaw45-raw-rgba32f.png",
+      "rawSHA256": "22c7755359fe72a6a7e9e1ec3c326a5ad3d8909890a308ed16c2ff5156ad50ad",
+      "pngWidth": 4096,
+      "pngHeight": 1024,
+      "logicalWidth": 1024,
+      "logicalHeight": 1024,
+      "channels": 4,
+      "encoding": "RGBA Float32 little-endian; raw16bytes per logical pixel packed into four successive RGBA8 PNG pixels, top-to-bottom; no color conversion."
+    },
+    "coveredPixels": 78009,
+    "allZeroRGBPixels": 988,
+    "minimumCoveredRGB": 0,
+    "nonFiniteCoveredRGBValues": 0,
+    "geometryEqualityPassed": true
+  },
+  "after": {
+    "run": "H-hybrid-debug-002",
+    "moduleSHA256": "a96bbd0630f8e61398924a89e077b930e67e1c4a0abf6aa82fca93f007740065",
+    "shader": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-hybrid-debug-002/compiled-fragment-06.glsl",
+    "shaderSHA256": "d9aae9244d9914f548ae3986a8df4bfeaadeef25221508a3a2c917060eb55701",
+    "rgbAssignments": [
+      {
+        "line": 1815,
+        "braceDepth": 1,
+        "code": "nodeVar423 = ( nodeVar413.xyz / vec3( max( nodeVar413.w, 0.001 ) ) );"
+      },
+      {
+        "line": 1854,
+        "braceDepth": 1,
+        "code": "nodeVar442 = ( nodeVar432.xyz / vec3( max( nodeVar432.w, 0.001 ) ) );"
+      },
+      {
+        "line": 1893,
+        "braceDepth": 1,
+        "code": "nodeVar461 = ( nodeVar451.xyz / vec3( max( nodeVar451.w, 0.001 ) ) );"
+      },
+      {
+        "line": 1932,
+        "braceDepth": 1,
+        "code": "nodeVar480 = ( nodeVar470.xyz / vec3( max( nodeVar470.w, 0.001 ) ) );"
+      },
+      {
+        "line": 1971,
+        "braceDepth": 1,
+        "code": "nodeVar499 = ( nodeVar489.xyz / vec3( max( nodeVar489.w, 0.001 ) ) );"
+      },
+      {
+        "line": 2010,
+        "braceDepth": 1,
+        "code": "nodeVar518 = ( nodeVar508.xyz / vec3( max( nodeVar508.w, 0.001 ) ) );"
+      }
+    ],
+    "rawRGBA": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/rgb-parallax-20261119/H-hybrid-debug-002/000-camera-hybrid-yaw45-raw-rgba32f.png",
+      "rawSHA256": "d56e7a4669520ebe92ef060cbacbe03546b19e68f1c63765c2a377ff43d9261a",
+      "pngWidth": 4096,
+      "pngHeight": 1024,
+      "logicalWidth": 1024,
+      "logicalHeight": 1024,
+      "channels": 4,
+      "encoding": "RGBA Float32 little-endian; raw16bytes per logical pixel packed into four successive RGBA8 PNG pixels, top-to-bottom; no color conversion."
+    },
+    "coveredPixels": 78009,
+    "allZeroRGBPixels": 0,
+    "minimumCoveredRGB": 0.0008691661059856415,
+    "nonFiniteCoveredRGBValues": 0,
+    "geometryEqualityPassed": true
+  },
+  "nativeAndDepthRawRGBAUnchanged": {
+    "native": true,
+    "camera-depth": true
+  },
+  "frontDepthHybridPNGIdentical": true,
+  "frontPNG_SHA256": "21715e52d8d8b6717f21ca1035ce156c24b686ea2e995eb53ebff62f79c8eeb3",
+  "fullSweepGeometryEqualityPassed": true,
+  "fullSweepFrames": 27,
+  "fullSweepAngles": [
+    -60,
+    -45,
+    -30,
+    -15,
+    0,
+    15,
+    30,
+    45,
+    60
+  ]
+}
