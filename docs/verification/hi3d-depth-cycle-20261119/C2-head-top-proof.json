@@ -1,0 +1,313 @@
+{
+  "purpose": "Measure B/C/C2 head-top planes with strict and near-plane counts separately.",
+  "stages": {
+    "B": {
+      "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "proxyPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/geometry/proxy.glb",
+      "proxySHA256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+      "vertices": 499920,
+      "triangles": 1000000,
+      "actualPositionBounds": [
+        [
+          -0.17968106269836426,
+          -0.5,
+          -0.16729551553726196
+        ],
+        [
+          0.17968106269836426,
+          0.5,
+          0.16729551553726196
+        ]
+      ],
+      "baselineTopPlaneY": 0.5,
+      "verticesExactlyOnBaselineTopPlane": 1,
+      "verticesNearBaselineTopPlane": 1,
+      "verticesExactlyAtOwnMaximumY": 1,
+      "verticesNearOwnMaximumY": 1,
+      "nearPlaneTolerance": 5e-08,
+      "actualMaximumYDeltaFromBaseline": 0.0,
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/capture.json",
+      "captureSHA256": "c0efa87471cff7b192f15aba74aaea478f932bbaae18a7c429a079e41c25732b",
+      "camera": {
+        "projection": "orthographic",
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "distance": 1.8073808642855147,
+        "halfExtent": 0.65783283658225,
+        "fovBeforeOrthographic": 40,
+        "fitFormula": "radius * 1.05 / sin(20deg)",
+        "sourceRadius": 0.5570216098243332,
+        "referenceRadius": 0.5887244402352406,
+        "perspectiveWheelDeltaY": 107.91702004948496,
+        "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "cssPixels": [
+          800,
+          800
+        ],
+        "deviceScaleFactor": 1.28001,
+        "wheelProtocolDeltaY": 138.13486321155844,
+        "pans": [
+          {
+            "view": "front",
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "view": "right",
+            "dx": 0,
+            "dy": 0
+          }
+        ]
+      },
+      "image": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/lit-front.png",
+        "sha256": "8400ca4fa74716b5be7e3caf667d33c495254fb093d56d29c626ae4123ad314d",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ]
+      },
+      "fullFrameSize": [
+        1024,
+        1024
+      ],
+      "mask": "alpha > 250",
+      "firstOpaqueRow": 123,
+      "firstFiveOpaqueRowCounts": {
+        "123": 8,
+        "124": 17,
+        "125": 24,
+        "126": 33,
+        "127": 39
+      },
+      "headCrop": [
+        463,
+        115,
+        572,
+        271
+      ],
+      "pixelsBetweenCropTopAndFirstOpaqueRow": 8,
+      "headTopInsideCrop": true
+    },
+    "C": {
+      "assetId": "1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+      "proxyPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15/geometry/proxy.glb",
+      "proxySHA256": "86f657dddf2ef5d25e3b8859d61e2750d4ac84ac0de6622bed5dda13acefb1f2",
+      "vertices": 499920,
+      "triangles": 1000000,
+      "actualPositionBounds": [
+        [
+          -0.17968106269836426,
+          -0.5,
+          -0.16729551553726196
+        ],
+        [
+          0.17968106269836426,
+          0.5,
+          0.16729551553726196
+        ]
+      ],
+      "baselineTopPlaneY": 0.5,
+      "verticesExactlyOnBaselineTopPlane": 1649,
+      "verticesNearBaselineTopPlane": 3221,
+      "verticesExactlyAtOwnMaximumY": 1649,
+      "verticesNearOwnMaximumY": 3221,
+      "nearPlaneTolerance": 5e-08,
+      "actualMaximumYDeltaFromBaseline": 0.0,
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-clay/capture.json",
+      "captureSHA256": "89594a6cb576d616a748c56e0ad83e449bb39f35de25d18699b89479edbd4659",
+      "camera": {
+        "projection": "orthographic",
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "distance": 1.8073808642855147,
+        "halfExtent": 0.65783283658225,
+        "fovBeforeOrthographic": 40,
+        "fitFormula": "radius * 1.05 / sin(20deg)",
+        "sourceRadius": 0.5570216098243332,
+        "referenceRadius": 0.5887244402352406,
+        "perspectiveWheelDeltaY": 107.91702004948496,
+        "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "cssPixels": [
+          800,
+          800
+        ],
+        "deviceScaleFactor": 1.28001,
+        "wheelProtocolDeltaY": 138.13486321155844,
+        "pans": [
+          {
+            "view": "front",
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "view": "right",
+            "dx": 0,
+            "dy": 0
+          }
+        ]
+      },
+      "image": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-clay/lit-front.png",
+        "sha256": "aff4e3b1b9d9873bb7e2eb96151aa15a6ca411694af4726163f97e3645340603",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ]
+      },
+      "fullFrameSize": [
+        1024,
+        1024
+      ],
+      "mask": "alpha > 250",
+      "firstOpaqueRow": 123,
+      "firstFiveOpaqueRowCounts": {
+        "123": 50,
+        "124": 51,
+        "125": 51,
+        "126": 50,
+        "127": 50
+      },
+      "headCrop": [
+        463,
+        115,
+        572,
+        271
+      ],
+      "pixelsBetweenCropTopAndFirstOpaqueRow": 8,
+      "headTopInsideCrop": true
+    },
+    "C2": {
+      "assetId": "f2b5c3f8b92a3b194ac77ad5d1424ce08ac68a8247d76ea546df96b2295ed10f",
+      "proxyPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/f2b5c3f8b92a3b194ac77ad5d1424ce08ac68a8247d76ea546df96b2295ed10f/geometry/proxy.glb",
+      "proxySHA256": "2f6c49948e396aa04d183c3bf2fc5c0c3d291b82aed0b2e99555f998d79f1c99",
+      "vertices": 499920,
+      "triangles": 1000000,
+      "actualPositionBounds": [
+        [
+          -0.17968106269836426,
+          -0.5,
+          -0.16729551553726196
+        ],
+        [
+          0.17968106269836426,
+          0.5,
+          0.16729551553726196
+        ]
+      ],
+      "baselineTopPlaneY": 0.5,
+      "verticesExactlyOnBaselineTopPlane": 1,
+      "verticesNearBaselineTopPlane": 1,
+      "verticesExactlyAtOwnMaximumY": 1,
+      "verticesNearOwnMaximumY": 1,
+      "nearPlaneTolerance": 5e-08,
+      "actualMaximumYDeltaFromBaseline": 0.0,
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2-clay/capture.json",
+      "captureSHA256": "7563f82eec293512286a51d8e18f8ea37f2e329ca439ddc8e214712c3a82c09e",
+      "camera": {
+        "projection": "orthographic",
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "distance": 1.8073808642855147,
+        "halfExtent": 0.65783283658225,
+        "fovBeforeOrthographic": 40,
+        "fitFormula": "radius * 1.05 / sin(20deg)",
+        "sourceRadius": 0.5570216098243332,
+        "referenceRadius": 0.5887244402352406,
+        "perspectiveWheelDeltaY": 107.91702004948496,
+        "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "cssPixels": [
+          800,
+          800
+        ],
+        "deviceScaleFactor": 1.28001,
+        "wheelProtocolDeltaY": 138.13486321155844,
+        "pans": [
+          {
+            "view": "front",
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "view": "right",
+            "dx": 0,
+            "dy": 0
+          }
+        ]
+      },
+      "image": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2-clay/lit-front.png",
+        "sha256": "edd334f186d49939cdbdde56e745b3118fc885c9e5874181ce6fc71834015f55",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ]
+      },
+      "fullFrameSize": [
+        1024,
+        1024
+      ],
+      "mask": "alpha > 250",
+      "firstOpaqueRow": 123,
+      "firstFiveOpaqueRowCounts": {
+        "123": 10,
+        "124": 17,
+        "125": 26,
+        "126": 36,
+        "127": 42
+      },
+      "headCrop": [
+        463,
+        115,
+        572,
+        271
+      ],
+      "pixelsBetweenCropTopAndFirstOpaqueRow": 8,
+      "headTopInsideCrop": true
+    }
+  },
+  "counts": "Strict counts use exact numeric equality to original B maximum Y. Near-plane counts use absolute error <= 5e-8.",
+  "imageMeasurement": "Counts of opaque pixels are taken from the full uncropped 1024px clay snapshot.",
+  "causalLimit": "This measures plane concentration and crop padding. It does not assess overall face quality or geometry accuracy.",
+  "sourceCropSHA256": "aaa864bdead10ddd8f9afd85f46d77e922c96f5e11236ec3bd12cc9c4af64401",
+  "scriptSHA256": "1078be2a3945ee6b5d621ae1caa2b780532f18c15e1b3f5f2e98f1b5c50e3a06"
+}

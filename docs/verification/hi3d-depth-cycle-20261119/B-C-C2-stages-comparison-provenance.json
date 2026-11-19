@@ -1,0 +1,2301 @@
+{
+  "kind": "Same-camera geometry stages: B, C, C2",
+  "renderer": "Unchanged official 3D-Inspector native Box PBR, CPU SwiftShader",
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "fovBeforeOrthographic": 40,
+    "fitFormula": "radius * 1.05 / sin(20deg)",
+    "sourceRadius": 0.5876666886430749,
+    "referenceRadius": 0.5887244402352406,
+    "perspectiveWheelDeltaY": 3.505915677124107,
+    "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001,
+    "wheelProtocolDeltaY": 4.4876070731820406,
+    "pans": [
+      {
+        "view": "front",
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "view": "right",
+        "dx": 0,
+        "dy": 0
+      }
+    ]
+  },
+  "actualFrameSize": [
+    1024,
+    1024
+  ],
+  "headWorldBounds": [
+    [
+      -0.06190345578729607,
+      0.3100160773953314,
+      -0.024992582091377752
+    ],
+    [
+      0.07604182008052954,
+      0.51,
+      0.18067711655172314
+    ]
+  ],
+  "headCrops": {
+    "front": [
+      463,
+      115,
+      572,
+      271
+    ],
+    "iso": [
+      378,
+      160,
+      568,
+      397
+    ],
+    "left": [
+      492,
+      115,
+      653,
+      271
+    ],
+    "right": [
+      371,
+      115,
+      532,
+      271
+    ]
+  },
+  "headDefinition": "A upper 18 percent height within upper 8 percent X envelope; 0.01 bake-unit padding",
+  "stages": {
+    "B": {
+      "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "assetDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "manifestSHA256": "650893815ec21de1994ee47eb78469f157be43ee6aa8282bf7d45ee94d4bca0e",
+      "proxySHA256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+      "acceptedCount": 6,
+      "faces": {
+        "+X": {
+          "status": "accepted",
+          "reason": "silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9822779749359579,
+              "boundaryP95Px": 5.0
+            },
+            "status": "accepted",
+            "sourceSize": [
+              369,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              511.0,
+              509.5
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0005456003685438,
+              "centerShiftYX": [
+                0.5,
+                2.0
+              ],
+              "scores": {
+                "iou": 0.9752544230660529,
+                "boundaryP95Px": 5.830951894845301
+              }
+            },
+            "after": {
+              "iou": 0.9822779749359579,
+              "boundaryP95Px": 5.0
+            },
+            "reason": "silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "+X",
+              "guideRect": [
+                327,
+                0,
+                369,
+                1024
+              ],
+              "guideInputSha256": "383151f7ff1091eeb4c5c59851f562f46b53d07626adee23aea43202605a9ccc",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3745910310745239,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            }
+          }
+        },
+        "-X": {
+          "status": "accepted",
+          "reason": "silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9861383487503192,
+              "boundaryP95Px": 3.1622776601683795
+            },
+            "status": "accepted",
+            "sourceSize": [
+              369,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              511.5,
+              510.0
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0005067084761283,
+              "centerShiftYX": [
+                0.0,
+                1.5
+              ],
+              "scores": {
+                "iou": 0.9800112654343862,
+                "boundaryP95Px": 4.123105625617661
+              }
+            },
+            "after": {
+              "iou": 0.9861383487503192,
+              "boundaryP95Px": 3.1622776601683795
+            },
+            "reason": "silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "-X",
+              "guideRect": [
+                327,
+                0,
+                369,
+                1024
+              ],
+              "guideInputSha256": "13704276405f23fb67ee35f2bf2db0a7645004431613bea44d25e8048d35f7d9",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3745910310745239,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            }
+          }
+        },
+        "+Y": {
+          "status": "accepted",
+          "reason": "silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9924306005163498,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "status": "accepted",
+            "sourceSize": [
+              1024,
+              960
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              510.0,
+              511.0
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0010904917915817,
+              "centerShiftYX": [
+                1.5,
+                0.5
+              ],
+              "scores": {
+                "iou": 0.9908389354550483,
+                "boundaryP95Px": 2.23606797749979
+              }
+            },
+            "after": {
+              "iou": 0.9924306005163498,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "reason": "silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "+Y",
+              "guideRect": [
+                0,
+                32,
+                1024,
+                960
+              ],
+              "guideInputSha256": "e2a783b6e3eb103d393aad1ec636b31dbca79c84fff8bace3bf7ad43e558785e",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                0.3745910310745239
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            }
+          }
+        },
+        "-Y": {
+          "status": "accepted",
+          "reason": "silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9757033481589691,
+              "boundaryP95Px": 5.0
+            },
+            "status": "accepted",
+            "sourceSize": [
+              1024,
+              960
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              507.0,
+              511.5
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 0.9908230695973043,
+              "centerShiftYX": [
+                4.5,
+                0.0
+              ],
+              "scores": {
+                "iou": 0.968951465838216,
+                "boundaryP95Px": 8.06225774829855
+              }
+            },
+            "after": {
+              "iou": 0.9757033481589691,
+              "boundaryP95Px": 5.0
+            },
+            "reason": "silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "-Y",
+              "guideRect": [
+                0,
+                32,
+                1024,
+                960
+              ],
+              "guideInputSha256": "9ae0c39e6aa7dcc4fb389f771e3488e28c47dfe69ccb800643d384ccfb847a34",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                0.3745910310745239
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            }
+          }
+        },
+        "+Z": {
+          "status": "accepted",
+          "reason": "silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.972648452831879,
+              "boundaryP95Px": 6.0
+            },
+            "status": "accepted",
+            "sourceSize": [
+              393,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              509.5,
+              511.5
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0001188199855215,
+              "centerShiftYX": [
+                2.0,
+                0.0
+              ],
+              "scores": {
+                "iou": 0.9653102942447829,
+                "boundaryP95Px": 6.708203932499369
+              }
+            },
+            "after": {
+              "iou": 0.972648452831879,
+              "boundaryP95Px": 6.0
+            },
+            "reason": "silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "+Z",
+              "guideRect": [
+                315,
+                0,
+                393,
+                1024
+              ],
+              "guideInputSha256": "cbcf6b5c68a7c87f7987bd2874f124a8940aa3356f557534f9c2bb03f1e0d978",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            }
+          }
+        },
+        "-Z": {
+          "status": "accepted",
+          "reason": "silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9883084038270566,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "status": "accepted",
+            "sourceSize": [
+              393,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0005070198299253,
+              "centerShiftYX": [
+                0.0,
+                -0.5
+              ]
+            },
+            "registrationCenterYX": [
+              511.5,
+              512.0
+            ],
+            "sampling": "source-affine-v1",
+            "after": {
+              "iou": 0.988862733186524,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "reason": "silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "-Z",
+              "guideRect": [
+                315,
+                0,
+                393,
+                1024
+              ],
+              "guideInputSha256": "1c44d9caeba6af12fdbf4d344d8957c73a8661da2aa17619d671adbd063a1ef2",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            }
+          }
+        }
+      },
+      "html": {
+        "archive": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B.box.zip",
+        "archiveSHA256": "b9fee58c4eb2d4c8bbc65fc4b33ac36ff28462d7c076b423412eb3bc0a8f36f8",
+        "viewer": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B.inspector.html",
+        "viewerSHA256": "e8421c1609879a8b7a4ae7b1dc15559cef15a00f05a0b81d89a8c82fdd8a8c2b",
+        "viewerBytes": 61841410,
+        "colorMapSHA256": "c9aac4921ed65f225fc65c04abec13cc5750b46135fe25da2b4e0486213d4355"
+      },
+      "capture": {
+        "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B.inspector.html",
+        "htmlSHA256": "e8421c1609879a8b7a4ae7b1dc15559cef15a00f05a0b81d89a8c82fdd8a8c2b",
+        "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+        "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+        "sourceBounds": {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        },
+        "referenceBounds": {
+          "min": [
+            -0.19959635205538714,
+            -0.52,
+            -0.19067711655172312
+          ],
+          "max": [
+            0.19959635205538714,
+            0.52,
+            0.19067711655172312
+          ]
+        },
+        "triangleCounts": {
+          "expected": null,
+          "meshPayload": 19320,
+          "sourceOriginal": {
+            "vertices": 499920,
+            "triangles": 1000000
+          }
+        },
+        "camera": {
+          "projection": "orthographic",
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "distance": 1.8073808642855147,
+          "halfExtent": 0.65783283658225,
+          "fovBeforeOrthographic": 40,
+          "fitFormula": "radius * 1.05 / sin(20deg)",
+          "sourceRadius": 0.5876666886430749,
+          "referenceRadius": 0.5887244402352406,
+          "perspectiveWheelDeltaY": 3.505915677124107,
+          "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "cssPixels": [
+            800,
+            800
+          ],
+          "deviceScaleFactor": 1.28001,
+          "wheelProtocolDeltaY": 4.4876070731820406,
+          "pans": [
+            {
+              "view": "front",
+              "dx": 0,
+              "dy": 0
+            },
+            {
+              "view": "right",
+              "dx": 0,
+              "dy": 0
+            }
+          ]
+        },
+        "lighting": {
+          "viewerDefaults": true,
+          "studio": "neutral where supported",
+          "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+          "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+        },
+        "modes": {
+          "lit": {
+            "front": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-front.png",
+              "sha256": "86ad094cea67846fd19fd93c49742b7f20219a906a6bb2bbaf38fed6d43c1d41",
+              "direction": [
+                0,
+                0,
+                1
+              ],
+              "expectedPosition": [
+                0,
+                0,
+                1.8073808642855147
+              ]
+            },
+            "iso": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-iso.png",
+              "sha256": "7d3a7f854c593d4e6926afc395e3707b77ed6ff9453d249ca8fe98b11f538dc1",
+              "direction": [
+                0.5773502691896258,
+                0.5773502691896258,
+                0.5773502691896258
+              ],
+              "expectedPosition": [
+                1.0434918285234205,
+                1.0434918285234205,
+                1.0434918285234205
+              ]
+            },
+            "left": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-left.png",
+              "sha256": "09a981029636d656553e71f4a7d9e677234aaab8fc605567a9c443c215da3620",
+              "direction": [
+                -1,
+                0,
+                0
+              ],
+              "expectedPosition": [
+                -1.8073808642855147,
+                0,
+                0
+              ]
+            },
+            "right": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-right.png",
+              "sha256": "67a70b9779ad5cbc62712784607a4734c8942a3c16a96b8d3fecd88b94579e18",
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "expectedPosition": [
+                1.8073808642855147,
+                0,
+                0
+              ]
+            }
+          }
+        },
+        "errors": [],
+        "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "hardwareGPUUsed": false,
+        "browserVersion": "158.0.8127.18",
+        "viewport": {
+          "width": 800,
+          "height": 800
+        },
+        "canvasRect": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 800
+        },
+        "devicePixelRatio": 1.2800099849700928,
+        "canvasPixels": [
+          1024,
+          1024
+        ],
+        "backend": "Three.js / WebGL2",
+        "stageState": "Native Box"
+      },
+      "captureSHA256": "012424c2df2ced4a3bc7ce7747c4f2e89f68827c142a0f94d3d2acf149b4a0a8"
+    },
+    "C": {
+      "assetId": "1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+      "assetDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+      "manifestSHA256": "9187bae012c757fc7bf0b7c3e8d9c906a2069844d65d8c3ac743faa049d300ce",
+      "proxySHA256": "86f657dddf2ef5d25e3b8859d61e2750d4ac84ac0de6622bed5dda13acefb1f2",
+      "acceptedCount": 6,
+      "faces": {
+        "+X": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9822779749359579,
+              "boundaryP95Px": 5.0
+            },
+            "status": "accepted",
+            "sourceSize": [
+              369,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              511.0,
+              509.5
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0005456003685438,
+              "centerShiftYX": [
+                0.5,
+                2.0
+              ],
+              "scores": {
+                "iou": 0.9752544230660529,
+                "boundaryP95Px": 5.830951894845301
+              }
+            },
+            "after": {
+              "iou": 0.96895584511796,
+              "boundaryP95Px": 10.812021405179657
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "+X",
+              "guideRect": [
+                327,
+                0,
+                369,
+                1024
+              ],
+              "guideInputSha256": "383151f7ff1091eeb4c5c59851f562f46b53d07626adee23aea43202605a9ccc",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3745910310745239,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.9822779749359579,
+              "boundaryP95Px": 5.0
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "ac7bdb232d8433091ec26022c1f65b60e6722e34f66d0826c2d417cfe71e2ac8",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 8376
+          }
+        },
+        "-X": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9861383487503192,
+              "boundaryP95Px": 3.1622776601683795
+            },
+            "status": "accepted",
+            "sourceSize": [
+              369,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              511.5,
+              510.0
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0005067084761283,
+              "centerShiftYX": [
+                0.0,
+                1.5
+              ],
+              "scores": {
+                "iou": 0.9800112654343862,
+                "boundaryP95Px": 4.123105625617661
+              }
+            },
+            "after": {
+              "iou": 0.9705744978981784,
+              "boundaryP95Px": 11.180339887498949
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "-X",
+              "guideRect": [
+                327,
+                0,
+                369,
+                1024
+              ],
+              "guideInputSha256": "13704276405f23fb67ee35f2bf2db0a7645004431613bea44d25e8048d35f7d9",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3745910310745239,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.9861383487503192,
+              "boundaryP95Px": 3.1622776601683795
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "6a497991aa0ff8f18551c1603dfe5e8880c4143abdcb81e33783da76a40e52df",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 9086
+          }
+        },
+        "+Y": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9924306005163498,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "status": "accepted",
+            "sourceSize": [
+              1024,
+              960
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              510.0,
+              511.0
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0010904917915817,
+              "centerShiftYX": [
+                1.5,
+                0.5
+              ],
+              "scores": {
+                "iou": 0.9908389354550483,
+                "boundaryP95Px": 2.23606797749979
+              }
+            },
+            "after": {
+              "iou": 0.9717591839091926,
+              "boundaryP95Px": 12.06853798541376
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "+Y",
+              "guideRect": [
+                0,
+                32,
+                1024,
+                960
+              ],
+              "guideInputSha256": "e2a783b6e3eb103d393aad1ec636b31dbca79c84fff8bace3bf7ad43e558785e",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                0.3745910310745239
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.9924306005163498,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "5a7b4be152bcbb8898656e4db93a70f298a3f8185ae2ea2aa30e1e44a99f0b42",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 7166
+          }
+        },
+        "-Y": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9757033481589691,
+              "boundaryP95Px": 5.0
+            },
+            "status": "accepted",
+            "sourceSize": [
+              1024,
+              960
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              507.0,
+              511.5
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 0.9908230695973043,
+              "centerShiftYX": [
+                4.5,
+                0.0
+              ],
+              "scores": {
+                "iou": 0.968951465838216,
+                "boundaryP95Px": 8.06225774829855
+              }
+            },
+            "after": {
+              "iou": 0.958733101583623,
+              "boundaryP95Px": 11.40175425099138
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "-Y",
+              "guideRect": [
+                0,
+                32,
+                1024,
+                960
+              ],
+              "guideInputSha256": "9ae0c39e6aa7dcc4fb389f771e3488e28c47dfe69ccb800643d384ccfb847a34",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                0.3745910310745239
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.9757033481589691,
+              "boundaryP95Px": 5.0
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "345ebdb88372b6e8bd743eb11d71144e6f07d20e9f17a6f8a6d52d8d1e555ac6",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 5014
+          }
+        },
+        "+Z": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.972648452831879,
+              "boundaryP95Px": 6.0
+            },
+            "status": "accepted",
+            "sourceSize": [
+              393,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              509.5,
+              511.5
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0001188199855215,
+              "centerShiftYX": [
+                2.0,
+                0.0
+              ],
+              "scores": {
+                "iou": 0.9653102942447829,
+                "boundaryP95Px": 6.708203932499369
+              }
+            },
+            "after": {
+              "iou": 0.9499040617070721,
+              "boundaryP95Px": 14.142135623730951
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "+Z",
+              "guideRect": [
+                315,
+                0,
+                393,
+                1024
+              ],
+              "guideInputSha256": "cbcf6b5c68a7c87f7987bd2874f124a8940aa3356f557534f9c2bb03f1e0d978",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.972648452831879,
+              "boundaryP95Px": 6.0
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "eb87a07beaf3f9d3a6efe0482708c863160c37971dc89acc64ba857fd5564c39",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 14905
+          }
+        },
+        "-Z": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.988862733186524,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "status": "accepted",
+            "sourceSize": [
+              393,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0005070198299253,
+              "centerShiftYX": [
+                0.0,
+                -0.5
+              ]
+            },
+            "registrationCenterYX": [
+              511.5,
+              512.0
+            ],
+            "sampling": "source-affine-v1",
+            "after": {
+              "iou": 0.9616108568480898,
+              "boundaryP95Px": 13.0
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "-Z",
+              "guideRect": [
+                315,
+                0,
+                393,
+                1024
+              ],
+              "guideInputSha256": "1c44d9caeba6af12fdbf4d344d8957c73a8661da2aa17619d671adbd063a1ef2",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.988862733186524,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "0d14f6743f7963d5a57878895caa396e87e9df0ce8ac3ee006c8019fb41daec0",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 11481
+          }
+        }
+      },
+      "html": {
+        "archive": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C.box.zip",
+        "archiveSHA256": "c98909fab5fd2dd22ed13725cc133e660eea658f2c21778ba2fd494b3fa9c98b",
+        "viewer": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C.inspector.html",
+        "viewerSHA256": "49e5ad1bec434760349a94e591ada1868380a7c6a1e0993f8bda3ec13b3e8658",
+        "viewerBytes": 63436674,
+        "colorMapSHA256": "da291bc07009b2d17e8bafca26b30c8a91720f84c96d32cc173d34f771113f2b"
+      },
+      "capture": {
+        "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C.inspector.html",
+        "htmlSHA256": "49e5ad1bec434760349a94e591ada1868380a7c6a1e0993f8bda3ec13b3e8658",
+        "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+        "assetId": "1c6e89ec1fe1f3877dd769f1fa078b9e42136f267aab6adc7aacf948916bba15",
+        "sourceBounds": {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        },
+        "referenceBounds": {
+          "min": [
+            -0.19959635205538714,
+            -0.52,
+            -0.19067711655172312
+          ],
+          "max": [
+            0.19959635205538714,
+            0.52,
+            0.19067711655172312
+          ]
+        },
+        "triangleCounts": {
+          "expected": null,
+          "meshPayload": 19554,
+          "sourceOriginal": {
+            "vertices": 499920,
+            "triangles": 1000000
+          }
+        },
+        "camera": {
+          "projection": "orthographic",
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "distance": 1.8073808642855147,
+          "halfExtent": 0.65783283658225,
+          "fovBeforeOrthographic": 40,
+          "fitFormula": "radius * 1.05 / sin(20deg)",
+          "sourceRadius": 0.5876666886430749,
+          "referenceRadius": 0.5887244402352406,
+          "perspectiveWheelDeltaY": 3.505915677124107,
+          "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "cssPixels": [
+            800,
+            800
+          ],
+          "deviceScaleFactor": 1.28001,
+          "wheelProtocolDeltaY": 4.4876070731820406,
+          "pans": [
+            {
+              "view": "front",
+              "dx": 0,
+              "dy": 0
+            },
+            {
+              "view": "right",
+              "dx": 0,
+              "dy": 0
+            }
+          ]
+        },
+        "lighting": {
+          "viewerDefaults": true,
+          "studio": "neutral where supported",
+          "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+          "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+        },
+        "modes": {
+          "lit": {
+            "front": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-box/lit-front.png",
+              "sha256": "870db05ae55ad18489a0c6261908a60ca010fa86f724e538c98ba6ce199e300f",
+              "direction": [
+                0,
+                0,
+                1
+              ],
+              "expectedPosition": [
+                0,
+                0,
+                1.8073808642855147
+              ]
+            },
+            "iso": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-box/lit-iso.png",
+              "sha256": "e9df55f57d843413c2cf488a9ba90f28669f3a8f73cbf4fa30386116d90966ad",
+              "direction": [
+                0.5773502691896258,
+                0.5773502691896258,
+                0.5773502691896258
+              ],
+              "expectedPosition": [
+                1.0434918285234205,
+                1.0434918285234205,
+                1.0434918285234205
+              ]
+            },
+            "left": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-box/lit-left.png",
+              "sha256": "1be7434abe1ed8b5094766172d547f1b64291435639b3464370d1627775543fc",
+              "direction": [
+                -1,
+                0,
+                0
+              ],
+              "expectedPosition": [
+                -1.8073808642855147,
+                0,
+                0
+              ]
+            },
+            "right": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C-box/lit-right.png",
+              "sha256": "e819ae08c5684d1e6d65fca01a9d63fedbc567443daca65f43a20e4062e2a623",
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "expectedPosition": [
+                1.8073808642855147,
+                0,
+                0
+              ]
+            }
+          }
+        },
+        "errors": [],
+        "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "hardwareGPUUsed": false,
+        "browserVersion": "158.0.8127.18",
+        "viewport": {
+          "width": 800,
+          "height": 800
+        },
+        "canvasRect": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 800
+        },
+        "devicePixelRatio": 1.2800099849700928,
+        "canvasPixels": [
+          1024,
+          1024
+        ],
+        "backend": "Three.js / WebGL2",
+        "stageState": "Native Box"
+      },
+      "captureSHA256": "e984231093778cc485ee5a364a7a7503bfc929c2e2012559772c1d4c81658d1a"
+    },
+    "C2": {
+      "assetId": "f2b5c3f8b92a3b194ac77ad5d1424ce08ac68a8247d76ea546df96b2295ed10f",
+      "assetDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/f2b5c3f8b92a3b194ac77ad5d1424ce08ac68a8247d76ea546df96b2295ed10f",
+      "manifestSHA256": "ec9a0e2f0c11bf92d7bc2046976ef68a6e5ca34116cb0e48b11b74d421448f08",
+      "proxySHA256": "2f6c49948e396aa04d183c3bf2fc5c0c3d291b82aed0b2e99555f998d79f1c99",
+      "acceptedCount": 6,
+      "faces": {
+        "+X": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9822779749359579,
+              "boundaryP95Px": 5.0
+            },
+            "status": "accepted",
+            "sourceSize": [
+              369,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              511.0,
+              509.5
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0005456003685438,
+              "centerShiftYX": [
+                0.5,
+                2.0
+              ],
+              "scores": {
+                "iou": 0.9752544230660529,
+                "boundaryP95Px": 5.830951894845301
+              }
+            },
+            "after": {
+              "iou": 0.970084646298524,
+              "boundaryP95Px": 10.63014581273465
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "+X",
+              "guideRect": [
+                327,
+                0,
+                369,
+                1024
+              ],
+              "guideInputSha256": "383151f7ff1091eeb4c5c59851f562f46b53d07626adee23aea43202605a9ccc",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3745910310745239,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.9822779749359579,
+              "boundaryP95Px": 5.0
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "ac7bdb232d8433091ec26022c1f65b60e6722e34f66d0826c2d417cfe71e2ac8",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 7848
+          }
+        },
+        "-X": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9861383487503192,
+              "boundaryP95Px": 3.1622776601683795
+            },
+            "status": "accepted",
+            "sourceSize": [
+              369,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              511.5,
+              510.0
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0005067084761283,
+              "centerShiftYX": [
+                0.0,
+                1.5
+              ],
+              "scores": {
+                "iou": 0.9800112654343862,
+                "boundaryP95Px": 4.123105625617661
+              }
+            },
+            "after": {
+              "iou": 0.9728882159534694,
+              "boundaryP95Px": 11.0
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "-X",
+              "guideRect": [
+                327,
+                0,
+                369,
+                1024
+              ],
+              "guideInputSha256": "13704276405f23fb67ee35f2bf2db0a7645004431613bea44d25e8048d35f7d9",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3745910310745239,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.9861383487503192,
+              "boundaryP95Px": 3.1622776601683795
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "6a497991aa0ff8f18551c1603dfe5e8880c4143abdcb81e33783da76a40e52df",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 8317
+          }
+        },
+        "+Y": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9924306005163498,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "status": "accepted",
+            "sourceSize": [
+              1024,
+              960
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              510.0,
+              511.0
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0010904917915817,
+              "centerShiftYX": [
+                1.5,
+                0.5
+              ],
+              "scores": {
+                "iou": 0.9908389354550483,
+                "boundaryP95Px": 2.23606797749979
+              }
+            },
+            "after": {
+              "iou": 0.9741936330817197,
+              "boundaryP95Px": 12.0
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "+Y",
+              "guideRect": [
+                0,
+                32,
+                1024,
+                960
+              ],
+              "guideInputSha256": "e2a783b6e3eb103d393aad1ec636b31dbca79c84fff8bace3bf7ad43e558785e",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                0.3745910310745239
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.9924306005163498,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "5a7b4be152bcbb8898656e4db93a70f298a3f8185ae2ea2aa30e1e44a99f0b42",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 7103
+          }
+        },
+        "-Y": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.9757033481589691,
+              "boundaryP95Px": 5.0
+            },
+            "status": "accepted",
+            "sourceSize": [
+              1024,
+              960
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              507.0,
+              511.5
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 0.9908230695973043,
+              "centerShiftYX": [
+                4.5,
+                0.0
+              ],
+              "scores": {
+                "iou": 0.968951465838216,
+                "boundaryP95Px": 8.06225774829855
+              }
+            },
+            "after": {
+              "iou": 0.9615460903388674,
+              "boundaryP95Px": 11.0
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "-Y",
+              "guideRect": [
+                0,
+                32,
+                1024,
+                960
+              ],
+              "guideInputSha256": "9ae0c39e6aa7dcc4fb389f771e3488e28c47dfe69ccb800643d384ccfb847a34",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                0.3745910310745239
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.9757033481589691,
+              "boundaryP95Px": 5.0
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "345ebdb88372b6e8bd743eb11d71144e6f07d20e9f17a6f8a6d52d8d1e555ac6",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 4869
+          }
+        },
+        "+Z": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.972648452831879,
+              "boundaryP95Px": 6.0
+            },
+            "status": "accepted",
+            "sourceSize": [
+              393,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0,
+              "centerShiftYX": [
+                0.0,
+                0.0
+              ]
+            },
+            "registrationCenterYX": [
+              509.5,
+              511.5
+            ],
+            "sampling": "source-affine-v1",
+            "boundingBoxRegistration": {
+              "scale": 1.0001188199855215,
+              "centerShiftYX": [
+                2.0,
+                0.0
+              ],
+              "scores": {
+                "iou": 0.9653102942447829,
+                "boundaryP95Px": 6.708203932499369
+              }
+            },
+            "after": {
+              "iou": 0.9503595821945194,
+              "boundaryP95Px": 14.0
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "+Z",
+              "guideRect": [
+                315,
+                0,
+                393,
+                1024
+              ],
+              "guideInputSha256": "cbcf6b5c68a7c87f7987bd2874f124a8940aa3356f557534f9c2bb03f1e0d978",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.972648452831879,
+              "boundaryP95Px": 6.0
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "eb87a07beaf3f9d3a6efe0482708c863160c37971dc89acc64ba857fd5564c39",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 14712
+          }
+        },
+        "-Z": {
+          "status": "accepted",
+          "reason": "fixed-mapping-silhouette-passed",
+          "qa": {
+            "before": {
+              "iou": 0.988862733186524,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "status": "accepted",
+            "sourceSize": [
+              393,
+              1024
+            ],
+            "tileSize": [
+              1024,
+              1024
+            ],
+            "registration": {
+              "scale": 1.0005070198299253,
+              "centerShiftYX": [
+                0.0,
+                -0.5
+              ]
+            },
+            "registrationCenterYX": [
+              511.5,
+              512.0
+            ],
+            "sampling": "source-affine-v1",
+            "after": {
+              "iou": 0.9628223895066695,
+              "boundaryP95Px": 12.649110640673518
+            },
+            "reason": "fixed-mapping-silhouette-passed",
+            "originalSize": [
+              1024,
+              1024
+            ],
+            "guideCanvas": {
+              "version": 1,
+              "size": 1024,
+              "faceId": "-Z",
+              "guideRect": [
+                315,
+                0,
+                393,
+                1024
+              ],
+              "guideInputSha256": "1c44d9caeba6af12fdbf4d344d8957c73a8661da2aa17619d671adbd063a1ef2",
+              "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+              "sourceRect": [
+                0,
+                0,
+                1024,
+                1024
+              ],
+              "physicalWidthHeight": [
+                0.3993621253967285,
+                1.04
+              ],
+              "imageRowOrder": "top-to-bottom",
+              "backgroundSRGB": 0.5
+            },
+            "thresholds": {
+              "minIoU": 0.85,
+              "maxShiftFraction": 0.1,
+              "maxScaleChange": 0.15
+            },
+            "sourceAfter": {
+              "iou": 0.988862733186524,
+              "boundaryP95Px": 2.23606797749979
+            },
+            "mappingPolicy": "fixed-b-rgb-v1",
+            "sourceAlignmentKey": "0d14f6743f7963d5a57878895caa396e87e9df0ce8ac3ee006c8019fb41daec0",
+            "registrationChanged": false,
+            "resampled": false,
+            "newGeometryUncoveredPixels": 11146
+          }
+        }
+      },
+      "html": {
+        "archive": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2.box.zip",
+        "archiveSHA256": "0184d6a0a9a724050ad1139e7493c5d966ec5d817f988bd2147b47ca3e185054",
+        "viewer": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2.inspector.html",
+        "viewerSHA256": "ba56ff44a120cc5179b24d169356d3171e5cfd7b45b91130456d76afd72cba91",
+        "viewerBytes": 63545130,
+        "colorMapSHA256": "4d46b076213c2408c986384161d2da125ad19bbc73af908da2a76a77a53cf1f2"
+      },
+      "capture": {
+        "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2.inspector.html",
+        "htmlSHA256": "ba56ff44a120cc5179b24d169356d3171e5cfd7b45b91130456d76afd72cba91",
+        "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+        "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+        "assetId": "f2b5c3f8b92a3b194ac77ad5d1424ce08ac68a8247d76ea546df96b2295ed10f",
+        "sourceBounds": {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        },
+        "referenceBounds": {
+          "min": [
+            -0.19959635205538714,
+            -0.52,
+            -0.19067711655172312
+          ],
+          "max": [
+            0.19959635205538714,
+            0.52,
+            0.19067711655172312
+          ]
+        },
+        "triangleCounts": {
+          "expected": null,
+          "meshPayload": 19548,
+          "sourceOriginal": {
+            "vertices": 499920,
+            "triangles": 1000000
+          }
+        },
+        "camera": {
+          "projection": "orthographic",
+          "target": [
+            0,
+            0,
+            0
+          ],
+          "distance": 1.8073808642855147,
+          "halfExtent": 0.65783283658225,
+          "fovBeforeOrthographic": 40,
+          "fitFormula": "radius * 1.05 / sin(20deg)",
+          "sourceRadius": 0.5876666886430749,
+          "referenceRadius": 0.5887244402352406,
+          "perspectiveWheelDeltaY": 3.505915677124107,
+          "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "cssPixels": [
+            800,
+            800
+          ],
+          "deviceScaleFactor": 1.28001,
+          "wheelProtocolDeltaY": 4.4876070731820406,
+          "pans": [
+            {
+              "view": "front",
+              "dx": 0,
+              "dy": 0
+            },
+            {
+              "view": "right",
+              "dx": 0,
+              "dy": 0
+            }
+          ]
+        },
+        "lighting": {
+          "viewerDefaults": true,
+          "studio": "neutral where supported",
+          "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+          "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+        },
+        "modes": {
+          "lit": {
+            "front": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2-box/lit-front.png",
+              "sha256": "7de76991f22840607d8be7ab2a8586553a6636ffa4cf9ee977adb1349ad19e2a",
+              "direction": [
+                0,
+                0,
+                1
+              ],
+              "expectedPosition": [
+                0,
+                0,
+                1.8073808642855147
+              ]
+            },
+            "iso": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2-box/lit-iso.png",
+              "sha256": "c44db43c627b9d1bd939a6816133090ab485cdcb14d3d44fcf4c58d2ac63b9be",
+              "direction": [
+                0.5773502691896258,
+                0.5773502691896258,
+                0.5773502691896258
+              ],
+              "expectedPosition": [
+                1.0434918285234205,
+                1.0434918285234205,
+                1.0434918285234205
+              ]
+            },
+            "left": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2-box/lit-left.png",
+              "sha256": "f7b5fcb32b2e2c1786215802930fa0db1385dcafcc9c1988cdffb7623e49d0ba",
+              "direction": [
+                -1,
+                0,
+                0
+              ],
+              "expectedPosition": [
+                -1.8073808642855147,
+                0,
+                0
+              ]
+            },
+            "right": {
+              "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2-box/lit-right.png",
+              "sha256": "a11ae264aa8b25cee44b9453b67b2fe16c248b51b5fc1d2be3659b57d79430e4",
+              "direction": [
+                1,
+                0,
+                0
+              ],
+              "expectedPosition": [
+                1.8073808642855147,
+                0,
+                0
+              ]
+            }
+          }
+        },
+        "errors": [],
+        "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "hardwareGPUUsed": false,
+        "browserVersion": "158.0.8127.18",
+        "viewport": {
+          "width": 800,
+          "height": 800
+        },
+        "canvasRect": {
+          "x": 0,
+          "y": 0,
+          "width": 800,
+          "height": 800
+        },
+        "devicePixelRatio": 1.2800099849700928,
+        "canvasPixels": [
+          1024,
+          1024
+        ],
+        "backend": "Three.js / WebGL2",
+        "stageState": "Native Box"
+      },
+      "captureSHA256": "c1f825ca0c8e08544ec3328e83cf458fcc0264bf03c02035b7b4a77fc1aeceec"
+    }
+  },
+  "comparisons": {
+    "C": {
+      "allNonNormalMapHashesEqual": {
+        "colorMap": false,
+        "intervalMap": false,
+        "rangeMap": false
+      },
+      "allDepthHashesEqual": {
+        "+X": false,
+        "-X": false,
+        "+Y": false,
+        "-Y": false,
+        "+Z": false,
+        "-Z": false
+      },
+      "registeredRGBArrayHashesEqual": {
+        "+X": true,
+        "-X": true,
+        "+Y": true,
+        "-Y": true,
+        "+Z": true,
+        "-Z": true
+      },
+      "proxyBytesEqual": false,
+      "geometryPositionsIndicesTransformsEqual": false,
+      "vertexNormalAccessorsEqual": false,
+      "bakeBoxEqual": true,
+      "canonicalFrameTransformEqual": true,
+      "bakeBoxes": [
+        {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        },
+        {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        }
+      ],
+      "proxyDifference": "Actual stage geometry changes are retained; no image-based shape alignment.",
+      "limitation": "C retains B source/aligned RGB and mapping. Geometry changes can alter atlas alpha, newly exposed pixels and boundary fallback; colorMap byte identity is not required.",
+      "normalRGBOnlyVerification": null
+    },
+    "C2": {
+      "allNonNormalMapHashesEqual": {
+        "colorMap": false,
+        "intervalMap": false,
+        "rangeMap": false
+      },
+      "allDepthHashesEqual": {
+        "+X": false,
+        "-X": false,
+        "+Y": false,
+        "-Y": false,
+        "+Z": false,
+        "-Z": false
+      },
+      "registeredRGBArrayHashesEqual": {
+        "+X": true,
+        "-X": true,
+        "+Y": true,
+        "-Y": true,
+        "+Z": true,
+        "-Z": true
+      },
+      "proxyBytesEqual": false,
+      "geometryPositionsIndicesTransformsEqual": false,
+      "vertexNormalAccessorsEqual": false,
+      "bakeBoxEqual": true,
+      "canonicalFrameTransformEqual": true,
+      "bakeBoxes": [
+        {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        },
+        {
+          "min": [
+            -0.19968106269836425,
+            -0.52,
+            -0.18729551553726195
+          ],
+          "max": [
+            0.19968106269836425,
+            0.52,
+            0.18729551553726195
+          ]
+        }
+      ],
+      "proxyDifference": "Actual stage geometry changes are retained; no image-based shape alignment.",
+      "limitation": "C retains B source/aligned RGB and mapping. Geometry changes can alter atlas alpha, newly exposed pixels and boundary fallback; colorMap byte identity is not required.",
+      "normalRGBOnlyVerification": null
+    }
+  },
+  "panels": {
+    "B-C-C2-stages-faces.webp": {
+      "sha256": "fd4afca5806b5affbf849c842ce19479a6227ae7ad0b86c6364e011efa81cdde",
+      "size": [
+        1672,
+        1696
+      ],
+      "bytes": 386896
+    },
+    "B-C-C2-stages-body.webp": {
+      "sha256": "114a67ac031089ed8560d46636e7ba1de7c91227affaca7022b8110cd151d526",
+      "size": [
+        1000,
+        1800
+      ],
+      "bytes": 194784
+    }
+  },
+  "processing": "Opaque backdrop for transparent PNGs, integer head crops enlarged 2x nearest-neighbor; full-body previews downsampled with Lanczos. No sharpening or AI postprocessing."
+}

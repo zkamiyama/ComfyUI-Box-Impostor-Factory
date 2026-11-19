@@ -1,0 +1,471 @@
+{
+  "method": "joint-full-depth-v3-boundary-dirichlet",
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "registration": {
+    "+X": {
+      "status": "fitted",
+      "calibration": "positive-affine-to-seed-orthographic-depth",
+      "exactCameraCalibration": false,
+      "scale": 0.7521098512137238,
+      "offset": -2.8655840100417374,
+      "samples": 371732,
+      "medianAbsFitResidual": 0.026826143264770508,
+      "p95AbsFitResidual": 0.11806317418813705,
+      "clippedFraction": 0.36308684751380027,
+      "maxNormalizedAxialChange": 0.03755989625981412,
+      "residualFilter": "none; full low/mid/high frequency residual",
+      "sourceSha256": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa",
+      "predictionSha256": "c6f0dbd7633c66ebecc5a0ec531cb4bd97d51d2885e44c82b8d0c25df8b9424f"
+    },
+    "-X": {
+      "status": "fitted",
+      "calibration": "positive-affine-to-seed-orthographic-depth",
+      "exactCameraCalibration": false,
+      "scale": 0.6723776839303651,
+      "offset": -5.158261531972292,
+      "samples": 368754,
+      "medianAbsFitResidual": 0.030405282974243164,
+      "p95AbsFitResidual": 0.12441668659448624,
+      "clippedFraction": 0.3808609533727092,
+      "maxNormalizedAxialChange": 0.03755989625981412,
+      "residualFilter": "none; full low/mid/high frequency residual",
+      "sourceSha256": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973",
+      "predictionSha256": "dfc300de87a23d274327089ea12e31fc81deafffa1d601011f03f4b2b727af1f"
+    },
+    "+Y": {
+      "status": "fitted",
+      "calibration": "positive-affine-to-seed-orthographic-depth",
+      "exactCameraCalibration": false,
+      "scale": 0.6616782678371701,
+      "offset": -1.5768159436650353,
+      "samples": 356470,
+      "medianAbsFitResidual": 0.0536113977432251,
+      "p95AbsFitResidual": 0.14431239664554596,
+      "clippedFraction": 0.9026706314696888,
+      "maxNormalizedAxialChange": 0.014423076923076922,
+      "residualFilter": "none; full low/mid/high frequency residual",
+      "sourceSha256": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d",
+      "predictionSha256": "c386ca395fe56cc2d8684e0890b31b55f79d2b5771c025d42f9fc968a28ed5f0"
+    },
+    "-Y": {
+      "status": "fitted",
+      "calibration": "positive-affine-to-seed-orthographic-depth",
+      "exactCameraCalibration": false,
+      "scale": 0.7617412403648229,
+      "offset": -0.8941165533849575,
+      "samples": 367117,
+      "medianAbsFitResidual": 0.03165239095687866,
+      "p95AbsFitResidual": 0.07530075311660767,
+      "clippedFraction": 0.7243494580746738,
+      "maxNormalizedAxialChange": 0.014423076923076922,
+      "residualFilter": "none; full low/mid/high frequency residual",
+      "sourceSha256": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623",
+      "predictionSha256": "5c2751c0990a89466b8be26b883da12e960790d4f3ec3a053f9a78f5ed481d8f"
+    },
+    "+Z": {
+      "status": "fitted",
+      "calibration": "positive-affine-to-seed-orthographic-depth",
+      "exactCameraCalibration": false,
+      "scale": 0.9294180624669456,
+      "offset": -4.602455197372144,
+      "samples": 323092,
+      "medianAbsFitResidual": 0.05706620216369629,
+      "p95AbsFitResidual": 0.1911594122648239,
+      "clippedFraction": 0.6494125512238,
+      "maxNormalizedAxialChange": 0.04004367097891297,
+      "residualFilter": "none; full low/mid/high frequency residual",
+      "sourceSha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+      "predictionSha256": "c789cd1e37862fe233cbfc737868fc0d7f7b27991d831a6b6e7c0ae91f3ad1fd"
+    },
+    "-Z": {
+      "status": "fitted",
+      "calibration": "positive-affine-to-seed-orthographic-depth",
+      "exactCameraCalibration": false,
+      "scale": 0.9634000036192873,
+      "offset": -3.4926738420198467,
+      "samples": 324754,
+      "medianAbsFitResidual": 0.05016958713531494,
+      "p95AbsFitResidual": 0.12170795351266861,
+      "clippedFraction": 0.5753647376167808,
+      "maxNormalizedAxialChange": 0.04004367097891297,
+      "residualFilter": "none; full low/mid/high frequency residual",
+      "sourceSha256": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede",
+      "predictionSha256": "5b988dccaee2fdb2b75e0dcbd1ab54b9d13023867fab09f289c05fb8deacc2a1"
+    }
+  },
+  "inference": {
+    "model": "moge_2_vitl_normal_fp16",
+    "model_sha256": "cb1a692d03235671e959e81360d7b4d9f44aefadb1f852d6ca6aa17799d5e31f",
+    "level": 8,
+    "size": 1024,
+    "faces": {
+      "px": {
+        "source_sha256": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa",
+        "crop": [
+          306,
+          0,
+          715,
+          1024
+        ],
+        "shape": [
+          1024,
+          1024
+        ],
+        "valid": 418816,
+        "quantiles": [
+          3.9913922548294067,
+          4.4133689403533936,
+          4.911995244026184
+        ],
+        "seconds": 0.92
+      },
+      "nx": {
+        "source_sha256": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973",
+        "crop": [
+          307,
+          0,
+          715,
+          1024
+        ],
+        "shape": [
+          1024,
+          1024
+        ],
+        "valid": 417792,
+        "quantiles": [
+          7.937935829162598,
+          8.360846519470215,
+          8.685653676986695
+        ],
+        "seconds": 0.31
+      },
+      "py": {
+        "source_sha256": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d",
+        "crop": [
+          14,
+          46,
+          1010,
+          977
+        ],
+        "shape": [
+          1024,
+          1024
+        ],
+        "valid": 927276,
+        "quantiles": [
+          2.3488612174987793,
+          3.031991720199585,
+          3.6624661684036255
+        ],
+        "seconds": 0.37
+      },
+      "ny": {
+        "source_sha256": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623",
+        "crop": [
+          12,
+          28,
+          1013,
+          980
+        ],
+        "shape": [
+          1024,
+          1024
+        ],
+        "valid": 952952,
+        "quantiles": [
+          1.2170399570465087,
+          1.7714735269546509,
+          2.4586744260787965
+        ],
+        "seconds": 0.34
+      },
+      "pz": {
+        "source_sha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+        "crop": [
+          294,
+          0,
+          729,
+          1024
+        ],
+        "shape": [
+          1024,
+          1024
+        ],
+        "valid": 445440,
+        "quantiles": [
+          5.011045837402344,
+          5.470840215682983,
+          6.0036518764495845
+        ],
+        "seconds": 0.32
+      },
+      "nz": {
+        "source_sha256": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede",
+        "crop": [
+          295,
+          0,
+          728,
+          1024
+        ],
+        "shape": [
+          1024,
+          1024
+        ],
+        "valid": 443392,
+        "quantiles": [
+          3.754674186706543,
+          4.296421527862549,
+          4.814071197509765
+        ],
+        "seconds": 0.33
+      }
+    },
+    "elapsed_s": 3.86
+  },
+  "solver": {
+    "solver": "joint-IRLS-GaussNewton-matrix-free-PCG",
+    "visibility": "seed first-hit + current vertex-splat; not triangle rasterization",
+    "jacobian": "exact bilinear target derivative",
+    "stepPolicy": "retain all positive-weight support; locally shorten support-exiting vertices",
+    "regularization": "graph Laplacian of displacement only",
+    "parameters": {
+      "maxDisplacementHeight": 0.015,
+      "iterations": 8,
+      "smoothness": 0.3,
+      "prior": 0.025,
+      "cgIterations": 120,
+      "supportBacktracks": 12,
+      "boundaryPolicy": "axis-dirichlet-within-max-displacement-v1",
+      "boundaryBandHeight": 0.015
+    },
+    "boundaryConstraints": {
+      "policy": "axis-dirichlet-within-max-displacement-v1",
+      "bandWorld": 0.015,
+      "float32MarginWorld": [
+        5.960464477539063e-08,
+        2.384185791015625e-07,
+        5.960464477539063e-08
+      ],
+      "fixedCoordinatesXYZ": [
+        6672,
+        7312,
+        9129
+      ],
+      "anyFixedVertices": 23048,
+      "fullyFixedVertices": 0
+    },
+    "vertices": 499920,
+    "triangles": 1000000,
+    "height": 1.0,
+    "normalizedDisplacement": {
+      "p50": 0.002199461912006927,
+      "p95": 0.012581024090963847,
+      "max": 0.015000000000000081
+    },
+    "iterations": [
+      {
+        "iteration": 0,
+        "energyBefore": 3.1398656517267227,
+        "energyAfter": 1.8652448849655123,
+        "pcgStatus": 0,
+        "pcgRelativeResidual": 0.00019701726529326087,
+        "rawGradientDotStep": -3.5776543089806663,
+        "clippedGradientDotStep": -2.5396063586097215,
+        "feasibleGradientDotStep": -2.525683648238788,
+        "actualGradientDotCandidate": -2.525683648238788,
+        "usedGradientFallback": false,
+        "stepAccepted": true,
+        "stepScale": 1.0,
+        "supportBacktrackedVertices": 1635,
+        "supportFrozenVertices": 0,
+        "supportBacktracksUsed": 11,
+        "multiViewVertices": 4456,
+        "singleViewVertices": 149733,
+        "rejectedCrossViewVertices": 317221
+      },
+      {
+        "iteration": 1,
+        "energyBefore": 2.680032791575759,
+        "energyAfter": 2.0392000663969516,
+        "pcgStatus": 0,
+        "pcgRelativeResidual": 0.0001965588634598917,
+        "rawGradientDotStep": -1.8829514924826642,
+        "clippedGradientDotStep": -1.5903272712107117,
+        "feasibleGradientDotStep": -1.5735428857683211,
+        "actualGradientDotCandidate": -1.5735428857683211,
+        "usedGradientFallback": false,
+        "stepAccepted": true,
+        "stepScale": 1.0,
+        "supportBacktrackedVertices": 1891,
+        "supportFrozenVertices": 0,
+        "supportBacktracksUsed": 12,
+        "multiViewVertices": 4999,
+        "singleViewVertices": 164600,
+        "rejectedCrossViewVertices": 293411
+      },
+      {
+        "iteration": 2,
+        "energyBefore": 2.5763823661282754,
+        "energyAfter": 2.302259508500624,
+        "pcgStatus": 0,
+        "pcgRelativeResidual": 0.00018956248966780207,
+        "rawGradientDotStep": -1.183415036057768,
+        "clippedGradientDotStep": -1.0540739593599717,
+        "feasibleGradientDotStep": -1.0381565914816777,
+        "actualGradientDotCandidate": -1.0381565914816777,
+        "usedGradientFallback": false,
+        "stepAccepted": true,
+        "stepScale": 1.0,
+        "supportBacktrackedVertices": 1760,
+        "supportFrozenVertices": 0,
+        "supportBacktracksUsed": 12,
+        "multiViewVertices": 6415,
+        "singleViewVertices": 169987,
+        "rejectedCrossViewVertices": 280715
+      },
+      {
+        "iteration": 3,
+        "energyBefore": 2.633861316245115,
+        "energyAfter": 2.437165524230899,
+        "pcgStatus": 0,
+        "pcgRelativeResidual": 0.00019506802289966964,
+        "rawGradientDotStep": -1.0055987683187533,
+        "clippedGradientDotStep": -0.8860067715036885,
+        "feasibleGradientDotStep": -0.8436540788330101,
+        "actualGradientDotCandidate": -0.8436540788330101,
+        "usedGradientFallback": false,
+        "stepAccepted": true,
+        "stepScale": 1.0,
+        "supportBacktrackedVertices": 1550,
+        "supportFrozenVertices": 0,
+        "supportBacktracksUsed": 12,
+        "multiViewVertices": 6878,
+        "singleViewVertices": 175090,
+        "rejectedCrossViewVertices": 272992
+      },
+      {
+        "iteration": 4,
+        "energyBefore": 2.7312954156989617,
+        "energyAfter": 2.575895564739223,
+        "pcgStatus": 0,
+        "pcgRelativeResidual": 0.0001926071863035885,
+        "rawGradientDotStep": -1.0019464150697075,
+        "clippedGradientDotStep": -0.8858361156863319,
+        "feasibleGradientDotStep": -0.8331153622083258,
+        "actualGradientDotCandidate": -0.8331153622083258,
+        "usedGradientFallback": false,
+        "stepAccepted": true,
+        "stepScale": 1.0,
+        "supportBacktrackedVertices": 1604,
+        "supportFrozenVertices": 3,
+        "supportBacktracksUsed": 12,
+        "multiViewVertices": 7987,
+        "singleViewVertices": 178620,
+        "rejectedCrossViewVertices": 267398
+      },
+      {
+        "iteration": 5,
+        "energyBefore": 2.809712824164668,
+        "energyAfter": 2.6332618702519723,
+        "pcgStatus": 0,
+        "pcgRelativeResidual": 0.0001659609556143551,
+        "rawGradientDotStep": -1.0277585840019627,
+        "clippedGradientDotStep": -0.8995194006330558,
+        "feasibleGradientDotStep": -0.8422172817193421,
+        "actualGradientDotCandidate": -0.8422172817193421,
+        "usedGradientFallback": false,
+        "stepAccepted": true,
+        "stepScale": 1.0,
+        "supportBacktrackedVertices": 1398,
+        "supportFrozenVertices": 6,
+        "supportBacktracksUsed": 12,
+        "multiViewVertices": 8322,
+        "singleViewVertices": 181732,
+        "rejectedCrossViewVertices": 264123
+      },
+      {
+        "iteration": 6,
+        "energyBefore": 2.8598353898188753,
+        "energyAfter": 2.6944411661743013,
+        "pcgStatus": 0,
+        "pcgRelativeResidual": 0.00018367393803174543,
+        "rawGradientDotStep": -1.048792107580199,
+        "clippedGradientDotStep": -0.9221069598947412,
+        "feasibleGradientDotStep": -0.8595794525378229,
+        "actualGradientDotCandidate": -0.8595794525378229,
+        "usedGradientFallback": false,
+        "stepAccepted": true,
+        "stepScale": 1.0,
+        "supportBacktrackedVertices": 1453,
+        "supportFrozenVertices": 11,
+        "supportBacktracksUsed": 12,
+        "multiViewVertices": 9180,
+        "singleViewVertices": 183039,
+        "rejectedCrossViewVertices": 261196
+      },
+      {
+        "iteration": 7,
+        "energyBefore": 2.8940248308242693,
+        "energyAfter": 2.706426067505397,
+        "pcgStatus": 0,
+        "pcgRelativeResidual": 0.00019346773642806985,
+        "rawGradientDotStep": -1.0660119994036983,
+        "clippedGradientDotStep": -0.9303615794814266,
+        "feasibleGradientDotStep": -0.8649647314652411,
+        "actualGradientDotCandidate": -0.864964731465241,
+        "usedGradientFallback": false,
+        "stepAccepted": true,
+        "stepScale": 1.0,
+        "supportBacktrackedVertices": 1389,
+        "supportFrozenVertices": 12,
+        "supportBacktracksUsed": 12,
+        "multiViewVertices": 9443,
+        "singleViewVertices": 184806,
+        "rejectedCrossViewVertices": 259533
+      }
+    ]
+  },
+  "mesh": {
+    "uniquePositions": 499920,
+    "vertices": 499920,
+    "triangles": 1000000,
+    "originalDegenerateTriangles": 0,
+    "stepScale": 0.0009765625,
+    "maxDisplacement": 0.014999998521792771,
+    "meanDisplacement": 0.0010752850748170883,
+    "movedVertices": 499914,
+    "localBacktracking": true,
+    "attenuatedVertices": 234264,
+    "meanStepScale": 0.6279736085898744,
+    "medianStepScale": 1.0,
+    "fullStrengthVertices": 265656,
+    "localAttenuationSteps": 639750
+  },
+  "actualDisplacementHeight": {
+    "p50": 0.000689812718564478,
+    "p95": 0.0035077213631959365,
+    "max": 0.014999998521792771
+  },
+  "normalSource": "area-weighted geometric normals recomputed from changed shared mesh",
+  "normalRecompute": {
+    "version": "area-weighted-unit-v1",
+    "algorithm": "area-weighted; largest-area incident face for cancellation; +Y for unrendered vertices",
+    "vertices": 499920,
+    "triangles": 1000000,
+    "cancellationFallbackVertices": 2,
+    "unusedPlaceholderVertices": 0,
+    "degenerateOnlyPlaceholderVertices": 0,
+    "degenerateTriangles": 0,
+    "relativeCancellationThreshold": 1e-12,
+    "unitPlaceholder": [
+      0,
+      1,
+      0
+    ]
+  },
+  "limitations": [
+    "Depth-to-orthographic registration is an anchored affine approximation.",
+    "Current occlusion uses vertex splats; final native rebake supplies exact rasterized depth."
+  ],
+  "seconds": 64.773
+}

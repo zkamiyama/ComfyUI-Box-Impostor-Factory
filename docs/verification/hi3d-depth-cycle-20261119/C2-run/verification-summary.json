@@ -1,0 +1,289 @@
+{
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "assetId": "f2b5c3f8b92a3b194ac77ad5d1424ce08ac68a8247d76ea546df96b2295ed10f",
+  "method": "joint-full-depth-v3-boundary-dirichlet",
+  "sameMeshTransform": true,
+  "fixedCoordinateCountsXYZ": [
+    6672,
+    7312,
+    9129
+  ],
+  "pinnedMovedCoordinateCount": 0,
+  "pinnedMaxAbsWorldDelta": 0.0,
+  "pinnedCoordinatesExactlyPreserved": true,
+  "boundaryFloat32MarginWorld": [
+    5.960464477539063e-08,
+    2.384185791015625e-07,
+    5.960464477539063e-08
+  ],
+  "boundsPlaneCounts": {
+    "Xmin": {
+      "coordinate": -0.17968106269836426,
+      "B": 1,
+      "C2": 1,
+      "C_v2": 1
+    },
+    "Xmax": {
+      "coordinate": 0.17968106269836426,
+      "B": 1,
+      "C2": 1,
+      "C_v2": 1
+    },
+    "Ymin": {
+      "coordinate": -0.5,
+      "B": 1,
+      "C2": 1,
+      "C_v2": 1
+    },
+    "Ymax": {
+      "coordinate": 0.5,
+      "B": 1,
+      "C2": 1,
+      "C_v2": 1649
+    },
+    "Zmin": {
+      "coordinate": -0.16729551553726196,
+      "B": 1,
+      "C2": 1,
+      "C_v2": 1
+    },
+    "Zmax": {
+      "coordinate": 0.16729551553726196,
+      "B": 1,
+      "C2": 1,
+      "C_v2": 1
+    }
+  },
+  "actualDisplacementHeight": {
+    "p50": 0.000689812718564478,
+    "p95": 0.0035077213631959365,
+    "max": 0.014999998521792771
+  },
+  "fixedFrame": {
+    "passed": true,
+    "checks": {
+      "resolution": true,
+      "tightBounds": true,
+      "bakeBox": true,
+      "transform": true,
+      "inverseTransform": true,
+      "faceOrder": true,
+      "coordinateSystem": true,
+      "+X:side": true,
+      "+X:up": true,
+      "+X:tile": true,
+      "+X:viewMatrix": true,
+      "+X:projectionMatrix": true,
+      "+X:frustum": true,
+      "+X:imageRowOrder": true,
+      "+X:depthEncoding": true,
+      "-X:side": true,
+      "-X:up": true,
+      "-X:tile": true,
+      "-X:viewMatrix": true,
+      "-X:projectionMatrix": true,
+      "-X:frustum": true,
+      "-X:imageRowOrder": true,
+      "-X:depthEncoding": true,
+      "+Y:side": true,
+      "+Y:up": true,
+      "+Y:tile": true,
+      "+Y:viewMatrix": true,
+      "+Y:projectionMatrix": true,
+      "+Y:frustum": true,
+      "+Y:imageRowOrder": true,
+      "+Y:depthEncoding": true,
+      "-Y:side": true,
+      "-Y:up": true,
+      "-Y:tile": true,
+      "-Y:viewMatrix": true,
+      "-Y:projectionMatrix": true,
+      "-Y:frustum": true,
+      "-Y:imageRowOrder": true,
+      "-Y:depthEncoding": true,
+      "+Z:side": true,
+      "+Z:up": true,
+      "+Z:tile": true,
+      "+Z:viewMatrix": true,
+      "+Z:projectionMatrix": true,
+      "+Z:frustum": true,
+      "+Z:imageRowOrder": true,
+      "+Z:depthEncoding": true,
+      "-Z:side": true,
+      "-Z:up": true,
+      "-Z:tile": true,
+      "-Z:viewMatrix": true,
+      "-Z:projectionMatrix": true,
+      "-Z:frustum": true,
+      "-Z:imageRowOrder": true,
+      "-Z:depthEncoding": true
+    }
+  },
+  "silhouetteQaPassed": true,
+  "allSixSourceAndAlignedRGBEqual": true,
+  "maps": {
+    "colorMap": {
+      "beforeSha256": "c9aac4921ed65f225fc65c04abec13cc5750b46135fe25da2b4e0486213d4355",
+      "afterSha256": "4d46b076213c2408c986384161d2da125ad19bbc73af908da2a76a77a53cf1f2",
+      "changed": true
+    },
+    "normalMap": {
+      "beforeSha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+      "afterSha256": "0069b5b025eaeeb8866eb435501cd9d4da0dd90aff8ce67c508c648e8ce572ec",
+      "changed": true
+    },
+    "intervalMap": {
+      "beforeSha256": "a2ad00789697cfbaece9220c40ffc1b77e37aa611214331c48484ecf57ae49be",
+      "afterSha256": "0f17a35dadb639f2f25441d1334e9cb347c006fef3bdf90bf202ac21b4f0a0b8",
+      "changed": true
+    },
+    "rangeMap": {
+      "beforeSha256": "cb10013ff762429d904c7c86878df7bfe38d250cfdd837450b7b22220373a3f9",
+      "afterSha256": "770c5ef2dbab0d1feb91fad0e09f15aab7572ebf8fe7116545a18debcb3d1867",
+      "changed": true
+    }
+  },
+  "faces": {
+    "+X": {
+      "nativeRmsHeightBefore": 0.011086713295423047,
+      "nativeRmsHeightAfter": 0.010606685102424004,
+      "lowFrequencyRmsHeightBefore": 0.010419317097332001,
+      "lowFrequencyRmsHeightAfter": 0.009400000869828668,
+      "sharedPixels": 371721,
+      "missingAfterPixels": 11,
+      "silhouetteBefore": {
+        "iou": 0.9822779749359579,
+        "boundaryP95Px": 5.0
+      },
+      "silhouetteAfter": {
+        "iou": 0.970084646298524,
+        "boundaryP95Px": 10.63014581273465
+      },
+      "alignmentStatus": "accepted",
+      "newGeometryUncoveredPixels": 7848
+    },
+    "-X": {
+      "nativeRmsHeightBefore": 0.011487524919634711,
+      "nativeRmsHeightAfter": 0.011726455648609423,
+      "lowFrequencyRmsHeightBefore": 0.011170971516772182,
+      "lowFrequencyRmsHeightAfter": 0.010118224511218629,
+      "sharedPixels": 368753,
+      "missingAfterPixels": 1,
+      "silhouetteBefore": {
+        "iou": 0.9861383487503192,
+        "boundaryP95Px": 3.1622776601683795
+      },
+      "silhouetteAfter": {
+        "iou": 0.9728882159534694,
+        "boundaryP95Px": 11.0
+      },
+      "alignmentStatus": "accepted",
+      "newGeometryUncoveredPixels": 8317
+    },
+    "+Y": {
+      "nativeRmsHeightBefore": 0.014541095518322758,
+      "nativeRmsHeightAfter": 0.022343418837519707,
+      "lowFrequencyRmsHeightBefore": 0.013644879810582981,
+      "lowFrequencyRmsHeightAfter": 0.014490830409815135,
+      "sharedPixels": 356470,
+      "missingAfterPixels": 0,
+      "silhouetteBefore": {
+        "iou": 0.9924306005163498,
+        "boundaryP95Px": 2.23606797749979
+      },
+      "silhouetteAfter": {
+        "iou": 0.9741936330817197,
+        "boundaryP95Px": 12.0
+      },
+      "alignmentStatus": "accepted",
+      "newGeometryUncoveredPixels": 7103
+    },
+    "-Y": {
+      "nativeRmsHeightBefore": 0.013517059898222964,
+      "nativeRmsHeightAfter": 0.03849036741747404,
+      "lowFrequencyRmsHeightBefore": 0.012187959943023068,
+      "lowFrequencyRmsHeightAfter": 0.024137178123259034,
+      "sharedPixels": 366704,
+      "missingAfterPixels": 413,
+      "silhouetteBefore": {
+        "iou": 0.9757033481589691,
+        "boundaryP95Px": 5.0
+      },
+      "silhouetteAfter": {
+        "iou": 0.9615460903388674,
+        "boundaryP95Px": 11.0
+      },
+      "alignmentStatus": "accepted",
+      "newGeometryUncoveredPixels": 4869
+    },
+    "+Z": {
+      "nativeRmsHeightBefore": 0.013066961200410112,
+      "nativeRmsHeightAfter": 0.013529455332497388,
+      "lowFrequencyRmsHeightBefore": 0.012653357796185271,
+      "lowFrequencyRmsHeightAfter": 0.012181473594576976,
+      "sharedPixels": 323088,
+      "missingAfterPixels": 4,
+      "silhouetteBefore": {
+        "iou": 0.972648452831879,
+        "boundaryP95Px": 6.0
+      },
+      "silhouetteAfter": {
+        "iou": 0.9503595821945194,
+        "boundaryP95Px": 14.0
+      },
+      "alignmentStatus": "accepted",
+      "newGeometryUncoveredPixels": 14712
+    },
+    "-Z": {
+      "nativeRmsHeightBefore": 0.01237801948823042,
+      "nativeRmsHeightAfter": 0.013452336150630483,
+      "lowFrequencyRmsHeightBefore": 0.011863739270608827,
+      "lowFrequencyRmsHeightAfter": 0.011757358624765795,
+      "sharedPixels": 324751,
+      "missingAfterPixels": 3,
+      "silhouetteBefore": {
+        "iou": 0.988862733186524,
+        "boundaryP95Px": 2.23606797749979
+      },
+      "silhouetteAfter": {
+        "iou": 0.9628223895066695,
+        "boundaryP95Px": 12.649110640673518
+      },
+      "alignmentStatus": "accepted",
+      "newGeometryUncoveredPixels": 11146
+    }
+  },
+  "stages": {
+    "initialization": {
+      "startedSeconds": 0,
+      "peakProcessTreeRSSKiB": 572480,
+      "seconds": 1.55
+    },
+    "jointGeometryFit": {
+      "startedSeconds": 1.55,
+      "peakProcessTreeRSSKiB": 1200244,
+      "seconds": 65.387
+    },
+    "nativeRebakeAndFixedRGB": {
+      "startedSeconds": 66.936,
+      "peakProcessTreeRSSKiB": 2449056,
+      "seconds": 33.649
+    }
+  },
+  "elapsedSeconds": 100.585,
+  "sampledPeakProcessTreeRSSKiB": 2449056,
+  "reusedPredictionDirectory": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual/predictions",
+  "newGpuInference": false,
+  "sourceCodeSha256": "bbc38ebbce6991f00fa638d41b51c4574179b17d2a4357be1c9eadb1f9759672",
+  "sourceProxySha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+  "publishedProxySha256": "2f6c49948e396aa04d183c3bf2fc5c0c3d291b82aed0b2e99555f998d79f1c99",
+  "workProxySha256": "2f6c49948e396aa04d183c3bf2fc5c0c3d291b82aed0b2e99555f998d79f1c99",
+  "controlChecksPassed": true,
+  "nearTopPlaneCounts": {
+    "toleranceWorld": 5e-08,
+    "B": 1,
+    "C_v2": 3221,
+    "C2": 1
+  },
+  "sameVertexCountAndIndices": true
+}

@@ -1,0 +1,13 @@
+CPU full-depth shared-mesh fit starting
+Native Box rebake and frozen B RGB mapping starting
+WARNING:root:WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
+WARNING WARNING WARNING
+If you are on nvidia 20 series and above it is required that you update your pytorch to cu130 or higher.
+
+{
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "refinementReport": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/boundary-dirichlet/refinement.json",
+  "assetId": "f2b5c3f8b92a3b194ac77ad5d1424ce08ac68a8247d76ea546df96b2295ed10f",
+  "assetDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/f2b5c3f8b92a3b194ac77ad5d1424ce08ac68a8247d76ea546df96b2295ed10f",
+  "rebakeEvaluation": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/boundary-dirichlet/rebake-evaluation.json"
+}

@@ -11,7 +11,7 @@ import trimesh
 p = argparse.ArgumentParser(description=__doc__)
 p.add_argument("work", type=Path)
 p.add_argument("output", type=Path)
-p.add_argument("--stages", default="A,B", choices=["A,B", "B,C"])
+p.add_argument("--stages", default="A,B", choices=["A,B", "B,C", "B,C,C2"])
 a = p.parse_args()
 stages = a.stages.split(",")
 is_ab = stages == ["A", "B"]
@@ -56,7 +56,7 @@ for stage in stages:
         cap = read(capture_path)
         assert not cap["errors"] and "SwiftShader" in cap["graphicsRenderer"]
         assert cap["backend"] == "Three.js / WebGL2" and cap["stageState"] == "Three.js PBR"
-        if stage in ("B", "C"):
+        if stage in ("B", "C", "C2"):
             assert cap["triangleCounts"]["meshPayload"] == record["triangles"]
             assert cap["triangleCounts"]["expected"] == record["triangles"]
         for key in ("projection", "target", "halfExtent", "cssPixels", "deviceScaleFactor"):
@@ -86,10 +86,10 @@ for stage in stages:
         record["views"][view] = {"capturePath": str(capture_path), "captureSHA256": sha(capture_path),
                                 "capture": cap, "sourceFrame": entry, "reused": stage == "A" and view == "front"}
     records[stage] = record
-assert records[stages[0]]["transform"] == records[stages[1]]["transform"]
-assert records[stages[0]]["clay"]["material"] == records[stages[1]]["clay"]["material"]
+assert all(records[stages[0]]["transform"] == records[stage]["transform"] for stage in stages[1:])
+assert all(records[stages[0]]["clay"]["material"] == records[stage]["clay"]["material"] for stage in stages[1:])
 evidence = {
-    "kind": ("A coarse versus B Hi3D actual geometry only, before B H3 generation" if is_ab else "B Hi3D versus C RGB-depth-refined actual geometry"),
+    "kind": ("A coarse versus B Hi3D actual geometry only, before B H3 generation" if is_ab else " / ".join(stages) + " actual geometry after RGB-depth refinement"),
     "renderer": "Unchanged official 3D-Inspector mesh PBR, CPU SwiftShader",
     "camera": camera, "sameCanonicalTransform": True, "sameGrayMaterial": True,
     "material": records[stages[0]]["clay"]["material"], "actualFrameSize": [1024, 1024],
@@ -97,7 +97,7 @@ evidence = {
     "headCropProvenance": {"path": str(crop_proof_path), "sha256": sha(crop_proof_path)},
     "stages": records, "panels": {},
     "processing": "Transparent snapshots composited on opaque backdrop. Fixed integer head crops enlarged 2x nearest-neighbor. Whole model reduced to 480px with Lanczos. No sharpening or AI postprocessing.",
-    "normalPolicy": ("A source vertex NORMAL is retained. B has no NORMAL accessor and this absence is retained. " if is_ab else "B has no source NORMAL; the official viewer computes normals. C source vertex NORMAL is retained. ") + "No normals are added during clay preparation. Positions, indices, transforms and GLB binary chunks remain unchanged. Official converter obtains trimesh.vertex_normals when source normals are absent and sends them to the mesh renderer. Color and tangent normal textures removed in separate diagnostic GLBs.",
+    "normalPolicy": ("A source vertex NORMAL is retained. B has no NORMAL accessor and this absence is retained. " if is_ab else "B has no source NORMAL; the official viewer computes normals. C/C2 source vertex NORMAL is retained. ") + "No normals are added during clay preparation. Positions, indices, transforms and GLB binary chunks remain unchanged. Official converter obtains trimesh.vertex_normals when source normals are absent and sends them to the mesh renderer. Color and tangent normal textures removed in separate diagnostic GLBs.",
     "limitation": ("This proves geometry appearance before B H3; it is not a completed B RGB or Box result." if is_ab else "This compares actual mesh appearance, including each stage shading normals. It is not ground-truth geometry accuracy or a Box render; consult the separate same-RGB Box controls."),
 }
 def opaque(image):
@@ -109,13 +109,13 @@ def save(board, filename):
     board.save(path, "WEBP", lossless=True)
     assert np.array_equal(np.asarray(Image.open(path).convert("RGB")), np.asarray(board))
     evidence["panels"][filename] = {"sha256": sha(path), "bytes": path.stat().st_size, "size": board.size}
-labels = {"A": "A / coarse geometry", "B": "B / Hi3D 1024 / full mesh", "C": "C / RGB-derived depth / full mesh"}
+labels = {"A": "A / coarse geometry", "B": "B / Hi3D 1024 / full mesh", "C": "C / RGB-derived depth / full mesh", "C2": "C2 / boundary Dirichlet / full mesh"}
 cw = max((c[2] - c[0]) * 2 for c in crops.values()) + 28
 ch = max((c[3] - c[1]) * 2 for c in crops.values()) + 48
-board = Image.new("RGB", (4 * cw + 40, 2 * ch + 130), BG)
+board = Image.new("RGB", (4 * cw + 40, len(stages) * ch + 130), BG)
 draw = ImageDraw.Draw(board)
-draw.text((20, 15), "A / B actual geometry before B image generation" if is_ab else "B / C actual geometry after RGB-depth refinement", font=font(25), fill=FG)
-draw.text((20, 54), "Same camera/material/light; full mesh. " + ("A: source normals. B: viewer-computed normals. No geometry smoothing." if is_ab else "B: viewer-computed normals. C: source normals. No image enhancement."), font=font(17), fill=SUB)
+draw.text((20, 15), "A / B actual geometry before B image generation" if is_ab else " / ".join(stages) + " actual geometry after RGB-depth refinement", font=font(25), fill=FG)
+draw.text((20, 54), "Same camera/material/light; full mesh. " + ("A: source normals. B: viewer-computed normals. No geometry smoothing." if is_ab else "B: viewer-computed normals. C/C2: source normals. No image enhancement."), font=font(17), fill=SUB)
 for col, view in enumerate(views):
     draw.text((20 + col * cw, 85), view.upper(), font=font(17), fill=SUB)
 for row, stage in enumerate(stages):
@@ -126,9 +126,9 @@ for row, stage in enumerate(stages):
         image = image.resize((image.width * 2, image.height * 2), Image.Resampling.NEAREST)
         board.paste(image, (20 + col * cw + (cw - image.width) // 2, y + 30))
 save(board, f"{prefix}-clay-faces.webp")
-body = Image.new("RGB", (1000, 1230), BG)
+body = Image.new("RGB", (1000, len(stages) * 570 + 90), BG)
 draw = ImageDraw.Draw(body)
-draw.text((20, 15), "A / B geometry only / before B H3" if is_ab else "B / C geometry only / same camera", font=font(25), fill=FG)
+draw.text((20, 15), "A / B geometry only / before B H3" if is_ab else " / ".join(stages) + " geometry only / same camera", font=font(25), fill=FG)
 draw.text((20, 53), "Identical camera, gray material and light. Preview downsample: Lanczos.", font=font(16), fill=SUB)
 for row, stage in enumerate(stages):
     y = 92 + row * 570
