@@ -1,0 +1,23 @@
+	Command being timed: "/home/dev/Projects/box-impostor-lab/.venv/bin/python scripts/refine_full_depth.py --asset ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2 --output-directory /mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output --work-dir /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/normal-only --normal-only --backend webgl2"
+	User time (seconds): 7.02
+	System time (seconds): 2.61
+	Percent of CPU this job got: 23%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:41.42
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1105512
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2934
+	Minor (reclaiming a frame) page faults: 277170
+	Voluntary context switches: 227058
+	Involuntary context switches: 157
+	Swaps: 0
+	File system inputs: 7452900
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

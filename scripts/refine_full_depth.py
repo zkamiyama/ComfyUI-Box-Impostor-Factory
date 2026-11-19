@@ -51,6 +51,11 @@ def main():
     if 'microsoft' in platform.release().lower():
         import torch
         torch.cuda._device_count_nvml=lambda:-1
+    # The parent only preprocesses/rebakes on CPU; the independent MoGe child
+    # receives its CUDA setting from the environment. Avoid Comfy's interruption
+    # check initializing CUDA in a software-only native bake.
+    from comfy.cli_args import args as comfy_args
+    comfy_args.cpu=True
     folder_paths.set_output_directory(str(args.output_directory.resolve()))
     args.work_dir.mkdir(parents=True,exist_ok=True)
     predictions=args.prediction_dir or args.work_dir/'predictions'

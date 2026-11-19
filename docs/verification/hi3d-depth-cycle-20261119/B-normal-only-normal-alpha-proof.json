@@ -1,0 +1,78 @@
+{
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "assetId": "cda76d9249679db4eac25221bd9b2ab313d0f203c4ce425ab45e1cbe578fcd74",
+  "normalMaps": {
+    "before": {
+      "spec": {
+        "path": "maps/normal.rgba16f.bin",
+        "width": 3072,
+        "height": 2048,
+        "channels": 4,
+        "dtype": "float16",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 24576,
+        "byteLength": 50331648,
+        "sha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+        "minFilter": "linear",
+        "magFilter": "linear",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "data",
+        "alpha": "coverage"
+      },
+      "fileSha256": "b1816fede88a74d32815270e89e43650fe04a9411498648bc21b0a6675d4cffc",
+      "alphaSha256": "fe20a7e3493ee23b55d3852ac3e580ca031d4122a839f4402b25f233ec1c4cda"
+    },
+    "after": {
+      "spec": {
+        "path": "maps/normal.rgba16f.bin",
+        "width": 3072,
+        "height": 2048,
+        "channels": 4,
+        "dtype": "float16",
+        "endian": "little",
+        "rowOrder": "increasingShaderV",
+        "rowBytes": 24576,
+        "byteLength": 50331648,
+        "sha256": "0c882072aed7442c04fddb4dab9df748a2b870fec15c3835531a8bdac4cee0fc",
+        "minFilter": "linear",
+        "magFilter": "linear",
+        "wrap": "clamp-to-edge",
+        "mipmaps": false,
+        "colorSpace": "data",
+        "alpha": "coverage"
+      },
+      "fileSha256": "0c882072aed7442c04fddb4dab9df748a2b870fec15c3835531a8bdac4cee0fc",
+      "alphaSha256": "fe20a7e3493ee23b55d3852ac3e580ca031d4122a839f4402b25f233ec1c4cda"
+    }
+  },
+  "evidence": [
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-normal-only-result.json",
+      "bytes": 4787,
+      "sha256": "3ccb08fa86c92d9f99ad26e797df00cf6fd4ce6434065bce50f416b5949ad929"
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-normal-only-refinement.json",
+      "bytes": 1315,
+      "sha256": "cc0613f20a80842d95fe6bc0229f324a79b86a88ae626ec67482d2831fe4e1cf"
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-normal-only-rebake-evaluation.json",
+      "bytes": 12767,
+      "sha256": "8126fff9fac12f4916375f7906a8afdc8a57f7b1c254f552ac92d073a314dcf8"
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-normal-only-fixed-rgb-qa.json",
+      "bytes": 6719,
+      "sha256": "f9c5b0256865ad0b15e218faa314b8fc6e1014a274b8cd04fa48dedb31051819"
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-normal-only-process-resources.txt",
+      "bytes": 1097,
+      "sha256": "30d10a166b94cd0540227e0a40ed25d02366bccee3fb9425d93ec06ccc7b36ff"
+    }
+  ],
+  "normalAlphaEqual": true
+}

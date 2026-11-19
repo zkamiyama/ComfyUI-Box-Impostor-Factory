@@ -1,0 +1,114 @@
+{
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "proxy": {
+    "sha256": "020f6a29688393be11b62e6987c80f956abc5d5e28e80b7b3c9220f21d67093e",
+    "stageKey": "a37964c2a9d2d97d0cf20d6bf50c1db7a590b276ae2b84332399faf2fcbc908d",
+    "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/normal-only/refined.glb",
+    "metadata": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/normal-only/canonical.json",
+    "depthRefinement": {
+      "method": "geometry-normal-only-v1",
+      "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "normalRecompute": {
+        "version": "area-weighted-unit-v1",
+        "algorithm": "area-weighted; largest-area incident face for cancellation; +Y for unrendered vertices",
+        "vertices": 499920,
+        "triangles": 1000000,
+        "cancellationFallbackVertices": 2,
+        "unusedPlaceholderVertices": 0,
+        "degenerateOnlyPlaceholderVertices": 0,
+        "degenerateTriangles": 0,
+        "relativeCancellationThreshold": 1e-12,
+        "unitPlaceholder": [
+          0,
+          1,
+          0
+        ]
+      },
+      "invariants": {
+        "originalBinaryPrefixEqual": true,
+        "nodesEqual": true,
+        "scenesEqual": true,
+        "sceneEqual": true,
+        "materialsEqual": true,
+        "texturesEqual": true,
+        "imagesEqual": true,
+        "samplersEqual": true,
+        "extensionsEqual": true,
+        "extensionsUsedEqual": true,
+        "extensionsRequiredEqual": true,
+        "primitiveCountEqual": true,
+        "0PositionsEqual": true,
+        "0IndicesEqual": true,
+        "0TransformEqual": true,
+        "0POSITIONAccessorEqual": true,
+        "0COLOR_0AccessorEqual": true
+      },
+      "actualDisplacementHeight": {
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "normalSource": "same robust area-weighted shared-surface normals as C",
+      "newInference": false
+    },
+    "rotationDegreesXYZ": [
+      0,
+      0,
+      0
+    ],
+    "reference": {
+      "sha256": "c463bf4eea481e54bbb154f3c0b801765db6ecf92e36c25135e155e699dc9bde",
+      "width": 1280,
+      "height": 1920,
+      "maskMode": "foreground",
+      "sourceToReference": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "image": "reference/source.png",
+      "samples": "reference/source.npy",
+      "camera": {
+        "horizontalFovDegrees": 43.484582858154575,
+        "focalPixels": 1283.8399658203125,
+        "width": 1024,
+        "height": 1024,
+        "image": "reference/cropped.png",
+        "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+        "rig": "pixal3d-single-view-v1"
+      },
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/reference"
+    },
+    "camera": {
+      "horizontalFovDegrees": 43.484582858154575,
+      "focalPixels": 1283.8399658203125,
+      "width": 1024,
+      "height": 1024,
+      "image": "reference/cropped.png",
+      "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+      "rig": "pixal3d-single-view-v1"
+    },
+    "croppedImage": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/reference/cropped.png",
+    "provenance": {
+      "backend": "native_mesh",
+      "graphSha256": "9b5018354cb3c2fa49cf8cf6cc385469a0f31d78fec9778a1dea1f1f0fe9de8a",
+      "weights": {
+        "diffusion_models/pixal3d_int8_convrot.safetensors": "4621eac3b715484f79303c7152af641fe0b2b14f4d0e3d394fd6922d00f955ec",
+        "geometry_estimation/moge_2_vitl_normal_fp16.safetensors": "cb1a692d03235671e959e81360d7b4d9f44aefadb1f852d6ca6aa17799d5e31f",
+        "clip_vision/dino_v3_L_naf_fp32.safetensors": "4ad2ec4e0879a5b5b04cd97325cc37da954a7b6edca5170b86510f17f2b2290f",
+        "vae/trellis_2_shape_vae_bf16.safetensors": "de0cb4949a76c59ee5c091a995a69bcc8c51d5aeda939f0c641a50d2a72341f4",
+        "vae/trellis_2_texture_vae_bf16.safetensors": "714e5ebf094a610e12a8e3b5175c18a62f37f6ea4218acb6073644456b73ab0e"
+      }
+    }
+  },
+  "refinementReport": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/normal-only/refinement.json",
+  "assetId": "cda76d9249679db4eac25221bd9b2ab313d0f203c4ce425ab45e1cbe578fcd74",
+  "assetDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/cda76d9249679db4eac25221bd9b2ab313d0f203c4ce425ab45e1cbe578fcd74",
+  "rebakeEvaluation": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/normal-only/rebake-evaluation.json"
+}

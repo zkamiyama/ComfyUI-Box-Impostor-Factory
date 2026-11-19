@@ -1,0 +1,46 @@
+{
+  "method": "geometry-normal-only-v1",
+  "sourceAsset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "normalRecompute": {
+    "version": "area-weighted-unit-v1",
+    "algorithm": "area-weighted; largest-area incident face for cancellation; +Y for unrendered vertices",
+    "vertices": 499920,
+    "triangles": 1000000,
+    "cancellationFallbackVertices": 2,
+    "unusedPlaceholderVertices": 0,
+    "degenerateOnlyPlaceholderVertices": 0,
+    "degenerateTriangles": 0,
+    "relativeCancellationThreshold": 1e-12,
+    "unitPlaceholder": [
+      0,
+      1,
+      0
+    ]
+  },
+  "invariants": {
+    "originalBinaryPrefixEqual": true,
+    "nodesEqual": true,
+    "scenesEqual": true,
+    "sceneEqual": true,
+    "materialsEqual": true,
+    "texturesEqual": true,
+    "imagesEqual": true,
+    "samplersEqual": true,
+    "extensionsEqual": true,
+    "extensionsUsedEqual": true,
+    "extensionsRequiredEqual": true,
+    "primitiveCountEqual": true,
+    "0PositionsEqual": true,
+    "0IndicesEqual": true,
+    "0TransformEqual": true,
+    "0POSITIONAccessorEqual": true,
+    "0COLOR_0AccessorEqual": true
+  },
+  "actualDisplacementHeight": {
+    "p50": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  },
+  "normalSource": "same robust area-weighted shared-surface normals as C",
+  "newInference": false
+}
