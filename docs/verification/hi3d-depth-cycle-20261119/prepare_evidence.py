@@ -117,7 +117,7 @@ def geometry_signature(scene):
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("asset", type=Path)
 parser.add_argument("output", type=Path)
-parser.add_argument("--stage", required=True, choices=["A", "B", "C", "C2", "D", "A-partial-pz", "A-normal-control", "B-normal-only"])
+parser.add_argument("--stage", required=True, choices=["A", "B", "C", "C2", "D", "F", "A-partial-pz", "A-normal-control", "B-normal-only"])
 parser.add_argument("--only", choices=["geometry", "all"], default="all")
 parser.add_argument("--inspector", type=Path, default=Path("/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py"))
 args = parser.parse_args()

@@ -1,0 +1,127 @@
+{
+  "kind": "Compare B/D/F native Box fronts; only -X RGB changes, with fixed geometry and front RGB.",
+  "renderer": "Unchanged official 3D-Inspector native Box PBR, CPU SwiftShader",
+  "crop": [
+    463,
+    115,
+    572,
+    271
+  ],
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "fovBeforeOrthographic": 40,
+    "fitFormula": "radius * 1.05 / sin(20deg)",
+    "sourceRadius": 0.5876666886430749,
+    "referenceRadius": 0.5887244402352406,
+    "perspectiveWheelDeltaY": 3.505915677124107,
+    "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001,
+    "wheelProtocolDeltaY": 4.4876070731820406,
+    "pans": [
+      {
+        "view": "front",
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "view": "right",
+        "dx": 0,
+        "dy": 0
+      }
+    ]
+  },
+  "sourceImages": {
+    "B": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-front.png",
+      "sha256": "86ad094cea67846fd19fd93c49742b7f20219a906a6bb2bbaf38fed6d43c1d41",
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "expectedPosition": [
+        0,
+        0,
+        1.8073808642855147
+      ],
+      "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+      "htmlSHA256": "e8421c1609879a8b7a4ae7b1dc15559cef15a00f05a0b81d89a8c82fdd8a8c2b"
+    },
+    "D": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/D-box/lit-front.png",
+      "sha256": "2abcc19894fb755b896543749413d0c419be5a72ee658ea1125a9d8b1ea21c13",
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "expectedPosition": [
+        0,
+        0,
+        1.8073808642855147
+      ],
+      "assetId": "0f953f9644896bedbb561576cce0d41d5b32dc69046b635e9fcf76de2fb2a7e0",
+      "htmlSHA256": "dd2ef7b15ba2e365104456777b884f70f92a6ce068e7e7a1cf795d4210526f6e"
+    },
+    "F": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/lit-front.png",
+      "sha256": "c6dd7feafd68a8509c3668f29e2a2c6dea05e1cbf1c0323f224f3eb4ad6291df",
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "expectedPosition": [
+        0,
+        0,
+        1.8073808642855147
+      ],
+      "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "htmlSHA256": "2bff2ec86f73ba5f5e011be9d306b3904a71c6a5da236b5445c2c83b9d7c3f69"
+    }
+  },
+  "registeredRGB": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/pz/aligned.npy",
+    "sha256": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488",
+    "sampling": "Linear-light premultiplied RGBA bilinear at common orthographic pixel centers; sRGB conversion",
+    "pixelsEqualPriorBStage": true,
+    "priorBStageSHA256": "b95ddcd057c591b27aa1bdbc46afc7f75cdb934463d620894ad5ff1c46a7b859"
+  },
+  "comparisonProvenance": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/B-D-F-stages-comparison-provenance.json",
+    "sha256": "761223181b6e96a3f3630544370aa72c591ee4493635331c0bad75891e874a2a"
+  },
+  "processing": {
+    "cropOnlyRenders": true,
+    "resize": "3x nearest-neighbor",
+    "sharpening": false,
+    "aiPostprocessing": false,
+    "losslessWebPDecodedPixelsEqual": true
+  },
+  "limitation": "This is an observed appearance comparison, not proof of improved geometry accuracy.",
+  "output": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-front-stages.webp",
+    "sha256": "59eafd81df1a52f642728e23702c2c76a609dc3042ad053d5bfb3cf629ddeaac",
+    "bytes": 125770,
+    "size": [
+      1520,
+      652
+    ]
+  },
+  "scriptSHA256": "6834ed5c4c6fca3de11802b6a30aa4385fe670dbacb26142358214da5948fb80"
+}
