@@ -1,0 +1,450 @@
+{
+  "purpose": "Audit only. Existing A/B GLBs and current inference conditions are unchanged.",
+  "source": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+    "sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "visualKind": "texture",
+    "textureSize": [
+      1024,
+      1024
+    ],
+    "baseColorFactorNormalized": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "target": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/f6a5d91901f6745980cf73315bdacecc7e9db216b88784018cc7f8093d9dd404/geometry/proxy.glb",
+    "sha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+    "vertices": 499920,
+    "colorAccessor": {
+      "componentType": 5121,
+      "normalized": true,
+      "type": "VEC4",
+      "byteOffset": 0,
+      "bufferView": 2,
+      "count": 499920,
+      "max": [
+        245,
+        227,
+        208,
+        255
+      ],
+      "min": [
+        3,
+        4,
+        5,
+        255
+      ]
+    },
+    "materials": null,
+    "extensionsUsed": []
+  },
+  "versions": {
+    "trimesh": "5.2.1",
+    "three": "0.186.0"
+  },
+  "sourceCode": [
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/hi3d_postprocess.py",
+      "sha256": "f7daf0272926d51acbedcf6c188317eeafcafb6a977269c9a1f38d6828b119a4"
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/.venv/lib/python3.12/site-packages/trimesh/exchange/gltf/__init__.py",
+      "sha256": "0fa6fa9160e702fedeebd37bfe4ba34bf57f32d3bbf896b630349683a101dd4a"
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+      "sha256": "131c0f78c01d19368ae495caa65b3adaa10487810a36a05bb5901b769a35ac16"
+    },
+    {
+      "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/worker/runtime.mjs",
+      "sha256": "eba3e08d1a7fc5eb0af05604337cf335ee4a82a9b9b8b7a51d518d8bb22359a2"
+    }
+  ],
+  "encodedByteAgreement": {
+    "equalVertices": 499920,
+    "totalVertices": 499920,
+    "equalFraction": 1.0,
+    "maxAbsoluteByteDifference": 0,
+    "meanAbsoluteRGBByteDifference": 0.0,
+    "note": "Source lookup repeated on exported float32 coordinates; agreement is measured over every vertex."
+  },
+  "linearMismatch": {
+    "meanAbsoluteRGBDifference": 0.251275475564649,
+    "note": "Color transfer math, not a rendered-guide measurement. Correct expectation decodes sRGB before bilinear filtering.",
+    "hypotheticalNoLightingSRGB8LevelIncreaseQuantiles": [
+      44.67014163890139,
+      66.12116809887938,
+      71.74179406836383
+    ]
+  },
+  "samples": [
+    {
+      "vertex": 0,
+      "sourceVertex": 4,
+      "sourceUV": [
+        0.9446308612823486,
+        0.743416428565979
+      ],
+      "sourceSampledSRGBA8": [
+        134,
+        133,
+        131,
+        255
+      ],
+      "actualStoredRGBA8": [
+        134,
+        133,
+        131,
+        255
+      ],
+      "GLTFLinearRGB": [
+        0.5254901960784314,
+        0.5215686274509804,
+        0.5137254901960784
+      ],
+      "intendedLinearRGB": [
+        0.23858817959990145,
+        0.23475750237983892,
+        0.22598463701933053
+      ],
+      "predictedDisplaySRGB8WithoutLighting": [
+        192,
+        191,
+        190
+      ],
+      "correctDisplaySRGB8WithoutLighting": [
+        134,
+        133,
+        131
+      ]
+    },
+    {
+      "vertex": 2287,
+      "sourceVertex": 3269,
+      "sourceUV": [
+        0.8245828151702881,
+        0.3036670684814453
+      ],
+      "sourceSampledSRGBA8": [
+        106,
+        106,
+        103,
+        255
+      ],
+      "actualStoredRGBA8": [
+        106,
+        106,
+        103,
+        255
+      ],
+      "GLTFLinearRGB": [
+        0.41568627450980394,
+        0.41568627450980394,
+        0.403921568627451
+      ],
+      "intendedLinearRGB": [
+        0.14466187977398362,
+        0.14345749602906388,
+        0.1365037686188324
+      ],
+      "predictedDisplaySRGB8WithoutLighting": [
+        173,
+        173,
+        170
+      ],
+      "correctDisplaySRGB8WithoutLighting": [
+        106,
+        106,
+        103
+      ]
+    },
+    {
+      "vertex": 8548,
+      "sourceVertex": 685,
+      "sourceUV": [
+        0.3094761371612549,
+        0.5303200483322144
+      ],
+      "sourceSampledSRGBA8": [
+        193,
+        128,
+        112,
+        255
+      ],
+      "actualStoredRGBA8": [
+        193,
+        128,
+        112,
+        255
+      ],
+      "GLTFLinearRGB": [
+        0.7568627450980392,
+        0.5019607843137255,
+        0.4392156862745098
+      ],
+      "intendedLinearRGB": [
+        0.5313036174489012,
+        0.2146467550932124,
+        0.1625835375278969
+      ],
+      "predictedDisplaySRGB8WithoutLighting": [
+        226,
+        188,
+        177
+      ],
+      "correctDisplaySRGB8WithoutLighting": [
+        193,
+        128,
+        112
+      ]
+    },
+    {
+      "vertex": 13244,
+      "sourceVertex": 5141,
+      "sourceUV": [
+        0.5051527619361877,
+        0.8535499572753906
+      ],
+      "sourceSampledSRGBA8": [
+        79,
+        77,
+        80,
+        255
+      ],
+      "actualStoredRGBA8": [
+        79,
+        77,
+        80,
+        255
+      ],
+      "GLTFLinearRGB": [
+        0.30980392156862746,
+        0.30196078431372547,
+        0.3137254901960784
+      ],
+      "intendedLinearRGB": [
+        0.078544693528941,
+        0.0745615792110689,
+        0.0805817479031151
+      ],
+      "predictedDisplaySRGB8WithoutLighting": [
+        151,
+        149,
+        152
+      ],
+      "correctDisplaySRGB8WithoutLighting": [
+        79,
+        77,
+        80
+      ]
+    },
+    {
+      "vertex": 124980,
+      "sourceVertex": 9892,
+      "sourceUV": [
+        0.37552180886268616,
+        0.4830406904220581
+      ],
+      "sourceSampledSRGBA8": [
+        86,
+        85,
+        84,
+        255
+      ],
+      "actualStoredRGBA8": [
+        86,
+        85,
+        84,
+        255
+      ],
+      "GLTFLinearRGB": [
+        0.33725490196078434,
+        0.3333333333333333,
+        0.32941176470588235
+      ],
+      "intendedLinearRGB": [
+        0.09397565672305072,
+        0.09154244149434931,
+        0.0898891927686536
+      ],
+      "predictedDisplaySRGB8WithoutLighting": [
+        157,
+        156,
+        155
+      ],
+      "correctDisplaySRGB8WithoutLighting": [
+        86,
+        85,
+        85
+      ]
+    },
+    {
+      "vertex": 249960,
+      "sourceVertex": 35294,
+      "sourceUV": [
+        0.5714523196220398,
+        0.09840810298919678
+      ],
+      "sourceSampledSRGBA8": [
+        217,
+        185,
+        160,
+        255
+      ],
+      "actualStoredRGBA8": [
+        217,
+        185,
+        160,
+        255
+      ],
+      "GLTFLinearRGB": [
+        0.8509803921568627,
+        0.7254901960784313,
+        0.6274509803921569
+      ],
+      "intendedLinearRGB": [
+        0.6923859127892154,
+        0.4875301575836488,
+        0.3534668962149003
+      ],
+      "predictedDisplaySRGB8WithoutLighting": [
+        238,
+        221,
+        208
+      ],
+      "correctDisplaySRGB8WithoutLighting": [
+        217,
+        185,
+        160
+      ]
+    },
+    {
+      "vertex": 499919,
+      "sourceVertex": 6650,
+      "sourceUV": [
+        0.7055190801620483,
+        0.6782302260398865
+      ],
+      "sourceSampledSRGBA8": [
+        85,
+        83,
+        84,
+        255
+      ],
+      "actualStoredRGBA8": [
+        85,
+        83,
+        84,
+        255
+      ],
+      "GLTFLinearRGB": [
+        0.3333333333333333,
+        0.3254901960784314,
+        0.32941176470588235
+      ],
+      "intendedLinearRGB": [
+        0.09080860078647036,
+        0.08647020956453422,
+        0.08943647984949628
+      ],
+      "predictedDisplaySRGB8WithoutLighting": [
+        156,
+        155,
+        155
+      ],
+      "correctDisplaySRGB8WithoutLighting": [
+        85,
+        83,
+        84
+      ]
+    }
+  ],
+  "installedGLTFLoaderActualParse": [
+    {
+      "count": 499920,
+      "arrayType": "Uint8Array",
+      "normalized": true,
+      "vertexColors": true,
+      "flatShading": true,
+      "materialColor": [
+        1,
+        1,
+        1
+      ],
+      "hasColorTexture": false,
+      "samples": [
+        {
+          "vertex": 0,
+          "linearGetterRGBA": [
+            0.5254901960784314,
+            0.5215686274509804,
+            0.5137254901960784,
+            1
+          ]
+        },
+        {
+          "vertex": 2287,
+          "linearGetterRGBA": [
+            0.41568627450980394,
+            0.41568627450980394,
+            0.403921568627451,
+            1
+          ]
+        },
+        {
+          "vertex": 8548,
+          "linearGetterRGBA": [
+            0.7568627450980392,
+            0.5019607843137255,
+            0.4392156862745098,
+            1
+          ]
+        },
+        {
+          "vertex": 13244,
+          "linearGetterRGBA": [
+            0.30980392156862746,
+            0.30196078431372547,
+            0.3137254901960784,
+            1
+          ]
+        },
+        {
+          "vertex": 124980,
+          "linearGetterRGBA": [
+            0.33725490196078434,
+            0.3333333333333333,
+            0.32941176470588235,
+            1
+          ]
+        },
+        {
+          "vertex": 249960,
+          "linearGetterRGBA": [
+            0.8509803921568627,
+            0.7254901960784313,
+            0.6274509803921569,
+            1
+          ]
+        },
+        {
+          "vertex": 499919,
+          "linearGetterRGBA": [
+            0.3333333333333333,
+            0.3254901960784314,
+            0.32941176470588235,
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "specification": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+  "conclusion": "Existing B COLOR_0 preserves sampled sRGB byte values without decoding. Installed GLTFLoader exposes those bytes/255 as linear vertex color; the texture-to-vertex transfer has a color-space error.",
+  "scope": "This explains a systematic brightening of the B guide, not the separate H3 white-statue failure also observed in A.",
+  "existingGLBFilesUnchanged": true
+}
