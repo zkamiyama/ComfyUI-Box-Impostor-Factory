@@ -1,0 +1,215 @@
+{
+  "kind": "actual A inputs; no generated result",
+  "face": "+Z",
+  "preparedPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/prepared.json",
+  "preparedSHA256": "127a14c5843a6990b9f70bed3c76ff9f61ec0ec88e4b3d613b7cacd964501339",
+  "recipe": {
+    "branch": "A",
+    "baseline": "d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9",
+    "proxySha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "conditioning": "H3 image references (VLM plus VAE reference latents); no ControlNet",
+    "pictureOrder": [
+      "guide",
+      "source",
+      "axis-depth",
+      "normals",
+      "mask"
+    ],
+    "pictureSize": [
+      1024,
+      1024
+    ],
+    "outputSize": [
+      1024,
+      1024
+    ],
+    "depthEncoding": "1 minus normalized axis depth, bright-near; gray background",
+    "normalEncoding": "world normal * .5 + .5; RGB xyz; gray background",
+    "models": {
+      "model": "minimax_h3_image_pruned_w4a8.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "matting": "birefnet.safetensors"
+    },
+    "seeds": {
+      "+X": 101,
+      "-X": 102,
+      "+Y": 103,
+      "-Y": 104,
+      "+Z": 105,
+      "-Z": 106
+    },
+    "sampler": {
+      "steps": 6,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1
+    },
+    "viewConsistency": "none",
+    "materialMode": "keep"
+  },
+  "faceCanvas": {
+    "version": 1,
+    "size": 1024,
+    "faceId": "+Z",
+    "guideRect": [
+      315,
+      0,
+      393,
+      1024
+    ],
+    "guideInputSha256": "4d5e7cd820e63d2af803873a306a469e5c27f7daaa17d64780321d755a1d9802",
+    "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+    "sourceRect": [
+      0,
+      0,
+      1024,
+      1024
+    ],
+    "physicalWidthHeight": [
+      0.3991927041107743,
+      1.04
+    ],
+    "imageRowOrder": "top-to-bottom",
+    "backgroundSRGB": 0.5
+  },
+  "viewMatrix": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    -0.29467711655172313,
+    1
+  ],
+  "projectionMatrix": [
+    5.0101116062607405,
+    0,
+    0,
+    0,
+    0,
+    1.923076923076923,
+    0,
+    0,
+    0,
+    0,
+    -4.120701672285051,
+    0,
+    0,
+    0,
+    -1.2142764869588227,
+    1
+  ],
+  "cropPolicy": "Photograph and guide use separate visually selected head crops. Guide/depth/normals share identical coordinates. No image registration is claimed.",
+  "processing": "Integer crop and 2x nearest-neighbor pixel replication only; no color adjustment, sharpening or AI processing.",
+  "inputs": {
+    "source": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/source.png",
+      "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+      "size": [
+        1024,
+        1024
+      ],
+      "cropPixels": [
+        430,
+        35,
+        590,
+        235
+      ],
+      "panelPosition": [
+        20,
+        136
+      ],
+      "displaySize": [
+        320,
+        400
+      ]
+    },
+    "guide": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/guide.png",
+      "sha256": "b56df3344641e20d4317afe3edced03b09d8b5d31e48a909c04fa11271bbb14c",
+      "size": [
+        1024,
+        1024
+      ],
+      "cropPixels": [
+        440,
+        10,
+        600,
+        210
+      ],
+      "panelPosition": [
+        356,
+        136
+      ],
+      "displaySize": [
+        320,
+        400
+      ]
+    },
+    "axis-depth": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/axis-depth.png",
+      "sha256": "07fe0b68d1fa498dd29f9c93a95a3f363ec7731058d26576c93fed3e1d260408",
+      "size": [
+        1024,
+        1024
+      ],
+      "cropPixels": [
+        440,
+        10,
+        600,
+        210
+      ],
+      "panelPosition": [
+        692,
+        136
+      ],
+      "displaySize": [
+        320,
+        400
+      ]
+    },
+    "normals": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/normals.png",
+      "sha256": "25f7c930873b1704c2242f1f782a31d91d241c3999771d3e26cd51387f48dc15",
+      "size": [
+        1024,
+        1024
+      ],
+      "cropPixels": [
+        440,
+        10,
+        600,
+        210
+      ],
+      "panelPosition": [
+        1028,
+        136
+      ],
+      "displaySize": [
+        320,
+        400
+      ]
+    }
+  },
+  "pixelPreservationVerifiedAfterWebPDecode": true,
+  "proof": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-input-heads.webp",
+    "sha256": "20c06664d3f24cb987f5df09a7f65240f6d2b21ce4341345f5cc658ec0fa1374",
+    "size": [
+      1368,
+      612
+    ],
+    "bytes": 127942
+  }
+}
