@@ -1,0 +1,32 @@
+{
+  "kind": "Exact official Inspector HTML archives",
+  "baseCommit": "c9ce9a72213f0d4ea4b7f4a576a27db7327b4bea",
+  "branch": "verification/seam-fade-20261119-viewers",
+  "gzip": {
+    "mtime": 0,
+    "filename": "",
+    "compresslevel": 9
+  },
+  "viewers": [
+    {
+      "label": "L1-view-fade",
+      "sourceHtml": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L1-view-fade.inspector.html",
+      "htmlSHA256": "c7d91ef5e04bbb8eb0b4f532fe9a4d259c3e345e5d82493d0e8d73b5d3591bae",
+      "htmlBytes": 62300172,
+      "archivePath": "docs/verification/seam-fade-20261119/L1-view-fade.inspector.html.gz",
+      "gzipSHA256": "825537f105c53028a9bf21b8fe65dcd209c30b3460497b453a8930f0dd4f8a23",
+      "gzipBytes": 46045828,
+      "roundTripSHA256": "c7d91ef5e04bbb8eb0b4f532fe9a4d259c3e345e5d82493d0e8d73b5d3591bae"
+    },
+    {
+      "label": "L2-view-soft",
+      "sourceHtml": "/mnt/f/_dev/box-impostor-lab/results/seam-fade-20261119/L2-view-soft.inspector.html",
+      "htmlSHA256": "6e6c6e63c8882d6dbfcd26337e5365d607c3713ec73dac65366154fd896a7741",
+      "htmlBytes": 62300172,
+      "archivePath": "docs/verification/seam-fade-20261119/L2-view-soft.inspector.html.gz",
+      "gzipSHA256": "a3b8c88dbf7e2332527cfcd0233daa998522b8372371593dffcfeb34f7292736",
+      "gzipBytes": 46045429,
+      "roundTripSHA256": "6e6c6e63c8882d6dbfcd26337e5365d607c3713ec73dac65366154fd896a7741"
+    }
+  ]
+}
