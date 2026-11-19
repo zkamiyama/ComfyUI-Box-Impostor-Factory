@@ -1,0 +1,14 @@
+{
+  "stage": "J-native-unlit",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/I-native-unlit.inspector.html",
+  "fileName": "J-native-unlit.inspector.html",
+  "htmlBytes": 62297449,
+  "htmlSHA256": "2fd2f8910ee1dd9f097fd3dc91ec6bb772574f3592be7d7b919aa9306e901d0e",
+  "gzipName": "J-native-unlit.inspector.html.gz",
+  "gzipBytes": 46044680,
+  "gzipSHA256": "b11a7825da31a04d1f4d047b2e0f3f901f1302232f57e0c0b9c3e5c4c6e0c145",
+  "roundTripByteIdentityVerified": true,
+  "officialViewerUnmodified": true,
+  "factoryCommit": "af0735d563ae1797c91e42b69bf35b5eacbba4b1",
+  "inspectorCommit": "c11df5f571ee49a8721f7bbf903b6ed6c62e5eed"
+}
