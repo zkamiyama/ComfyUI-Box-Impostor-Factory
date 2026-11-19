@@ -130,6 +130,24 @@ class FullDepthTests(unittest.TestCase):
         old,_=mesh_arrays(warped);new,_=mesh_arrays(rebuilt)
         np.testing.assert_array_equal(old,new)
 
+    def test_cancelled_normals_use_largest_incident_face(self):
+        points=np.array([[0,0,0],[2,0,0],[0,1,0],[1,0,0]],'f8')
+        triangles=np.array([[0,2,3],[0,1,2],[0,2,3]],dtype=np.int32)
+        normals,report=vertex_normals(points,triangles,return_report=True)
+        np.testing.assert_allclose(normals[0],[0,0,1],atol=1e-7)
+        np.testing.assert_allclose(np.linalg.norm(normals,axis=1),1,atol=1e-7)
+        self.assertGreaterEqual(report['cancellationFallbackVertices'],1)
+
+    def test_unused_and_degenerate_only_normals_have_documented_unit_placeholder(self):
+        points=np.array([[0,0,0],[1,0,0],[0,1,0],[2,2,2],[3,3,3]],'f8')
+        triangles=np.array([[0,1,2],[0,2,1],[3,3,3]],dtype=np.int32)
+        normals,report=vertex_normals(points,triangles,return_report=True)
+        np.testing.assert_allclose(normals[:3],np.tile([0,0,1],(3,1)),atol=1e-7)
+        np.testing.assert_allclose(normals[3:],np.tile([0,1,0],(2,1)),atol=1e-7)
+        self.assertEqual(report['cancellationFallbackVertices'],3)
+        self.assertEqual(report['degenerateOnlyPlaceholderVertices'],1)
+        self.assertEqual(report['unusedPlaceholderVertices'],1)
+
 
 if __name__=='__main__':
     unittest.main()

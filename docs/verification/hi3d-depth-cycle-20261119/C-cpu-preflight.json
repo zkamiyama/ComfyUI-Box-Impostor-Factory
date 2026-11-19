@@ -1,0 +1,65 @@
+{
+  "python": "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+  "prefix": "/home/dev/Projects/box-impostor-lab/.venv",
+  "basePrefix": "/usr",
+  "venvPreserved": true,
+  "cudaVisibleDevices": "",
+  "cudaInitialized": false,
+  "modelManagementDevice": "cpu",
+  "imports": {
+    "numpy": "/home/dev/Projects/box-impostor-lab/.venv/lib/python3.12/site-packages/numpy/__init__.py",
+    "scipy": "/home/dev/Projects/box-impostor-lab/.venv/lib/python3.12/site-packages/scipy/__init__.py",
+    "scipy.sparse.linalg": "/home/dev/Projects/box-impostor-lab/.venv/lib/python3.12/site-packages/scipy/sparse/linalg/__init__.py",
+    "PIL.Image": "/home/dev/Projects/box-impostor-lab/.venv/lib/python3.12/site-packages/PIL/Image.py",
+    "safetensors.torch": "/home/dev/Projects/box-impostor-lab/.venv/lib/python3.12/site-packages/safetensors/torch.py",
+    "trimesh": "/home/dev/Projects/box-impostor-lab/.venv/lib/python3.12/site-packages/trimesh/__init__.py",
+    "comfy.ldm.moge.model": "/home/dev/Projects/box-impostor-lab/ComfyUI/comfy/ldm/moge/model.py",
+    "box_nodes.full_depth": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/box_nodes/full_depth.py",
+    "scripts.moge_face_depth_infer": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/moge_face_depth_infer.py",
+    "scripts.refine_full_depth": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/refine_full_depth.py"
+  },
+  "versions": {
+    "torch": "2.9.1+cu128",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "Pillow": "13.0.0",
+    "safetensors": "0.8.0",
+    "trimesh": "5.2.1"
+  },
+  "modelInstantiated": false,
+  "weightsLoaded": false,
+  "gpuInference": false,
+  "checkpoint": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/models/geometry_estimation/moge_2_vitl_normal_fp16.safetensors",
+    "bytes": 661859924,
+    "mtimeNs": 1794495021112486183,
+    "headerBytes": 56816,
+    "headerSha256": "438bf422008cb25ab49b561f0412458db512bf4db84e4f2bf8e4d5f333ed2a63",
+    "tensorCount": 521,
+    "dtypes": {
+      "F16": 521
+    },
+    "offsetsWithinFile": true,
+    "normalHeadPresent": true,
+    "refinerPresent": false,
+    "versionFromHeader": "v2 family; instance was not constructed",
+    "metadata": null
+  },
+  "childCommand": [
+    "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+    "-c",
+    "CPU imports only; see cpu-preflight-imports.log"
+  ],
+  "outputDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output",
+  "workDirectory": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/actual",
+  "cacheEnvironment": {
+    "TMPDIR": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/tmp",
+    "XDG_CACHE_HOME": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/cache/xdg",
+    "HF_HOME": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/cache/huggingface",
+    "TORCH_HOME": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/cache/torch",
+    "TORCHINDUCTOR_CACHE_DIR": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/cache/torchinductor",
+    "TRITON_CACHE_DIR": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C/cache/triton",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "inferencePythonDefault": "sys.executable; full-depth CLI does not call Path.resolve() on the interpreter"
+}

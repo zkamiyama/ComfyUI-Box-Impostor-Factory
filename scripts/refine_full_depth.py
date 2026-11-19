@@ -17,7 +17,7 @@ from PIL import Image
 import folder_paths
 
 from box_nodes import store
-from box_nodes.full_depth import SLUGS, refine_to_proxy, rebake_refinement
+from box_nodes.full_depth import SLUGS, refine_to_proxy, rebake_refinement, normal_only_proxy
 from scripts.moge_face_depth_infer import image_crop
 
 
@@ -32,6 +32,7 @@ def main():
     parser.add_argument('--inference-python',default=sys.executable)
     parser.add_argument('--inference-size',type=int,default=1024)
     parser.add_argument('--inference-level',type=int,default=8)
+    parser.add_argument('--normal-only',action='store_true',help='B normal-only control: preserve all positions/materials; no depth inference or fitting.')
     parser.add_argument('--geometry-only',action='store_true',help='Fit/write geometry without invoking the native baker.')
     parser.add_argument('--backend',choices=['webgl2','webgpu','auto'],default='webgl2')
     parser.add_argument('--max-displacement-height',type=float,default=.015)
@@ -40,6 +41,8 @@ def main():
     parser.add_argument('--prior',type=float,default=.025)
     parser.add_argument('--cg-iterations',type=int,default=120)
     args=parser.parse_args()
+    if args.normal_only and args.infer:
+        parser.error('--normal-only cannot run neural inference.')
     if min(args.max_displacement_height,args.smoothness,args.prior)<0:
         parser.error('Displacement bound and quadratic weights must be nonnegative.')
     if args.iterations<0 or args.cg_iterations<1:
@@ -79,14 +82,18 @@ def main():
         print('MoGe inference starting; log='+str(log),flush=True)
         with log.open('wb') as stream:
             subprocess.run(command,cwd=REPO,env=env,stdout=stream,stderr=subprocess.STDOUT,check=True)
-    print('CPU full-depth shared-mesh fit starting',flush=True)
-    proxy,report=refine_to_proxy(args.asset,predictions,args.work_dir,
-                               max_displacement_height=args.max_displacement_height,
-                               iterations=args.iterations,smoothness=args.smoothness,
-                               prior=args.prior,cg_iterations=args.cg_iterations)
+    if args.normal_only:
+        print('CPU same-position normal-only control starting',flush=True)
+        proxy,report=normal_only_proxy(args.asset,args.work_dir)
+    else:
+        print('CPU full-depth shared-mesh fit starting',flush=True)
+        proxy,report=refine_to_proxy(args.asset,predictions,args.work_dir,
+                                   max_displacement_height=args.max_displacement_height,
+                                   iterations=args.iterations,smoothness=args.smoothness,
+                                   prior=args.prior,cg_iterations=args.cg_iterations)
     result={'sourceAsset':args.asset,'proxy':proxy,'refinementReport':str(args.work_dir/'refinement.json')}
     if not args.geometry_only:
-        print('Native Box rebake and same-source RGB registration starting',flush=True)
+        print('Native Box rebake and frozen B RGB mapping starting',flush=True)
         asset,evaluation=rebake_refinement(args.asset,proxy,args.work_dir,args.backend)
         result.update(assetId=asset,assetDirectory=str(store.asset_dir(asset)),
                       rebakeEvaluation=str(args.work_dir/'rebake-evaluation.json'))

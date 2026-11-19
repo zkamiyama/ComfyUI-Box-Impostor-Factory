@@ -1,0 +1,73 @@
+{
+  "method": "existing full_depth.geometry_normals; no displacement or position smoothing",
+  "label": "B position/material-preserving normal-only proxy",
+  "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/f6a5d91901f6745980cf73315bdacecc7e9db216b88784018cc7f8093d9dd404/geometry/proxy.glb",
+  "output": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-normal-only/canonical.glb",
+  "sourceGlbSha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+  "controlGlbSha256": "020f6a29688393be11b62e6987c80f956abc5d5e28e80b7b3c9220f21d67093e",
+  "checks": {
+    "originalBinaryPrefixEqual": true,
+    "nodesEqual": true,
+    "scenesEqual": true,
+    "sceneEqual": true,
+    "materialsEqual": true,
+    "texturesEqual": true,
+    "imagesEqual": true,
+    "samplersEqual": true,
+    "extensionsEqual": true,
+    "extensionsUsedEqual": true,
+    "extensionsRequiredEqual": true,
+    "primitiveCountEqual": true,
+    "primitive0MetadataEqual": true,
+    "primitive0POSITIONEqual": true,
+    "primitive0COLOR_0Equal": true,
+    "primitive0IndicesEqual": true,
+    "primitive0FiniteNormals": true,
+    "primitive0UnitNormals": true
+  },
+  "passed": true,
+  "primitiveProof": [
+    {
+      "POSITION": {
+        "source": "606ecc1cbf318637ed517503bb2f4d88f39d61c2c4eb43938105b76a920f7391",
+        "control": "606ecc1cbf318637ed517503bb2f4d88f39d61c2c4eb43938105b76a920f7391"
+      },
+      "COLOR_0": {
+        "source": "c565403d0ea4a522d4c26736317cf35435753f24e07993fed9488725114ab90d",
+        "control": "c565403d0ea4a522d4c26736317cf35435753f24e07993fed9488725114ab90d"
+      },
+      "indices": {
+        "source": "4e6605b02a85feebf5527e7377aa0be42184a85d287ebe61d8fa4884f60cef76",
+        "control": "4e6605b02a85feebf5527e7377aa0be42184a85d287ebe61d8fa4884f60cef76"
+      },
+      "normal": {
+        "sourcePresent": false,
+        "controlPresent": true,
+        "count": 499920,
+        "zeroCount": 0,
+        "zeroUsedByNondegenerateTriangles": 0,
+        "degenerateTriangleCount": 0,
+        "nonzeroMaxLengthError": 5.960464477539063e-08,
+        "sha256": "3372988371f314442eebbc05bd2b521828cd90f8d45347acca4c7461f2028d30"
+      }
+    }
+  ],
+  "normalRecompute": {
+    "algorithm": "area-weighted; largest-area incident face for cancellation; +Y for unrendered vertices",
+    "vertices": 499920,
+    "triangles": 1000000,
+    "cancellationFallbackVertices": 2,
+    "unusedPlaceholderVertices": 0,
+    "degenerateOnlyPlaceholderVertices": 0,
+    "degenerateTriangles": 0,
+    "relativeCancellationThreshold": 1e-12,
+    "unitPlaceholder": [
+      0,
+      1,
+      0
+    ]
+  },
+  "seconds": 0.953,
+  "gpuInference": false,
+  "nativeBake": false
+}

@@ -18,6 +18,7 @@ from . import depth_mesh, faces, store
 from .canvas import undo_guide_canvas
 from .neural_depth import project_prediction
 from .revision import DEPTH_ENCODING, RebakeProxyRevision
+from .mesh_normals import geometry_normals, mesh_arrays, vertex_normals
 
 METHOD = 'joint-full-depth-v1'
 SLUGS = dict(zip(store.FACES, ('px', 'nx', 'py', 'ny', 'pz', 'nz')))
@@ -103,25 +104,6 @@ class DepthView:
         gy = ndimage.map_coordinates(self.gy, coords, **kwargs)*self.r
         jacobian = -self.side[None, :] - gx[:, None]*self.right + gy[:, None]*self.up
         return axial-target, jacobian.astype('f4'), covered, coords
-
-
-def mesh_arrays(data):
-    doc, binary = depth_mesh._decode(data)
-    primitives = list(depth_mesh._primitives(doc, binary))
-    positions = [p @ transform[:3, :3].T+transform[:3, 3] for _, p, _, transform in primitives]
-    unique, inverse = np.unique(np.concatenate(positions), axis=0, return_inverse=True)
-    offsets = np.cumsum([0, *(len(p) for p in positions)])
-    triangles = np.concatenate([inverse[offsets[i]+tri] for i, (_, _, tri, _) in enumerate(primitives)])
-    return unique, triangles.astype(np.int32)
-
-
-def vertex_normals(points, triangles):
-    normal = np.zeros_like(points, dtype='f8')
-    a, b, c = points[triangles].transpose(1, 0, 2)
-    area = np.cross(b-a, c-a)
-    for corners in triangles.T:
-        np.add.at(normal, corners, area)
-    return depth_mesh._unit(normal).astype('f4')
 
 
 def displacement_laplacian(triangles, count):
@@ -275,31 +257,6 @@ def joint_fit(points, triangles, views, bounds, *, max_displacement_height=.015,
         'iterations':logs}
 
 
-def geometry_normals(data):
-    """Rebuild vertex normals from the changed shared surface, preserving UV/materials."""
-    points,triangles = mesh_arrays(data)
-    normals = vertex_normals(points,triangles)
-    doc,binary = depth_mesh._decode(data)
-    original_binary = binary
-    binary = bytearray(binary)
-    primitives = list(depth_mesh._primitives(doc,original_binary))
-    positions = [p@t[:3,:3].T+t[:3,3] for _,p,_,t in primitives]
-    _,inverse = np.unique(np.concatenate(positions),axis=0,return_inverse=True)
-    offsets = np.cumsum([0,*(len(p) for p in positions)])
-    for i,(primitive,xyz,tri,transform) in enumerate(primitives):
-        local = depth_mesh._unit(normals[inverse[offsets[i]:offsets[i+1]]]@transform[:3,:3])
-        if 'NORMAL' not in primitive['attributes']:
-            # POSITION has the same count and float32 VEC3 layout; the writer allocates new storage.
-            primitive['attributes']['NORMAL'] = primitive['attributes']['POSITION']
-        depth_mesh._write_attribute(doc,binary,primitive,'NORMAL',local)
-        if 'TANGENT' in primitive['attributes']:
-            tangents = depth_mesh._accessor(doc,original_binary,primitive['attributes']['TANGENT'],'VEC4',{5126}).astype('f8')
-            tangent = tangents[:,:3]-local*np.sum(local*tangents[:,:3],axis=1,keepdims=True)
-            depth_mesh._write_attribute(doc,binary,primitive,'TANGENT',
-                                       np.column_stack((depth_mesh._unit(tangent),tangents[:,3])))
-    return depth_mesh._encode(doc,binary)
-
-
 def prepare_views(directory, manifest, predictions, max_displacement_height):
     r = manifest['resolution']
     height = manifest['tightBounds']['max'][1]-manifest['tightBounds']['min'][1]
@@ -357,7 +314,7 @@ def refine_to_proxy(asset, prediction_dir, work_dir, **options):
             raise ValueError('Mesh vertex ordering changed before displacement.')
         return revised-points
     changed,geometry = depth_mesh.deform_glb(data,displacement,local_backtracking=True)
-    changed = geometry_normals(changed)
+    changed,normal_report = geometry_normals(changed,return_report=True)
     # Re-read by primitive order: lexicographic unique ordering may change after deformation.
     old_doc,old_binary = depth_mesh._decode(data)
     new_doc,new_binary = depth_mesh._decode(changed)
@@ -369,30 +326,15 @@ def refine_to_proxy(asset, prediction_dir, work_dir, **options):
               'solver':solver,'mesh':geometry,
               'actualDisplacementHeight':{'p50':float(np.quantile(actual,.5)),'p95':float(np.quantile(actual,.95)),'max':float(actual.max())},
               'normalSource':'area-weighted geometric normals recomputed from changed shared mesh',
+              'normalRecompute':normal_report,
               'limitations':['Depth-to-orthographic registration is an anchored affine approximation.',
                              'Current occlusion uses vertex splats; final native rebake supplies exact rasterized depth.'],
               'seconds':round(time.monotonic()-started,3)}
-    path = work/'refined.glb'
-    path.write_bytes(changed)
-    metadata = {'glbSha256':store.file_hash(path),
-                'sourceSha256':manifest.get('provenance',{}).get('originalGlbSha256',manifest['proxySha256']),
-                'transform':manifest['transform'],'inverseTransform':manifest['inverseTransform'],
-                'tightBounds':manifest['tightBounds'],'bakeBox':manifest['bakeBox']}
-    (work/'canonical.json').write_text(json.dumps(metadata,indent=2)+'\n')
-    (work/'refinement.json').write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
     for view in views:
         np.save(work/(SLUGS[view.face]+'-full-target.npy'),np.where(view.mask,view.target,np.nan),allow_pickle=False)
-    proxy = {'sha256':store.file_hash(path),'stageKey':store.key(METHOD,asset,store.file_hash(path),solver['parameters'],registration,store.file_hash(Path(__file__))),
-             'path':str(path),'metadata':str(work/'canonical.json'),'depthRefinement':report,
-             'rotationDegreesXYZ':manifest.get('provenance',{}).get('rotationDegreesXYZ',[0,0,0])}
-    ref = manifest.get('reference')
-    if ref:
-        proxy['reference']={**ref,'path':str(store.contained(directory,ref['image']).parent)}
-        if ref.get('camera'):
-            proxy['camera']=ref['camera'];proxy['croppedImage']=str(store.contained(directory,ref['camera']['image']))
-    if manifest.get('provenance',{}).get('meshGeneration'):
-        proxy['provenance']=manifest['provenance']['meshGeneration']
-    return proxy,report
+    proxy = _write_proxy(changed, report, manifest, directory, work,
+                         {'solver':solver['parameters'], 'registration':registration})
+    return proxy, report
 
 
 def _residual_metrics(depth, target, valid, world_per_depth, height):
@@ -410,42 +352,224 @@ def _residual_metrics(depth, target, valid, world_per_depth, height):
             'p95AbsHeight':float(np.quantile(abs(residual[valid]),.95)) if valid.any() else None}
 
 
+FIXED_MAPPING_VERSION = 'fixed-b-rgb-v1'
+NORMAL_CONTROL_METHOD = 'geometry-normal-only-v1'
+
+
+def _write_proxy(changed, report, manifest, directory, work, parameters):
+    work = Path(work)
+    work.mkdir(parents=True, exist_ok=True)
+    path = work/'refined.glb'
+    path.write_bytes(changed)
+    metadata = {
+        'glbSha256':store.file_hash(path),
+        'sourceSha256':manifest.get('provenance', {}).get('originalGlbSha256', manifest['proxySha256']),
+        'transform':manifest['transform'], 'inverseTransform':manifest['inverseTransform'],
+        'tightBounds':manifest['tightBounds'], 'bakeBox':manifest['bakeBox']}
+    (work/'canonical.json').write_text(json.dumps(metadata, indent=2)+'\n')
+    (work/'refinement.json').write_text(json.dumps(report, indent=2, allow_nan=False)+'\n')
+    proxy = {
+        'sha256':store.file_hash(path),
+        'stageKey':store.key(report['method'], manifest['asset_id'], store.file_hash(path),
+                             parameters, report.get('normalRecompute'),
+                             store.file_hash(Path(__file__)),
+                             store.file_hash(Path(__file__).with_name('mesh_normals.py'))),
+        'path':str(path), 'metadata':str(work/'canonical.json'), 'depthRefinement':report,
+        'rotationDegreesXYZ':manifest.get('provenance', {}).get('rotationDegreesXYZ', [0,0,0])}
+    ref = manifest.get('reference')
+    if ref:
+        proxy['reference'] = {**ref, 'path':str(store.contained(directory, ref['image']).parent)}
+        if ref.get('camera'):
+            proxy['camera'] = ref['camera']
+            proxy['croppedImage'] = str(store.contained(directory, ref['camera']['image']))
+    if manifest.get('provenance', {}).get('meshGeneration'):
+        proxy['provenance'] = manifest['provenance']['meshGeneration']
+    return proxy
+
+
+def normal_only_proxy(asset, work_dir):
+    """Same B positions/materials with the identical normal policy used by C."""
+    directory = store.asset_dir(asset)
+    manifest = store.validate(directory, asset)
+    data = store.contained(directory, manifest['proxy']).read_bytes()
+    changed, normals = geometry_normals(data, return_report=True)
+    before, old_binary = depth_mesh._decode(data)
+    after, new_binary = depth_mesh._decode(changed)
+    checks = {'originalBinaryPrefixEqual':old_binary == new_binary[:len(old_binary)]}
+    for key in ('nodes','scenes','scene','materials','textures','images','samplers',
+                'extensions','extensionsUsed','extensionsRequired'):
+        checks[key+'Equal'] = before.get(key) == after.get(key)
+    old_parts = list(depth_mesh._primitives(before, old_binary))
+    new_parts = list(depth_mesh._primitives(after, new_binary))
+    checks['primitiveCountEqual'] = len(old_parts) == len(new_parts)
+    for i, (old, new) in enumerate(zip(old_parts, new_parts)):
+        checks[str(i)+'PositionsEqual'] = np.array_equal(old[1], new[1])
+        checks[str(i)+'IndicesEqual'] = np.array_equal(old[2], new[2])
+        checks[str(i)+'TransformEqual'] = np.array_equal(old[3], new[3])
+        for name, index in old[0]['attributes'].items():
+            if name not in ('NORMAL','TANGENT'):
+                checks[str(i)+name+'AccessorEqual'] = index == new[0]['attributes'].get(name)
+    if not all(checks.values()):
+        raise ValueError('Normal-only control changed data outside its normal frame.')
+    report = {'method':NORMAL_CONTROL_METHOD, 'sourceAsset':asset,
+              'normalRecompute':normals, 'invariants':checks,
+              'actualDisplacementHeight':{'p50':0., 'p95':0., 'max':0.},
+              'normalSource':'same robust area-weighted shared-surface normals as C',
+              'newInference':False}
+    proxy = _write_proxy(changed, report, manifest, directory, work_dir, {})
+    return proxy, report
+
+
+def fixed_capture_frame(original, revised):
+    """Fixed RGB and depth fitting are valid only in the same six camera frames."""
+    checks = {}
+    for key in ('resolution','tightBounds','bakeBox','transform','inverseTransform',
+                'faceOrder','coordinateSystem'):
+        checks[key] = original.get(key) == revised.get(key)
+    camera_keys = ('side','up','tile','viewMatrix','projectionMatrix','frustum',
+                   'imageRowOrder','depthEncoding')
+    for fid in original['faces']:
+        current = revised['faces'].get(fid, {})
+        for key in camera_keys:
+            checks[fid+':'+key] = original['faces'][fid].get(key) == current.get(key)
+    return {'passed':all(checks.values()), 'checks':checks}
+
+
+def reuse_fixed_rgb(source_dir, original, revised_dir, revised, work_dir, method=METHOD):
+    """Evaluate the frozen B samples on C silhouettes; never optimize their mapping."""
+    source_dir, revised_dir, work = Path(source_dir), Path(revised_dir), Path(work_dir)
+    work.mkdir(parents=True, exist_ok=True)
+    frame = fixed_capture_frame(original, revised)
+    evidence = {'mappingPolicy':FIXED_MAPPING_VERSION, 'sourceAsset':original['asset_id'],
+                'revisedAsset':revised['asset_id'], 'fixedFrame':frame, 'faces':{}}
+    report_path = work/'fixed-rgb-qa.json'
+    if not frame['passed']:
+        report_path.write_text(json.dumps(evidence, indent=2)+'\n')
+        raise ValueError('Fixed RGB requires unchanged bounds/cameras; see '+str(report_path))
+    previous = json.loads(store.contained(source_dir, original['qa']).read_bytes())['faces']
+    items = {}
+    r = original['resolution']
+    for fid, info in original['faces'].items():
+        edit = info.get('edit', {})
+        if edit.get('status') != 'accepted' or previous[fid].get('status') != 'accepted':
+            raise ValueError('Fixed RGB needs an accepted original B view: '+fid)
+        view = store.contained(source_dir, edit['view']).parent
+        aligned_path = view/'aligned.npy'
+        digest = store.file_hash(aligned_path)
+        if digest != edit.get('alignedSha256'):
+            raise ValueError('Archived B aligned samples do not match their hash: '+fid)
+        candidate = np.load(aligned_path, allow_pickle=False)
+        if candidate.shape != (r,r,4) or not np.isfinite(candidate).all():
+            raise ValueError('Invalid archived B aligned sample dimensions or values: '+fid)
+        with Image.open(store.contained(source_dir, info['guide'])) as image:
+            before_mask = np.asarray(image.getchannel('A')) >= 128
+        with Image.open(store.contained(revised_dir, revised['faces'][fid]['guide'])) as image:
+            after_mask = np.asarray(image.getchannel('A')) >= 128
+        candidate_mask = candidate[...,3] >= .5
+        before_score = faces.scores(candidate_mask, before_mask)
+        after_score = faces.scores(candidate_mask, after_mask)
+        limits = previous[fid].get('thresholds', {})
+        min_iou = limits.get('minIoU', .85)
+        accepted = bool(after_mask.any() and candidate_mask.any() and after_score['iou'] >= min_iou)
+        report = {
+            **previous[fid], 'sourceAfter':previous[fid].get('after'),
+            'before':before_score, 'after':after_score,
+            'status':'accepted' if accepted else 'fallback',
+            'reason':'fixed-mapping-silhouette-passed' if accepted else 'fixed-mapping-silhouette-iou',
+            'mappingPolicy':FIXED_MAPPING_VERSION,
+            'sourceAlignmentKey':edit['alignmentKey'],
+            'registrationChanged':False, 'resampled':False,
+            'newGeometryUncoveredPixels':int(np.count_nonzero(after_mask & ~candidate_mask))}
+        folder = work/'fixed-rgb'/SLUGS[fid]
+        folder.mkdir(parents=True, exist_ok=True)
+        (folder/'report.json').write_text(json.dumps(report, indent=2, allow_nan=False)+'\n')
+        hashes = {name:store.file_hash(view/name) for name in ('source.png','source.npy','aligned.npy')}
+        evidence['faces'][fid] = {
+            'sourceAlignmentKey':edit['alignmentKey'], 'sourceFiles':hashes,
+            'sourceSilhouette':before_score, 'revisedSilhouette':after_score,
+            'minIoU':min_iou, 'status':report['status'], 'sameAlignedRGB':True,
+            'newGeometryUncoveredPixels':report['newGeometryUncoveredPixels'],
+            'registrationChanged':False, 'resampled':False}
+        source = {'path':str(view), 'provenance':{
+            **edit.get('provenance', {}), 'depthRefinementMethod':method,
+            'mappingPolicy':FIXED_MAPPING_VERSION, 'sourceRGBAsset':original['asset_id'],
+            'sourceAlignmentKey':edit['alignmentKey']}}
+        if original.get('reference'):
+            ref = original['reference']
+            source['reference'] = {**ref, 'path':str(store.contained(source_dir, ref['image']).parent)}
+        items[fid] = {
+            'key':store.key(FIXED_MAPPING_VERSION, original['asset_id'], revised['asset_id'],
+                            fid, edit['alignmentKey'], hashes, report),
+            'source':source, 'directory':str(folder), 'measured':str(view)}
+    evidence['passed'] = all(face['status'] == 'accepted' for face in evidence['faces'].values())
+    report_path.write_text(json.dumps(evidence, indent=2, allow_nan=False)+'\n')
+    if not evidence['passed']:
+        bad = [fid for fid, face in evidence['faces'].items() if face['status'] != 'accepted']
+        raise ValueError('Fixed RGB silhouette QA failed for '+', '.join(bad)+
+                         '; no re-registration or fallback-color comparison published. See '+str(report_path))
+    return {'baseline':revised['asset_id'], 'faces':items}, evidence
+
+
 def rebake_refinement(asset, proxy, work_dir, backend='webgl2'):
     directory = store.asset_dir(asset)
-    original = store.validate(directory,asset,check_bytes=False)
-    revised,_ = RebakeProxyRevision().revise(asset,proxy,backend)
-    qa = json.loads(store.contained(directory,original['qa']).read_bytes())['faces']
-    items = {}
-    for fid,info in original['faces'].items():
-        edit = info['edit']
-        source_path = store.contained(directory,edit['view'])
-        source = faces.save_view(np.load(source_path.with_suffix('.npy'),allow_pickle=False))
-        source['provenance']={**edit['provenance'],'depthRefinementMethod':METHOD}
-        limits = qa[fid].get('thresholds',{})
-        aligned = faces.align({fid:source},revised,limits.get('minIoU',.85),
-                              limits.get('maxShiftFraction',.1),limits.get('maxScaleChange',.15))
-        items.update(aligned['faces'])
-    final = faces.compose(revised,{'baseline':revised,'faces':items})
+    original = store.validate(directory, asset, check_bytes=False)
+    revised_id, _ = RebakeProxyRevision().revise(asset, proxy, backend)
+    revised_dir = store.asset_dir(revised_id)
+    revised = store.validate(revised_dir, revised_id)
+    method = proxy.get('depthRefinement', {}).get('method', METHOD)
+    aligned, fixed = reuse_fixed_rgb(directory, original, revised_dir, revised, work_dir, method)
+    final = faces.compose(revised_id, aligned)
     after_dir = store.asset_dir(final)
-    after = store.validate(after_dir,final)
-    evaluation = {'sourceAsset':asset,'assetId':final,'geometryAsset':revised,'faces':{},
-                  'normalMapChanged':after['textures']['normalMap']['sha256']!=original['textures']['normalMap']['sha256'],
-                  'intervalMapChanged':after['textures']['intervalMap']['sha256']!=original['textures']['intervalMap']['sha256'],
-                  'rangeMapChanged':after['textures']['rangeMap']['sha256']!=original['textures']['rangeMap']['sha256']}
-    r = original['resolution'];span=np.subtract(original['bakeBox']['max'],original['bakeBox']['min'])
-    height=original['tightBounds']['max'][1]-original['tightBounds']['min'][1]
+    after = store.validate(after_dir, final)
+    evaluation = {
+        'sourceAsset':asset, 'assetId':final, 'geometryAsset':revised_id, 'faces':{},
+        'mappingPolicy':FIXED_MAPPING_VERSION, 'fixedFrame':fixed['fixedFrame'],
+        'silhouetteQaPassed':fixed['passed'], 'method':method,
+        'normalMapChanged':after['textures']['normalMap']['sha256'] != original['textures']['normalMap']['sha256'],
+        'intervalMapChanged':after['textures']['intervalMap']['sha256'] != original['textures']['intervalMap']['sha256'],
+        'rangeMapChanged':after['textures']['rangeMap']['sha256'] != original['textures']['rangeMap']['sha256']}
+    r = original['resolution']
+    span = np.subtract(original['bakeBox']['max'], original['bakeBox']['min'])
+    height = original['tightBounds']['max'][1]-original['tightBounds']['min'][1]
     for fid in store.FACES:
-        target=np.load(Path(work_dir)/(SLUGS[fid]+'-full-target.npy'),allow_pickle=False)
-        before=np.fromfile(store.contained(directory,original['faces'][fid]['depth']),'<f2').reshape(r,r).astype('f4')
-        now=np.fromfile(store.contained(after_dir,after['faces'][fid]['depth']),'<f2').reshape(r,r).astype('f4')
-        valid=np.isfinite(target)&np.isfinite(before)&np.isfinite(now)
-        depth_span=abs(np.asarray(original['faces'][fid]['side'])@span)
-        evaluation['faces'][fid]={'targetPixels':int(np.count_nonzero(np.isfinite(target))),
-                                'sharedPixels':int(valid.sum()),
-                                'missingAfterPixels':int(np.count_nonzero(np.isfinite(target)&~np.isfinite(now))),
-                                'before':_residual_metrics(before,target,valid,depth_span,height),
-                                'after':_residual_metrics(now,target,valid,depth_span,height),
-                                'sameSourceRGB':store.file_hash(store.contained(directory,original['faces'][fid]['edit']['view']))==store.file_hash(store.contained(after_dir,after['faces'][fid]['edit']['view'])),
-                                'alignmentStatus':after['faces'][fid]['edit']['status']}
+        old_view = store.contained(directory, original['faces'][fid]['edit']['view']).parent
+        new_view = store.contained(after_dir, after['faces'][fid]['edit']['view']).parent
+        hashes = {name:{'before':store.file_hash(old_view/name), 'after':store.file_hash(new_view/name)}
+                  for name in ('source.png','source.npy','aligned.npy')}
+        entry = {
+            'sameSourceRGB':hashes['source.png']['before'] == hashes['source.png']['after'],
+            'sameSourceSamples':hashes['source.npy']['before'] == hashes['source.npy']['after'],
+            'sameAlignedRGB':hashes['aligned.npy']['before'] == hashes['aligned.npy']['after'],
+            'imageHashes':hashes, 'samplingMappingUnchanged':True,
+            'alignmentStatus':after['faces'][fid]['edit']['status'],
+            'silhouetteQA':fixed['faces'][fid]}
+        if not all(entry[key] for key in ('sameSourceRGB','sameSourceSamples','sameAlignedRGB')):
+            raise ValueError('Composition changed frozen source/aligned samples: '+fid)
+        if method != NORMAL_CONTROL_METHOD:
+            target = np.load(Path(work_dir)/(SLUGS[fid]+'-full-target.npy'), allow_pickle=False)
+            before = np.fromfile(store.contained(directory, original['faces'][fid]['depth']), '<f2').reshape(r,r).astype('f4')
+            now = np.fromfile(store.contained(after_dir, after['faces'][fid]['depth']), '<f2').reshape(r,r).astype('f4')
+            valid = np.isfinite(target) & np.isfinite(before) & np.isfinite(now)
+            depth_span = abs(np.asarray(original['faces'][fid]['side']) @ span)
+            entry.update(targetPixels=int(np.count_nonzero(np.isfinite(target))),
+                         sharedPixels=int(valid.sum()),
+                         missingAfterPixels=int(np.count_nonzero(np.isfinite(target) & ~np.isfinite(now))),
+                         before=_residual_metrics(before,target,valid,depth_span,height),
+                         after=_residual_metrics(now,target,valid,depth_span,height))
+        evaluation['faces'][fid] = entry
+    if method == NORMAL_CONTROL_METHOD:
+        checks = {}
+        for name, spec in original['textures'].items():
+            if name != 'normalMap':
+                checks[name+'Equal'] = spec['sha256'] == after['textures'][name]['sha256']
+        for fid in store.FACES:
+            for key in ('guide','depth'):
+                checks[fid+key+'Equal'] = (
+                    store.file_hash(store.contained(directory, original['faces'][fid][key])) ==
+                    store.file_hash(store.contained(after_dir, after['faces'][fid][key])))
+        evaluation['normalOnlyInvariants'] = checks
+        if not all(checks.values()):
+            (Path(work_dir)/'rebake-evaluation.json').write_text(json.dumps(evaluation, indent=2)+'\n')
+            raise ValueError('Normal-only control changed color, coverage or geometry maps.')
     (Path(work_dir)/'rebake-evaluation.json').write_text(json.dumps(evaluation,indent=2,allow_nan=False)+'\n')
-    return final,evaluation
+    return final, evaluation

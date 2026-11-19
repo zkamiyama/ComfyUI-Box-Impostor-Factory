@@ -1,0 +1,12 @@
+{
+  "source": "B-clay.inspector.html",
+  "htmlBytes": 23731981,
+  "htmlSHA256": "3ae13f97adee0bd522d5c84f81d627a9ed944715701217c10661d5f3f0b1f32f",
+  "gzip": "B-clay.inspector.html.gz",
+  "gzipBytes": 17331959,
+  "gzipSHA256": "d4d4c5371df5afd5f44eaf4642de5d9e95506ceba9b1b33169e9e271246026c7",
+  "officialViewerUnmodified": true,
+  "maxTriangles": 1000000,
+  "actualPayloadTriangles": 1000000,
+  "stage": "Hi3D geometry before six new RGB views"
+}
