@@ -1,0 +1,14 @@
+{
+  "stage": "K-dominant",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-dominant.inspector.html",
+  "fileName": "K-dominant.inspector.html",
+  "htmlBytes": 62299696,
+  "htmlSHA256": "87f99c88cc9d2e6163fdf1ab56236fb3466cf8333ce1724c63ef2b4205343fc0",
+  "gzipName": "K-dominant.inspector.html.gz",
+  "gzipBytes": 46045709,
+  "gzipSHA256": "ae90aca13cc635a0f2b2d748bcc0d4ac9f775fcf75eee7b8f1d8240b4fe76146",
+  "roundTripByteIdentityVerified": true,
+  "officialViewerUnmodified": true,
+  "factoryCommit": "734c915e6d89919ac9135e06476bff85b33954d6",
+  "inspectorCommit": "66614346c951b77652fc64be54efddeb758e2c52"
+}
