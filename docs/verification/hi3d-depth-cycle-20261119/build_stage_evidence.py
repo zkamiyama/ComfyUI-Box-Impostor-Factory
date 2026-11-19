@@ -94,6 +94,13 @@ metadata_path = args.work / f"{stage}-provenance.json"
 metadata = json.loads(metadata_path.read_text())
 box_capture = json.loads((args.work / f"{stage}-box" / "capture.json").read_text())
 clay_capture = json.loads((args.work / f"{stage}-clay" / "capture.json").read_text())
+assert not box_capture["errors"] and not clay_capture["errors"]
+assert box_capture["htmlSHA256"] == metadata["box"]["viewerSHA256"]
+assert clay_capture["htmlSHA256"] == metadata["clay"]["viewerSHA256"]
+source_triangles = sum(item["triangles"] for item in metadata["clay"]["geometry"])
+if stage in ("B", "C"):
+    assert clay_capture.get("triangleCounts", {}).get("meshPayload") == source_triangles
+    assert metadata["clay"]["payloadTriangles"] == source_triangles
 assert box_capture["camera"]["target"] == clay_capture["camera"]["target"]
 assert box_capture["camera"]["halfExtent"] == clay_capture["camera"]["halfExtent"]
 camera = box_capture["camera"]
@@ -102,6 +109,8 @@ front_crop = crop_for_view(head, camera, [0, 0, 1])
 evidence = {
     "stage": stage, "label": LABELS[stage], "assetId": metadata["assetId"],
     "metadata": metadata, "boxCapture": box_capture, "clayCapture": clay_capture,
+    "normalPolicy": metadata["clay"]["normalPreservation"],
+    "claySourceTriangles": source_triangles, "clayViewerTriangleCounts": clay_capture.get("triangleCounts"),
     "headRegion": {"definition": "A mesh upper 18 percent of height, restricted to the X envelope of its upper 8 percent; 0.01 bake-unit padding",
                    "bounds": head.tolist(), "frontCropPixels": front_crop},
     "panels": {}, "sourceImages": {},
@@ -124,6 +133,8 @@ evidence["cameraCalibration"] = {
 }
 assert pixel_error <= 2.0, "UI camera did not reproduce the reference projection"
 front = metadata["faces"]["+Z"]
+if front.get("alignedPath"):
+    assert sha(front["alignedPath"]) == front["alignedSHA256"]
 rgb = aligned_front_crop(front["alignedPath"], metadata["bakeBox"], front_crop, camera) if front.get("alignedPath") else None
 box_image = Image.open(args.work / f"{stage}-box" / "lit-front.png").crop(front_crop)
 clay_image = Image.open(args.work / f"{stage}-clay" / "lit-front.png").crop(front_crop)
@@ -144,7 +155,10 @@ for i, (source, label) in enumerate(zip(images, labels)):
     enlarged = backdrop(source).resize((source.width * 3, source.height * 3), Image.Resampling.NEAREST)
     panel.paste(enlarged, (i * column_width + (column_width - enlarged.width) // 2, 125))
 draw.text((24, panel_height - 47), "Head crops: 3x nearest-neighbor; no sharpening. Registered RGB uses the same camera pixel grid.", font=font(14), fill=MUTED)
-draw.text((24, panel_height - 24), "Clay: original geometry normals retained; color and tangent normal textures removed.", font=font(14), fill=MUTED)
+normal_present = all(item["present"] for item in metadata["clay"]["normalPreservation"]["normalAccessors"])
+normal_note = ("Clay: source vertex normals retained; color and tangent normal textures removed." if normal_present else
+               "Clay: source NORMAL absent; viewer computes normals. Color/normal textures removed; full mesh.")
+draw.text((24, panel_height - 24), normal_note, font=font(14), fill=MUTED)
 path = args.output / f"{stage}-stage.webp"
 panel.save(path, "WEBP", lossless=True)
 evidence["panels"][path.name] = {"sha256": sha(path), "size": panel.size, "resize": "nearest-neighbor 3x", "rgbPlaneSampling": "linear-light premultiplied RGBA bilinear sample at the same orthographic pixel centers"}

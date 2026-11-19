@@ -1,0 +1,1076 @@
+{
+  "stage": "B",
+  "label": "B / Hi3D mesh + fresh H3 RGB",
+  "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "metadata": {
+    "stage": "B",
+    "assetDirectory": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+    "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+    "manifestSHA256": "650893815ec21de1994ee47eb78469f157be43ee6aa8282bf7d45ee94d4bca0e",
+    "proxyPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/geometry/proxy.glb",
+    "proxySHA256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+    "bakeBox": {
+      "min": [
+        -0.19968106269836425,
+        -0.52,
+        -0.18729551553726195
+      ],
+      "max": [
+        0.19968106269836425,
+        0.52,
+        0.18729551553726195
+      ]
+    },
+    "tightBounds": {
+      "min": [
+        -0.17968106269836426,
+        -0.5,
+        -0.16729551553726196
+      ],
+      "max": [
+        0.17968106269836426,
+        0.5,
+        0.16729551553726196
+      ]
+    },
+    "clay": {
+      "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay.glb",
+      "sha256": "c0457a74ea6537333e5431a3cafb2a9828f9407f19fc87a9da07202aef80c043",
+      "material": {
+        "baseColorFactor": [
+          180,
+          180,
+          180,
+          255
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "geometryIdenticalAfterReload": true,
+      "geometry": [
+        {
+          "vertices": 499920,
+          "triangles": 1000000,
+          "positionsSHA256": "606ecc1cbf318637ed517503bb2f4d88f39d61c2c4eb43938105b76a920f7391",
+          "indicesSHA256": "4e6605b02a85feebf5527e7377aa0be42184a85d287ebe61d8fa4884f60cef76",
+          "transform": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "normalPreservation": {
+        "method": "GLB JSON material replacement; binary chunks and geometry accessors retained byte-for-byte",
+        "normalRecomputed": false,
+        "normalAccessors": [
+          {
+            "present": false
+          }
+        ],
+        "removedColorBindings": [
+          {
+            "COLOR_0": 2
+          }
+        ],
+        "binaryChunksIdentical": true,
+        "binaryChunkSHA256": [
+          "fcb7b1a5c400f01627ae52bcd1931066ea7cdd7543f1b14789d7aaa00446a049"
+        ],
+        "positionNormalIndexBindingsIdentical": true,
+        "nodeTransformsIdentical": true,
+        "sourceMaterialNormalTextures": [],
+        "materialTextureMode": "All color and tangent normal textures removed; original geometry NORMAL retained",
+        "note": "If NORMAL is absent in the source, it remains absent and the official renderer computes shading normals."
+      },
+      "preparationHistory": [],
+      "note": "Only the material was replaced. Original asset unchanged; no smoothing or remeshing.",
+      "viewerTriangleLimit": 1000000,
+      "sourceTriangles": 1000000,
+      "payloadTriangles": 1000000,
+      "payloadOriginal": {
+        "vertices": 499920,
+        "triangles": 1000000
+      },
+      "viewer": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay.inspector.html",
+      "viewerSHA256": "3ae13f97adee0bd522d5c84f81d627a9ed944715701217c10661d5f3f0b1f32f",
+      "viewerBytes": 23731981
+    },
+    "faces": {
+      "+X": {
+        "status": "accepted",
+        "reason": "silhouette-passed",
+        "source": "h3_enhanced",
+        "guide": "guides/px.png",
+        "guideSHA256": "0ca0b8734be19b620752c45358ad0f0f4fb3b0bc3a281ad4ae78d6b65d3acd98",
+        "depth": "guides/px.depth16f.bin",
+        "depthSHA256": "19b42b42e4374f9d7e39f29c521dca6872d49bc6a875a65b03fb191875f1df9d",
+        "qa": {
+          "before": {
+            "iou": 0.9822779749359579,
+            "boundaryP95Px": 5.0
+          },
+          "status": "accepted",
+          "sourceSize": [
+            369,
+            1024
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            511.0,
+            509.5
+          ],
+          "sampling": "source-affine-v1",
+          "boundingBoxRegistration": {
+            "scale": 1.0005456003685438,
+            "centerShiftYX": [
+              0.5,
+              2.0
+            ],
+            "scores": {
+              "iou": 0.9752544230660529,
+              "boundaryP95Px": 5.830951894845301
+            }
+          },
+          "after": {
+            "iou": 0.9822779749359579,
+            "boundaryP95Px": 5.0
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "+X",
+            "guideRect": [
+              327,
+              0,
+              369,
+              1024
+            ],
+            "guideInputSha256": "383151f7ff1091eeb4c5c59851f562f46b53d07626adee23aea43202605a9ccc",
+            "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3745910310745239,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "generatedRGBPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/px/source.png",
+        "generatedRGBSHA256": "709a8321727308ed9515e73a76e49de631e7e38b597a36c09dba0f0b3f5ee6fa",
+        "alignedPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/px/aligned.npy",
+        "alignedSHA256": "99ca90b0bc6cf2dd379ac212f37b2dc1a14cd2d2d87a9cf05e6298390c72033c"
+      },
+      "-X": {
+        "status": "accepted",
+        "reason": "silhouette-passed",
+        "source": "h3_enhanced",
+        "guide": "guides/nx.png",
+        "guideSHA256": "94d5ed93ad618fc49112c87a83943a241607240d48fcbc7757f04e6ac5c017e0",
+        "depth": "guides/nx.depth16f.bin",
+        "depthSHA256": "529ce8a13bec9396cc6777db0ac94413f44d4da853d0dc754e2b9e160a3d52c2",
+        "qa": {
+          "before": {
+            "iou": 0.9861383487503192,
+            "boundaryP95Px": 3.1622776601683795
+          },
+          "status": "accepted",
+          "sourceSize": [
+            369,
+            1024
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            511.5,
+            510.0
+          ],
+          "sampling": "source-affine-v1",
+          "boundingBoxRegistration": {
+            "scale": 1.0005067084761283,
+            "centerShiftYX": [
+              0.0,
+              1.5
+            ],
+            "scores": {
+              "iou": 0.9800112654343862,
+              "boundaryP95Px": 4.123105625617661
+            }
+          },
+          "after": {
+            "iou": 0.9861383487503192,
+            "boundaryP95Px": 3.1622776601683795
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "-X",
+            "guideRect": [
+              327,
+              0,
+              369,
+              1024
+            ],
+            "guideInputSha256": "13704276405f23fb67ee35f2bf2db0a7645004431613bea44d25e8048d35f7d9",
+            "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3745910310745239,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "generatedRGBPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/nx/source.png",
+        "generatedRGBSHA256": "258bfea762bf6c165720975bddcbe3d1fa587dfa0ed70b8caf3f0f3cba894973",
+        "alignedPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/nx/aligned.npy",
+        "alignedSHA256": "2e45a8979c4a8b0dfb3ab6fbe7c3e7ed01fe74d2d08b7d243bff7ac95378dcad"
+      },
+      "+Y": {
+        "status": "accepted",
+        "reason": "silhouette-passed",
+        "source": "h3_enhanced",
+        "guide": "guides/py.png",
+        "guideSHA256": "ade131beb8c3b043057543beaed2d7e61d56e76c898a32005fe3fbc7d371b219",
+        "depth": "guides/py.depth16f.bin",
+        "depthSHA256": "397dc6c03ce8e62320bd341cfb7eb569d947e7474aaffd821da9a614aaecb340",
+        "qa": {
+          "before": {
+            "iou": 0.9924306005163498,
+            "boundaryP95Px": 2.23606797749979
+          },
+          "status": "accepted",
+          "sourceSize": [
+            1024,
+            960
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            510.0,
+            511.0
+          ],
+          "sampling": "source-affine-v1",
+          "boundingBoxRegistration": {
+            "scale": 1.0010904917915817,
+            "centerShiftYX": [
+              1.5,
+              0.5
+            ],
+            "scores": {
+              "iou": 0.9908389354550483,
+              "boundaryP95Px": 2.23606797749979
+            }
+          },
+          "after": {
+            "iou": 0.9924306005163498,
+            "boundaryP95Px": 2.23606797749979
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "+Y",
+            "guideRect": [
+              0,
+              32,
+              1024,
+              960
+            ],
+            "guideInputSha256": "e2a783b6e3eb103d393aad1ec636b31dbca79c84fff8bace3bf7ad43e558785e",
+            "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3993621253967285,
+              0.3745910310745239
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "generatedRGBPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/py/source.png",
+        "generatedRGBSHA256": "56071b07c837df0b9c0f36a3569a31597355d899b1b6b33765eb496d59917c8d",
+        "alignedPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/py/aligned.npy",
+        "alignedSHA256": "b8670517f6a84efc51802b0fd8e4dfbdfe0e9703032a37a15200542444db5854"
+      },
+      "-Y": {
+        "status": "accepted",
+        "reason": "silhouette-passed",
+        "source": "h3_enhanced",
+        "guide": "guides/ny.png",
+        "guideSHA256": "b9b026a8eaa6ffaabf1df430fd537b31cf3ac5ed6e1669caf01c74edfead3767",
+        "depth": "guides/ny.depth16f.bin",
+        "depthSHA256": "41ae99a122edba3d51d45a4dccf6701c56b2b693cfae6d999c006a1721159ea8",
+        "qa": {
+          "before": {
+            "iou": 0.9757033481589691,
+            "boundaryP95Px": 5.0
+          },
+          "status": "accepted",
+          "sourceSize": [
+            1024,
+            960
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            507.0,
+            511.5
+          ],
+          "sampling": "source-affine-v1",
+          "boundingBoxRegistration": {
+            "scale": 0.9908230695973043,
+            "centerShiftYX": [
+              4.5,
+              0.0
+            ],
+            "scores": {
+              "iou": 0.968951465838216,
+              "boundaryP95Px": 8.06225774829855
+            }
+          },
+          "after": {
+            "iou": 0.9757033481589691,
+            "boundaryP95Px": 5.0
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "-Y",
+            "guideRect": [
+              0,
+              32,
+              1024,
+              960
+            ],
+            "guideInputSha256": "9ae0c39e6aa7dcc4fb389f771e3488e28c47dfe69ccb800643d384ccfb847a34",
+            "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3993621253967285,
+              0.3745910310745239
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "generatedRGBPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/ny/source.png",
+        "generatedRGBSHA256": "51b698dc7e36268e51e574f0ee11b809bacff7c369ee5821f7a7791b5aadf623",
+        "alignedPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/ny/aligned.npy",
+        "alignedSHA256": "a2285b1647f69128e1e061185397790c24eae160606ca25fe9dda18cfab70bad"
+      },
+      "+Z": {
+        "status": "accepted",
+        "reason": "silhouette-passed",
+        "source": "h3_enhanced",
+        "guide": "guides/pz.png",
+        "guideSHA256": "bfd452808ef40f9cdcef5303cdac1b9ed6944e2b9d2a27c57ecc6af6a712938b",
+        "depth": "guides/pz.depth16f.bin",
+        "depthSHA256": "37c88c19a782486c63df03dfddaf4dc88d3307351e8523fcf4846b4a2da85eba",
+        "qa": {
+          "before": {
+            "iou": 0.972648452831879,
+            "boundaryP95Px": 6.0
+          },
+          "status": "accepted",
+          "sourceSize": [
+            393,
+            1024
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 1.0,
+            "centerShiftYX": [
+              0.0,
+              0.0
+            ]
+          },
+          "registrationCenterYX": [
+            509.5,
+            511.5
+          ],
+          "sampling": "source-affine-v1",
+          "boundingBoxRegistration": {
+            "scale": 1.0001188199855215,
+            "centerShiftYX": [
+              2.0,
+              0.0
+            ],
+            "scores": {
+              "iou": 0.9653102942447829,
+              "boundaryP95Px": 6.708203932499369
+            }
+          },
+          "after": {
+            "iou": 0.972648452831879,
+            "boundaryP95Px": 6.0
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "+Z",
+            "guideRect": [
+              315,
+              0,
+              393,
+              1024
+            ],
+            "guideInputSha256": "cbcf6b5c68a7c87f7987bd2874f124a8940aa3356f557534f9c2bb03f1e0d978",
+            "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3993621253967285,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "generatedRGBPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/pz/source.png",
+        "generatedRGBSHA256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+        "alignedPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/pz/aligned.npy",
+        "alignedSHA256": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488"
+      },
+      "-Z": {
+        "status": "accepted",
+        "reason": "silhouette-passed",
+        "source": "h3_enhanced",
+        "guide": "guides/nz.png",
+        "guideSHA256": "fedff27b10e63f2120c3ed2dda7c8fe1b30c46d4bb193e832f01805ada7db205",
+        "depth": "guides/nz.depth16f.bin",
+        "depthSHA256": "930ad6f9c465757262b9e3ad710704c016bc1e16f8921838c69c826efe22065d",
+        "qa": {
+          "before": {
+            "iou": 0.9883084038270566,
+            "boundaryP95Px": 2.23606797749979
+          },
+          "status": "accepted",
+          "sourceSize": [
+            393,
+            1024
+          ],
+          "tileSize": [
+            1024,
+            1024
+          ],
+          "registration": {
+            "scale": 1.0005070198299253,
+            "centerShiftYX": [
+              0.0,
+              -0.5
+            ]
+          },
+          "registrationCenterYX": [
+            511.5,
+            512.0
+          ],
+          "sampling": "source-affine-v1",
+          "after": {
+            "iou": 0.988862733186524,
+            "boundaryP95Px": 2.23606797749979
+          },
+          "reason": "silhouette-passed",
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "guideCanvas": {
+            "version": 1,
+            "size": 1024,
+            "faceId": "-Z",
+            "guideRect": [
+              315,
+              0,
+              393,
+              1024
+            ],
+            "guideInputSha256": "1c44d9caeba6af12fdbf4d344d8957c73a8661da2aa17619d671adbd063a1ef2",
+            "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+            "sourceRect": [
+              0,
+              0,
+              1024,
+              1024
+            ],
+            "physicalWidthHeight": [
+              0.3993621253967285,
+              1.04
+            ],
+            "imageRowOrder": "top-to-bottom",
+            "backgroundSRGB": 0.5
+          },
+          "thresholds": {
+            "minIoU": 0.85,
+            "maxShiftFraction": 0.1,
+            "maxScaleChange": 0.15
+          }
+        },
+        "generatedRGBPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/nz/source.png",
+        "generatedRGBSHA256": "412ee3fe8d3c1c710e25c797b145214d63039f09626d4eb5c15df7ea52b91ede",
+        "alignedPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2/views/nz/aligned.npy",
+        "alignedSHA256": "e0105542f31e3f7851b5f6fcd70d27b100f569f50dc912afc7082d4ef6369550"
+      }
+    },
+    "inspectorLauncher": "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+    "inspectorLauncherSHA256": "ac5582e709b88c5d02aad2c999147237f077f3dc56850c8d8e139abaec947ada",
+    "acceptedCount": 6,
+    "box": {
+      "archive": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B.box.zip",
+      "archiveSHA256": "b9fee58c4eb2d4c8bbc65fc4b33ac36ff28462d7c076b423412eb3bc0a8f36f8",
+      "viewer": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B.inspector.html",
+      "viewerSHA256": "e8421c1609879a8b7a4ae7b1dc15559cef15a00f05a0b81d89a8c82fdd8a8c2b",
+      "viewerBytes": 61841410,
+      "colorMapSHA256": "c9aac4921ed65f225fc65c04abec13cc5750b46135fe25da2b4e0486213d4355"
+    }
+  },
+  "boxCapture": {
+    "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B.inspector.html",
+    "htmlSHA256": "e8421c1609879a8b7a4ae7b1dc15559cef15a00f05a0b81d89a8c82fdd8a8c2b",
+    "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+    "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+    "assetId": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+    "sourceBounds": {
+      "min": [
+        -0.19968106269836425,
+        -0.52,
+        -0.18729551553726195
+      ],
+      "max": [
+        0.19968106269836425,
+        0.52,
+        0.18729551553726195
+      ]
+    },
+    "referenceBounds": {
+      "min": [
+        -0.19959635205538714,
+        -0.52,
+        -0.19067711655172312
+      ],
+      "max": [
+        0.19959635205538714,
+        0.52,
+        0.19067711655172312
+      ]
+    },
+    "triangleCounts": {
+      "expected": null,
+      "meshPayload": 19320,
+      "sourceOriginal": {
+        "vertices": 499920,
+        "triangles": 1000000
+      }
+    },
+    "camera": {
+      "projection": "orthographic",
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "distance": 1.8073808642855147,
+      "halfExtent": 0.65783283658225,
+      "fovBeforeOrthographic": 40,
+      "fitFormula": "radius * 1.05 / sin(20deg)",
+      "sourceRadius": 0.5876666886430749,
+      "referenceRadius": 0.5887244402352406,
+      "perspectiveWheelDeltaY": 3.505915677124107,
+      "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "cssPixels": [
+        800,
+        800
+      ],
+      "deviceScaleFactor": 1.28001,
+      "wheelProtocolDeltaY": 4.4876070731820406,
+      "pans": [
+        {
+          "view": "front",
+          "dx": 0,
+          "dy": 0
+        },
+        {
+          "view": "right",
+          "dx": 0,
+          "dy": 0
+        }
+      ]
+    },
+    "lighting": {
+      "viewerDefaults": true,
+      "studio": "neutral where supported",
+      "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+      "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+    },
+    "modes": {
+      "lit": {
+        "front": {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-front.png",
+          "sha256": "86ad094cea67846fd19fd93c49742b7f20219a906a6bb2bbaf38fed6d43c1d41",
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "expectedPosition": [
+            0,
+            0,
+            1.8073808642855147
+          ]
+        },
+        "iso": {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-iso.png",
+          "sha256": "7d3a7f854c593d4e6926afc395e3707b77ed6ff9453d249ca8fe98b11f538dc1",
+          "direction": [
+            0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "expectedPosition": [
+            1.0434918285234205,
+            1.0434918285234205,
+            1.0434918285234205
+          ]
+        },
+        "left": {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-left.png",
+          "sha256": "09a981029636d656553e71f4a7d9e677234aaab8fc605567a9c443c215da3620",
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "expectedPosition": [
+            -1.8073808642855147,
+            0,
+            0
+          ]
+        },
+        "right": {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-right.png",
+          "sha256": "67a70b9779ad5cbc62712784607a4734c8942a3c16a96b8d3fecd88b94579e18",
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "expectedPosition": [
+            1.8073808642855147,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "errors": [],
+    "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "hardwareGPUUsed": false,
+    "browserVersion": "158.0.8127.18",
+    "viewport": {
+      "width": 800,
+      "height": 800
+    },
+    "canvasRect": {
+      "x": 0,
+      "y": 0,
+      "width": 800,
+      "height": 800
+    },
+    "devicePixelRatio": 1.2800099849700928,
+    "canvasPixels": [
+      1024,
+      1024
+    ],
+    "backend": "Three.js / WebGL2",
+    "stageState": "Native Box"
+  },
+  "clayCapture": {
+    "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay.inspector.html",
+    "htmlSHA256": "3ae13f97adee0bd522d5c84f81d627a9ed944715701217c10661d5f3f0b1f32f",
+    "referenceManifest": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/manifest.json",
+    "referenceManifestSHA256": "ceb87086cec8c45a7476a0bb3b461e74829d6f709e46a75141c645c7a1ca176c",
+    "assetId": null,
+    "sourceBounds": {
+      "min": [
+        -0.17968106269836426,
+        -0.5,
+        -0.16729551553726196
+      ],
+      "max": [
+        0.17968106269836426,
+        0.5,
+        0.16729551553726196
+      ]
+    },
+    "referenceBounds": {
+      "min": [
+        -0.19959635205538714,
+        -0.52,
+        -0.19067711655172312
+      ],
+      "max": [
+        0.19959635205538714,
+        0.52,
+        0.19067711655172312
+      ]
+    },
+    "triangleCounts": {
+      "expected": 1000000,
+      "meshPayload": 1000000,
+      "sourceOriginal": {
+        "vertices": 499920,
+        "triangles": 1000000
+      }
+    },
+    "camera": {
+      "projection": "orthographic",
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "distance": 1.8073808642855147,
+      "halfExtent": 0.65783283658225,
+      "fovBeforeOrthographic": 40,
+      "fitFormula": "radius * 1.05 / sin(20deg)",
+      "sourceRadius": 0.5570216098243332,
+      "referenceRadius": 0.5887244402352406,
+      "perspectiveWheelDeltaY": 107.91702004948496,
+      "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "cssPixels": [
+        800,
+        800
+      ],
+      "deviceScaleFactor": 1.28001,
+      "wheelProtocolDeltaY": 138.13486321155844,
+      "pans": [
+        {
+          "view": "front",
+          "dx": 0,
+          "dy": 0
+        },
+        {
+          "view": "right",
+          "dx": 0,
+          "dy": 0
+        }
+      ]
+    },
+    "lighting": {
+      "viewerDefaults": true,
+      "studio": "neutral where supported",
+      "nativeBox": "Directional intensity 2.1; hemisphere intensity 1.55; ACES exposure 1",
+      "note": "Mesh and Box use their respective official native rendering paths. A/B/C are compared within each path."
+    },
+    "modes": {
+      "lit": {
+        "front": {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/lit-front.png",
+          "sha256": "8400ca4fa74716b5be7e3caf667d33c495254fb093d56d29c626ae4123ad314d",
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "expectedPosition": [
+            0,
+            0,
+            1.8073808642855147
+          ]
+        },
+        "iso": {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/lit-iso.png",
+          "sha256": "0e20f3e3f4df096582da78ea9f130ad8b329c6541d9f829113b68aacec59db63",
+          "direction": [
+            0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "expectedPosition": [
+            1.0434918285234205,
+            1.0434918285234205,
+            1.0434918285234205
+          ]
+        },
+        "left": {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/lit-left.png",
+          "sha256": "1751ff1c02fc0a677efeb239875251824002e468ffd5f7a3c717f2644d2b1bf6",
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "expectedPosition": [
+            -1.8073808642855147,
+            0,
+            0
+          ]
+        },
+        "right": {
+          "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/lit-right.png",
+          "sha256": "f4713b423060a6d145e15ed75d362e4e0771538c761821d3007139d7c24ff33b",
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "expectedPosition": [
+            1.8073808642855147,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "errors": [],
+    "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "hardwareGPUUsed": false,
+    "browserVersion": "158.0.8127.18",
+    "viewport": {
+      "width": 800,
+      "height": 800
+    },
+    "canvasRect": {
+      "x": 0,
+      "y": 0,
+      "width": 800,
+      "height": 800
+    },
+    "devicePixelRatio": 1.2800099849700928,
+    "canvasPixels": [
+      1024,
+      1024
+    ],
+    "backend": "Three.js / WebGL2",
+    "stageState": "Three.js PBR"
+  },
+  "normalPolicy": {
+    "method": "GLB JSON material replacement; binary chunks and geometry accessors retained byte-for-byte",
+    "normalRecomputed": false,
+    "normalAccessors": [
+      {
+        "present": false
+      }
+    ],
+    "removedColorBindings": [
+      {
+        "COLOR_0": 2
+      }
+    ],
+    "binaryChunksIdentical": true,
+    "binaryChunkSHA256": [
+      "fcb7b1a5c400f01627ae52bcd1931066ea7cdd7543f1b14789d7aaa00446a049"
+    ],
+    "positionNormalIndexBindingsIdentical": true,
+    "nodeTransformsIdentical": true,
+    "sourceMaterialNormalTextures": [],
+    "materialTextureMode": "All color and tangent normal textures removed; original geometry NORMAL retained",
+    "note": "If NORMAL is absent in the source, it remains absent and the official renderer computes shading normals."
+  },
+  "claySourceTriangles": 1000000,
+  "clayViewerTriangleCounts": {
+    "expected": 1000000,
+    "meshPayload": 1000000,
+    "sourceOriginal": {
+      "vertices": 499920,
+      "triangles": 1000000
+    }
+  },
+  "headRegion": {
+    "definition": "A mesh upper 18 percent of height, restricted to the X envelope of its upper 8 percent; 0.01 bake-unit padding",
+    "bounds": [
+      [
+        -0.06190345578729607,
+        0.3100160773953314,
+        -0.024992582091377752
+      ],
+      [
+        0.07604182008052954,
+        0.51,
+        0.18067711655172314
+      ]
+    ],
+    "frontCropPixels": [
+      463,
+      115,
+      572,
+      271
+    ]
+  },
+  "panels": {
+    "B-stage.webp": {
+      "sha256": "b95ddcd057c591b27aa1bdbc46afc7f75cdb934463d620894ad5ff1c46a7b859",
+      "size": [
+        1140,
+        652
+      ],
+      "resize": "nearest-neighbor 3x",
+      "rgbPlaneSampling": "linear-light premultiplied RGBA bilinear sample at the same orthographic pixel centers"
+    }
+  },
+  "sourceImages": {
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-box/lit-front.png": "86ad094cea67846fd19fd93c49742b7f20219a906a6bb2bbaf38fed6d43c1d41",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay/lit-front.png": "8400ca4fa74716b5be7e3caf667d33c495254fb093d56d29c626ae4123ad314d"
+  },
+  "cameraCalibration": {
+    "method": "Opaque clay front alpha bounds vs projected source mesh bounds",
+    "expectedPixelBounds": [
+      372.15185167780845,
+      122.8433848786874,
+      651.8481483221915,
+      901.1566151213126
+    ],
+    "observedPixelBounds": [
+      372,
+      123,
+      652,
+      901
+    ],
+    "maxBoundaryErrorPixels": 0.1566151213125977,
+    "tolerancePixels": 2.0
+  }
+}

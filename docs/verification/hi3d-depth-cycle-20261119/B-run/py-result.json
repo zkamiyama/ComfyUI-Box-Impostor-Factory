@@ -1,0 +1,11 @@
+{
+  "prompt_id": "fb8e314a-5093-4cf3-953e-32df96879517",
+  "freshInference": true,
+  "face": "+Y",
+  "elapsedSeconds": 288.36,
+  "raw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/py/generated.png",
+  "mask": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/py/foreground.png",
+  "rawSha256": "ec8934afedac752e43d5cbd5719200f8f598264d19a57b9584bb4080dfa7d2ce",
+  "maskSha256": "b23f1325eabe257c0c442fdc7c1d0e93a03a255338d86bb90c02fafaa1103597",
+  "promptSha256": "e5d1a5201af0c42eb1bfe9eef8e746697704537f46dfd51917701eb0ef881a97"
+}

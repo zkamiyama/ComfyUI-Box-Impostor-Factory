@@ -1,0 +1,14 @@
+{
+  "serverPid": 739207,
+  "signal": "SIGINT",
+  "queueEmpty": true,
+  "commandLine": "/home/dev/Projects/box-impostor-lab/.venv/bin/python -c import resource,sys,runpy,os; resource.setrlimit(resource.RLIMIT_CORE,(0,0)); logfile=open('/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/comfy-w4a8-B.log','w',buffering=1); os.dup2(logfile.fileno(),1); os.dup2(logfile.fileno(),2); import torch; torch.cuda._device_count_nvml=lambda:-1; sys.argv[0]='main.py'; runpy.run_path('main.py',run_name='__main__') --listen 127.0.0.1 --port 8201 --user-directory /home/dev/Projects/box-impostor-lab/native-render-270/user --output-directory /mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output --temp-directory /mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/temp --input-directory /mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input --disable-auto-launch --reserve-vram 3.5 --disable-dynamic-vram --disable-pinned-memory --disable-async-offload ",
+  "cwd": "/home/dev/Projects/box-impostor-lab/ComfyUI",
+  "stoppedRequestedEpoch": 1795062653.3346019,
+  "B_asset": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+  "verifiedEpoch": 1795062675.351319,
+  "pidAlive": false,
+  "runnerAlive": false,
+  "portConnectResult": 111,
+  "gpuMemoryMiBAndUtilization": "701, 11"
+}

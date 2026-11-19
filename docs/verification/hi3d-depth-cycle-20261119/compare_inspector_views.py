@@ -23,6 +23,8 @@ views = {"front": [0, 0, 1], "iso": [1, 1, 1], "left": [-1, 0, 0], "right": [1, 
 labels = {"A": "Full A / original normal texture", "A-normal-control": "Same six RGB views / geometry normals only",
           "B": "B / Hi3D geometry + fresh six-view H3 RGB",
           "C": "C / RGB-depth geometry refinement"}
+if not is_control and len(stages) > 1:
+    labels["A"] = "A / coarse geometry + fresh six-view H3 RGB"
 sha = lambda path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
 records = {}
 for stage in stages:
