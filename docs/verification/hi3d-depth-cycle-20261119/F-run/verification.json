@@ -1,0 +1,100 @@
+{
+  "status": "prepared",
+  "gpuInference": false,
+  "checkedEpoch": 1795066380.6286223,
+  "cpuUnitTestsPassed": 17,
+  "testCommands": [
+    {
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_geometry_*.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "passed": 12
+    },
+    {
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_h3_reference_conditioning.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "passed": 5
+    }
+  ],
+  "nativeApiCheck": {
+    "status": "passed",
+    "scope": "Actual installed H3 API with synthetic CPU CLIP/VAE doubles; not a model-quality or GPU inference test.",
+    "nativeModule": "/home/dev/Projects/box-impostor-lab/ComfyUI/comfy_extras/nodes_minimax_h3.py",
+    "nativeModuleSha256": "217f3b50ede649831c34be347196926211606904610bcb267c8725c18eb62498",
+    "wrapperSha256": "28fe97ba11d742d3009fdcb9fab1cf5231961e1702841cce9108e73fd47eb804",
+    "nativeTwoReferenceOutputExact": true,
+    "vlmPictureCount": 2,
+    "vaeReferenceCount": 2,
+    "optionalStructuralInputsUnused": true,
+    "firstTwoReferenceLatentsExactToD": true,
+    "outputLatentExactToD": true,
+    "pictureNumberLabelPreserved": true,
+    "cudaInitialized": false,
+    "nativeReferenceSizesForCpuTest": [
+      32,
+      64
+    ],
+    "checkedEpoch": 1795066313.2572246
+  },
+  "checks": {
+    "models": true,
+    "sampler": true,
+    "seeds": true,
+    "twoActivePictures": true,
+    "sourceBoxIsOriginalB": true,
+    "noStructuralImageNodes": true,
+    "colorReferencesByteExact": true,
+    "noGPUInference": true,
+    "promptDifferenceDeclared": true
+  },
+  "gitDiffCheck": {
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "--",
+      "box_nodes/h3_reference_conditioning.py",
+      "scripts/run_geometry_d.py",
+      "scripts/run_geometry_f.py",
+      "tests/test_h3_reference_conditioning.py",
+      "tests/test_geometry_d.py",
+      "tests/test_geometry_f.py"
+    ],
+    "returncode": 0
+  },
+  "files": {
+    "box_nodes/h3_reference_conditioning.py": "28fe97ba11d742d3009fdcb9fab1cf5231961e1702841cce9108e73fd47eb804",
+    "scripts/run_geometry_d.py": "ea46e5745f5096f06f5001e302bfc8a226bec08402fcf5ee44021acacd7ad94a",
+    "scripts/run_geometry_f.py": "05f3468f522c3e533c87284ace1334718ac29f0feb75555ef768ac39627ba103",
+    "tests/test_h3_reference_conditioning.py": "87ccbc9282a7ddab46ff4ac49bb6ea20c22df979be6e460b28b3713382a1fcfd",
+    "tests/test_geometry_d.py": "516491b8881b627615b71e471361183642facbb4088bbe55b5a8900dc57f5190",
+    "tests/test_geometry_f.py": "a61e689a865aaf4079236c6b5c3f9ed01f864961a0f6eb0a7aaa40037d01262c"
+  },
+  "runCommand": [
+    "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/run_geometry_f.py",
+    "--run",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119",
+    "--face=-X"
+  ],
+  "foregroundBootstrap": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/launch-h3.py"
+}

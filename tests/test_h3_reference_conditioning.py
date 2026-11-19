@@ -67,10 +67,24 @@ class H3ReferenceConditioningTests(unittest.TestCase):
         self.assertEqual(split[0][0][1]['nativeMarker'],23)
         self.assertEqual(split[0][0][1]['prompt'],self.inputs['prompt'])
 
+    def test_color_only_uses_native_two_reference_path_with_optional_controls_absent(self):
+        inputs={k:v for k,v in self.inputs.items() if k not in ('image_3','image_4','image_5')}
+        result=self.node.condition(**inputs,reference_latents='color_only')
+        self.assertIs(result,self.native.last.result)
+        self.assertEqual(self.native.events,[('vae',[17,23]),('vlm',[17,23])])
+        self.native.events.clear()
+        extra=self.node.condition(**self.inputs,reference_latents='color_only')
+        self.assertEqual(result,extra)
+        self.assertEqual(self.native.events,[('vae',[17,23]),('vlm',[17,23])])
+        for key in ('image_3','image_4','image_5'):
+            self.assertIn(key,self.node.INPUT_TYPES()['optional'])
+            self.assertNotIn(key,self.node.INPUT_TYPES()['required'])
+
     def test_color_slots_cannot_be_replaced_by_later_structural_slots(self):
-        for changes in ({'image_1':None},{'image_2':None},{'vae':None}):
-            with self.subTest(changes=changes),self.assertRaisesRegex(ValueError,'Pictures 1 and 2'):
-                self.node.condition(**{**self.inputs,**changes},reference_latents='color_first_two')
+        for mode in ('color_first_two','color_only'):
+            for changes in ({'image_1':None},{'image_2':None},{'vae':None}):
+                with self.subTest(mode=mode,changes=changes),self.assertRaisesRegex(ValueError,'Pictures 1 and 2'):
+                    self.node.condition(**{**self.inputs,**changes},reference_latents=mode)
         self.assertEqual(self.native.events,[])
 
     def test_native_vision_only_mode_and_invalid_mode(self):

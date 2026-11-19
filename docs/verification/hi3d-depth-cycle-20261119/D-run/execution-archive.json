@@ -1,0 +1,99 @@
+{
+  "copiedEpoch": 1795066108.6653185,
+  "gitHeadAtArchive": "e796ae707af6ad7de66974e07b0c2e4dd71e83ff",
+  "sourceRun": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119",
+  "files": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/composed.json",
+      "file": "composed.json",
+      "sha256": "737d117a13fecea9d442a5e59d5dec89fa1d16a32b76fa29d080fd57178eeb62",
+      "bytes": 2788
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/comparison-ready.json",
+      "file": "comparison-ready.json",
+      "sha256": "6a486b7dc7c83fe18932291a52c6433b9a8150123223775b7e83563bccf5e3a5",
+      "bytes": 4905
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/nx/result.json",
+      "file": "nx-result.json",
+      "sha256": "f717216e29f86ca37c70aba3d5fda1c0fdfda9a4daf9dd5e7fd85966c909d629",
+      "bytes": 571
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/nx/prompt.json",
+      "file": "nx-prompt.json",
+      "sha256": "43ad41d7afb90801a6b8cbbe491f311a850e4de0ce085d656d71b6c66ccf5d15",
+      "bytes": 4338
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/nx/submitted.json",
+      "file": "nx-submitted.json",
+      "sha256": "f63a7a235c30621c755658453025ca69bb0f2929ec9b0974e0dc0a8c61dae36f",
+      "bytes": 209
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/server-stop.json",
+      "file": "server-stop.json",
+      "sha256": "b2553e58f033926977642770a5ea6e059b2846cd5a8d0325100da8cf54b1397e",
+      "bytes": 490
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/runtime-node-info.json",
+      "file": "runtime-node-info.json",
+      "sha256": "aa37115844d6457325475b401c54c72f3474b5313741ac79eb8e33a3ea0626f2",
+      "bytes": 2614
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/server-process-w4a8-D.json",
+      "file": "server-process.json",
+      "sha256": "f4aecbd678ebc6eee74599d74011e16b29ed9e7f9874ab283fe7682fe495d23d",
+      "bytes": 2637
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/runner-process.json",
+      "file": "runner-process.json",
+      "sha256": "c7b2d5dae63620412d8bb7fedaaf056b551bb531292dee1e8e2e5a172b1d332e",
+      "bytes": 851
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/faces-run.log",
+      "file": "faces-run.log",
+      "sha256": "76ae82bcaf6fa68579f0b7747046e57e420835de3a6d8192035ef45170343e55",
+      "bytes": 873
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/native-api-validation.py",
+      "file": "native-api-validation.py",
+      "sha256": "5ecbeb8fe6a010bcbeb4caaa10b35362a209cfa0c5aa9a6ae57bd08c390994c2",
+      "bytes": 2804
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/launch-h3.py",
+      "file": "launch-h3.py",
+      "sha256": "3f6911849ac1138e96328e2c782af225d6a6293e859a5e91f5a3f38a66fb2922",
+      "bytes": 2830
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/comfy-w4a8-D.log",
+      "file": "comfy-w4a8-D.log",
+      "sha256": "d14fbe4b83b657630225215fa3dc6a25be2456f5a5a711de305724c05db072b0",
+      "bytes": 10502
+    },
+    {
+      "source": "box_nodes/h3_reference_conditioning.py",
+      "file": "h3_reference_conditioning-executed.py",
+      "sha256": "b862616e87a6ffdb129fc3bcb16a573c74b199e187e51653f25e3cba8ffd2f46",
+      "bytes": 2656
+    },
+    {
+      "source": "scripts/run_geometry_d.py",
+      "file": "run_geometry_d-executed.py",
+      "sha256": "74ab2f19727b57fc463490075f57e33ca3fb8161d85f69b8f8b4ac62f90880e4",
+      "bytes": 8686
+    }
+  ],
+  "rawSha256": "290d900dc6a71d2542ff2fe17c77bb8db590bfe116d86b6caab693ab2a922025",
+  "boxAsset": "0f953f9644896bedbb561576cce0d41d5b32dc69046b635e9fcf76de2fb2a7e0"
+}

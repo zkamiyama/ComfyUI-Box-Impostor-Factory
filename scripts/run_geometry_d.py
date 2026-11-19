@@ -93,14 +93,15 @@ def verify_replacement(source,output,before,after,fid):
             'unchangedFaceSourcesAndMetadata':True}
 
 
-def compose_replacement(run,recipe,fid):
+def compose_replacement(run,recipe,fid,*,prompt_builder=None):
     ab.folder_paths.set_output_directory(str(run/'output'))
     baseline=recipe['experiment']['sourceBox']
     source=ab.store.asset_dir(baseline)
     original=ab.store.validate(source,baseline,check_bytes=True)
-    case=run/'D'/ab.SLUGS[fid]
+    branch=recipe['branch']
+    case=run/branch/ab.SLUGS[fid]
     result=ab.read_json(case/'result.json')
-    if (ab.read_json(case/'prompt.json')!=build_prompt(recipe,fid) or
+    if (ab.read_json(case/'prompt.json')!=(prompt_builder or build_prompt)(recipe,fid) or
         ab.digest(case/'prompt.json')!=result['promptSha256'] or
         ab.digest(case/'generated.png')!=result['rawSha256'] or
         ab.digest(case/'foreground.png')!=result['maskSha256']):
@@ -130,7 +131,7 @@ def compose_replacement(run,recipe,fid):
     proof={'asset':asset,'path':str(output),'sourceBox':baseline,'guideBaseline':recipe['baseline'],
         'replacedFace':fid,'applied':applied,'faceQA':report,'preservation':preservation,
         'proxySha256':manifest['proxySha256'],'viewConsistency':'none','materialEstimation':'none'}
-    ab.write_json(run/'D/composed.json',proof)
+    ab.write_json(run/branch/'composed.json',proof)
     return proof
 
 

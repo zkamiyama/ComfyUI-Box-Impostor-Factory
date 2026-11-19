@@ -1,0 +1,20 @@
+{
+  "pid": 1810078,
+  "args": [
+    "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/run_geometry_d.py",
+    "--run",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119",
+    "--face=-X"
+  ],
+  "environment": {
+    "PYTHONUNBUFFERED": "1",
+    "TMPDIR": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/system-temp",
+    "TORCHINDUCTOR_CACHE_DIR": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/inductor-cache",
+    "TRITON_CACHE_DIR": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/triton-cache"
+  },
+  "startedEpoch": 1795065256.3060043,
+  "preparedSha256": "a95deba89078bd736b45444d5c6bcfcc7dc33a20218df2e675309dd6ff6ad14d",
+  "nodeRegistrationVerified": true,
+  "targetFace": "-X"
+}

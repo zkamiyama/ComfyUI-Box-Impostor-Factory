@@ -120,6 +120,31 @@ class GeometryDComposeTests(unittest.TestCase):
         self.assertTrue(proof['preservation']['nonColorMapsExact'])
         self.assertTrue(proof['preservation']['unchangedFaceSourcesAndMetadata'])
 
+    def test_F_branch_uses_its_own_graph_and_output_while_preserving_B_and_D(self):
+        import run_geometry_f as f
+        self.result(self.mask)
+        d_prompt=(self.case/'prompt.json').read_bytes()
+        original=self.atlas(self.b).copy()
+        self.recipe.update(branch='F',pictureOrder=['guide','source'])
+        self.recipe['faces']['-X']['pictures']={role:self.recipe['faces']['-X']['pictures'][role]
+                                               for role in ('guide','source')}
+        case=self.run/'F/nx';case.mkdir(parents=True)
+        Image.new('RGB',(8,8),(50,150,200)).save(case/'generated.png')
+        Image.fromarray(self.mask).save(case/'foreground.png')
+        ab.write_json(case/'prompt.json',f.build_prompt(self.recipe,'-X'))
+        ab.write_json(case/'result.json',{'prompt_id':'fresh-F-fixture',
+            'rawSha256':ab.digest(case/'generated.png'),'maskSha256':ab.digest(case/'foreground.png'),
+            'promptSha256':ab.digest(case/'prompt.json')})
+        proof=d.compose_replacement(self.run,self.recipe,'-X',prompt_builder=f.build_prompt)
+        self.assertTrue(proof['applied'])
+        self.assertTrue((self.run/'F/composed.json').exists())
+        self.assertFalse((self.run/'D/composed.json').exists())
+        self.assertEqual((self.case/'prompt.json').read_bytes(),d_prompt)
+        np.testing.assert_array_equal(original,self.atlas(self.b))
+        self.assertEqual(len(proof['preservation']['unchangedFaceRGBAHashes']),5)
+        self.assertTrue(proof['preservation']['nonColorMapsExact'])
+        self.assertTrue(proof['preservation']['unchangedFaceSourcesAndMetadata'])
+
     def test_rejected_replacement_keeps_B_instead_of_restoring_coarse_face(self):
         self.result(np.zeros_like(self.mask))
         before=self.atlas(self.b).copy()

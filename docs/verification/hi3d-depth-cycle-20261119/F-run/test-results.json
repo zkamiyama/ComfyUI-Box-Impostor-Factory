@@ -1,0 +1,36 @@
+[
+  {
+    "command": [
+      "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_geometry_*.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "elapsedSeconds": 25.18,
+    "stdout": "{\"alreadyCompleted\": \"/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/tmp/tmpph8y3xfp/A/pz/result.json\"}\n",
+    "stderr": "test_face_prompts_keep_front_unchanged_and_explain_overhead_views (test_geometry_ab.GeometryABTests.test_face_prompts_keep_front_unchanged_and_explain_overhead_views) ... ok\ntest_graph_uses_recipe_models_and_five_real_reference_sockets (test_geometry_ab.GeometryABTests.test_graph_uses_recipe_models_and_five_real_reference_sockets) ... ok\ntest_saved_result_must_match_current_prompt_and_files (test_geometry_ab.GeometryABTests.test_saved_result_must_match_current_prompt_and_files) ... ok\ntest_structure_maps_keep_depth_and_normal_rows_registered (test_geometry_ab.GeometryABTests.test_structure_maps_keep_depth_and_normal_rows_registered) ... ok\ntest_F_branch_uses_its_own_graph_and_output_while_preserving_B_and_D (test_geometry_d.GeometryDComposeTests.test_F_branch_uses_its_own_graph_and_output_while_preserving_B_and_D) ... ok\ntest_one_face_replaces_full_B_and_keeps_five_generated_views_and_geometry (test_geometry_d.GeometryDComposeTests.test_one_face_replaces_full_B_and_keeps_five_generated_views_and_geometry) ... ok\ntest_rejected_replacement_keeps_B_instead_of_restoring_coarse_face (test_geometry_d.GeometryDComposeTests.test_rejected_replacement_keeps_B_instead_of_restoring_coarse_face) ... ok\ntest_graph_changes_only_conditioning_latent_policy_and_output_location (test_geometry_d.GeometryDTests.test_graph_changes_only_conditioning_latent_policy_and_output_location) ... ok\ntest_preparation_freezes_B_images_and_refuses_changed_inputs (test_geometry_d.GeometryDTests.test_preparation_freezes_B_images_and_refuses_changed_inputs) ... ok\ntest_graph_removes_structural_loaders_and_keeps_sampler_color_links (test_geometry_f.GeometryFTests.test_graph_removes_structural_loaders_and_keeps_sampler_color_links) ... ok\ntest_prepare_preserves_frozen_B_D_and_refuses_changed_color (test_geometry_f.GeometryFTests.test_prepare_preserves_frozen_B_D_and_refuses_changed_color) ... ok\ntest_prompt_removes_only_declared_structural_instructions (test_geometry_f.GeometryFTests.test_prompt_removes_only_declared_structural_instructions) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 24.620s\n\nOK\n"
+  },
+  {
+    "command": [
+      "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_h3_reference_conditioning.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "elapsedSeconds": 0.559,
+    "stdout": "",
+    "stderr": "test_color_only_uses_native_two_reference_path_with_optional_controls_absent (test_h3_reference_conditioning.H3ReferenceConditioningTests.test_color_only_uses_native_two_reference_path_with_optional_controls_absent) ... ok\ntest_color_slots_cannot_be_replaced_by_later_structural_slots (test_h3_reference_conditioning.H3ReferenceConditioningTests.test_color_slots_cannot_be_replaced_by_later_structural_slots) ... ok\ntest_default_is_unchanged_native_five_reference_result (test_h3_reference_conditioning.H3ReferenceConditioningTests.test_default_is_unchanged_native_five_reference_result) ... ok\ntest_native_vision_only_mode_and_invalid_mode (test_h3_reference_conditioning.H3ReferenceConditioningTests.test_native_vision_only_mode_and_invalid_mode) ... ok\ntest_only_vae_references_change_and_picture_numbers_and_loading_order_stay (test_h3_reference_conditioning.H3ReferenceConditioningTests.test_only_vae_references_change_and_picture_numbers_and_loading_order_stay) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nOK\n"
+  }
+]

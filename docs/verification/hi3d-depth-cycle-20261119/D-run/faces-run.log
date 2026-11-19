@@ -1,0 +1,6 @@
+{"submitted": "a477c43b-f13b-44f1-835e-b488cc2cbd1c", "face": "-X", "branch": "D"}
+{"completed": {"prompt_id": "a477c43b-f13b-44f1-835e-b488cc2cbd1c", "freshInference": true, "face": "-X", "elapsedSeconds": 628.22, "raw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/nx/generated.png", "mask": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/nx/foreground.png", "rawSha256": "290d900dc6a71d2542ff2fe17c77bb8db590bfe116d86b6caab693ab2a922025", "maskSha256": "b93a270a9761355d5f1cce9d09977a51ec883c7ce901a57709cbdc758cdb46e9", "promptSha256": "43ad41d7afb90801a6b8cbbe491f311a850e4de0ce085d656d71b6c66ccf5d15"}}
+WARNING:root:WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
+WARNING WARNING WARNING
+If you are on nvidia 20 series and above it is required that you update your pytorch to cu130 or higher.
+

@@ -1,0 +1,157 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "B/nx/guide.png"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "B/nx/source.png"
+    }
+  },
+  "6": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_image_pruned_w4a8.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "7": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "8": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_image_vae_fp16.safetensors"
+    }
+  },
+  "10": {
+    "class_type": "BIH3ReferenceConditioning",
+    "inputs": {
+      "clip": [
+        "7",
+        0
+      ],
+      "vae": [
+        "8",
+        0
+      ],
+      "prompt": "The orthographic camera is on the -X side, opposite the +X side and perpendicular to the front view. Return the strict side profile shown in <Picture 1>; preserve its visible side and nose direction. Do not turn the person or face toward the camera. Refine the person in <Picture 1> into a detailed, natural photograph of the same person shown in <Picture 2>. Preserve the exact orthographic camera, view direction, pose, silhouette, scale and framing of <Picture 1>. Use Picture 2 only for identity, skin, hair, dress colors and material details. Keep the direction of the head and the visibility of facial features consistent with Picture 1. Add anatomically plausible eyes, eyelids, nose, lips, hair strands, fingers, seams and fabric folds where they are visible from this camera. Keep the body and garment boundaries exactly as shown in Picture 1. Use neutral even lighting and a flat mid-gray background. Return only one full-body orthographic image, no panels, no diagrams, no text.",
+      "width": 1024,
+      "height": 1024,
+      "image_1": [
+        "1",
+        0
+      ],
+      "image_2": [
+        "2",
+        0
+      ],
+      "reference_latents": "color_only"
+    }
+  },
+  "11": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "10",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "KSampler",
+    "inputs": {
+      "steps": 6,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "seed": 102,
+      "model": [
+        "6",
+        0
+      ],
+      "positive": [
+        "10",
+        0
+      ],
+      "negative": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "10",
+        1
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "8",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "F/nx/raw"
+    }
+  },
+  "15": {
+    "class_type": "LoadBackgroundRemovalModel",
+    "inputs": {
+      "bg_removal_name": "birefnet.safetensors"
+    }
+  },
+  "16": {
+    "class_type": "RemoveBackground",
+    "inputs": {
+      "bg_removal_model": [
+        "15",
+        0
+      ],
+      "image": [
+        "13",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "16",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "17",
+        0
+      ],
+      "filename_prefix": "F/nx/mask"
+    }
+  }
+}

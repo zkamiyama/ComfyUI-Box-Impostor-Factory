@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "scope": "Actual installed H3 API with synthetic CPU CLIP/VAE doubles; not a model-quality or GPU inference test.",
+  "nativeModule": "/home/dev/Projects/box-impostor-lab/ComfyUI/comfy_extras/nodes_minimax_h3.py",
+  "nativeModuleSha256": "217f3b50ede649831c34be347196926211606904610bcb267c8725c18eb62498",
+  "wrapperSha256": "28fe97ba11d742d3009fdcb9fab1cf5231961e1702841cce9108e73fd47eb804",
+  "nativeTwoReferenceOutputExact": true,
+  "vlmPictureCount": 2,
+  "vaeReferenceCount": 2,
+  "optionalStructuralInputsUnused": true,
+  "firstTwoReferenceLatentsExactToD": true,
+  "outputLatentExactToD": true,
+  "pictureNumberLabelPreserved": true,
+  "cudaInitialized": false,
+  "nativeReferenceSizesForCpuTest": [
+    32,
+    64
+  ],
+  "checkedEpoch": 1795066313.2572246
+}

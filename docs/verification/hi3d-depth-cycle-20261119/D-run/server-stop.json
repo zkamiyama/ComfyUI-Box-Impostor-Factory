@@ -1,0 +1,18 @@
+{
+  "pid": 1794664,
+  "signal": "SIGINT",
+  "cwd": "/home/dev/Projects/box-impostor-lab/ComfyUI",
+  "commandVerified": true,
+  "queue": {
+    "queue_running": [],
+    "queue_pending": []
+  },
+  "requestedEpoch": 1795065947.4033928,
+  "asset": "0f953f9644896bedbb561576cce0d41d5b32dc69046b635e9fcf76de2fb2a7e0",
+  "verifiedEpoch": 1795065956.7383447,
+  "serverProcessExists": false,
+  "runnerProcessExists": false,
+  "portConnectErrno": 111,
+  "logStoppedServer": true,
+  "gpu": "1180, 8"
+}
