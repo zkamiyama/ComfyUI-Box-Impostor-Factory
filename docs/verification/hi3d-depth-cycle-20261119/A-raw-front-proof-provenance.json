@@ -1,0 +1,78 @@
+{
+  "stage": "A raw +Z only, before Box composition",
+  "isBoxRender": false,
+  "isCompletedSixViewAsset": false,
+  "preparedPath": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/A/prepared.json",
+  "preparedSHA256": "4ca5df2b3c65eeca3f859c078a2b2a5ecbfbbc26fc18c87505a11846ea7b3fcf",
+  "recipe": {
+    "models": {
+      "model": "minimax_h3_image_pruned_w4a8.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "matting": "birefnet.safetensors"
+    },
+    "seeds": {
+      "+X": 101,
+      "-X": 102,
+      "+Y": 103,
+      "-Y": 104,
+      "+Z": 105,
+      "-Z": 106
+    },
+    "sampler": {
+      "steps": 6,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1
+    },
+    "conditioning": "H3 image references (VLM plus VAE reference latents); no ControlNet",
+    "pictureOrder": [
+      "guide",
+      "source",
+      "axis-depth",
+      "normals",
+      "mask"
+    ],
+    "pictureSize": [
+      1024,
+      1024
+    ],
+    "outputSize": [
+      1024,
+      1024
+    ],
+    "viewConsistency": "none",
+    "materialMode": "keep"
+  },
+  "rawSource": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/A/pz/raw_00001_.png",
+  "rawSHA256": "4ef5861da67e3e19e34b8d888ea79a13f1ac8447da0e02e1d25a803e898c52f5",
+  "rawUnchangedCopy": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-pz-raw.png",
+  "rawCopySHA256": "4ef5861da67e3e19e34b8d888ea79a13f1ac8447da0e02e1d25a803e898c52f5",
+  "rawBytes": 1002301,
+  "guideSource": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/input/A/pz/guide.png",
+  "guideSHA256": "b56df3344641e20d4317afe3edced03b09d8b5d31e48a909c04fa11271bbb14c",
+  "sourceSize": [
+    1024,
+    1024
+  ],
+  "headCropPixels": [
+    440,
+    10,
+    600,
+    210
+  ],
+  "headDisplay": "2x nearest-neighbor",
+  "fullFrameDisplay": "1/4 nearest-neighbor",
+  "processing": "Integer crops and nearest-neighbor sampling only. No registration, sharpening, recoloring or AI postprocessing.",
+  "pixelPreservationVerifiedAfterWebPDecode": true,
+  "proof": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/A-raw-front-proof.webp",
+    "sha256": "9d2dd29183f73ffb5e5f9196dcbbd7c0395085bb09f9a0d87ac3ce3a2da4127c",
+    "size": [
+      996,
+      612
+    ],
+    "bytes": 165182
+  }
+}

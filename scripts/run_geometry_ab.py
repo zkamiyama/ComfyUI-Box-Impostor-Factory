@@ -52,6 +52,35 @@ PROMPT = (
 )
 
 
+VIEW_INSTRUCTIONS = {
+    '+X': 'The orthographic camera is on the +X side, perpendicular to the front view. '
+          'Return the strict side profile shown in <Picture 1>; preserve its visible side and nose direction. '
+          'Do not turn the person or face toward the camera. ',
+    '-X': 'The orthographic camera is on the -X side, opposite the +X side and perpendicular to the front view. '
+          'Return the strict side profile shown in <Picture 1>; preserve its visible side and nose direction. '
+          'Do not turn the person or face toward the camera. ',
+    '-Z': 'The orthographic camera is directly behind the person at -Z. Return a strict rear view, '
+          'with the back of the head, hair, body and dress as visible in <Picture 1>. '
+          'Do not turn the head toward the camera or add a front-facing face. ',
+    '+Y': 'The orthographic camera is directly above the person at +Y, looking straight downward. '
+          'Preserve the overhead foreshortening, layout and occlusion in <Picture 1>. '
+          'Show only surfaces visible from above; do not convert this into an upright front view. ',
+    '-Y': 'The orthographic camera is directly below the person at -Y, looking straight upward. '
+          'Preserve the underside foreshortening, layout and occlusion in <Picture 1>. '
+          'Show only surfaces visible from below; do not convert this into an upright front view. ',
+}
+
+
+def face_prompt(fid):
+    if fid == '+Z':
+        return PROMPT
+    prompt = PROMPT
+    if fid in ('+Y', '-Y'):
+        prompt = prompt.replace('one full-body orthographic image',
+                                'one orthographic image of only the surfaces visible from that direction')
+    return VIEW_INSTRUCTIONS[fid] + prompt
+
+
 def use_cuda_runtime_on_wsl():
     # WSL driver NVML can segfault while the CUDA runtime remains usable.
     if 'microsoft' in platform.release().lower():
@@ -170,7 +199,7 @@ def prepare(run, branch, baseline_path):
             save_rgb(path, data)
             paths[role] = {'image': str(path.relative_to(run / 'input')),
                            'path': str(path), 'sha256': digest(path)}
-        recipe['faces'][fid] = {'canvas': meta, 'pictures': paths,
+        recipe['faces'][fid] = {'canvas': meta, 'pictures': paths, 'prompt': face_prompt(fid),
                                'guideSha256': manifest['faces'][fid]['guideSha256'],
                                'viewMatrix': manifest['faces'][fid]['viewMatrix'],
                                'projectionMatrix': manifest['faces'][fid]['projectionMatrix']}
@@ -190,7 +219,7 @@ def build_prompt(recipe, fid):
         '7': {'class_type': 'CLIPLoader', 'inputs': {'clip_name': models['clip'], 'type': 'minimax', 'device': 'default'}},
         '8': {'class_type': 'VAELoader', 'inputs': {'vae_name': models['vae']}},
         '10': {'class_type': 'MiniMaxH3ImageConditioning', 'inputs': {
-            'clip': ['7', 0], 'vae': ['8', 0], 'prompt': recipe['prompt'], 'width': 1024, 'height': 1024,
+            'clip': ['7', 0], 'vae': ['8', 0], 'prompt': recipe['faces'][fid]['prompt'], 'width': 1024, 'height': 1024,
             **{'images.image_' + str(n): [str(n), 0] for n in range(1, 6)}}},
         '11': {'class_type': 'ConditioningZeroOut', 'inputs': {'conditioning': ['10', 0]}},
         '12': {'class_type': 'KSampler', 'inputs': {**recipe['sampler'], 'seed': recipe['seeds'][fid],
@@ -291,7 +320,7 @@ def compose(run, recipe):
         item = faces.save_view(faces.rgba(rgb[None], 'foreground', mask[None]))
         item['provenance'] = {'backend': 'h3_enhanced', 'faceId': fid,
             'recipe': {'models': recipe['models'], 'conditioning': recipe['conditioning'],
-                       'pictures': recipe['faces'][fid]['pictures'], 'prompt': recipe['prompt']},
+                       'pictures': recipe['faces'][fid]['pictures'], 'prompt': recipe['faces'][fid]['prompt']},
             'recipeSeed': recipe['seeds'][fid], 'samplers': [recipe['sampler']],
             'graphSha256': result['promptSha256'], 'referenceSha256': recipe['referenceSha256'],
             'guideSha256': recipe['faces'][fid]['guideSha256'], 'maskMode': 'foreground',

@@ -59,7 +59,7 @@ class GeometryABTests(unittest.TestCase):
             path = folder / (role + '.png')
             Image.fromarray(np.full((8, 8, 3), index * 40, dtype='u1')).save(path)
             pictures[role] = {'path': str(path), 'image': path.name, 'sha256': ab.digest(path)}
-        return {'branch': 'A', 'faces': {'+Z': {'pictures': pictures}},
+        return {'branch': 'A', 'faces': {'+Z': {'pictures': pictures, 'prompt': ab.face_prompt('+Z')}},
                 'pictureOrder': list(pictures), 'models': dict(ab.MODELS),
                 'prompt': ab.PROMPT, 'seeds': {'+Z': 105},
                 'sampler': {'steps': 6, 'cfg': 1, 'sampler_name': 'euler', 'scheduler': 'simple', 'denoise': 1}}
@@ -80,9 +80,19 @@ class GeometryABTests(unittest.TestCase):
             })
             with patch.object(ab, 'request', side_effect=AssertionError('must not infer')):
                 ab.run_face(root, recipe, '+Z', 'http://unused')
-                recipe['prompt'] += ' Different view.'
+                recipe['faces']['+Z']['prompt'] += ' Different view.'
                 with self.assertRaisesRegex(ValueError, 'different inputs or settings'):
                     ab.run_face(root, recipe, '+Z', 'http://unused')
+
+    def test_face_prompts_keep_front_unchanged_and_explain_overhead_views(self):
+        self.assertEqual(ab.face_prompt('+Z'), ab.PROMPT)
+        for fid in ['+Y', '-Y']:
+            prompt = ab.face_prompt(fid)
+            self.assertIn(fid, prompt)
+            self.assertIn('foreshortening', prompt)
+            self.assertNotIn('full-body orthographic image', prompt)
+        self.assertIn('strict rear view', ab.face_prompt('-Z'))
+        self.assertNotEqual(ab.face_prompt('+X'), ab.face_prompt('-X'))
 
     def test_graph_uses_recipe_models_and_five_real_reference_sockets(self):
         with tempfile.TemporaryDirectory() as tmp:
