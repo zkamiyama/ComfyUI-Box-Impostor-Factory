@@ -1,0 +1,120 @@
+{
+  "status": "accepted",
+  "reason": "known-camera-affine-passed",
+  "before": {
+    "iou": 0.9757033481589691,
+    "boundaryP95Px": 5.0
+  },
+  "after": {
+    "iou": 0.9699743587728878,
+    "boundaryP95Px": 8.0
+  },
+  "thresholds": {
+    "minIoU": 0.85,
+    "maxShiftFraction": 0.1,
+    "maxScaleChange": 0.15
+  },
+  "sourceSize": [
+    1024,
+    960
+  ],
+  "tileSize": [
+    1024,
+    1024
+  ],
+  "sampling": "parallel-orthographic-frozen-rgb-v1",
+  "sourceRegistration": {
+    "scale": 1.0,
+    "centerShiftYX": [
+      0.0,
+      0.0
+    ]
+  },
+  "sourceAlignmentKey": "345ebdb88372b6e8bd743eb11d71144e6f07d20e9f17a6f8a6d52d8d1e555ac6",
+  "mapping": {
+    "targetToSourcePixelXY": [
+      [
+        1.0021853129110183,
+        0.0,
+        -1.1177875539858633
+      ],
+      [
+        0.0,
+        1.0106020362197934,
+        -5.422941526424324
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "sourceToTargetPixelXY": [
+      [
+        0.9978194522680933,
+        0.0,
+        1.115350164870266
+      ],
+      [
+        0.0,
+        0.9895091877516388,
+        5.366050465036765
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "sourceClipFromTargetClip": [
+      [
+        1.0021853129110183,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0106020362197934,
+        1.3863742792988208e-31,
+        0.0
+      ],
+      [
+        0.0,
+        -5.7001175624383324e-33,
+        1.0,
+        4.930380657631324e-32
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "depthIndependent": true,
+    "orthographic": true,
+    "sourceResolution": 1024,
+    "targetResolution": 1024,
+    "pixelCenters": "integer indices; top-to-bottom rows"
+  },
+  "cameraTransformLimits": {
+    "passed": true,
+    "scaleXY": [
+      0.9978194522680933,
+      0.9895091877516388
+    ],
+    "centerShiftXY": [
+      0.0,
+      0.0
+    ],
+    "centerShiftFractionXY": [
+      0.0,
+      0.0
+    ]
+  },
+  "registrationOptimized": false,
+  "alignedResampled": true,
+  "interpolation": "premultiplied linear bilinear; straight RGBA restored before compose",
+  "newGeometryUncoveredPixels": 3306
+}

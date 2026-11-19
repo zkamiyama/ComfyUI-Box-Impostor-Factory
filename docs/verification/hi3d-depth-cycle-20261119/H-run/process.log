@@ -1,0 +1,17 @@
+Desktop Commander captured process transcript (stdout and completion status).
+
+[Reading last 10 lines (total: 10 lines)]
+
+{"stage": "verify-b", "passed": true, "byteIdentical": true}
+{"stage": "hi3d-inference", "command": ["/home/dev/Projects/box-impostor-lab/third_party/.venv-hi3d/bin/python", "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/hi3d_infer.py", "--source", "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb", "--reference", "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/source.png", "--output", "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/hi3d-raw.glb", "--report", "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/inference.json", "--resolution", "1024", "--steps", "25", "--offload"]}
+{"stage": "hi3d-complete", "proxy": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/canonical.glb", "sha256": "51377a54c906e8bd2c0a1b431352aa49a79ffe9c2a89bbcfdcc77d4b54f21126"}
+{"stage": "native-bake", "resolution": 1024}
+WARNING:root:WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
+WARNING WARNING WARNING
+If you are on nvidia 20 series and above it is required that you update your pytorch to cu130 or higher.
+
+{"stage": "native-complete", "asset": "8a8b53d115fb52d838648df040475bf05c86fcbd1d84d4ce18ec8b2812df95f3"}
+{"stage": "complete", "asset": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019", "sourceAppearance": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920"}
+✅ Process completed with exit code 0 (runtime: 400.58s)
+
+[executed on device: 270-PC (f38f759c-650b-44ea-b8ac-e6db4ff30144)]

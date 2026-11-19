@@ -1,0 +1,25 @@
+{
+  "process": 2451223,
+  "child": 2452349,
+  "observations": [
+    {
+      "jobElapsedSeconds": 215.4,
+      "childElapsedSeconds": 212.3,
+      "childCpuSeconds": 120.1,
+      "childRssMiB": 11557.9,
+      "childStatus": "running"
+    },
+    {
+      "jobElapsedSeconds": 340.6,
+      "childElapsedSeconds": 337.5,
+      "childCpuSeconds": 236.1,
+      "childRssMiB": 11764.7,
+      "childStatus": "running",
+      "windowsGpuUtilizationPercent": 52,
+      "wholeGpuMemoryUsedMiB": 2105,
+      "wholeGpuMemoryTotalMiB": 16376
+    }
+  ],
+  "phaseLogging": "CLI has initial import warnings then final report; sampling/decoding substage is not observable from its current log.",
+  "threading": "OMP_NUM_THREADS=1 and OPENBLAS_NUM_THREADS=1 are explicit in H; B launch did not explicitly set these."
+}

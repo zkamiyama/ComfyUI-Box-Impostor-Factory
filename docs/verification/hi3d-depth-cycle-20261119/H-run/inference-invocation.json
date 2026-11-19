@@ -1,0 +1,52 @@
+{
+  "command": [
+    "/home/dev/Projects/box-impostor-lab/third_party/.venv-hi3d/bin/python",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/hi3d_infer.py",
+    "--source",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+    "--reference",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/source.png",
+    "--output",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/hi3d-raw.glb",
+    "--report",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/inference.json",
+    "--resolution",
+    "1024",
+    "--steps",
+    "25",
+    "--offload"
+  ],
+  "environment": {
+    "PYTHONUNBUFFERED": "1",
+    "TMPDIR": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/tmp",
+    "XDG_CACHE_HOME": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/cache",
+    "TORCH_HOME": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/torch-cache",
+    "TORCH_EXTENSIONS_DIR": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/torch-extensions",
+    "TORCHINDUCTOR_CACHE_DIR": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/inductor-cache",
+    "TRITON_CACHE_DIR": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/triton-cache",
+    "CUDA_CACHE_PATH": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/cuda-cache",
+    "HF_HOME": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf",
+    "HF_HUB_CACHE": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/hi3d-offline-hf/hub",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "BI_HI3D_PYTHON": "/home/dev/Projects/box-impostor-lab/third_party/.venv-hi3d/bin/python",
+    "BI_NODE": "/home/dev/.nvm/versions/node/v22.23.3/bin/node",
+    "BI_CHROMIUM": "/home/dev/.cache/ms-playwright/chromium_headless_shell-1254/chrome-headless-shell-linux64/chrome-headless-shell",
+    "BI_SOFTWARE_GPU": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "settings": {
+    "model": "hi3d-official/Hi3Dv1.0",
+    "resolution": 1024,
+    "steps": 25,
+    "seed": 0,
+    "smoothing": 0,
+    "cpuOffload": true
+  },
+  "sourceAppearance": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "coarseSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+  "referencePngSha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+  "cwd": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory"
+}

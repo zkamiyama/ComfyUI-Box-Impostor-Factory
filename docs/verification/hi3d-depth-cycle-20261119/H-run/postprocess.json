@@ -1,0 +1,95 @@
+{
+  "report": {
+    "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/d168a94ac6eb0105fc2315a0bdd392846a9edc3ad9e3a19a87ab8eb3c7ef0cf9/geometry/proxy.glb",
+    "hi3d_input": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/hi3d-raw.glb",
+    "source_sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "hi3d_sha256": "a2c7c24127d10084f37c28af998818ed157b7966f6d5887c111ee03ab72f2305",
+    "smooth_iterations": 0,
+    "scale": 0.6077663401982719,
+    "source_extents": [
+      0.359193,
+      1.0,
+      0.341354
+    ],
+    "refined_extents": [
+      0.360235,
+      1.0,
+      0.338562
+    ],
+    "extent_ratio": [
+      1.002901,
+      1.0,
+      0.991821
+    ],
+    "nearest_dist_p50_p95": [
+      0.002778,
+      0.007127
+    ],
+    "vertices": 499896,
+    "faces": 999999,
+    "has_vertex_color": true
+  },
+  "semantics": {
+    "meshes": [
+      [
+        {
+          "mode": 4,
+          "material": null,
+          "attributes": {
+            "POSITION": {
+              "componentType": 5126,
+              "type": "VEC3",
+              "normalized": false,
+              "count": 499896,
+              "decodedBytesSha256": "a652ee113fa31abf31f19e4e10882179647acc1df1100fc6ee48ae2eb1a53786"
+            },
+            "COLOR_0": {
+              "componentType": 5121,
+              "type": "VEC4",
+              "normalized": true,
+              "count": 499896,
+              "decodedBytesSha256": "f5b935a6f0c8c7dcc2fed986bed72cf1d68f66ca0c2d08b88fba234c62e7b00c"
+            },
+            "indices": {
+              "componentType": 5125,
+              "type": "SCALAR",
+              "normalized": false,
+              "count": 2999997,
+              "decodedBytesSha256": "dfa355f196c166ce07c12a32e8319ca93c3e23aa233e6c0359158b67e7a208d6"
+            }
+          }
+        }
+      ]
+    ],
+    "nodes": [
+      {
+        "mesh": 0
+      }
+    ],
+    "scenes": [
+      {
+        "nodes": [
+          0
+        ]
+      }
+    ],
+    "scene": 0,
+    "materials": [],
+    "textures": [],
+    "images": []
+  },
+  "inference": {
+    "status": "success",
+    "model": "hi3d-official/Hi3Dv1.0",
+    "resolution": 1024,
+    "steps": 25,
+    "source_faces": 81180,
+    "output_faces": 999999,
+    "output_vertices": 499896,
+    "elapsed_s": 351.06,
+    "torch_cuda": "12.4",
+    "gpu": "NVIDIA GeForce RTX 4080",
+    "gpu_max_allocated_mib": 1689.53
+  },
+  "elapsedSeconds": 353.07285099399996
+}

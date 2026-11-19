@@ -1,0 +1,29 @@
+{
+  "dcPid": 2451223,
+  "observedAt": "2026-11-19 06:19:16 UTC",
+  "rootReviewedCommit": "562c235",
+  "foreground": true,
+  "cudaVisibleDevicesOverride": false,
+  "resources": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/resources.txt",
+  "stageOrder": [
+    "verify-b",
+    "infer",
+    "bake",
+    "compose"
+  ],
+  "status": "completed",
+  "command": [
+    "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/run_geometry_h_reference.py",
+    "--run",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119",
+    "--work",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H",
+    "--appearance",
+    "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+    "--stage",
+    "all"
+  ],
+  "exitCode": 0,
+  "dcElapsedSeconds": 400.58
+}

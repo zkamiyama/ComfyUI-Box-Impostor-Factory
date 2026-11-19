@@ -1,0 +1,399 @@
+{
+  "method": "hi3d-generated-front-reference-with-frozen-f-appearance-v1",
+  "sourceAppearance": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "asset": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+  "resultExists": true,
+  "BReplayPassed": true,
+  "BReplayByteIdentical": true,
+  "referenceEqualsBFront": true,
+  "referencePngSha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+  "coarseSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+  "inference": {
+    "status": "success",
+    "model": "hi3d-official/Hi3Dv1.0",
+    "resolution": 1024,
+    "steps": 25,
+    "source_faces": 81180,
+    "output_faces": 999999,
+    "output_vertices": 499896,
+    "elapsed_s": 351.06,
+    "torch_cuda": "12.4",
+    "gpu": "NVIDIA GeForce RTX 4080",
+    "gpu_max_allocated_mib": 1689.53
+  },
+  "cameraRebasePassed": true,
+  "sourcePngAndNpyChecks": {
+    "+X": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "-X": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "+Y": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "-Y": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "+Z": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "-Z": {
+      "source.png": true,
+      "source.npy": true
+    }
+  },
+  "faces": {
+    "+X": {
+      "status": "accepted",
+      "after": {
+        "iou": 0.9745255078939751,
+        "boundaryP95Px": 7.0
+      },
+      "thresholds": {
+        "minIoU": 0.85,
+        "maxShiftFraction": 0.1,
+        "maxScaleChange": 0.15
+      },
+      "alignedResampled": true,
+      "sameAlignedBytes": false,
+      "cameraTransformLimits": {
+        "passed": true,
+        "scaleXY": [
+          0.9895091877516388,
+          1.0
+        ],
+        "centerShiftXY": [
+          0.0,
+          0.0
+        ],
+        "centerShiftFractionXY": [
+          0.0,
+          0.0
+        ]
+      },
+      "newGeometryUncoveredPixels": 6417
+    },
+    "-X": {
+      "status": "accepted",
+      "after": {
+        "iou": 0.9602072863552802,
+        "boundaryP95Px": 10.770329614269007
+      },
+      "thresholds": {
+        "minIoU": 0.85,
+        "maxShiftFraction": 0.1,
+        "maxScaleChange": 0.15
+      },
+      "alignedResampled": true,
+      "sameAlignedBytes": false,
+      "cameraTransformLimits": {
+        "passed": true,
+        "scaleXY": [
+          0.9895091877516388,
+          1.0
+        ],
+        "centerShiftXY": [
+          0.0,
+          0.0
+        ],
+        "centerShiftFractionXY": [
+          0.0,
+          0.0
+        ]
+      },
+      "newGeometryUncoveredPixels": 8025
+    },
+    "+Y": {
+      "status": "accepted",
+      "after": {
+        "iou": 0.9667411636355933,
+        "boundaryP95Px": 10.04987562112089
+      },
+      "thresholds": {
+        "minIoU": 0.85,
+        "maxShiftFraction": 0.1,
+        "maxScaleChange": 0.15
+      },
+      "alignedResampled": true,
+      "sameAlignedBytes": false,
+      "cameraTransformLimits": {
+        "passed": true,
+        "scaleXY": [
+          0.9978194522680933,
+          0.9895091877516388
+        ],
+        "centerShiftXY": [
+          0.0,
+          0.0
+        ],
+        "centerShiftFractionXY": [
+          0.0,
+          0.0
+        ]
+      },
+      "newGeometryUncoveredPixels": 8566
+    },
+    "-Y": {
+      "status": "accepted",
+      "after": {
+        "iou": 0.9699743587728878,
+        "boundaryP95Px": 8.0
+      },
+      "thresholds": {
+        "minIoU": 0.85,
+        "maxShiftFraction": 0.1,
+        "maxScaleChange": 0.15
+      },
+      "alignedResampled": true,
+      "sameAlignedBytes": false,
+      "cameraTransformLimits": {
+        "passed": true,
+        "scaleXY": [
+          0.9978194522680933,
+          0.9895091877516388
+        ],
+        "centerShiftXY": [
+          0.0,
+          0.0
+        ],
+        "centerShiftFractionXY": [
+          0.0,
+          0.0
+        ]
+      },
+      "newGeometryUncoveredPixels": 3306
+    },
+    "+Z": {
+      "status": "accepted",
+      "after": {
+        "iou": 0.9649398045220018,
+        "boundaryP95Px": 8.94427190999916
+      },
+      "thresholds": {
+        "minIoU": 0.85,
+        "maxShiftFraction": 0.1,
+        "maxScaleChange": 0.15
+      },
+      "alignedResampled": true,
+      "sameAlignedBytes": false,
+      "cameraTransformLimits": {
+        "passed": true,
+        "scaleXY": [
+          0.9978194522680933,
+          1.0
+        ],
+        "centerShiftXY": [
+          0.0,
+          0.0
+        ],
+        "centerShiftFractionXY": [
+          0.0,
+          0.0
+        ]
+      },
+      "newGeometryUncoveredPixels": 7910
+    },
+    "-Z": {
+      "status": "accepted",
+      "after": {
+        "iou": 0.9767272360298941,
+        "boundaryP95Px": 5.0
+      },
+      "thresholds": {
+        "minIoU": 0.85,
+        "maxShiftFraction": 0.1,
+        "maxScaleChange": 0.15
+      },
+      "alignedResampled": true,
+      "sameAlignedBytes": false,
+      "cameraTransformLimits": {
+        "passed": true,
+        "scaleXY": [
+          0.9978194522680933,
+          1.0
+        ],
+        "centerShiftXY": [
+          0.0,
+          0.0
+        ],
+        "centerShiftFractionXY": [
+          0.0,
+          0.0
+        ]
+      },
+      "newGeometryUncoveredPixels": 4543
+    }
+  },
+  "sourceTightBounds": {
+    "min": [
+      -0.17968106269836426,
+      -0.5,
+      -0.16729551553726196
+    ],
+    "max": [
+      0.17968106269836426,
+      0.5,
+      0.16729551553726196
+    ]
+  },
+  "targetTightBounds": {
+    "min": [
+      -0.1801174283027649,
+      -0.5,
+      -0.1692812293767929
+    ],
+    "max": [
+      0.1801174283027649,
+      0.5,
+      0.1692812293767929
+    ]
+  },
+  "sourceBakeBox": {
+    "min": [
+      -0.19968106269836425,
+      -0.52,
+      -0.18729551553726195
+    ],
+    "max": [
+      0.19968106269836425,
+      0.52,
+      0.18729551553726195
+    ]
+  },
+  "targetBakeBox": {
+    "min": [
+      -0.20011742830276488,
+      -0.52,
+      -0.1892812293767929
+    ],
+    "max": [
+      0.20011742830276488,
+      0.52,
+      0.1892812293767929
+    ]
+  },
+  "actualCodeCommit": "562c23575098e27f7d97be2024be725d48ce4d53",
+  "fileInventory": {
+    "plan.json": {
+      "sha256": "20b2e96250929063dc0917528550f84efbf5f293563396fba680efeba60d818b",
+      "bytes": 10845
+    },
+    "process.json": {
+      "sha256": "083a5df8367ab5bb6eaab591145e828299a85e35c253f70da6a468cfc6a671f4",
+      "bytes": 896
+    },
+    "resources.txt": {
+      "sha256": "6e36a899d944bf3e298ca01f19981c86755ac7e252df88591aabbaaf96479883",
+      "bytes": 1228
+    },
+    "inference-invocation.json": {
+      "sha256": "3356902e43dc65da8aec199b2b10631c30410ee3e959f071a06456c617279db8",
+      "bytes": 2833
+    },
+    "inference.json": {
+      "sha256": "254922572161bd55696d6dd67a271cdd2b1666a4b6756d74c9297a29e806c3a4",
+      "bytes": 299
+    },
+    "inference.log": {
+      "sha256": "9ae7d65b9ef495e817d8e3661b8f0776c5ca93c64493b4b5c5ee735a3329c777",
+      "bytes": 2663
+    },
+    "postprocess.json": {
+      "sha256": "c8aef61a0c5f36741e35edcc7951b152b2a6ebc90fff927af493531ce2cc16f7",
+      "bytes": 2489
+    },
+    "canonical.json": {
+      "sha256": "d95d89a3dc4aed406e0a22f302884c0d817cf37364fcebe054150775c21143bd",
+      "bytes": 1373
+    },
+    "proxy.json": {
+      "sha256": "61c0448a1c12a752d34ba5e1e7470e22289378e07ea13593d6b5f9133be0b5c0",
+      "bytes": 1257
+    },
+    "baseline.json": {
+      "sha256": "ee3368e62310ca050362bd27494d76aca60a4c9f0c36a97bc98f0cf5f4464ea5",
+      "bytes": 8620
+    },
+    "result.json": {
+      "sha256": "011f5eab3e038895e0cb7bea4b8ecbc847eb966f1fd1af694655b96c85ccd79e",
+      "bytes": 2386
+    },
+    "process.log": {
+      "sha256": "8854e1608ed9e0e266cac28f764448f2f8fd4ccb2e0a204132c0c1e6f88f1aaa",
+      "bytes": 1895
+    },
+    "runtime-observations.json": {
+      "sha256": "9bab2b91d279d1c57360d8582de31a83de1837a80f3164c6364ca3b02364c3d9",
+      "bytes": 799
+    },
+    "b-replay/proof.json": {
+      "sha256": "d6639415148613d093766dc283e04ed566402f7170e514a89e87188a47c01011",
+      "bytes": 4027
+    },
+    "camera-rebase/camera-rebase-proof.json": {
+      "sha256": "1f8becf9ab2cb45d13e2a705b47ef780698b9de10d9a76f3d75ca297d1e0ade2",
+      "bytes": 19540
+    },
+    "collect_evidence.py": {
+      "sha256": "4fa8db00d081a71522d78558377c6eab00ae38b10bd3adfff5ff5257c28a076f",
+      "bytes": 4099
+    },
+    "camera-rebase/nx/report.json": {
+      "sha256": "1d2b170864dc8df78409f8735926bfb9cf818fb180a5d3fc88926add0bfc3620",
+      "bytes": 2160
+    },
+    "camera-rebase/ny/report.json": {
+      "sha256": "15660ed56bc9f513e7e3e5a266be7861ad159f034858389e27bc71be3d0b3a02",
+      "bytes": 2187
+    },
+    "camera-rebase/nz/report.json": {
+      "sha256": "88b8226702fab185956a92cccd995ac0d081c54808c57e5218d65e0d7ca33f4b",
+      "bytes": 2103
+    },
+    "camera-rebase/px/report.json": {
+      "sha256": "fae5d209cd36751677bd0404b62312a397ebf28a7c06594988a658774c128ca7",
+      "bytes": 2132
+    },
+    "camera-rebase/py/report.json": {
+      "sha256": "fa9084ee8a11e9355def36a98e3720fc7e276fca4da98ffb4a9b6bb5e665b81b",
+      "bytes": 2214
+    },
+    "camera-rebase/pz/report.json": {
+      "sha256": "84d8e012639c1b7cd3be21ddd97886599e62501e672dcab098a338aeb1fc1d95",
+      "bytes": 2087
+    },
+    "code/run_geometry_h_reference.py": {
+      "source": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/run_geometry_h_reference.py",
+      "sha256": "48b93f5d8c430139cf7022e053409ad7df546267fd9c302333a0fa5585fa390c",
+      "bytes": 21912
+    },
+    "code/camera_rebase.py": {
+      "source": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/box_nodes/camera_rebase.py",
+      "sha256": "1462d8becde53886e697321d9e37795f40c37ac8c0f0673c6b094ec237926c3b",
+      "bytes": 11449
+    },
+    "code/test_camera_rebase.py": {
+      "source": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/tests/test_camera_rebase.py",
+      "sha256": "0ce0af46878ef8ea6d0b50cc6cb2af89de636c2b69bb13e8b4fd9ee021ce179b",
+      "bytes": 9701
+    },
+    "code/test_geometry_h_reference.py": {
+      "source": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/tests/test_geometry_h_reference.py",
+      "sha256": "f6399d24a58f4e358e1c77bf6670218783fa6a4023b6e55206a642c4df30e9ba",
+      "bytes": 4762
+    },
+    "code/hi3d_postprocess_b.py": {
+      "source": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/H-preparation/hi3d_postprocess_b.py",
+      "sha256": "f7daf0272926d51acbedcf6c188317eeafcafb6a977269c9a1f38d6828b119a4",
+      "bytes": 6331
+    }
+  },
+  "timingComparisonPolicy": "Do not compare B/H runtime as model performance: H explicitly set OMP_NUM_THREADS=1 and OPENBLAS_NUM_THREADS=1 while B did not.",
+  "largeArtifactsPolicy": "GLB/model/atlas/HTML remain on F; this folder contains small proof and code only"
+}

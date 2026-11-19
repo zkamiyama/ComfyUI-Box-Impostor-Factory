@@ -1,0 +1,20 @@
+{
+  "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/canonical.glb",
+  "metadata": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/canonical.json",
+  "sha256": "51377a54c906e8bd2c0a1b431352aa49a79ffe9c2a89bbcfdcc77d4b54f21126",
+  "stageKey": "42e905a5e0ce6670ced2fd38263efab438c118fe6c50cfd861099d7ebd883ba7",
+  "reference": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz",
+    "sha256": "0887e8e6f9aefab08a7eed2884101861604c6c97b040486b67da37a944c10632",
+    "sourceAsset": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+    "sourceFace": "+Z",
+    "role": "Hi3D-generated-image-condition"
+  },
+  "provenance": {
+    "method": "hi3d-generated-front-reference-with-frozen-f-appearance-v1",
+    "sourceAppearance": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+    "referencePngSha256": "3b679bb5ecf88c402ab481cc12bb3a1f7476877432c83e76e2cd82a4127df24f",
+    "coarseSha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "legacyPostprocessSha256": "f7daf0272926d51acbedcf6c188317eeafcafb6a977269c9a1f38d6828b119a4"
+  }
+}

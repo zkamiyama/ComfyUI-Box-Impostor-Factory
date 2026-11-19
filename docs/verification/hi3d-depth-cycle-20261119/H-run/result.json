@@ -1,0 +1,81 @@
+{
+  "method": "hi3d-generated-front-reference-with-frozen-f-appearance-v1",
+  "asset": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+  "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+  "sourceAppearance": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "geometryBaseline": "8a8b53d115fb52d838648df040475bf05c86fcbd1d84d4ce18ec8b2812df95f3",
+  "proxySha256": "51377a54c906e8bd2c0a1b431352aa49a79ffe9c2a89bbcfdcc77d4b54f21126",
+  "sourcePngAndNpyChecks": {
+    "+X": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "-X": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "+Y": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "-Y": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "+Z": {
+      "source.png": true,
+      "source.npy": true
+    },
+    "-Z": {
+      "source.png": true,
+      "source.npy": true
+    }
+  },
+  "cameraRebaseProof": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H/camera-rebase/camera-rebase-proof.json",
+  "trueTightBounds": {
+    "min": [
+      -0.1801174283027649,
+      -0.5,
+      -0.1692812293767929
+    ],
+    "max": [
+      0.1801174283027649,
+      0.5,
+      0.1692812293767929
+    ]
+  },
+  "nativeBakeBox": {
+    "min": [
+      -0.20011742830276488,
+      -0.52,
+      -0.1892812293767929
+    ],
+    "max": [
+      0.20011742830276488,
+      0.52,
+      0.1892812293767929
+    ]
+  },
+  "textures": {
+    "colorMap": "294be4e4f13d8af6f8f991bf0b70923f9bbbbd7db2693e742476c896bb8834b3",
+    "normalMap": "8ae1080205c3a04921de75cd5e79d25f07be42e2f742f754a64f177aff7a5102",
+    "intervalMap": "bfab6910865a1a2e5c9d0c2b46a1be9a4a4fcb18b4f13b810a2ec852f39c415c",
+    "rangeMap": "751a06fc022bbeb77197f1d11b42cf1cab771c96b79bde14a9c97b31a3637669"
+  },
+  "viewConsistency": "none",
+  "materialEstimation": "none",
+  "registrationOptimized": false,
+  "acceptedFaces": [
+    "+X",
+    "-X",
+    "+Y",
+    "-Y",
+    "+Z",
+    "-Z"
+  ],
+  "postprocessSnapshotSha256": "f7daf0272926d51acbedcf6c188317eeafcafb6a977269c9a1f38d6828b119a4",
+  "codeSha256": {
+    "runner": "48b93f5d8c430139cf7022e053409ad7df546267fd9c302333a0fa5585fa390c",
+    "cameraRebase": "1462d8becde53886e697321d9e37795f40c37ac8c0f0673c6b094ec237926c3b"
+  }
+}

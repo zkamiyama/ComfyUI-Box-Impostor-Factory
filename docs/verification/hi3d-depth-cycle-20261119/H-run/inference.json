@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "model": "hi3d-official/Hi3Dv1.0",
+  "resolution": 1024,
+  "steps": 25,
+  "source_faces": 81180,
+  "output_faces": 999999,
+  "output_vertices": 499896,
+  "elapsed_s": 351.06,
+  "torch_cuda": "12.4",
+  "gpu": "NVIDIA GeForce RTX 4080",
+  "gpu_max_allocated_mib": 1689.53
+}
