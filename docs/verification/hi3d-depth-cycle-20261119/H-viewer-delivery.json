@@ -1,0 +1,26 @@
+{
+  "source": "H.inspector.html",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H.inspector.html",
+  "htmlBytes": 61964882,
+  "htmlSHA256": "f3be6b7402642bc4a859812f4f19e66b8b0991ff0c30e9c556dbf912e20fb843",
+  "gzip": "H.inspector.html.gz",
+  "gzipSourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H.inspector.html.gz",
+  "gzipBytes": 45791014,
+  "gzipSHA256": "3775a3d9d4bf81ebb3225ea1290f602b857c591d86c54d179834b8f6094e3bc9",
+  "officialViewerUnmodified": true,
+  "asset": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+  "decompressedSHA256": "f3be6b7402642bc4a859812f4f19e66b8b0991ff0c30e9c556dbf912e20fb843",
+  "decompressedBytes": 61964882,
+  "roundTripByteIdentityVerified": true,
+  "deliveryCopySHA256Verified": null,
+  "deliveryArchivePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H.inspector.html.gz",
+  "deliveryCopyMade": false,
+  "delivery": "Lossless gzip packaging; decompress to recover exact official HTML",
+  "packaging": {
+    "compressionLevel": 9,
+    "mtime": 0,
+    "rawHTMLCopiedToRepo": false
+  },
+  "captureStageState": "Native Box",
+  "repoFilesystemFreeAfter": 276860928
+}

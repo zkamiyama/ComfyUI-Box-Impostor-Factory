@@ -118,7 +118,8 @@ try {
   assert.deepEqual(report.canvasPixels, [1024, 1024]);
   report.backend = await page.locator('#render-state').innerText();
   report.stageState = await page.locator('#stage-state').innerText();
-  const directions = { front: [0, 0, 1], iso: [1, 1, 1], left: [-1, 0, 0], right: [1, 0, 0] };
+  const directions = { front: [0, 0, 1], iso: [1, 1, 1], left: [-1, 0, 0], right: [1, 0, 0], back: [0, 0, -1] };
+  assert(viewsArg.split(',').every(name => directions[name]), 'Unsupported requested view');
   for (const mode of modesArg.split(',')) {
     assert(['lit', 'normals'].includes(mode));
     const normalButton = page.locator('#normals');
@@ -126,8 +127,8 @@ try {
     if ((await normalButton.getAttribute('aria-pressed') === 'true') !== (mode === 'normals'))
       await normalButton.click();
     report.modes[mode] = {};
-    for (const [name, vector] of Object.entries(directions)) {
-      if (!viewsArg.split(',').includes(name)) continue;
+    for (const name of viewsArg.split(',')) {
+      const vector = directions[name];
       const button = page.locator('[data-view="' + name + '"]');
       if (name === 'iso' || await button.getAttribute('aria-pressed') !== 'true')
         await button.evaluate(el => el.click());
