@@ -1,0 +1,112 @@
+{
+  "method": "native-f-h-front-diagnostic-evidence-index-v1",
+  "purpose": "Internal native production renderer diagnosis; official Inspector HTML and original native assets unchanged.",
+  "scripts": [
+    {
+      "repositoryPath": "scripts/diagnose_box_maps.mjs",
+      "archivePath": "scripts/diagnose_box_maps.mjs",
+      "sha256": "8c3eac5fcea1c5b5968168922d625bebdd1ff85d57c38be8eaa07ed656adbe2e"
+    },
+    {
+      "repositoryPath": "scripts/compare_box_diagnostics.py",
+      "archivePath": "scripts/compare_box_diagnostics.py",
+      "sha256": "1fec94a38d1fe66751738b2cd72605b186ef3a139e6176ba207c6561132acbb9"
+    }
+  ],
+  "cameraProof": {
+    "repositoryPath": "docs/verification/hi3d-depth-cycle-20261119/H-front-provenance.json",
+    "archivePath": "camera/H-front-provenance.json",
+    "sha256": "e3f68d22913799e488434e1f4ceeb0dd3facf203bbf1a668906410457783c7d1"
+  },
+  "runtimeSourcesObservedAfterCapture": {
+    "repo": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory",
+    "gitHead": "187491159b6920d5715ce10fbb2136418d702742",
+    "files": {
+      "worker/runtime.mjs": "eba3e08d1a7fc5eb0af05604337cf335ee4a82a9b9b8b7a51d518d8bb22359a2",
+      "worker/codec.mjs": "535b755286373b4af8c79345b7337a7bea5097459f6753a6e1ad20bd3d17f705",
+      "worker/server.mjs": "d6a5bbfabb14580a7735d698c2dcc97720f73138da8227f4ffe5f134ac377b61",
+      "worker/chromium.mjs": "f6f7f7659c8eaf807b37d959f870c3323c05a29d53ad9bda5fcea0a7e62d3195",
+      "web/asset_io.mjs": "2242675cad353095070100764f550acd172290ff7956c0e6588e5a89904da82c",
+      "package-lock.json": "f778c3e12e0b9de785105b62b85e65daea5fd9792c73cdd34b62cf34a16546e7",
+      "node_modules/three-impostor/Impostor.js": "0a46901bc6cf53385244160429e07a02ad8606c17acadfd302bbcbaf8b53e907"
+    }
+  },
+  "execution": {
+    "device": "270-PC",
+    "environment": "WSL /bin/bash; native pinned production WebGL2 renderer in Chromium SwiftShader",
+    "runtimeLinksUnderDiagnosticRoot": {
+      "worker": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/worker",
+      "node_modules": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/node_modules"
+    },
+    "commands": {
+      "F": "TMPDIR=/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/tmp BI_SOFTWARE_GPU=1 BI_CHROMIUM=/home/dev/.cache/ms-playwright/chromium_headless_shell-1254/chrome-headless-shell-linux64/chrome-headless-shell /home/dev/.nvm/versions/node/v22.23.3/bin/node /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/scripts/diagnose_box_maps.mjs /mnt/f/_dev/box-impostor-lab /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/F --manifest experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/manifest.json --mesh results/hi3d-depth-cycle-20261119/resume-diagnostics/input/B-clay/scene.json --mesh-html /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/B-clay.inspector.html --camera /home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/H-front-provenance.json --views front --box-label F-box --mesh-label B-mesh",
+      "H": "TMPDIR=/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/tmp BI_SOFTWARE_GPU=1 BI_CHROMIUM=/home/dev/.cache/ms-playwright/chromium_headless_shell-1254/chrome-headless-shell-linux64/chrome-headless-shell /home/dev/.nvm/versions/node/v22.23.3/bin/node /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/scripts/diagnose_box_maps.mjs /mnt/f/_dev/box-impostor-lab /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/H --manifest experiments/geometry-abc-20261119/output/box_impostor/c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019/manifest.json --mesh results/hi3d-depth-cycle-20261119/resume-diagnostics/input/H-clay/scene.json --mesh-html /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/H-clay.inspector.html --camera /home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/H-front-provenance.json --views front --box-label H-box --mesh-label H-mesh",
+      "compare": "python3 /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/scripts/compare_box_diagnostics.py /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics /mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/paired"
+    },
+    "exitCodes": {
+      "F": 0,
+      "H": 0,
+      "compare": 0
+    }
+  },
+  "inputMapping": {
+    "F": {
+      "asset": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+      "mesh": "B-clay",
+      "meshLabel": "B-mesh"
+    },
+    "H": {
+      "asset": "c2d7bc0f67651e7557a272e90c1cff897419e0f9c8db23d0a710c7f5375a7019",
+      "mesh": "H-clay",
+      "meshLabel": "H-mesh"
+    }
+  },
+  "reports": {
+    "F": "F-diagnostic-report.json",
+    "H": "H-diagnostic-report.json",
+    "paired": "paired-diagnostics.json"
+  },
+  "numericalArchive": {
+    "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/paired/native-render-f-h-complete.tar.gz",
+    "bytes": 10134575,
+    "sha256": "6d80e99cf3ca3e69664be571ee4ab28e242d3921ff0200b1504ba7da2f86f8f4",
+    "files": 34,
+    "uncompressedFileBytes": 204232102,
+    "allMembersVerifiedAgainstSource": true,
+    "repositoryPath": "docs/verification/hi3d-depth-cycle-20261119/resume-diagnostics/native-render-f-h-complete.tar.gz",
+    "branch": "verification/hi3d-depth-cycle-20261119-viewers"
+  },
+  "archiveContents": {
+    "pngs": 16,
+    "floatRGBA32Arrays": 12,
+    "renderReports": 2,
+    "scripts": 2,
+    "cameraProofs": 1,
+    "pairedMetrics": 1,
+    "floatArrayLayout": "1024x1024x4 little-endian float32; rows top-to-bottom",
+    "depthUnits": "normalized orthographic depth-buffer value; world axial depth = near + value*(far-near)"
+  },
+  "recomputeFromArchive": {
+    "command": "python3 scripts/compare_box_diagnostics.py . recomputed-paired",
+    "requirements": "Python 3, numpy, Pillow, DejaVuSans font at default path or --font override",
+    "expectedReport": "metrics should agree exactly; output path fields vary with extraction path"
+  },
+  "sourceGeometryRecovery": "Input scene.json is the exact decompressed scene-data JSON from the full-triangle B-clay/H-clay official Inspector HTML. Source HTML and scene hashes are in each render report. The 3D input assets remain in their separate archive, not duplicated in this numerical bundle.",
+  "preservedFirstFRun": {
+    "directory": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/front",
+    "scriptPath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/resume-diagnostics/scripts/diagnose_box_maps-first-f.mjs",
+    "scriptSHA256": "eb4449792a919e4870c0f5663d22cab586639fb9211a120f0ab825f50234a83b",
+    "reasonForNewRun": "Add H labels, original HTML and camera hashes, and correct viewport metadata; never overwrite the first proof."
+  },
+  "interpretation": [
+    "Observed: both F and H native lit Box retain obvious eye/nose/mouth bands; both improve visually when lighting is omitted, with residual albedo seams.",
+    "Observed: each Box's front normals broadly follow its own full-triangle mesh; paired depth metrics are relative to that mesh, not a measured person.",
+    "Inference: geometry/normal lighting mismatch contributes substantially to the visible facial bands; this test does not isolate a single renderer math bug.",
+    "Albedo output retains native ray intersection and normal-dependent six-view mixing; it does not prove geometry or reprojection correct.",
+    "No claim of identical final F/H color atlases: original source images can be frozen while aligned samples differ after camera affine reprojection."
+  ],
+  "assessedViews": [
+    "front"
+  ],
+  "changes": "Diagnostic scripts and evidence only; no production code, source asset, or generated Inspector HTML edits."
+}
