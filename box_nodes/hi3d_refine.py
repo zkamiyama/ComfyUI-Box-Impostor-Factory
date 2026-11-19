@@ -98,7 +98,7 @@ class RefineProxyHi3D:
         python=self.resolve_python(hi3d_python)
         infer=store.REPO/'scripts'/'hi3d_infer.py'
         post=store.REPO/'scripts'/'hi3d_postprocess.py'
-        cache=store.key('hi3d-refine-proxy-v1',proxy['stageKey'],proxy['sha256'],
+        cache=store.key('hi3d-refine-proxy-v2-linear-color',proxy['stageKey'],proxy['sha256'],
                         store.file_hash(source_mesh),store.file_hash(source_image),
                         reference['sha256'],resolution,steps,smoothing,offload,
                         python,store.file_hash(infer),store.file_hash(post))
@@ -118,7 +118,7 @@ class RefineProxyHi3D:
             mesh,report=module.prepare(source_mesh,raw,smooth=smoothing)
             key_file=module.key_file
             output=stage/'canonical.glb'
-            mesh.export(output)
+            module.export_prepared_glb(mesh,output)
             original=json.loads(source_meta.read_text())
             original['glbSha256']=key_file(output)
             original['tightBounds']={
@@ -126,7 +126,8 @@ class RefineProxyHi3D:
             original['refinement']={
                 'model':'hi3d-official/Hi3Dv1.0','resolution':resolution,
                 'steps':steps,'smoothing':smoothing,
-                'hi3dSha256':key_file(raw),'coarseSha256':proxy['sha256']}
+                'hi3dSha256':key_file(raw),'coarseSha256':proxy['sha256'],
+                'colorTransferVersion':module.COLOR_TRANSFER_VERSION}
             (stage/'canonical.json').write_text(json.dumps(original,indent=2,allow_nan=False)+'\n')
             (stage/'report.json').write_text(json.dumps({
                 **report,'inference':json.loads((stage/'inference.json').read_text())
