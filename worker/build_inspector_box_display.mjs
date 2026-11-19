@@ -42,14 +42,14 @@ source = replaceOnce(source,
   'if(!y)throw new Error("Unsupported native Box texture dtype "+c.dtype);if(d==="rangeMap")rangePixels=y;');
 source = replaceOnce(source, 't=new ee(m),t.steps=Math.max(t.steps,2*r.resolution);',
   'm.distanceMap=createDistanceTexture(rangePixels,r.resolution),n.push(m.distanceMap),t=new ee(m),t.steps=Math.max(t.steps,2*r.resolution);');
-source = 'import { createDistanceTexture } from "./distance_texture.mjs";\n' + source;
+source = 'import { createDistanceTexture, attachMorphDistanceCache } from "./distance_texture.mjs";\n' + source;
 
 const outputs = {};
 for (const rgb of [false, true]) {
   let entry = source;
   if (rgb) {
     entry = replaceOnce(entry, 't=new ee(m),t.steps=Math.max(t.steps,2*r.resolution);',
-      't=createBoxDisplayMaterial(m,p.display),p.display?.lighting==="unlit"&&(g.toneMapping=s.NoToneMapping),t.steps=Math.max(t.steps,2*r.resolution);');
+      'attachMorphDistanceCache(m,rangePixels,p.display??{},n),t=createBoxDisplayMaterial(m,p.display),p.display?.lighting==="unlit"&&(g.toneMapping=s.NoToneMapping),t.steps=Math.max(t.steps,2*r.resolution);');
     entry = 'import { createBoxDisplayMaterial } from "./box_display_material.mjs";\n' + entry;
   }
   for (const cdn of [false, true]) {
@@ -66,7 +66,7 @@ for (const rgb of [false, true]) {
   }
 }
 const helpers = {};
-for (const name of ['distance_map.mjs', 'distance_texture.mjs', 'box_display_material.mjs'])
+for (const name of ['distance_map.mjs', 'distance_texture.mjs', 'box_display_material.mjs', 'box_morph_material.mjs'])
   helpers[name] = sha(await readFile(resolve(worker, name)));
 const receipt = {
   method: 'official-inspector-three-impostor-0.4.2-runtime',
@@ -74,6 +74,7 @@ const receipt = {
     origin: '3D-Inspector skills/3d-inspector/assets/native-runtime.cdn.mjs before the 0.4.2 upgrade' },
   dependencies, upstreamSHA256, helpers,
   builderSHA256: sha(await readFile(fileURLToPath(import.meta.url))), outputs,
+  shapeSamplingOptions: ['native', 'interval-morph'],
   colorSamplingOptions: ['native', 'view', 'dominant', 'view-fade', 'view-soft', 'view-feather'],
   distanceMap: { derivation: 'Original decoded RGBA16F rangeMap; increasingShaderV; before WebGL2 row flip',
     storage: 'Runtime-only R8 DataTexture, nearest, NoColorSpace, disposed with the Box',
@@ -81,7 +82,8 @@ const receipt = {
   generatedHtmlPostprocessing: false,
   changes: ['Both native and native-rgb profiles use pinned three-impostor 0.4.2',
     'Legacy Box assets derive the required distance field once at restore time',
-    'Existing native depth step budget and opt-in RGB display options are preserved'],
+    'Existing native depth step budget and opt-in RGB display options are preserved',
+    'Opt-in interval morph solves a bounded angle-dependent field with a single hit and its own conservatively expanded skip cache'],
 };
 await mkdir(dirname(evidence), { recursive: true });
 await writeFile(evidence, JSON.stringify(receipt, null, 2) + '\n');

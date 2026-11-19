@@ -3,7 +3,7 @@ import { diffuseColor, mrt, positionWorld, vec3, vec4 } from 'three/tsl';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { ImpostorBaker } from 'three-impostor';
 import { createBoxDisplayMaterial } from './box_display_material.mjs';
-import { createDistanceTexture } from './distance_texture.mjs';
+import { createDistanceTexture, attachMorphDistanceCache } from './distance_texture.mjs';
 import {
   FACES, MAP_TYPES, MATERIAL_PROPERTIES, compactPixels, decodeRaw, dimensions, encodeRaw,
   parseGLB, safePath, sha256, validateDescriptor, wrapGLB,
@@ -261,8 +261,8 @@ async function describeTexture(name,texture,resolution,renderer,backend) {
     alpha:name==='colorMap'?'premultiplied-coverage':name==='intervalMap'?'gap-end':name==='rangeMap'?'constant-one':'coverage'}};
 }
 
-export function createBoxMaterial(data,{lighting='lit',colorSampling='native'}={}) {
-  const material=createBoxDisplayMaterial(data,{lighting,colorSampling});
+export function createBoxMaterial(data,{lighting='lit',colorSampling='native',shapeSampling='native',morphStrength=1,morphBandTexels=8,morphStepTexels=.75}={}) {
+  const material=createBoxDisplayMaterial(data,{lighting,colorSampling,shapeSampling,morphStrength,morphBandTexels,morphStepTexels});
   // A ray can cross sqrt(3)*R texels diagonally. Occupied steps advance 1.5 texels
   // and empty steps cross one of at most 3*R/8 cell boundaries. Leave room for
   // the first and last cells. The shader still exits at the first hit or box exit.
@@ -352,7 +352,7 @@ function validateManifest(m) {
   }
 }
 
-export async function restoreBox(manifest,files,renderer,{sampling='standard',lighting='lit',colorSampling='native'}={}) {
+export async function restoreBox(manifest,files,renderer,{sampling='standard',lighting='lit',colorSampling='native',shapeSampling='native',morphStrength=1,morphBandTexels=8,morphStepTexels=.75}={}) {
   if (!['standard','reduce_bleeding'].includes(sampling)) throw error('INVALID_SAMPLING','Unknown Box render sampling mode');
   if (!['lit','unlit'].includes(lighting)) throw error('INVALID_LIGHTING','Unknown Box display lighting');
   if (!['native','view','dominant','view-fade','view-soft','view-feather'].includes(colorSampling)) throw error('INVALID_COLOR_SAMPLING','Unknown Box colour sampling');
@@ -406,9 +406,11 @@ export async function restoreBox(manifest,files,renderer,{sampling='standard',li
     // The 0.4.2 empty-space cache is derived from the existing range atlas.
     // Keep schema 1 and its saved RGB/depth bytes unchanged.
     const range=manifest.textures.rangeMap;
-    data.distanceMap=createDistanceTexture(decodeRaw(files.get(range.path),range.dtype),manifest.resolution);
+    const rangePixels=decodeRaw(files.get(range.path),range.dtype);
+    data.distanceMap=createDistanceTexture(rangePixels,manifest.resolution);
     textures.push(data.distanceMap);
-    material=createBoxMaterial(data,{lighting,colorSampling});
+    attachMorphDistanceCache(data,rangePixels,{shapeSampling,morphBandTexels},textures);
+    material=createBoxMaterial(data,{lighting,colorSampling,shapeSampling,morphStrength,morphBandTexels,morphStepTexels});
     return {mesh:new THREE.Mesh(geometry,material),dispose};
   } catch(cause){dispose();throw cause;}
 }

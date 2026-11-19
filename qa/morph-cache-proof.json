@@ -1,0 +1,41 @@
+{
+  "result": "Conservative for all camera directions under the source atlas contract; default native cache bytes unchanged.",
+  "api": "buildDistanceMap(rangePixels,resolution,{additionalMargins:[band/sizeX,band/sizeY,band/sizeZ]})",
+  "premises": [
+    "Range atlas and interval atlas belong to the same bake and resolution; tile orientation and shader V agree.",
+    "Interval sampling is bilinear at level zero with the native half-texel clamp; range atlas uses the native 8x8 plus one-texel halo summary.",
+    "Morph field retains the hard bound Fm >= F0-limit with 0 <= limit <= band; physical box sizes are positive.",
+    "Expanded cache remains separate from native distanceMap and is regenerated if source bytes, resolution, box size, or maximum band changes."
+  ],
+  "proof_steps": [
+    "Fm(p)<=0 implies F0(p)<=band. F0=max_i(size_i*(max(outer_i,gap_i)-epsilon)), so every outer_i <= epsilon+band/size_i. Gaps can only remove occupancy, and need not be represented in the coarse cache.",
+    "For p in an 8-texel transverse cell, linear texture interpolation reads indices from 8*c-1 through 8*c+8. The native range baker covers exactly that 10-texel footprint in each transverse coordinate and clamps the outer atlas edge consistently.",
+    "A convex bilinear combination has high <= max(sampled high), low >= min(sampled low). Therefore the summarized range intersects the axis cell expanded by epsilon+band/size_i whenever a morphed point in that cell exists.",
+    "The implementation retains the native extra filtering texel: margins=2.5/R+band/size_i. New-cache range extrema additionally round outward by one half-float step, f32 cell bounds round outward, and a tiny f32 conversion guard is added. These only add occupied cells.",
+    "The unchanged six neighbour-min passes produce D=min(7,ChebyshevDistanceToOccupied). All cells in the centered block of radius D-1 are empty, including when D is capped at 7.",
+    "The shader preserves the fine sampling lattice: it jumps to floor((blockExit-tNear)/fineStep), then re-evaluates. This never skips a fine sample after the empty-block exit. previous remains a known-empty lattice sample for bisection."
+  ],
+  "source_anchors": {
+    "native": "research/three-impostor-v042/sources/0.4.2/Impostor.js: CELL/EPSILON/REACH and cellOccupied near 129-186; range summary near 770-802; distance passes near 804-853; original skip near 1408-1451",
+    "morph": "work/sdf-morph-20261120/native/box_morph_material.mjs: candidate bound, dedicated cache guard, lattice-preserving skip",
+    "cpu": "distance_map.mjs"
+  },
+  "tests": {
+    "unchanged_upstream_oracle": "7/7 pass: distance_map_native.test.mjs",
+    "expanded_cache": "cache-verification.json: 300000 point samples, zero false negatives, 5 resolutions including 1024, half range storage / linear interpolation / cell and atlas boundaries",
+    "native_bytes": "Full cache arrays exactly equal original at resolutions 17,41,64,128,1024; explicit zero margins also equal at 41.",
+    "skip_blocks": "Approximately 2.55 million cells in sampled D-1 skip blocks contained no occupied cells."
+  },
+  "limits": [
+    "The cache proves skipped space is empty for this bounded field; it does not prove the field is Euclidean SDF.",
+    "Fine-only sampling can still miss geometry smaller than its sampling support. The cache path preserves that lattice rather than adding another stepping approximation."
+  ],
+  "files_sha256": {
+    "distance_map.mjs": "649d680a960bf4e697f6536716f37dbfc5ce1c755a3626b379948508e6ebb7a1",
+    "distance_texture.mjs": "8e7cbc13916dff36f4507d841f422653e2d1e7c8da8ff503823d7ea6c6c03144",
+    "distance_map_morph.patch": "ce80cbdbdbe544598e2a6b9c7f28120453cdb4e8f83a5fdd736142c34762219b",
+    "runtime_morph_cache.patch": "728c635a9215ef8e4978ef03eff4f37a4f4ade467c02decde2b6c585eb65b7c9",
+    "verify_cache.mjs": "1a01eb03a76afd96ee5587414b6b0c6cf17c447819dbb778b7297bf0544ebe81"
+  },
+  "gpu_validation": "interval-morph-depth45.json: cache/no-cache RGB, alpha and RGB24 fragment depth are identical in the fixed 320x320, 45-degree Q2 test."
+}

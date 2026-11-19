@@ -1,0 +1,56 @@
+{
+  "description": "CPU properties of bounded projective interval morph; not a true Euclidean SDF",
+  "checks": {
+    "bounded_expansion_native_occupancy_and_gap_guard": {
+      "samples": 50000,
+      "pass": true
+    },
+    "physical_units_uniform_scale": {
+      "scale": 17.3,
+      "max_error": 3.552713678800501e-15,
+      "pass": true
+    },
+    "noncubic_axis_depth_unit": {
+      "expected_physical_residual": 0.05,
+      "actual": 0.050000000000000044,
+      "pass": true
+    },
+    "invalid_support_and_sub4texel_thin_parts": {
+      "samples_each": 50000,
+      "pass": true
+    },
+    "six_cardinal_endpoints_and_yaw_loop": {
+      "max_cardinal_error": 0.0,
+      "loop_error": 0.0,
+      "pass": true
+    },
+    "consistent_plane_zero_surface": {
+      "samples": 2000,
+      "max_error": 5.5162898330096e-17,
+      "epsilon": 0,
+      "pass": true
+    },
+    "consistent_sphere_zero_surface": {
+      "samples": 5000,
+      "max_error": 6.087796933229584e-13,
+      "epsilon": 0,
+      "pass": true
+    },
+    "inconsistent_depth_angle_morph": {
+      "samples": 721,
+      "max_outward_shift": 0.001217406543643551,
+      "min_shift": 0.0,
+      "max_adjacent_radius_change_at_half_degree": 0.00018972582341580946,
+      "loop_error": 0.0,
+      "pass": true
+    }
+  },
+  "limitations": [
+    "An implicit projective field, not an exact Euclidean SDF; no sphere-tracing step guarantee is claimed.",
+    "This bounded relaxation expands from native occupancy; it does not linearly transport corresponding facial landmarks between input views.",
+    "Native epsilon is per normalized axis. With epsilon enabled, even ideal consistent views can change their small numerical inflation under blending.",
+    "Hard gap/invalid support preserves known empty regions; unknown or incorrect input geometry remains unresolved.",
+    "A fixed sampling step can still miss sufficiently thin or steep features without a separate bound; these tests do not certify arbitrary rays.",
+    "RGB correspondences and visible face doubling require image validation in the renderer; zero-set properties cannot certify appearance."
+  ]
+}

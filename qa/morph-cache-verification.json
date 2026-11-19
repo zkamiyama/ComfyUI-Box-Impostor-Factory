@@ -1,0 +1,55 @@
+{
+  "scope": "Conservative cache necessary-condition test, all morph view weights; native baker 1-texel halo and half storage, linear interval sampling",
+  "fixtures": [
+    {
+      "resolution": 17,
+      "samples": 60000,
+      "occupiedCandidates": 4786,
+      "cacheFalseNegatives": 0,
+      "pointsExcludedByOldCache": 0,
+      "nativeBytesIdentical": true,
+      "skipBlocksChecked": 1032,
+      "skipCellsChecked": 1032
+    },
+    {
+      "resolution": 41,
+      "samples": 60000,
+      "occupiedCandidates": 4395,
+      "cacheFalseNegatives": 0,
+      "pointsExcludedByOldCache": 0,
+      "nativeBytesIdentical": true,
+      "skipBlocksChecked": 1192,
+      "skipCellsChecked": 2841
+    },
+    {
+      "resolution": 64,
+      "samples": 60000,
+      "occupiedCandidates": 4697,
+      "cacheFalseNegatives": 0,
+      "pointsExcludedByOldCache": 0,
+      "nativeBytesIdentical": true,
+      "skipBlocksChecked": 983,
+      "skipCellsChecked": 3631
+    },
+    {
+      "resolution": 128,
+      "samples": 60000,
+      "occupiedCandidates": 4427,
+      "cacheFalseNegatives": 0,
+      "pointsExcludedByOldCache": 0,
+      "nativeBytesIdentical": true,
+      "skipBlocksChecked": 1236,
+      "skipCellsChecked": 71492
+    },
+    {
+      "resolution": 1024,
+      "samples": 60000,
+      "occupiedCandidates": 4218,
+      "cacheFalseNegatives": 0,
+      "pointsExcludedByOldCache": 1,
+      "nativeBytesIdentical": true,
+      "skipBlocksChecked": 1339,
+      "skipCellsChecked": 2473371
+    }
+  ]
+}

@@ -2,10 +2,10 @@ import {
   Fn, If, abs, clamp, diffuseColor, dot, float, floor, materialColor, max, min, mix,
   normalize, property, select, smoothstep, texture, vec2, vec3, vec4,
 } from 'three/tsl';
-import { ImpostorNodeMaterial } from 'three-impostor';
+import { BoxShapeImpostorMaterial } from './box_morph_material.mjs';
 
 // Pinned three-impostor 0.4.2 Box projection convention. These functions only
-// locate colour samples; the upstream interval/distance raymarch is unchanged.
+// locate colour samples after the selected native or interval-morph hit solver.
 const SIDES=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
 const VIEW_UV=[p=>vec2(p.z.oneMinus(),p.y),p=>vec2(p.z,p.y),
   p=>vec2(p.x,p.z.oneMinus()),p=>vec2(p.x,p.z),
@@ -43,9 +43,9 @@ function sourceDepthEdgeWeight(uv,axis,positive,resolution,intervalMap) {
   return max(1e-3,smoothstep(0,6,nearest).pow(8));
 }
 
-class ViewColorImpostorMaterial extends ImpostorNodeMaterial {
-  constructor(impostor,colorSampling) {
-    super(impostor);
+class ViewColorImpostorMaterial extends BoxShapeImpostorMaterial {
+  constructor(impostor,colorSampling,shapeOptions) {
+    super(impostor,shapeOptions);
     this.boxColorSampling=colorSampling;
   }
 
@@ -81,7 +81,7 @@ class ViewColorImpostorMaterial extends ImpostorNodeMaterial {
     const soft=this.boxColorSampling==='view-soft';
     const feather=this.boxColorSampling==='view-feather';
     return Fn(()=>{
-      // Evaluate the native resolver first, including discard, normal and depth.
+      // Resolve the selected shape first, including discard, normal and depth.
       const original=nativeColor.toVar();
       const p=space.boxDisplayHit.sub(boxMin).div(boxSize).toVar();
       const intervals=AXIS_UV.map((project,axis)=>{
@@ -143,23 +143,25 @@ class ViewColorImpostorMaterial extends ImpostorNodeMaterial {
         const resolved=accumulated.div(max(total,1e-12));
         selected.assign(mix(original.rgb,resolved,confidence.mul(smoothstep(0,1e-8,total))));
       } else if(!dominant) If((feather?baseTotal:total).greaterThan(1e-8),()=>selected.assign(accumulated.div(feather?max(total,1e-20):total)));
-      // Alpha and all geometry outputs remain those of the native resolver.
+      // Alpha and all geometry outputs remain those of the selected shape resolver.
       return vec4(selected,original.a);
     })();
   }
 }
 
-// Display-only: setupDiffuseColor still resolves the native hit, discard,
+// setupDiffuseColor resolves the selected hit, discard,
 // blended normal and fragment depth before NodeMaterial applies outputNode.
 // Tone mapping belongs to the renderer; WebGPURenderer ignores toneMapped.
-export function createBoxDisplayMaterial(impostor, {lighting='lit', sampling='native',colorSampling='native'}={}) {
+export function createBoxDisplayMaterial(impostor, {lighting='lit',sampling='native',colorSampling='native',
+  shapeSampling='native',morphStrength=1,morphBandTexels=8,morphStepTexels=.75}={}) {
   if (!['lit','unlit'].includes(lighting)) throw new Error('Unknown Box display lighting: '+lighting);
   // Retain the original helper option for old display payloads. Texture
   // interpolation is a separate Factory setting; this legacy value stays native.
   if (sampling!=='native') throw new Error('Unknown Box view sampling: '+sampling);
   if (!['native','view','dominant','view-fade','view-soft','view-feather'].includes(colorSampling)) throw new Error('Unknown Box colour sampling: '+colorSampling);
   if (colorSampling!=='native' && impostor.layout!=='box') throw new Error('View colour sampling requires Box layout');
-  const material=colorSampling==='native' ? new ImpostorNodeMaterial(impostor) : new ViewColorImpostorMaterial(impostor,colorSampling);
+  const shapeOptions={shapeSampling,morphStrength,morphBandTexels,morphStepTexels};
+  const material=colorSampling==='native' ? new BoxShapeImpostorMaterial(impostor,shapeOptions) : new ViewColorImpostorMaterial(impostor,colorSampling,shapeOptions);
   if (lighting==='unlit') material.outputNode=vec4(diffuseColor.rgb,diffuseColor.a);
   return material;
 }

@@ -1,0 +1,159 @@
+{
+  "status": "pass",
+  "startedAt": "2026-11-19T17:07:49.448Z",
+  "config": {
+    "assetDir": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/87b95907db2b663184783f1eb7d9c5b594542ce15aa1d1d777a85b1900ab213e",
+    "output": "/mnt/f/_dev/box-impostor-lab/experiments/sdf-morph-20261120/qa/depth-45-optimized",
+    "backend": "webgl2",
+    "pixels": 320,
+    "bands": [
+      8
+    ],
+    "framing": {
+      "target": [
+        0,
+        0.405,
+        0
+      ],
+      "halfExtent": 0.15
+    },
+    "compareSkip": true
+  },
+  "manifestSHA256": "2d83d7fbabb98db6c5aca524c69585859beced57b3fc70cde07947c7a5b94159",
+  "diagnostics": [],
+  "materialSHA256": "748f62b87baffdd69aadf643abdca8787259c3d45682542dae3f35c2220a9564",
+  "contract": "Same immutable restored Q2 maps, same camera and interval-morph solver; change morphStrength 0 to 1 only.",
+  "depthReadback": "Actual RenderTarget DepthTexture sampled to linear RGB24; common foreground excludes silhouette/background changes.",
+  "browserVersion": "158.0.8127.18",
+  "actualBackend": "webgl2",
+  "gpu": {
+    "vendor": "Google Inc. (Google)",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+  },
+  "shaderSources": [
+    {
+      "label": "band8-strength0",
+      "type": "vertex",
+      "characters": 3528,
+      "lines": 166,
+      "morphFieldMentions": 0
+    },
+    {
+      "label": "band8-strength0",
+      "type": "fragment",
+      "characters": 45886,
+      "lines": 1773,
+      "morphFieldMentions": 9
+    },
+    {
+      "label": "band8-strength0",
+      "type": "vertex",
+      "characters": 935,
+      "lines": 70,
+      "morphFieldMentions": 0
+    },
+    {
+      "label": "band8-strength0",
+      "type": "fragment",
+      "characters": 1540,
+      "lines": 90,
+      "morphFieldMentions": 0
+    },
+    {
+      "label": "band8-strength1",
+      "type": "fragment",
+      "characters": 45886,
+      "lines": 1773,
+      "morphFieldMentions": 9
+    },
+    {
+      "label": "band8-fine-only",
+      "type": "vertex",
+      "characters": 3506,
+      "lines": 165,
+      "morphFieldMentions": 0
+    },
+    {
+      "label": "band8-fine-only",
+      "type": "fragment",
+      "characters": 44367,
+      "lines": 1725,
+      "morphFieldMentions": 9
+    }
+  ],
+  "threeRevision": "186",
+  "assetId": null,
+  "resolution": 1024,
+  "camera": {
+    "yawDegrees": 45,
+    "pitchDegrees": 0,
+    "projection": "orthographic",
+    "pixels": [
+      320,
+      320
+    ],
+    "target": [
+      0,
+      0.405,
+      0
+    ],
+    "position": [
+      0.291413987167992,
+      0.405,
+      0.291413987167992
+    ],
+    "halfExtent": 0.15,
+    "near": 0.00117533337728615,
+    "far": 3.9381217447766437
+  },
+  "cases": [
+    {
+      "bandTexels": 8,
+      "bandLocal": 0.002926492430269718,
+      "morphCache": {
+        "present": true,
+        "bandTexels": 8
+      },
+      "steps": 2367,
+      "foreground0": 32532,
+      "foreground1": 32532,
+      "commonForeground": 32532,
+      "addedPixels": 0,
+      "removedPixels": 0,
+      "alphaChangedPixels": 0,
+      "rgbChangedPixels": 9580,
+      "depth": {
+        "commonChangedPixels": 13769,
+        "commonChangedMoreThanFourCodes": 13719,
+        "maxCodeDelta": 165576,
+        "p50ChangedCodeDelta": 311,
+        "p95ChangedCodeDelta": 1117,
+        "minSignedCodeDelta": -165576,
+        "maxSignedCodeDelta": 0,
+        "maxWorldDelta": 0.038854114882229264,
+        "worldPerCode": 2.3466030633805179e-7,
+        "nativeDepthRangeWorld": 0.24317730215659136
+      },
+      "milliseconds": {
+        "strength0": 236.30000000074506,
+        "strength1": 206.19999999925494
+      },
+      "compileMilliseconds": {
+        "strength0": 49.899999998509884,
+        "strength1": 25.899999998509884
+      },
+      "skipVsFine": {
+        "pixels": 102400,
+        "alphaChangedPixels": 0,
+        "rgbChangedPixels": 0,
+        "depthChangedPixels": 0,
+        "maxDepthCodeDelta": 0,
+        "exactAlphaAndDepth": true,
+        "fineMilliseconds": 914.6999999992549,
+        "fineCompileMilliseconds": 23.199999999254942
+      }
+    }
+  ],
+  "failures": [],
+  "finishedAt": "2026-11-19T17:07:51.911Z"
+}
