@@ -197,11 +197,13 @@ async function run() {
   el('sampling').value=selectedSampling;
   let currentSampling=selectedSampling;
   const lighting=params.get('lighting') || 'lit';
+  const colorSampling=params.get('color-sampling') || 'native';
+  if(!['native','view','dominant'].includes(colorSampling)) throw new Error('不明な Box 色選択設定です');
   if(!['lit','unlit'].includes(lighting)) throw new Error('不明な Box 照明設定です');
   const renderer = await makeRenderer(params.get('backend') || (globalThis.__BI_CHAT_BOX__ ? 'webgl2' : 'auto'),{canvas:el('canvas'),antialias:true});
   const defaultToneMapping=renderer.toneMapping;
   const [firstActive,proxy] = await Promise.all([
-    restoreBox(manifest,files,renderer,{sampling:currentSampling,lighting}), loadProxy(files.get(manifest.proxy).slice().buffer)
+    restoreBox(manifest,files,renderer,{sampling:currentSampling,lighting,colorSampling}), loadProxy(files.get(manifest.proxy).slice().buffer)
   ]);
   let referenceCamera;
   try { referenceCamera=await prepareReferenceCamera(manifest,url); }
@@ -214,7 +216,7 @@ async function run() {
   const hasBase = manifest.baseColor?.sha256 && manifest.baseColor.sha256 !== manifest.textures.colorMap.sha256;
   const baselineManifest=hasBase ? {...manifest,textures:{
     ...manifest.textures, colorMap:manifest.baseColor}} : null;
-  let baseline = hasBase ? await restoreBox(baselineManifest,files,renderer,{sampling:currentSampling,lighting}) : null;
+  let baseline = hasBase ? await restoreBox(baselineManifest,files,renderer,{sampling:currentSampling,lighting,colorSampling}) : null;
   el('appearanceLabel').hidden = !hasBase;
   const box = litScene(), mesh = litScene();
   box.scene.add(active.mesh);
@@ -408,8 +410,8 @@ async function run() {
     const requested=el('sampling').value;
     let nextActive, nextBaseline;
     try {
-      nextActive=await restoreBox(manifest,files,renderer,{sampling:requested,lighting});
-      nextBaseline=baselineManifest ? await restoreBox(baselineManifest,files,renderer,{sampling:requested,lighting}) : null;
+      nextActive=await restoreBox(manifest,files,renderer,{sampling:requested,lighting,colorSampling});
+      nextBaseline=baselineManifest ? await restoreBox(baselineManifest,files,renderer,{sampling:requested,lighting,colorSampling}) : null;
       box.scene.remove(active.mesh);
       if (baseline) box.scene.remove(baseline.mesh);
       active.dispose();
@@ -451,7 +453,7 @@ async function run() {
   rotateLight(); placeCamera(true); modeChanged();
   const faceReports=Object.values(manifest.faces||{}).map(f=>f.edit?.status);
   const fallback=faceReports.filter(s=>s==='fallback').length;
-  el('status').textContent=[backendName(renderer),manifest.mode,'R='+manifest.resolution,lighting==='unlit'?'Box 照明なし':'',fallback ? '元の色へ戻した面 '+fallback : '',currentSampling==='reduce_bleeding'?'色にじみ低減':''].filter(Boolean).join(' · ');
+  el('status').textContent=[backendName(renderer),manifest.mode,'R='+manifest.resolution,lighting==='unlit'?'Box 照明なし':'',colorSampling==='view'?'色：視線方向で混合':colorSampling==='dominant'?'色：主方向の一面':'',fallback ? '元の色へ戻した面 '+fallback : '',currentSampling==='reduce_bleeding'?'色にじみ低減':''].filter(Boolean).join(' · ');
   let closing=false;
   if (renderer.backend.isWebGPUBackend) renderer.backend.device.lost.then(info => {
     if (closing) return;

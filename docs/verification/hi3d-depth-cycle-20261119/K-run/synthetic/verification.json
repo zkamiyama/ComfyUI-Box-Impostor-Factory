@@ -1,0 +1,35 @@
+{
+  "method": "box-view-colour-synthetic-v1",
+  "processId": 10924,
+  "exitCode": 0,
+  "runtimeSeconds": 4.66,
+  "cpuTestsPassed": 3,
+  "testedHelperSha256": "18f34667a43b312ea1de2d148ced37d19bdc390fa1a8955a8c25a9a50673a326",
+  "finalHelperSha256": "de62664e1f008767d718556760842e6ed9e31d58cb512dc32dbac48973981a09",
+  "postTestChange": "Comment only: describe confidence weighting and hard fallback accurately; shader code unchanged.",
+  "files": {
+    "synthetic-report.json": {
+      "bytes": 38451,
+      "sha256": "3426f9fc750a2370b4241086b5c5222a5ec9da6cc1592e246f978c68788d444e"
+    },
+    "synthetic.png": {
+      "bytes": 242753,
+      "sha256": "40c0488935a3e50bcfe005e6f3031c8620dd855a99ad1c6ca3edc368d2ccb906"
+    }
+  },
+  "codeSha256": {
+    "worker/box_display_material.mjs": "de62664e1f008767d718556760842e6ed9e31d58cb512dc32dbac48973981a09",
+    "worker/runtime.mjs": "5f6308efad10467a79bc748599f27d903449144d76df8e074007aed1d1fef3e2",
+    "worker/cli.mjs": "e6e807db6637c7f9c0ca7618263aab908ada5e792fbca21d5f6a1b05aac3bd15",
+    "web/viewer.mjs": "162e722e18a5680fa21fb4772c96be9ac942c6c64504ad4a3b279eb287ee6f5a",
+    "tests/box_display_material.test.mjs": "0902b428ac027f48887eb782b4500a115d9a37ed64e6d763143e96fbe00f7434",
+    "tests/check_box_color_sampling.mjs": "4e98a38c51c320d531693774c5315c872863d18eec2c5d16edef91d95be0fd3e"
+  },
+  "browserProcessesAfter": [],
+  "browserClosed": true,
+  "maxAxisRGBError": 0.536599506629102,
+  "depthComparison": "24-bit encoded native depth buffer",
+  "normalComparison": "RGBA8 linear native-normal diagnostic pass",
+  "viewCount": 9,
+  "sourceAssetsModified": false
+}

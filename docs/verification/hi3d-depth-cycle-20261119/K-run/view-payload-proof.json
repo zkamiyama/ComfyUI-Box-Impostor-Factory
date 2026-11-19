@@ -1,0 +1,35 @@
+{
+  "stage": "K-view",
+  "command": [
+    "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+    "/home/dev/Projects/3D-Inspector-skills/skills/3d-inspector/view.py",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F.box.zip",
+    "--box-lighting",
+    "unlit",
+    "--box-color-sampling",
+    "view",
+    "--title",
+    "F RGB / view color selection",
+    "-o",
+    "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html"
+  ],
+  "checks": {
+    "displaySettingEmbedded": true,
+    "manifestUnchanged": true,
+    "allRawTextureBytesUnchanged": true,
+    "boundsUnchanged": true,
+    "generatedHtmlUnmodified": true
+  },
+  "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html",
+  "htmlBytes": 62299700,
+  "htmlSha256": "4b1ee6af6e20a8e7ebe9fce88a01fce83af722551538499698fa70b01c570ce0",
+  "baselineHtmlSha256": "2bff2ec86f73ba5f5e011be9d306b3904a71c6a5da236b5445c2c83b9d7c3f69",
+  "helperSha256": "de62664e1f008767d718556760842e6ed9e31d58cb512dc32dbac48973981a09",
+  "builderSha256": "2e633b827b0195c6cf53f3151664c42286653973915f7f75c732a51de649a7b0",
+  "elapsedSeconds": 22.264288160999968,
+  "display": {
+    "lighting": "unlit",
+    "sampling": "native",
+    "colorSampling": "view"
+  }
+}

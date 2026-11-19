@@ -1,0 +1,505 @@
+{
+  "kind": "Measure front RGB fidelity on one shared opaque, three-pixel-eroded head mask.",
+  "assetId": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+  "camera": {
+    "projection": "orthographic",
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "distance": 1.8073808642855147,
+    "halfExtent": 0.65783283658225,
+    "fovBeforeOrthographic": 40,
+    "fitFormula": "radius * 1.05 / sin(20deg)",
+    "sourceRadius": 0.5876666886430749,
+    "referenceRadius": 0.5887244402352406,
+    "perspectiveWheelDeltaY": 3.505915677124107,
+    "matching": "Existing Fit, wheel, projection, pan and view controls only; HTML byte-identical",
+    "pixels": [
+      1024,
+      1024
+    ],
+    "cssPixels": [
+      800,
+      800
+    ],
+    "deviceScaleFactor": 1.28001,
+    "wheelProtocolDeltaY": 4.4876070731820406,
+    "pans": [
+      {
+        "view": "front",
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "view": "right",
+        "dx": 0,
+        "dy": 0
+      }
+    ]
+  },
+  "headCrop": [
+    463,
+    115,
+    572,
+    271
+  ],
+  "reference": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920/views/pz/aligned.npy",
+    "sha256": "beb5cd6cd8e3c6cf5383e5ffd096e3cfdcceb8eb04fdf05d23bac7b34c068488",
+    "sampling": "Premultiplied linear-light bilinear at established orthographic front-camera pixel centers; converted to 8-bit sRGB."
+  },
+  "inputs": {
+    "F": {
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/capture.json",
+      "captureSHA256": "e145504dc7da03bd4a8a4765b76570bb9a1b8f6a2580cd006dba4004e4b7d650",
+      "front": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F-box/lit-front.png",
+        "sha256": "c6dd7feafd68a8509c3668f29e2a2c6dea05e1cbf1c0323f224f3eb4ad6291df",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ]
+      },
+      "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/F.inspector.html",
+      "htmlSHA256": "2bff2ec86f73ba5f5e011be9d306b3904a71c6a5da236b5445c2c83b9d7c3f69"
+    },
+    "J": {
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/I-box/capture.json",
+      "captureSHA256": "f05577b927dca56b065092bc6ae3f2cb493053e6295524de6bb4fe43248bac53",
+      "front": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/I-box/lit-front.png",
+        "sha256": "7bc29449d896ef987212c426a97ef137a8bde9664d11af20432e39c153591497",
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "expectedPosition": [
+          0,
+          0,
+          1.8073808642855147
+        ],
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482
+          ],
+          "quaternion": [
+            -3.061616997868383e-17,
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            -6.123233995736766e-17,
+            0,
+            0,
+            6.123233995736766e-17,
+            1,
+            0,
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482,
+            1
+          ],
+          "matrixWorldInverse": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            6.123233995736766e-17,
+            0,
+            0,
+            -6.123233995736766e-17,
+            1,
+            0,
+            0,
+            0,
+            -1.8073808642341482,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        }
+      },
+      "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/I-native-unlit.inspector.html",
+      "htmlSHA256": "2fd2f8910ee1dd9f097fd3dc91ec6bb772574f3592be7d7b919aa9306e901d0e"
+    },
+    "K-view": {
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-front/capture.json",
+      "captureSHA256": "d4c8909a63e57ab0377c84fc9c9912d047244c12df740320388098f0fff7f86b",
+      "front": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view-front/yaw-p0_000.png",
+        "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59",
+        "requestedYawDegrees": 0,
+        "actualYawDegrees": 0,
+        "actualPitchDegrees": 3.5083546492674384e-15,
+        "radialDistance": 1.8073808642341482,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482
+          ],
+          "quaternion": [
+            -3.061616997868383e-17,
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            -6.123233995736766e-17,
+            0,
+            0,
+            6.123233995736766e-17,
+            1,
+            0,
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482,
+            1
+          ],
+          "matrixWorldInverse": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            6.123233995736766e-17,
+            0,
+            0,
+            -6.123233995736766e-17,
+            1,
+            0,
+            0,
+            0,
+            -1.8073808642341482,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": []
+      },
+      "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-view.inspector.html",
+      "htmlSHA256": "4b1ee6af6e20a8e7ebe9fce88a01fce83af722551538499698fa70b01c570ce0"
+    },
+    "K-dominant": {
+      "capturePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-dominant-front/capture.json",
+      "captureSHA256": "91fac41bebc5b8bfe94ba98934b6ca73a7cd8a706e894bea231208ab600fac36",
+      "front": {
+        "path": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-dominant-front/yaw-p0_000.png",
+        "sha256": "070917fe1bd0507d90df5b2cc6e52c96bbfec535af8514f6709092465ff18c59",
+        "requestedYawDegrees": 0,
+        "actualYawDegrees": 0,
+        "actualPitchDegrees": 3.5083546492674384e-15,
+        "radialDistance": 1.8073808642341482,
+        "actualCamera": {
+          "type": "OrthographicCamera",
+          "position": [
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482
+          ],
+          "quaternion": [
+            -3.061616997868383e-17,
+            0,
+            0,
+            1
+          ],
+          "up": [
+            0,
+            1,
+            0
+          ],
+          "matrixWorld": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            -6.123233995736766e-17,
+            0,
+            0,
+            6.123233995736766e-17,
+            1,
+            0,
+            0,
+            1.1067015951122633e-16,
+            1.8073808642341482,
+            1
+          ],
+          "matrixWorldInverse": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            6.123233995736766e-17,
+            0,
+            0,
+            -6.123233995736766e-17,
+            1,
+            0,
+            0,
+            0,
+            -1.8073808642341482,
+            1
+          ],
+          "projectionMatrix": [
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            1.5201430278608303,
+            0,
+            0,
+            0,
+            0,
+            -0.02836098400471992,
+            0,
+            0,
+            0,
+            -1.0000166668055568,
+            1
+          ],
+          "projectionMatrixInverse": [
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            0.6578328365635543,
+            0,
+            0,
+            0,
+            0,
+            -35.259707485240185,
+            0,
+            0,
+            0,
+            -35.26029515192882,
+            1
+          ],
+          "near": 0.000587666688643075,
+          "far": 70.520002637169,
+          "left": -0.6578328365635542,
+          "right": 0.6578328365635542,
+          "top": 0.6578328365635542,
+          "bottom": -0.6578328365635542,
+          "zoom": 1,
+          "canvasPixels": [
+            1024,
+            1024
+          ]
+        },
+        "mouseDragsCSSPixels": []
+      },
+      "html": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/K-dominant.inspector.html",
+      "htmlSHA256": "87f99c88cc9d2e6163fdf1ab56236fb3466cf8333ce1724c63ef2b4205343fc0"
+    }
+  },
+  "mask": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-J-K-front-fidelity-mask.png",
+    "sha256": "cddf136d050f33b449a3e7a951ed6055b82d61bb2cae62d6a0caa20a692e0133",
+    "alphaThreshold": 250,
+    "operator": "Intersection of reference and every render alpha>250; three iterations of 3x3 binary erosion (Chebyshev radius 3), border=0.",
+    "pixelsBeforeErosion": 12471,
+    "pixelsAfterErosion": 10936
+  },
+  "metrics": {
+    "F": {
+      "sRGBMAE255": 37.45708363813704,
+      "channelMAE255": [
+        44.560534016093634,
+        36.15599853694221,
+        31.654718361375274
+      ],
+      "medianPerPixelMAE255": 29.0,
+      "p95PerPixelMAE255": 96.33333333333333,
+      "sampledPixels": 10936
+    },
+    "J": {
+      "sRGBMAE255": 13.20126188734455,
+      "channelMAE255": [
+        11.390910753474762,
+        13.665508412582296,
+        14.547366495976592
+      ],
+      "medianPerPixelMAE255": 6.333333333333333,
+      "p95PerPixelMAE255": 50.333333333333336,
+      "sampledPixels": 10936
+    },
+    "K-view": {
+      "sRGBMAE255": 0.6079614728115094,
+      "channelMAE255": [
+        0.4799743964886613,
+        0.5771762984637894,
+        0.7667337234820776
+      ],
+      "medianPerPixelMAE255": 0.3333333333333333,
+      "p95PerPixelMAE255": 1.0,
+      "sampledPixels": 10936
+    },
+    "K-dominant": {
+      "sRGBMAE255": 0.6079614728115094,
+      "channelMAE255": [
+        0.4799743964886613,
+        0.5771762984637894,
+        0.7667337234820776
+      ],
+      "medianPerPixelMAE255": 0.3333333333333333,
+      "p95PerPixelMAE255": 1.0,
+      "sampledPixels": 10936
+    }
+  },
+  "metricDefinition": "Mean absolute difference across all R/G/B samples in the same eroded mask, on 8-bit sRGB values (0-255).",
+  "limitations": [
+    "Image appearance fidelity only; not geometry/depth accuracy or natural-parallax validation.",
+    "The reference is the accepted registered +Z RGB sampled onto the same viewer camera grid.",
+    "No best-fit registration, per-image mask, exposure fitting, or metric-specific alignment is performed."
+  ],
+  "differenceVisualization": {
+    "range": [
+      0,
+      64
+    ],
+    "outsideMask": 0,
+    "sameScaleForEveryRender": true
+  },
+  "output": {
+    "path": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/docs/verification/hi3d-depth-cycle-20261119/F-J-K-front-fidelity.webp",
+    "sha256": "c26d16cb7d094b55bf06e08e41df17668cf1034fdd895c80d78cf95efa9bf366",
+    "bytes": 164172
+  },
+  "scriptSHA256": "6f443d583d4398961eecdf5ee7f57e080a6678f2b9c98a9d1ca33d19b2d23142"
+}

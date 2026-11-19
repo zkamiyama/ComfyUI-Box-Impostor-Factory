@@ -30,6 +30,27 @@ test('unknown display options fail before asset I/O or browser launch',async()=>
   assert.throws(()=>createBoxDisplayMaterial({maps:[]},{lighting:'other'}),/lighting/);
   assert.throws(()=>createBoxDisplayMaterial({maps:[]},{sampling:'dominant'}),/sampling/);
   await assert.rejects(restoreBox(null,null,null,{lighting:'other'}),/lighting/);
-  for(const command of ['render','thumbnail','preview'])
+  assert.throws(()=>createBoxDisplayMaterial({maps:[]},{colorSampling:'other'}),/colour sampling/);
+  assert.throws(()=>createBoxDisplayMaterial({maps:[],layout:'octahedral'},{colorSampling:'view'}),/Box layout/);
+  await assert.rejects(restoreBox(null,null,null,{colorSampling:'other'}),/colour sampling/);
+  for(const command of ['render','thumbnail','preview']) {
     await assert.rejects(main([command,'--lighting','other']),/lighting/);
+    await assert.rejects(main([command,'--color-sampling','other']),/colour sampling/);
+  }
+});
+
+
+test('view colour modes get separate shader programs while native stays the original class',()=>{
+  const data={maps:[],layout:'box',resolution:64};
+  const native=createBoxDisplayMaterial(data,{colorSampling:'native'});
+  const view=createBoxDisplayMaterial(data,{colorSampling:'view'});
+  const dominant=createBoxDisplayMaterial(data,{colorSampling:'dominant'});
+  try {
+    assert.equal(native.constructor,ImpostorNodeMaterial);
+    assert.notEqual(view.customProgramCacheKey(),dominant.customProgramCacheKey());
+    assert.equal(view.setupDiffuseColor,native.setupDiffuseColor);
+    assert.equal(view.setupDepth,native.setupDepth);
+    assert.equal(dominant.depthTest,native.depthTest);
+    assert.equal(dominant.depthWrite,native.depthWrite);
+  } finally {for(const m of [native,view,dominant])m.dispose();}
 });

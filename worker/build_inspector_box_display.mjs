@@ -54,14 +54,15 @@ for (const [name, hash] of Object.entries(expected)) {
   if (sha(await readFile(resolve(assets, name))) !== hash) throw new Error('Lit baseline runtime was modified.');
 }
 const receipt = {
-  method: 'official-inspector-opt-in-rgb-runtime-v1',
+  method: 'official-inspector-opt-in-rgb-runtime-v2',
   baselineSource: expected, dependencies,
+  colorSamplingOptions: ['native', 'view', 'dominant'],
   helperSha256: sha(await readFile(resolve(worker, 'box_display_material.mjs'))),
   builderSha256: sha(await readFile(fileURLToPath(import.meta.url))),
   outputs,
   baselineRuntimesUnchanged: true,
   generatedHtmlPostprocessing: false,
-  changes: ['native material uses shared display helper', 'unlit renderer disables tone mapping'],
+  changes: ['native material uses shared display helper', 'unlit renderer disables tone mapping', 'optional view-direction color selection preserves native depth'],
 };
 await mkdir(dirname(evidence), {recursive: true});
 await writeFile(evidence, JSON.stringify(receipt, null, 2) + '\n');
