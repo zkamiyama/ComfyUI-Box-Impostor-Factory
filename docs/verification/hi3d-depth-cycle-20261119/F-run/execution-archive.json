@@ -1,0 +1,87 @@
+{
+  "copiedEpoch": 1795068371.0636694,
+  "gitHeadAtArchive": "fb399d4e50e27adfa6dd567efb85bb037d447136",
+  "sourceRun": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119",
+  "files": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/composed.json",
+      "file": "composed.json",
+      "sha256": "102d4ac6a1437e2798847050ff7e8e6507a124e9a4e7b2faf9506429baa46ce1",
+      "bytes": 2801
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/comparison-ready.json",
+      "file": "comparison-ready.json",
+      "sha256": "a84f4de032869e66afd67d37a9e1543a9a1cddbfe5d6a9c70fbd28c44a3e4309",
+      "bytes": 6558
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/nx/result.json",
+      "file": "nx-result.json",
+      "sha256": "083984f7b65c571c388d44c2d8366d297eeb2f932955f1f39698aabc94b806ec",
+      "bytes": 571
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/nx/prompt.json",
+      "file": "nx-prompt.json",
+      "sha256": "1c3d04580b0762c233be443ba6b312821481a21dee6cb9adc274b3e082e9b088",
+      "bytes": 3510
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/nx/submitted.json",
+      "file": "nx-submitted.json",
+      "sha256": "a930f5a70f779083d76b997bd31ecbaf60c6eb418b722e7d445b787e840aabec",
+      "bytes": 210
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/server-stop.json",
+      "file": "server-stop.json",
+      "sha256": "2513db4ef4f775064dbc3c24f2a65b6e45b2cff0d924101457174792167ed7e8",
+      "bytes": 490
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/runtime-node-info.json",
+      "file": "runtime-node-info.json",
+      "sha256": "ac713221f083a59b0d08c38183a17fe3b1923ae21fd773468dae3c57e8351a81",
+      "bytes": 2692
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/server-process-w4a8-F.json",
+      "file": "server-process.json",
+      "sha256": "169d937f304388ca6c6f4caa2b461126aad5cba346c9d92a5b46a5ce1920b43c",
+      "bytes": 2637
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/runner-process.json",
+      "file": "runner-process.json",
+      "sha256": "179cec1b0d53d6f1b69a0de95c4e851293bc568f14ebba9a4c8c98b7a1412cf5",
+      "bytes": 492
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/faces-run.log",
+      "file": "faces-run.log",
+      "sha256": "d769bf4d4c965dba3d7f97deef088b13b84bd45934fcf188b0e1fce4b5a5f5f2",
+      "bytes": 873
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/comfy-w4a8-F.log",
+      "file": "comfy-w4a8-F.log",
+      "sha256": "16e19f1075a5e089e354373883b98f15f109fd3b3d118a4a5e651f86402db384",
+      "bytes": 10509
+    },
+    {
+      "source": "box_nodes/h3_reference_conditioning.py",
+      "file": "h3_reference_conditioning-executed.py",
+      "sha256": "28fe97ba11d742d3009fdcb9fab1cf5231961e1702841cce9108e73fd47eb804",
+      "bytes": 2938
+    },
+    {
+      "source": "scripts/run_geometry_f.py",
+      "file": "run_geometry_f-executed.py",
+      "sha256": "05f3468f522c3e533c87284ace1334718ac29f0feb75555ef768ac39627ba103",
+      "bytes": 6901
+    }
+  ],
+  "rawSha256": "2ded737c9a26359759e74eefd74dfac0ae091c0586889ac3492c2426217d91f3",
+  "boxAsset": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920"
+}

@@ -1,0 +1,15 @@
+{
+  "pid": 2263573,
+  "args": [
+    "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/scripts/run_geometry_f.py",
+    "--run",
+    "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119",
+    "--face=-X"
+  ],
+  "startedEpoch": 1795067825.2293763,
+  "branch": "F",
+  "face": "-X",
+  "foreground": true,
+  "log": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/faces-run.log"
+}

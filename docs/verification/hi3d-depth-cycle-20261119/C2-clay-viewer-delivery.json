@@ -1,0 +1,29 @@
+{
+  "source": "C2-clay.inspector.html",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2-clay.inspector.html",
+  "htmlBytes": 23828389,
+  "htmlSHA256": "ec754611a0a694983535708eede9ff8849967d33f3b36286d6863b8286f7aa2d",
+  "gzip": "C2-clay.inspector.html.gz",
+  "gzipSourcePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2-clay.inspector.html.gz",
+  "gzipBytes": 17404006,
+  "gzipSHA256": "77e5182cb42522056c3168e556fbbaea841ebd9f363c99665734899b7f276af2",
+  "officialViewerUnmodified": true,
+  "asset": "f2b5c3f8b92a3b194ac77ad5d1424ce08ac68a8247d76ea546df96b2295ed10f",
+  "decompressedSHA256": "ec754611a0a694983535708eede9ff8849967d33f3b36286d6863b8286f7aa2d",
+  "decompressedBytes": 23828389,
+  "roundTripByteIdentityVerified": true,
+  "deliveryCopySHA256Verified": null,
+  "deliveryArchivePath": "/mnt/f/_dev/box-impostor-lab/results/hi3d-depth-cycle-20261119/C2-clay.inspector.html.gz",
+  "deliveryCopyMade": false,
+  "delivery": "Lossless gzip packaging; decompress to recover exact official HTML",
+  "packaging": {
+    "compressionLevel": 9,
+    "mtime": 0,
+    "rawHTMLCopiedToRepo": false
+  },
+  "captureStageState": "Three.js PBR",
+  "repoFilesystemFreeAfter": 290172928,
+  "artifactKind": "Full-triangle geometry-only uniform-gray diagnostic; exact official Inspector HTML",
+  "sourceTriangles": 1000000,
+  "viewerPayloadTriangles": 1000000
+}

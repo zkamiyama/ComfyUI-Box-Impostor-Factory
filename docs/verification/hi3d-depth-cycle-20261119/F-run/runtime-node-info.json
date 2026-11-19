@@ -1,0 +1,120 @@
+{
+  "BIH3ReferenceConditioning": {
+    "input": {
+      "required": {
+        "clip": [
+          "CLIP"
+        ],
+        "prompt": [
+          "STRING",
+          {
+            "multiline": true,
+            "dynamicPrompts": true
+          }
+        ],
+        "width": [
+          "INT",
+          {
+            "default": 0,
+            "min": 0,
+            "max": 16384,
+            "step": 32
+          }
+        ],
+        "height": [
+          "INT",
+          {
+            "default": 0,
+            "min": 0,
+            "max": 16384,
+            "step": 32
+          }
+        ],
+        "reference_latents": [
+          [
+            "all",
+            "color_first_two",
+            "color_only"
+          ],
+          {
+            "default": "all",
+            "tooltip": "All anchors all five pictures. Color first two anchors the color guide and source photo; structural pictures still condition the vision/text encoder. Color only sends Pictures 1 and 2 to both encoders."
+          }
+        ],
+        "image_1": [
+          "IMAGE",
+          {
+            "tooltip": "Picture 1: color guide. Picture numbers are preserved."
+          }
+        ],
+        "image_2": [
+          "IMAGE",
+          {
+            "tooltip": "Picture 2: source photo. Picture numbers are preserved."
+          }
+        ]
+      },
+      "optional": {
+        "vae": [
+          "VAE"
+        ],
+        "image_3": [
+          "IMAGE",
+          {
+            "tooltip": "Picture 3: depth guide. Picture numbers are preserved."
+          }
+        ],
+        "image_4": [
+          "IMAGE",
+          {
+            "tooltip": "Picture 4: normal guide. Picture numbers are preserved."
+          }
+        ],
+        "image_5": [
+          "IMAGE",
+          {
+            "tooltip": "Picture 5: foreground mask. Picture numbers are preserved."
+          }
+        ]
+      }
+    },
+    "input_order": {
+      "required": [
+        "clip",
+        "prompt",
+        "width",
+        "height",
+        "reference_latents",
+        "image_1",
+        "image_2"
+      ],
+      "optional": [
+        "vae",
+        "image_3",
+        "image_4",
+        "image_5"
+      ]
+    },
+    "is_input_list": false,
+    "output": [
+      "CONDITIONING",
+      "LATENT"
+    ],
+    "output_is_list": [
+      false,
+      false
+    ],
+    "output_name": [
+      "positive",
+      "latent"
+    ],
+    "name": "BIH3ReferenceConditioning",
+    "display_name": "BI H3ReferenceConditioning",
+    "description": "",
+    "python_module": "custom_nodes.box_impostor_factory",
+    "category": "Box Impostor/Experimental",
+    "output_node": false,
+    "has_intermediate_output": false,
+    "search_aliases": []
+  }
+}

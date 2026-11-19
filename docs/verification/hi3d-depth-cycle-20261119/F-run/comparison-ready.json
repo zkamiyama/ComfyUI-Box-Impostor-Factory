@@ -1,0 +1,183 @@
+{
+  "face": "-X",
+  "rawOnly": false,
+  "B_raw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/nx/generated.png",
+  "D_raw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/nx/generated.png",
+  "F_raw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/nx/generated.png",
+  "experiment": {
+    "name": "h3-two-color-pictures-v1",
+    "targetFace": "-X",
+    "sourceBranch": "B",
+    "sourceRecipeSha256": "7afc06ebcb8c7d0dd189475b1649762907463b15db6e587ec13c433700e7fc28",
+    "sourceBox": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+    "sourceResultSha256": "c49c5ffcd75e6354090c5d351ef5b8a5e5b083a4a7365ac2b1a0f85b6a4dfa0d",
+    "sourceRaw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/B/nx/generated.png",
+    "sourceRawSha256": "b1252bf14ca410884ef8f2cb2214893a372e994b59f31291995d73cf239f5103",
+    "comparisonBranch": "D",
+    "comparisonRecipeSha256": "a95deba89078bd736b45444d5c6bcfcc7dc33a20218df2e675309dd6ff6ad14d",
+    "comparisonResultSha256": "f717216e29f86ca37c70aba3d5fda1c0fdfda9a4daf9dd5e7fd85966c909d629",
+    "comparisonRaw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/D/nx/generated.png",
+    "comparisonRawSha256": "290d900dc6a71d2542ff2fe17c77bb8db590bfe116d86b6caab693ab2a922025",
+    "comparisonBox": "0f953f9644896bedbb561576cce0d41d5b32dc69046b635e9fcf76de2fb2a7e0",
+    "vlmPictureIndices": [
+      1,
+      2
+    ],
+    "vaePictureIndices": [
+      1,
+      2
+    ],
+    "omittedPictureRoles": [
+      "axis-depth",
+      "normals",
+      "mask"
+    ],
+    "promptChanges": [
+      {
+        "before": "<Picture 3> is the aligned geometry depth: brighter means nearer the camera. ",
+        "after": ""
+      },
+      {
+        "before": "<Picture 4> is the aligned world-space surface normal map. ",
+        "after": ""
+      },
+      {
+        "before": "<Picture 5> is the aligned foreground mask: white is the person and black is background. ",
+        "after": ""
+      },
+      {
+        "before": "Use Pictures 3, 4 and 5 only as structural references; do not copy their colors. ",
+        "after": ""
+      },
+      {
+        "before": "Picture 1 and the structural maps.",
+        "after": "Picture 1."
+      },
+      {
+        "before": "Keep the body and garment boundaries exactly within the mask.",
+        "after": "Keep the body and garment boundaries exactly as shown in Picture 1."
+      },
+      {
+        "before": ", no colored depth or normal-map appearance.",
+        "after": "."
+      }
+    ],
+    "promptIdenticalToD": false,
+    "differenceFromD": "Removed structural VLM pictures and their corresponding prompt instructions; the two VAE color references are unchanged.",
+    "nativeConditioningSha256": "217f3b50ede649831c34be347196926211606904610bcb267c8725c18eb62498",
+    "wrapperSha256": "28fe97ba11d742d3009fdcb9fab1cf5231961e1702841cce9108e73fd47eb804"
+  },
+  "result": {
+    "prompt_id": "265c9f54-e17e-4474-a08e-9419ce8cdce4",
+    "freshInference": true,
+    "face": "-X",
+    "elapsedSeconds": 440.17,
+    "raw": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/nx/generated.png",
+    "mask": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/F/nx/foreground.png",
+    "rawSha256": "2ded737c9a26359759e74eefd74dfac0ae091c0586889ac3492c2426217d91f3",
+    "maskSha256": "d6f14c17ed71303d236a7cd7b9b86077948b85b693296cf38bc9a8c493ac3211",
+    "promptSha256": "1c3d04580b0762c233be443ba6b312821481a21dee6cb9adc274b3e082e9b088"
+  },
+  "box": {
+    "asset": "4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/geometry-abc-20261119/output/box_impostor/4e8090f307b4958de8a94877ad391b3b0e355fa208d7ded8340a229e773b1920",
+    "sourceBox": "ce53eb5429973a519e264d5752fd90348697797cd50f0903a4993076398ba1a2",
+    "guideBaseline": "f6a5d91901f6745980cf73315bdacecc7e9db216b88784018cc7f8093d9dd404",
+    "replacedFace": "-X",
+    "applied": true,
+    "faceQA": {
+      "before": {
+        "iou": 0.9691154876997012,
+        "boundaryP95Px": 7.431158336742983
+      },
+      "status": "accepted",
+      "sourceSize": [
+        369,
+        1024
+      ],
+      "tileSize": [
+        1024,
+        1024
+      ],
+      "registration": {
+        "scale": 1.0,
+        "centerShiftYX": [
+          0.0,
+          0.0
+        ]
+      },
+      "registrationCenterYX": [
+        512.0,
+        517.5
+      ],
+      "sampling": "source-affine-v1",
+      "boundingBoxRegistration": {
+        "scale": 0.988280147845277,
+        "centerShiftYX": [
+          -0.5,
+          -6.0
+        ],
+        "scores": {
+          "iou": 0.962992809017561,
+          "boundaryP95Px": 8.246211251235321
+        }
+      },
+      "after": {
+        "iou": 0.9691154876997012,
+        "boundaryP95Px": 7.431158336742983
+      },
+      "reason": "silhouette-passed",
+      "originalSize": [
+        1024,
+        1024
+      ],
+      "guideCanvas": {
+        "version": 1,
+        "size": 1024,
+        "faceId": "-X",
+        "guideRect": [
+          327,
+          0,
+          369,
+          1024
+        ],
+        "guideInputSha256": "13704276405f23fb67ee35f2bf2db0a7645004431613bea44d25e8048d35f7d9",
+        "referenceInputSha256": "a7305b208feab2721f039d8d166cc3a25b4996d0a8191442e0774ddbb4536aed",
+        "sourceRect": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "physicalWidthHeight": [
+          0.3745910310745239,
+          1.04
+        ],
+        "imageRowOrder": "top-to-bottom",
+        "backgroundSRGB": 0.5
+      },
+      "thresholds": {
+        "minIoU": 0.85,
+        "maxShiftFraction": 0.1,
+        "maxScaleChange": 0.15
+      }
+    },
+    "preservation": {
+      "proxyBytesExact": true,
+      "geometryMetadataExact": true,
+      "nonColorMapsExact": true,
+      "coverageAlphaExact": true,
+      "unchangedFaceRGBAHashes": {
+        "+X": "97d2f21d846e1226a5ed44da577a2b9d187b66c90a71ec8bfdb6a1ccc500d366",
+        "+Y": "afa9b1f5a1a2a00a1e575a0095397b290639487ed4a9c25ed0e9f5a572fd258d",
+        "-Y": "dd101db24c1082bb50ed9b590008f1cb3bff33f7d3f9d44091c82d07e7263101",
+        "+Z": "f6002edf2719ef1e401eaf1c17093fd006469e83918adbc087145e9c1c09db6a",
+        "-Z": "f29da30a062938731a685aab26f343738f4d4f9588c549b825c0621ba31c2dcd"
+      },
+      "unchangedFaceSourcesAndMetadata": true
+    },
+    "proxySha256": "d5b6aa57a9bfa91622e765c31a3b8bc938deb1ffc9de35410f6ac820aa0b649a",
+    "viewConsistency": "none",
+    "materialEstimation": "none"
+  }
+}
