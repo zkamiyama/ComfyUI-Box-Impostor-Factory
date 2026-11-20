@@ -1,0 +1,44 @@
+{
+  "camera": "same nominal front GS view",
+  "width": 1024,
+  "comparison": [
+    {
+      "name": "Original reference",
+      "interiorLaplacianRMS": 36.125,
+      "meanLuma": 130.06
+    },
+    {
+      "name": "Native 3DGS 1K",
+      "interiorLaplacianRMS": 8.199,
+      "meanLuma": 153.6
+    },
+    {
+      "name": "Qwen 1K / 25 steps",
+      "interiorLaplacianRMS": 11.842,
+      "meanLuma": 152.69
+    },
+    {
+      "name": "Qwen 2K / 10 -> 1K",
+      "interiorLaplacianRMS": 9.62,
+      "meanLuma": 151.58
+    }
+  ],
+  "qwen2kRegistration": [
+    [
+      0.9858450293540955,
+      -0.010895268060266972,
+      38.92538833618164
+    ],
+    [
+      0.010472762398421764,
+      1.025617241859436,
+      -33.854576110839844
+    ]
+  ],
+  "qwen2kRegistrationIoU": 0.8932620858255467,
+  "limits": [
+    "Qwen1K 25 steps vs Qwen2K 10 steps, different seeds/prompt; comparisons are not controlled resolution-only attribution",
+    "Laplacian includes texture noise; not an identity/quality metric"
+  ],
+  "image": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/b-qwen1k-vs2k-fullbody.jpg"
+}

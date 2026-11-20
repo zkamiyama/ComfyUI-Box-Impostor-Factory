@@ -1,0 +1,53 @@
+{
+  "mode": "TripoSplat 3DGS RGB/Z -> Qwen Image 2.1 AnyAngle 2K -> generic all-body affine -> native 1024 Box color-only",
+  "model": "qwen_image_2.1_int8_convrot.safetensors",
+  "originalInputShape": [
+    1024,
+    1024
+  ],
+  "targetRGBShape": [
+    2048,
+    2048
+  ],
+  "targetRelativeDepthReferenceShape": [
+    512,
+    512
+  ],
+  "effectiveOutputShape": [
+    2048,
+    2048
+  ],
+  "textEncoderResolution": 0,
+  "steps": 10,
+  "seed": 2026113031,
+  "cacheDevice": "cpu",
+  "cacheDtype": "int8",
+  "lora": "QI2.1_AnyAngle.safetensors",
+  "loraStrength": 1,
+  "estimatedObservedPhysicalVRAMMiB": "about 15,800, based on nvidia-smi spot-checks; not a peak measurement",
+  "comfyExecutionSeconds": 1966.3671279020054,
+  "referenceSharpening": {
+    "qwen": 6.689847469329834,
+    "gs": 2.8276207447052
+  },
+  "silhouetteIoUBefore": 0.817891451290021,
+  "silhouetteIoUAfter": 0.8932620858255467,
+  "boxAssetId": "59e5f233367b864c688bd6308ffc9dfa3a42cd2e09501d1675cc3ed52c18b1e7",
+  "alteredMaps": [
+    "colorMap"
+  ],
+  "unchangedMaps": [
+    "intervalMap",
+    "rangeMap",
+    "normalMap"
+  ],
+  "pixelResolution": 1024,
+  "viewScope": "Only +Z Box face color refined; remaining five GS RGB",
+  "allSubjectNoFaceCrop": true,
+  "comparisonCameraError": 0.0,
+  "notes": [
+    "Different steps/seed/prompts from 1K baseline; not resolution-only attribution",
+    "Increased detail around eyes but remaining mouth deformation; independent visual QA required",
+    "This is not an economical default on RTX 4080 16GB at current settings"
+  ]
+}
