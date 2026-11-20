@@ -1,0 +1,81 @@
+{
+  "kind": "synthetic-CPU-validation-on-real-Idol20-Box512",
+  "scriptSha256": "863cef52cb68f94e18810972c0c2553192db8202817b8c7b151ca3fa4082c5fc",
+  "completed": true,
+  "mapping": [
+    [
+      0.9525194026606049,
+      0.0,
+      268.6312926202155
+    ],
+    [
+      0.0,
+      2.0,
+      1.0
+    ]
+  ],
+  "linearRampMaxError": 1.6585006978875327e-07,
+  "subsamplesXY": [
+    1,
+    2
+  ],
+  "registration": {
+    "method": "bounded-whole-foreground-affine; XY scale, rotation, translation; no shear",
+    "selection": "optimized-fullbody-affine",
+    "parametersSX_SY_angleDY_DX": [
+      1.0003300494909924,
+      1.0008505423015976,
+      0.1322348981980621,
+      6.449770194826769,
+      -7.1058988304745
+    ],
+    "matrixInputToOutput": [
+      [
+        1.0003273853326564,
+        -0.0023098953047635293,
+        -6.091844979741693
+      ],
+      [
+        0.002308694042588444,
+        1.000847876757044,
+        4.835184230814775
+      ]
+    ],
+    "originalIoU": 0.8289653429298734,
+    "registeredIoU": 0.9811047931688063,
+    "iouReference": 0.999999,
+    "referencePassed": false,
+    "policy": "Diagnostic reference only; lower IoU does not block an immutable comparison variant",
+    "optimizationPixels": [
+      256,
+      256
+    ],
+    "fullResolution": [
+      1024,
+      1024
+    ],
+    "scaleBounds": [
+      0.96,
+      1.06
+    ],
+    "rotationBoundsDegrees": [
+      -3,
+      3
+    ],
+    "translationBoundsPixels": [
+      -16.0,
+      16.0
+    ],
+    "seed": 20261120,
+    "optimizerEvaluations": 1330,
+    "seconds": 3.0,
+    "subjectRegion": "entire foreground; no facial crops, keypoints, local warps, or inpainting"
+  },
+  "changedRgbPixels": 80062,
+  "allAlphaBitsPreserved": true,
+  "otherFiveFacesPreserved": true,
+  "geometryMetadataPreserved": true,
+  "otherSourceFilesPreserved": 17,
+  "zipIntegrityPassed": true,
+  "belowReferenceStillProducedVariant": true
+}
