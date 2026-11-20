@@ -1,0 +1,1692 @@
+{
+  "schema": "box-identical-shape-rgb-update-v1",
+  "baseAsset": "d856345c6c8168a2bd130cf7c1fe5d73fa3b340f227ac6cbc714427155ac4924",
+  "editedAsset": "59e5f233367b864c688bd6308ffc9dfa3a42cd2e09501d1675cc3ed52c18b1e7",
+  "count": 240,
+  "maxCameraMatrixDifference": 0,
+  "maxAlphaByteDifference": 0,
+  "changedRgbPixels": 11133850,
+  "meanRgbRms255": 3.473950592195615,
+  "perFrame": [
+    {
+      "index": 0,
+      "yaw": 0.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 138923,
+      "rgbRms255": 9.906444549560547
+    },
+    {
+      "index": 1,
+      "yaw": 1.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 137142,
+      "rgbRms255": 9.844386100769043
+    },
+    {
+      "index": 2,
+      "yaw": 3.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 135355,
+      "rgbRms255": 9.775345802307129
+    },
+    {
+      "index": 3,
+      "yaw": 4.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 133584,
+      "rgbRms255": 9.701153755187988
+    },
+    {
+      "index": 4,
+      "yaw": 6.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 126543,
+      "rgbRms255": 9.610984802246094
+    },
+    {
+      "index": 5,
+      "yaw": 7.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 125375,
+      "rgbRms255": 9.540111541748047
+    },
+    {
+      "index": 6,
+      "yaw": 9.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 124978,
+      "rgbRms255": 9.47321605682373
+    },
+    {
+      "index": 7,
+      "yaw": 10.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 124719,
+      "rgbRms255": 9.411826133728027
+    },
+    {
+      "index": 8,
+      "yaw": 12.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 124421,
+      "rgbRms255": 9.348389625549316
+    },
+    {
+      "index": 9,
+      "yaw": 13.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 124063,
+      "rgbRms255": 9.284601211547852
+    },
+    {
+      "index": 10,
+      "yaw": 15.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 123436,
+      "rgbRms255": 9.22261905670166
+    },
+    {
+      "index": 11,
+      "yaw": 16.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 122284,
+      "rgbRms255": 9.150968551635742
+    },
+    {
+      "index": 12,
+      "yaw": 18.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 120600,
+      "rgbRms255": 9.068169593811035
+    },
+    {
+      "index": 13,
+      "yaw": 19.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 118724,
+      "rgbRms255": 8.972721099853516
+    },
+    {
+      "index": 14,
+      "yaw": 21.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 116715,
+      "rgbRms255": 8.860952377319336
+    },
+    {
+      "index": 15,
+      "yaw": 22.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 114590,
+      "rgbRms255": 8.745174407958984
+    },
+    {
+      "index": 16,
+      "yaw": 24.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 112385,
+      "rgbRms255": 8.623247146606445
+    },
+    {
+      "index": 17,
+      "yaw": 25.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 110164,
+      "rgbRms255": 8.493060111999512
+    },
+    {
+      "index": 18,
+      "yaw": 27.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 107786,
+      "rgbRms255": 8.356230735778809
+    },
+    {
+      "index": 19,
+      "yaw": 28.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 105306,
+      "rgbRms255": 8.213102340698242
+    },
+    {
+      "index": 20,
+      "yaw": 30.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 102814,
+      "rgbRms255": 8.066346168518066
+    },
+    {
+      "index": 21,
+      "yaw": 31.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 100296,
+      "rgbRms255": 7.911216735839844
+    },
+    {
+      "index": 22,
+      "yaw": 33.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 97599,
+      "rgbRms255": 7.739553928375244
+    },
+    {
+      "index": 23,
+      "yaw": 34.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 94872,
+      "rgbRms255": 7.569230079650879
+    },
+    {
+      "index": 24,
+      "yaw": 36.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 92013,
+      "rgbRms255": 7.392303943634033
+    },
+    {
+      "index": 25,
+      "yaw": 37.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 89042,
+      "rgbRms255": 7.216805934906006
+    },
+    {
+      "index": 26,
+      "yaw": 39.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 85922,
+      "rgbRms255": 7.034060478210449
+    },
+    {
+      "index": 27,
+      "yaw": 40.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 82532,
+      "rgbRms255": 6.842860698699951
+    },
+    {
+      "index": 28,
+      "yaw": 42.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 79058,
+      "rgbRms255": 6.642406940460205
+    },
+    {
+      "index": 29,
+      "yaw": 43.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 75472,
+      "rgbRms255": 6.407828330993652
+    },
+    {
+      "index": 30,
+      "yaw": 45.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 71804,
+      "rgbRms255": 6.177557945251465
+    },
+    {
+      "index": 31,
+      "yaw": 46.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 68213,
+      "rgbRms255": 5.924393653869629
+    },
+    {
+      "index": 32,
+      "yaw": 48.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 64682,
+      "rgbRms255": 5.723463535308838
+    },
+    {
+      "index": 33,
+      "yaw": 49.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 61137,
+      "rgbRms255": 5.534635066986084
+    },
+    {
+      "index": 34,
+      "yaw": 51.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 57545,
+      "rgbRms255": 5.347863674163818
+    },
+    {
+      "index": 35,
+      "yaw": 52.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 54043,
+      "rgbRms255": 5.147152423858643
+    },
+    {
+      "index": 36,
+      "yaw": 54.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 50362,
+      "rgbRms255": 4.969850063323975
+    },
+    {
+      "index": 37,
+      "yaw": 55.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 46242,
+      "rgbRms255": 4.778984546661377
+    },
+    {
+      "index": 38,
+      "yaw": 57.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 41357,
+      "rgbRms255": 4.562720775604248
+    },
+    {
+      "index": 39,
+      "yaw": 58.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 37216,
+      "rgbRms255": 4.367067337036133
+    },
+    {
+      "index": 40,
+      "yaw": 60.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 32892,
+      "rgbRms255": 4.163407802581787
+    },
+    {
+      "index": 41,
+      "yaw": 61.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 28672,
+      "rgbRms255": 3.936232805252075
+    },
+    {
+      "index": 42,
+      "yaw": 63.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 24424,
+      "rgbRms255": 3.717318534851074
+    },
+    {
+      "index": 43,
+      "yaw": 64.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 20297,
+      "rgbRms255": 3.5499637126922607
+    },
+    {
+      "index": 44,
+      "yaw": 66.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 16562,
+      "rgbRms255": 3.361854314804077
+    },
+    {
+      "index": 45,
+      "yaw": 67.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 13333,
+      "rgbRms255": 3.123770236968994
+    },
+    {
+      "index": 46,
+      "yaw": 69.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 10680,
+      "rgbRms255": 2.8228678703308105
+    },
+    {
+      "index": 47,
+      "yaw": 70.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 8350,
+      "rgbRms255": 2.4826982021331787
+    },
+    {
+      "index": 48,
+      "yaw": 72.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 6579,
+      "rgbRms255": 2.0782015323638916
+    },
+    {
+      "index": 49,
+      "yaw": 73.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 5266,
+      "rgbRms255": 1.6793352365493774
+    },
+    {
+      "index": 50,
+      "yaw": 75.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 4450,
+      "rgbRms255": 1.3694020509719849
+    },
+    {
+      "index": 51,
+      "yaw": 76.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 4170,
+      "rgbRms255": 1.1760470867156982
+    },
+    {
+      "index": 52,
+      "yaw": 78.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 4061,
+      "rgbRms255": 1.1728569269180298
+    },
+    {
+      "index": 53,
+      "yaw": 79.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 3805,
+      "rgbRms255": 1.152574062347412
+    },
+    {
+      "index": 54,
+      "yaw": 81.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 3544,
+      "rgbRms255": 1.1130331754684448
+    },
+    {
+      "index": 55,
+      "yaw": 82.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 3232,
+      "rgbRms255": 1.090391755104065
+    },
+    {
+      "index": 56,
+      "yaw": 84.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 2831,
+      "rgbRms255": 1.016605257987976
+    },
+    {
+      "index": 57,
+      "yaw": 85.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 2380,
+      "rgbRms255": 0.8833022713661194
+    },
+    {
+      "index": 58,
+      "yaw": 87.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 2005,
+      "rgbRms255": 0.7701318264007568
+    },
+    {
+      "index": 59,
+      "yaw": 88.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1669,
+      "rgbRms255": 0.7682353258132935
+    },
+    {
+      "index": 60,
+      "yaw": 90.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1344,
+      "rgbRms255": 0.6855981349945068
+    },
+    {
+      "index": 61,
+      "yaw": 91.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1055,
+      "rgbRms255": 0.6583924293518066
+    },
+    {
+      "index": 62,
+      "yaw": 93.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 779,
+      "rgbRms255": 0.6007258892059326
+    },
+    {
+      "index": 63,
+      "yaw": 94.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 616,
+      "rgbRms255": 0.6673100590705872
+    },
+    {
+      "index": 64,
+      "yaw": 96.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 594,
+      "rgbRms255": 0.740484356880188
+    },
+    {
+      "index": 65,
+      "yaw": 97.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 609,
+      "rgbRms255": 0.8017721176147461
+    },
+    {
+      "index": 66,
+      "yaw": 99.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 636,
+      "rgbRms255": 0.8512312769889832
+    },
+    {
+      "index": 67,
+      "yaw": 100.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 638,
+      "rgbRms255": 0.884599506855011
+    },
+    {
+      "index": 68,
+      "yaw": 102.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 652,
+      "rgbRms255": 0.9038514494895935
+    },
+    {
+      "index": 69,
+      "yaw": 103.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 654,
+      "rgbRms255": 0.8821725249290466
+    },
+    {
+      "index": 70,
+      "yaw": 105.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 631,
+      "rgbRms255": 0.8600419163703918
+    },
+    {
+      "index": 71,
+      "yaw": 106.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 587,
+      "rgbRms255": 0.845859169960022
+    },
+    {
+      "index": 72,
+      "yaw": 108.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 536,
+      "rgbRms255": 0.8296065926551819
+    },
+    {
+      "index": 73,
+      "yaw": 109.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 479,
+      "rgbRms255": 0.8282031416893005
+    },
+    {
+      "index": 74,
+      "yaw": 111.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 416,
+      "rgbRms255": 0.7367702722549438
+    },
+    {
+      "index": 75,
+      "yaw": 112.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 351,
+      "rgbRms255": 0.5949310064315796
+    },
+    {
+      "index": 76,
+      "yaw": 114.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 312,
+      "rgbRms255": 0.5252665281295776
+    },
+    {
+      "index": 77,
+      "yaw": 115.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 293,
+      "rgbRms255": 0.5052676200866699
+    },
+    {
+      "index": 78,
+      "yaw": 117.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 274,
+      "rgbRms255": 0.4724489450454712
+    },
+    {
+      "index": 79,
+      "yaw": 118.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 227,
+      "rgbRms255": 0.4025452136993408
+    },
+    {
+      "index": 80,
+      "yaw": 120.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 184,
+      "rgbRms255": 0.3214195966720581
+    },
+    {
+      "index": 81,
+      "yaw": 121.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 143,
+      "rgbRms255": 0.2537880539894104
+    },
+    {
+      "index": 82,
+      "yaw": 123.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 114,
+      "rgbRms255": 0.2158682942390442
+    },
+    {
+      "index": 83,
+      "yaw": 124.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 86,
+      "rgbRms255": 0.16304495930671692
+    },
+    {
+      "index": 84,
+      "yaw": 126.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 61,
+      "rgbRms255": 0.1320258527994156
+    },
+    {
+      "index": 85,
+      "yaw": 127.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 36,
+      "rgbRms255": 0.10739275068044662
+    },
+    {
+      "index": 86,
+      "yaw": 129.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 18,
+      "rgbRms255": 0.08012035489082336
+    },
+    {
+      "index": 87,
+      "yaw": 130.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 2,
+      "rgbRms255": 0.023350533097982407
+    },
+    {
+      "index": 88,
+      "yaw": 132.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 2,
+      "rgbRms255": 0.009589558467268944
+    },
+    {
+      "index": 89,
+      "yaw": 133.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1,
+      "rgbRms255": 0.0063788797706365585
+    },
+    {
+      "index": 90,
+      "yaw": 135.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1,
+      "rgbRms255": 0.005103103816509247
+    },
+    {
+      "index": 91,
+      "yaw": 136.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1,
+      "rgbRms255": 0.005103103816509247
+    },
+    {
+      "index": 92,
+      "yaw": 138.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1,
+      "rgbRms255": 0.0032526031136512756
+    },
+    {
+      "index": 93,
+      "yaw": 139.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 94,
+      "yaw": 141.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 95,
+      "yaw": 142.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 96,
+      "yaw": 144.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 97,
+      "yaw": 145.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 98,
+      "yaw": 147.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0009021097794175148
+    },
+    {
+      "index": 99,
+      "yaw": 148.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 100,
+      "yaw": 150.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 101,
+      "yaw": 151.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 102,
+      "yaw": 153.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 103,
+      "yaw": 154.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 104,
+      "yaw": 156.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 105,
+      "yaw": 157.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 106,
+      "yaw": 159.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 107,
+      "yaw": 160.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 108,
+      "yaw": 162.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 109,
+      "yaw": 163.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 110,
+      "yaw": 165.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 111,
+      "yaw": 166.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0012757759541273117
+    },
+    {
+      "index": 112,
+      "yaw": 168.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0009021097794175148
+    },
+    {
+      "index": 113,
+      "yaw": 169.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 114,
+      "yaw": 171.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.00220970856025815
+    },
+    {
+      "index": 115,
+      "yaw": 172.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.003608439117670059
+    },
+    {
+      "index": 116,
+      "yaw": 174.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0027063293382525444
+    },
+    {
+      "index": 117,
+      "yaw": 175.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0038273276295512915
+    },
+    {
+      "index": 118,
+      "yaw": 177.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1,
+      "rgbRms255": 0.0032526031136512756
+    },
+    {
+      "index": 119,
+      "yaw": 178.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 3,
+      "rgbRms255": 0.006051536649465561
+    },
+    {
+      "index": 120,
+      "yaw": -180.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 3,
+      "rgbRms255": 0.005022734869271517
+    },
+    {
+      "index": 121,
+      "yaw": -178.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1,
+      "rgbRms255": 0.0033753858879208565
+    },
+    {
+      "index": 122,
+      "yaw": -177.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0034938561730086803
+    },
+    {
+      "index": 123,
+      "yaw": -175.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 124,
+      "yaw": -174.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 125,
+      "yaw": -172.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 126,
+      "yaw": -171.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 127,
+      "yaw": -169.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 128,
+      "yaw": -168.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1,
+      "rgbRms255": 0.0018042195588350296
+    },
+    {
+      "index": 129,
+      "yaw": -166.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 130,
+      "yaw": -165.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 131,
+      "yaw": -163.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 132,
+      "yaw": -162.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 133,
+      "yaw": -160.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 134,
+      "yaw": -159.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 135,
+      "yaw": -157.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 136,
+      "yaw": -156.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0009021097794175148
+    },
+    {
+      "index": 137,
+      "yaw": -154.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0
+    },
+    {
+      "index": 138,
+      "yaw": -153.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0009021097794175148
+    },
+    {
+      "index": 139,
+      "yaw": -151.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0009021097794175148
+    },
+    {
+      "index": 140,
+      "yaw": -150.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0025515519082546234
+    },
+    {
+      "index": 141,
+      "yaw": -148.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 0,
+      "rgbRms255": 0.0020171788055449724
+    },
+    {
+      "index": 142,
+      "yaw": -147.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 3,
+      "rgbRms255": 0.005022734869271517
+    },
+    {
+      "index": 143,
+      "yaw": -145.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 4,
+      "rgbRms255": 0.007328774780035019
+    },
+    {
+      "index": 144,
+      "yaw": -144.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 6,
+      "rgbRms255": 0.011339344084262848
+    },
+    {
+      "index": 145,
+      "yaw": -142.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 7,
+      "rgbRms255": 0.015229365788400173
+    },
+    {
+      "index": 146,
+      "yaw": -141.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 18,
+      "rgbRms255": 0.04405584931373596
+    },
+    {
+      "index": 147,
+      "yaw": -139.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 37,
+      "rgbRms255": 0.07266324758529663
+    },
+    {
+      "index": 148,
+      "yaw": -138.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 53,
+      "rgbRms255": 0.11090081930160522
+    },
+    {
+      "index": 149,
+      "yaw": -136.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 96,
+      "rgbRms255": 0.15992552042007446
+    },
+    {
+      "index": 150,
+      "yaw": -135.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 133,
+      "rgbRms255": 0.20945660769939423
+    },
+    {
+      "index": 151,
+      "yaw": -133.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 191,
+      "rgbRms255": 0.263246089220047
+    },
+    {
+      "index": 152,
+      "yaw": -132.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 249,
+      "rgbRms255": 0.3188878297805786
+    },
+    {
+      "index": 153,
+      "yaw": -130.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 339,
+      "rgbRms255": 0.37628036737442017
+    },
+    {
+      "index": 154,
+      "yaw": -129.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 496,
+      "rgbRms255": 0.4476073980331421
+    },
+    {
+      "index": 155,
+      "yaw": -127.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 674,
+      "rgbRms255": 0.5088498592376709
+    },
+    {
+      "index": 156,
+      "yaw": -126.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 904,
+      "rgbRms255": 0.5864157676696777
+    },
+    {
+      "index": 157,
+      "yaw": -124.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1246,
+      "rgbRms255": 0.6857743263244629
+    },
+    {
+      "index": 158,
+      "yaw": -123.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 1757,
+      "rgbRms255": 0.7583454847335815
+    },
+    {
+      "index": 159,
+      "yaw": -121.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 2360,
+      "rgbRms255": 0.8380478620529175
+    },
+    {
+      "index": 160,
+      "yaw": -120.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 3083,
+      "rgbRms255": 0.9298433065414429
+    },
+    {
+      "index": 161,
+      "yaw": -118.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 3762,
+      "rgbRms255": 1.0073347091674805
+    },
+    {
+      "index": 162,
+      "yaw": -117.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 4602,
+      "rgbRms255": 1.094197392463684
+    },
+    {
+      "index": 163,
+      "yaw": -115.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 5468,
+      "rgbRms255": 1.1832375526428223
+    },
+    {
+      "index": 164,
+      "yaw": -114.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 6342,
+      "rgbRms255": 1.2644156217575073
+    },
+    {
+      "index": 165,
+      "yaw": -112.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 7330,
+      "rgbRms255": 1.3643771409988403
+    },
+    {
+      "index": 166,
+      "yaw": -111.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 8304,
+      "rgbRms255": 1.4641283750534058
+    },
+    {
+      "index": 167,
+      "yaw": -109.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 9585,
+      "rgbRms255": 1.5837939977645874
+    },
+    {
+      "index": 168,
+      "yaw": -108.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 10928,
+      "rgbRms255": 1.6947728395462036
+    },
+    {
+      "index": 169,
+      "yaw": -106.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 12338,
+      "rgbRms255": 1.8185826539993286
+    },
+    {
+      "index": 170,
+      "yaw": -105.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 13797,
+      "rgbRms255": 1.950240969657898
+    },
+    {
+      "index": 171,
+      "yaw": -103.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 15527,
+      "rgbRms255": 2.09240984916687
+    },
+    {
+      "index": 172,
+      "yaw": -102.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 17295,
+      "rgbRms255": 2.2478716373443604
+    },
+    {
+      "index": 173,
+      "yaw": -100.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 19121,
+      "rgbRms255": 2.4105224609375
+    },
+    {
+      "index": 174,
+      "yaw": -99.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 20910,
+      "rgbRms255": 2.545152187347412
+    },
+    {
+      "index": 175,
+      "yaw": -97.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 22667,
+      "rgbRms255": 2.679394245147705
+    },
+    {
+      "index": 176,
+      "yaw": -96.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 24565,
+      "rgbRms255": 2.811519145965576
+    },
+    {
+      "index": 177,
+      "yaw": -94.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 26201,
+      "rgbRms255": 2.9357519149780273
+    },
+    {
+      "index": 178,
+      "yaw": -93.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 28058,
+      "rgbRms255": 3.057607650756836
+    },
+    {
+      "index": 179,
+      "yaw": -91.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 29994,
+      "rgbRms255": 3.1786394119262695
+    },
+    {
+      "index": 180,
+      "yaw": -90.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 31816,
+      "rgbRms255": 3.291482925415039
+    },
+    {
+      "index": 181,
+      "yaw": -88.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 33501,
+      "rgbRms255": 3.3890626430511475
+    },
+    {
+      "index": 182,
+      "yaw": -87.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 34886,
+      "rgbRms255": 3.430284023284912
+    },
+    {
+      "index": 183,
+      "yaw": -85.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 36087,
+      "rgbRms255": 3.4560189247131348
+    },
+    {
+      "index": 184,
+      "yaw": -84.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 39126,
+      "rgbRms255": 5.136477947235107
+    },
+    {
+      "index": 185,
+      "yaw": -82.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 39901,
+      "rgbRms255": 5.056490898132324
+    },
+    {
+      "index": 186,
+      "yaw": -81.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 39868,
+      "rgbRms255": 4.788409233093262
+    },
+    {
+      "index": 187,
+      "yaw": -79.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 39274,
+      "rgbRms255": 4.46876335144043
+    },
+    {
+      "index": 188,
+      "yaw": -78.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 38115,
+      "rgbRms255": 4.06721830368042
+    },
+    {
+      "index": 189,
+      "yaw": -76.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 36534,
+      "rgbRms255": 3.6502695083618164
+    },
+    {
+      "index": 190,
+      "yaw": -75.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 35085,
+      "rgbRms255": 3.3747546672821045
+    },
+    {
+      "index": 191,
+      "yaw": -73.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 34821,
+      "rgbRms255": 3.3451108932495117
+    },
+    {
+      "index": 192,
+      "yaw": -72.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 36736,
+      "rgbRms255": 3.389913320541382
+    },
+    {
+      "index": 193,
+      "yaw": -70.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 42178,
+      "rgbRms255": 3.443376064300537
+    },
+    {
+      "index": 194,
+      "yaw": -69.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 49717,
+      "rgbRms255": 3.5526387691497803
+    },
+    {
+      "index": 195,
+      "yaw": -67.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 58219,
+      "rgbRms255": 3.675271511077881
+    },
+    {
+      "index": 196,
+      "yaw": -66.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 67013,
+      "rgbRms255": 3.808074951171875
+    },
+    {
+      "index": 197,
+      "yaw": -64.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 75796,
+      "rgbRms255": 3.9519035816192627
+    },
+    {
+      "index": 198,
+      "yaw": -63.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 84079,
+      "rgbRms255": 4.11271333694458
+    },
+    {
+      "index": 199,
+      "yaw": -61.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 91736,
+      "rgbRms255": 4.283581733703613
+    },
+    {
+      "index": 200,
+      "yaw": -60.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 99013,
+      "rgbRms255": 4.473496437072754
+    },
+    {
+      "index": 201,
+      "yaw": -58.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 105746,
+      "rgbRms255": 4.659996509552002
+    },
+    {
+      "index": 202,
+      "yaw": -57.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 111892,
+      "rgbRms255": 4.872843265533447
+    },
+    {
+      "index": 203,
+      "yaw": -55.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 117348,
+      "rgbRms255": 5.110969543457031
+    },
+    {
+      "index": 204,
+      "yaw": -54.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 122136,
+      "rgbRms255": 5.360602855682373
+    },
+    {
+      "index": 205,
+      "yaw": -52.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 126525,
+      "rgbRms255": 5.636786937713623
+    },
+    {
+      "index": 206,
+      "yaw": -51.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 130131,
+      "rgbRms255": 5.918468475341797
+    },
+    {
+      "index": 207,
+      "yaw": -49.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 133578,
+      "rgbRms255": 6.217527866363525
+    },
+    {
+      "index": 208,
+      "yaw": -48.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 136604,
+      "rgbRms255": 6.5252685546875
+    },
+    {
+      "index": 209,
+      "yaw": -46.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 139306,
+      "rgbRms255": 6.837596893310547
+    },
+    {
+      "index": 210,
+      "yaw": -45.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 141776,
+      "rgbRms255": 7.152817726135254
+    },
+    {
+      "index": 211,
+      "yaw": -43.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 143966,
+      "rgbRms255": 7.448419094085693
+    },
+    {
+      "index": 212,
+      "yaw": -42.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 145966,
+      "rgbRms255": 7.744462966918945
+    },
+    {
+      "index": 213,
+      "yaw": -40.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 147938,
+      "rgbRms255": 8.044477462768555
+    },
+    {
+      "index": 214,
+      "yaw": -39.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 149571,
+      "rgbRms255": 8.328919410705566
+    },
+    {
+      "index": 215,
+      "yaw": -37.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 151068,
+      "rgbRms255": 8.597222328186035
+    },
+    {
+      "index": 216,
+      "yaw": -36.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 152453,
+      "rgbRms255": 8.853730201721191
+    },
+    {
+      "index": 217,
+      "yaw": -34.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 153678,
+      "rgbRms255": 9.128133773803711
+    },
+    {
+      "index": 218,
+      "yaw": -33.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 154929,
+      "rgbRms255": 9.468332290649414
+    },
+    {
+      "index": 219,
+      "yaw": -31.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 155788,
+      "rgbRms255": 9.69666862487793
+    },
+    {
+      "index": 220,
+      "yaw": -30.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 156501,
+      "rgbRms255": 9.880995750427246
+    },
+    {
+      "index": 221,
+      "yaw": -28.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 157082,
+      "rgbRms255": 10.037617683410645
+    },
+    {
+      "index": 222,
+      "yaw": -27.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 157427,
+      "rgbRms255": 10.171820640563965
+    },
+    {
+      "index": 223,
+      "yaw": -25.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 157750,
+      "rgbRms255": 10.279556274414062
+    },
+    {
+      "index": 224,
+      "yaw": -24.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 157991,
+      "rgbRms255": 10.370503425598145
+    },
+    {
+      "index": 225,
+      "yaw": -22.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 157963,
+      "rgbRms255": 10.42984390258789
+    },
+    {
+      "index": 226,
+      "yaw": -21.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 157883,
+      "rgbRms255": 10.466340065002441
+    },
+    {
+      "index": 227,
+      "yaw": -19.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 157649,
+      "rgbRms255": 10.486099243164062
+    },
+    {
+      "index": 228,
+      "yaw": -18.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 157224,
+      "rgbRms255": 10.489394187927246
+    },
+    {
+      "index": 229,
+      "yaw": -16.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 156635,
+      "rgbRms255": 10.476286888122559
+    },
+    {
+      "index": 230,
+      "yaw": -15.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 155866,
+      "rgbRms255": 10.44355297088623
+    },
+    {
+      "index": 231,
+      "yaw": -13.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 154779,
+      "rgbRms255": 10.403569221496582
+    },
+    {
+      "index": 232,
+      "yaw": -12.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 153342,
+      "rgbRms255": 10.352588653564453
+    },
+    {
+      "index": 233,
+      "yaw": -10.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 151667,
+      "rgbRms255": 10.298842430114746
+    },
+    {
+      "index": 234,
+      "yaw": -9.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 149762,
+      "rgbRms255": 10.24335765838623
+    },
+    {
+      "index": 235,
+      "yaw": -7.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 147820,
+      "rgbRms255": 10.188719749450684
+    },
+    {
+      "index": 236,
+      "yaw": -6.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 145773,
+      "rgbRms255": 10.135167121887207
+    },
+    {
+      "index": 237,
+      "yaw": -4.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 144341,
+      "rgbRms255": 10.083094596862793
+    },
+    {
+      "index": 238,
+      "yaw": -3.0,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 142507,
+      "rgbRms255": 10.023466110229492
+    },
+    {
+      "index": 239,
+      "yaw": -1.5,
+      "alphaMaxDelta": 0,
+      "changedRGBPixels": 140680,
+      "rgbRms255": 9.969137191772461
+    }
+  ]
+}
