@@ -1,0 +1,12 @@
+{
+  "frames": 120,
+  "fps": 24,
+  "video": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/a-triposplat-turntable.mp4",
+  "sha256": "1d06c961b59afc40c1caffee0d6416273ed6a5a4a0a9e1ac827c0fc7b8b11ad2",
+  "bytes": 352607,
+  "method": "native RenderSplat, 120 distinct camera positions, no interpolation",
+  "cameraRotation": "360 degrees around target, 3 degrees per frame",
+  "splatRotationNativeY": 90,
+  "seconds": 24.99,
+  "sourceSplat": "/mnt/f/mnt/output/box_impostor/.stages/triposplat/ecb8433166915206286d50ab299fe2faa73d7e7b028f8ea19fa36cd3d41fad54/splat.npz"
+}

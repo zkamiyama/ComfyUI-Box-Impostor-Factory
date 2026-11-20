@@ -1,0 +1,9 @@
+{
+  "phase": "2k-all-references-2048-aborted-CPU-cost",
+  "promptId": "6964869c-720b-41a4-9fa3-7ade2d5c19fc",
+  "referencePolicy": "all 3 references encoded at 2048, same 2048 output latent",
+  "status": "not completed; no produced image",
+  "elapsedRunSecondsAtLastCheck": 1093,
+  "reason": "reference encoding on 270-PC CPU remained running for >18 minutes; evaluating native mixed reference resolution to reduce compute",
+  "next": "keep first GS color ref 2048 and output latent 2048; use 1024 original photo and 1024 Z-depth via native resolution=0"
+}

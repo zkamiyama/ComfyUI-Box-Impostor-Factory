@@ -1,0 +1,58 @@
+{
+  "inputConfig": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-box-compare-config.json",
+  "inputConfigSha256": "275819bd1106efdf134aec45a0e22486105144f892034fdfaa0c6ed13db0dae9",
+  "sourceResolution": 1024,
+  "frames": 240,
+  "fps": 24,
+  "durationSeconds": 10.0,
+  "maximumCameraMatrixDifference": 0.0,
+  "captures": [
+    {
+      "id": "original",
+      "label": "Previous: Hi3D + Qwen RGB, mesh Depth",
+      "assetId": "019253e1edc661260f7775735b8bcaabcd9fe2a23a8b6ecd1e8227a7dd8a42d8",
+      "htmlSha256": "daa1b4e226cb345193b0dc76b8f9e2aa2a6508bb0a20a872069c73d90cc169a0",
+      "captureSha256": "b2c2e1746e6d248317963142704998e3be9ad000e4c1f49d42c6d6aeaea4e90b"
+    },
+    {
+      "id": "gs-box",
+      "label": "New: TripoSplat RGB + metric Z, direct Box",
+      "assetId": "d856345c6c8168a2bd130cf7c1fe5d73fa3b340f227ac6cbc714427155ac4924",
+      "htmlSha256": "3bb0103cfd8d4238949ead05d0172f11a9ac763671b3d6d4272d89edb2dfd839",
+      "captureSha256": "4d93ba01436767b8ce3b4cff35ec327b33377cbfda42b279886455e85ce165f8"
+    }
+  ],
+  "note": "Actual unchanged 3D-Inspector renders. No generated frames or motion interpolation. Encoding FPS is not a rendering benchmark.",
+  "files": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-box-comparison/gs-direct-box-comparison.mp4",
+      "bytes": 2561359,
+      "sha256": "431f8b87909153dc53ff73c5aee118406b3dbc945bc1985673aec611808d84c7"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-box-comparison/gs-direct-box-gs-box.mp4",
+      "bytes": 2561359,
+      "sha256": "431f8b87909153dc53ff73c5aee118406b3dbc945bc1985673aec611808d84c7"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-box-comparison/gs-direct-box-preview.gif",
+      "bytes": 3784391,
+      "sha256": "e0ec6095243c6b565175be162c95875c72076e83183344009416f9c028c0cefb"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-box-comparison/gs-direct-box-yaw-000.png",
+      "bytes": 671027,
+      "sha256": "9785f6fdbc6236fe65a777306aa677b3b9ee4f8c3b7b37fa2ba023c4e478c9d5"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-box-comparison/gs-direct-box-yaw-045.png",
+      "bytes": 532477,
+      "sha256": "0c63c35d4e61da2ac9b8c16178d3fcdf72142a5795c154ea4914b54c37ceb76f"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-box-comparison/gs-direct-box-yaw-315.png",
+      "bytes": 716405,
+      "sha256": "eb65f3fb738d7cf6c0b535f3f115a6a685f2dd4ccdadfd0f2dbccd220fc6295a"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+--- comfy_extras/nodes_gaussian_splat.py
++++ experiments/metric_depth/nodes_gaussian_splat.py
+@@ -590 +590 @@
+-    need_depth = render_style == "depth"
++    need_depth = render_style in ("depth", "metric_depth")
+@@ -795 +795 @@
+-    covm = covg > 0.5 if render_style in ("depth", "normal") else None  # silhouette mask (depth/normal styles only)
++    covm = covg > 0.5 if render_style in ("depth", "metric_depth", "normal") else None  # silhouette mask (depth/normal styles only)
+@@ -806 +806 @@
+-    if render_style == "depth":  # near = bright, far = dark, 0 off-object
++    if render_style in ("depth", "metric_depth"):  # native camera-axis depth for metric_depth
+@@ -810 +810 @@
+-            d = torch.where(covm, ((hi - depth_map) / (hi - lo).clamp_min(1e-6)).clamp(0, 1), d)
++            d = torch.where(covm, depth_map if render_style == "metric_depth" else ((hi - depth_map) / (hi - lo).clamp_min(1e-6)).clamp(0, 1), d)
+@@ -829 +829 @@
+-    return img.clamp(0, 1).to(idev, idtype), covg.clamp(0, 1).to(idev, idtype)
++    return (img if render_style == "metric_depth" else img.clamp(0, 1)).to(idev, idtype), covg.clamp(0, 1).to(idev, idtype)

@@ -1,0 +1,38 @@
+{
+  "+Z": {
+    "iou": 0.812,
+    "splatPixels": 126529,
+    "meshPixels": 135908,
+    "outGSpx": 8942
+  },
+  "+X": {
+    "iou": 0.452,
+    "splatPixels": 147445,
+    "meshPixels": 144573,
+    "outGSpx": 56586
+  },
+  "-X": {
+    "iou": 0.454,
+    "splatPixels": 147426,
+    "meshPixels": 144575,
+    "outGSpx": 56236
+  },
+  "-Z": {
+    "iou": 0.811,
+    "splatPixels": 126525,
+    "meshPixels": 135905,
+    "outGSpx": 9021
+  },
+  "+Y": {
+    "iou": 0.536,
+    "splatPixels": 305994,
+    "meshPixels": 350785,
+    "outGSpx": 76901
+  },
+  "-Y": {
+    "iou": 0.535,
+    "splatPixels": 306020,
+    "meshPixels": 350786,
+    "outGSpx": 77176
+  }
+}

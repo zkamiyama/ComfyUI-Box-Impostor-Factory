@@ -1,0 +1,119 @@
+{
+  "framesSampled": 16,
+  "camera": "identical",
+  "results": [
+    {
+      "yaw": 0.0,
+      "silhouetteIoU": 0.7751,
+      "baselinePixels": 189159,
+      "gsPixels": 151973,
+      "sharedRmsRGB255": 26.55
+    },
+    {
+      "yaw": 22.5,
+      "silhouetteIoU": 0.4787,
+      "baselinePixels": 158878,
+      "gsPixels": 131971,
+      "sharedRmsRGB255": 34.22
+    },
+    {
+      "yaw": 45.0,
+      "silhouetteIoU": 0.2223,
+      "baselinePixels": 130085,
+      "gsPixels": 128390,
+      "sharedRmsRGB255": 38.47
+    },
+    {
+      "yaw": 67.5,
+      "silhouetteIoU": 0.1594,
+      "baselinePixels": 133046,
+      "gsPixels": 133451,
+      "sharedRmsRGB255": 42.95
+    },
+    {
+      "yaw": 90.0,
+      "silhouetteIoU": 0.2755,
+      "baselinePixels": 161523,
+      "gsPixels": 141256,
+      "sharedRmsRGB255": 33.31
+    },
+    {
+      "yaw": 112.5,
+      "silhouetteIoU": 0.3801,
+      "baselinePixels": 183548,
+      "gsPixels": 156354,
+      "sharedRmsRGB255": 37.0
+    },
+    {
+      "yaw": 135.0,
+      "silhouetteIoU": 0.4983,
+      "baselinePixels": 193679,
+      "gsPixels": 168193,
+      "sharedRmsRGB255": 40.25
+    },
+    {
+      "yaw": 157.5,
+      "silhouetteIoU": 0.657,
+      "baselinePixels": 195588,
+      "gsPixels": 171096,
+      "sharedRmsRGB255": 47.16
+    },
+    {
+      "yaw": 180.0,
+      "silhouetteIoU": 0.7751,
+      "baselinePixels": 189158,
+      "gsPixels": 151973,
+      "sharedRmsRGB255": 41.66
+    },
+    {
+      "yaw": 202.5,
+      "silhouetteIoU": 0.4786,
+      "baselinePixels": 158880,
+      "gsPixels": 131950,
+      "sharedRmsRGB255": 37.12
+    },
+    {
+      "yaw": 225.0,
+      "silhouetteIoU": 0.2223,
+      "baselinePixels": 130082,
+      "gsPixels": 128343,
+      "sharedRmsRGB255": 42.01
+    },
+    {
+      "yaw": 247.5,
+      "silhouetteIoU": 0.1589,
+      "baselinePixels": 133064,
+      "gsPixels": 133257,
+      "sharedRmsRGB255": 43.89
+    },
+    {
+      "yaw": 270.0,
+      "silhouetteIoU": 0.2755,
+      "baselinePixels": 161513,
+      "gsPixels": 141261,
+      "sharedRmsRGB255": 43.01
+    },
+    {
+      "yaw": 292.5,
+      "silhouetteIoU": 0.3801,
+      "baselinePixels": 183579,
+      "gsPixels": 156374,
+      "sharedRmsRGB255": 41.7
+    },
+    {
+      "yaw": 315.0,
+      "silhouetteIoU": 0.4983,
+      "baselinePixels": 193690,
+      "gsPixels": 168190,
+      "sharedRmsRGB255": 40.9
+    },
+    {
+      "yaw": 337.5,
+      "silhouetteIoU": 0.6563,
+      "baselinePixels": 195584,
+      "gsPixels": 171094,
+      "sharedRmsRGB255": 38.57
+    }
+  ],
+  "meanSilhouetteIoU": 0.4307
+}

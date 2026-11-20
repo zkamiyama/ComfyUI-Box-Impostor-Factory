@@ -1,0 +1,136 @@
+{
+  "kind": "3DGS-physical-camera-depth-native-6-face-v1",
+  "splatSHA256": "0f03b743f6cdc792dd9f0bae5cd22f05e03eb01a91f70bb57e09a8e0a10924c3",
+  "calibration": "camera-axis metric depth divided by original Box axis span; no affine seed fit",
+  "originalBox": "/mnt/f/mnt/output/depth-refinement-20261120/box_impostor/019253e1edc661260f7775735b8bcaabcd9fe2a23a8b6ecd1e8227a7dd8a42d8",
+  "rendererSourceSHA256": "15265d072d11304cb7678e898ac28701ba6eeb0e003fd64a63d915a0ca1d71fc",
+  "faces": {
+    "px": {
+      "axisSpan": 0.3993621253967285,
+      "distance": 1.17533337728615,
+      "physicalFrustum": [
+        0.3745910310745239,
+        1.04
+      ],
+      "rect": [
+        327,
+        0,
+        369,
+        1024
+      ],
+      "pixels": 407703,
+      "depthMin": 0.07920084148645401,
+      "depthMax": 0.8212523460388184,
+      "outOfBoundsAlphaPixels": 9698,
+      "runtime": 1.84,
+      "depthSha256": "550507ff4b1e2ead8c7540c636aa653704d5e1e99350238f3e752d40e307770c",
+      "alphaSha256": "3835c0178d509c5f1ec3bd20bc2316ce38da2bb944f4b12f2e27863494e44602"
+    },
+    "nx": {
+      "axisSpan": 0.3993621253967285,
+      "distance": 1.17533337728615,
+      "physicalFrustum": [
+        0.3745910310745239,
+        1.04
+      ],
+      "rect": [
+        327,
+        0,
+        369,
+        1024
+      ],
+      "pixels": 407644,
+      "depthMin": 0.15202508866786957,
+      "depthMax": 0.8643681406974792,
+      "outOfBoundsAlphaPixels": 9720,
+      "runtime": 1.34,
+      "depthSha256": "fd6ef6cf3ec5fc172fd1a8348ff56b549de3c6773996500ab8ebde2cac8533bd",
+      "alphaSha256": "f58da18dd49ffd6ef0d1c679455a4252eace1453ef88a9c06a260b79c799ce64"
+    },
+    "py": {
+      "axisSpan": 1.04,
+      "distance": 1.17533337728615,
+      "physicalFrustum": [
+        0.3993621253967285,
+        0.3745910310745239
+      ],
+      "rect": [
+        0,
+        32,
+        1024,
+        960
+      ],
+      "pixels": 325633,
+      "depthMin": 0.02261495031416416,
+      "depthMax": 0.9724230170249939,
+      "outOfBoundsAlphaPixels": 22983,
+      "runtime": 1.38,
+      "depthSha256": "eaa71819f0feb6c6abb9efa290e8534c6d469be560873cf48d8b67accf5b6374",
+      "alphaSha256": "a0435f01a5d89abf66f718a25726b95620a718dcbb403020106f710fa03f3258"
+    },
+    "ny": {
+      "axisSpan": 1.04,
+      "distance": 1.17533337728615,
+      "physicalFrustum": [
+        0.3993621253967285,
+        0.3745910310745239
+      ],
+      "rect": [
+        0,
+        32,
+        1024,
+        960
+      ],
+      "pixels": 325662,
+      "depthMin": 0.0209788978099823,
+      "depthMax": 0.8897692561149597,
+      "outOfBoundsAlphaPixels": 22946,
+      "runtime": 1.31,
+      "depthSha256": "686cf8a687df9abf7cc593a79f7990f78c5b53eaab7992e19d4d9c02ba6a151b",
+      "alphaSha256": "8c4ea5e0b976191d7f27a1bd2f4e85477237e3c2611afdd601ca27305392f0eb"
+    },
+    "pz": {
+      "axisSpan": 0.3745910310745239,
+      "distance": 1.17533337728615,
+      "physicalFrustum": [
+        0.3993621253967285,
+        1.04
+      ],
+      "rect": [
+        315,
+        0,
+        393,
+        1024
+      ],
+      "pixels": 328536,
+      "depthMin": 0.09877242892980576,
+      "depthMax": 0.8539623618125916,
+      "outOfBoundsAlphaPixels": 8183,
+      "runtime": 1.33,
+      "depthSha256": "b82520955c25be5272d639f558ac61f84fe0680f9751a53a13a1a008c989a685",
+      "alphaSha256": "87a28014aebaef370b9c96b29a97f6483e4168f4d672eebe91c0c359ea70eb78"
+    },
+    "nz": {
+      "axisSpan": 0.3745910310745239,
+      "distance": 1.17533337728615,
+      "physicalFrustum": [
+        0.3993621253967285,
+        1.04
+      ],
+      "rect": [
+        315,
+        0,
+        393,
+        1024
+      ],
+      "pixels": 328522,
+      "depthMin": 0.1005769595503807,
+      "depthMax": 0.8650093078613281,
+      "outOfBoundsAlphaPixels": 8194,
+      "runtime": 1.42,
+      "depthSha256": "879cabb7d99a923176e3014d7284bf8c043e3ec27efebb8cc69a79e71329c60c",
+      "alphaSha256": "92e9d1a9e097b71b7aaf115077fd73bdce836e32479a51cd0ea26144c5719b8b"
+    }
+  },
+  "totalSeconds": 8.96
+}

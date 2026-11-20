@@ -1,0 +1,12 @@
+{
+  "manifestPassed": true,
+  "gaps": {
+    "openGapTexels": 0,
+    "invalidGapTexels": 0,
+    "roundingCompatibleGapTexels": 0,
+    "unsupportedGapTexels": 0,
+    "occupiedTexels": 1078360,
+    "classification": "strict decoded ordering plus exact binary16 round-to-nearest-even intervals; no atlas edits"
+  },
+  "rangeMaxAbsDiff": 0.00048828125
+}

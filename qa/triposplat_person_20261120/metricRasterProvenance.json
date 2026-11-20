@@ -1,0 +1,12 @@
+{
+  "upstreamPath": "/home/dev/Projects/box-impostor-lab/ComfyUI/comfy_extras/nodes_gaussian_splat.py",
+  "upstreamSHA256": "6869dcae9739d78f1b86f8d8d21dbbd025f9dd658a1ce052f474db703b382491",
+  "forkSHA256": "15265d072d11304cb7678e898ac28701ba6eeb0e003fd64a63d915a0ca1d71fc",
+  "changes": [
+    "need_depth = render_style == \"depth\"",
+    "covm = covg > 0.5 if render_style in (\"depth\", \"normal\")",
+    "if render_style == \"depth\":  # near = bright, far = dark, 0 off-object",
+    "d = torch.where(covm, ((hi - depth_map) / (hi - lo).clamp_min(1e-6)).clamp(0, 1), d)",
+    "return img.clamp(0, 1).to(idev, idtype), covg.clamp(0, 1).to(idev, idtype)"
+  ]
+}
