@@ -1,0 +1,5 @@
+# Match the CUDA 12.8 PyTorch environment used by this experiment.
+# Install torch from https://download.pytorch.org/whl/cu128 before ZipSplat.
+# gsplat resolves from the normal package index during ZipSplat installation.
+torch==2.9.1+cu128
+gsplat==1.5.3

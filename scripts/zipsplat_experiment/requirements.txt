@@ -1,0 +1,5 @@
+# Direct dependencies of the CPU evaluation / Box helpers.
+# Install the pinned external ZipSplat package separately; see README.md.
+numpy<2
+Pillow
+scipy
