@@ -24,6 +24,20 @@ TRIPO = Path('/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-2026112
 TEMPLATE = Path(__file__).with_name('qwen_success_template.json')
 TEMPLATE_SHA = '7c3d96f0ea0b7485f130ecd847cfe1bd78e4a09effa4864a10700ffec2c04bce'
 REFERENCE_SHA = '9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b'
+ANCHORED_PROMPT = (
+    'Refine the surface appearance of image 1. Image 1 is the BASE IMAGE and defines the exact camera, '
+    'framing, head direction, gaze, pose, silhouette, body proportions, limb positions, clothing outline, '
+    'occlusions, and background gaps between arms and torso and between the legs. Preserve those '
+    'structures at the same image coordinates. Image 2 is only an appearance reference for the same '
+    'person, blonde hair, gray knit sweater dress, skin and shoes; do not copy its pose, camera angle, '
+    'head direction, expression, body proportions or framing. Image 3 is the corresponding Z-depth of '
+    'image 1, brighter nearer, black background; use it to preserve structure and never copy depth colors. '
+    'Restore natural photographic skin detail, individual hair strands, coherent gray knit fabric, '
+    'hands and shoe materials. Remove blurry 3D-render texture and noisy surface artifacts. Keep all '
+    'visible features in their existing positions. Keep the same uniform neutral gray background and '
+    'full-body composition from head to shoes. This is a texture restoration of image 1. Do not rotate '
+    'the person, move body parts, close background gaps, add subjects, text, graphics, panels or diagrams.'
+)
 
 
 def sha(path):
@@ -43,7 +57,7 @@ def request(server, endpoint, value=None):
         return json.load(response)
 
 
-def graph_from_success(template, prefix, size):
+def graph_from_success(template, prefix, size, profile='legacy', denoise=.35, lora_strength=1.):
     original = json.loads(template.read_text())
     graph = copy.deepcopy(original)
     assert original['6']['inputs']['unet_name'] == 'qwen_image_2.1_int8_convrot.safetensors'
@@ -71,6 +85,12 @@ def graph_from_success(template, prefix, size):
                         ('14', 'filename_prefix'), ('18', 'filename_prefix')]:
         restored[node]['inputs'][field] = original[node]['inputs'][field]
     assert restored == original
+    if profile == 'anchored':
+        graph['20'] = {'class_type': 'VAEEncode', 'inputs': {'pixels': ['1', 0], 'vae': ['8', 0]}}
+        graph['12']['inputs']['latent_image'] = ['20', 0]
+        graph['12']['inputs']['denoise'] = denoise
+        graph['10']['inputs']['prompt'] = ANCHORED_PROMPT
+        graph['19']['inputs']['strength_model'] = lora_strength
     return graph
 
 
@@ -82,7 +102,7 @@ def prepare(args):
     prefix = PurePosixPath(args.input_prefix)
     if prefix.is_absolute() or '..' in prefix.parts or '\\' in args.input_prefix:
         raise ValueError('Input prefix must be a relative POSIX path without traversal')
-    graph = graph_from_success(args.template, prefix.as_posix(), args.size)
+    graph = graph_from_success(args.template, prefix.as_posix(), args.size, args.profile, args.denoise, args.lora_strength)
     destination = args.comfy_input / prefix
     destination.mkdir(parents=True, exist_ok=True)
     inputs = {}
@@ -109,15 +129,25 @@ def prepare(args):
         'inputs': inputs, 'inputOrder': ['target native RGB', 'original reference photograph', 'target depth'],
         'size': args.size, 'depthSize': 512, 'textEncodeResolution': 0,
         'steps': 10, 'cfg': 3, 'seed': 2026113031, 'sampler': 'euler', 'scheduler': 'simple',
-        'cache': {'device': 'cpu', 'dtype': 'int8'}, 'loraStrength': 1,
+        'cache': {'device': 'cpu', 'dtype': 'int8'}, 'loraStrength': graph['19']['inputs']['strength_model'],
         'changesFromSuccessful2K': [f'Image 1 is {args.size} square instead of 2048 square',
             f'Prompt pixel-size wording is {args.size}; first reference controls output latent size',
             'New target RGB/depth, frozen input paths, and output prefixes'],
         'unchanged': ['1024 square original photograph', '512 square depth reference size',
             'reference order', 'resolution=0 preserves each reference size', '10 steps, CFG 3, seed',
-            'models, AnyAngle LoRA and CPU int8 KV cache', 'BiRefNet output-mask branch'],
+            'base model, text encoder, VAE, and CPU int8 KV cache', 'BiRefNet output-mask branch'],
         'server': args.server,
+        'profile': args.profile, 'runnerSha256': sha(__file__),
+        'denoise': graph['12']['inputs']['denoise'],
+        'initialLatent': 'VAE-encoded target RGB' if args.profile == 'anchored' else 'zeros from TextEncodeQwenImage21',
     }
+    if args.profile == 'anchored':
+        record['changesFromSuccessful2K'].extend([
+            'VAEEncode target RGB is the initial sampling latent instead of zeros',
+            f'Sampler denoise is {args.denoise}',
+            'Prompt requests image-1 texture restoration; removes the inherited source-photo-view instruction'])
+        if args.lora_strength != 1:
+            record['changesFromSuccessful2K'].append(f'AnyAngle LoRA strength is {args.lora_strength}')
     if args.target_alpha:
         record['targetAlpha'] = {'path': str(args.target_alpha.resolve(strict=True)),
                                  'sha256': sha(args.target_alpha),
@@ -161,6 +191,9 @@ def main():
     p.add_argument('--comfy-input', type=Path, default=Path('/home/dev/Projects/box-impostor-lab/ComfyUI/input'))
     p.add_argument('--input-prefix', default='idol-qwen-box-20261120/front-1k10-depth3')
     p.add_argument('--size', type=int, choices=(1024, 2048), default=1024)
+    p.add_argument('--profile', choices=('legacy', 'anchored'), default='legacy')
+    p.add_argument('--denoise', type=float, default=.35, help='Applied only by the anchored profile')
+    p.add_argument('--lora-strength', type=float, default=1., help='Applied only by the anchored profile')
     p.add_argument('--server', default='http://127.0.0.1:8198')
     p.add_argument('--timeout-seconds', type=float, default=7200)
     p.add_argument('--gpu', default='0')
@@ -168,6 +201,10 @@ def main():
     mode.add_argument('--execute', action='store_true')
     mode.add_argument('--collect', metavar='PROMPT_ID')
     args = p.parse_args()
+    if not 0 < args.denoise <= 1:
+        p.error('--denoise must be in (0,1]')
+    if not 0 <= args.lora_strength <= 1:
+        p.error('--lora-strength must be in [0,1]')
     args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=True)
     if args.collect:
@@ -257,8 +294,10 @@ def main():
     start, end = timestamps.get('execution_start'), timestamps.get('execution_success')
     result = {'completed': True, 'case': 'Idol20 front RGB-only candidate', 'promptId': prompt_id,
         'promptSHA256': sha(args.output / 'prompt.json'), 'images': images,
-        'model': 'Qwen Image 2.1 int8 + QI2.1_AnyAngle LoRA 1.0',
+        'model': 'Qwen Image 2.1 int8', 'lora': 'QI2.1_AnyAngle', 'loraStrength': prepared['loraStrength'],
         'size': prepared['size'], 'steps': 10, 'cfg': 3, 'seed': 2026113031,
+        'profile': prepared.get('profile', 'legacy'), 'denoise': prepared.get('denoise', 1),
+        'initialLatent': prepared.get('initialLatent', 'zeros from TextEncodeQwenImage21'),
         'serverExecutionSeconds': (end - start) / 1000 if start is not None and end is not None else None,
         'clientWaitSeconds': client_wait, 'collectionOnly': bool(args.collect),
         'cachedNodes': cached, 'inputsSHA256': {k: v['sha256'] for k, v in prepared['inputs'].items()},

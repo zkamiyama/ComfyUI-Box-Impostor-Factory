@@ -1,0 +1,11 @@
+{
+  "sourcePath": "/home/dev/Projects/box-impostor-lab/ComfyUI/comfy_extras/nodes_qwen.py",
+  "sourceSha256": "54ce02aa9e167c0b497ce026ac6b558f539427d2d1ed4fc1fcc2ec8e6bc529da",
+  "sourceSizeBytes": 11872,
+  "className": "TextEncodeQwenImage21",
+  "classStartLine": 111,
+  "startLine": 179,
+  "endLine": 182,
+  "code": "            positive = node_helpers.conditioning_set_values(positive, {\"reference_latents\": ref_latents}, append=True)\n            negative = node_helpers.conditioning_set_values(negative, {\"reference_latents\": ref_latents}, append=True)\n        latent = torch.zeros([1, 64, latent_h // 16, latent_w // 16], device=comfy.model_management.intermediate_device())\n        return io.NodeOutput(positive, negative, {\"samples\": latent})\n",
+  "collection": "Read-only source inspection; no model execution."
+}

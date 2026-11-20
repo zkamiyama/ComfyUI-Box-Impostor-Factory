@@ -1,0 +1,51 @@
+{
+  "completed": true,
+  "case": "Idol20 front RGB-only candidate",
+  "promptId": "69cd7c3f-16f2-49cd-8ef3-cf3dd04ac378",
+  "promptSHA256": "ff6dbcc93b7775e4c590b3ac51197716c5efecdac369e5ccd8f10ca09ea9787a",
+  "images": {
+    "generated": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/qwen/front-anchored035/generated.png",
+      "sha256": "65d26e0554a71fb378d2aa6803c2cd33eca779974d151f727cdc7519b71f5276",
+      "bytes": 581713
+    },
+    "mask": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/qwen/front-anchored035/mask.png",
+      "sha256": "862086582eebbaa65fde6715eee738da84c1571e6b3572bfb5b0801c1e3c5c01",
+      "bytes": 59184
+    }
+  },
+  "model": "Qwen Image 2.1 int8 + QI2.1_AnyAngle LoRA 1.0",
+  "size": 1024,
+  "steps": 10,
+  "cfg": 3,
+  "seed": 2026113031,
+  "profile": "anchored",
+  "denoise": 0.35,
+  "initialLatent": "VAE-encoded target RGB",
+  "serverExecutionSeconds": 65.372,
+  "clientWaitSeconds": 66.09670894300507,
+  "collectionOnly": false,
+  "cachedNodes": [
+    "6",
+    "7",
+    "8",
+    "15",
+    "19",
+    "9"
+  ],
+  "inputsSHA256": {
+    "target-color.png": "40323cd8bf480816d4b60cdbc9d7d779c57c06353c560f8546b61df548afeb1c",
+    "target-depth.png": "77cc1780d161a3e487539cff25e5cd949655e81105191fec99745b9966fc409e",
+    "original.png": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+  },
+  "vram": {
+    "measurement": "nvidia-smi sampled whole-device used VRAM",
+    "intervalMilliseconds": 200,
+    "sampleCount": 325,
+    "peakSampledUsedMiB": 13867,
+    "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+  },
+  "boxModified": false,
+  "nextStage": "Register generated RGB/mask against target alpha, then change only Box color RGB; preserve original alpha and geometry."
+}

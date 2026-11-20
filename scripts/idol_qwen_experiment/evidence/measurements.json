@@ -1,0 +1,555 @@
+{
+  "scope": "Idol20 Box512; selected refinement changes +Z RGB only",
+  "runs": [
+    {
+      "run": "front-1k10",
+      "promptId": "28e4208f-1164-4e1c-8b58-ebebf34f8bdb",
+      "promptSha256": "1fde37b264d6db67f64374df41567da2b1794fd3449c0fe8b15795b177af30fb",
+      "imageSha256": "6027f88b3156145af2e35d3cd13ebc03962c0369d5563dd54a1d5770beda4a03",
+      "model": "Qwen Image 2.1 int8",
+      "lora": "QI2.1_AnyAngle",
+      "loraStrength": 1,
+      "steps": 10,
+      "cfg": 3,
+      "seed": 2026113031,
+      "denoise": 1,
+      "initialLatent": "zeros from TextEncodeQwenImage21",
+      "imagePixels": 1024,
+      "depthPixels": 512,
+      "serverExecutionSeconds": 243.087,
+      "cachedNodes": [],
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 1204,
+        "peakSampledUsedMiB": 14316.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      }
+    },
+    {
+      "run": "front-anchored035",
+      "promptId": "69cd7c3f-16f2-49cd-8ef3-cf3dd04ac378",
+      "promptSha256": "ff6dbcc93b7775e4c590b3ac51197716c5efecdac369e5ccd8f10ca09ea9787a",
+      "imageSha256": "65d26e0554a71fb378d2aa6803c2cd33eca779974d151f727cdc7519b71f5276",
+      "model": "Qwen Image 2.1 int8",
+      "lora": "QI2.1_AnyAngle",
+      "loraStrength": 1,
+      "steps": 10,
+      "cfg": 3,
+      "seed": 2026113031,
+      "denoise": 0.35,
+      "initialLatent": "VAE-encoded target RGB",
+      "imagePixels": 1024,
+      "depthPixels": 512,
+      "serverExecutionSeconds": 65.372,
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ],
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 325,
+        "peakSampledUsedMiB": 13867.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      }
+    },
+    {
+      "run": "front-anchored065",
+      "promptId": "28960344-0381-46b4-a780-861d3293e59b",
+      "promptSha256": "362fa41d681167267e234f66febf1b40732bfe4c4a769f044bc864bc24790939",
+      "imageSha256": "b67c87f6feaf5c0209a42c1630356765ef785bbda5ed9e8902627b2fdc7d4de1",
+      "model": "Qwen Image 2.1 int8",
+      "lora": "QI2.1_AnyAngle",
+      "loraStrength": 1,
+      "steps": 10,
+      "cfg": 3,
+      "seed": 2026113031,
+      "denoise": 0.65,
+      "initialLatent": "VAE-encoded target RGB",
+      "imagePixels": 1024,
+      "depthPixels": 512,
+      "serverExecutionSeconds": 70.841,
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ],
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 356,
+        "peakSampledUsedMiB": 14316.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      }
+    },
+    {
+      "run": "front-anchored090",
+      "promptId": "4e27041c-0adb-4644-857d-a98824f77bde",
+      "promptSha256": "a61e7f29249555ad345866a5499c642e243e4c5162ef8de6c855e2b420824833",
+      "imageSha256": "f5150da826024b538c95d4ab9bb5ec92827db975c5993faa35a7d7d8cc9b3436",
+      "model": "Qwen Image 2.1 int8",
+      "lora": "QI2.1_AnyAngle",
+      "loraStrength": 1,
+      "steps": 10,
+      "cfg": 3,
+      "seed": 2026113031,
+      "denoise": 0.9,
+      "initialLatent": "VAE-encoded target RGB",
+      "imagePixels": 1024,
+      "depthPixels": 512,
+      "serverExecutionSeconds": 64.295,
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ],
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 326,
+        "peakSampledUsedMiB": 13963.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      }
+    },
+    {
+      "run": "front-nolora090",
+      "promptId": "4d0fa93e-03c4-433c-9260-c77be0c2e81d",
+      "promptSha256": "faf9d46eae5770cb2eacf3e170d90ceefa4dda3d28e8f0a511863fdec9ad0f80",
+      "imageSha256": "fca3a98e7967836e3241b71be726e97b6bbdce644282d5122a2ca1d57f5d5db1",
+      "model": "Qwen Image 2.1 int8",
+      "lora": "QI2.1_AnyAngle",
+      "loraStrength": 0.0,
+      "steps": 10,
+      "cfg": 3,
+      "seed": 2026113031,
+      "denoise": 0.9,
+      "initialLatent": "VAE-encoded target RGB",
+      "imagePixels": 1024,
+      "depthPixels": 512,
+      "serverExecutionSeconds": 62.497,
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15"
+      ],
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 310,
+        "peakSampledUsedMiB": 13739.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      }
+    }
+  ],
+  "registrations": {
+    "front-1k10": {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/front-1k10/f110742ea7017ff7a395d00fbc16b7658f85a5d4b9cc8e04624031bc5553a55c.json",
+      "sourceSha256": "47b18f7554a0b81a3bb85e6d39b49067671388cbe189c059770aeba8a232d648",
+      "registration": {
+        "method": "bounded-whole-foreground-affine; XY scale, rotation, translation; no shear",
+        "selection": "optimized-fullbody-affine",
+        "parametersSX_SY_angleDY_DX": [
+          1.0599626197921117,
+          1.058048731266367,
+          -2.1619764189335897,
+          11.979569996352772,
+          12.06296710048495
+        ],
+        "matrixInputToOutput": [
+          [
+            1.0592081086382827,
+            0.039914521408788435,
+            -38.63825816859196
+          ],
+          [
+            -0.03998672218960072,
+            1.0572955824721277,
+            3.1260879618401987
+          ]
+        ],
+        "originalIoU": 0.5696039235739854,
+        "registeredIoU": 0.6624709006469123,
+        "iouReference": 0.88,
+        "referencePassed": false,
+        "policy": "Diagnostic reference only; lower IoU does not block an immutable comparison variant",
+        "optimizationPixels": [
+          256,
+          256
+        ],
+        "fullResolution": [
+          1024,
+          1024
+        ],
+        "scaleBounds": [
+          0.96,
+          1.06
+        ],
+        "rotationBoundsDegrees": [
+          -3,
+          3
+        ],
+        "translationBoundsPixels": [
+          -16.0,
+          16.0
+        ],
+        "seed": 20261120,
+        "optimizerEvaluations": 1715,
+        "seconds": 2.191,
+        "subjectRegion": "entire foreground; no facial crops, keypoints, local warps, or inpainting"
+      },
+      "changedRgbPixels": 61800,
+      "geometryDepthNormalIntervalRangeProxyCameraPreserved": true,
+      "colorAlphaBitDifferences": 0
+    },
+    "front-anchored035": {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/front-anchored035/1bfc65ea5aebdd845fd9318904d6049747eae0dbfe427067fb72540c0b3305c0.json",
+      "sourceSha256": "13d9b3bbfbadd3f6a36de6d2ff8e68e306f81b0a096fac073598af8e5b31aac1",
+      "registration": {
+        "method": "bounded-whole-foreground-affine; XY scale, rotation, translation; no shear",
+        "selection": "identity",
+        "parametersSX_SY_angleDY_DX": [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "matrixInputToOutput": [
+          [
+            1.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "originalIoU": 0.9933020980288106,
+        "registeredIoU": 0.9933020980288106,
+        "iouReference": 0.88,
+        "referencePassed": true,
+        "policy": "Diagnostic reference only; lower IoU does not block an immutable comparison variant",
+        "optimizationPixels": [
+          256,
+          256
+        ],
+        "fullResolution": [
+          1024,
+          1024
+        ],
+        "scaleBounds": [
+          0.96,
+          1.06
+        ],
+        "rotationBoundsDegrees": [
+          -3,
+          3
+        ],
+        "translationBoundsPixels": [
+          -16.0,
+          16.0
+        ],
+        "seed": 20261120,
+        "optimizerEvaluations": 665,
+        "seconds": 0.871,
+        "subjectRegion": "entire foreground; no facial crops, keypoints, local warps, or inpainting"
+      },
+      "changedRgbPixels": 80093,
+      "geometryDepthNormalIntervalRangeProxyCameraPreserved": true,
+      "colorAlphaBitDifferences": 0
+    },
+    "front-anchored090": {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/front-anchored090/9ae8e27c4c931b57151590aa1dc713bf118f0778ff01f90d228ccad2d7f2da88.json",
+      "sourceSha256": "5f5f8a013ec34e0932b5979cd0c2a704df852d62b13fe4821b1520c4a39ce4dc",
+      "registration": {
+        "method": "bounded-whole-foreground-affine; XY scale, rotation, translation; no shear",
+        "selection": "identity",
+        "parametersSX_SY_angleDY_DX": [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "matrixInputToOutput": [
+          [
+            1.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "originalIoU": 0.9868380303499535,
+        "registeredIoU": 0.9868380303499535,
+        "iouReference": 0.88,
+        "referencePassed": true,
+        "policy": "Diagnostic reference only; lower IoU does not block an immutable comparison variant",
+        "optimizationPixels": [
+          256,
+          256
+        ],
+        "fullResolution": [
+          1024,
+          1024
+        ],
+        "scaleBounds": [
+          0.96,
+          1.06
+        ],
+        "rotationBoundsDegrees": [
+          -3,
+          3
+        ],
+        "translationBoundsPixels": [
+          -16.0,
+          16.0
+        ],
+        "seed": 20261120,
+        "optimizerEvaluations": 805,
+        "seconds": 1.146,
+        "subjectRegion": "entire foreground; no facial crops, keypoints, local warps, or inpainting"
+      },
+      "changedRgbPixels": 80093,
+      "geometryDepthNormalIntervalRangeProxyCameraPreserved": true,
+      "colorAlphaBitDifferences": 0
+    },
+    "qwen-nolora090": {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/qwen-nolora090/4f7cda4caac95f20b8316b00086b7564b77cdf81b59b588c8576af5fd0399d44.json",
+      "sourceSha256": "ba01940bbaa225178264a013abd72cad400d04ad9c3e4e47a8410f8a4a7e64d3",
+      "registration": {
+        "method": "bounded-whole-foreground-affine; XY scale, rotation, translation; no shear",
+        "selection": "identity",
+        "parametersSX_SY_angleDY_DX": [
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "matrixInputToOutput": [
+          [
+            1.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "originalIoU": 0.9924603226099482,
+        "registeredIoU": 0.9924603226099482,
+        "iouReference": 0.88,
+        "referencePassed": true,
+        "policy": "Diagnostic reference only; lower IoU does not block an immutable comparison variant",
+        "optimizationPixels": [
+          256,
+          256
+        ],
+        "fullResolution": [
+          1024,
+          1024
+        ],
+        "scaleBounds": [
+          0.96,
+          1.06
+        ],
+        "rotationBoundsDegrees": [
+          -3,
+          3
+        ],
+        "translationBoundsPixels": [
+          -16.0,
+          16.0
+        ],
+        "seed": 20261120,
+        "optimizerEvaluations": 735,
+        "seconds": 1.029,
+        "subjectRegion": "entire foreground; no facial crops, keypoints, local warps, or inpainting"
+      },
+      "changedRgbPixels": 80093,
+      "geometryDepthNormalIntervalRangeProxyCameraPreserved": true,
+      "colorAlphaBitDifferences": 0
+    }
+  },
+  "selection": "front-nolora090",
+  "geometry": {
+    "sourceSplatSha256": "91dcac135d096ef2b6ca312a2b92664fe5d41c6f5eddabf2531b7acb165cd899",
+    "originalReferenceSha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+  },
+  "renderComparison": {
+    "alpha": {
+      "framesCompared": 240,
+      "exactFrames": 240,
+      "changedFrames": 0,
+      "allFramesZero": true,
+      "all240FramesZero": true,
+      "maeUint8": 0.0,
+      "maxUint8": 0,
+      "nonzeroPixels": 0,
+      "nonzeroValues": 0,
+      "sumAbsoluteDifference": 0,
+      "values": 62914560,
+      "pixels": 62914560
+    },
+    "rgb": {
+      "framesCompared": 240,
+      "exactFrames": 9,
+      "changedFrames": 231,
+      "allFramesZero": false,
+      "all240FramesZero": false,
+      "maeUint8": 0.2528808010949029,
+      "maxUint8": 87,
+      "nonzeroPixels": 2176759,
+      "nonzeroValues": 6233031,
+      "sumAbsoluteDifference": 47729653,
+      "values": 188743680,
+      "pixels": 62914560
+    },
+    "camera": {
+      "maxAbsDifference": 0.0,
+      "maxByField": {
+        "position": 0.0,
+        "quaternion": 0.0,
+        "up": 0.0,
+        "matrixWorld": 0.0,
+        "matrixWorldInverse": 0.0,
+        "projectionMatrix": 0.0,
+        "projectionMatrixInverse": 0.0,
+        "near": 0.0,
+        "far": 0.0,
+        "top": 0.0,
+        "bottom": 0.0,
+        "left": 0.0,
+        "right": 0.0,
+        "zoom": 0.0,
+        "canvasPixels": 0.0
+      },
+      "differentFrameIndices": [],
+      "verifiedFrames": 240,
+      "differentFrames": 0
+    },
+    "captureEnvironmentEqual": true,
+    "fullBodyFrames": 240,
+    "allForegroundNonempty": true,
+    "allEdgePixelsZero": true,
+    "inspectorHTMLUnmodified": true,
+    "alphaReportSha256": "1911fc9147bdf6156ccd831b0f3618f067a36afeded860f496657768bb0cad50"
+  },
+  "video": {
+    "pixels": [
+      1024,
+      584
+    ],
+    "frames": 240,
+    "fps": 24,
+    "durationSeconds": 10.0,
+    "decodedFrames": 240,
+    "sha256": "69f77d45f45389c243f437ede99cf4e84ccaf89cf9431e82e3e11063bc77642c"
+  },
+  "normalDiagnostics": {
+    "depthSigma1": {
+      "normal_only": {
+        "assetId": "3b5f0778e0abbfb9e23267463b454084a30e130d5f73b5a9c1d5d06bb5cc94d3",
+        "assetPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/normal-only-sigma1/3b5f0778e0abbfb9e23267463b454084a30e130d5f73b5a9c1d5d06bb5cc94d3",
+        "archive": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/normal-only-sigma1/3b5f0778e0abbfb9e23267463b454084a30e130d5f73b5a9c1d5d06bb5cc94d3.box.zip",
+        "archiveSha256": "dd1c8d47ad5503d5008112a768a314cf8ef863455460d40f061271d8de1ae313",
+        "receiptPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/normal-only-sigma1/3b5f0778e0abbfb9e23267463b454084a30e130d5f73b5a9c1d5d06bb5cc94d3.json",
+        "receiptSha256": "793dc2205e04cbf3270ed6ffffba88c6baaec47056f5256284c2f9c411bbdf58",
+        "smoothSigmaPixels": 1.0,
+        "normalAlphaBitsPreserved": true,
+        "colorMapBytesPreserved": true,
+        "changedNormalRgbPixels": 396925,
+        "viewer": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/diagnostics/normal_only.inspector.html",
+        "sparseCapture": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/capture/normal_only/capture.json"
+      },
+      "qwen_rgb_only": {
+        "assetId": "4f7cda4caac95f20b8316b00086b7564b77cdf81b59b588c8576af5fd0399d44",
+        "assetPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/qwen-nolora090/4f7cda4caac95f20b8316b00086b7564b77cdf81b59b588c8576af5fd0399d44",
+        "archive": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/qwen-nolora090/4f7cda4caac95f20b8316b00086b7564b77cdf81b59b588c8576af5fd0399d44.box.zip",
+        "archiveSha256": "c0f76fe88b836d5559dc344b72d6e7909f83883daff7ad338aa0e0dff108a347",
+        "receiptPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/qwen-nolora090/4f7cda4caac95f20b8316b00086b7564b77cdf81b59b588c8576af5fd0399d44.json",
+        "receiptSha256": "ba01940bbaa225178264a013abd72cad400d04ad9c3e4e47a8410f8a4a7e64d3",
+        "registeredIoU": 0.9924603226099482,
+        "iouReferencePassed": true,
+        "changedRgbPixels": 80093,
+        "geometryAndAlphaPreserved": true,
+        "viewer": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/diagnostics/qwen_rgb_only.inspector.html",
+        "sparseCapture": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/capture/qwen_rgb_only/capture.json"
+      },
+      "qwen_and_normals": {
+        "assetId": "75ddd97ab31c0f165ea4b4746093f00c2455bef4129f461d1833178a3fbfc9ca",
+        "assetPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/qwen-normals-sigma1/75ddd97ab31c0f165ea4b4746093f00c2455bef4129f461d1833178a3fbfc9ca",
+        "archive": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/qwen-normals-sigma1/75ddd97ab31c0f165ea4b4746093f00c2455bef4129f461d1833178a3fbfc9ca.box.zip",
+        "archiveSha256": "5c0a1ac64fcb612eb2140fec1cc367f546a2a4feced7eb03fa4aa9439f56d4cc",
+        "receiptPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/qwen-normals-sigma1/75ddd97ab31c0f165ea4b4746093f00c2455bef4129f461d1833178a3fbfc9ca.json",
+        "receiptSha256": "b4a8d575a67fd9a5e0a09e17a5593cab39b623056d7e5037fae9f5015a434d38",
+        "smoothSigmaPixels": 1.0,
+        "normalAlphaBitsPreserved": true,
+        "colorMapBytesPreserved": true,
+        "changedNormalRgbPixels": 396925,
+        "viewer": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/diagnostics/qwen_and_normals.inspector.html",
+        "sparseCapture": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/capture/qwen_and_normals/capture.json"
+      }
+    },
+    "faceAxis": {
+      "axis_original": {
+        "assetId": "b9f28cbc9fc07db4d06d1094d57778312234ecefd4a394b2b7d0cd7b33b756d9",
+        "assetPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/axis_original/b9f28cbc9fc07db4d06d1094d57778312234ecefd4a394b2b7d0cd7b33b756d9",
+        "archive": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/axis_original/b9f28cbc9fc07db4d06d1094d57778312234ecefd4a394b2b7d0cd7b33b756d9.box.zip",
+        "archiveSha256": "3924c1c6fc326f17efce117d2bcde17706abf3f22a4caa897c28a7e3d48e59ec",
+        "receiptPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/axis_original/b9f28cbc9fc07db4d06d1094d57778312234ecefd4a394b2b7d0cd7b33b756d9.json",
+        "receiptSha256": "b2801e17c345b57c06018338561b466f73c44d481e746f763130935e1fe490bc",
+        "smoothSigmaPixels": 0.0,
+        "method": "face-axis-normal-rgb-appearance-diagnostic-v1",
+        "faceAxis": true,
+        "normalAlphaBitsPreserved": true,
+        "colorMapBytesPreserved": true,
+        "changedNormalRgbPixels": 396925,
+        "viewer": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/diagnostics/axis_original.inspector.html",
+        "sparseCapture": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/capture/axis_original/capture.json"
+      },
+      "axis_qwen": {
+        "assetId": "1b1963df87afa0204ae308731694d6151f78994df90423d5840adebdb6796064",
+        "assetPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/axis_qwen/1b1963df87afa0204ae308731694d6151f78994df90423d5840adebdb6796064",
+        "archive": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/axis_qwen/1b1963df87afa0204ae308731694d6151f78994df90423d5840adebdb6796064.box.zip",
+        "archiveSha256": "9efe93ac0f12f40e5e260df2976f18471781b11ddbafef8f702b582d7ed3345c",
+        "receiptPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/box/axis_qwen/1b1963df87afa0204ae308731694d6151f78994df90423d5840adebdb6796064.json",
+        "receiptSha256": "bd0cf1665a4071e902215ffd06bd19796c42e373961d4460a733cb1c7803d83c",
+        "smoothSigmaPixels": 0.0,
+        "method": "face-axis-normal-rgb-appearance-diagnostic-v1",
+        "faceAxis": true,
+        "normalAlphaBitsPreserved": true,
+        "colorMapBytesPreserved": true,
+        "changedNormalRgbPixels": 396925,
+        "viewer": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/diagnostics/axis_qwen.inspector.html",
+        "sparseCapture": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/capture/axis_qwen/capture.json"
+      }
+    }
+  },
+  "interpretationLimits": [
+    "Alpha comparison is coverage preservation, not image quality.",
+    "Mask IoU is whole-body outline overlap, not internal feature correspondence.",
+    "Model caching and first-load costs differ between runs.",
+    "Only front RGB is refined; this is not completed six-face Qwen texturing."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "sourceTemplate": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/scripts/qwen_success_template.json",
+  "sourceTemplateSha256": "7c3d96f0ea0b7485f130ecd847cfe1bd78e4a09effa4864a10700ffec2c04bce",
+  "sourceSuccessfulPromptId": "1f0e2f3a-6651-4db2-89e6-c8e956fa740a",
+  "inputs": {
+    "target-color.png": {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/guides1024/front/rgb.png",
+      "comfyInput": "/home/dev/Projects/box-impostor-lab/ComfyUI/input/idol-qwen-box-20261120/front-anchored090/target-color.png",
+      "sha256": "40323cd8bf480816d4b60cdbc9d7d779c57c06353c560f8546b61df548afeb1c",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "target-depth.png": {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/guides1024/front/depth512.png",
+      "comfyInput": "/home/dev/Projects/box-impostor-lab/ComfyUI/input/idol-qwen-box-20261120/front-anchored090/target-depth.png",
+      "sha256": "77cc1780d161a3e487539cff25e5cd949655e81105191fec99745b9966fc409e",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGB"
+    },
+    "original.png": {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/inputs/source-original.png",
+      "comfyInput": "/home/dev/Projects/box-impostor-lab/ComfyUI/input/idol-qwen-box-20261120/front-anchored090/original.png",
+      "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB"
+    }
+  },
+  "inputOrder": [
+    "target native RGB",
+    "original reference photograph",
+    "target depth"
+  ],
+  "size": 1024,
+  "depthSize": 512,
+  "textEncodeResolution": 0,
+  "steps": 10,
+  "cfg": 3,
+  "seed": 2026113031,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "cache": {
+    "device": "cpu",
+    "dtype": "int8"
+  },
+  "loraStrength": 1,
+  "changesFromSuccessful2K": [
+    "Image 1 is 1024 square instead of 2048 square",
+    "Prompt pixel-size wording is 1024; first reference controls output latent size",
+    "New target RGB/depth, frozen input paths, and output prefixes",
+    "VAEEncode target RGB is the initial sampling latent instead of zeros",
+    "Sampler denoise is 0.9",
+    "Prompt requests image-1 texture restoration; removes the inherited source-photo-view instruction"
+  ],
+  "unchanged": [
+    "1024 square original photograph",
+    "512 square depth reference size",
+    "reference order",
+    "resolution=0 preserves each reference size",
+    "10 steps, CFG 3, seed",
+    "models, AnyAngle LoRA and CPU int8 KV cache",
+    "BiRefNet output-mask branch"
+  ],
+  "server": "http://127.0.0.1:8198",
+  "profile": "anchored",
+  "runnerSha256": "27dea0ab6aa8517b4c36f88dede07d88565492f2fe68b7f28c5c11ee074abb98",
+  "denoise": 0.9,
+  "initialLatent": "VAE-encoded target RGB",
+  "targetAlpha": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/guides1024/front/alpha.npy",
+    "sha256": "6d576bcb09f2c259fd0b11f725ee0cec16b925c0d77ba34a4ced4b30c00892a1",
+    "usage": "Registration/QA only; not fed to Qwen and never replaces Box alpha"
+  },
+  "boxManifest": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/box/idol20/766c5b865e0e68d7c86938030a44608055d92062eab657a03184773e65cebabb/manifest.json",
+    "sha256": "a4c91c034eb7bc415bb833dba75683773ffe6d5cd01faf834c5408422260fb3e"
+  }
+}

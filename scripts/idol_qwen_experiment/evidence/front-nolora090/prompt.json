@@ -1,0 +1,192 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "idol-qwen-box-20261120/front-nolora090/target-color.png"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "idol-qwen-box-20261120/front-nolora090/original.png"
+    }
+  },
+  "6": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "7": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "8": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "10": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "7",
+        0
+      ],
+      "vae": [
+        "8",
+        0
+      ],
+      "prompt": "Refine the surface appearance of image 1. Image 1 is the BASE IMAGE and defines the exact camera, framing, head direction, gaze, pose, silhouette, body proportions, limb positions, clothing outline, occlusions, and background gaps between arms and torso and between the legs. Preserve those structures at the same image coordinates. Image 2 is only an appearance reference for the same person, blonde hair, gray knit sweater dress, skin and shoes; do not copy its pose, camera angle, head direction, expression, body proportions or framing. Image 3 is the corresponding Z-depth of image 1, brighter nearer, black background; use it to preserve structure and never copy depth colors. Restore natural photographic skin detail, individual hair strands, coherent gray knit fabric, hands and shoe materials. Remove blurry 3D-render texture and noisy surface artifacts. Keep all visible features in their existing positions. Keep the same uniform neutral gray background and full-body composition from head to shoes. This is a texture restoration of image 1. Do not rotate the person, move body parts, close background gaps, add subjects, text, graphics, panels or diagrams.",
+      "negative_prompt": "",
+      "resolution": 0,
+      "images.image_1": [
+        "1",
+        0
+      ],
+      "images.image_2": [
+        "2",
+        0
+      ],
+      "images.image_3": [
+        "3",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "KSampler",
+    "inputs": {
+      "steps": 10,
+      "cfg": 3,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.9,
+      "seed": 2026113031,
+      "model": [
+        "9",
+        0
+      ],
+      "positive": [
+        "10",
+        0
+      ],
+      "negative": [
+        "10",
+        1
+      ],
+      "latent_image": [
+        "20",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "8",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "idol-qwen-box-20261120/front-nolora090/raw"
+    }
+  },
+  "15": {
+    "class_type": "LoadBackgroundRemovalModel",
+    "inputs": {
+      "bg_removal_name": "birefnet.safetensors"
+    }
+  },
+  "16": {
+    "class_type": "RemoveBackground",
+    "inputs": {
+      "bg_removal_model": [
+        "15",
+        0
+      ],
+      "image": [
+        "13",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "16",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "17",
+        0
+      ],
+      "filename_prefix": "idol-qwen-box-20261120/front-nolora090/mask"
+    }
+  },
+  "19": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "lora_name": "QI2.1_AnyAngle.safetensors",
+      "strength_model": 0.0
+    }
+  },
+  "9": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "19",
+        0
+      ],
+      "device": "cpu",
+      "dtype": "int8"
+    }
+  },
+  "3": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "idol-qwen-box-20261120/front-nolora090/target-depth.png"
+    }
+  },
+  "20": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "1",
+        0
+      ],
+      "vae": [
+        "8",
+        0
+      ]
+    }
+  }
+}
