@@ -1,0 +1,46 @@
+# REPORT.md 校閲記録
+
+最終稿: REPORT.md
+SHA256: c08247662f79a27e9ccb42482aec5185d986bf44d2e2d6e19ca34cc340bd6396
+UTF-8: 14,402 bytes。Markdown全体6,767字、リンクURLを除く概算6,108字。
+
+### 変えたところ
+
+- 「対応が弱い場所」を「GSのalphaが低い場所」に変更し、alphaで幾何学的対応を判定したように読める表現を避けた。
+- 「camera更新4回＋joint更新96回」を、ログに記録されたtoken更新4回＋joint更新96回、および別カウンタのcamera_update呼出し4回に訂正した。
+- 短い主題の直後の読点を2か所除いた。GSとBoxのRGB画質を数値で比較していない範囲と、bf16/fp32が重みの保存精度であることを明確にした。
+- 最終稿確認後の追加依頼に従い、モデル4ファイルのリンク先だけをartifact-links.jsonの永続URLへ変更した。動画とPNG、証拠JSONの相対リンクは維持した。これに伴いrunとverifyを再実行した。
+
+### 残したAIっぽいところ
+
+- 「解像度」3件は画像の画素寸法という文字どおりの技術用語なので残した。
+- 旧6枚の節の「ました」の連続は、実施済みの処理と結果の時制を保つため残した。
+- 近似マスクが「独立した正解セグメンテーションではない」という否定は、評価範囲の誤解を防ぐ条件として残した。
+- 「平均勾配強度はCのほうが低くなりました」は、直前の表にB=0.02047、C=0.01736を示しているため、事実の穴の候補としては修正しなかった。
+
+### 事実の確かめ
+
+- 照らした材料: diagnostics/measured-stages.json、measured-nine.json、nine-camera-coverage.json、final-evidence.json。正面と90°の比較PNGも読み取りで目視した。値の丸めはJSONからの計算結果と照合した。
+- 訂正した: optimizer_stepsの説明。run_zipsplat_experiment.pyのTracedBA._stepは「self.losses.append(float(loss.item()))」を記録し、camera_updateは別に「self.camera_updates += 1」を記録する。公式TokenBA.__call__は各camera/token round後にtoken_updateを1回実行し、joint_refinementでも_stepを呼ぶ。100はtoken4＋joint96であり、PnPとphotometric polishの内部反復を含まない。
+- 訂正の根拠: research/zipsplat-qwen-box/sources/ZipSplat-token_ba.pyのcamera_update、token_update、joint_refinement、__call__。上流commit 73ab63f048fcc15ee54ada4ef9cdd79b925611a8。実験スクリプトのTracedBA実装も再読した。
+- JSON説明の修正: measured-nine.jsonの2つのsteps_scopeとbranch_controls.optimizer_scopeだけを変更した。旧版との差分は文字列3件で、数値変更は0件。measured-stages.jsonの定義は元から正しく、変更していない。元の生JSONの測定値とSHA256にも変更はない。
+- 材料と合った値: 新9枚の前景PSNR 21.17/23.77 dB、前景L1 0.04690/0.03582、Box対対応GSの輪郭IoU 0.8394/0.8692、A/Dの240フレーム・62,914,560画素のalpha差0、記録camera差0、初期runner合計70.90秒、Qwen実行履歴合計1,039.119秒、後半7枚だけの機器全体ピーク13,883 MiB、B/C同一初期checkpoint、token/jointの100更新（照らしていない値と主張があります）。
+- 資料照合の候補64件は、単位付き表記、丸めた数値、CFG/LoRA等の名称、成果物名、リンクURLなどを含む。各出典の値・定義・対応表と読み比べ、計測値の追加や範囲の拡大はしていない。
+- 初回のREPORT.md.material.txtは検査の比較元として維持した。最終の更新数の定義は、追加レビューで再読した公式コードとrunner実装を根拠に訂正した。集約JSONへは下記の更新後measured-nine.jsonを使用する。
+
+最終証拠ファイルSHA256:
+measured-stages.json 431cbf5f4cbb2ba7e28fdfc59c7def1165f0eb84f21094a8d062f058b494de52
+measured-nine.json ba1ec01c08a51aa4c0179a804076f0d410d56a7518f0bac9c9c1f303e9cb548c
+nine-camera-coverage.json ba46dafec43c804af52d2ecb180d5542518f0655a15fb1fecaff909afc4228fc
+final-evidence.json b5e4e0dbe6d033a7fd29e7b95cadb6c86b4cb3688a638381a88292e40d81f60c
+
+### 確認の記録
+
+- 書き手・読み手・場面: 書き手: 実験担当者（推定）／読み手: プロジェクトの開発者（推定）／場面: 実験結果報告（指定）
+- 実行した検査: lint、資料との照合、最終稿の照合。数値・scopeの手動照合、比較画像の目視、モデル4リンクとメディア4リンクの対応確認も実施した。
+- 実行しなかった検査: diff（新規作成で比較する原文がないため）。GPU実験とremote書き込みはこの文書作成では行っていない。
+- 見直し候補: 最終稿 5件（件数は点数ではない。増減は読みやすさの良し悪しを示さない）
+- 最終runはattempt=3。2回目の本文変更は、最終確認後に届いたモデル4リンクの変更依頼によるもの。本文の実験結果はその変更で変えていない。
+- yomiyasu-check: executed via=verify run=20261120T102805Z-af64fd0f attempt=3 final=sha256:c08247662f79 mode=compose doc_type=article reader=expert checks=lint,materials meaning_risk=64 replay=skipped
+
+検査の記録は、主張の正しさや文章の読みやすさに対する合格判定ではない。

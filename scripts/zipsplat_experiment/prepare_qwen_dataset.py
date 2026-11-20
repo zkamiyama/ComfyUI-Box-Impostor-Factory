@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Freeze one original and eight verified Qwen views with identical black compositing."""
+"""Freeze one original and eight verified Qwen views with identical black compositing.
+
+Requires Python 3.11+ (hashlib.file_digest), NumPy, and Pillow.
+Use the existing ComfyUI Python 3.12 environment for this helper, not ZipSplat's
+Python 3.10 environment.
+"""
 import argparse
 import hashlib
 import json

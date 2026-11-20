@@ -1,0 +1,1249 @@
+{
+  "schema_version": 1,
+  "scope": "Diagnostic of estimated camera azimuth sampling and optical axes, not geometric ground truth or nominal-guide-angle accuracy.",
+  "method": {
+    "function": "camera_report",
+    "source_code": "/workspace/scratch/fe25d79c8da0/experiments/zipsplat/run_zipsplat_experiment.py",
+    "source_code_sha256": "4a463784205d7168901163023cd6b331a54ee10d3fff511890ed672d3cca6791",
+    "comparison_policy": "Identical formulas to the smoke4/six/nine camera_report export; each branch is expressed relative to its own estimated first camera.",
+    "forward_axis": "OpenCV c2w rotation column 2 (+Z)",
+    "forward_pairwise_angle": "degrees(acos(clip(d_i dot d_j,-1,1))), copied and verified against exported diagnostics; tiny float rotation errors on diagonal are not interpreted.",
+    "look_target": "Least-squares common point of infinite optical-axis lines: solve sum(I-d*d.T)*target=sum((I-d*d.T)*camera_center).",
+    "orbit_yaw": "(degrees(atan2(rel_x,-rel_z))-first_yaw) mod 360; rel=(center-target)@R_first.",
+    "orbit_pairwise_angle": "Shortest unsigned circular difference of orbit_yaw, in [0,180] degrees.",
+    "largest_gap": "Largest cyclic difference between sorted orbit azimuth samples, including wrap-around. This is a sample gap, not the unobserved solid angle after accounting for each camera field of view.",
+    "reliability": "Read fitted-target ray residuals and center singular values together; orbit diagnostics may be unreliable if the sight lines do not converge on one object.",
+    "nominal_guide_angles_used_for_accuracy": false,
+    "rotation_scale_or_alignment_changed": false,
+    "camera_centers_fitted_against_scene_geometry": false
+  },
+  "source_snapshot": "/workspace/scratch/fe25d79c8da0/experiments/zipsplat/diagnostics/nine-cameras-source.json",
+  "source_snapshot_sha256": "f5a0eb46e389641503903da56f991062a0142ab3c2c9a9f4bb86f069236f8d95",
+  "stages": {
+    "initial": {
+      "source_path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/initial/cameras.json",
+      "source_sha256": "29a6cd3c5cb56f01e0ad24829b487543be30ad657e4a53e0165afdf2054f92ba",
+      "view_ids": [
+        "original",
+        "yaw000",
+        "yaw045",
+        "yaw090",
+        "yaw135",
+        "yaw180",
+        "yaw225",
+        "yaw270",
+        "yaw315"
+      ],
+      "count": 9,
+      "recomputed_values_match_export": true,
+      "orbit_yaw_degrees_relative_to_original": [
+        0.0,
+        8.78778352371146,
+        44.104405355784834,
+        104.27700273239817,
+        143.1643268644721,
+        190.5458315303517,
+        230.28779549816622,
+        280.5689128768274,
+        326.40130017636267
+      ],
+      "forward_axis_pairwise_degrees": [
+        [
+          0.0076625635917757385,
+          11.051484764343618,
+          45.03261038165564,
+          104.6836505605962,
+          142.99049775321797,
+          166.38389189142308,
+          129.61913503492636,
+          78.7350578052772,
+          33.02192802985812
+        ],
+        [
+          11.051484764343618,
+          0.0,
+          35.76013051764853,
+          95.23739712826388,
+          134.04592759666687,
+          177.40934272165654,
+          139.23691828431333,
+          87.79916189903355,
+          42.242961772743854
+        ],
+        [
+          45.03261038165564,
+          35.76013051764853,
+          0.0,
+          59.684919361751916,
+          98.35347541904382,
+          146.51361065420286,
+          174.3074597228787,
+          123.53033144777051,
+          77.82953766750458
+        ],
+        [
+          104.6836505605962,
+          95.23739712826388,
+          59.684919361751916,
+          0.0,
+          38.83613854594498,
+          87.16840027388669,
+          125.50903553434391,
+          175.17036235099192,
+          137.469920961526
+        ],
+        [
+          142.99049775321797,
+          134.04592759666687,
+          98.35347541904382,
+          38.83613854594498,
+          0.0,
+          48.338775379803586,
+          86.71711134442447,
+          138.11356442035316,
+          175.8206385389707
+        ],
+        [
+          166.38389189142308,
+          177.40934272165654,
+          146.51361065420286,
+          87.16840027388669,
+          48.338775379803586,
+          0.0,
+          38.396127688705356,
+          89.86379180499239,
+          135.32622025440955
+        ],
+        [
+          129.61913503492636,
+          139.23691828431333,
+          174.3074597228787,
+          125.50903553434391,
+          86.71711134442447,
+          38.396127688705356,
+          0.0,
+          51.473547599483084,
+          97.02095352381073
+        ],
+        [
+          78.7350578052772,
+          87.79916189903355,
+          123.53033144777051,
+          175.17036235099192,
+          138.11356442035316,
+          89.86379180499239,
+          51.473547599483084,
+          0.0,
+          45.74998265768011
+        ],
+        [
+          33.02192802985812,
+          42.242961772743854,
+          77.82953766750458,
+          137.469920961526,
+          175.8206385389707,
+          135.32622025440955,
+          97.02095352381073,
+          45.74998265768011,
+          0.0
+        ]
+      ],
+      "orbit_azimuth_pairwise_shortest_degrees": [
+        [
+          0.0,
+          8.787783523711454,
+          44.10440535578482,
+          104.27700273239817,
+          143.1643268644721,
+          169.45416846964827,
+          129.71220450183375,
+          79.43108712317257,
+          33.59869982363733
+        ],
+        [
+          8.787783523711454,
+          0.0,
+          35.316621832073366,
+          95.48921920868672,
+          134.37654334076063,
+          178.24195199335975,
+          138.49998802554524,
+          88.21887064688406,
+          42.386483347348815
+        ],
+        [
+          44.10440535578482,
+          35.316621832073366,
+          0.0,
+          60.17259737661334,
+          99.05992150868725,
+          146.44142617456686,
+          173.81660985761863,
+          123.5354924789574,
+          77.70310517942215
+        ],
+        [
+          104.27700273239816,
+          95.48921920868673,
+          60.17259737661334,
+          0.0,
+          38.8873241320739,
+          86.26882879795353,
+          126.01079276576804,
+          176.29191014442927,
+          137.8757025560355
+        ],
+        [
+          143.16432686447206,
+          134.37654334076063,
+          99.05992150868724,
+          38.8873241320739,
+          0.0,
+          47.38150466587962,
+          87.12346863369413,
+          137.40458601235534,
+          176.76302668810945
+        ],
+        [
+          169.45416846964827,
+          178.24195199335975,
+          146.44142617456686,
+          86.26882879795352,
+          47.38150466587962,
+          0.0,
+          39.74196396781451,
+          90.02308134647572,
+          135.85546864601096
+        ],
+        [
+          129.71220450183375,
+          138.49998802554524,
+          173.81660985761863,
+          126.01079276576803,
+          87.12346863369413,
+          39.74196396781451,
+          0.0,
+          50.28111737866121,
+          96.11350467819645
+        ],
+        [
+          79.43108712317257,
+          88.21887064688406,
+          123.5354924789574,
+          176.29191014442927,
+          137.40458601235537,
+          90.02308134647569,
+          50.28111737866121,
+          0.0,
+          45.83238729953524
+        ],
+        [
+          33.59869982363733,
+          42.386483347348815,
+          77.70310517942215,
+          137.8757025560355,
+          176.76302668810945,
+          135.855468646011,
+          96.11350467819648,
+          45.83238729953524,
+          0.0
+        ]
+      ],
+      "cyclic_ordered_neighbor_angles": [
+        {
+          "from_id": "original",
+          "to_id": "yaw000",
+          "forward_axis_angle_degrees": 11.051484764343618,
+          "shortest_orbit_angle_degrees": 8.787783523711454
+        },
+        {
+          "from_id": "yaw000",
+          "to_id": "yaw045",
+          "forward_axis_angle_degrees": 35.76013051764853,
+          "shortest_orbit_angle_degrees": 35.316621832073366
+        },
+        {
+          "from_id": "yaw045",
+          "to_id": "yaw090",
+          "forward_axis_angle_degrees": 59.684919361751916,
+          "shortest_orbit_angle_degrees": 60.17259737661334
+        },
+        {
+          "from_id": "yaw090",
+          "to_id": "yaw135",
+          "forward_axis_angle_degrees": 38.83613854594498,
+          "shortest_orbit_angle_degrees": 38.8873241320739
+        },
+        {
+          "from_id": "yaw135",
+          "to_id": "yaw180",
+          "forward_axis_angle_degrees": 48.338775379803586,
+          "shortest_orbit_angle_degrees": 47.38150466587962
+        },
+        {
+          "from_id": "yaw180",
+          "to_id": "yaw225",
+          "forward_axis_angle_degrees": 38.396127688705356,
+          "shortest_orbit_angle_degrees": 39.74196396781451
+        },
+        {
+          "from_id": "yaw225",
+          "to_id": "yaw270",
+          "forward_axis_angle_degrees": 51.473547599483084,
+          "shortest_orbit_angle_degrees": 50.28111737866121
+        },
+        {
+          "from_id": "yaw270",
+          "to_id": "yaw315",
+          "forward_axis_angle_degrees": 45.74998265768011,
+          "shortest_orbit_angle_degrees": 45.83238729953524
+        },
+        {
+          "from_id": "yaw315",
+          "to_id": "original",
+          "forward_axis_angle_degrees": 33.02192802985812,
+          "shortest_orbit_angle_degrees": 33.59869982363733
+        }
+      ],
+      "sorted_orbit_intervals": [
+        {
+          "from_id": "original",
+          "to_id": "yaw000",
+          "from_yaw_degrees": 0.0,
+          "to_yaw_degrees": 8.78778352371146,
+          "gap_degrees": 8.78778352371146
+        },
+        {
+          "from_id": "yaw000",
+          "to_id": "yaw045",
+          "from_yaw_degrees": 8.78778352371146,
+          "to_yaw_degrees": 44.104405355784834,
+          "gap_degrees": 35.31662183207337
+        },
+        {
+          "from_id": "yaw045",
+          "to_id": "yaw090",
+          "from_yaw_degrees": 44.104405355784834,
+          "to_yaw_degrees": 104.27700273239817,
+          "gap_degrees": 60.17259737661334
+        },
+        {
+          "from_id": "yaw090",
+          "to_id": "yaw135",
+          "from_yaw_degrees": 104.27700273239817,
+          "to_yaw_degrees": 143.1643268644721,
+          "gap_degrees": 38.887324132073914
+        },
+        {
+          "from_id": "yaw135",
+          "to_id": "yaw180",
+          "from_yaw_degrees": 143.1643268644721,
+          "to_yaw_degrees": 190.5458315303517,
+          "gap_degrees": 47.38150466587962
+        },
+        {
+          "from_id": "yaw180",
+          "to_id": "yaw225",
+          "from_yaw_degrees": 190.5458315303517,
+          "to_yaw_degrees": 230.28779549816622,
+          "gap_degrees": 39.74196396781451
+        },
+        {
+          "from_id": "yaw225",
+          "to_id": "yaw270",
+          "from_yaw_degrees": 230.28779549816622,
+          "to_yaw_degrees": 280.5689128768274,
+          "gap_degrees": 50.28111737866121
+        },
+        {
+          "from_id": "yaw270",
+          "to_id": "yaw315",
+          "from_yaw_degrees": 280.5689128768274,
+          "to_yaw_degrees": 326.40130017636267,
+          "gap_degrees": 45.83238729953524
+        },
+        {
+          "from_id": "yaw315",
+          "to_id": "original",
+          "from_yaw_degrees": 326.40130017636267,
+          "to_yaw_degrees": 0.0,
+          "gap_degrees": 33.59869982363733
+        }
+      ],
+      "largest_orbit_gap": {
+        "from_id": "yaw045",
+        "to_id": "yaw090",
+        "from_yaw_degrees": 44.104405355784834,
+        "to_yaw_degrees": 104.27700273239817,
+        "gap_degrees": 60.17259737661334
+      },
+      "shortest_arc_containing_all_camera_samples_degrees": 299.82740262338666,
+      "all_four_90_degree_azimuth_sectors_have_samples": true,
+      "original_yaw000": {
+        "forward_axis_angle_degrees": 11.051484764343618,
+        "orbit_azimuth_separation_degrees": 8.787783523711454,
+        "center_distance_over_median_orbit_radius": 0.21356344501213695
+      },
+      "near_duplicate_optical_axis_pairs_below_5_degrees": [],
+      "closest_forward_axis_pair": {
+        "ids": [
+          "original",
+          "yaw000"
+        ],
+        "angle_degrees": 11.051484764343618
+      },
+      "fitted_look_target": [
+        -0.010064565686061606,
+        -0.004139213527808716,
+        1.0212884390899157
+      ],
+      "median_orbit_radius": 1.1318102897790456,
+      "median_ray_target_error_over_radius": 0.005384802449684737,
+      "maximum_ray_target_error_over_median_radius": 0.011913760200347298,
+      "fitted_target_is_in_front_of_all_cameras": true,
+      "fitted_target_distance_along_each_optical_axis": [
+        1.0216271798369054,
+        1.1616167656652177,
+        1.177856329275662,
+        1.1317939610069678,
+        1.1066349315639745,
+        1.128961434578627,
+        1.1304988138294823,
+        1.1631693427915832,
+        1.1646357133922713
+      ],
+      "camera_center_singular_values": [
+        2.5529516041743334,
+        2.203203442440606,
+        0.11671521440059245
+      ],
+      "center_plane_thickness_ratio_smallest_to_largest_singular_value": 0.04571775438662891,
+      "interpretation": "Estimated cameras sample all four azimuth sectors; no optical-axis pair is within 5 degrees. The largest angular sample gap remains about 60 degrees. This does not establish true surface coverage or calibrated camera accuracy."
+    },
+    "B504": {
+      "source_path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/B504/cameras.json",
+      "source_sha256": "ce278b4b01fcdc6de869d14d57462cf84d7af9dbc1845b7b5719932f785bb3d3",
+      "view_ids": [
+        "original",
+        "yaw000",
+        "yaw045",
+        "yaw090",
+        "yaw135",
+        "yaw180",
+        "yaw225",
+        "yaw270",
+        "yaw315"
+      ],
+      "count": 9,
+      "recomputed_values_match_export": true,
+      "orbit_yaw_degrees_relative_to_original": [
+        0.0,
+        9.842690199183506,
+        45.4180810908239,
+        104.28279117414698,
+        143.56014872340745,
+        193.01668506687037,
+        232.4535442274332,
+        282.22195265920976,
+        325.60697086654693
+      ],
+      "forward_axis_pairwise_degrees": [
+        [
+          0.07122734739115773,
+          11.665119376223005,
+          45.8673078332242,
+          104.65786014510795,
+          143.35700464384448,
+          165.0108448187081,
+          127.20106350210045,
+          77.35341502573819,
+          34.031895683930294
+        ],
+        [
+          11.665119376223005,
+          0.09137862938644148,
+          35.593912620903566,
+          94.39477568823716,
+          133.81033454236143,
+          176.6529906365019,
+          137.786249082639,
+          87.43103202143075,
+          44.16799379302788
+        ],
+        [
+          45.8673078332242,
+          35.593912620903566,
+          0.0,
+          58.88517447825416,
+          98.21673774240898,
+          147.43295758042063,
+          172.80924712953285,
+          123.00449391430284,
+          79.65615095448415
+        ],
+        [
+          104.65786014510795,
+          94.39477568823716,
+          58.88517447825416,
+          0.0,
+          39.537291057156665,
+          88.74170850286495,
+          127.81517292728614,
+          177.34189111249097,
+          138.53788624728315
+        ],
+        [
+          143.35700464384448,
+          133.81033454236143,
+          98.21673774240898,
+          39.537291057156665,
+          0.0,
+          49.26231371962371,
+          88.32789443929275,
+          138.7349858203526,
+          175.820585059217
+        ],
+        [
+          165.0108448187081,
+          176.6529906365019,
+          147.43295758042063,
+          88.74170850286495,
+          49.26231371962371,
+          0.0,
+          39.0769336381076,
+          89.47412640363837,
+          132.65420852943683
+        ],
+        [
+          127.20106350210045,
+          137.786249082639,
+          172.80924712953285,
+          127.81517292728614,
+          88.32789443929275,
+          39.0769336381076,
+          0.060716108772886204,
+          50.408567882168434,
+          93.62194157560546
+        ],
+        [
+          77.35341502573819,
+          87.43103202143075,
+          123.00449391430284,
+          177.34189111249097,
+          138.7349858203526,
+          89.47412640363837,
+          50.408567882168434,
+          0.0,
+          43.37676212664969
+        ],
+        [
+          34.031895683930294,
+          44.16799379302788,
+          79.65615095448415,
+          138.53788624728315,
+          175.820585059217,
+          132.65420852943683,
+          93.62194157560546,
+          43.37676212664969,
+          0.016300208900548847
+        ]
+      ],
+      "orbit_azimuth_pairwise_shortest_degrees": [
+        [
+          0.0,
+          9.842690199183494,
+          45.418081090823904,
+          104.28279117414698,
+          143.56014872340745,
+          166.98331493312963,
+          127.54645577256679,
+          77.77804734079024,
+          34.39302913345307
+        ],
+        [
+          9.842690199183494,
+          0.0,
+          35.57539089164038,
+          94.44010097496347,
+          133.71745852422396,
+          176.82600513231313,
+          137.38914597175028,
+          87.62073753997373,
+          44.23571933263656
+        ],
+        [
+          45.418081090823904,
+          35.57539089164038,
+          0.0,
+          58.864710083323075,
+          98.14206763258355,
+          147.59860397604646,
+          172.96453686339066,
+          123.19612843161417,
+          79.81111022427694
+        ],
+        [
+          104.28279117414695,
+          94.44010097496346,
+          58.864710083323075,
+          0.0,
+          39.27735754926047,
+          88.73389389272339,
+          128.17075305328623,
+          177.93916148506278,
+          138.67582030760002
+        ],
+        [
+          143.56014872340745,
+          133.71745852422396,
+          98.14206763258358,
+          39.27735754926047,
+          0.0,
+          49.456536343462915,
+          88.89339550402576,
+          138.6618039358023,
+          177.95317785686052
+        ],
+        [
+          166.98331493312963,
+          176.82600513231313,
+          147.59860397604643,
+          88.73389389272336,
+          49.456536343462915,
+          0.0,
+          39.43685916056285,
+          89.2052675923394,
+          132.59028579967656
+        ],
+        [
+          127.54645577256679,
+          137.38914597175028,
+          172.96453686339066,
+          128.17075305328626,
+          88.89339550402576,
+          39.43685916056285,
+          0.0,
+          49.76840843177655,
+          93.15342663911372
+        ],
+        [
+          77.77804734079024,
+          87.62073753997373,
+          123.19612843161417,
+          177.93916148506275,
+          138.6618039358023,
+          89.2052675923394,
+          49.76840843177655,
+          0.0,
+          43.38501820733717
+        ],
+        [
+          34.39302913345307,
+          44.23571933263656,
+          79.81111022427694,
+          138.67582030760002,
+          177.95317785686052,
+          132.59028579967656,
+          93.15342663911372,
+          43.38501820733717,
+          0.0
+        ]
+      ],
+      "cyclic_ordered_neighbor_angles": [
+        {
+          "from_id": "original",
+          "to_id": "yaw000",
+          "forward_axis_angle_degrees": 11.665119376223005,
+          "shortest_orbit_angle_degrees": 9.842690199183494
+        },
+        {
+          "from_id": "yaw000",
+          "to_id": "yaw045",
+          "forward_axis_angle_degrees": 35.593912620903566,
+          "shortest_orbit_angle_degrees": 35.57539089164038
+        },
+        {
+          "from_id": "yaw045",
+          "to_id": "yaw090",
+          "forward_axis_angle_degrees": 58.88517447825416,
+          "shortest_orbit_angle_degrees": 58.864710083323075
+        },
+        {
+          "from_id": "yaw090",
+          "to_id": "yaw135",
+          "forward_axis_angle_degrees": 39.537291057156665,
+          "shortest_orbit_angle_degrees": 39.27735754926047
+        },
+        {
+          "from_id": "yaw135",
+          "to_id": "yaw180",
+          "forward_axis_angle_degrees": 49.26231371962371,
+          "shortest_orbit_angle_degrees": 49.456536343462915
+        },
+        {
+          "from_id": "yaw180",
+          "to_id": "yaw225",
+          "forward_axis_angle_degrees": 39.0769336381076,
+          "shortest_orbit_angle_degrees": 39.43685916056285
+        },
+        {
+          "from_id": "yaw225",
+          "to_id": "yaw270",
+          "forward_axis_angle_degrees": 50.408567882168434,
+          "shortest_orbit_angle_degrees": 49.76840843177655
+        },
+        {
+          "from_id": "yaw270",
+          "to_id": "yaw315",
+          "forward_axis_angle_degrees": 43.37676212664969,
+          "shortest_orbit_angle_degrees": 43.38501820733717
+        },
+        {
+          "from_id": "yaw315",
+          "to_id": "original",
+          "forward_axis_angle_degrees": 34.031895683930294,
+          "shortest_orbit_angle_degrees": 34.39302913345307
+        }
+      ],
+      "sorted_orbit_intervals": [
+        {
+          "from_id": "original",
+          "to_id": "yaw000",
+          "from_yaw_degrees": 0.0,
+          "to_yaw_degrees": 9.842690199183506,
+          "gap_degrees": 9.842690199183506
+        },
+        {
+          "from_id": "yaw000",
+          "to_id": "yaw045",
+          "from_yaw_degrees": 9.842690199183506,
+          "to_yaw_degrees": 45.4180810908239,
+          "gap_degrees": 35.57539089164039
+        },
+        {
+          "from_id": "yaw045",
+          "to_id": "yaw090",
+          "from_yaw_degrees": 45.4180810908239,
+          "to_yaw_degrees": 104.28279117414698,
+          "gap_degrees": 58.86471008332308
+        },
+        {
+          "from_id": "yaw090",
+          "to_id": "yaw135",
+          "from_yaw_degrees": 104.28279117414698,
+          "to_yaw_degrees": 143.56014872340745,
+          "gap_degrees": 39.27735754926047
+        },
+        {
+          "from_id": "yaw135",
+          "to_id": "yaw180",
+          "from_yaw_degrees": 143.56014872340745,
+          "to_yaw_degrees": 193.01668506687037,
+          "gap_degrees": 49.456536343462915
+        },
+        {
+          "from_id": "yaw180",
+          "to_id": "yaw225",
+          "from_yaw_degrees": 193.01668506687037,
+          "to_yaw_degrees": 232.4535442274332,
+          "gap_degrees": 39.43685916056285
+        },
+        {
+          "from_id": "yaw225",
+          "to_id": "yaw270",
+          "from_yaw_degrees": 232.4535442274332,
+          "to_yaw_degrees": 282.22195265920976,
+          "gap_degrees": 49.76840843177655
+        },
+        {
+          "from_id": "yaw270",
+          "to_id": "yaw315",
+          "from_yaw_degrees": 282.22195265920976,
+          "to_yaw_degrees": 325.60697086654693,
+          "gap_degrees": 43.38501820733717
+        },
+        {
+          "from_id": "yaw315",
+          "to_id": "original",
+          "from_yaw_degrees": 325.60697086654693,
+          "to_yaw_degrees": 0.0,
+          "gap_degrees": 34.39302913345307
+        }
+      ],
+      "largest_orbit_gap": {
+        "from_id": "yaw045",
+        "to_id": "yaw090",
+        "from_yaw_degrees": 45.4180810908239,
+        "to_yaw_degrees": 104.28279117414698,
+        "gap_degrees": 58.86471008332308
+      },
+      "shortest_arc_containing_all_camera_samples_degrees": 301.1352899166769,
+      "all_four_90_degree_azimuth_sectors_have_samples": true,
+      "original_yaw000": {
+        "forward_axis_angle_degrees": 11.665119376223005,
+        "orbit_azimuth_separation_degrees": 9.842690199183494,
+        "center_distance_over_median_orbit_radius": 0.22767448602577747
+      },
+      "near_duplicate_optical_axis_pairs_below_5_degrees": [],
+      "closest_forward_axis_pair": {
+        "ids": [
+          "original",
+          "yaw000"
+        ],
+        "angle_degrees": 11.665119376223005
+      },
+      "fitted_look_target": [
+        -0.005555901839043076,
+        -0.003775686118147603,
+        1.0034588579269166
+      ],
+      "median_orbit_radius": 1.1635296487672553,
+      "median_ray_target_error_over_radius": 0.0021036182167144604,
+      "maximum_ray_target_error_over_median_radius": 0.005904078885536706,
+      "fitted_target_is_in_front_of_all_cameras": true,
+      "fitted_target_distance_along_each_optical_axis": [
+        0.9986029196741822,
+        1.1635086294799126,
+        1.1745033666301836,
+        1.1448132311931962,
+        1.1182888171488343,
+        1.181569001432192,
+        1.1717184750223057,
+        1.1985200179365878,
+        1.1617813495207456
+      ],
+      "camera_center_singular_values": [
+        2.561985709197544,
+        2.263327286344409,
+        0.09568424356962373
+      ],
+      "center_plane_thickness_ratio_smallest_to_largest_singular_value": 0.03734768825060839,
+      "interpretation": "Estimated cameras sample all four azimuth sectors; no optical-axis pair is within 5 degrees. The largest angular sample gap remains about 60 degrees. This does not establish true surface coverage or calibrated camera accuracy."
+    },
+    "C1024": {
+      "source_path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/C1024/cameras.json",
+      "source_sha256": "c9b0ae4e7188e7d93b6c9b7b4b554dd71afbaf945ee1ef4378ae09660ca8871e",
+      "view_ids": [
+        "original",
+        "yaw000",
+        "yaw045",
+        "yaw090",
+        "yaw135",
+        "yaw180",
+        "yaw225",
+        "yaw270",
+        "yaw315"
+      ],
+      "count": 9,
+      "recomputed_values_match_export": true,
+      "orbit_yaw_degrees_relative_to_original": [
+        0.0,
+        9.805227130422198,
+        45.19213409352527,
+        104.19252649988131,
+        143.30295190995506,
+        192.9194830558214,
+        232.31741129576002,
+        282.1566541891847,
+        325.5370695848333
+      ],
+      "forward_axis_pairwise_degrees": [
+        [
+          0.05016490740212029,
+          11.562694902545958,
+          45.64052809915018,
+          104.56937236916612,
+          143.1852690977954,
+          165.19619161126946,
+          127.35246914076335,
+          77.4152332099429,
+          34.08557149061253
+        ],
+        [
+          11.562694902545958,
+          0.09200155036545464,
+          35.41094635715917,
+          94.32651592461036,
+          133.5713646592112,
+          176.73228366627274,
+          137.87155158309182,
+          87.47153077831425,
+          44.21016662801418
+        ],
+        [
+          45.64052809915018,
+          35.41094635715917,
+          0.0,
+          59.00714435654625,
+          98.16323068989881,
+          147.57351851645407,
+          172.76749497042638,
+          122.85973327669714,
+          79.5109810290313
+        ],
+        [
+          104.56937236916612,
+          94.32651592461036,
+          59.00714435654625,
+          0.0,
+          39.3394219290178,
+          88.76133145165109,
+          127.80099109337982,
+          177.31287238573123,
+          138.51330323255496
+        ],
+        [
+          143.1852690977954,
+          133.5713646592112,
+          98.16323068989881,
+          39.3394219290178,
+          0.0,
+          49.465694711571324,
+          88.50703171390424,
+          138.94587378044113,
+          176.00163362427
+        ],
+        [
+          165.19619161126946,
+          176.73228366627274,
+          147.57351851645407,
+          88.76133145165109,
+          49.465694711571324,
+          0.0,
+          39.04616465544698,
+          89.48011886766402,
+          132.66591422331797
+        ],
+        [
+          127.35246914076335,
+          137.87155158309182,
+          172.76749497042638,
+          127.80099109337982,
+          88.50703171390424,
+          39.04616465544698,
+          0.040222164247881595,
+          50.44201728236732,
+          93.6678321539048
+        ],
+        [
+          77.4152332099429,
+          87.47153077831425,
+          122.85973327669714,
+          177.31287238573123,
+          138.94587378044113,
+          89.48011886766402,
+          50.44201728236732,
+          0.0,
+          43.37612625179166
+        ],
+        [
+          34.08557149061253,
+          44.21016662801418,
+          79.5109810290313,
+          138.51330323255496,
+          176.00163362427,
+          132.66591422331797,
+          93.6678321539048,
+          43.37612625179166,
+          0.0
+        ]
+      ],
+      "orbit_azimuth_pairwise_shortest_degrees": [
+        [
+          0.0,
+          9.805227130422196,
+          45.19213409352528,
+          104.19252649988131,
+          143.30295190995506,
+          167.0805169441786,
+          127.68258870423995,
+          77.84334581081532,
+          34.46293041516668
+        ],
+        [
+          9.805227130422196,
+          0.0,
+          35.38690696310306,
+          94.38729936945911,
+          133.49772477953286,
+          176.88574407460078,
+          137.48781583466217,
+          87.64857294123755,
+          44.268157545588906
+        ],
+        [
+          45.19213409352528,
+          35.38690696310306,
+          0.0,
+          59.00039240635604,
+          98.11081781642979,
+          147.7273489622961,
+          172.87472279776523,
+          123.0354799043406,
+          79.65506450869196
+        ],
+        [
+          104.1925264998813,
+          94.38729936945913,
+          59.00039240635604,
+          0.0,
+          39.11042541007373,
+          88.72695655594008,
+          128.1248847958787,
+          177.96412768930338,
+          138.65545691504798
+        ],
+        [
+          143.30295190995503,
+          133.49772477953286,
+          98.1108178164298,
+          39.11042541007373,
+          0.0,
+          49.61653114586633,
+          89.01445938580497,
+          138.85370227922962,
+          177.76588232512177
+        ],
+        [
+          167.0805169441786,
+          176.88574407460078,
+          147.7273489622961,
+          88.72695655594009,
+          49.61653114586633,
+          0.0,
+          39.397928239938636,
+          89.23717113336329,
+          132.61758652901193
+        ],
+        [
+          127.68258870423995,
+          137.48781583466217,
+          172.87472279776523,
+          128.1248847958787,
+          89.01445938580497,
+          39.397928239938636,
+          0.0,
+          49.839242893424654,
+          93.2196582890733
+        ],
+        [
+          77.84334581081532,
+          87.64857294123755,
+          123.0354799043406,
+          177.96412768930338,
+          138.85370227922965,
+          89.23717113336329,
+          49.839242893424654,
+          0.0,
+          43.38041539564864
+        ],
+        [
+          34.46293041516668,
+          44.268157545588906,
+          79.65506450869196,
+          138.65545691504798,
+          177.76588232512177,
+          132.61758652901193,
+          93.21965828907332,
+          43.38041539564864,
+          0.0
+        ]
+      ],
+      "cyclic_ordered_neighbor_angles": [
+        {
+          "from_id": "original",
+          "to_id": "yaw000",
+          "forward_axis_angle_degrees": 11.562694902545958,
+          "shortest_orbit_angle_degrees": 9.805227130422196
+        },
+        {
+          "from_id": "yaw000",
+          "to_id": "yaw045",
+          "forward_axis_angle_degrees": 35.41094635715917,
+          "shortest_orbit_angle_degrees": 35.38690696310306
+        },
+        {
+          "from_id": "yaw045",
+          "to_id": "yaw090",
+          "forward_axis_angle_degrees": 59.00714435654625,
+          "shortest_orbit_angle_degrees": 59.00039240635604
+        },
+        {
+          "from_id": "yaw090",
+          "to_id": "yaw135",
+          "forward_axis_angle_degrees": 39.3394219290178,
+          "shortest_orbit_angle_degrees": 39.11042541007373
+        },
+        {
+          "from_id": "yaw135",
+          "to_id": "yaw180",
+          "forward_axis_angle_degrees": 49.465694711571324,
+          "shortest_orbit_angle_degrees": 49.61653114586633
+        },
+        {
+          "from_id": "yaw180",
+          "to_id": "yaw225",
+          "forward_axis_angle_degrees": 39.04616465544698,
+          "shortest_orbit_angle_degrees": 39.397928239938636
+        },
+        {
+          "from_id": "yaw225",
+          "to_id": "yaw270",
+          "forward_axis_angle_degrees": 50.44201728236732,
+          "shortest_orbit_angle_degrees": 49.839242893424654
+        },
+        {
+          "from_id": "yaw270",
+          "to_id": "yaw315",
+          "forward_axis_angle_degrees": 43.37612625179166,
+          "shortest_orbit_angle_degrees": 43.38041539564864
+        },
+        {
+          "from_id": "yaw315",
+          "to_id": "original",
+          "forward_axis_angle_degrees": 34.08557149061253,
+          "shortest_orbit_angle_degrees": 34.46293041516668
+        }
+      ],
+      "sorted_orbit_intervals": [
+        {
+          "from_id": "original",
+          "to_id": "yaw000",
+          "from_yaw_degrees": 0.0,
+          "to_yaw_degrees": 9.805227130422198,
+          "gap_degrees": 9.805227130422198
+        },
+        {
+          "from_id": "yaw000",
+          "to_id": "yaw045",
+          "from_yaw_degrees": 9.805227130422198,
+          "to_yaw_degrees": 45.19213409352527,
+          "gap_degrees": 35.38690696310307
+        },
+        {
+          "from_id": "yaw045",
+          "to_id": "yaw090",
+          "from_yaw_degrees": 45.19213409352527,
+          "to_yaw_degrees": 104.19252649988131,
+          "gap_degrees": 59.00039240635604
+        },
+        {
+          "from_id": "yaw090",
+          "to_id": "yaw135",
+          "from_yaw_degrees": 104.19252649988131,
+          "to_yaw_degrees": 143.30295190995506,
+          "gap_degrees": 39.110425410073745
+        },
+        {
+          "from_id": "yaw135",
+          "to_id": "yaw180",
+          "from_yaw_degrees": 143.30295190995506,
+          "to_yaw_degrees": 192.9194830558214,
+          "gap_degrees": 49.61653114586633
+        },
+        {
+          "from_id": "yaw180",
+          "to_id": "yaw225",
+          "from_yaw_degrees": 192.9194830558214,
+          "to_yaw_degrees": 232.31741129576002,
+          "gap_degrees": 39.397928239938636
+        },
+        {
+          "from_id": "yaw225",
+          "to_id": "yaw270",
+          "from_yaw_degrees": 232.31741129576002,
+          "to_yaw_degrees": 282.1566541891847,
+          "gap_degrees": 49.839242893424654
+        },
+        {
+          "from_id": "yaw270",
+          "to_id": "yaw315",
+          "from_yaw_degrees": 282.1566541891847,
+          "to_yaw_degrees": 325.5370695848333,
+          "gap_degrees": 43.38041539564864
+        },
+        {
+          "from_id": "yaw315",
+          "to_id": "original",
+          "from_yaw_degrees": 325.5370695848333,
+          "to_yaw_degrees": 0.0,
+          "gap_degrees": 34.46293041516668
+        }
+      ],
+      "largest_orbit_gap": {
+        "from_id": "yaw045",
+        "to_id": "yaw090",
+        "from_yaw_degrees": 45.19213409352527,
+        "to_yaw_degrees": 104.19252649988131,
+        "gap_degrees": 59.00039240635604
+      },
+      "shortest_arc_containing_all_camera_samples_degrees": 300.999607593644,
+      "all_four_90_degree_azimuth_sectors_have_samples": true,
+      "original_yaw000": {
+        "forward_axis_angle_degrees": 11.562694902545958,
+        "orbit_azimuth_separation_degrees": 9.805227130422196,
+        "center_distance_over_median_orbit_radius": 0.22616978455000386
+      },
+      "near_duplicate_optical_axis_pairs_below_5_degrees": [],
+      "closest_forward_axis_pair": {
+        "ids": [
+          "original",
+          "yaw000"
+        ],
+        "angle_degrees": 11.562694902545958
+      },
+      "fitted_look_target": [
+        -0.005603285170042002,
+        -0.0039844807940428995,
+        1.0033420026170883
+      ],
+      "median_orbit_radius": 1.1586721090433834,
+      "median_ray_target_error_over_radius": 0.0021227490741674063,
+      "maximum_ray_target_error_over_median_radius": 0.005945851982886161,
+      "fitted_target_is_in_front_of_all_cameras": true,
+      "fitted_target_distance_along_each_optical_axis": [
+        0.9950219779295956,
+        1.158650880647661,
+        1.1698073970358225,
+        1.1387291763634664,
+        1.113425271391912,
+        1.1731408020080472,
+        1.1658075116193898,
+        1.1925830574162126,
+        1.1563410929837852
+      ],
+      "camera_center_singular_values": [
+        2.549260877719123,
+        2.2525086700151866,
+        0.09187889147651336
+      ],
+      "center_plane_thickness_ratio_smallest_to_largest_singular_value": 0.03604138449679553,
+      "interpretation": "Estimated cameras sample all four azimuth sectors; no optical-axis pair is within 5 degrees. The largest angular sample gap remains about 60 degrees. This does not establish true surface coverage or calibrated camera accuracy."
+    }
+  },
+  "initial_to_C1024": {
+    "relative_orbit_yaw_change_degrees_by_id": {
+      "original": 0.0,
+      "yaw000": 1.0174436067107422,
+      "yaw045": 1.0877287377404343,
+      "yaw090": -0.08447623251686309,
+      "yaw135": 0.13862504548296783,
+      "yaw180": 2.3736515254696826,
+      "yaw225": 2.029615797593806,
+      "yaw270": 1.5877413123572524,
+      "yaw315": -0.8642305915293491
+    },
+    "max_absolute_relative_orbit_yaw_change_degrees": 2.3736515254696826,
+    "largest_gap_change_degrees": -1.1722049702572974,
+    "original_yaw000_forward_angle_change_degrees": 0.5112101382023404,
+    "original_yaw000_orbit_angle_change_degrees": 1.0174436067107422,
+    "median_ray_target_error_over_radius_before": 0.005384802449684737,
+    "median_ray_target_error_over_radius_after": 0.0021227490741674063,
+    "camera_order_around_orbit_changed": false,
+    "interpretation": "C1024 makes a small adjustment to an already surrounding estimated camera arrangement; it does not turn a front-only arrangement into full-orbit sampling."
+  },
+  "B504_to_C1024": {
+    "max_absolute_relative_orbit_yaw_change_degrees": 0.25719681345239565,
+    "largest_gap_change_degrees": 0.13568232303295957
+  }
+}

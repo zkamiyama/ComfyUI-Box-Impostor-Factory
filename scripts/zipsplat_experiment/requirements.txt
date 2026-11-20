@@ -3,3 +3,5 @@
 numpy<2
 Pillow
 scipy
+# Needed when gsplat builds CUDA extensions in a fresh uv virtualenv.
+setuptools

@@ -4,6 +4,8 @@
 
 比較では入力画像・順序・初期チェックポイント・圧縮率・最適化回数を固定します。入力画像への適合、未知方向の見た目、GSからBoxへの変換誤差をそれぞれ記録します。
 
+実測結果は[REPORT.md](../../docs/verification/zipsplat-qwen-20261120/REPORT.md)を参照してください。このREADMEには再実行の手順と記録用テンプレートを載せています。
+
 ## 1. 実行環境
 
 以下はリポジトリのルートから実行します。`RUN_DIR`は実験ごとに新しいディレクトリへ変更してください。
@@ -39,6 +41,8 @@ CUDA GPUとCUDA Toolkitの`nvcc`が必要です。この例はCUDA 12.8のPyTorc
 | ZipSplat推論、TokenBA、Box変換、入力評価 | 上記の`ZIP_PY` |
 | `render_multiview_guides.py` | Gaussian Splatノードを利用できる既存ComfyUIのPython 3.11以降 |
 | `generate_multiview.py`、`make_inspector_contact.py` | Pillowを利用できるPython 3.11以降 |
+| `prepare_qwen_dataset.py` | NumPyとPillowを利用できるPython 3.11以降。既存ComfyUIのPython 3.12環境を推奨 |
+| `encode_capture_comparison.py` | Pillowを利用できるPython 3.11以降とffmpeg。CPUで比較動画を生成 |
 | 3D表示 | 3D-Inspectorの`view.py`と、その実行環境 |
 | Inspectorの撮影 | Node.js、Playwright、Chromium |
 
@@ -76,7 +80,27 @@ CUDA GPUとCUDA Toolkitの`nvcc`が必要です。この例はCUDA 12.8のPyTorc
 
 新しい視点を作る場合は、`render_multiview_guides.py`で全身の透視投影ガイドを作り、`generate_multiview.py`へ渡します。後者はComfyUIのAPI形式JSONをテンプレートとして受け取り、ノードIDと型を検査します。必要な引数は各スクリプトの`--help`にあります。
 
+`generate_multiview.py`の`--template "$SCRIPTS/qwen_anyangle_api_template.json"`で同梱のAPIテンプレートを指定できます。実行するComfyUI環境には、JSONが指定するQwen Image 2.1本体・CLIP・VAE・AnyAngle LoRA・BiRefNetの重みと、QwenImage21Cache・TextEncodeQwenImage21・背景除去などの使用ノードが必要です。入力画像名と保存先prefixはスクリプトが実行時に設定します。
+
 AnyAngleの接続は元画像を`image_1`、対象視点のガイドを`image_2`とし、既定プロンプトは`Change the camera angle from <image2> to <image1>.`です。各視点を同じ元画像から生成し、全画像をpadで指定サイズに合わせます。顔などの部分クロップは行いません。生成の`manifest.json`はそのままZipSplatの入力に使えます。Box用マスクのJSONには各結果の`mask`を`mask_path`として転記します。
+
+### 原図と8視点の黒背景入力
+
+原図1枚と生成8枚を使う場合は、全視点の生成完了後に`prepare_qwen_dataset.py`で入力を固定します。この補助スクリプトは`hashlib.file_digest`を使うため、Python 3.11以降が必要です。上記のZipSplat用Python 3.10環境では実行できません。
+
+```bash
+COMFY_PY=/absolute/path/comfyui-env/bin/python
+INPUT_DIR="$RUN_DIR/nine-inputs"
+"$COMFY_PY" "$SCRIPTS/prepare_qwen_dataset.py" \
+  --qwen "$RUN_DIR/qwen8" --original-mask "$RUN_DIR/original-mask.png" \
+  --out "$INPUT_DIR" --background black
+```
+
+この処理は生成の完了状態・実行履歴・プロンプト・ハッシュを照合し、原図を先頭にした9枚の`views.json`と対応する`masks.json`を作ります。生成前の原図、生成画像、マスクはそのまま複製して残し、各画像のRGBをリニア光へ変換して対応マスクを1回乗算したあと、sRGBへ戻して`inputs_black/`に保存します。画像の寸法は変えず、クロップもしません。PNGの埋め込みalphaは重ねて乗算しません。
+
+`qa.json`には元画像・黒背景画像・マスクのハッシュ、全身マスクの範囲と面積、原図と`yaw000`の重なりを記録します。原図と`yaw000`は両方残します。原図の`maxRGB > 4`によるマスクは近似であり、独立した正解マスクではありません。`contact.png`は左に元RGB、右に黒背景入力を並べ、`mask-contact.png`は対応マスクを並べます。各画像は全体を表示します。
+
+このセットを使う場合、後続コマンドの`$RUN_DIR/views.json`と`$RUN_DIR/masks.json`を、それぞれ`$INPUT_DIR/views.json`と`$INPUT_DIR/masks.json`へ置き換えます。B504とC1024には同じ固定済み入力を渡します。
 
 ## 3. 少数視点で動作を確認する
 
@@ -244,7 +268,43 @@ node "$SCRIPTS/capture_inspector.mjs" \
 
 GSとBoxの輪郭IoU、alphaの誤差、穴や二重像を確認します。ネイティブBoxとGSでは材質・照明・トーンマッピングが異なるため、RGBの見た目は条件を併記して比較します。形状を再構成する実験では既存Boxとのalpha完全一致を合否条件にしません。
 
-v2では`--reference`を`$PREP/common-frame/manifest.json`へ、GSの`--gaussians`と`--transform`を各`--prepared-*`で指定したパスへ変更します。
+v2では生成したv2のHTMLと共通範囲を指定し、撮影・再レンダリングの保存先も分けます。
+
+```bash
+node "$SCRIPTS/capture_inspector.mjs" \
+  --viewer "$RUN_DIR/boxes-v2/branches/B504/B504-box.inspector.html" \
+  --reference "$PREP/common-frame/manifest.json" \
+  --out "$RUN_DIR/capture-v2/B504" --frames 240 --size 512 \
+  --playwright-root "$PLAYWRIGHT_ROOT"
+"$ZIP_PY" "$SCRIPTS/render_matched_gs.py" \
+  --gaussians "$PREP/B504-foreground/gaussians.npy" \
+  --transform "$PREP/B504-canonical.json" \
+  --capture "$RUN_DIR/capture-v2/B504/capture.json" \
+  --output "$RUN_DIR/replay-v2/B504"
+```
+
+### RGBだけを更新する対照
+
+`retexture_box_rgb.py`は既存A512の6面のRGBをGSの色と混合し、全RGBA16F atlasのalphaビット列と、depth・normal・interval・range・proxyを保持します。入力する6面は`zip_render_faces.py render`の`--template`にA512の元manifestを指定して作ります。既定ではGSのalphaが0.5以下の画素にAの色を残し、0.5〜0.95で混合重みを滑らかに増やします。面ごとの支援alpha IoU・coverage・変更画素数はQAに保存します。
+
+```bash
+"$ZIP_PY" "$SCRIPTS/retexture_box_rgb.py" \
+  --template /absolute/path/A512/manifest.json \
+  --captures "$RUN_DIR/rgb-only-captures" --output "$RUN_DIR/rgb-only-box"
+```
+
+A512とRGB更新後のBoxを、公式Inspectorのdefault表示・同じ`--reference`でそれぞれ240フレーム撮影してから比較します。
+
+```bash
+"$ZIP_PY" "$SCRIPTS/compare_capture_alpha.py" \
+  --left "$RUN_DIR/capture/A512/capture.json" \
+  --right "$RUN_DIR/capture/D-RGB-only/capture.json" \
+  --out "$RUN_DIR/alpha-A512-vs-D-RGB-only.json"
+```
+
+比較処理は完了状態・240枚の順序・PNGのSHA256・記録カメラを検査します。カメラの数値差が1e-9を超える場合は`comparisonValid=false`とし、alpha一致の結論を出しません。成立した比較では各フレームと全体のalphaのMAE・最大差・不一致画素数・完全一致フレーム数を保存し、RGB差は別集計にします。既存の結果JSONは上書きしません。
+
+`encode_capture_comparison.py`は4条件の撮影結果を2×2に並べ、240フレームを24fps・10秒の比較動画にします。24fpsは保存動画の再生速度で、3D-InspectorやGPUの描画性能を示す値ではありません。
 
 ## 8. 保存物と再実行
 
@@ -259,9 +319,9 @@ v2では`--reference`を`$PREP/common-frame/manifest.json`へ、GSの`--gaussian
 
 同じ設定で完了済みの処理はハッシュを確認して再利用します。設定やコードを変更した比較は、新しい出力先または分岐名で実行してください。推論後の出力処理だけが失敗した場合は、保存済み`prediction.pt`に対して`render`を実行できます。
 
-## 実験結果の記入欄
+## 実験記録用テンプレート
 
-実測ファイルを確認してから記入します。
+以下は再実験の記録用テンプレートです。実測ファイルを確認してから記入します。今回の実測結果は[REPORT.md](../../docs/verification/zipsplat-qwen-20261120/REPORT.md)を参照してください。
 
 時間欄には`refinement.seconds`の追加調整の所要時間を、VRAM欄にはその段階の`peak_allocated_bytes`をGiBへ変換した値を記入します。モデルの読み込み、初期推論、Qwen生成、結果の保存は別工程です。PyTorchの最大確保量は`nvidia-smi`の使用量とは異なります。生成処理の`seconds`は投稿から結果収集までの時間で、処理を再開するまでの待ち時間も含み得ます。`captureElapsedSeconds`はInspectorのオフライン撮影時間です。
 

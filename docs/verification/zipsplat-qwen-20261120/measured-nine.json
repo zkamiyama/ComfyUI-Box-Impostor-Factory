@@ -1,0 +1,913 @@
+{
+  "schema": "zipsplat-nine-measured-summary-v1",
+  "collected_utc": "2026-11-20T10:16:57.505Z",
+  "root": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120",
+  "scope": "Read-only extraction of completed nine-view ZipSplat stages, input fitting at 1024, matched-camera GS-to-Box replays, and the separately monitored final seven Qwen views. No GPU execution or remote file modification.",
+  "measurement_scope": {
+    "stage_seconds": "Wall time around the named stage with CUDA synchronization; includes CPU work and any first-use compilation inside that stage, not GPU kernel time alone.",
+    "refinement_seconds": "TokenBA only, including its progress logging; excludes loading the saved head, checkpoint saving, diagnostic exports, Qwen generation and the initial ZipSplat prediction.",
+    "total_seconds": "Stage-dispatch wall time including checkpoint and diagnostic export work; excludes Python imports, CLI/environment setup, initial identity checks and the final JSON report write.",
+    "peak_allocated_bytes": "Maximum live tensors tracked by this process's PyTorch CUDA allocator during the named stage, including tensors resident before that stage. Not total device VRAM or nvidia-smi process memory.",
+    "peak_reserved_bytes": "Maximum allocator pool reserved by this process's PyTorch CUDA allocator during the named stage. CUDA context, allocations outside this allocator and other processes are not included.",
+    "byte_units": "Raw bytes; divide by 1024**3 for GiB.",
+    "model_loading_seconds": "Wall time in the model-loading block; model construction, checkpoint reading and device transfer are not separately measured. Do not interpret as cold-load latency, download time alone, or inference time.",
+    "unmeasured": "null denotes an unavailable measurement or inapplicable historical total; no whole-device VRAM was measured for the ZipSplat stages by these source files.",
+    "input_fitting": "Against the supplied original and generated images at identical target resolution/crops/masks; not unseen-view ground truth or geometric accuracy.",
+    "replay_secondsThisSession": "Wall time for the last replay invocation from loading packed gaussians through its last frame's rendering, PNG save/hash, source verification and alpha metrics; excludes imports and preexisting-output checks. Resume history is not accumulated, so not a pipeline or historical total. The last status write and final aggregate write are excluded.",
+    "replay_peakAllocatedMiB": "PyTorch CUDA maximum allocated tensor bytes divided by 2**20, reset after gaussians were moved to GPU; includes resident gaussians, excludes CUDA context/nonallocator/other processes. Reserved and whole-device peak are unmeasured.",
+    "replay_alpha_units": "Both RGBA PNG alpha channels are decoded from uint8 to [0,1]. alphaMAEFull uses all pixels; alphaMAEActive uses union(alpha>0); silhouetteIoU thresholds both alpha at >0.5; softAlphaIoU=sum(min)/sum(max).",
+    "replay_alpha_aggregation": "Unweighted arithmetic mean/min/max across 240 per-frame values; these are each branch's Box-vs-its-GS representation comparisons, not B-vs-C pixels and not real geometry GT.",
+    "qwen_monitor": "Whole-device nvidia-smi sampling during continuation after yaw000 was already complete. Includes display/Comfy model residency and final seven views only; not PyTorch allocated/reserved, not a process-only peak, and no claim that an unobserved interval had the same maximum."
+  },
+  "environment": {
+    "python": "3.10.19 (main, Feb 12 2026, 00:42:18) [Clang 21.1.4 ]",
+    "platform": "Linux-6.18.33.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "packages": {
+      "torch": "2.9.1+cu128",
+      "torchvision": "0.24.1+cu128",
+      "gsplat": "1.5.3",
+      "zipsplat": "1.0",
+      "numpy": "1.26.4",
+      "triton": "3.5.1"
+    },
+    "torch_cuda": "12.8",
+    "gpu": "NVIDIA GeForce RTX 4080",
+    "gpu_total_bytes": 17170956288,
+    "cuda_free_bytes_at_start": 15774777344,
+    "cuda_total_bytes": 17170956288,
+    "zipsplat_module": "/home/dev/Projects/box-impostor-lab/third_party/ZipSplat/zipsplat/__init__.py",
+    "zipsplat_commit": "73ab63f048fcc15ee54ada4ef9cdd79b925611a8",
+    "runner_sha256": "4a463784205d7168901163023cd6b331a54ee10d3fff511890ed672d3cca6791"
+  },
+  "weights": {
+    "requested": "zipsplat",
+    "resolved": "https://huggingface.co/veichta/zipsplat/resolve/main/zipsplat-da3g-504.tar",
+    "path": "/mnt/f/mnt/models/_cache/torch/hub/zipsplat/zipsplat-da3g-504.tar",
+    "size_bytes": 6002349727,
+    "sha256": "85d28887dbaee3f2116cf464ab0a15053a40b2f88bff69aa09e7b0f6fda46fd4"
+  },
+  "stages": [
+    {
+      "stage": "initial",
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/initial/complete.json",
+        "sha256": "cda646401c0861f86da1a22ae7e6fd61907c0074ef01e74bdfb710f934cea9df",
+        "bytes": 3696
+      },
+      "status": "complete",
+      "command": "predict",
+      "settings": {
+        "command": "predict",
+        "out": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/initial",
+        "device": "cuda:0",
+        "seed": 20261120,
+        "render_long_edge": 504,
+        "manifest": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/views.json",
+        "limit": null,
+        "weights": "zipsplat",
+        "compression": 1,
+        "fp32_weights": false,
+        "manifest_sha256": "0faf672eeea47cc466490b125c118c581d4e79de9422b8043ea68cc6eb25886d"
+      },
+      "measurements": {
+        "model_loading": {
+          "seconds": 49.43874899999355,
+          "peak_allocated_bytes": 3081717760,
+          "peak_reserved_bytes": 3258974208,
+          "peak_allocated_GiB": 2.8700733184814453,
+          "peak_reserved_GiB": 3.03515625
+        },
+        "feedforward": {
+          "seconds": 1.9301253029989311,
+          "peak_allocated_bytes": 4221745664,
+          "peak_reserved_bytes": 4575985664,
+          "peak_allocated_GiB": 3.931807041168213,
+          "peak_reserved_GiB": 4.26171875
+        },
+        "export": {
+          "seconds": 1.4194124070054386,
+          "peak_allocated_bytes": 149338112,
+          "peak_reserved_bytes": 230686720,
+          "peak_allocated_GiB": 0.1390819549560547,
+          "peak_reserved_GiB": 0.21484375
+        }
+      },
+      "total_seconds": 70.8982635269931,
+      "whole_device_peak_used_bytes": null,
+      "checkpoint": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/initial/prediction.pt",
+        "sha256": "b82bf657ac68120f66e16fb19dc191127109269bff352d973a66bc3b6c12f388"
+      },
+      "initial_checkpoint": null,
+      "gaussian_count": 186624,
+      "scene_sha256": "a9fbd10f8a648b6947c4dbc64558139b50a50bc3475db427039787d1def6029d"
+    },
+    {
+      "stage": "B504",
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/B504/complete.json",
+        "sha256": "760523af806e0646b1493aa708adcddf2a9e07547373a1191a544d9df786351f",
+        "bytes": 3466
+      },
+      "status": "complete",
+      "command": "refine",
+      "settings": {
+        "command": "refine",
+        "out": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/B504",
+        "device": "cuda:0",
+        "seed": 20261120,
+        "render_long_edge": 504,
+        "initial": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/initial/prediction.pt",
+        "long_edge": 504,
+        "steps": 96,
+        "rounds": 4,
+        "stock_ba": false,
+        "initial_sha256": "b82bf657ac68120f66e16fb19dc191127109269bff352d973a66bc3b6c12f388"
+      },
+      "measurements": {
+        "refinement": {
+          "seconds": 4.101615097999456,
+          "peak_allocated_bytes": 838399488,
+          "peak_reserved_bytes": 1356857344,
+          "optimizer_steps": 100,
+          "camera_updates": 4,
+          "peak_allocated_GiB": 0.780820369720459,
+          "peak_reserved_GiB": 1.263671875,
+          "joint_optimizer_steps": 96,
+          "steps_scope": "Recorded TokenBA._step optimizer updates: 4 token-only updates (one after each camera/token alternation) plus 96 joint token/pose updates. The separately counted 4 camera_update calls run PnP and photometric polish; their internal iterations are not included in optimizer_steps. Fixed alternation/joint budget; stock early stopping disabled."
+        },
+        "export": {
+          "seconds": 0.9207819540024502,
+          "peak_allocated_bytes": 195339776,
+          "peak_reserved_bytes": 211812352,
+          "peak_allocated_GiB": 0.18192434310913086,
+          "peak_reserved_GiB": 0.197265625
+        }
+      },
+      "total_seconds": 6.775460030010436,
+      "whole_device_peak_used_bytes": null,
+      "checkpoint": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/B504/prediction.pt",
+        "sha256": "b9c5d9ac7511f3f6af7769c95b80f7497d74f419af02ae7a6e0a818bfc61b1b9"
+      },
+      "initial_checkpoint": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/initial/prediction.pt",
+        "sha256": "b82bf657ac68120f66e16fb19dc191127109269bff352d973a66bc3b6c12f388"
+      },
+      "gaussian_count": 186624,
+      "scene_sha256": "a863c7a2e7d442547e225e523dae5ccef1e005b6560256cd3105c5150b87b25d"
+    },
+    {
+      "stage": "C1024",
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/C1024/complete.json",
+        "sha256": "f435cb3620f1f9cdf75665a8b6a9f556c1d9d1e89c67f9046a038b96725d1fa4",
+        "bytes": 3473
+      },
+      "status": "complete",
+      "command": "refine",
+      "settings": {
+        "command": "refine",
+        "out": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/C1024",
+        "device": "cuda:0",
+        "seed": 20261120,
+        "render_long_edge": 504,
+        "initial": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/initial/prediction.pt",
+        "long_edge": 1024,
+        "steps": 96,
+        "rounds": 4,
+        "stock_ba": false,
+        "initial_sha256": "b82bf657ac68120f66e16fb19dc191127109269bff352d973a66bc3b6c12f388"
+      },
+      "measurements": {
+        "refinement": {
+          "seconds": 6.3264451940049184,
+          "peak_allocated_bytes": 1706896896,
+          "peak_reserved_bytes": 1998585856,
+          "optimizer_steps": 100,
+          "camera_updates": 4,
+          "peak_allocated_GiB": 1.5896716117858887,
+          "peak_reserved_GiB": 1.861328125,
+          "joint_optimizer_steps": 96,
+          "steps_scope": "Recorded TokenBA._step optimizer updates: 4 token-only updates (one after each camera/token alternation) plus 96 joint token/pose updates. The separately counted 4 camera_update calls run PnP and photometric polish; their internal iterations are not included in optimizer_steps. Fixed alternation/joint budget; stock early stopping disabled."
+        },
+        "export": {
+          "seconds": 2.1015349490044173,
+          "peak_allocated_bytes": 194516992,
+          "peak_reserved_bytes": 213909504,
+          "peak_allocated_GiB": 0.18115806579589844,
+          "peak_reserved_GiB": 0.19921875
+        }
+      },
+      "total_seconds": 10.499261903009028,
+      "whole_device_peak_used_bytes": null,
+      "checkpoint": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/C1024/prediction.pt",
+        "sha256": "97811c7607bbf003f9c4c8909001fdb5e1356167bf1a2ce94da0d16ba6abb489"
+      },
+      "initial_checkpoint": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/initial/prediction.pt",
+        "sha256": "b82bf657ac68120f66e16fb19dc191127109269bff352d973a66bc3b6c12f388"
+      },
+      "gaussian_count": 186624,
+      "scene_sha256": "90c1b1030efff640918aeb6aabf691103d8215ea51ecf7ea48c1fcf18b789de2"
+    },
+    {
+      "stage": "B504-eval1024",
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/B504-eval1024/complete.json",
+        "sha256": "053660ac1cceee67351697379e9dcf68d66f80ab30e06252b03251fb3a56007f",
+        "bytes": 3002
+      },
+      "status": "complete",
+      "command": "render",
+      "settings": {
+        "command": "render",
+        "out": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/B504-eval1024",
+        "device": "cuda:0",
+        "seed": 20261120,
+        "render_long_edge": 1024,
+        "checkpoint": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/B504/prediction.pt",
+        "initial_sha256": "b9c5d9ac7511f3f6af7769c95b80f7497d74f419af02ae7a6e0a818bfc61b1b9"
+      },
+      "measurements": {
+        "export": {
+          "seconds": 3.3533722390129697,
+          "peak_allocated_bytes": 370853888,
+          "peak_reserved_bytes": 392167424,
+          "peak_allocated_GiB": 0.3453845977783203,
+          "peak_reserved_GiB": 0.365234375
+        }
+      },
+      "total_seconds": 4.297227828996256,
+      "whole_device_peak_used_bytes": null,
+      "checkpoint": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/B504/prediction.pt",
+        "sha256": "b9c5d9ac7511f3f6af7769c95b80f7497d74f419af02ae7a6e0a818bfc61b1b9"
+      },
+      "initial_checkpoint": null,
+      "gaussian_count": 186624,
+      "scene_sha256": "a863c7a2e7d442547e225e523dae5ccef1e005b6560256cd3105c5150b87b25d"
+    },
+    {
+      "stage": "C1024-eval1024",
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/C1024-eval1024/complete.json",
+        "sha256": "c2272f5e9dc746df654a908ea0e2fcd28e5cf679fbdee87632d9bb2f537777a0",
+        "bytes": 3006
+      },
+      "status": "complete",
+      "command": "render",
+      "settings": {
+        "command": "render",
+        "out": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/C1024-eval1024",
+        "device": "cuda:0",
+        "seed": 20261120,
+        "render_long_edge": 1024,
+        "checkpoint": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/C1024/prediction.pt",
+        "initial_sha256": "97811c7607bbf003f9c4c8909001fdb5e1356167bf1a2ce94da0d16ba6abb489"
+      },
+      "measurements": {
+        "export": {
+          "seconds": 2.531631510995794,
+          "peak_allocated_bytes": 370902528,
+          "peak_reserved_bytes": 392167424,
+          "peak_allocated_GiB": 0.3454298973083496,
+          "peak_reserved_GiB": 0.365234375
+        }
+      },
+      "total_seconds": 3.6279521769902203,
+      "whole_device_peak_used_bytes": null,
+      "checkpoint": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/C1024/prediction.pt",
+        "sha256": "97811c7607bbf003f9c4c8909001fdb5e1356167bf1a2ce94da0d16ba6abb489"
+      },
+      "initial_checkpoint": null,
+      "gaussian_count": 186624,
+      "scene_sha256": "90c1b1030efff640918aeb6aabf691103d8215ea51ecf7ea48c1fcf18b789de2"
+    }
+  ],
+  "branch_controls": {
+    "same_initial_checkpoint": true,
+    "initial_checkpoint_sha256": "b82bf657ac68120f66e16fb19dc191127109269bff352d973a66bc3b6c12f388",
+    "same_ordered_input_paths_and_hashes": true,
+    "ordered_inputs": [
+      {
+        "id": "original",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/inputs_black/original.png",
+        "sha256": "d08df8eac0cf857eed0133bef6dc2c80d8131a22df84e8622d5af02f71bb35a4"
+      },
+      {
+        "id": "yaw000",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/inputs_black/yaw000.png",
+        "sha256": "d492e5c36801bf260af35f954ed7817d934efd0f421148fc4c51c945fb703873"
+      },
+      {
+        "id": "yaw045",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/inputs_black/yaw045.png",
+        "sha256": "b7aa0ca0c7f70a7472c2227f4ab42bf687ebeac50cbb321739d659ab7900b7fb"
+      },
+      {
+        "id": "yaw090",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/inputs_black/yaw090.png",
+        "sha256": "ca00b3ac59bb3ebc051975266711e2b7107771d7482509fa146d54e7ac453529"
+      },
+      {
+        "id": "yaw135",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/inputs_black/yaw135.png",
+        "sha256": "d80fe0aa9da358976676a3555b4101cef3782a13eda3e38b2dff8ce5230e2cb7"
+      },
+      {
+        "id": "yaw180",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/inputs_black/yaw180.png",
+        "sha256": "12e6a9e3160047d5ce3286ecb5a02f0e8b7fd59e455d79414d5bd1b89e7bf81f"
+      },
+      {
+        "id": "yaw225",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/inputs_black/yaw225.png",
+        "sha256": "1d40c0c486149f194a156e47528ca4439c9cb798d2177fef2b73179ffc57338f"
+      },
+      {
+        "id": "yaw270",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/inputs_black/yaw270.png",
+        "sha256": "cc952f82f414761008cc509900f3d616cfe3cfc889ec3931ea27393021f0b895"
+      },
+      {
+        "id": "yaw315",
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/inputs_black/yaw315.png",
+        "sha256": "7406724b0fa886ba4c694e0b98be13da8772aa2e8afa129756dc2899d85e770b"
+      }
+    ],
+    "input_manifest": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/views.json",
+      "sha256": "0faf672eeea47cc466490b125c118c581d4e79de9422b8043ea68cc6eb25886d",
+      "bytes": 11892
+    },
+    "mask_manifest": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/masks.json",
+      "sha256": "e796db448c01e37b5069eab1b96adb97a7adf53d44dc6c21cddb98b39acdb095",
+      "bytes": 2891
+    },
+    "seed": 20261120,
+    "optimizer_updates_per_branch": 100,
+    "camera_updates_per_branch": 4,
+    "joint_updates_per_branch": 96,
+    "optimizer_scope": "100 recorded TokenBA._step updates = 4 token-only updates + 96 joint token/pose updates. camera_updates=4 counts separate PnP/photometric-polish calls, whose internal iterations are not part of the 100. Same initial checkpoint, seed and alternation/joint settings; only supervision long edge differs (504 vs 1024), diagnostic export long edge is 504.",
+    "eval_render_checkpoint_matches_branch": {
+      "B504": true,
+      "C1024": true
+    },
+    "evaluation_target_hashes_equal": true,
+    "evaluation_target_dimensions": [
+      1024,
+      1024
+    ]
+  },
+  "input_evaluation1024": {
+    "source": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/evaluation1024/metrics.json",
+      "sha256": "eb05e5c9803ec44eaefb5c03deec24aada2d574475d05e29df436a27ec2d3e52",
+      "bytes": 37217
+    },
+    "scope": "Input-view fitting to the supplied images; no unseen-view or geometric ground truth",
+    "labels": {
+      "left": "B504",
+      "right": "C1024"
+    },
+    "settings": {
+      "erosion_pixels": 2,
+      "erosion_metric": "Chebyshev (3x3 square repeated)",
+      "pixel_encoding": "8-bit RGB PNG decoded to [0,1]; no linear-light conversion",
+      "psnr_data_range": 1,
+      "exact_match_psnr": "null (infinite)",
+      "sobel": "Rec.709 luma weights on encoded pixels; scipy Sobel / 8, reflect boundary",
+      "gradient_interpretation": "Magnitude is detail/contrast, not accuracy. Gradient mismatch to target is an input-fit error."
+    },
+    "summary": {
+      "left": {
+        "whole": {
+          "pixels": 9437184,
+          "pooled_l1": 0.004482691064012129,
+          "pooled_mse": 0.0007288627004111076,
+          "pooled_psnr_db": 31.373542742468118,
+          "mean_per_view_l1": 0.004482691064012129,
+          "mean_per_view_psnr_db": 31.741505315900067
+        },
+        "foreground": {
+          "pixels": 827969,
+          "pooled_l1": 0.04689629324048974,
+          "pooled_mse": 0.007632705266839889,
+          "pooled_psnr_db": 21.173215073624597,
+          "mean_per_view_l1": 0.04641615576628148,
+          "mean_per_view_psnr_db": 21.548400298364996
+        },
+        "interior": {
+          "pixels": 769405,
+          "pooled_l1": 0.03666414282723188,
+          "pooled_mse": 0.003907996418163467,
+          "pooled_psnr_db": 24.080458430015128,
+          "mean_per_view_l1": 0.03615888124455923,
+          "mean_per_view_psnr_db": 24.962767637890423
+        },
+        "sobel_interior": {
+          "pixels": 769405,
+          "mean_magnitude": 0.02046847996665682,
+          "target_mean_magnitude": 0.02724547602504796,
+          "magnitude_l1_to_target": 0.01871264092582306,
+          "vector_l1_to_target": 0.017138090672193084,
+          "mean_magnitude_ratio_to_target": 0.7512616020303424
+        }
+      },
+      "right": {
+        "whole": {
+          "pixels": 9437184,
+          "pooled_l1": 0.00366247794972516,
+          "pooled_mse": 0.0004721927461810942,
+          "pooled_psnr_db": 33.25880688832304,
+          "mean_per_view_l1": 0.00366247794972516,
+          "mean_per_view_psnr_db": 33.73213580795521
+        },
+        "foreground": {
+          "pixels": 827969,
+          "pooled_l1": 0.035823217370890344,
+          "pooled_mse": 0.004197156368532506,
+          "pooled_psnr_db": 23.770448504869197,
+          "mean_per_view_l1": 0.03533055206204399,
+          "mean_per_view_psnr_db": 24.442038219781992
+        },
+        "interior": {
+          "pixels": 769405,
+          "pooled_l1": 0.031038705978420518,
+          "pooled_mse": 0.002802281227111339,
+          "pooled_psnr_db": 25.524882825927598,
+          "mean_per_view_l1": 0.030549656493423685,
+          "mean_per_view_psnr_db": 26.517960644713824
+        },
+        "sobel_interior": {
+          "pixels": 769405,
+          "mean_magnitude": 0.017357174547521705,
+          "target_mean_magnitude": 0.02724547602504796,
+          "magnitude_l1_to_target": 0.017005114224951413,
+          "vector_l1_to_target": 0.015091042673184004,
+          "mean_magnitude_ratio_to_target": 0.6370662979631735
+        }
+      }
+    },
+    "C1024_minus_B504": {
+      "whole": {
+        "pooled_psnr_db": 1.8852641458549257,
+        "pooled_l1": -0.0008202131142869694
+      },
+      "foreground": {
+        "pooled_psnr_db": 2.5972334312446,
+        "pooled_l1": -0.011073075869599394
+      },
+      "interior": {
+        "pooled_psnr_db": 1.4444243959124705,
+        "pooled_l1": -0.005625436848811359
+      }
+    },
+    "loss_trends": {
+      "left": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/B504/losses.json",
+        "sha256": "8614cf520f2adbab926bc2bf38a71c7c262a24728225a1bfd6328ed1b667e9e4",
+        "optimizer_steps": 100,
+        "previous8_mean": 0.0030781504756305367,
+        "last8_mean": 0.003017542971065268,
+        "last_block_relative_reduction": 0.01968958471819145,
+        "interpretation": "Each curve uses its own supervision resolution; compare convergence trend, not raw loss magnitude between resolutions."
+      },
+      "right": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/C1024/losses.json",
+        "sha256": "b38d126d04ed5ee5b2c3e6c1c6aacf6440907b50fe1507276e1ada0d48e1b8d4",
+        "optimizer_steps": 100,
+        "previous8_mean": 0.0037634325271937996,
+        "last8_mean": 0.0036969762586522847,
+        "last_block_relative_reduction": 0.01765841902606606,
+        "interpretation": "Each curve uses its own supervision resolution; compare convergence trend, not raw loss magnitude between resolutions."
+      }
+    },
+    "masks_manifest_sha256": "e796db448c01e37b5069eab1b96adb97a7adf53d44dc6c21cddb98b39acdb095",
+    "helper_sha256": "28914a24678c584d580625fd71f67ac420e774314250679736a78c4b9ad34e83",
+    "contact": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/evaluation1024/contact.png",
+      "sha256": "8cdff982f371964b92aee58616384500637e4d233ea61bb03c303272b5d09044"
+    }
+  },
+  "matched_camera_replays": [
+    {
+      "branch": "B504",
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/comparison/nine-B504-replay/replay.json",
+        "sha256": "d00922c538fa34adbc60f1c6d54cba3806e9940a39779054df09705b5d1991d3",
+        "bytes": 967929
+      },
+      "completed": true,
+      "framesExpected": 240,
+      "verified_frame_count": 240,
+      "verified_indices_ordered": true,
+      "cameraPixels": [
+        512,
+        512
+      ],
+      "identity": {
+        "gaussiansSha256": "5ad483d158ee7d5d7b1e8deb0af63bd60b3c5366491654401d6ccce0dced823d",
+        "transformSha256": "30bec681cbedcff5718a8747c462d1dfe6890f186c283fd5d64a59bbcb0b6124",
+        "captureSha256": "ba3a1a950ddc32d487f025b2d451b6e5aa5751d236a6ea90238298688795ee38",
+        "scriptSha256": "72888df92522cdb566e4d8fc9d7fcf721dbaecfa6c3f5777fe354a0f7989da08",
+        "supersample": 1,
+        "frames": 240,
+        "saveDepth": false
+      },
+      "sourceCapture": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/comparison/nine-B504/capture.json",
+      "method": "gsplat RGB+ED with exact recorded Inspector orthographic cameras",
+      "coordinatePolicy": "Camera matrices converted through branch canonical_from_scene; Gaussian SH remains in original scene frame",
+      "colorComparison": "Qualitative only: GS predicts image RGB; native Inspector Box applies its own material lighting and ACES.",
+      "alphaComparison": "Same camera/projection, different volume/surface and antialiasing models; alpha equality is not expected.",
+      "secondsThisSession": 19.482319943999755,
+      "total_seconds": null,
+      "peakAllocatedMiB": 29.43115234375,
+      "peakAllocatedGiB": 0.02874135971069336,
+      "peakReservedGiB": null,
+      "whole_device_peak_used_bytes": null,
+      "alphaSummary": {
+        "alphaMAEFull": {
+          "mean": 0.015147828557132896,
+          "min": 0.011885908538219978,
+          "max": 0.018058911491842827
+        },
+        "alphaMaxAbs": {
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "alphaMAEActive": {
+          "mean": 0.1333864789290575,
+          "min": 0.11743628855130173,
+          "max": 0.1558536625681544
+        },
+        "silhouetteIoU": {
+          "mean": 0.8394238784724509,
+          "min": 0.8130048868056248,
+          "max": 0.8653734520123839
+        },
+        "softAlphaIoU": {
+          "mean": 0.8260655705424043,
+          "min": 0.8028373408791454,
+          "max": 0.8511076126385019
+        }
+      }
+    },
+    {
+      "branch": "C1024",
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/comparison/nine-C1024-replay/replay.json",
+        "sha256": "16d5acf7204ad6bb8e54c86ddd2e9a94374e670d733aab61c60102549794f504",
+        "bytes": 967708
+      },
+      "completed": true,
+      "framesExpected": 240,
+      "verified_frame_count": 240,
+      "verified_indices_ordered": true,
+      "cameraPixels": [
+        512,
+        512
+      ],
+      "identity": {
+        "gaussiansSha256": "6cb8ce0d644a1cabc71c0bfcfbbf7cca77ca175f9f27db6dd3c89efb1dbe036c",
+        "transformSha256": "7e54cceaa2dfd638d965fb46f42f75ee20666edee95741cda0fa21b26f91ab0c",
+        "captureSha256": "d16054b4ee32f5e3850ec8cebfc48aade24d6d6a155f80bd458fc21265ef01b8",
+        "scriptSha256": "72888df92522cdb566e4d8fc9d7fcf721dbaecfa6c3f5777fe354a0f7989da08",
+        "supersample": 1,
+        "frames": 240,
+        "saveDepth": false
+      },
+      "sourceCapture": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/comparison/nine-C1024/capture.json",
+      "method": "gsplat RGB+ED with exact recorded Inspector orthographic cameras",
+      "coordinatePolicy": "Camera matrices converted through branch canonical_from_scene; Gaussian SH remains in original scene frame",
+      "colorComparison": "Qualitative only: GS predicts image RGB; native Inspector Box applies its own material lighting and ACES.",
+      "alphaComparison": "Same camera/projection, different volume/surface and antialiasing models; alpha equality is not expected.",
+      "secondsThisSession": 16.152715432006516,
+      "total_seconds": null,
+      "peakAllocatedMiB": 29.51806640625,
+      "peakAllocatedGiB": 0.028826236724853516,
+      "peakReservedGiB": null,
+      "whole_device_peak_used_bytes": null,
+      "alphaSummary": {
+        "alphaMAEFull": {
+          "mean": 0.01293616525487962,
+          "min": 0.00962374818091299,
+          "max": 0.015451917461320465
+        },
+        "alphaMaxAbs": {
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "alphaMAEActive": {
+          "mean": 0.1104993849655865,
+          "min": 0.09533094272645691,
+          "max": 0.12858808240645186
+        },
+        "silhouetteIoU": {
+          "mean": 0.8691885854343231,
+          "min": 0.8430153487468428,
+          "max": 0.8948196908986834
+        },
+        "softAlphaIoU": {
+          "mean": 0.8535580617084011,
+          "min": 0.8313826447019355,
+          "max": 0.8813006161955586
+        }
+      }
+    }
+  ],
+  "qwen8_last_seven_runtime": {
+    "source": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8-generation-runtime.json",
+      "sha256": "9d7220537bac8a434027e4b488f4dd6f87966ffb1a71e0d23d36c17779d60989",
+      "bytes": 237
+    },
+    "exitCode": 0,
+    "seconds": 768.1608276367188,
+    "readings": 378,
+    "devicePeakUsedMiB": 13883,
+    "scope": "whole device nvidia-smi; includes display and Comfy models, not PyTorch allocator peak",
+    "firstViewAlreadyComplete": true,
+    "covered_view_ids": [
+      "yaw045",
+      "yaw090",
+      "yaw135",
+      "yaw180",
+      "yaw225",
+      "yaw270",
+      "yaw315"
+    ],
+    "covered_views": 7,
+    "excluded_view_ids": [
+      "yaw000"
+    ],
+    "devicePeakUsedGiB": 13.5576171875,
+    "peak_allocated_bytes": null,
+    "peak_reserved_bytes": null,
+    "all_eight_views_device_peak_used_bytes": null,
+    "note": "This monitor's 768.16-second continuation wall time differs from summed Comfy execution timestamps and from summed submission-to-collection intervals. All-eight-history times are in measured-stages.json."
+  },
+  "input_qa": {
+    "source": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/qa.json",
+      "sha256": "1f1158b18a6c91d06cab95665644bacee672ed4ac8e398fe5814ace359d58dc1",
+      "bytes": 31097
+    },
+    "freeze_source": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/freeze.json",
+      "sha256": "2cfd43ef9b7a1a0d3b753c3633d33993a65eb358245ff0841d8ed56a0b34bd01",
+      "bytes": 988
+    },
+    "status": "complete",
+    "count": 9,
+    "original_first": true,
+    "ordered_ids": [
+      "original",
+      "yaw000",
+      "yaw045",
+      "yaw090",
+      "yaw135",
+      "yaw180",
+      "yaw225",
+      "yaw270",
+      "yaw315"
+    ],
+    "original_raw_source": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/inputs/source-original.png",
+      "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+    },
+    "original_derived": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine-inputs/inputs_black/original.png",
+      "sha256": "d08df8eac0cf857eed0133bef6dc2c80d8131a22df84e8622d5af02f71bb35a4"
+    },
+    "preprocessing": {
+      "background": "black",
+      "equation": "sRGB_encode(sRGB_decode(raw_RGB) * explicit_mask / 255)",
+      "output": "uint8 RGB PNG, original width and height; round-to-nearest",
+      "raw_png_alpha": "recorded for diagnostics, not additionally multiplied",
+      "resize": "none",
+      "crop": "none",
+      "applied_to": "all nine images including original",
+      "comparison": "one frozen preprocessed set shared by B504 and C1024"
+    },
+    "guide_camera_policy": "conditioning only, not calibrated poses; ZipSplat estimates poses",
+    "original_mask_limitation": "maxRGB > 4 threshold is approximate, not an independent segmentation ground truth",
+    "generation_manifest": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/manifest.json",
+      "sha256": "e475a1a93b13d7956d39d29aca85c8de1cd0e8980e22025d43127aa28717da72"
+    },
+    "generation_recipe_sha256": "4e64fc3883e30a539a9b24377a47bcd137643c715fd2543344f421010c8ca382",
+    "source_recipe": {
+      "original": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/inputs/source-original.png",
+      "original_sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+      "prepared_original_sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+      "template_sha256": "d3e187dfb8d851d9e32b32fb6081edf460486743ad2d23d93fc18ccdbee0e578",
+      "guides_sha256": "91b65d376aa969c3547b2b3cee8003c2a6dbbaae022901917e82b3671a52e884",
+      "size": 1024,
+      "steps": 20,
+      "cfg": 3,
+      "lora_strength": 1,
+      "seed_base": 2026112100,
+      "cache_dtype": "default",
+      "prompt": "Change the camera angle from <image2> to <image1>.",
+      "reference_order": [
+        "original",
+        "coarse_target"
+      ],
+      "view_ids": [
+        "yaw000",
+        "yaw045",
+        "yaw090",
+        "yaw135",
+        "yaw180",
+        "yaw225",
+        "yaw270",
+        "yaw315"
+      ],
+      "whole_image_fit": "pad_no_crop",
+      "view_consistency": "independent_generation_from_one_fixed_original"
+    },
+    "original_yaw000_overlap": {
+      "ids": [
+        "original",
+        "yaw000"
+      ],
+      "kept": true,
+      "exclusion_policy": "no automatic exclusion",
+      "interpretation": "nearby/overlapping observations; these image metrics do not measure camera separation",
+      "raw_bytes_identical": false,
+      "derived_bytes_identical": false,
+      "unregistered_mask_iou": 0.5680437518450041,
+      "unregistered_black_rgb_rmse_0_255": 38.28701707645627
+    },
+    "exact_derived_duplicate_groups": [],
+    "all_generated_masks_clear_of_image_edges": true,
+    "quality_exclusions": [],
+    "changed_raw_source_images": false,
+    "note": "This new nine-view dataset also changes generation settings from the older six-view experiment."
+  },
+  "camera_coverage": {
+    "detailed_diagnostic_source": {
+      "path": "/workspace/scratch/fe25d79c8da0/experiments/zipsplat/diagnostics/nine-camera-coverage.json",
+      "sha256": "ba46dafec43c804af52d2ecb180d5542518f0655a15fb1fecaff909afc4228fc",
+      "bytes": 38051,
+      "keys": [
+        "schema_version",
+        "scope",
+        "method",
+        "source_snapshot",
+        "source_snapshot_sha256",
+        "stages",
+        "initial_to_C1024",
+        "B504_to_C1024"
+      ]
+    },
+    "scope": "Estimated camera sampling only; nominal guide angles are conditioning, not calibrated true poses. Largest gap is the gap between orbit azimuth samples, not an unseen solid angle after camera FOV.",
+    "stages": [
+      {
+        "stage": "initial",
+        "source": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/initial/cameras.json",
+          "sha256": "29a6cd3c5cb56f01e0ad24829b487543be30ad657e4a53e0165afdf2054f92ba",
+          "bytes": 21060
+        },
+        "view_ids": [
+          "original",
+          "yaw000",
+          "yaw045",
+          "yaw090",
+          "yaw135",
+          "yaw180",
+          "yaw225",
+          "yaw270",
+          "yaw315"
+        ],
+        "convention": "OpenCV c2w; inferred first-view frame, no calibrated external poses",
+        "near_duplicate_direction_pairs_below_5_degrees": [],
+        "fitted_look_target": [
+          -0.010064565686061608,
+          -0.004139213527808827,
+          1.0212884390899157
+        ],
+        "inferred_orbit_yaw_degrees_relative_to_first": [
+          0,
+          8.787783523711461,
+          44.104405355784834,
+          104.27700273239817,
+          143.1643268644721,
+          190.5458315303517,
+          230.28779549816622,
+          280.5689128768274,
+          326.40130017636267
+        ],
+        "inferred_orbit_largest_gap_degrees": 60.17259737661334,
+        "median_orbit_radius": 1.1318102897790456,
+        "median_ray_target_error_over_radius": 0.005384802449684737,
+        "camera_center_singular_values": [
+          2.5529516041743334,
+          2.203203442440606,
+          0.11671521440059245
+        ],
+        "warning": "Orbit coverage is diagnostic only; unreliable when rays do not converge on one object."
+      },
+      {
+        "stage": "B504",
+        "source": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/B504/cameras.json",
+          "sha256": "ce278b4b01fcdc6de869d14d57462cf84d7af9dbc1845b7b5719932f785bb3d3",
+          "bytes": 21114
+        },
+        "view_ids": [
+          "original",
+          "yaw000",
+          "yaw045",
+          "yaw090",
+          "yaw135",
+          "yaw180",
+          "yaw225",
+          "yaw270",
+          "yaw315"
+        ],
+        "convention": "OpenCV c2w; inferred first-view frame, no calibrated external poses",
+        "near_duplicate_direction_pairs_below_5_degrees": [],
+        "fitted_look_target": [
+          -0.005555901839043078,
+          -0.003775686118147492,
+          1.0034588579269161
+        ],
+        "inferred_orbit_yaw_degrees_relative_to_first": [
+          0,
+          9.84269019918351,
+          45.41808109082391,
+          104.28279117414701,
+          143.56014872340748,
+          193.01668506687037,
+          232.45354422743316,
+          282.22195265920976,
+          325.60697086654693
+        ],
+        "inferred_orbit_largest_gap_degrees": 58.8647100833231,
+        "median_orbit_radius": 1.1635296487672553,
+        "median_ray_target_error_over_radius": 0.0021036182167144604,
+        "camera_center_singular_values": [
+          2.561985709197544,
+          2.263327286344409,
+          0.09568424356962373
+        ],
+        "warning": "Orbit coverage is diagnostic only; unreliable when rays do not converge on one object."
+      },
+      {
+        "stage": "C1024",
+        "source": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/nine/C1024/cameras.json",
+          "sha256": "c9b0ae4e7188e7d93b6c9b7b4b554dd71afbaf945ee1ef4378ae09660ca8871e",
+          "bytes": 21105
+        },
+        "view_ids": [
+          "original",
+          "yaw000",
+          "yaw045",
+          "yaw090",
+          "yaw135",
+          "yaw180",
+          "yaw225",
+          "yaw270",
+          "yaw315"
+        ],
+        "convention": "OpenCV c2w; inferred first-view frame, no calibrated external poses",
+        "near_duplicate_direction_pairs_below_5_degrees": [],
+        "fitted_look_target": [
+          -0.0056032851700419635,
+          -0.0039844807940428995,
+          1.0033420026170883
+        ],
+        "inferred_orbit_yaw_degrees_relative_to_first": [
+          0,
+          9.805227130422198,
+          45.19213409352527,
+          104.19252649988131,
+          143.30295190995506,
+          192.91948305582142,
+          232.31741129576002,
+          282.1566541891847,
+          325.5370695848333
+        ],
+        "inferred_orbit_largest_gap_degrees": 59.00039240635604,
+        "median_orbit_radius": 1.1586721090433834,
+        "median_ray_target_error_over_radius": 0.0021227490741674063,
+        "camera_center_singular_values": [
+          2.549260877719123,
+          2.2525086700151866,
+          0.09187889147651336
+        ],
+        "warning": "Orbit coverage is diagnostic only; unreliable when rays do not converge on one object."
+      }
+    ]
+  }
+}

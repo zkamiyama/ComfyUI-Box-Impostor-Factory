@@ -1,0 +1,732 @@
+{
+  "schema": "zipsplat-measured-stages-v1",
+  "collected_utc": "2026-11-20T10:04:01.197171+00:00",
+  "root": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120",
+  "scope": "Existing smoke4, six and completed qwen8 only; new nine-view reconstruction excluded.",
+  "measurement_scope": {
+    "stage_seconds": "Named-stage synchronized wall time; not pure GPU kernel time.",
+    "total_seconds": "Recorded runner dispatch total, including checkpoint/export I/O; excludes imports, initial identity/environment checks and final report writing.",
+    "memory": "Per-process PyTorch allocator maxima; includes already resident tensors, excludes CUDA context/non-allocator allocations/other processes. Not nvidia-smi total device VRAM.",
+    "cold_load": "Download, model construction, CPU checkpoint reading and CUDA transfer are not separately measured. Do not label model_loading.seconds as pure cold-load inference.",
+    "unmeasured_total_device_peak_vram_gib": null,
+    "gib_divisor": 1073741824
+  },
+  "stages": [
+    {
+      "id": "smoke4/initial",
+      "status": "failed",
+      "complete_json_exists": false,
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/smoke4/initial/run.json",
+        "sha256": "cb41187e560abc8830aa5980bcf3555d3ffb16659081ffa4489d454689ebd306"
+      },
+      "input_manifest_source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/smoke4/initial/inputs.json",
+        "sha256": "82db4ab72c63bea1c7adbcf5d1fab2c717816be2c8075c55631591fc2617e5de"
+      },
+      "input_views": 4,
+      "command": "predict",
+      "compression": 1,
+      "supervision_long_edge": null,
+      "bf16_weights": true,
+      "seed": 20261120,
+      "stock_early_stopping": null,
+      "initial_checkpoint_sha256": null,
+      "reported_total_seconds": 281.05822204001015,
+      "measurements": {
+        "model_loading": {
+          "seconds": 261.07597435600474,
+          "peak_allocated_bytes": 3081717760,
+          "peak_reserved_bytes": 3258974208,
+          "peak_allocated_gib": 2.8700733184814453,
+          "peak_reserved_gib": 3.03515625
+        },
+        "feedforward": {
+          "seconds": 1.0301481729984516,
+          "peak_allocated_bytes": 3596236288,
+          "peak_reserved_bytes": 3841982464,
+          "peak_allocated_gib": 3.3492560386657715,
+          "peak_reserved_gib": 3.578125
+        },
+        "refinement": null,
+        "export": null
+      },
+      "optimizer_steps": null,
+      "camera_updates": null,
+      "requested_joint_steps": null,
+      "requested_alternation_rounds": null,
+      "step_scope": "Feedforward prediction; optimizer step counters not applicable.",
+      "error_type": "ModuleNotFoundError",
+      "error": "No module named 'setuptools'",
+      "derived_joint_steps": null
+    },
+    {
+      "id": "smoke4/ba504",
+      "status": "complete",
+      "complete_json_exists": true,
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/smoke4/ba504/complete.json",
+        "sha256": "83121dd906d1acf4bf607608962e5e17a452bbea1dd1dd75c8c2af1bd8210723"
+      },
+      "input_manifest_source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/smoke4/ba504/inputs.json",
+        "sha256": "82db4ab72c63bea1c7adbcf5d1fab2c717816be2c8075c55631591fc2617e5de"
+      },
+      "input_views": 4,
+      "command": "refine",
+      "compression": null,
+      "supervision_long_edge": 504,
+      "bf16_weights": null,
+      "seed": 20261120,
+      "stock_early_stopping": true,
+      "initial_checkpoint_sha256": "36dff5b249665f6befb2f87a8ebb62cfe81b3cb389e4c01af6f46fa0ba26930c",
+      "reported_total_seconds": 6.30609841599653,
+      "measurements": {
+        "model_loading": null,
+        "feedforward": null,
+        "refinement": {
+          "seconds": 4.5099937850027345,
+          "peak_allocated_bytes": 361602048,
+          "peak_reserved_bytes": 555745280,
+          "peak_allocated_gib": 0.33676815032958984,
+          "peak_reserved_gib": 0.517578125
+        },
+        "export": {
+          "seconds": 0.5090978329972131,
+          "peak_allocated_bytes": 106508288,
+          "peak_reserved_bytes": 132120576,
+          "peak_allocated_gib": 0.09919357299804688,
+          "peak_reserved_gib": 0.123046875
+        }
+      },
+      "optimizer_steps": 100,
+      "camera_updates": 4,
+      "requested_joint_steps": 96,
+      "requested_alternation_rounds": 4,
+      "step_scope": "optimizer_steps counts one token optimizer update per completed camera/token round plus each joint token/pose step; PnP and pose-polish inner iterations are not included.",
+      "error_type": null,
+      "error": null,
+      "derived_joint_steps": 96,
+      "derived_joint_steps_formula": "optimizer_steps - camera_updates"
+    },
+    {
+      "id": "six/initial",
+      "status": "complete",
+      "complete_json_exists": true,
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/six/initial/complete.json",
+        "sha256": "ccfdc303d8c393a18da19af1a1e1414b92d596f9f43b235bfcee817593c9de71"
+      },
+      "input_manifest_source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/six/initial/inputs.json",
+        "sha256": "a7af918173ce5170dac8fa678c011dd97aa641076fa18c0693a2a8f765073012"
+      },
+      "input_views": 6,
+      "command": "predict",
+      "compression": 1,
+      "supervision_long_edge": null,
+      "bf16_weights": true,
+      "seed": 20261120,
+      "stock_early_stopping": null,
+      "initial_checkpoint_sha256": null,
+      "reported_total_seconds": 47.26283258799231,
+      "measurements": {
+        "model_loading": {
+          "seconds": 23.949521288988763,
+          "peak_allocated_bytes": 3081717760,
+          "peak_reserved_bytes": 3258974208,
+          "peak_allocated_gib": 2.8700733184814453,
+          "peak_reserved_gib": 3.03515625
+        },
+        "feedforward": {
+          "seconds": 1.1460751080012415,
+          "peak_allocated_bytes": 3849981440,
+          "peak_reserved_bytes": 4135583744,
+          "peak_allocated_gib": 3.5855746269226074,
+          "peak_reserved_gib": 3.8515625
+        },
+        "refinement": null,
+        "export": {
+          "seconds": 1.7659170270053437,
+          "peak_allocated_bytes": 107613184,
+          "peak_reserved_bytes": 146800640,
+          "peak_allocated_gib": 0.10022258758544922,
+          "peak_reserved_gib": 0.13671875
+        }
+      },
+      "optimizer_steps": null,
+      "camera_updates": null,
+      "requested_joint_steps": null,
+      "requested_alternation_rounds": null,
+      "step_scope": "Feedforward prediction; optimizer step counters not applicable.",
+      "error_type": null,
+      "error": null,
+      "derived_joint_steps": null
+    },
+    {
+      "id": "six/B504",
+      "status": "complete",
+      "complete_json_exists": true,
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/six/B504/complete.json",
+        "sha256": "165927a53e7f3f7e3590691e573c31e209ad42aa505e5687754360e788b99de6"
+      },
+      "input_manifest_source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/six/B504/inputs.json",
+        "sha256": "a7af918173ce5170dac8fa678c011dd97aa641076fa18c0693a2a8f765073012"
+      },
+      "input_views": 6,
+      "command": "refine",
+      "compression": null,
+      "supervision_long_edge": 504,
+      "bf16_weights": null,
+      "seed": 20261120,
+      "stock_early_stopping": false,
+      "initial_checkpoint_sha256": "0902635e865962e9563e357118bb327e22fa84c51023b10840ec99cc6626bfe3",
+      "reported_total_seconds": 5.05377671700262,
+      "measurements": {
+        "model_loading": null,
+        "feedforward": null,
+        "refinement": {
+          "seconds": 2.9955316060077166,
+          "peak_allocated_bytes": 532349440,
+          "peak_reserved_bytes": 769654784,
+          "peak_allocated_gib": 0.4957890510559082,
+          "peak_reserved_gib": 0.716796875
+        },
+        "export": {
+          "seconds": 0.7504857439926127,
+          "peak_allocated_bytes": 142841344,
+          "peak_reserved_bytes": 163577856,
+          "peak_allocated_gib": 0.13303136825561523,
+          "peak_reserved_gib": 0.15234375
+        }
+      },
+      "optimizer_steps": 100,
+      "camera_updates": 4,
+      "requested_joint_steps": 96,
+      "requested_alternation_rounds": 4,
+      "step_scope": "optimizer_steps counts one token optimizer update per completed camera/token round plus each joint token/pose step; PnP and pose-polish inner iterations are not included.",
+      "error_type": null,
+      "error": null,
+      "derived_joint_steps": 96,
+      "derived_joint_steps_formula": "optimizer_steps - camera_updates"
+    },
+    {
+      "id": "six/C1024",
+      "status": "complete",
+      "complete_json_exists": true,
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/six/C1024/complete.json",
+        "sha256": "42da9aa77af5b13849acd9d31280463029e9c58ef1a9561c3cbc0be9cad9c937"
+      },
+      "input_manifest_source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/six/C1024/inputs.json",
+        "sha256": "a7af918173ce5170dac8fa678c011dd97aa641076fa18c0693a2a8f765073012"
+      },
+      "input_views": 6,
+      "command": "refine",
+      "compression": null,
+      "supervision_long_edge": 1024,
+      "bf16_weights": null,
+      "seed": 20261120,
+      "stock_early_stopping": false,
+      "initial_checkpoint_sha256": "0902635e865962e9563e357118bb327e22fa84c51023b10840ec99cc6626bfe3",
+      "reported_total_seconds": 6.346520690000034,
+      "measurements": {
+        "model_loading": null,
+        "feedforward": null,
+        "refinement": {
+          "seconds": 3.8467807929991977,
+          "peak_allocated_bytes": 1160882176,
+          "peak_reserved_bytes": 1342177280,
+          "peak_allocated_gib": 1.081155776977539,
+          "peak_reserved_gib": 1.25
+        },
+        "export": {
+          "seconds": 0.9342621600080747,
+          "peak_allocated_bytes": 143777792,
+          "peak_reserved_bytes": 163577856,
+          "peak_allocated_gib": 0.13390350341796875,
+          "peak_reserved_gib": 0.15234375
+        }
+      },
+      "optimizer_steps": 100,
+      "camera_updates": 4,
+      "requested_joint_steps": 96,
+      "requested_alternation_rounds": 4,
+      "step_scope": "optimizer_steps counts one token optimizer update per completed camera/token round plus each joint token/pose step; PnP and pose-polish inner iterations are not included.",
+      "error_type": null,
+      "error": null,
+      "derived_joint_steps": 96,
+      "derived_joint_steps_formula": "optimizer_steps - camera_updates"
+    }
+  ],
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4080",
+    "torch_cuda": "12.8",
+    "packages": {
+      "torch": "2.9.1+cu128",
+      "torchvision": "0.24.1+cu128",
+      "gsplat": "1.5.3",
+      "zipsplat": "1.0",
+      "numpy": "1.26.4",
+      "triton": "3.5.1"
+    },
+    "zipsplat_commit": "73ab63f048fcc15ee54ada4ef9cdd79b925611a8",
+    "source": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/smoke4/initial/run.json",
+      "sha256": "cb41187e560abc8830aa5980bcf3555d3ffb16659081ffa4489d454689ebd306"
+    }
+  },
+  "smoke4_initial_export_recovery": {
+    "source": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/smoke4/render/complete.json",
+      "sha256": "03a41fbb6dc680ffe3dce85048d56364b5f8eada70084c833d0816feb329b234"
+    },
+    "status": "complete",
+    "command": "render",
+    "export": {
+      "seconds": 126.61971992900362,
+      "peak_allocated_bytes": 82598912,
+      "peak_reserved_bytes": 94371840,
+      "peak_allocated_gib": 0.07692623138427734,
+      "peak_reserved_gib": 0.087890625
+    },
+    "reported_total_seconds": 127.17621388999396,
+    "checkpoint_sha256": "36dff5b249665f6befb2f87a8ebb62cfe81b3cb389e4c01af6f46fa0ba26930c"
+  },
+  "six_input_evaluation1024": {
+    "source": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/six/evaluation1024/metrics.json",
+      "sha256": "d9c5db4ea15f1509f6623fbe121c9702b06d416a3331f2c0bf56bc83970d8d9d"
+    },
+    "scope": "Input-view fitting to the supplied images; no unseen-view or geometric ground truth",
+    "settings": {
+      "erosion_pixels": 2,
+      "erosion_metric": "Chebyshev (3x3 square repeated)",
+      "pixel_encoding": "8-bit RGB PNG decoded to [0,1]; no linear-light conversion",
+      "psnr_data_range": 1,
+      "exact_match_psnr": "null (infinite)",
+      "sobel": "Rec.709 luma weights on encoded pixels; scipy Sobel / 8, reflect boundary",
+      "gradient_interpretation": "Magnitude is detail/contrast, not accuracy. Gradient mismatch to target is an input-fit error."
+    },
+    "resolution_wh": [
+      [
+        1024,
+        1024
+      ]
+    ],
+    "branches": {
+      "B504": {
+        "whole": {
+          "pixels": 6291456,
+          "pooled_l1": 0.011266326708453697,
+          "pooled_mse": 0.001384975011106021,
+          "pooled_psnr_db": 28.585580624382825,
+          "mean_per_view_l1": 0.011266326708453697,
+          "mean_per_view_psnr_db": 29.075122718660754
+        },
+        "foreground": {
+          "pixels": 1274974,
+          "pooled_l1": 0.04656867926907898,
+          "pooled_mse": 0.005749798534728619,
+          "pooled_psnr_db": 22.403473721431514,
+          "mean_per_view_l1": 0.045653965225477676,
+          "mean_per_view_psnr_db": 22.56769695643761
+        },
+        "interior": {
+          "pixels": 1227277,
+          "pooled_l1": 0.04116693741816916,
+          "pooled_mse": 0.003942293385521071,
+          "pooled_psnr_db": 24.042510586533247,
+          "mean_per_view_l1": 0.039581794903163645,
+          "mean_per_view_psnr_db": 24.54071668736934
+        },
+        "sobel_interior": {
+          "pixels": 1227277,
+          "mean_magnitude": 0.012541463550924179,
+          "target_mean_magnitude": 0.027079946743921942,
+          "magnitude_l1_to_target": 0.02024407650128293,
+          "vector_l1_to_target": 0.017208257792564234,
+          "mean_magnitude_ratio_to_target": 0.4631273343895735
+        }
+      },
+      "C1024": {
+        "whole": {
+          "pixels": 6291456,
+          "pooled_l1": 0.010930419636692883,
+          "pooled_mse": 0.0012616684146041805,
+          "pooled_psnr_db": 28.990547692039744,
+          "mean_per_view_l1": 0.010930419636692883,
+          "mean_per_view_psnr_db": 29.576544416929156
+        },
+        "foreground": {
+          "pixels": 1274974,
+          "pooled_l1": 0.044175436024953205,
+          "pooled_mse": 0.00496384661671605,
+          "pooled_psnr_db": 23.041816467025193,
+          "mean_per_view_l1": 0.0427661672752335,
+          "mean_per_view_psnr_db": 23.336511222246767
+        },
+        "interior": {
+          "pixels": 1227277,
+          "pooled_l1": 0.04004469742521725,
+          "pooled_mse": 0.003686450089882096,
+          "pooled_psnr_db": 24.333916415480864,
+          "mean_per_view_l1": 0.03831616144396576,
+          "mean_per_view_psnr_db": 24.850966469107806
+        },
+        "sobel_interior": {
+          "pixels": 1227277,
+          "mean_magnitude": 0.012034311903002526,
+          "target_mean_magnitude": 0.027079946743921942,
+          "magnitude_l1_to_target": 0.0201456189564834,
+          "vector_l1_to_target": 0.016946651590457277,
+          "mean_magnitude_ratio_to_target": 0.4443993932781131
+        }
+      }
+    },
+    "loss_trends": {
+      "left": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/six/B504/losses.json",
+        "sha256": "c98051f0817785942eacf00498946793e5fd71561d82493c50db075135e84cf1",
+        "optimizer_steps": 100,
+        "previous8_mean": 0.009987646131776273,
+        "last8_mean": 0.009741202578879893,
+        "last_block_relative_reduction": 0.024674838259668215,
+        "interpretation": "Each curve uses its own supervision resolution; compare convergence trend, not raw loss magnitude between resolutions."
+      },
+      "right": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/six/C1024/losses.json",
+        "sha256": "ebd74b9dd509943792c1c05ee5d0f072e0c6231ea765aeb59b27db9a5068646b",
+        "optimizer_steps": 100,
+        "previous8_mean": 0.011355338850989938,
+        "last8_mean": 0.011085831793025136,
+        "last_block_relative_reduction": 0.023733951183791107,
+        "interpretation": "Each curve uses its own supervision resolution; compare convergence trend, not raw loss magnitude between resolutions."
+      }
+    },
+    "foreground_C_minus_B": {
+      "pooled_psnr_db": 0.638342745593679,
+      "pooled_l1": -0.0023932432441257784
+    }
+  },
+  "qwen8": {
+    "scope": "ComfyUI execution_start to execution_success is whole graph wall time, including model loading/cached nodes/decoding/mask/save nodes; not pure sampler GPU time.",
+    "collection_scope": "result.seconds is submitted_epoch to result collection, rounded to milliseconds; its difference from graph execution includes polling/waiting/resume delay and timestamp rounding.",
+    "views": [
+      {
+        "id": "yaw000",
+        "seed": 2026112100,
+        "status": "success",
+        "execution_start_ms": 1795167634379,
+        "execution_success_ms": 1795167918966,
+        "history_execution_seconds": 284.587,
+        "submission_to_collected_seconds": 285.144,
+        "collection_minus_execution_seconds": 0.5570000000000164,
+        "submitted_epoch": 1795167634.3795333,
+        "requested_sampler_steps": 20,
+        "sampler_node_cached": false,
+        "cached_node_ids": [],
+        "sources": {
+          "history": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw000/history.json",
+            "sha256": "d1376ba87bc715ed62c1da4dc96b11eb44470e0734d4ca42145dafaa80fd3bea"
+          },
+          "result": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw000/result.json",
+            "sha256": "15466c7aac8e2433368ef2277aa5c6eb8399c56e61a36bed448bd641a3ef0878"
+          },
+          "submitted": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw000/submitted.json",
+            "sha256": "2ef93a87a057b7482d3461de04c1cfdcc71e162c908cdd3f7021d40d39ed64c5"
+          }
+        }
+      },
+      {
+        "id": "yaw045",
+        "seed": 2026112101,
+        "status": "success",
+        "execution_start_ms": 1795168069161,
+        "execution_success_ms": 1795168185681,
+        "history_execution_seconds": 116.52,
+        "submission_to_collected_seconds": 117.059,
+        "collection_minus_execution_seconds": 0.5390000000000015,
+        "submitted_epoch": 1795168069.1613786,
+        "requested_sampler_steps": 20,
+        "sampler_node_cached": false,
+        "cached_node_ids": [
+          "1",
+          "6",
+          "7",
+          "8",
+          "15",
+          "19",
+          "9"
+        ],
+        "sources": {
+          "history": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw045/history.json",
+            "sha256": "b6be02945981922c44498cfe7f91a389b0d02541cff0d129a70e6ea088dc860a"
+          },
+          "result": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw045/result.json",
+            "sha256": "402ba5c2ad95a6de4e61cb24673aa9a1e3fd09f40a5f56e1f67784e36aae6aa7"
+          },
+          "submitted": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw045/submitted.json",
+            "sha256": "3805e9ced83360dd797b0097c0b77e1044e31d648e2f71d2d254968818305692"
+          }
+        }
+      },
+      {
+        "id": "yaw090",
+        "seed": 2026112102,
+        "status": "success",
+        "execution_start_ms": 1795168186286,
+        "execution_success_ms": 1795168291831,
+        "history_execution_seconds": 105.545,
+        "submission_to_collected_seconds": 108.054,
+        "collection_minus_execution_seconds": 2.5090000000000003,
+        "submitted_epoch": 1795168186.2862654,
+        "requested_sampler_steps": 20,
+        "sampler_node_cached": false,
+        "cached_node_ids": [
+          "1",
+          "6",
+          "7",
+          "8",
+          "15",
+          "19",
+          "9"
+        ],
+        "sources": {
+          "history": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw090/history.json",
+            "sha256": "b17b38110e48e1b962deedd19580e057f8039fa5cfb99002ceb404cb748d9691"
+          },
+          "result": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw090/result.json",
+            "sha256": "0eb2ed58c71024e33443c4acb63ed93edfa5a1db72656deec6a824b6f62ba265"
+          },
+          "submitted": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw090/submitted.json",
+            "sha256": "1c59be2c640f94b23ea181c3a54322f10431d10ff164e2d23f3d67ff91abe08d"
+          }
+        }
+      },
+      {
+        "id": "yaw135",
+        "seed": 2026112103,
+        "status": "success",
+        "execution_start_ms": 1795168294471,
+        "execution_success_ms": 1795168403397,
+        "history_execution_seconds": 108.926,
+        "submission_to_collected_seconds": 111.052,
+        "collection_minus_execution_seconds": 2.1260000000000048,
+        "submitted_epoch": 1795168294.4705307,
+        "requested_sampler_steps": 20,
+        "sampler_node_cached": false,
+        "cached_node_ids": [
+          "1",
+          "6",
+          "7",
+          "8",
+          "15",
+          "19",
+          "9"
+        ],
+        "sources": {
+          "history": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw135/history.json",
+            "sha256": "f547ad5491b5f64a362e9c7451a6607514398a5871957d15374a4f4a4523a85a"
+          },
+          "result": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw135/result.json",
+            "sha256": "60fa9f1a8dcaaf1f3ca0f1dc7796fa581b4d2c6778138cf38be1ef9009a6cfb6"
+          },
+          "submitted": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw135/submitted.json",
+            "sha256": "67752b696d4df2fa283d9e8b431715d20188a5f1da79fee973da9236d03b90a6"
+          }
+        }
+      },
+      {
+        "id": "yaw180",
+        "seed": 2026112104,
+        "status": "success",
+        "execution_start_ms": 1795168405593,
+        "execution_success_ms": 1795168510970,
+        "history_execution_seconds": 105.377,
+        "submission_to_collected_seconds": 108.055,
+        "collection_minus_execution_seconds": 2.6780000000000115,
+        "submitted_epoch": 1795168405.5931013,
+        "requested_sampler_steps": 20,
+        "sampler_node_cached": false,
+        "cached_node_ids": [
+          "1",
+          "6",
+          "7",
+          "8",
+          "15",
+          "19",
+          "9"
+        ],
+        "sources": {
+          "history": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw180/history.json",
+            "sha256": "69bd1606ca0e39d15c701ddc8acecf4af0123bc9abd7b55b97b33cfd1cf45b95"
+          },
+          "result": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw180/result.json",
+            "sha256": "39aad98c871074abe6267e12a359caf2fba3003a8fbd0ebdb47c024af3551228"
+          },
+          "submitted": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw180/submitted.json",
+            "sha256": "4af909277b3f513304e21878d964d6711a15ae577270d8bf96d91bc670c6f116"
+          }
+        }
+      },
+      {
+        "id": "yaw225",
+        "seed": 2026112105,
+        "status": "success",
+        "execution_start_ms": 1795168513730,
+        "execution_success_ms": 1795168620672,
+        "history_execution_seconds": 106.942,
+        "submission_to_collected_seconds": 108.051,
+        "collection_minus_execution_seconds": 1.1090000000000089,
+        "submitted_epoch": 1795168513.7296147,
+        "requested_sampler_steps": 20,
+        "sampler_node_cached": false,
+        "cached_node_ids": [
+          "1",
+          "6",
+          "7",
+          "8",
+          "15",
+          "19",
+          "9"
+        ],
+        "sources": {
+          "history": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw225/history.json",
+            "sha256": "4c594703578267d61fe5705ba913c038f25eab6306fd10b6f09e145d61460152"
+          },
+          "result": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw225/result.json",
+            "sha256": "f1eb4fd78730f11af9b7f3c21e0d4b5faf21b21ca554d5e77ed483a16bd993e4"
+          },
+          "submitted": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw225/submitted.json",
+            "sha256": "4a50ec2b8661353c9b89c05e450afd37a148e12e413139766362782e0ace9745"
+          }
+        }
+      },
+      {
+        "id": "yaw270",
+        "seed": 2026112106,
+        "status": "success",
+        "execution_start_ms": 1795168621858,
+        "execution_success_ms": 1795168726820,
+        "history_execution_seconds": 104.962,
+        "submission_to_collected_seconds": 105.171,
+        "collection_minus_execution_seconds": 0.20900000000000318,
+        "submitted_epoch": 1795168621.8579493,
+        "requested_sampler_steps": 20,
+        "sampler_node_cached": false,
+        "cached_node_ids": [
+          "1",
+          "6",
+          "7",
+          "8",
+          "15",
+          "19",
+          "9"
+        ],
+        "sources": {
+          "history": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw270/history.json",
+            "sha256": "f3837efd30153eff3b97af2a067b6d667b1ff9113027174a707b52a8327d2003"
+          },
+          "result": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw270/result.json",
+            "sha256": "dcea5bdbaa49bb97d2b02b0e47835bf9f9f1df78c2ad5a9e379ff179463c7594"
+          },
+          "submitted": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw270/submitted.json",
+            "sha256": "51efba3d4393b57449e20b44a4c35436e639c4729fb0edd725ec884c9b369746"
+          }
+        }
+      },
+      {
+        "id": "yaw315",
+        "seed": 2026112107,
+        "status": "success",
+        "execution_start_ms": 1795168727120,
+        "execution_success_ms": 1795168833380,
+        "history_execution_seconds": 106.26,
+        "submission_to_collected_seconds": 108.062,
+        "collection_minus_execution_seconds": 1.8019999999999925,
+        "submitted_epoch": 1795168727.1204274,
+        "requested_sampler_steps": 20,
+        "sampler_node_cached": false,
+        "cached_node_ids": [
+          "1",
+          "6",
+          "7",
+          "8",
+          "15",
+          "19",
+          "9"
+        ],
+        "sources": {
+          "history": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw315/history.json",
+            "sha256": "897b3e677b59d8da0de27ff52333397d26660c7cbc456715ae199b5bbbe60821"
+          },
+          "result": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw315/result.json",
+            "sha256": "7f359581f97075b4d752d053d95afa9802dd29231c12b14f275e002106bbe053"
+          },
+          "submitted": {
+            "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/views/yaw315/submitted.json",
+            "sha256": "0f19d2b493c33eb4c3b99390bb9aa98ece6a5a3b7672f24ea2022073cf104539"
+          }
+        }
+      }
+    ],
+    "peak_allocated_gib": null,
+    "peak_reserved_gib": null,
+    "peak_total_device_vram_gib": null,
+    "recipe": {
+      "size": 1024,
+      "steps": 20,
+      "cfg": 3,
+      "lora_strength": 1,
+      "seed_base": 2026112100,
+      "cache_dtype": "default",
+      "view_ids": [
+        "yaw000",
+        "yaw045",
+        "yaw090",
+        "yaw135",
+        "yaw180",
+        "yaw225",
+        "yaw270",
+        "yaw315"
+      ],
+      "source": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/qwen8/prepared.json",
+        "sha256": "4e64fc3883e30a539a9b24377a47bcd137643c715fd2543344f421010c8ca382"
+      }
+    },
+    "completed_views": 8,
+    "sum_history_execution_seconds": 1039.119,
+    "sum_submission_to_collected_seconds": 1050.6480000000001,
+    "sum_collection_minus_execution_seconds": 11.529000000000224,
+    "first_execution_start_to_last_success_seconds": 1199.001,
+    "span_minus_sum_execution_seconds": 159.88200000000006
+  }
+}
