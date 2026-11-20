@@ -1,0 +1,385 @@
+{
+  "completed": true,
+  "models": {
+    "idol20": {
+      "ply": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_20.ply",
+      "plySha256": "3a7e20493c20ba80ff4a87024072866627fea183af0e8ed578913023167c135b",
+      "box": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_20_Box512.box.zip",
+      "boxSha256": "36a72b392c3dda84a52cb4865d51dc21b03443b5b2c1f1131b56598a294ba6f9",
+      "assetPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/box/idol20/766c5b865e0e68d7c86938030a44608055d92062eab657a03184773e65cebabb",
+      "viewers": {
+        "GS": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_20_GS.inspector.html",
+          "sha256": "ef77d3af4b073230a4018cbf5e51244f045c7e64437102b54f7224034e9fbfe8"
+        },
+        "Box512": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_20_Box512.inspector.html",
+          "sha256": "ee13b198cd42f68db302313f1c5bbf57b1d4d1597c57d794524c4a1fdc4dfbd3"
+        }
+      },
+      "nativeStatus": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol20-common-native/status.json",
+      "faceStatus": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol20-faces512/status.json",
+      "outOfBoundsAlphaPixels": {
+        "px": 0,
+        "nx": 0,
+        "py": 0,
+        "ny": 0,
+        "pz": 0,
+        "nz": 0
+      },
+      "faceEdgePixels": {
+        "px": 0,
+        "nx": 0,
+        "py": 0,
+        "ny": 0,
+        "pz": 0,
+        "nz": 0
+      }
+    },
+    "idol50": {
+      "ply": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_50.ply",
+      "plySha256": "406196c44a97b3698cd37ce4b09e38635841242d0013978d87668361aa38806b",
+      "box": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_50_Box512.box.zip",
+      "boxSha256": "4b91befeec7869b0fd40e0734f73d8827341162c78207674a3294fbf0ef18b19",
+      "assetPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/box/idol50/a6737a26c7442e42cd66667c36872fd052cf544809630d908a146a6e29c31885",
+      "viewers": {
+        "GS": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_50_GS.inspector.html",
+          "sha256": "cf2e912c1ec9c9bd797525b0e9ffb1115f5be7b9902ec9988341a4ae50af481c"
+        },
+        "Box512": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_50_Box512.inspector.html",
+          "sha256": "bb567e0da14437b92abbe605cb75237f1144667d0108043ba9e9d4f935bc42c4"
+        }
+      },
+      "nativeStatus": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol50-common-native/status.json",
+      "faceStatus": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol50-faces512/status.json",
+      "outOfBoundsAlphaPixels": {
+        "px": 0,
+        "nx": 0,
+        "py": 0,
+        "ny": 0,
+        "pz": 0,
+        "nz": 0
+      },
+      "faceEdgePixels": {
+        "px": 0,
+        "nx": 0,
+        "py": 0,
+        "ny": 0,
+        "pz": 0,
+        "nz": 0
+      }
+    },
+    "tripo20": {
+      "ply": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/TripoSplat_20.ply",
+      "plySha256": "12d21794a03b085c4ad8fb661058f5e746282666a66297e31c6245d392c486b4",
+      "box": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/TripoSplat_20_Box512.box.zip",
+      "boxSha256": "1568dad87fdeee191b03bbc278a3ee0f06560583d25d8b67a4402e71c959fe40",
+      "assetPath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/box/tripo20/936d6e0039a7bde726db9c578692985c9c57d36a5a9626faf31f6a74bbada279",
+      "viewers": {
+        "GS": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/TripoSplat_20_GS.inspector.html",
+          "sha256": "c3c1006acb1758426e435a8610d164d51b1b017a3b6cedf0e4dc091627c406b7"
+        },
+        "Box512": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/TripoSplat_20_Box512.inspector.html",
+          "sha256": "0422ec6ac8151238866caf7f0f0897df9d6823803a033b2f0fdc708a042c95c4"
+        }
+      },
+      "nativeStatus": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/tripo20-common-native/status.json",
+      "faceStatus": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/tripo20-faces512/status.json",
+      "outOfBoundsAlphaPixels": {
+        "px": 0,
+        "nx": 0,
+        "py": 0,
+        "ny": 0,
+        "pz": 0,
+        "nz": 0
+      },
+      "faceEdgePixels": {
+        "px": 0,
+        "nx": 0,
+        "py": 0,
+        "ny": 0,
+        "pz": 0,
+        "nz": 0
+      }
+    }
+  },
+  "commands": [
+    {
+      "name": "idol20-native",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/scripts/render_native_splat.py",
+        "turntable",
+        "--splat",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-20steps-seed46/splat.npz",
+        "--template",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/common-frame/manifest.json",
+        "--rotate-y",
+        "0",
+        "--comfy-root",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI",
+        "--factory-root",
+        "/home/dev/Projects/box-impostor-lab/worktrees/idol-triposplat-20261120",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol20-common-native",
+        "--export-ply",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_20.ply"
+      ],
+      "seconds": 69.9956031210022
+    },
+    {
+      "name": "idol20-faces",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/scripts/render_native_splat.py",
+        "faces",
+        "--splat",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-20steps-seed46/splat.npz",
+        "--template",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/common-frame/manifest.json",
+        "--rotate-y",
+        "0",
+        "--comfy-root",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI",
+        "--factory-root",
+        "/home/dev/Projects/box-impostor-lab/worktrees/idol-triposplat-20261120",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol20-faces512",
+        "--metric-renderer",
+        "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/experimental_gaussian_depth.py"
+      ],
+      "seconds": 11.690011409009458
+    },
+    {
+      "name": "idol20-box",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/scripts/build_metric_box.py",
+        "--template",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/common-frame/manifest.json",
+        "--captures",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol20-faces512",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/box/idol20"
+      ],
+      "seconds": 1.8948703210044187
+    },
+    {
+      "name": "idol20-GS-inspector",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/home/dev/Projects/box-impostor-lab/third_party/3D-Inspector-skills/skills/3d-inspector/view.py",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_20.ply",
+        "-o",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_20_GS.inspector.html"
+      ],
+      "seconds": 3.54592100600712
+    },
+    {
+      "name": "idol20-Box512-inspector",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/home/dev/Projects/box-impostor-lab/third_party/3D-Inspector-skills/skills/3d-inspector/view.py",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_20_Box512.box.zip",
+        "-o",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_20_Box512.inspector.html"
+      ],
+      "seconds": 5.247796663999907
+    },
+    {
+      "name": "idol50-native",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/scripts/render_native_splat.py",
+        "turntable",
+        "--splat",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-50steps-seed46/splat.npz",
+        "--template",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/common-frame/manifest.json",
+        "--rotate-y",
+        "0",
+        "--comfy-root",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI",
+        "--factory-root",
+        "/home/dev/Projects/box-impostor-lab/worktrees/idol-triposplat-20261120",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol50-common-native",
+        "--export-ply",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_50.ply"
+      ],
+      "seconds": 53.372261487995274
+    },
+    {
+      "name": "idol50-faces",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/scripts/render_native_splat.py",
+        "faces",
+        "--splat",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-50steps-seed46/splat.npz",
+        "--template",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/common-frame/manifest.json",
+        "--rotate-y",
+        "0",
+        "--comfy-root",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI",
+        "--factory-root",
+        "/home/dev/Projects/box-impostor-lab/worktrees/idol-triposplat-20261120",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol50-faces512",
+        "--metric-renderer",
+        "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/experimental_gaussian_depth.py"
+      ],
+      "seconds": 12.07266027800506
+    },
+    {
+      "name": "idol50-box",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/scripts/build_metric_box.py",
+        "--template",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/common-frame/manifest.json",
+        "--captures",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol50-faces512",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/box/idol50"
+      ],
+      "seconds": 2.5210004809923703
+    },
+    {
+      "name": "idol50-GS-inspector",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/home/dev/Projects/box-impostor-lab/third_party/3D-Inspector-skills/skills/3d-inspector/view.py",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_50.ply",
+        "-o",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_50_GS.inspector.html"
+      ],
+      "seconds": 3.318242630994064
+    },
+    {
+      "name": "idol50-Box512-inspector",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/home/dev/Projects/box-impostor-lab/third_party/3D-Inspector-skills/skills/3d-inspector/view.py",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_50_Box512.box.zip",
+        "-o",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/Idol_50_Box512.inspector.html"
+      ],
+      "seconds": 4.940504594007507
+    },
+    {
+      "name": "tripo20-native",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/scripts/render_native_splat.py",
+        "turntable",
+        "--splat",
+        "/mnt/f/mnt/output/box_impostor/.stages/triposplat/ecb8433166915206286d50ab299fe2faa73d7e7b028f8ea19fa36cd3d41fad54/splat.npz",
+        "--template",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/common-frame/manifest.json",
+        "--rotate-y",
+        "90",
+        "--comfy-root",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI",
+        "--factory-root",
+        "/home/dev/Projects/box-impostor-lab/worktrees/idol-triposplat-20261120",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/tripo20-common-native",
+        "--export-ply",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/TripoSplat_20.ply"
+      ],
+      "seconds": 55.62660176699865
+    },
+    {
+      "name": "tripo20-faces",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/scripts/render_native_splat.py",
+        "faces",
+        "--splat",
+        "/mnt/f/mnt/output/box_impostor/.stages/triposplat/ecb8433166915206286d50ab299fe2faa73d7e7b028f8ea19fa36cd3d41fad54/splat.npz",
+        "--template",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/common-frame/manifest.json",
+        "--rotate-y",
+        "90",
+        "--comfy-root",
+        "/home/dev/Projects/box-impostor-lab/ComfyUI",
+        "--factory-root",
+        "/home/dev/Projects/box-impostor-lab/worktrees/idol-triposplat-20261120",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/tripo20-faces512",
+        "--metric-renderer",
+        "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/experimental_gaussian_depth.py"
+      ],
+      "seconds": 16.418836964003276
+    },
+    {
+      "name": "tripo20-box",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/scripts/build_metric_box.py",
+        "--template",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/common-frame/manifest.json",
+        "--captures",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/tripo20-faces512",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/box/tripo20"
+      ],
+      "seconds": 1.987485243997071
+    },
+    {
+      "name": "tripo20-GS-inspector",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/home/dev/Projects/box-impostor-lab/third_party/3D-Inspector-skills/skills/3d-inspector/view.py",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/TripoSplat_20.ply",
+        "-o",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/TripoSplat_20_GS.inspector.html"
+      ],
+      "seconds": 3.6213273140019737
+    },
+    {
+      "name": "tripo20-Box512-inspector",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/home/dev/Projects/box-impostor-lab/third_party/3D-Inspector-skills/skills/3d-inspector/view.py",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/TripoSplat_20_Box512.box.zip",
+        "-o",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/final/TripoSplat_20_Box512.inspector.html"
+      ],
+      "seconds": 5.552146000991343
+    },
+    {
+      "name": "native-comparison",
+      "command": [
+        "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/scripts/encode_native_pair.py",
+        "--left",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/tripo20-common-native/status.json",
+        "--right",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol20-common-native/status.json",
+        "--third",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol50-common-native/status.json",
+        "--left-label",
+        "TripoSplat / 20 steps",
+        "--right-label",
+        "Idol / 20 steps",
+        "--third-label",
+        "Idol / 50 steps",
+        "--allow-rigid-y-registration",
+        "--output",
+        "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/native",
+        "--ffmpeg",
+        "/mnt/f/_dev/box-impostor-lab/experiments/sdf-morph-20261120/tools/ffmpeg-linux-x86_64-v7.0.2"
+      ],
+      "seconds": 10.19959157500125
+    }
+  ],
+  "inspectorSHA256": "ac5582e709b88c5d02aad2c999147237f077f3dc56850c8d8e139abaec947ada",
+  "commonFrameSHA256": "763efdd2bf1f2ee17a442218ec082c2c0a76c8b88b5f34992aa2a772a5419ee2"
+}

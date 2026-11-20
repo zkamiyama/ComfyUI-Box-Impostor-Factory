@@ -1,0 +1,75 @@
+{
+  "completed": true,
+  "promptId": "9f1b8dc4-d383-4150-b3ed-e6a8de014ced",
+  "run": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-50steps-seed46",
+  "steps": 50,
+  "clientWaitSeconds": 41.168051263986854,
+  "serverExecutionSeconds": 40.082,
+  "collectionOnly": false,
+  "stage": "/mnt/f/mnt/output/box_impostor/.stages/triposplat/c1e9132897e019553de48c982b5316e743d738ef8816f0ad79936810d1c6d4cb",
+  "executedGraphHashes": [
+    "dcdb704a8f535720af25ea84effe3a1cdf4f33caae78aaf559cb085835342d3d",
+    "6f1bae6a2fdd5e87cfaa7e53a2ca7176b2b03e3e8793267d8d157f51073b385e"
+  ],
+  "gaussians": 262144,
+  "npzSha256": "8effb5a12f57218eb8696268a35572730719e83a2c971129fb46da951bb03fee",
+  "plySha256": "406196c44a97b3698cd37ce4b09e38635841242d0013978d87668361aa38806b",
+  "plyBytes": 17826208,
+  "referenceComparison": {
+    "oldReferenceSha256": "bb85341d2c3caf034417b3d16fed1dc6b78cf4fee9a93ea031f00bc7ec07efa3",
+    "newReferenceSha256": "bb85341d2c3caf034417b3d16fed1dc6b78cf4fee9a93ea031f00bc7ec07efa3",
+    "sameCacheIdentity": true,
+    "rgbAndCoverageFloat32ExactlyEqual": true,
+    "coverageFloat32ExactlyEqual": true,
+    "oldShape": [
+      1024,
+      1024,
+      4
+    ],
+    "newShape": [
+      1024,
+      1024,
+      4
+    ],
+    "alphaChangedPixels": 0,
+    "alphaMaxAbsoluteDifference": 0.0,
+    "interpretation": "BIPrepareReference RGB and coverage are byte-identical to the original Tripo run.",
+    "scope": "This validates PrepareReference output, not all downstream model conditioning internals."
+  },
+  "executionCachedMessages": [
+    {
+      "nodes": [
+        "1",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "11"
+      ],
+      "prompt_id": "9f1b8dc4-d383-4150-b3ed-e6a8de014ced",
+      "timestamp": 1795179878305
+    }
+  ],
+  "vram": {
+    "measurement": "nvidia-smi sampled whole-device used VRAM; not PyTorch allocator peak",
+    "intervalMilliseconds": 200,
+    "sampleCount": 198,
+    "peakSampledUsedMiB": 7266.0,
+    "firstSample": {
+      "timestamp": "2026/11/20 22:04:38.252",
+      "gpuIndex": 0,
+      "memoryUsedMiB": 6018.0,
+      "memoryTotalMiB": 16376.0
+    },
+    "lastSample": {
+      "timestamp": "2026/11/20 22:05:19.375",
+      "gpuIndex": 0,
+      "memoryUsedMiB": 6016.0,
+      "memoryTotalMiB": 16376.0
+    },
+    "limitation": "Can miss peaks between samples and includes other processes and driver memory."
+  },
+  "orientation": "Raw native decoded splat; identity TransformSplat. Previous comparison applied +90 degrees around Y separately."
+}

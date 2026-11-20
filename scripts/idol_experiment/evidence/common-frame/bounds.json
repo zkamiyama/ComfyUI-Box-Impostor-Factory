@@ -1,0 +1,95 @@
+{
+  "method": "Origin-centered union of all registered Gaussian centers plus common height padding",
+  "models": {
+    "tripo20": {
+      "splat": "/mnt/f/mnt/output/box_impostor/.stages/triposplat/ecb8433166915206286d50ab299fe2faa73d7e7b028f8ea19fa36cd3d41fad54/splat.npz",
+      "splatSha256": "0f03b743f6cdc792dd9f0bae5cd22f05e03eb01a91f70bb57e09a8e0a10924c3",
+      "rotateYDegrees": 90,
+      "gaussians": 262144,
+      "allMeanBounds": [
+        [
+          -0.14101624488830566,
+          -0.49879586696624756,
+          -0.15219494700431824
+        ],
+        [
+          0.1702331304550171,
+          0.5001899600028992,
+          0.1528967320919037
+        ]
+      ]
+    },
+    "idol20": {
+      "splat": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-20steps-seed46/splat.npz",
+      "splatSha256": "91dcac135d096ef2b6ca312a2b92664fe5d41c6f5eddabf2531b7acb165cd899",
+      "rotateYDegrees": 0,
+      "gaussians": 262144,
+      "allMeanBounds": [
+        [
+          -0.22220292687416077,
+          -0.4979528784751892,
+          -0.19424045085906982
+        ],
+        [
+          0.22252404689788818,
+          0.4983416795730591,
+          0.026512622833251953
+        ]
+      ]
+    },
+    "idol50": {
+      "splat": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-50steps-seed46/splat.npz",
+      "splatSha256": "8effb5a12f57218eb8696268a35572730719e83a2c971129fb46da951bb03fee",
+      "rotateYDegrees": 0,
+      "gaussians": 262144,
+      "allMeanBounds": [
+        [
+          -0.22202086448669434,
+          -0.4978802800178528,
+          -0.1652866005897522
+        ],
+        [
+          0.2203032374382019,
+          0.4982376992702484,
+          0.03356856107711792
+        ]
+      ]
+    }
+  },
+  "paddingHeightFraction": 0.03,
+  "paddingCanonicalUnits": 0.0299695748090744,
+  "bakeBox": {
+    "min": [
+      -0.2524936217069626,
+      -0.5301595348119735,
+      -0.2242100256681442
+    ],
+    "max": [
+      0.2524936217069626,
+      0.5301595348119735,
+      0.2242100256681442
+    ]
+  },
+  "previousBakeBox": {
+    "min": [
+      -0.19968106269836425,
+      -0.52,
+      -0.18729551553726195
+    ],
+    "max": [
+      0.19968106269836425,
+      0.52,
+      0.18729551553726195
+    ]
+  },
+  "gaussianFiltering": "none",
+  "scaleChanges": false,
+  "translationChanges": false,
+  "templateSha256": "1ce46a0c49fd15f8cca7025e6ce358b35402a9a76f7f0458599099c81a941526",
+  "scriptSha256": "9f43b8d08909da7713923fb1bcf76b1d6c91373d7a48060a2fba2798c2fcb58d",
+  "limitations": [
+    "Gaussian tails can exceed center bounds; verify rendered depth and edge coverage.",
+    "Rigid Y registration aligns display direction, not pose or shape to ground truth.",
+    "The retained proxy is metadata only and is not used to generate geometry."
+  ]
+}

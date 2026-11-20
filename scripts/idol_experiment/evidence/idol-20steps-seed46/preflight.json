@@ -1,0 +1,37 @@
+{
+  "source": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/inputs/source-original.png",
+  "sourceSha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+  "comfyInput": "/home/dev/Projects/box-impostor-lab/ComfyUI/input/triposplat-person-20261120.png",
+  "sourcePrompt": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/minimal-prompt.json",
+  "sourcePromptSha256": "0b8449d11d3838db1cdc6da01dd1004fc2ac5f4e2c52b6db65ca917d8c66d8fb",
+  "promptSha256": "0e93e528c4558581f772ca7efe70dfb3d9bff15f8bbd878aa6e056d540d563ff",
+  "submittedGraphHashesBeforeComfyTypeValidation": [
+    "de699ed568e8df180b3dbb87e1820d2fe4b554b8008f456442a37b78e63faa8b",
+    "113a22ca8a40d312fe6470480292dafb6064ea4477c9a13bf5792f5d11968f5e"
+  ],
+  "weights": {
+    "diffusion_models/idol_fp16.safetensors": "9abf6a99fc6bdad701901b12de8fe1b256f02cae4948f7489d25d86b11b52a93",
+    "vae/idol_decoder_fp16.safetensors": "6a146a1e6b2653f74422f7ea835eb8715c547c7de8fc4545051f15c247ae54a9",
+    "clip_vision/dino_v3_vit_h.safetensors": "a29ef35101a16966972a0d50732a6f3a608ff7cfffb2afa9bbe9007cb842cc53",
+    "vae/flux2-vae.safetensors": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5"
+  },
+  "implementation": {
+    "nodes_triposplat.py": "11fdabc2d220aaf6fa2c6642c7698ae66f6a1f5e2077e7acacc0c32f99b7a628",
+    "gaussian.py": "a9776ecfc5ec286dd140da3b24fd7ad9f8ff2d85d1ccd125a1c2a62c40c4ba0e",
+    "model.py": "933378d22049925d83140f380f6e1b871ca309b5c7d01879e806d1fe49c00dab",
+    "preview.py": "1cc6a5b11900ded9722a999b523a1f8c4f778fe796456289c5343970b1aa31ff",
+    "vae.py": "73c2bbb0733086c906e6882bef823d17a97cd61788465b0bde83a9916d09aac3"
+  },
+  "steps": 20,
+  "onlyChangedInputs": [
+    "8.unet_name",
+    "11.vae_name",
+    "10.steps"
+  ],
+  "biRefNetAndPreprocessingGraphPreserved": true,
+  "oldReferenceSha256": "bb85341d2c3caf034417b3d16fed1dc6b78cf4fee9a93ea031f00bc7ec07efa3",
+  "preprocessingCodeHashMatchesOldRun": true,
+  "maskCaveat": "Identical mask graph does not itself prove identical masks; compare saved prepared RGBA after execution.",
+  "stagesRoot": "/mnt/f/mnt/output/box_impostor/.stages",
+  "server": "http://127.0.0.1:8198"
+}

@@ -1,0 +1,38 @@
+{
+  "experimentIdentifier": "20261120",
+  "method": "TripoSplat",
+  "promptId": "3d5c4dd6-7406-482d-94c7-5994c3eb4e25",
+  "timingStatus": "Historical server-log whole-prompt duration recovered; original API history no longer present.",
+  "historicalWholePromptSeconds": 99.62,
+  "controlledComparableInferenceSeconds": null,
+  "peakVRAMMiB": null,
+  "peakVRAMStatus": "Not measured in surviving evidence. Model loaded/usable memory log messages are not peak VRAM measurements.",
+  "originalReceiptQueueNumber": 1,
+  "directPromptIdInLog": false,
+  "successful20StepTripoSectionsInLog": 1,
+  "evidence": [
+    "The experiment log has a failed first prompt (1.96 s), followed by one successful TripoSplat section with BiRefNet, DINOv3ViTModel, AutoencoderKL, TripoSplat, 20/20 sampling and OctreeGaussianDecoder, ending at 99.62 s. The next prompt loads Qwen.",
+    "Original minimal-prompt receipt reports queue number 1 and the known successful prompt ID.",
+    "Receipt mtime is 1795153255.402081; native decode result mtime is 1795153354.539951, 99.13787 s later, consistent with decode persistence shortly before 99.62 s whole-prompt completion. File mtimes corroborate identity but are not themselves a timing measurement."
+  ],
+  "comparisonLimitations": [
+    "The old log includes loading BiRefNet, DINO, conditioning VAE, denoiser and decoder. Idol runs used an existing prepared-reference cache; Idol 50 additionally reused conditioning through Comfy execution caching.",
+    "Do not compute or claim a model speedup from 99.62 / 29.765 / 40.082.",
+    "Report 99.62 s only as a historical whole-prompt log value. For a common-condition speed comparison, mark the old Tripo measurement unavailable.",
+    "One observed run per Idol setting; no repeat-run variability measured."
+  ],
+  "sourceLog": {
+    "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/logs/comfy.log",
+    "sha256": "aab720e292ca50501aca301d3b7b77468d12734726d3f464af6d1d69999cf6de",
+    "bytes": 20878
+  },
+  "sourceReceipt": {
+    "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/inference-receipt.json",
+    "sha256": "d1965be15eaf9f76ecf17e8dbdb145299a8ead808e5f4956ea8a75be9f5db8af"
+  },
+  "sourceDecodeReceipt": {
+    "remotePath": "/mnt/f/mnt/output/box_impostor/.stages/triposplat/ecb8433166915206286d50ab299fe2faa73d7e7b028f8ea19fa36cd3d41fad54/result.json",
+    "sha256": "1aa0871fb9a21a092d4e5e25678520cbd8ed630daea2c46a46cc70be0d72f08e"
+  },
+  "timestampHandling": "Use experiment identifier 20261120. nvidia-smi wall-clock timestamps on the device appear to use JST; do not label them UTC."
+}

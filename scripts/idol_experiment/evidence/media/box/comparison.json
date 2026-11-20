@@ -1,0 +1,129 @@
+{
+  "completed": true,
+  "specification": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/box-comparison-inputs.json",
+  "specification_sha256": "8e1243622013918516546e7f3a0c0e385cad876b92e2065c80181f8773ba67eb",
+  "script_sha256": "0ab44cf1ef89aaa1aecb80b2a445a2bf1034aeb55ea8dac6dff6a3dc7c8fe86f",
+  "ffmpeg": "/mnt/f/_dev/box-impostor-lab/experiments/sdf-morph-20261120/tools/ffmpeg-linux-x86_64-v7.0.2",
+  "encode_command": [
+    "/mnt/f/_dev/box-impostor-lab/experiments/sdf-morph-20261120/tools/ffmpeg-linux-x86_64-v7.0.2",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-y",
+    "-f",
+    "rawvideo",
+    "-pixel_format",
+    "rgb24",
+    "-video_size",
+    "1536x584",
+    "-framerate",
+    "24",
+    "-i",
+    "pipe:0",
+    "-an",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "medium",
+    "-crf",
+    "19",
+    "-pix_fmt",
+    "yuv420p",
+    "-frames:v",
+    "240",
+    "-movflags",
+    "+faststart",
+    "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/box/comparison.partial.mp4"
+  ],
+  "layout": {
+    "columns": 3,
+    "rows": 1,
+    "panel_pixels": [
+      512,
+      512
+    ],
+    "label_band_pixels": 36,
+    "footer_pixels": 36,
+    "output_pixels": [
+      1536,
+      584
+    ],
+    "background": "#808080",
+    "compositing": "Pillow straight-sRGB alpha-over; identical for every panel",
+    "resize": false,
+    "crop": false
+  },
+  "frames": 240,
+  "fps": 24,
+  "duration_seconds": 10.0,
+  "codec": "h264",
+  "pixel_format": "yuv420p",
+  "crf": 19,
+  "faststart": true,
+  "common_reference_sha256": "763efdd2bf1f2ee17a442218ec082c2c0a76c8b88b5f34992aa2a772a5419ee2",
+  "inputs": [
+    {
+      "label": "TripoSplat / 20 steps",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/capture/tripo20/capture.json",
+      "capture_sha256": "b0a863fc0ea2e040590dfb14ed5c5acc2f2b04b821a81611c4075b8b05f7c6cf",
+      "html_sha256": "0422ec6ac8151238866caf7f0f0897df9d6823803a033b2f0fdc708a042c95c4",
+      "verified_frame_hashes": 240,
+      "verified_frame_order": true
+    },
+    {
+      "label": "Idol / 20 steps",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/capture/idol20/capture.json",
+      "capture_sha256": "3c6c915590adcd66e5af3d62e734ba930ad8ad334c84f5e57fbe710bc3be08f1",
+      "html_sha256": "ee13b198cd42f68db302313f1c5bbf57b1d4d1597c57d794524c4a1fdc4dfbd3",
+      "verified_frame_hashes": 240,
+      "verified_frame_order": true
+    },
+    {
+      "label": "Idol / 50 steps",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/capture/idol50/capture.json",
+      "capture_sha256": "e87e0aa4c18a3d5e256513f8a92aa309d265f9fb446fefcde8dea5b72b3a4a7d",
+      "html_sha256": "bb567e0da14437b92abbe605cb75237f1144667d0108043ba9e9d4f935bc42c4",
+      "verified_frame_hashes": 240,
+      "verified_frame_order": true
+    }
+  ],
+  "max_cross_capture_actual_yaw_difference_degrees": 0,
+  "composite_rgb24_stream_sha256": "34f32f36233c9f04d9d4a9266ae09774fcefed28cf2671a9b5614abfd373d22b",
+  "decode": {
+    "completed": true,
+    "frames": 240,
+    "rgb24_bytes": 645857280,
+    "rgb24_stream_sha256": "a4be4c698a70ebafcc62d7cd621394c92a55b345e72f7802ad38f8ff8ae764ae",
+    "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1536x584, 972 kb/s, 24 fps, 24 tbr, 12288 tbn (default)"
+  },
+  "artifacts": {
+    "comparison.mp4": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/box/comparison.mp4",
+      "sha256": "fa68e0bf2d7c46afa0f53be29e5dac98bcbb3193e9700da675c183239e7cb793"
+    },
+    "poster-yaw000.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/box/poster-yaw000.png",
+      "sha256": "a8916d91c39895fb82378912085dbf0dc13dc47dc748388de5462d027c44907e"
+    },
+    "poster-yaw090.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/box/poster-yaw090.png",
+      "sha256": "de16b3ee31e6e81884e92d3eedc2bb2ebb3d6e6dc7527ff96cc1b453f0f45854"
+    },
+    "poster-yaw180.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/box/poster-yaw180.png",
+      "sha256": "1570199c8bf43587c1073e30ab12a28e4411a8756ccbe66080b6f25aafe8b849"
+    },
+    "poster-yaw270.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/box/poster-yaw270.png",
+      "sha256": "46b0ec7907c1edb5880e13164fe38241733e1f04d5d4adfcf9c7175f436bebcf"
+    },
+    "ffmpeg-encode.log": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/box/ffmpeg-encode.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ffmpeg-decode.log": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/box/ffmpeg-decode.log",
+      "sha256": "0f48802142a140b850d43ed21b33b09ab9d92a5a2d618008a9616bfea3516b19"
+    }
+  }
+}

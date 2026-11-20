@@ -1,0 +1,21 @@
+{
+  "oldReferenceSha256": "bb85341d2c3caf034417b3d16fed1dc6b78cf4fee9a93ea031f00bc7ec07efa3",
+  "newReferenceSha256": "bb85341d2c3caf034417b3d16fed1dc6b78cf4fee9a93ea031f00bc7ec07efa3",
+  "sameCacheIdentity": true,
+  "rgbAndCoverageFloat32ExactlyEqual": true,
+  "coverageFloat32ExactlyEqual": true,
+  "oldShape": [
+    1024,
+    1024,
+    4
+  ],
+  "newShape": [
+    1024,
+    1024,
+    4
+  ],
+  "alphaChangedPixels": 0,
+  "alphaMaxAbsoluteDifference": 0.0,
+  "interpretation": "BIPrepareReference RGB and coverage are byte-identical to the original Tripo run.",
+  "scope": "This validates PrepareReference output, not all downstream model conditioning internals."
+}

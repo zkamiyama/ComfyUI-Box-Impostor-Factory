@@ -1,0 +1,10 @@
+{
+  "promptId": "3d5c4dd6-7406-482d-94c7-5994c3eb4e25",
+  "prompt": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/minimal-prompt.json",
+  "sha256": "0b8449d11d3838db1cdc6da01dd1004fc2ac5f4e2c52b6db65ca917d8c66d8fb",
+  "serverReply": {
+    "prompt_id": "3d5c4dd6-7406-482d-94c7-5994c3eb4e25",
+    "number": 1,
+    "node_errors": {}
+  }
+}

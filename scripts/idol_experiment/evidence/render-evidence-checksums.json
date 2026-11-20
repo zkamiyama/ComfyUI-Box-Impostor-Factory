@@ -1,0 +1,47 @@
+{
+  "experimentIdentifier": "20261120",
+  "files": [
+    {
+      "relativePath": "render-comparison.json",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render-comparison.json",
+      "bytes": 17397,
+      "sha256": "a5365b07ed81f0dc29d716c5f55d34932a70c07a64ab51445a95d49f4e1d5c6a",
+      "byteIdenticalToRemote": true
+    },
+    {
+      "relativePath": "common-frame/bounds.json",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/common-frame/bounds.json",
+      "bytes": 2805,
+      "sha256": "f5b52b79413a354554aad66deac6ec1fad86de68ce320b3b4e795be4f30986c7",
+      "byteIdenticalToRemote": true
+    },
+    {
+      "relativePath": "media/native/comparison.json",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/native/comparison.json",
+      "bytes": 4265,
+      "sha256": "ee1d7fb868c0f736bb7ea8fc66738a48e5688022f3d4847736ab6c0917323993",
+      "byteIdenticalToRemote": true
+    },
+    {
+      "relativePath": "media/box/comparison.json",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/box/comparison.json",
+      "bytes": 5027,
+      "sha256": "6a2c297dc16ca4d0ae01de5b02d7877384434beca3a534a24393fd147b765b4e",
+      "byteIdenticalToRemote": true
+    },
+    {
+      "relativePath": "capture-environment.json",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/capture-environment.json",
+      "bytes": 224,
+      "sha256": "1f0f111c9f89c43b9e3c7fb87bdefe87b34f61c89c1354deb7d07b1faedb9901",
+      "byteIdenticalToRemote": true
+    },
+    {
+      "relativePath": "model-files.json",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/model-files.json",
+      "bytes": 1694,
+      "sha256": "484adddb6d98e0f0e76327e98c68659c69f7d4cb529b967c05a012656e0d7e42",
+      "byteIdenticalToRemote": true
+    }
+  ]
+}

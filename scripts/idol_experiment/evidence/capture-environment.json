@@ -1,0 +1,9 @@
+{
+  "removedForChildOnly": [
+    "DISPLAY",
+    "WAYLAND_DISPLAY"
+  ],
+  "reason": "Stale display variables route ANGLE SwiftShader to a nonexistent XCB display.",
+  "htmlModified": false,
+  "captureScriptModified": false
+}

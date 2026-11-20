@@ -1,0 +1,115 @@
+{
+  "completed": true,
+  "left": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/tripo20-common-native/status.json",
+  "leftSha256": "3b62dbc3144e66bcc29fe5d16da12d71577ae6ad94c60d6527081cabb4c570ca",
+  "right": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol20-common-native/status.json",
+  "rightSha256": "411d87e98e98b5cb9e917eee6373ed02433493c746bf61f841a9b057ae6236d1",
+  "scriptSha256": "561a6f2843b9f68d477a77a12a8784600ec78f3e25c386d2e0326a878ea86904",
+  "frames": 240,
+  "fps": 24,
+  "durationSeconds": 10,
+  "panelPixels": [
+    512,
+    512
+  ],
+  "outputPixels": [
+    1536,
+    584
+  ],
+  "columns": 3,
+  "crop": "none",
+  "exactCamerasMatch": true,
+  "renderSettingsMatch": true,
+  "rigidYRegistration": {
+    "explicitlyAllowed": true,
+    "differentInputRotations": true,
+    "axis": "native SPLAT Y",
+    "operation": "recorded during rendering; encoder applies no model transform"
+  },
+  "inputs": [
+    {
+      "role": "left",
+      "label": "TripoSplat / 20 steps",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/tripo20-common-native/status.json",
+      "captureSha256": "3b62dbc3144e66bcc29fe5d16da12d71577ae6ad94c60d6527081cabb4c570ca",
+      "splatRotationNativeY": 90.0,
+      "rotationDeltaDegreesFromLeft": 0.0,
+      "edgeContactFrames": 0
+    },
+    {
+      "role": "right",
+      "label": "Idol / 20 steps",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol20-common-native/status.json",
+      "captureSha256": "411d87e98e98b5cb9e917eee6373ed02433493c746bf61f841a9b057ae6236d1",
+      "splatRotationNativeY": 0.0,
+      "rotationDeltaDegreesFromLeft": -90.0,
+      "edgeContactFrames": 0
+    },
+    {
+      "role": "third",
+      "label": "Idol / 50 steps",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol50-common-native/status.json",
+      "captureSha256": "e7599ef67777cf13d261cd8f64831133b8bd983586aec6aa51214370c26dd306",
+      "splatRotationNativeY": 0.0,
+      "rotationDeltaDegreesFromLeft": -90.0,
+      "edgeContactFrames": 0
+    }
+  ],
+  "leftEdgeContactFrames": 0,
+  "rightEdgeContactFrames": 0,
+  "video": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/native/native-gs-comparison.mp4",
+  "videoSha256": "dc61ba8b4cbc1bda93b4d602d5d5698acf0ab5e9168da59d42282f5e4355b480",
+  "posters": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/native/poster-yaw000.png",
+      "sha256": "d4b347f96176e5277b937f165caaf4ac85aebbaf4a06b94f4f9918e3e36de469"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/native/poster-yaw090.png",
+      "sha256": "7f9e6293d66edaae1c848906eda5a15ad583435e7e60967b425eb2ab722e80a1"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/native/poster-yaw180.png",
+      "sha256": "97e2bd311a867c1560664aed0c28206b0db8c08220851296e2ce9116afa6f38c"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/native/poster-yaw270.png",
+      "sha256": "369c9be6efba00bbd974defc5b873d28c863cac9327036c0290719d2fb15bbe9"
+    }
+  ],
+  "uncompressedCompositeSha256": "67ca43999dbe800d91ce99e87cee2f2de6f76c73d33d505eecfc4485892587d8",
+  "decodedBytes": 645857280,
+  "encodeCommand": [
+    "/mnt/f/_dev/box-impostor-lab/experiments/sdf-morph-20261120/tools/ffmpeg-linux-x86_64-v7.0.2",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-y",
+    "-f",
+    "rawvideo",
+    "-pixel_format",
+    "rgb24",
+    "-video_size",
+    "1536x584",
+    "-framerate",
+    "24",
+    "-i",
+    "pipe:0",
+    "-frames:v",
+    "240",
+    "-an",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "medium",
+    "-crf",
+    "19",
+    "-pix_fmt",
+    "yuv420p",
+    "-movflags",
+    "+faststart",
+    "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/media/native/native-gs-comparison.partial.mp4"
+  ],
+  "third": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/render/idol50-common-native/status.json",
+  "thirdSha256": "e7599ef67777cf13d261cd8f64831133b8bd983586aec6aa51214370c26dd306"
+}

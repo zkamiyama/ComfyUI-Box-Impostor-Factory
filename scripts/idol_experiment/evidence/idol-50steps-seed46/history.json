@@ -1,0 +1,314 @@
+{
+  "prompt": [
+    9,
+    "9f1b8dc4-d383-4150-b3ed-e6a8de014ced",
+    {
+      "1": {
+        "inputs": {
+          "image": "triposplat-person-20261120.png"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "Load Image"
+        }
+      },
+      "2": {
+        "inputs": {
+          "bg_removal_name": "birefnet.safetensors"
+        },
+        "class_type": "LoadBackgroundRemovalModel",
+        "_meta": {
+          "title": "Load Background Removal Model"
+        }
+      },
+      "3": {
+        "inputs": {
+          "bg_removal_model": [
+            "2",
+            0
+          ],
+          "image": [
+            "1",
+            0
+          ]
+        },
+        "class_type": "RemoveBackground",
+        "_meta": {
+          "title": "Remove Background"
+        }
+      },
+      "4": {
+        "inputs": {
+          "mask_mode": "foreground",
+          "image": [
+            "1",
+            0
+          ],
+          "mask": [
+            "3",
+            0
+          ]
+        },
+        "class_type": "BIPrepareReference",
+        "_meta": {
+          "title": "BI PrepareReference"
+        }
+      },
+      "5": {
+        "inputs": {
+          "erode_radius": 1,
+          "size": 1024,
+          "image": [
+            "4",
+            0
+          ],
+          "mask": [
+            "4",
+            1
+          ]
+        },
+        "class_type": "TripoSplatPreprocessImage",
+        "_meta": {
+          "title": "TripoSplat Preprocess Image"
+        }
+      },
+      "6": {
+        "inputs": {
+          "clip_name": "dino_v3_vit_h.safetensors"
+        },
+        "class_type": "CLIPVisionLoader",
+        "_meta": {
+          "title": "Load CLIP Vision"
+        }
+      },
+      "7": {
+        "inputs": {
+          "vae_name": "flux2-vae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "Load VAE"
+        }
+      },
+      "8": {
+        "inputs": {
+          "unet_name": "idol_fp16.safetensors",
+          "weight_dtype": "default"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "Load Diffusion Model"
+        }
+      },
+      "9": {
+        "inputs": {
+          "clip_vision": [
+            "6",
+            0
+          ],
+          "vae": [
+            "7",
+            0
+          ],
+          "image": [
+            "5",
+            0
+          ]
+        },
+        "class_type": "TripoSplatConditioning",
+        "_meta": {
+          "title": "TripoSplat Conditioning"
+        }
+      },
+      "10": {
+        "inputs": {
+          "seed": 46,
+          "steps": 50,
+          "cfg": 3.0,
+          "sampler_name": "dpmpp_2m",
+          "scheduler": "simple",
+          "denoise": 1.0,
+          "model": [
+            "8",
+            0
+          ],
+          "positive": [
+            "9",
+            0
+          ],
+          "negative": [
+            "9",
+            1
+          ],
+          "latent_image": [
+            "9",
+            2
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "11": {
+        "inputs": {
+          "vae_name": "idol_decoder_fp16.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "Load VAE"
+        }
+      },
+      "12": {
+        "inputs": {
+          "num_gaussians": 262144,
+          "seed": 790219963981395,
+          "samples": [
+            "10",
+            0
+          ],
+          "vae": [
+            "11",
+            0
+          ]
+        },
+        "class_type": "VAEDecodeTripoSplat",
+        "_meta": {
+          "title": "TripoSplat Decode"
+        }
+      },
+      "13": {
+        "inputs": {
+          "reference": [
+            "4",
+            2
+          ],
+          "splat": [
+            "12",
+            0
+          ]
+        },
+        "class_type": "BICachedTripoSplat",
+        "_meta": {
+          "title": "BI CachedTripoSplat"
+        }
+      },
+      "14": {
+        "inputs": {
+          "translate_x": 0.0,
+          "translate_y": 0.0,
+          "translate_z": 0.0,
+          "rotate_x": 0.0,
+          "rotate_y": 0.0,
+          "rotate_z": 0.0,
+          "scale_x": 1.0,
+          "scale_y": 1.0,
+          "scale_z": 1.0,
+          "splat": [
+            "13",
+            0
+          ]
+        },
+        "class_type": "TransformSplat",
+        "_meta": {
+          "title": "Register splat to the mesh"
+        }
+      },
+      "20": {
+        "inputs": {
+          "format": "ply",
+          "splat": [
+            "14",
+            0
+          ]
+        },
+        "class_type": "SplatToFile3D",
+        "_meta": {
+          "title": "Serialize aligned 3DGS"
+        }
+      },
+      "21": {
+        "inputs": {
+          "viewport_state": "",
+          "width": 1024,
+          "height": 1024,
+          "model_3d": [
+            "20",
+            0
+          ]
+        },
+        "class_type": "PreviewGaussianSplat",
+        "_meta": {
+          "title": "Orbit aligned 3DGS"
+        }
+      }
+    },
+    {
+      "client_id": "idol-study-61d62b18-2386-4a41-bcbd-88be9f04cbca",
+      "create_time": 1795179878301
+    },
+    [
+      "21"
+    ]
+  ],
+  "outputs": {
+    "21": {
+      "3d": [
+        {
+          "filename": "preview_splat_8e5951f65204442799a894cd6a1eb583.ply",
+          "subfolder": "",
+          "type": "temp"
+        }
+      ],
+      "camera_info": [
+        null
+      ],
+      "model_3d_info": []
+    }
+  },
+  "status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "9f1b8dc4-d383-4150-b3ed-e6a8de014ced",
+          "timestamp": 1795179878301
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [
+            "1",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "11"
+          ],
+          "prompt_id": "9f1b8dc4-d383-4150-b3ed-e6a8de014ced",
+          "timestamp": 1795179878305
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "9f1b8dc4-d383-4150-b3ed-e6a8de014ced",
+          "timestamp": 1795179918383
+        }
+      ]
+    ]
+  },
+  "meta": {
+    "21": {
+      "node_id": "21",
+      "display_node": "21",
+      "parent_node": null,
+      "real_node_id": "21"
+    }
+  }
+}

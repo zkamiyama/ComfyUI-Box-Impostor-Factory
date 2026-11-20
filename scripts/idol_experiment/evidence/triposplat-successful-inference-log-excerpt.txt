@@ -1,0 +1,46 @@
+[INFO] got prompt
+[INFO] Model storage policy: fast_disk=False paths=['/mnt/f/mnt/models/background_removal/birefnet.safetensors']
+[INFO] Requested to load BiRefNet
+[INFO] loaded completely;  419.43 MB loaded, full load: True
+[INFO] Model storage policy: fast_disk=False paths=['/mnt/f/mnt/models/vae/triposplat_vae_decoder_fp16.safetensors']
+[INFO] VAE load device: cuda:0, offload device: cpu, dtype: torch.float16
+[INFO] Model storage policy: fast_disk=False paths=['/mnt/f/mnt/models/vae/flux2-vae.safetensors']
+[INFO] Using pytorch attention in VAE
+[INFO] Using pytorch attention in VAE
+[INFO] VAE load device: cuda:0, offload device: cpu, dtype: torch.float16
+[INFO] Model storage policy: fast_disk=False paths=['/mnt/f/mnt/models/clip_vision/dino_v3_vit_h.safetensors']
+[INFO] Requested to load DINOv3ViTModel
+[INFO] loaded completely;  1603.29 MB loaded, full load: True
+[INFO] Requested to load AutoencoderKL
+[INFO] loaded completely; 9462.00 MB usable, 160.31 MB loaded, full load: True
+[INFO] model weight dtype torch.float16, manual cast: None
+[INFO] model_type FLOW
+[INFO] Model storage policy: fast_disk=False paths=['/mnt/f/mnt/models/diffusion_models/triposplat_fp16.safetensors']
+[INFO] Requested to load TripoSplat
+[INFO] loaded completely; 11202.77 MB usable, 706.41 MB loaded, full load: True
+
+  0%|          | 0/20 [00:00<?, ?it/s]
+  5%|▌         | 1/20 [00:00<00:14,  1.30it/s]
+ 10%|█         | 2/20 [00:01<00:13,  1.32it/s]
+ 15%|█▌        | 3/20 [00:02<00:12,  1.32it/s]
+ 20%|██        | 4/20 [00:03<00:12,  1.32it/s]
+ 25%|██▌       | 5/20 [00:03<00:11,  1.32it/s]
+ 30%|███       | 6/20 [00:04<00:10,  1.32it/s]
+ 35%|███▌      | 7/20 [00:05<00:09,  1.31it/s]
+ 40%|████      | 8/20 [00:06<00:09,  1.31it/s]
+ 45%|████▌     | 9/20 [00:06<00:08,  1.30it/s]
+ 50%|█████     | 10/20 [00:07<00:07,  1.31it/s]
+ 55%|█████▌    | 11/20 [00:08<00:06,  1.31it/s]
+ 60%|██████    | 12/20 [00:09<00:06,  1.32it/s]
+ 65%|██████▌   | 13/20 [00:09<00:05,  1.32it/s]
+ 70%|███████   | 14/20 [00:10<00:04,  1.32it/s]
+ 75%|███████▌  | 15/20 [00:11<00:03,  1.32it/s]
+ 80%|████████  | 16/20 [00:12<00:03,  1.32it/s]
+ 85%|████████▌ | 17/20 [00:12<00:02,  1.32it/s]
+ 90%|█████████ | 18/20 [00:13<00:01,  1.31it/s]
+ 95%|█████████▌| 19/20 [00:14<00:00,  1.32it/s]
+100%|██████████| 20/20 [00:15<00:00,  1.31it/s]
+100%|██████████| 20/20 [00:15<00:00,  1.31it/s]
+[INFO] Requested to load OctreeGaussianDecoder
+[INFO] loaded completely; 11198.64 MB usable, 549.42 MB loaded, full load: True
+[INFO] Prompt executed in 99.62 seconds

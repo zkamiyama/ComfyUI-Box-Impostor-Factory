@@ -1,0 +1,117 @@
+{
+  "experimentIdentifier": "20261120",
+  "sourceReferenceSHA256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+  "preparedReferenceSHA256": "bb85341d2c3caf034417b3d16fed1dc6b78cf4fee9a93ea031f00bc7ec07efa3",
+  "runs": [
+    {
+      "method": "Idol",
+      "steps": 20,
+      "promptId": "c259944d-51e5-4017-b363-ef6d37daf52d",
+      "gaussians": 262144,
+      "serverExecutionSeconds": 29.765,
+      "clientWaitSeconds": 0.013925582999945618,
+      "clientWaitIsInferenceDuration": false,
+      "sampledWholeDevicePeakUsedVRAMMiB": 6818,
+      "memorySampleCount": 144,
+      "memorySampleIntervalMilliseconds": 200,
+      "memoryScope": "nvidia-smi sampled whole-device used VRAM; not PyTorch allocator peak",
+      "cachedNodes": [],
+      "cachedConditioning": false,
+      "referenceRGBAndCoverageFloat32ExactlyEqual": true,
+      "alphaChangedPixels": 0,
+      "alphaMaxAbsoluteDifference": 0,
+      "npzSha256": "91dcac135d096ef2b6ca312a2b92664fe5d41c6f5eddabf2531b7acb165cd899",
+      "plySha256": "3a7e20493c20ba80ff4a87024072866627fea183af0e8ed578913023167c135b",
+      "plyBytes": 17826208,
+      "stage": "/mnt/f/mnt/output/box_impostor/.stages/triposplat/560b82d5239a479d73eb076c6641d87f7845676980cdef5f2245640953dbf187"
+    },
+    {
+      "method": "Idol",
+      "steps": 50,
+      "promptId": "9f1b8dc4-d383-4150-b3ed-e6a8de014ced",
+      "gaussians": 262144,
+      "serverExecutionSeconds": 40.082,
+      "clientWaitSeconds": 41.168051263986854,
+      "clientWaitIsInferenceDuration": true,
+      "sampledWholeDevicePeakUsedVRAMMiB": 7266,
+      "memorySampleCount": 198,
+      "memorySampleIntervalMilliseconds": 200,
+      "memoryScope": "nvidia-smi sampled whole-device used VRAM; not PyTorch allocator peak",
+      "cachedNodes": [
+        "1",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "11"
+      ],
+      "cachedConditioning": true,
+      "referenceRGBAndCoverageFloat32ExactlyEqual": true,
+      "alphaChangedPixels": 0,
+      "alphaMaxAbsoluteDifference": 0,
+      "npzSha256": "8effb5a12f57218eb8696268a35572730719e83a2c971129fb46da951bb03fee",
+      "plySha256": "406196c44a97b3698cd37ce4b09e38635841242d0013978d87668361aa38806b",
+      "plyBytes": 17826208,
+      "stage": "/mnt/f/mnt/output/box_impostor/.stages/triposplat/c1e9132897e019553de48c982b5316e743d738ef8816f0ad79936810d1c6d4cb"
+    }
+  ],
+  "notes": [
+    "Idol 20 result was collected afterward. Its clientWaitSeconds=0.013925582999945618 is collection wait, not inference duration; use serverExecutionSeconds=29.765.",
+    "Idol 50 reused conditioning nodes. The 20/50 times are observed run costs, not a controlled step-only speed benchmark.",
+    "VRAM is sampled whole-device used memory, including driver and other-process memory. It is not allocator peak and may miss sub-200ms peaks.",
+    "Both prepared-reference arrays exactly match the previous Tripo RGB and coverage, including all float32 alpha values.",
+    "Use experiment identifier 20261120 rather than deriving a date from unqualified device wall-clock timestamps."
+  ],
+  "sources": [
+    {
+      "steps": 20,
+      "kind": "result",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-20steps-seed46/result.json",
+      "localPath": "/workspace/scratch/fe25d79c8da0/experiments/idol-triposplat/evidence/idol-20steps-seed46/result.json",
+      "sha256": "aff98ba0dbef8bc29ebe46e4a5723b02ec5f916537268db089575af8e93da7ea",
+      "byteIdenticalToRemote": true
+    },
+    {
+      "steps": 20,
+      "kind": "preflight",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-20steps-seed46/preflight.json",
+      "localPath": "/workspace/scratch/fe25d79c8da0/experiments/idol-triposplat/evidence/idol-20steps-seed46/preflight.json",
+      "sha256": "04eb269699ee65656a5f283dd638003e080e664e3da5230c4676227047e92c3d",
+      "byteIdenticalToRemote": true
+    },
+    {
+      "steps": 20,
+      "kind": "reference-comparison",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-20steps-seed46/reference-comparison.json",
+      "localPath": "/workspace/scratch/fe25d79c8da0/experiments/idol-triposplat/evidence/idol-20steps-seed46/reference-comparison.json",
+      "sha256": "a5baaf6a59cc2649dd96bd8b13dc7cf77863865e3587001028cd4a949a9210e5",
+      "byteIdenticalToRemote": true
+    },
+    {
+      "steps": 50,
+      "kind": "result",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-50steps-seed46/result.json",
+      "localPath": "/workspace/scratch/fe25d79c8da0/experiments/idol-triposplat/evidence/idol-50steps-seed46/result.json",
+      "sha256": "e9c4a293aa397136f68d8a53adf6b0e2afaad315e8347f5a37ce5182e64bfd47",
+      "byteIdenticalToRemote": true
+    },
+    {
+      "steps": 50,
+      "kind": "preflight",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-50steps-seed46/preflight.json",
+      "localPath": "/workspace/scratch/fe25d79c8da0/experiments/idol-triposplat/evidence/idol-50steps-seed46/preflight.json",
+      "sha256": "7c88d730d63b2f963fdd2051ad20aa03ec8d798e1c8ccc18e8c8e40613913977",
+      "byteIdenticalToRemote": true
+    },
+    {
+      "steps": 50,
+      "kind": "reference-comparison",
+      "remotePath": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-50steps-seed46/reference-comparison.json",
+      "localPath": "/workspace/scratch/fe25d79c8da0/experiments/idol-triposplat/evidence/idol-50steps-seed46/reference-comparison.json",
+      "sha256": "a5baaf6a59cc2649dd96bd8b13dc7cf77863865e3587001028cd4a949a9210e5",
+      "byteIdenticalToRemote": true
+    }
+  ]
+}

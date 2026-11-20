@@ -1,0 +1,25 @@
+{
+  "models": [
+    {
+      "id": "tripo20",
+      "label": "TripoSplat / 20 steps",
+      "splat": "/mnt/f/mnt/output/box_impostor/.stages/triposplat/ecb8433166915206286d50ab299fe2faa73d7e7b028f8ea19fa36cd3d41fad54/splat.npz",
+      "rotate_y": 90,
+      "file": "TripoSplat_20"
+    },
+    {
+      "id": "idol20",
+      "label": "Idol / 20 steps",
+      "splat": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-20steps-seed46/splat.npz",
+      "rotate_y": 0,
+      "file": "Idol_20"
+    },
+    {
+      "id": "idol50",
+      "label": "Idol / 50 steps",
+      "splat": "/mnt/f/_dev/box-impostor-lab/experiments/idol-triposplat-20261120/idol-50steps-seed46/splat.npz",
+      "rotate_y": 0,
+      "file": "Idol_50"
+    }
+  ]
+}
