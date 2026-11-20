@@ -1,0 +1,49 @@
+{
+  "assetId": "59e5f233367b864c688bd6308ffc9dfa3a42cd2e09501d1675cc3ed52c18b1e7",
+  "path": "/mnt/f/mnt/output/gs-box-20261120/box_impostor/59e5f233367b864c688bd6308ffc9dfa3a42cd2e09501d1675cc3ed52c18b1e7",
+  "qwen": {
+    "status": "color-only-pilot",
+    "phase": "partial-front-face",
+    "sourceAsset": "d856345c6c8168a2bd130cf7c1fe5d73fa3b340f227ac6cbc714427155ac4924",
+    "qwenSource": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/qwen2k/front-2kopt-10-depth3/generated.png",
+    "qwenSourceSHA256": "2dd4feca2f6f1c515d7fb2da257787fcd8a497502d54b0f7aabddc5312a2dd03",
+    "qwenInputResolution": [
+      2048,
+      2048
+    ],
+    "outputTileResolution": 1024,
+    "unletterbox": [
+      315,
+      0,
+      393,
+      1024
+    ],
+    "downsampleFilter": "LANCZOS in premultiplied linear RGB, GS alpha-aware; native 1024 color atlas",
+    "unchangedGeometryDepthNormalRange": true,
+    "qwenGSWholeSubjectMaskIoUBeforeRegistration": 0.817891451290021,
+    "qwenGSWholeSubjectMaskIoU": 0.8932620858255467,
+    "registrationMethod": "generic-whole-subject-small-affine-2k-v1",
+    "registrationProofSha256": "39fa3a6fc6384f59f5d59b8ac60cfd8ca084ebe1c54400fc0d1fdc11ded36e3f",
+    "registrationMatrix": [
+      [
+        0.9858450293540955,
+        -0.010895268060266972,
+        38.92538833618164
+      ],
+      [
+        0.010472762398421764,
+        1.025617241859436,
+        -33.854576110839844
+      ]
+    ],
+    "colorWarpPolicy": "whole-image RGB+mask affine; preserve GS alpha and fallback GS RGB outside Qwen support",
+    "admissionMinimumIoU": 0.88,
+    "gsAlphaHashPreserved": true,
+    "newColorSha256": "5f9a35530e6f498dd89654b3bc9ef544d997e9a9c2ec65d45db25a2d447b3753",
+    "oldColorSha256": "dcab5f7e9b6d08d9312b784a449a3122fcbee5054839f09741faa64a81831a2a",
+    "allOtherFiveFacesRetained": true,
+    "applied": "front +Z only; 45 and 315 are diagnostic camera views, not native axis faces",
+    "limitations": "This is a one-face refinement pilot; not a consistent six-face AI texturing."
+  },
+  "colorMapChanged": true
+}

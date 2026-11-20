@@ -1,0 +1,37 @@
+{
+  "method": "generic-whole-subject-small-affine-2k-v1",
+  "case": "front",
+  "registrationParams": [
+    0.9859006357809265,
+    1.0256750812967714,
+    0.6086377978105704,
+    3.083512301080944,
+    13.286450096062282
+  ],
+  "matrixInputToOutput": [
+    [
+      0.9858450293540955,
+      -0.010895268060266972,
+      38.92538833618164
+    ],
+    [
+      0.010472762398421764,
+      1.025617241859436,
+      -33.854576110839844
+    ]
+  ],
+  "sourceGeneratedSha256": "2dd4feca2f6f1c515d7fb2da257787fcd8a497502d54b0f7aabddc5312a2dd03",
+  "sourceQwenMaskSha256": "00a9904728298454344181d5657fecaa14f3b9ca7d46d3fb261dbe771a4d5a6f",
+  "GSAlphaSha256": "39636d3d436be2c14268aff47834a46f6303d3a0b5628d7c4b6a086fa9a95229",
+  "originalIoU": 0.817891451290021,
+  "registeredIoU": 0.8932620858255467,
+  "admissionMinIoU": 0.88,
+  "admissionPassed": true,
+  "optimizationSize": 512,
+  "fullResolution": 2048,
+  "maxAbsoluteShiftPx2048": 32,
+  "maxAbsoluteRotationDeg": 3,
+  "maxRelativeScaleChange": 0.06,
+  "reason": "Whole-foreground similarity only; no facial crops, keypoints or inpainting",
+  "shapeChange": "No GS geometry, depth, alpha or 3DGS data changed"
+}

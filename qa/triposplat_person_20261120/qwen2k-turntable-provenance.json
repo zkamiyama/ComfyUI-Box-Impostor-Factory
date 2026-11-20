@@ -1,0 +1,70 @@
+{
+  "inputConfig": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-qwen2k-compare-config.json",
+  "inputConfigSha256": "f507adec70fb0c8054a52d90adaedc6c9adf77ffc83e72aaafb97bdebd61671e",
+  "sourceResolution": 1024,
+  "frames": 240,
+  "fps": 24,
+  "durationSeconds": 10.0,
+  "maximumCameraMatrixDifference": 0.0,
+  "captures": [
+    {
+      "id": "gs-base",
+      "label": "TripoSplat native Box | GS RGB+metricZ",
+      "assetId": "d856345c6c8168a2bd130cf7c1fe5d73fa3b340f227ac6cbc714427155ac4924",
+      "htmlSha256": "3bb0103cfd8d4238949ead05d0172f11a9ac763671b3d6d4272d89edb2dfd839",
+      "captureSha256": "4d93ba01436767b8ce3b4cff35ec327b33377cbfda42b279886455e85ce165f8"
+    },
+    {
+      "id": "gs-qwen2k-front",
+      "label": "Same GS Box | Qwen2K RGB on +Z only",
+      "assetId": "59e5f233367b864c688bd6308ffc9dfa3a42cd2e09501d1675cc3ed52c18b1e7",
+      "htmlSha256": "6eae0d1112f3c4c45427c0c299dea71907988dfc0327e588f137eda59cf2b5b7",
+      "captureSha256": "ac8bc82097bcb8cc2a2045abb1e1c764ee095503d70bf0bd3b1820fedf7aeab2"
+    },
+    {
+      "id": "old-mesh",
+      "label": "Old Hi3D + Qwen1K | mesh geometry",
+      "assetId": "019253e1edc661260f7775735b8bcaabcd9fe2a23a8b6ecd1e8227a7dd8a42d8",
+      "htmlSha256": "daa1b4e226cb345193b0dc76b8f9e2aa2a6508bb0a20a872069c73d90cc169a0",
+      "captureSha256": "b2c2e1746e6d248317963142704998e3be9ad000e4c1f49d42c6d6aeaea4e90b"
+    }
+  ],
+  "note": "Actual unchanged 3D-Inspector renders. No generated frames or motion interpolation. Encoding FPS is not a rendering benchmark.",
+  "files": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-qwen2k-compare/gs-direct-box-comparison.mp4",
+      "bytes": 3574551,
+      "sha256": "1b84e87f3e28751b84d5800b13f0096a02db86c2ad93824f9c3870cc49d5ab89"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-qwen2k-compare/gs-direct-box-gs-qwen2k-front.mp4",
+      "bytes": 1999814,
+      "sha256": "576df5073c4bc168bae8f6693d9ace7866013b8d9a83bae140586d0cb9e043cb"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-qwen2k-compare/gs-direct-box-old-mesh.mp4",
+      "bytes": 2558656,
+      "sha256": "4d6ff81b7d3f6c083a532b43b278f19d8d07583da5852574df6bf479965b80c1"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-qwen2k-compare/gs-direct-box-preview.gif",
+      "bytes": 2707273,
+      "sha256": "9f462f761d14d979dd95779c000a9d05e7b0583705416556075874010ea01c88"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-qwen2k-compare/gs-direct-box-yaw-000.png",
+      "bytes": 999762,
+      "sha256": "9648988131f6c14d2107d2a6a9937babfc4d89aa95d12ce23ab9217b77658843"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-qwen2k-compare/gs-direct-box-yaw-045.png",
+      "bytes": 808161,
+      "sha256": "0812f84efef44ef1e5f00b642704a96e997a806f8308cd605b6f0634be9137b5"
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/media/gs-qwen2k-compare/gs-direct-box-yaw-315.png",
+      "bytes": 1070272,
+      "sha256": "bffd8cf9c09c4a9da3fe0f505bdd57e9e4f8c26debd3a5efe1589607229fe8f5"
+    }
+  ]
+}

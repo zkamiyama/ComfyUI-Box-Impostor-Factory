@@ -3,6 +3,7 @@
 import argparse, hashlib, json, shutil
 from pathlib import Path
 import numpy as np
+import cv2
 from PIL import Image
 
 ROOT=Path('/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120')
@@ -39,6 +40,31 @@ def main():
     # do not import gray background colors into translucent GS silhouette edges.
     gs_2k_alpha=np.load(ROOT/'render/R2048-yaw90-s1/pZ/alpha.npy',allow_pickle=False).astype('f4')
     if gs_2k_alpha.shape!=(2048,2048):raise ValueError('Source GS alpha must be 2048 square')
+    qmask_path=Path(q['images']['mask']['path'])
+    if sha(qmask_path)!=q['images']['mask']['sha256']:raise ValueError('Qwen mask digest mismatch')
+    regpath=args.qwen_result.parent/'global-affine-registration.json'
+    reg=json.loads(regpath.read_text())
+    if not reg.get('admissionPassed') or reg.get('case')!='front' or reg.get('sourceGeneratedSha256')!=sha(image):
+        raise ValueError('Missing valid whole-body affine registration')
+    if reg.get('GSAlphaSha256')!=sha(ROOT/'render/R2048-yaw90-s1/pZ/alpha.npy'):
+        raise ValueError('Registration 3DGS alpha differs')
+    if reg.get('sourceQwenMaskSha256')!=sha(qmask_path):
+        raise ValueError('Qwen mask digest differs from registration evidence')
+    with Image.open(qmask_path) as qmi:
+        qmask=np.asarray(qmi.convert('L').resize((2048,2048),Image.Resampling.BILINEAR),dtype='f4')/255
+    affine=np.asarray(reg['matrixInputToOutput'],dtype='f4')
+    if affine.shape!=(2,3) or not np.isfinite(affine).all():raise ValueError('Invalid registration matrix')
+    def warp(values):
+        return cv2.warpAffine(np.asarray(values,dtype='f4'),affine,(2048,2048),
+            flags=cv2.INTER_LINEAR,borderMode=cv2.BORDER_CONSTANT,borderValue=0)
+    warped_mask=np.clip(warp(qmask),0,1)
+    smask=gs_2k_alpha>.5
+    valid_mask=warped_mask>.5
+    union=np.count_nonzero(valid_mask|smask)
+    silhouette_iou=np.count_nonzero(valid_mask&smask)/union if union else 0.
+    if silhouette_iou<.88 or abs(silhouette_iou-reg['registeredIoU'])>.001:
+        raise ValueError(f'Full-subject GS/Qwen registered IoU {silhouette_iou:.4f} differs/fails minimum .88')
+
     def filter_float(channel,width,height):
         return np.asarray(Image.fromarray(np.asarray(channel,dtype='f4')).resize(
               (width,height),Image.Resampling.LANCZOS),dtype='f4').copy()
@@ -47,12 +73,19 @@ def main():
         return filter_float(down[top:top+h,left:left+w],r,r)
     area=np.maximum(gs_2k_alpha,0)
     native_coverage=np.clip(native(area),0,1)
-    premul=linear(src)*area[...,None]
+    # Warp Qwen's entire RGB and its whole-person mask coherently; GS Z/alpha remain immutable.
+    qwen_premul=linear(src)*qmask[...,None]
+    rgb_warp=np.stack([warp(qwen_premul[...,c]) for c in range(3)],axis=-1)
+    rgb_warp=np.divide(rgb_warp,np.maximum(warped_mask[...,None],1e-4))
+    premul=rgb_warp*area[...,None]
     weighted=np.stack([native(premul[...,c]) for c in range(3)],axis=-1)
     candidate=np.clip(weighted/np.maximum(native_coverage[...,None],1e-3),0,1)
+    # Where the Qwen foreground is absent use the old registered GS color instead.
+    support=native(warped_mask*area)/np.maximum(native_coverage,1e-3)
+    support=np.clip(support,0,1)
     candidate[~np.isfinite(candidate)]=0
     aid=hashlib.sha256(json.dumps({'algorithm':'gs-box-2k-color-front-v1','source':m['asset_id'],
-                                   'qwen':sha(image),'bbox':[left,top,w,h]},sort_keys=True).encode()).hexdigest()
+                                   'qwen':sha(image),'registrationSha256':sha(regpath),'bbox':[left,top,w,h]},sort_keys=True).encode()).hexdigest()
     root=OUT/aid
     if root.exists():shutil.rmtree(root)
     shutil.copytree(SRC,root,ignore=shutil.ignore_patterns('previews'))
@@ -63,8 +96,10 @@ def main():
     before=atlas.copy()
     tile=atlas[r:2*r,r:2*r]
     alpha=tile[...,3].copy()
+    weight=support[::-1][...,None]
+    new_premul=candidate[::-1]*alpha[...,None]
     tile[:,:,:3]=np.where((native_coverage[::-1]>0.02)[...,None],
-             candidate[::-1]*alpha[...,None],tile[:,:,:3])
+                          new_premul*weight+tile[:,:,:3]*(1-weight),tile[:,:,:3])
     if not np.array_equal(atlas[...,3],before[...,3]):raise RuntimeError('GS alpha changed.')
     if not np.array_equal(atlas[:r],before[:r]) or not np.array_equal(atlas[r:,:r],before[r:,:r]) or not np.array_equal(atlas[r:,2*r:],before[r:,2*r:]):
         raise RuntimeError('Other GS faces changed')
@@ -80,7 +115,13 @@ def main():
       'qwenInputResolution':list(generated_shape),'outputTileResolution':r,
       'unletterbox':[left,top,w,h],
       'downsampleFilter':'LANCZOS in premultiplied linear RGB, GS alpha-aware; native 1024 color atlas',
-      'unchangedGeometryDepthNormalRange':True,'gsAlphaHashPreserved':True,
+      'unchangedGeometryDepthNormalRange':True,
+      'qwenGSWholeSubjectMaskIoUBeforeRegistration':float(reg['originalIoU']),
+      'qwenGSWholeSubjectMaskIoU':float(silhouette_iou),
+      'registrationMethod':reg['method'],'registrationProofSha256':sha(regpath),
+      'registrationMatrix':reg['matrixInputToOutput'],
+      'colorWarpPolicy':'whole-image RGB+mask affine; preserve GS alpha and fallback GS RGB outside Qwen support',
+      'admissionMinimumIoU':0.88,'gsAlphaHashPreserved':True,
       'newColorSha256':digest,'oldColorSha256':old_color_sha,
       'allOtherFiveFacesRetained':True,
       'applied':'front +Z only; 45 and 315 are diagnostic camera views, not native axis faces',

@@ -1,0 +1,25 @@
+{
+  "case": "front",
+  "promptId": "1f0e2f3a-6651-4db2-89e6-c8e956fa740a",
+  "seconds": 1966.3671279020054,
+  "images": {
+    "generated": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/qwen2k/front-2kopt-10-depth3/generated.png",
+      "sha256": "2dd4feca2f6f1c515d7fb2da257787fcd8a497502d54b0f7aabddc5312a2dd03",
+      "bytes": 3136706
+    },
+    "mask": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/qwen2k/front-2kopt-10-depth3/mask.png",
+      "sha256": "00a9904728298454344181d5657fecaa14f3b9ca7d46d3fb261dbe771a4d5a6f",
+      "bytes": 126991
+    }
+  },
+  "model": "Qwen Image 2.1 int8 + AnyAngle LoRA 1.0",
+  "noDepth": false,
+  "inputsSHA256": {
+    "target-color.png": "269f153227057cb9f0cebd8c27aacb5757a04e8dbbe8374558ad7961ebf48e55",
+    "target-depth.png": "5e9b63f0b4f55786a2abf4458c347175857cc46a6cf32e68dc56bbcf97670b2e",
+    "original.png": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+  },
+  "promptSHA256": "7c3d96f0ea0b7485f130ecd847cfe1bd78e4a09effa4864a10700ffec2c04bce"
+}
