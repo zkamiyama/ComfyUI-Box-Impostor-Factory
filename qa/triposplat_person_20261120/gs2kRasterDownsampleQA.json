@@ -1,0 +1,9 @@
+{
+  "comparison": "native 1024 GS render vs GS render 2048 downsampled to 1024 Lanczos",
+  "pixelRMSE": 0.9601572751998901,
+  "absDeltaP95": 1.0,
+  "headRegionRMSE": 2.0760581493377686,
+  "input2k": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/render/R2048-yaw90-s1/pZ/composited.png",
+  "input1k": "/mnt/f/_dev/box-impostor-lab/experiments/triposplat-person-20261120/render/R1024-yaw90-s1/pZ/composited.png",
+  "meaning": "not a test of Qwen 2K generation, only raster resolution/antialias effect"
+}

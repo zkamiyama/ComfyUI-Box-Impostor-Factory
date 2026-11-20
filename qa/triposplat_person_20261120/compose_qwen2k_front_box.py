@@ -29,15 +29,28 @@ def main():
     # The Qwen full-body frame is 2048 square, aligned with the 2048 GS canvas.
     with Image.open(image) as im:
         generated_shape=im.size
-        if min(im.size)<1024: raise ValueError('No high-resolution input')
-        full=im.convert('RGB').resize((r,r),Image.Resampling.LANCZOS)
+        if generated_shape!=(2048,2048):raise ValueError('Expected native 2K Qwen output')
+        src=np.asarray(im.convert('RGB'),dtype='f4')/255.
     f=face['frustum']
     w=max(1,round(r*abs(f[1]-f[0])/max(abs(f[1]-f[0]),abs(f[3]-f[2]))))
     h=max(1,round(r*abs(f[3]-f[2])/max(abs(f[1]-f[0]),abs(f[3]-f[2]))))
     left=(r-w)//2;top=(r-h)//2
-    # Unletterbox once; then align to the native Box atlas tile grid.
-    candidate=np.asarray(full.crop((left,top,left+w,top+h)).resize((r,r),Image.Resampling.LANCZOS),dtype='f4')/255.
-    candidate=linear(candidate)
+    # Generic subject-agnostic linear-light and alpha-aware 2048->1024 filtering:
+    # do not import gray background colors into translucent GS silhouette edges.
+    gs_2k_alpha=np.load(ROOT/'render/R2048-yaw90-s1/pZ/alpha.npy',allow_pickle=False).astype('f4')
+    if gs_2k_alpha.shape!=(2048,2048):raise ValueError('Source GS alpha must be 2048 square')
+    def filter_float(channel,width,height):
+        return np.asarray(Image.fromarray(np.asarray(channel,dtype='f4')).resize(
+              (width,height),Image.Resampling.LANCZOS),dtype='f4').copy()
+    def native(channel):
+        down=filter_float(channel,r,r)
+        return filter_float(down[top:top+h,left:left+w],r,r)
+    area=np.maximum(gs_2k_alpha,0)
+    native_coverage=np.clip(native(area),0,1)
+    premul=linear(src)*area[...,None]
+    weighted=np.stack([native(premul[...,c]) for c in range(3)],axis=-1)
+    candidate=np.clip(weighted/np.maximum(native_coverage[...,None],1e-3),0,1)
+    candidate[~np.isfinite(candidate)]=0
     aid=hashlib.sha256(json.dumps({'algorithm':'gs-box-2k-color-front-v1','source':m['asset_id'],
                                    'qwen':sha(image),'bbox':[left,top,w,h]},sort_keys=True).encode()).hexdigest()
     root=OUT/aid
@@ -50,7 +63,8 @@ def main():
     before=atlas.copy()
     tile=atlas[r:2*r,r:2*r]
     alpha=tile[...,3].copy()
-    tile[:,:,:3]=(candidate[::-1]*alpha[...,None])
+    tile[:,:,:3]=np.where((native_coverage[::-1]>0.02)[...,None],
+             candidate[::-1]*alpha[...,None],tile[:,:,:3])
     if not np.array_equal(atlas[...,3],before[...,3]):raise RuntimeError('GS alpha changed.')
     if not np.array_equal(atlas[:r],before[:r]) or not np.array_equal(atlas[r:,:r],before[r:,:r]) or not np.array_equal(atlas[r:,2*r:],before[r:,2*r:]):
         raise RuntimeError('Other GS faces changed')
@@ -65,6 +79,7 @@ def main():
       'sourceAsset':SRC.name,'qwenSource':str(image),'qwenSourceSHA256':sha(image),
       'qwenInputResolution':list(generated_shape),'outputTileResolution':r,
       'unletterbox':[left,top,w,h],
+      'downsampleFilter':'LANCZOS in premultiplied linear RGB, GS alpha-aware; native 1024 color atlas',
       'unchangedGeometryDepthNormalRange':True,'gsAlphaHashPreserved':True,
       'newColorSha256':digest,'oldColorSha256':old_color_sha,
       'allOtherFiveFacesRetained':True,
