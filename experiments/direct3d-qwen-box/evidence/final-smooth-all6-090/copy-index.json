@@ -1,0 +1,82 @@
+{
+  "completed": true,
+  "method": "exact-byte-copy-of-completed-comparison-evidence",
+  "files": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/summary.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/summary.json",
+      "sha256": "b0abc6740534847112600f51a22850effb33f8e0490916f6156acfdd27aad59b",
+      "bytes": 100187
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/alpha-240.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/alpha-240.json",
+      "sha256": "a8b81d03aac48767732969743dbba9fbb2aa11e4d3804468be6f37fbb8b87642",
+      "bytes": 348868
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/top-bottom/comparison.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/top-bottom-comparison.json",
+      "sha256": "f4c3ecb74fce643946852b606daadfee7c3bde9d49b4bebaf7ddf3dd79b311f9",
+      "bytes": 17581
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/encoding-summary.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/encoding-summary.json",
+      "sha256": "e3e527dacf43ec69343cb4dcdd188e2e332b54d869ea94df25da53cef5502fa8",
+      "bytes": 7560
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/capture-validation.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/three-column-capture-validation.json",
+      "sha256": "d20afb895844d8ab72f796fcfadf804a1469a4ad2c2f4730fdc850420f6d5807",
+      "bytes": 455329
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/three-columns.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/three-columns.json",
+      "sha256": "d6fb144b867e6da32fea1cddf4b1d9efbf2f43fff9538ee4f2bd3ce14f47af34",
+      "bytes": 573
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/verification.json",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/smooth-gray-verification.json",
+      "sha256": "3f0f85d677e8f4ae49ce815225a1e8cedee33eb6796b20b2ac709b921e5bbe2f",
+      "bytes": 134320
+    }
+  ],
+  "scripts": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/compose_faces.py",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/compose_faces.py",
+      "sha256": "ca10a7373535664c3dd8b3a9289351a34e15865e2db0200f66e89a460d4faa1a",
+      "bytes": 28336
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/compare_boxes.py",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/compare_boxes.py",
+      "sha256": "333099f104030663ad65bdb7a14b4d28cd8ca481661adc7a94f9627ce04b5b5e",
+      "bytes": 13971
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/encode_three.py",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/encode_three.py",
+      "sha256": "95a5242e6d01285f545f489b2284f67ff7e919d06a706ae4bf8dde912625ed64",
+      "bytes": 17952
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/capture_top_bottom.mjs",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/capture_top_bottom.mjs",
+      "sha256": "f1128355ace402dcc930c83e4353caa00a5197bb2130e4a9bad18fa721bd2a78",
+      "bytes": 19163
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/compare_top_bottom.py",
+      "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/compare_top_bottom.py",
+      "sha256": "7ed122c179352c0779bf33158bf3479767d808fa965bc3e05bc7aa54ae658c91",
+      "bytes": 7721
+    }
+  ],
+  "gitCommitCreated": false,
+  "originalInspectorHTMLModified": false
+}

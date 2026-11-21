@@ -1,0 +1,288 @@
+{
+  "kind": "qwen-selected-six-timing-summary-v1",
+  "completed": true,
+  "createdAt": "2026-11-21T07:51:49.919190+00:00",
+  "sourceRun": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121",
+  "selectionScope": "Six completed unlit color-prior 0.9 runs selected as RGB inputs. The final normal-map branch and 240-frame validation are not decided by this timing summary.",
+  "commonSettings": {
+    "profile": "anchored",
+    "denoise": 0.9,
+    "size": 1024,
+    "steps": 10,
+    "cfg": 3,
+    "seed": 2026113031,
+    "loraStrength": 0.0
+  },
+  "faces": [
+    {
+      "case": "pz-prior-unlit-090",
+      "face": "+Z",
+      "faceSlug": "pz",
+      "role": "selected RGB input candidate",
+      "result": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-prior-unlit-090/result.json",
+        "sha256": "69bc84a9dc27048447fe1814af446ee3db04b70f49d23df30f08c47c4fc6c2dd",
+        "bytes": 4188
+      },
+      "promptId": "1730c2fd-fdc9-48f3-a501-ec23277f286d",
+      "promptSHA256": "d2c35ad6e2db480586c80e78051b9041b199809abef6293808e2ebd87a92ad26",
+      "profile": "anchored",
+      "denoise": 0.9,
+      "size": 1024,
+      "steps": 10,
+      "cfg": 3,
+      "seed": 2026113031,
+      "loraStrength": 0.0,
+      "serverExecutionSeconds": 63.465,
+      "clientWaitSeconds": 64.10875401899102,
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ],
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 315,
+        "peakSampledUsedMiB": 13732.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      }
+    },
+    {
+      "case": "px-prior-unlit-090",
+      "face": "+X",
+      "faceSlug": "px",
+      "role": "selected RGB input candidate",
+      "result": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/px-prior-unlit-090/result.json",
+        "sha256": "15688890540b2201950ea8fa21060e5227d3e6dd1f63cb145d8b29cb9dee9325",
+        "bytes": 4246
+      },
+      "promptId": "e598115d-b2fe-40f5-8c38-5ab2161503bf",
+      "promptSHA256": "1eea579079fc92722946fd074a3c84cb0566cdb8f9a896c224bf13a7dc01f53e",
+      "profile": "anchored",
+      "denoise": 0.9,
+      "size": 1024,
+      "steps": 10,
+      "cfg": 3,
+      "seed": 2026113031,
+      "loraStrength": 0.0,
+      "serverExecutionSeconds": 63.021,
+      "clientWaitSeconds": 64.20000033799442,
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ],
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 314,
+        "peakSampledUsedMiB": 13721.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      }
+    },
+    {
+      "case": "nx-prior-unlit-090",
+      "face": "-X",
+      "faceSlug": "nx",
+      "role": "selected RGB input candidate",
+      "result": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/nx-prior-unlit-090/result.json",
+        "sha256": "15e2d75ef954f7d3e62ef37501169f0bf4f2a1830773644abb7eac0f4fee2a10",
+        "bytes": 4249
+      },
+      "promptId": "119672f8-947a-4d9c-ae84-f37078200abb",
+      "promptSHA256": "d08dd5e70c4f9c2daa3306fc16bdf4c4c9c7922319a0b06c9dab934b4ee8fea8",
+      "profile": "anchored",
+      "denoise": 0.9,
+      "size": 1024,
+      "steps": 10,
+      "cfg": 3,
+      "seed": 2026113031,
+      "loraStrength": 0.0,
+      "serverExecutionSeconds": 63.852,
+      "clientWaitSeconds": 64.11461554199923,
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ],
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 312,
+        "peakSampledUsedMiB": 13720.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      }
+    },
+    {
+      "case": "nz-prior-unlit-090",
+      "face": "-Z",
+      "faceSlug": "nz",
+      "role": "selected RGB input candidate",
+      "result": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/nz-prior-unlit-090/result.json",
+        "sha256": "380f5048c249fdc71e95f25019abaa72fc8d4f64f0b95474d10ea2a5e1f50bae",
+        "bytes": 4278
+      },
+      "promptId": "6607f121-f6e9-4287-979f-3ceb70c22130",
+      "promptSHA256": "a408a5a6fd2c2f09972702fcd213e58a99f20fe669417434f7a7012495b949ba",
+      "profile": "anchored",
+      "denoise": 0.9,
+      "size": 1024,
+      "steps": 10,
+      "cfg": 3,
+      "seed": 2026113031,
+      "loraStrength": 0.0,
+      "serverExecutionSeconds": 63.081,
+      "clientWaitSeconds": 64.11017213098239,
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ],
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 313,
+        "peakSampledUsedMiB": 13720.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      }
+    },
+    {
+      "case": "py-prior-unlit-090",
+      "face": "+Y",
+      "faceSlug": "py",
+      "role": "selected RGB input candidate",
+      "result": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/py-prior-unlit-090/result.json",
+        "sha256": "3a2c8bceb280b6044a73f43de685b338b7e7cddf31e59a2b2054c1c766874c9b",
+        "bytes": 4374
+      },
+      "promptId": "88f0041e-4c5e-485e-95dc-0220453b6f7e",
+      "promptSHA256": "39bb47cbe210166233dcd2e7195f7450881042d6246e09980285125ee585f16a",
+      "profile": "anchored",
+      "denoise": 0.9,
+      "size": 1024,
+      "steps": 10,
+      "cfg": 3,
+      "seed": 2026113031,
+      "loraStrength": 0.0,
+      "serverExecutionSeconds": 62.775,
+      "clientWaitSeconds": 64.10782870399999,
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ],
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 313,
+        "peakSampledUsedMiB": 13720.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      }
+    },
+    {
+      "case": "ny-prior-unlit-090",
+      "face": "-Y",
+      "faceSlug": "ny",
+      "role": "selected RGB input candidate",
+      "result": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/ny-prior-unlit-090/result.json",
+        "sha256": "eb45ec8c31ba83d37d4e2dfbc31ced9d8757cb96c834ccaee63a7b1b17c0e0f7",
+        "bytes": 4451
+      },
+      "promptId": "fcb1763c-a477-45aa-808e-8826badc9b09",
+      "promptSHA256": "d316c3c49671221ed7e18d93ead8c913985e947123b39c20ae6dcb901757a4df",
+      "profile": "anchored",
+      "denoise": 0.9,
+      "size": 1024,
+      "steps": 10,
+      "cfg": 3,
+      "seed": 2026113031,
+      "loraStrength": 0.0,
+      "serverExecutionSeconds": 63.556,
+      "clientWaitSeconds": 64.11483015998965,
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ],
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 312,
+        "peakSampledUsedMiB": 13720.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      }
+    }
+  ],
+  "selectedSixAggregate": {
+    "count": 6,
+    "sumServerExecutionSeconds": 379.75,
+    "minServerExecutionSeconds": 62.775,
+    "maxServerExecutionSeconds": 63.852,
+    "medianServerExecutionSeconds": 63.273,
+    "maxSampledWholeDeviceUsedMiB": 13732.0,
+    "minSampledWholeDeviceUsedMiB": 13720.0,
+    "allHaveRecordedCachedNodes": true
+  },
+  "initialColdRejectedAttempt": {
+    "case": "pz-clay-090",
+    "face": "+Z",
+    "faceSlug": "pz",
+    "role": "initial cold rejected clay attempt",
+    "result": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-clay-090/result.json",
+      "sha256": "423a0b953f8efdfc8705290a3d5e1f6ed94e44b93a82a75471eec343762380c8",
+      "bytes": 3936
+    },
+    "promptId": "b4d011ec-2d69-49a3-b27f-b98e2ff33584",
+    "promptSHA256": "682ab443b4f00ee92fb4994111b8745fad808cd2beb73da41b4853d9afec0e21",
+    "profile": "anchored",
+    "denoise": 0.9,
+    "size": 1024,
+    "steps": 10,
+    "cfg": 3,
+    "seed": 2026113031,
+    "loraStrength": 0.0,
+    "serverExecutionSeconds": 269.941,
+    "clientWaitSeconds": 271.27530842498527,
+    "cachedNodes": [],
+    "vram": {
+      "measurement": "nvidia-smi sampled whole-device used VRAM",
+      "intervalMilliseconds": 200,
+      "sampleCount": 1337,
+      "peakSampledUsedMiB": 13697.0,
+      "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+    }
+  },
+  "measurementNotes": [
+    "serverExecutionSeconds spans ComfyUI execution_start to execution_success for each graph; includes every node executed in that graph, including generation, VAE, segmentation and saving as applicable. It is not sampler-only time.",
+    "The six selected runs each record cached nodes. The cold rejected clay run records no cached nodes. Inputs and prompts differ, so these are not controlled same-input cold/warm measurements.",
+    "VRAM is nvidia-smi sampled whole-device used memory at 200 ms intervals, including driver and other processes; it is not a PyTorch allocator peak and may miss short peaks.",
+    "The sum covers the six selected graph executions only. It excludes rejected trials, the 0.75 prior trial, native bake, texture transfer, image review, compositing and capture. It is not end-to-end experiment wall time.",
+    "Six individual measurements are retained; no assertion is made that all directions have equal cost.",
+    "Final six-face visual acceptance, normal-map selection, and 240-frame alpha validation remain separate evidence."
+  ]
+}

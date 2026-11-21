@@ -1,0 +1,524 @@
+{
+  "kind": "direct3d-qwen-reproduction-packaging-v1",
+  "completed": true,
+  "createdAt": "2026-11-21T07:35:09.509431+00:00",
+  "sourceRun": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121",
+  "destination": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box",
+  "gitHeadAtPackaging": "331c768e68c3dcc2749be06e28f33de46e2bace2",
+  "fileCount": 52,
+  "bytes": 487815,
+  "sourceAndCopyHashesAllMatch": true,
+  "completedQwenCandidates": [
+    "nx-prior-unlit-090",
+    "px-materials-090",
+    "px-prior-unlit-090",
+    "pz-clay-090",
+    "pz-materials-075",
+    "pz-materials-090",
+    "pz-prior-unlit-075",
+    "pz-prior-unlit-090"
+  ],
+  "files": [
+    {
+      "kind": "current-script",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/compare_boxes.py",
+      "destination": "compare_boxes.py",
+      "bytes": 13971,
+      "sourceSha256": "333099f104030663ad65bdb7a14b4d28cd8ca481661adc7a94f9627ce04b5b5e",
+      "copiedSha256": "333099f104030663ad65bdb7a14b4d28cd8ca481661adc7a94f9627ce04b5b5e",
+      "sha256Matches": true
+    },
+    {
+      "kind": "current-script",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/compose_faces.py",
+      "destination": "compose_faces.py",
+      "bytes": 28336,
+      "sourceSha256": "ca10a7373535664c3dd8b3a9289351a34e15865e2db0200f66e89a460d4faa1a",
+      "copiedSha256": "ca10a7373535664c3dd8b3a9289351a34e15865e2db0200f66e89a460d4faa1a",
+      "sha256Matches": true
+    },
+    {
+      "kind": "current-script",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/encode_three.py",
+      "destination": "encode_three.py",
+      "bytes": 17952,
+      "sourceSha256": "95a5242e6d01285f545f489b2284f67ff7e919d06a706ae4bf8dde912625ed64",
+      "copiedSha256": "95a5242e6d01285f545f489b2284f67ff7e919d06a706ae4bf8dde912625ed64",
+      "sha256Matches": true
+    },
+    {
+      "kind": "current-script",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/prepare_color_prior.py",
+      "destination": "prepare_color_prior.py",
+      "bytes": 23330,
+      "sourceSha256": "51dc1805d25629ae6b9995af5751907b4a4a73b6096fa550368f5f09b95e64a0",
+      "copiedSha256": "51dc1805d25629ae6b9995af5751907b4a4a73b6096fa550368f5f09b95e64a0",
+      "sha256Matches": true
+    },
+    {
+      "kind": "current-script",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/prepare_mesh_box.py",
+      "destination": "prepare_mesh_box.py",
+      "bytes": 17541,
+      "sourceSha256": "1a11567411ca0c7502d98125c7580a31cd985867a65baedad7f7cf19b5c2af90",
+      "copiedSha256": "1a11567411ca0c7502d98125c7580a31cd985867a65baedad7f7cf19b5c2af90",
+      "sha256Matches": true
+    },
+    {
+      "kind": "current-script",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/run_qwen_face.py",
+      "destination": "run_qwen_face.py",
+      "bytes": 22476,
+      "sourceSha256": "4cf769b1d3ecc695d11324d32637f1df1deeaae251046f314e94d9aa93898698",
+      "copiedSha256": "4cf769b1d3ecc695d11324d32637f1df1deeaae251046f314e94d9aa93898698",
+      "sha256Matches": true
+    },
+    {
+      "kind": "current-script",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/select_guide_rgb.py",
+      "destination": "select_guide_rgb.py",
+      "bytes": 5228,
+      "sourceSha256": "920c2ef29fc38fc7a1c3db8e99d67ed45ecb9560c4a47759f302e055a8cad153",
+      "copiedSha256": "920c2ef29fc38fc7a1c3db8e99d67ed45ecb9560c4a47759f302e055a8cad153",
+      "sha256Matches": true
+    },
+    {
+      "kind": "current-template",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/qwen_success_template.json",
+      "destination": "qwen_success_template.json",
+      "bytes": 4444,
+      "sourceSha256": "7c3d96f0ea0b7485f130ecd847cfe1bd78e4a09effa4864a10700ffec2c04bce",
+      "copiedSha256": "7c3d96f0ea0b7485f130ecd847cfe1bd78e4a09effa4864a10700ffec2c04bce",
+      "sha256Matches": true
+    },
+    {
+      "kind": "existing-runtime-helper",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/capture_inspector.mjs",
+      "destination": "capture_inspector.mjs",
+      "bytes": 15267,
+      "sourceSha256": "a34b872abbad6b197b475692a06d3ade15681e52c55fd0b0c901d9202d7a1ab1",
+      "copiedSha256": "a34b872abbad6b197b475692a06d3ade15681e52c55fd0b0c901d9202d7a1ab1",
+      "sha256Matches": true
+    },
+    {
+      "kind": "existing-runtime-helper",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/compare_capture_alpha.py",
+      "destination": "compare_capture_alpha.py",
+      "bytes": 12379,
+      "sourceSha256": "f85db40664b8e6259c52e9589cc2d01c662c76f3e25f2cd2969811d2ddd1347c",
+      "copiedSha256": "f85db40664b8e6259c52e9589cc2d01c662c76f3e25f2cd2969811d2ddd1347c",
+      "sha256Matches": true
+    },
+    {
+      "kind": "existing-runtime-helper",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/idol-qwen-box-20261120/scripts/encode_comparison.py",
+      "destination": "encode_comparison.py",
+      "bytes": 10696,
+      "sourceSha256": "696b873a0eb9691d27e04d9b19d5b6172749cf15790bbb9970da23338a5447b4",
+      "copiedSha256": "696b873a0eb9691d27e04d9b19d5b6172749cf15790bbb9970da23338a5447b4",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/evidence/input-provenance.json",
+      "destination": "evidence/input-provenance.json",
+      "bytes": 1434,
+      "sourceSha256": "25769b40364f9281e9dd6101baf22053b9115577f995aaf99379c06c8d941b6c",
+      "copiedSha256": "25769b40364f9281e9dd6101baf22053b9115577f995aaf99379c06c8d941b6c",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/evidence/clay-evaluation.json",
+      "destination": "evidence/clay-evaluation.json",
+      "bytes": 6198,
+      "sourceSha256": "94d6e6b339226100bcfcd0a648ea259422b987d23e0f989b051ef0f097db11f5",
+      "copiedSha256": "94d6e6b339226100bcfcd0a648ea259422b987d23e0f989b051ef0f097db11f5",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/evidence/review-clay-input.json",
+      "destination": "evidence/review-clay-input.json",
+      "bytes": 1632,
+      "sourceSha256": "b6cb77e18e1e04fa80b71e52764f95d1c903c02fec4e986a35cd82cdac6a929a",
+      "copiedSha256": "b6cb77e18e1e04fa80b71e52764f95d1c903c02fec4e986a35cd82cdac6a929a",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/identity-canonical.json",
+      "destination": "evidence/identity-canonical.json",
+      "bytes": 567,
+      "sourceSha256": "ef8b2900c6d459bbec1b08e60fc13f81ecb5c5710f72194333c1dd60269efc5e",
+      "copiedSha256": "ef8b2900c6d459bbec1b08e60fc13f81ecb5c5710f72194333c1dd60269efc5e",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/prepared.json",
+      "destination": "evidence/prepared/prepared.json",
+      "bytes": 8915,
+      "sourceSha256": "211a370b8ca2c91b9b062bbd8dd87358f24a49e9e02608cae0040957256a82eb",
+      "copiedSha256": "211a370b8ca2c91b9b062bbd8dd87358f24a49e9e02608cae0040957256a82eb",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/baseline512/manifest.json",
+      "destination": "evidence/prepared/baseline512/manifest.json",
+      "bytes": 13073,
+      "sourceSha256": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+      "copiedSha256": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/result.json",
+      "destination": "evidence/color-prior/result.json",
+      "bytes": 15336,
+      "sourceSha256": "a9ee75afaf15cbd296582ab5aa6d86f4e0b0263fc5874e3829826f83b38fffc9",
+      "copiedSha256": "a9ee75afaf15cbd296582ab5aa6d86f4e0b0263fc5874e3829826f83b38fffc9",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/manifest.json",
+      "destination": "evidence/color-prior/baseline512/manifest.json",
+      "bytes": 13212,
+      "sourceSha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50",
+      "copiedSha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/result.json",
+      "destination": "evidence/color-prior/guides-unlit/result.json",
+      "bytes": 14443,
+      "sourceSha256": "f6e122391682bf28ae58e7e542648705758810127b066db27bc22a012a03f94b",
+      "copiedSha256": "f6e122391682bf28ae58e7e542648705758810127b066db27bc22a012a03f94b",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/qa/color-prior-13dcf86d0f78aab1.json",
+      "destination": "evidence/color-prior/baseline512/qa/color-prior-13dcf86d0f78aab1.json",
+      "bytes": 28144,
+      "sourceSha256": "109e3e9d5cdefaa5c196561451cd32c01eae3f7cd130de0e7e1d561462d35d94",
+      "copiedSha256": "109e3e9d5cdefaa5c196561451cd32c01eae3f7cd130de0e7e1d561462d35d94",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/px/guide.json",
+      "destination": "evidence/color-prior/guides-unlit/px/guide.json",
+      "bytes": 13016,
+      "sourceSha256": "75bac901d3ad3b6425c2cceea8043cc566e28c9181c5e5b9451742f1e473cd4a",
+      "copiedSha256": "75bac901d3ad3b6425c2cceea8043cc566e28c9181c5e5b9451742f1e473cd4a",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/nx/guide.json",
+      "destination": "evidence/color-prior/guides-unlit/nx/guide.json",
+      "bytes": 13002,
+      "sourceSha256": "dd477148417c13a82e36b0f25437457a4ea5f2cb5387f44325e0e96e3adf1002",
+      "copiedSha256": "dd477148417c13a82e36b0f25437457a4ea5f2cb5387f44325e0e96e3adf1002",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/py/guide.json",
+      "destination": "evidence/color-prior/guides-unlit/py/guide.json",
+      "bytes": 12989,
+      "sourceSha256": "fad993fb181fa72220affa6df27d0024d3bbd79c64e0ef919747d4ffcae88be3",
+      "copiedSha256": "fad993fb181fa72220affa6df27d0024d3bbd79c64e0ef919747d4ffcae88be3",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/ny/guide.json",
+      "destination": "evidence/color-prior/guides-unlit/ny/guide.json",
+      "bytes": 13028,
+      "sourceSha256": "040998e820c23290b1846a4d36f43b55960b8919dc227c5c2027ad05f64316d9",
+      "copiedSha256": "040998e820c23290b1846a4d36f43b55960b8919dc227c5c2027ad05f64316d9",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/pz/guide.json",
+      "destination": "evidence/color-prior/guides-unlit/pz/guide.json",
+      "bytes": 12944,
+      "sourceSha256": "9d81e1abdfe48b41abe2b274de9cc65f2cacebd8157bbb767e16ed2bae6a9067",
+      "copiedSha256": "9d81e1abdfe48b41abe2b274de9cc65f2cacebd8157bbb767e16ed2bae6a9067",
+      "sha256Matches": true
+    },
+    {
+      "kind": "evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/nz/guide.json",
+      "destination": "evidence/color-prior/guides-unlit/nz/guide.json",
+      "bytes": 12951,
+      "sourceSha256": "b04e9bd204086b9ba418d7bb6af6bcfbe0c17514b42262e6051a669804b92140",
+      "copiedSha256": "b04e9bd204086b9ba418d7bb6af6bcfbe0c17514b42262e6051a669804b92140",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/nx-prior-unlit-090/result.json",
+      "destination": "evidence/qwen/nx-prior-unlit-090/result.json",
+      "bytes": 4249,
+      "sourceSha256": "15e2d75ef954f7d3e62ef37501169f0bf4f2a1830773644abb7eac0f4fee2a10",
+      "copiedSha256": "15e2d75ef954f7d3e62ef37501169f0bf4f2a1830773644abb7eac0f4fee2a10",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/nx-prior-unlit-090/prepared.json",
+      "destination": "evidence/qwen/nx-prior-unlit-090/prepared.json",
+      "bytes": 5587,
+      "sourceSha256": "5a48d58bb4c13e1ea53ac508aa592226db26db74cdac784a337a4027e9d7e4e8",
+      "copiedSha256": "5a48d58bb4c13e1ea53ac508aa592226db26db74cdac784a337a4027e9d7e4e8",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/nx-prior-unlit-090/prompt.json",
+      "destination": "evidence/qwen/nx-prior-unlit-090/prompt.json",
+      "bytes": 4804,
+      "sourceSha256": "d08dd5e70c4f9c2daa3306fc16bdf4c4c9c7922319a0b06c9dab934b4ee8fea8",
+      "copiedSha256": "d08dd5e70c4f9c2daa3306fc16bdf4c4c9c7922319a0b06c9dab934b4ee8fea8",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/px-materials-090/result.json",
+      "destination": "evidence/qwen/px-materials-090/result.json",
+      "bytes": 4173,
+      "sourceSha256": "0789e52f755f56bd5f8f230606b318831616fcb7e28f45775c48eda18ee84b6e",
+      "copiedSha256": "0789e52f755f56bd5f8f230606b318831616fcb7e28f45775c48eda18ee84b6e",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/px-materials-090/prepared.json",
+      "destination": "evidence/qwen/px-materials-090/prepared.json",
+      "bytes": 5479,
+      "sourceSha256": "61dce9b1a852578837fd3ec262c1f4c9d5199a65f0fe6495851275769d73d055",
+      "copiedSha256": "61dce9b1a852578837fd3ec262c1f4c9d5199a65f0fe6495851275769d73d055",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/px-materials-090/prompt.json",
+      "destination": "evidence/qwen/px-materials-090/prompt.json",
+      "bytes": 4724,
+      "sourceSha256": "4d71da98bd9bd0d15b5739c37436a3aabc9fa33b98e5485cde7fd6f547e8d3d5",
+      "copiedSha256": "4d71da98bd9bd0d15b5739c37436a3aabc9fa33b98e5485cde7fd6f547e8d3d5",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/px-prior-unlit-090/result.json",
+      "destination": "evidence/qwen/px-prior-unlit-090/result.json",
+      "bytes": 4246,
+      "sourceSha256": "15688890540b2201950ea8fa21060e5227d3e6dd1f63cb145d8b29cb9dee9325",
+      "copiedSha256": "15688890540b2201950ea8fa21060e5227d3e6dd1f63cb145d8b29cb9dee9325",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/px-prior-unlit-090/prepared.json",
+      "destination": "evidence/qwen/px-prior-unlit-090/prepared.json",
+      "bytes": 5584,
+      "sourceSha256": "5ffcce699ddce07da8fa1d3c3494fff625fe8691b209c3dbf70303434b756a9b",
+      "copiedSha256": "5ffcce699ddce07da8fa1d3c3494fff625fe8691b209c3dbf70303434b756a9b",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/px-prior-unlit-090/prompt.json",
+      "destination": "evidence/qwen/px-prior-unlit-090/prompt.json",
+      "bytes": 4801,
+      "sourceSha256": "1eea579079fc92722946fd074a3c84cb0566cdb8f9a896c224bf13a7dc01f53e",
+      "copiedSha256": "1eea579079fc92722946fd074a3c84cb0566cdb8f9a896c224bf13a7dc01f53e",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-clay-090/result.json",
+      "destination": "evidence/qwen/pz-clay-090/result.json",
+      "bytes": 3936,
+      "sourceSha256": "423a0b953f8efdfc8705290a3d5e1f6ed94e44b93a82a75471eec343762380c8",
+      "copiedSha256": "423a0b953f8efdfc8705290a3d5e1f6ed94e44b93a82a75471eec343762380c8",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-clay-090/prepared.json",
+      "destination": "evidence/qwen/pz-clay-090/prepared.json",
+      "bytes": 5292,
+      "sourceSha256": "d0871f699cbc3ea0c80bc5d49de6957749f5ea07b45ec73e25abfdad3c6ce015",
+      "copiedSha256": "d0871f699cbc3ea0c80bc5d49de6957749f5ea07b45ec73e25abfdad3c6ce015",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-clay-090/prompt.json",
+      "destination": "evidence/qwen/pz-clay-090/prompt.json",
+      "bytes": 4705,
+      "sourceSha256": "682ab443b4f00ee92fb4994111b8745fad808cd2beb73da41b4853d9afec0e21",
+      "copiedSha256": "682ab443b4f00ee92fb4994111b8745fad808cd2beb73da41b4853d9afec0e21",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-075/result.json",
+      "destination": "evidence/qwen/pz-materials-075/result.json",
+      "bytes": 4095,
+      "sourceSha256": "b52bba0a9bba5266d13f11f570f4bc2477a7a1dc7f52b8c9fea7e90ba6e47dde",
+      "copiedSha256": "b52bba0a9bba5266d13f11f570f4bc2477a7a1dc7f52b8c9fea7e90ba6e47dde",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-075/prepared.json",
+      "destination": "evidence/qwen/pz-materials-075/prepared.json",
+      "bytes": 5402,
+      "sourceSha256": "8ad8dfd141b47f21bcd169772a51355e528668e78b849bba5f78fdf5eaa5609d",
+      "copiedSha256": "8ad8dfd141b47f21bcd169772a51355e528668e78b849bba5f78fdf5eaa5609d",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-075/prompt.json",
+      "destination": "evidence/qwen/pz-materials-075/prompt.json",
+      "bytes": 4642,
+      "sourceSha256": "eb3de67d4467cdc608341410a7276f74a03d84e44d795e4a13aed9557e4758b6",
+      "copiedSha256": "eb3de67d4467cdc608341410a7276f74a03d84e44d795e4a13aed9557e4758b6",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-090/result.json",
+      "destination": "evidence/qwen/pz-materials-090/result.json",
+      "bytes": 4094,
+      "sourceSha256": "53d8fcfbb107acce0a48aa98f143d8fcb53fe316c2fd15c1e0c7dceea41e7dad",
+      "copiedSha256": "53d8fcfbb107acce0a48aa98f143d8fcb53fe316c2fd15c1e0c7dceea41e7dad",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-090/prepared.json",
+      "destination": "evidence/qwen/pz-materials-090/prepared.json",
+      "bytes": 5400,
+      "sourceSha256": "378ccd3b6bf024522aba36c293d3947f519c03384e60cc6a92823da72c59718a",
+      "copiedSha256": "378ccd3b6bf024522aba36c293d3947f519c03384e60cc6a92823da72c59718a",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-090/prompt.json",
+      "destination": "evidence/qwen/pz-materials-090/prompt.json",
+      "bytes": 4641,
+      "sourceSha256": "349a8ed5b4ff5b5fc171ead06f69774ea6b36ff7159b7ebdd38f08fef5df5b1e",
+      "copiedSha256": "349a8ed5b4ff5b5fc171ead06f69774ea6b36ff7159b7ebdd38f08fef5df5b1e",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-prior-unlit-075/result.json",
+      "destination": "evidence/qwen/pz-prior-unlit-075/result.json",
+      "bytes": 4189,
+      "sourceSha256": "a1ed7ade129a091520adab5d1755e1994e48b48c3cfb3039fa4da93b719a9a19",
+      "copiedSha256": "a1ed7ade129a091520adab5d1755e1994e48b48c3cfb3039fa4da93b719a9a19",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-prior-unlit-075/prepared.json",
+      "destination": "evidence/qwen/pz-prior-unlit-075/prepared.json",
+      "bytes": 5528,
+      "sourceSha256": "080b1987b0e46d7cffe39818faa544e089ae97fb036e4ac5ff1107f5ec4eb69a",
+      "copiedSha256": "080b1987b0e46d7cffe39818faa544e089ae97fb036e4ac5ff1107f5ec4eb69a",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-prior-unlit-075/prompt.json",
+      "destination": "evidence/qwen/pz-prior-unlit-075/prompt.json",
+      "bytes": 4744,
+      "sourceSha256": "60af9ce47be3c561e5de9fcc9d638567bafb009460fce31a6858d2e288e121cd",
+      "copiedSha256": "60af9ce47be3c561e5de9fcc9d638567bafb009460fce31a6858d2e288e121cd",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-prior-unlit-090/result.json",
+      "destination": "evidence/qwen/pz-prior-unlit-090/result.json",
+      "bytes": 4188,
+      "sourceSha256": "69bc84a9dc27048447fe1814af446ee3db04b70f49d23df30f08c47c4fc6c2dd",
+      "copiedSha256": "69bc84a9dc27048447fe1814af446ee3db04b70f49d23df30f08c47c4fc6c2dd",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-prior-unlit-090/prepared.json",
+      "destination": "evidence/qwen/pz-prior-unlit-090/prepared.json",
+      "bytes": 5526,
+      "sourceSha256": "d91270bcee3ac317752989237876d03d88b321de7c1301b0120797102eb2a22c",
+      "copiedSha256": "d91270bcee3ac317752989237876d03d88b321de7c1301b0120797102eb2a22c",
+      "sha256Matches": true
+    },
+    {
+      "kind": "completed-qwen-evidence",
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-prior-unlit-090/prompt.json",
+      "destination": "evidence/qwen/pz-prior-unlit-090/prompt.json",
+      "bytes": 4743,
+      "sourceSha256": "d2c35ad6e2db480586c80e78051b9041b199809abef6293808e2ebd87a92ad26",
+      "copiedSha256": "d2c35ad6e2db480586c80e78051b9041b199809abef6293808e2ebd87a92ad26",
+      "sha256Matches": true
+    },
+    {
+      "kind": "reference-readme-draft",
+      "source": "/workspace/scratch/fe25d79c8da0/experiments/direct3d-qwen-box/README.draft.md",
+      "destination": "README.draft.md",
+      "bytes": 20539,
+      "sourceSha256": "fe01c82d585a1581eacb9ac6cf8ca1cf95bf3e4d8829c744c9b25e9e7b809097",
+      "copiedSha256": "fe01c82d585a1581eacb9ac6cf8ca1cf95bf3e4d8829c744c9b25e9e7b809097",
+      "sha256Matches": true,
+      "note": "Reference draft only; root owns final README and final documentation verification."
+    }
+  ],
+  "captureHelperEvidence": [
+    {
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/baseline/capture.json",
+      "captureSha256": "2577affb0e1d0a278bb4d40424dec309ce3959570b4987d9274a2ea37a19ca0c",
+      "scriptSha256": "a34b872abbad6b197b475692a06d3ade15681e52c55fd0b0c901d9202d7a1ab1",
+      "copiedScriptMatches": true
+    },
+    {
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/color-prior/capture.json",
+      "captureSha256": "5e7a20b2b769be7f6517bc57be338f0327a9fdcf08d88c7f1e8c6c7494538297",
+      "scriptSha256": "a34b872abbad6b197b475692a06d3ade15681e52c55fd0b0c901d9202d7a1ab1",
+      "copiedScriptMatches": true
+    }
+  ],
+  "captureHelperNote": "Copied the exact runtime capture script referenced by the completed capture JSONs. Existing tracked scripts/zipsplat_experiment/capture_inspector.mjs remains unchanged; it has an extra disabled-Normals-control guard. Current captures used default mode.",
+  "cleanup": {
+    "path": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/node_modules",
+    "operation": "unlink-symlink-only",
+    "target": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/node_modules",
+    "targetDirectoryPreserved": true
+  },
+  "excludedFromRepository": [
+    "generated images",
+    "segmentation masks",
+    "original reference photograph",
+    "GLB models",
+    "binary Box atlases",
+    "captured PNG frames",
+    "node_modules contents",
+    "unfinished Qwen candidates"
+  ],
+  "scope": "Unchanged source copies and JSON evidence snapshot only. No commit or push. Later results and final README will be added by root."
+}

@@ -1,0 +1,47 @@
+{
+  "command": [
+    "node",
+    "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/capture_inspector.mjs",
+    "--viewer",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/viewers/smooth-gray/smooth-gray512.inspector.html",
+    "--reference",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/baseline512/manifest.json",
+    "--out",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray",
+    "--frames",
+    "240",
+    "--size",
+    "512",
+    "--fps",
+    "24",
+    "--mode",
+    "default",
+    "--backend",
+    "swiftshader",
+    "--playwright-root",
+    "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory",
+    "--chromium",
+    "/home/dev/.cache/ms-playwright/chromium-1254/chrome-linux64/chrome"
+  ],
+  "helper": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/capture_inspector.mjs",
+    "sha256": "a34b872abbad6b197b475692a06d3ade15681e52c55fd0b0c901d9202d7a1ab1",
+    "bytes": 15267
+  },
+  "viewer": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/viewers/smooth-gray/smooth-gray512.inspector.html",
+    "sha256": "f90a3fce329b4ca9494b1b67be365008208c37c086ca3ceddf317e0623125b50",
+    "bytes": 9759982
+  },
+  "reference": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/baseline512/manifest.json",
+    "sha256": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+    "bytes": 13073
+  },
+  "environment": {
+    "DISPLAY": null,
+    "WAYLAND_DISPLAY": null
+  },
+  "returnCode": 0,
+  "elapsedSeconds": 61.16513340099482
+}

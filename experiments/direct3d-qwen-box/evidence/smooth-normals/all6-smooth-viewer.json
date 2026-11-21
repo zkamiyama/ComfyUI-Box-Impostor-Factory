@@ -1,0 +1,74 @@
+{
+  "completed": true,
+  "assetId": "095fb922d6ace93bd4ae2b8679d2be1d91c5ee79dd1a2ef70d5b1580272272ee",
+  "sourceManifest": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/variants/all6-smooth-prior-unlit-090/095fb922d6ace93bd4ae2b8679d2be1d91c5ee79dd1a2ef70d5b1580272272ee/manifest.json",
+    "sha256": "1ae379eb8b72a15c30d716c269c02b78352f0a1858b025c247efc5381c53eb13",
+    "bytes": 13221
+  },
+  "sourceFiles": {
+    "geometry/proxy.glb": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+    "guides/nx.depth16f.bin": "59a8c6d4bcfc25ea1d4ded109b7fb8cc9634618b7a77a0903a0d46809607b8d2",
+    "guides/nx.png": "5235cf0f4066375f46460e1273cb01bb18d669585d5296c8b7767696f5b9608d",
+    "guides/ny.depth16f.bin": "c6c32bc26f4f0a119ad7c20507725e26fc80590c73b7d1721235f5ebc1592f95",
+    "guides/ny.png": "253cbe1cf67f52c7a6a446c2058a76d84b5f0edb566bf3e7b74d20585acd537c",
+    "guides/nz.depth16f.bin": "0d824bdc68140297532d555c152a4a132b4e925c7470fd849cca667fb84cf9d8",
+    "guides/nz.png": "22c1ab7bb88008fbb1f7d48192bbc8b415d67eaca9defd1eb2136a911cc53fe4",
+    "guides/px.depth16f.bin": "fd7d681090c1adb203f9eae512b7bf4b1ec8f7271edbaa91e35943937877a013",
+    "guides/px.png": "0083969434908f9afd2d9f88558c22f40fa8fc27a195965449cc45e4048947b9",
+    "guides/py.depth16f.bin": "bf96bf91e88e5eb9eca4c426eec95d2bf311a616742b367f4abfc16e80ca149f",
+    "guides/py.png": "e58a0e96cbc0429e1b88a6adb38d95d4a987f1ca0d14089ca3a105abad3c2ee0",
+    "guides/pz.depth16f.bin": "e92e21c5745e87b319478b79cee3ddc3a0970840300f12d659740a94643ce87d",
+    "guides/pz.png": "f59c42ca6bd2029205fad2803edf016eeee1be2abfdfe3c10f43c5833263b8ba",
+    "manifest.json": "1ae379eb8b72a15c30d716c269c02b78352f0a1858b025c247efc5381c53eb13",
+    "maps/color.rgba16f.bin": "d8c45302c88ab5b4fda7de3abb7c2727c6c2b2dcfb17801eac4d5b236188cda3",
+    "maps/interval.rgba16f.bin": "9458e5cda155b2d4e5b5482b229484abf0194f3d7e7fed8e40329f47f4dc2fd0",
+    "maps/normal.rgba16f.bin": "bfe952bb631c95666f8054a2940cf28a0f3c721680549ee4f0d53987e0ed7741",
+    "maps/range.rgba16f.bin": "f638fb30287fdffe24c4802d6fd2dd432b615918b00235d81fa577bfb5eeabb7",
+    "qa/color-prior-13dcf86d0f78aab1.json": "109e3e9d5cdefaa5c196561451cd32c01eae3f7cd130de0e7e1d561462d35d94",
+    "qa/normal-only-badb51598fbefcdc.json": "8d7af72eb0532221739c4e319c54647d3e39f0d0118f1162179bec972305d62a",
+    "qa/qwen-nx-095fb922d6ace93b-registered-mask.png": "5254c436a43ca3987a25bb24179ef0a50b9034eed6264f846d17d97b5365208b",
+    "qa/qwen-ny-095fb922d6ace93b-registered-mask.png": "d1faeb10ab8bf136fb7fc2796bb521b345ff6e0da540c7d6f64f4e9cf838bf91",
+    "qa/qwen-nz-095fb922d6ace93b-registered-mask.png": "5616fd0387b577c22482b785eb1f78441a877b62e3cd1bdad370e16463fb37c7",
+    "qa/qwen-px-095fb922d6ace93b-registered-mask.png": "002e9f928046f50fc8b4b0ec9f51f5d918adc159f6ca7596890bc939f979db77",
+    "qa/qwen-py-095fb922d6ace93b-registered-mask.png": "974abd27f1109efc078e9ea7a02d7ac772713a9804d824b4a84c9a6b04d46876",
+    "qa/qwen-pz-095fb922d6ace93b-registered-mask.png": "b137fc24dee77395caa975a407c5f4c08f2f9bf3988de31fc4b31191501e3fb3",
+    "qa/qwen-selected-faces-095fb922d6ace93b.json": "a62427cd23116fc1e31ff1c54c6301d0275050e73e4104422bedc43dd036b775"
+  },
+  "archive": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/variants/all6-smooth-prior-unlit-090/095fb922d6ace93bd4ae2b8679d2be1d91c5ee79dd1a2ef70d5b1580272272ee.box.zip",
+    "sha256": "ae2df4c7d8c4e0615df014bf6c0b176bf0b628e6f07279f7cf04a17739bed5ea",
+    "bytes": 18302593
+  },
+  "viewer": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/viewers/all6-smooth-prior-unlit-090/all6-smooth-prior-unlit-090.inspector.html",
+    "sha256": "277075c56f8a2ec433b03607c140f2bdfeca19c2c63a2f38e5cdfd96e840a6e2",
+    "bytes": 15871450
+  },
+  "officialViewScript": {
+    "path": "/home/dev/Projects/box-impostor-lab/third_party/3D-Inspector-skills/skills/3d-inspector/view.py",
+    "sha256": "ac5582e709b88c5d02aad2c999147237f077f3dc56850c8d8e139abaec947ada",
+    "bytes": 4062
+  },
+  "command": [
+    "/home/dev/Projects/box-impostor-lab/.venv/bin/python",
+    "/home/dev/Projects/box-impostor-lab/third_party/3D-Inspector-skills/skills/3d-inspector/view.py",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/variants/all6-smooth-prior-unlit-090/095fb922d6ace93bd4ae2b8679d2be1d91c5ee79dd1a2ef70d5b1580272272ee.box.zip",
+    "-o",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/viewers/all6-smooth-prior-unlit-090/all6-smooth-prior-unlit-090.inspector.html"
+  ],
+  "viewerHTMLUnmodified": true,
+  "archiveAllEntriesMatchSourceBytes": true,
+  "colorMapMatchesFlatAll6Bytes": true,
+  "flatManifest": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/variants/all6-prior-unlit-090/cc38d8d644deec6cedff633474acf35e0ea3633e4a8f65e39023ad318c3efa21/manifest.json",
+    "sha256": "39039ddb95e01f30e446dc3106cfeb9cb334d2f437d9d4a73694ddbfb7bb435e",
+    "bytes": 13221
+  },
+  "flatVsSmoothComparison": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/viewers/all6-smooth-prior-unlit-090/normal-only-final-comparison.json",
+    "sha256": "05a032391d5595042ecc7d225a384b4a65158dea925ab826f8e32ac620547271",
+    "bytes": 4732
+  },
+  "elapsedSeconds": 6.238010411994765
+}

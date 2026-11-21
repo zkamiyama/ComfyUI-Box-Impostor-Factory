@@ -1,0 +1,38 @@
+{
+  "experiment": "Direct3D-V3 1024 geometry plus Qwen Image 2.1 Box color",
+  "inputs": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/rgb1024/canonical.glb",
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/inputs/direct3d-1024.glb",
+      "sha256": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+      "bytes": 27002988
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/inputs/fullbody/source-original.png",
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/inputs/source-original.png",
+      "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+      "bytes": 270164
+    }
+  ],
+  "scope": "Qwen RGB for native six-face Box; no UV texture claimed for the source mesh",
+  "plannedFaces": [
+    "+Z",
+    "+X",
+    "-Z",
+    "-X",
+    "+Y",
+    "-Y"
+  ],
+  "plannedGuideSize": 1024,
+  "plannedDepthGuideSize": 512,
+  "plannedBoxResolution": 512,
+  "acceptance": [
+    "source mesh bytes unchanged",
+    "all original depth/normal/interval/range/proxy bytes unchanged",
+    "all native atlas alpha uint16 bits unchanged",
+    "240 rendered RGBA alpha frames exactly unchanged",
+    "matching cameras, full-object framing, nonempty foreground",
+    "visual review of view changes and material continuity"
+  ],
+  "status": "inputs-frozen"
+}

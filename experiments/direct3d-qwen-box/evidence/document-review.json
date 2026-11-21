@@ -1,0 +1,21 @@
+{
+  "completed": true,
+  "readmeSha256": "3ae9de62ffb4028954c754906b93b43bfb9ae8ca20302866cde5b5c82cfb1a7f",
+  "technicalReview": "Actual six Qwen results, normal preparation, guide byte reuse, dense240, top/bottom, 3-column encode and CLI contracts reviewed; no remaining required corrections.",
+  "yomiyasu": {
+    "run": "20261121T080611Z-f6f45554",
+    "attempt": 1,
+    "mode": "compose",
+    "lint": {
+      "error": 0,
+      "warn": 14,
+      "info": 0
+    },
+    "materialNameAndNumberCandidates": 391,
+    "factGapCandidates": 0,
+    "verify": "hash matched; executed; not a quality or truth certification",
+    "retainedStyle": "Repeated polite endings describe sequential procedures; resolution is used literally for image pixel dimensions.",
+    "materialCandidateHandling": "The lexical material comparison uses an English JSON subset and flags Japanese terms, code identifiers, paths and tokenized numbers. Technical claims were separately checked against the linked experiment evidence and scripts."
+  },
+  "frozenAfterVerify": true
+}

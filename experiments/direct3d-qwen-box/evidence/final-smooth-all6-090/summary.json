@@ -1,0 +1,5456 @@
+{
+  "completed": true,
+  "comparisonValid": true,
+  "method": "official-inspector-rgb-only-box-240-v1",
+  "selectedFaces": [
+    "+Z",
+    "+X",
+    "-X",
+    "-Z",
+    "+Y",
+    "-Y"
+  ],
+  "assetChecks": {
+    "selectedFaces": [
+      "+Z",
+      "+X",
+      "-X",
+      "-Z",
+      "+Y",
+      "-Y"
+    ],
+    "unchangedFaces": [],
+    "changedRgbPixels": 553065,
+    "changedRgbPixelsByFace": {
+      "+X": 97152,
+      "-X": 97339,
+      "+Y": 91973,
+      "-Y": 91968,
+      "+Z": 87323,
+      "-Z": 87310
+    },
+    "colorAlphaBitDifferences": 0,
+    "rgbaAlphaChecks": {
+      "maps/color.rgba16f.bin": {
+        "source": "4c7313a92d6a7a08db34e1bd427299af4637005a291698d8ae7447f9555abd03",
+        "output": "4c7313a92d6a7a08db34e1bd427299af4637005a291698d8ae7447f9555abd03"
+      },
+      "maps/interval.rgba16f.bin": {
+        "source": "f79263f5c2ec73570adf07119363a977941f23e05778a54348afaeeb8a059ed1",
+        "output": "f79263f5c2ec73570adf07119363a977941f23e05778a54348afaeeb8a059ed1"
+      },
+      "maps/normal.rgba16f.bin": {
+        "source": "4c7313a92d6a7a08db34e1bd427299af4637005a291698d8ae7447f9555abd03",
+        "output": "4c7313a92d6a7a08db34e1bd427299af4637005a291698d8ae7447f9555abd03"
+      },
+      "maps/range.rgba16f.bin": {
+        "source": "f77ca159ec58e2042669e3e88f50f17b4f63b40ed21098ffe1e41e6af5eb163a",
+        "output": "f77ca159ec58e2042669e3e88f50f17b4f63b40ed21098ffe1e41e6af5eb163a"
+      }
+    },
+    "unselectedFacesBitIdentical": true,
+    "geometryMetadataSourceSha256": "5b40acc0cf5d082b87cb5b4f55ba255b1bcb99cd3411feb913d1c7e2fb4d0185",
+    "geometryMetadataOutputSha256": "5b40acc0cf5d082b87cb5b4f55ba255b1bcb99cd3411feb913d1c7e2fb4d0185",
+    "geometryDepthNormalIntervalRangeProxyCameraPreserved": true,
+    "preservedSourceFiles": {
+      "geometry/proxy.glb": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+      "guides/nx.depth16f.bin": "59a8c6d4bcfc25ea1d4ded109b7fb8cc9634618b7a77a0903a0d46809607b8d2",
+      "guides/nx.png": "5235cf0f4066375f46460e1273cb01bb18d669585d5296c8b7767696f5b9608d",
+      "guides/ny.depth16f.bin": "c6c32bc26f4f0a119ad7c20507725e26fc80590c73b7d1721235f5ebc1592f95",
+      "guides/ny.png": "253cbe1cf67f52c7a6a446c2058a76d84b5f0edb566bf3e7b74d20585acd537c",
+      "guides/nz.depth16f.bin": "0d824bdc68140297532d555c152a4a132b4e925c7470fd849cca667fb84cf9d8",
+      "guides/nz.png": "22c1ab7bb88008fbb1f7d48192bbc8b415d67eaca9defd1eb2136a911cc53fe4",
+      "guides/px.depth16f.bin": "fd7d681090c1adb203f9eae512b7bf4b1ec8f7271edbaa91e35943937877a013",
+      "guides/px.png": "0083969434908f9afd2d9f88558c22f40fa8fc27a195965449cc45e4048947b9",
+      "guides/py.depth16f.bin": "bf96bf91e88e5eb9eca4c426eec95d2bf311a616742b367f4abfc16e80ca149f",
+      "guides/py.png": "e58a0e96cbc0429e1b88a6adb38d95d4a987f1ca0d14089ca3a105abad3c2ee0",
+      "guides/pz.depth16f.bin": "e92e21c5745e87b319478b79cee3ddc3a0970840300f12d659740a94643ce87d",
+      "guides/pz.png": "f59c42ca6bd2029205fad2803edf016eeee1be2abfdfe3c10f43c5833263b8ba",
+      "maps/interval.rgba16f.bin": "9458e5cda155b2d4e5b5482b229484abf0194f3d7e7fed8e40329f47f4dc2fd0",
+      "maps/normal.rgba16f.bin": "bfe952bb631c95666f8054a2940cf28a0f3c721680549ee4f0d53987e0ed7741",
+      "maps/range.rgba16f.bin": "f638fb30287fdffe24c4802d6fd2dd432b615918b00235d81fa577bfb5eeabb7",
+      "qa/color-prior-13dcf86d0f78aab1.json": "109e3e9d5cdefaa5c196561451cd32c01eae3f7cd130de0e7e1d561462d35d94",
+      "qa/normal-only-badb51598fbefcdc.json": "8d7af72eb0532221739c4e319c54647d3e39f0d0118f1162179bec972305d62a"
+    },
+    "sourceManifestSha256": "556b555829562c9cec35f97aa59e438eefdbd36f6619c4f1043b985c86568c87",
+    "outputManifestSha256": "1ae379eb8b72a15c30d716c269c02b78352f0a1858b025c247efc5381c53eb13"
+  },
+  "receipt": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/variants/all6-smooth-prior-unlit-090/095fb922d6ace93bd4ae2b8679d2be1d91c5ee79dd1a2ef70d5b1580272272ee.json",
+    "sha256": "650a43a5657cd717c3af2ab194acd9472b565925c7b737eddc6f2df2cd6bade1"
+  },
+  "inputHashes": {
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/baselines/prior/manifest.json": "556b555829562c9cec35f97aa59e438eefdbd36f6619c4f1043b985c86568c87",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/variants/all6-smooth-prior-unlit-090/095fb922d6ace93bd4ae2b8679d2be1d91c5ee79dd1a2ef70d5b1580272272ee/manifest.json": "1ae379eb8b72a15c30d716c269c02b78352f0a1858b025c247efc5381c53eb13",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/variants/all6-smooth-prior-unlit-090/095fb922d6ace93bd4ae2b8679d2be1d91c5ee79dd1a2ef70d5b1580272272ee.json": "650a43a5657cd717c3af2ab194acd9472b565925c7b737eddc6f2df2cd6bade1",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/baseline512/manifest.json": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+    "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/capture_inspector.mjs": "a34b872abbad6b197b475692a06d3ade15681e52c55fd0b0c901d9202d7a1ab1",
+    "/mnt/f/_dev/box-impostor-lab/experiments/zipsplat-qwen-20261120/compare_capture_alpha.py": "f85db40664b8e6259c52e9589cc2d01c662c76f3e25f2cd2969811d2ddd1347c",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/compare_boxes.py": "333099f104030663ad65bdb7a14b4d28cd8ca481661adc7a94f9627ce04b5b5e",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/compose_faces.py": "ca10a7373535664c3dd8b3a9289351a34e15865e2db0200f66e89a460d4faa1a",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/viewers/smooth-prior/smooth-prior512.inspector.html": "ba720adc3899f54f0851edbcd953b68db43ac7ed7ffcd7bfef50c01553d0c09b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/viewers/all6-smooth-prior-unlit-090/all6-smooth-prior-unlit-090.inspector.html": "277075c56f8a2ec433b03607c140f2bdfeca19c2c63a2f38e5cdfd96e840a6e2"
+  },
+  "captures": {
+    "before": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/before/capture.json",
+      "sha256": "097772989ec079743c5c374a1c5eeeefa947790790a6fef925601318ffebec75"
+    },
+    "after": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/after/capture.json",
+      "sha256": "08eb0877c877bf603ed580fdc596f2e7bcf1ae60f5dca27cce9f12f1b776a527"
+    }
+  },
+  "captureEnvironmentEqual": true,
+  "recordedCamerasExactlyEqual": true,
+  "camera": {
+    "maxAbsDifference": 0.0,
+    "maxByField": {
+      "position": 0.0,
+      "quaternion": 0.0,
+      "up": 0.0,
+      "matrixWorld": 0.0,
+      "matrixWorldInverse": 0.0,
+      "projectionMatrix": 0.0,
+      "projectionMatrixInverse": 0.0,
+      "near": 0.0,
+      "far": 0.0,
+      "top": 0.0,
+      "bottom": 0.0,
+      "left": 0.0,
+      "right": 0.0,
+      "zoom": 0.0,
+      "canvasPixels": 0.0
+    },
+    "differentFrameIndices": [],
+    "verifiedFrames": 240,
+    "differentFrames": 0
+  },
+  "alpha": {
+    "framesCompared": 240,
+    "exactFrames": 240,
+    "changedFrames": 0,
+    "allFramesZero": true,
+    "all240FramesZero": true,
+    "maeUint8": 0.0,
+    "maxUint8": 0,
+    "nonzeroPixels": 0,
+    "nonzeroValues": 0,
+    "sumAbsoluteDifference": 0,
+    "values": 62914560,
+    "pixels": 62914560
+  },
+  "rgb": {
+    "framesCompared": 240,
+    "exactFrames": 0,
+    "changedFrames": 240,
+    "allFramesZero": false,
+    "all240FramesZero": false,
+    "maeUint8": 0.9042599148220486,
+    "maxUint8": 117,
+    "nonzeroPixels": 5280731,
+    "nonzeroValues": 15414756,
+    "sumAbsoluteDifference": 170673344,
+    "values": 188743680,
+    "pixels": 62914560
+  },
+  "fullBody240Frames": {
+    "before": [
+      {
+        "index": 0,
+        "foregroundPixels": 20787,
+        "boundsXYXY": [
+          186,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 1,
+        "foregroundPixels": 20693,
+        "boundsXYXY": [
+          187,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 2,
+        "foregroundPixels": 20640,
+        "boundsXYXY": [
+          188,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 3,
+        "foregroundPixels": 20625,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 4,
+        "foregroundPixels": 20611,
+        "boundsXYXY": [
+          189,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 5,
+        "foregroundPixels": 20608,
+        "boundsXYXY": [
+          189,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 6,
+        "foregroundPixels": 20588,
+        "boundsXYXY": [
+          190,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 7,
+        "foregroundPixels": 20572,
+        "boundsXYXY": [
+          191,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 8,
+        "foregroundPixels": 20522,
+        "boundsXYXY": [
+          192,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 9,
+        "foregroundPixels": 20496,
+        "boundsXYXY": [
+          193,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 10,
+        "foregroundPixels": 20458,
+        "boundsXYXY": [
+          193,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 11,
+        "foregroundPixels": 20437,
+        "boundsXYXY": [
+          194,
+          62,
+          309,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 12,
+        "foregroundPixels": 20400,
+        "boundsXYXY": [
+          195,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 13,
+        "foregroundPixels": 20308,
+        "boundsXYXY": [
+          196,
+          62,
+          305,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 14,
+        "foregroundPixels": 20265,
+        "boundsXYXY": [
+          197,
+          62,
+          304,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 15,
+        "foregroundPixels": 20201,
+        "boundsXYXY": [
+          198,
+          62,
+          303,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 16,
+        "foregroundPixels": 20111,
+        "boundsXYXY": [
+          199,
+          62,
+          303,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 17,
+        "foregroundPixels": 20053,
+        "boundsXYXY": [
+          200,
+          62,
+          304,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 18,
+        "foregroundPixels": 19950,
+        "boundsXYXY": [
+          201,
+          62,
+          305,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 19,
+        "foregroundPixels": 19886,
+        "boundsXYXY": [
+          202,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 20,
+        "foregroundPixels": 19802,
+        "boundsXYXY": [
+          203,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 21,
+        "foregroundPixels": 19703,
+        "boundsXYXY": [
+          204,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 22,
+        "foregroundPixels": 19616,
+        "boundsXYXY": [
+          205,
+          62,
+          308,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 23,
+        "foregroundPixels": 19555,
+        "boundsXYXY": [
+          206,
+          62,
+          309,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 24,
+        "foregroundPixels": 19500,
+        "boundsXYXY": [
+          205,
+          62,
+          309,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 25,
+        "foregroundPixels": 19483,
+        "boundsXYXY": [
+          205,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 26,
+        "foregroundPixels": 19457,
+        "boundsXYXY": [
+          205,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 27,
+        "foregroundPixels": 19468,
+        "boundsXYXY": [
+          205,
+          62,
+          311,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 28,
+        "foregroundPixels": 19481,
+        "boundsXYXY": [
+          205,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 29,
+        "foregroundPixels": 19466,
+        "boundsXYXY": [
+          205,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 30,
+        "foregroundPixels": 19482,
+        "boundsXYXY": [
+          205,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 31,
+        "foregroundPixels": 19436,
+        "boundsXYXY": [
+          205,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 32,
+        "foregroundPixels": 19431,
+        "boundsXYXY": [
+          204,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 33,
+        "foregroundPixels": 19402,
+        "boundsXYXY": [
+          204,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 34,
+        "foregroundPixels": 19404,
+        "boundsXYXY": [
+          203,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 35,
+        "foregroundPixels": 19384,
+        "boundsXYXY": [
+          202,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 36,
+        "foregroundPixels": 19395,
+        "boundsXYXY": [
+          201,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 37,
+        "foregroundPixels": 19393,
+        "boundsXYXY": [
+          201,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 38,
+        "foregroundPixels": 19427,
+        "boundsXYXY": [
+          200,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 39,
+        "foregroundPixels": 19425,
+        "boundsXYXY": [
+          199,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 40,
+        "foregroundPixels": 19465,
+        "boundsXYXY": [
+          199,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 41,
+        "foregroundPixels": 19558,
+        "boundsXYXY": [
+          198,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 42,
+        "foregroundPixels": 19663,
+        "boundsXYXY": [
+          197,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 43,
+        "foregroundPixels": 19809,
+        "boundsXYXY": [
+          197,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 44,
+        "foregroundPixels": 19924,
+        "boundsXYXY": [
+          196,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 45,
+        "foregroundPixels": 20094,
+        "boundsXYXY": [
+          196,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 46,
+        "foregroundPixels": 20233,
+        "boundsXYXY": [
+          195,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 47,
+        "foregroundPixels": 20404,
+        "boundsXYXY": [
+          195,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 48,
+        "foregroundPixels": 20548,
+        "boundsXYXY": [
+          194,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 49,
+        "foregroundPixels": 20708,
+        "boundsXYXY": [
+          193,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 50,
+        "foregroundPixels": 20876,
+        "boundsXYXY": [
+          193,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 51,
+        "foregroundPixels": 21019,
+        "boundsXYXY": [
+          192,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 52,
+        "foregroundPixels": 21165,
+        "boundsXYXY": [
+          192,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 53,
+        "foregroundPixels": 21324,
+        "boundsXYXY": [
+          191,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 54,
+        "foregroundPixels": 21437,
+        "boundsXYXY": [
+          191,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 55,
+        "foregroundPixels": 21632,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 56,
+        "foregroundPixels": 21781,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 57,
+        "foregroundPixels": 21954,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 58,
+        "foregroundPixels": 22157,
+        "boundsXYXY": [
+          189,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 59,
+        "foregroundPixels": 22334,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 60,
+        "foregroundPixels": 22515,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 61,
+        "foregroundPixels": 22660,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 62,
+        "foregroundPixels": 22871,
+        "boundsXYXY": [
+          188,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 63,
+        "foregroundPixels": 23048,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 64,
+        "foregroundPixels": 23250,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 65,
+        "foregroundPixels": 23450,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 66,
+        "foregroundPixels": 23644,
+        "boundsXYXY": [
+          188,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 67,
+        "foregroundPixels": 23889,
+        "boundsXYXY": [
+          188,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 68,
+        "foregroundPixels": 24072,
+        "boundsXYXY": [
+          188,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 69,
+        "foregroundPixels": 24253,
+        "boundsXYXY": [
+          187,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 70,
+        "foregroundPixels": 24403,
+        "boundsXYXY": [
+          186,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 71,
+        "foregroundPixels": 24606,
+        "boundsXYXY": [
+          184,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 72,
+        "foregroundPixels": 24758,
+        "boundsXYXY": [
+          183,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 73,
+        "foregroundPixels": 24952,
+        "boundsXYXY": [
+          182,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 74,
+        "foregroundPixels": 25062,
+        "boundsXYXY": [
+          181,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 75,
+        "foregroundPixels": 25237,
+        "boundsXYXY": [
+          180,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 76,
+        "foregroundPixels": 25345,
+        "boundsXYXY": [
+          179,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 77,
+        "foregroundPixels": 25454,
+        "boundsXYXY": [
+          178,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 78,
+        "foregroundPixels": 25611,
+        "boundsXYXY": [
+          178,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 79,
+        "foregroundPixels": 25687,
+        "boundsXYXY": [
+          177,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 80,
+        "foregroundPixels": 25779,
+        "boundsXYXY": [
+          176,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 81,
+        "foregroundPixels": 25893,
+        "boundsXYXY": [
+          175,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 82,
+        "foregroundPixels": 25910,
+        "boundsXYXY": [
+          175,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 83,
+        "foregroundPixels": 25952,
+        "boundsXYXY": [
+          174,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 84,
+        "foregroundPixels": 26027,
+        "boundsXYXY": [
+          173,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 85,
+        "foregroundPixels": 26059,
+        "boundsXYXY": [
+          173,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 86,
+        "foregroundPixels": 26055,
+        "boundsXYXY": [
+          172,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 87,
+        "foregroundPixels": 26043,
+        "boundsXYXY": [
+          172,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 88,
+        "foregroundPixels": 26026,
+        "boundsXYXY": [
+          171,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 89,
+        "foregroundPixels": 25979,
+        "boundsXYXY": [
+          171,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 90,
+        "foregroundPixels": 25926,
+        "boundsXYXY": [
+          171,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 91,
+        "foregroundPixels": 25888,
+        "boundsXYXY": [
+          171,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 92,
+        "foregroundPixels": 25814,
+        "boundsXYXY": [
+          170,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 93,
+        "foregroundPixels": 25702,
+        "boundsXYXY": [
+          170,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 94,
+        "foregroundPixels": 25617,
+        "boundsXYXY": [
+          170,
+          62,
+          324,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 95,
+        "foregroundPixels": 25502,
+        "boundsXYXY": [
+          170,
+          62,
+          324,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 96,
+        "foregroundPixels": 25357,
+        "boundsXYXY": [
+          170,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 97,
+        "foregroundPixels": 25183,
+        "boundsXYXY": [
+          170,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 98,
+        "foregroundPixels": 25015,
+        "boundsXYXY": [
+          170,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 99,
+        "foregroundPixels": 24885,
+        "boundsXYXY": [
+          170,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 100,
+        "foregroundPixels": 24676,
+        "boundsXYXY": [
+          171,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 101,
+        "foregroundPixels": 24494,
+        "boundsXYXY": [
+          171,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 102,
+        "foregroundPixels": 24292,
+        "boundsXYXY": [
+          171,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 103,
+        "foregroundPixels": 24119,
+        "boundsXYXY": [
+          172,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 104,
+        "foregroundPixels": 23905,
+        "boundsXYXY": [
+          172,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 105,
+        "foregroundPixels": 23710,
+        "boundsXYXY": [
+          173,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 106,
+        "foregroundPixels": 23486,
+        "boundsXYXY": [
+          173,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 107,
+        "foregroundPixels": 23273,
+        "boundsXYXY": [
+          174,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 108,
+        "foregroundPixels": 23061,
+        "boundsXYXY": [
+          175,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 109,
+        "foregroundPixels": 22880,
+        "boundsXYXY": [
+          175,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 110,
+        "foregroundPixels": 22654,
+        "boundsXYXY": [
+          176,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 111,
+        "foregroundPixels": 22445,
+        "boundsXYXY": [
+          177,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 112,
+        "foregroundPixels": 22207,
+        "boundsXYXY": [
+          178,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 113,
+        "foregroundPixels": 22007,
+        "boundsXYXY": [
+          179,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 114,
+        "foregroundPixels": 21790,
+        "boundsXYXY": [
+          180,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 115,
+        "foregroundPixels": 21603,
+        "boundsXYXY": [
+          181,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 116,
+        "foregroundPixels": 21418,
+        "boundsXYXY": [
+          182,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 117,
+        "foregroundPixels": 21217,
+        "boundsXYXY": [
+          183,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 118,
+        "foregroundPixels": 21059,
+        "boundsXYXY": [
+          184,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 119,
+        "foregroundPixels": 20897,
+        "boundsXYXY": [
+          185,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 120,
+        "foregroundPixels": 20788,
+        "boundsXYXY": [
+          186,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 121,
+        "foregroundPixels": 20695,
+        "boundsXYXY": [
+          188,
+          62,
+          324,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 122,
+        "foregroundPixels": 20632,
+        "boundsXYXY": [
+          189,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 123,
+        "foregroundPixels": 20620,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 124,
+        "foregroundPixels": 20607,
+        "boundsXYXY": [
+          192,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 125,
+        "foregroundPixels": 20600,
+        "boundsXYXY": [
+          193,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 126,
+        "foregroundPixels": 20587,
+        "boundsXYXY": [
+          195,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 127,
+        "foregroundPixels": 20566,
+        "boundsXYXY": [
+          196,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 128,
+        "foregroundPixels": 20521,
+        "boundsXYXY": [
+          198,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 129,
+        "foregroundPixels": 20500,
+        "boundsXYXY": [
+          199,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 130,
+        "foregroundPixels": 20452,
+        "boundsXYXY": [
+          201,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 131,
+        "foregroundPixels": 20440,
+        "boundsXYXY": [
+          202,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 132,
+        "foregroundPixels": 20404,
+        "boundsXYXY": [
+          204,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 133,
+        "foregroundPixels": 20310,
+        "boundsXYXY": [
+          206,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 134,
+        "foregroundPixels": 20268,
+        "boundsXYXY": [
+          207,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 135,
+        "foregroundPixels": 20207,
+        "boundsXYXY": [
+          208,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 136,
+        "foregroundPixels": 20113,
+        "boundsXYXY": [
+          208,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 137,
+        "foregroundPixels": 20054,
+        "boundsXYXY": [
+          207,
+          62,
+          311,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 138,
+        "foregroundPixels": 19953,
+        "boundsXYXY": [
+          206,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 139,
+        "foregroundPixels": 19886,
+        "boundsXYXY": [
+          205,
+          62,
+          309,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 140,
+        "foregroundPixels": 19799,
+        "boundsXYXY": [
+          205,
+          62,
+          308,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 141,
+        "foregroundPixels": 19703,
+        "boundsXYXY": [
+          204,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 142,
+        "foregroundPixels": 19615,
+        "boundsXYXY": [
+          203,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 143,
+        "foregroundPixels": 19544,
+        "boundsXYXY": [
+          202,
+          62,
+          305,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 144,
+        "foregroundPixels": 19504,
+        "boundsXYXY": [
+          202,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 145,
+        "foregroundPixels": 19482,
+        "boundsXYXY": [
+          201,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 146,
+        "foregroundPixels": 19456,
+        "boundsXYXY": [
+          201,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 147,
+        "foregroundPixels": 19475,
+        "boundsXYXY": [
+          200,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 148,
+        "foregroundPixels": 19483,
+        "boundsXYXY": [
+          199,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 149,
+        "foregroundPixels": 19460,
+        "boundsXYXY": [
+          199,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 150,
+        "foregroundPixels": 19484,
+        "boundsXYXY": [
+          198,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 151,
+        "foregroundPixels": 19418,
+        "boundsXYXY": [
+          198,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 152,
+        "foregroundPixels": 19431,
+        "boundsXYXY": [
+          198,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 153,
+        "foregroundPixels": 19404,
+        "boundsXYXY": [
+          197,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 154,
+        "foregroundPixels": 19402,
+        "boundsXYXY": [
+          197,
+          62,
+          308,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 155,
+        "foregroundPixels": 19387,
+        "boundsXYXY": [
+          196,
+          62,
+          309,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 156,
+        "foregroundPixels": 19386,
+        "boundsXYXY": [
+          196,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 157,
+        "foregroundPixels": 19398,
+        "boundsXYXY": [
+          195,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 158,
+        "foregroundPixels": 19428,
+        "boundsXYXY": [
+          194,
+          62,
+          311,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 159,
+        "foregroundPixels": 19428,
+        "boundsXYXY": [
+          193,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 160,
+        "foregroundPixels": 19472,
+        "boundsXYXY": [
+          193,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 161,
+        "foregroundPixels": 19555,
+        "boundsXYXY": [
+          192,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 162,
+        "foregroundPixels": 19669,
+        "boundsXYXY": [
+          192,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 163,
+        "foregroundPixels": 19808,
+        "boundsXYXY": [
+          191,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 164,
+        "foregroundPixels": 19918,
+        "boundsXYXY": [
+          191,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 165,
+        "foregroundPixels": 20092,
+        "boundsXYXY": [
+          190,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 166,
+        "foregroundPixels": 20232,
+        "boundsXYXY": [
+          190,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 167,
+        "foregroundPixels": 20405,
+        "boundsXYXY": [
+          189,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 168,
+        "foregroundPixels": 20551,
+        "boundsXYXY": [
+          189,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 169,
+        "foregroundPixels": 20716,
+        "boundsXYXY": [
+          189,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 170,
+        "foregroundPixels": 20865,
+        "boundsXYXY": [
+          189,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 171,
+        "foregroundPixels": 21013,
+        "boundsXYXY": [
+          188,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 172,
+        "foregroundPixels": 21162,
+        "boundsXYXY": [
+          188,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 173,
+        "foregroundPixels": 21322,
+        "boundsXYXY": [
+          188,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 174,
+        "foregroundPixels": 21441,
+        "boundsXYXY": [
+          188,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 175,
+        "foregroundPixels": 21641,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 176,
+        "foregroundPixels": 21775,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 177,
+        "foregroundPixels": 21951,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 178,
+        "foregroundPixels": 22153,
+        "boundsXYXY": [
+          188,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 179,
+        "foregroundPixels": 22331,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 180,
+        "foregroundPixels": 22517,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 181,
+        "foregroundPixels": 22671,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 182,
+        "foregroundPixels": 22868,
+        "boundsXYXY": [
+          189,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 183,
+        "foregroundPixels": 23051,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 184,
+        "foregroundPixels": 23252,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 185,
+        "foregroundPixels": 23453,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 186,
+        "foregroundPixels": 23639,
+        "boundsXYXY": [
+          191,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 187,
+        "foregroundPixels": 23881,
+        "boundsXYXY": [
+          191,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 188,
+        "foregroundPixels": 24069,
+        "boundsXYXY": [
+          192,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 189,
+        "foregroundPixels": 24252,
+        "boundsXYXY": [
+          192,
+          62,
+          324,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 190,
+        "foregroundPixels": 24404,
+        "boundsXYXY": [
+          193,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 191,
+        "foregroundPixels": 24606,
+        "boundsXYXY": [
+          193,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 192,
+        "foregroundPixels": 24750,
+        "boundsXYXY": [
+          194,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 193,
+        "foregroundPixels": 24947,
+        "boundsXYXY": [
+          194,
+          62,
+          329,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 194,
+        "foregroundPixels": 25066,
+        "boundsXYXY": [
+          195,
+          62,
+          330,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 195,
+        "foregroundPixels": 25242,
+        "boundsXYXY": [
+          195,
+          62,
+          331,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 196,
+        "foregroundPixels": 25345,
+        "boundsXYXY": [
+          196,
+          62,
+          332,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 197,
+        "foregroundPixels": 25449,
+        "boundsXYXY": [
+          197,
+          62,
+          333,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 198,
+        "foregroundPixels": 25610,
+        "boundsXYXY": [
+          197,
+          62,
+          333,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 199,
+        "foregroundPixels": 25694,
+        "boundsXYXY": [
+          198,
+          62,
+          334,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 200,
+        "foregroundPixels": 25760,
+        "boundsXYXY": [
+          199,
+          62,
+          335,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 201,
+        "foregroundPixels": 25898,
+        "boundsXYXY": [
+          199,
+          62,
+          336,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 202,
+        "foregroundPixels": 25909,
+        "boundsXYXY": [
+          198,
+          62,
+          336,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 203,
+        "foregroundPixels": 25969,
+        "boundsXYXY": [
+          196,
+          62,
+          337,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 204,
+        "foregroundPixels": 26024,
+        "boundsXYXY": [
+          195,
+          62,
+          338,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 205,
+        "foregroundPixels": 26061,
+        "boundsXYXY": [
+          195,
+          62,
+          338,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 206,
+        "foregroundPixels": 26057,
+        "boundsXYXY": [
+          194,
+          62,
+          339,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 207,
+        "foregroundPixels": 26042,
+        "boundsXYXY": [
+          193,
+          62,
+          339,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 208,
+        "foregroundPixels": 26028,
+        "boundsXYXY": [
+          192,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 209,
+        "foregroundPixels": 25987,
+        "boundsXYXY": [
+          191,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 210,
+        "foregroundPixels": 25935,
+        "boundsXYXY": [
+          190,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 211,
+        "foregroundPixels": 25886,
+        "boundsXYXY": [
+          189,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 212,
+        "foregroundPixels": 25822,
+        "boundsXYXY": [
+          189,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 213,
+        "foregroundPixels": 25700,
+        "boundsXYXY": [
+          188,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 214,
+        "foregroundPixels": 25617,
+        "boundsXYXY": [
+          187,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 215,
+        "foregroundPixels": 25497,
+        "boundsXYXY": [
+          187,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 216,
+        "foregroundPixels": 25358,
+        "boundsXYXY": [
+          186,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 217,
+        "foregroundPixels": 25184,
+        "boundsXYXY": [
+          186,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 218,
+        "foregroundPixels": 25018,
+        "boundsXYXY": [
+          185,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 219,
+        "foregroundPixels": 24874,
+        "boundsXYXY": [
+          185,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 220,
+        "foregroundPixels": 24675,
+        "boundsXYXY": [
+          185,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 221,
+        "foregroundPixels": 24503,
+        "boundsXYXY": [
+          184,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 222,
+        "foregroundPixels": 24286,
+        "boundsXYXY": [
+          184,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 223,
+        "foregroundPixels": 24127,
+        "boundsXYXY": [
+          184,
+          62,
+          339,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 224,
+        "foregroundPixels": 23901,
+        "boundsXYXY": [
+          183,
+          62,
+          339,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 225,
+        "foregroundPixels": 23712,
+        "boundsXYXY": [
+          183,
+          62,
+          338,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 226,
+        "foregroundPixels": 23487,
+        "boundsXYXY": [
+          183,
+          62,
+          338,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 227,
+        "foregroundPixels": 23272,
+        "boundsXYXY": [
+          183,
+          62,
+          337,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 228,
+        "foregroundPixels": 23065,
+        "boundsXYXY": [
+          183,
+          62,
+          336,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 229,
+        "foregroundPixels": 22880,
+        "boundsXYXY": [
+          183,
+          62,
+          336,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 230,
+        "foregroundPixels": 22654,
+        "boundsXYXY": [
+          183,
+          62,
+          335,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 231,
+        "foregroundPixels": 22435,
+        "boundsXYXY": [
+          183,
+          62,
+          334,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 232,
+        "foregroundPixels": 22209,
+        "boundsXYXY": [
+          183,
+          62,
+          333,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 233,
+        "foregroundPixels": 22011,
+        "boundsXYXY": [
+          184,
+          62,
+          332,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 234,
+        "foregroundPixels": 21790,
+        "boundsXYXY": [
+          184,
+          62,
+          331,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 235,
+        "foregroundPixels": 21605,
+        "boundsXYXY": [
+          184,
+          62,
+          330,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 236,
+        "foregroundPixels": 21418,
+        "boundsXYXY": [
+          185,
+          62,
+          329,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 237,
+        "foregroundPixels": 21215,
+        "boundsXYXY": [
+          185,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 238,
+        "foregroundPixels": 21052,
+        "boundsXYXY": [
+          186,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 239,
+        "foregroundPixels": 20898,
+        "boundsXYXY": [
+          186,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      }
+    ],
+    "after": [
+      {
+        "index": 0,
+        "foregroundPixels": 20787,
+        "boundsXYXY": [
+          186,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 1,
+        "foregroundPixels": 20693,
+        "boundsXYXY": [
+          187,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 2,
+        "foregroundPixels": 20640,
+        "boundsXYXY": [
+          188,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 3,
+        "foregroundPixels": 20625,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 4,
+        "foregroundPixels": 20611,
+        "boundsXYXY": [
+          189,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 5,
+        "foregroundPixels": 20608,
+        "boundsXYXY": [
+          189,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 6,
+        "foregroundPixels": 20588,
+        "boundsXYXY": [
+          190,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 7,
+        "foregroundPixels": 20572,
+        "boundsXYXY": [
+          191,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 8,
+        "foregroundPixels": 20522,
+        "boundsXYXY": [
+          192,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 9,
+        "foregroundPixels": 20496,
+        "boundsXYXY": [
+          193,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 10,
+        "foregroundPixels": 20458,
+        "boundsXYXY": [
+          193,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 11,
+        "foregroundPixels": 20437,
+        "boundsXYXY": [
+          194,
+          62,
+          309,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 12,
+        "foregroundPixels": 20400,
+        "boundsXYXY": [
+          195,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 13,
+        "foregroundPixels": 20308,
+        "boundsXYXY": [
+          196,
+          62,
+          305,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 14,
+        "foregroundPixels": 20265,
+        "boundsXYXY": [
+          197,
+          62,
+          304,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 15,
+        "foregroundPixels": 20201,
+        "boundsXYXY": [
+          198,
+          62,
+          303,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 16,
+        "foregroundPixels": 20111,
+        "boundsXYXY": [
+          199,
+          62,
+          303,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 17,
+        "foregroundPixels": 20053,
+        "boundsXYXY": [
+          200,
+          62,
+          304,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 18,
+        "foregroundPixels": 19950,
+        "boundsXYXY": [
+          201,
+          62,
+          305,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 19,
+        "foregroundPixels": 19886,
+        "boundsXYXY": [
+          202,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 20,
+        "foregroundPixels": 19802,
+        "boundsXYXY": [
+          203,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 21,
+        "foregroundPixels": 19703,
+        "boundsXYXY": [
+          204,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 22,
+        "foregroundPixels": 19616,
+        "boundsXYXY": [
+          205,
+          62,
+          308,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 23,
+        "foregroundPixels": 19555,
+        "boundsXYXY": [
+          206,
+          62,
+          309,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 24,
+        "foregroundPixels": 19500,
+        "boundsXYXY": [
+          205,
+          62,
+          309,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 25,
+        "foregroundPixels": 19483,
+        "boundsXYXY": [
+          205,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 26,
+        "foregroundPixels": 19457,
+        "boundsXYXY": [
+          205,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 27,
+        "foregroundPixels": 19468,
+        "boundsXYXY": [
+          205,
+          62,
+          311,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 28,
+        "foregroundPixels": 19481,
+        "boundsXYXY": [
+          205,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 29,
+        "foregroundPixels": 19466,
+        "boundsXYXY": [
+          205,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 30,
+        "foregroundPixels": 19482,
+        "boundsXYXY": [
+          205,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 31,
+        "foregroundPixels": 19436,
+        "boundsXYXY": [
+          205,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 32,
+        "foregroundPixels": 19431,
+        "boundsXYXY": [
+          204,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 33,
+        "foregroundPixels": 19402,
+        "boundsXYXY": [
+          204,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 34,
+        "foregroundPixels": 19404,
+        "boundsXYXY": [
+          203,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 35,
+        "foregroundPixels": 19384,
+        "boundsXYXY": [
+          202,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 36,
+        "foregroundPixels": 19395,
+        "boundsXYXY": [
+          201,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 37,
+        "foregroundPixels": 19393,
+        "boundsXYXY": [
+          201,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 38,
+        "foregroundPixels": 19427,
+        "boundsXYXY": [
+          200,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 39,
+        "foregroundPixels": 19425,
+        "boundsXYXY": [
+          199,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 40,
+        "foregroundPixels": 19465,
+        "boundsXYXY": [
+          199,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 41,
+        "foregroundPixels": 19558,
+        "boundsXYXY": [
+          198,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 42,
+        "foregroundPixels": 19663,
+        "boundsXYXY": [
+          197,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 43,
+        "foregroundPixels": 19809,
+        "boundsXYXY": [
+          197,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 44,
+        "foregroundPixels": 19924,
+        "boundsXYXY": [
+          196,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 45,
+        "foregroundPixels": 20094,
+        "boundsXYXY": [
+          196,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 46,
+        "foregroundPixels": 20233,
+        "boundsXYXY": [
+          195,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 47,
+        "foregroundPixels": 20404,
+        "boundsXYXY": [
+          195,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 48,
+        "foregroundPixels": 20548,
+        "boundsXYXY": [
+          194,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 49,
+        "foregroundPixels": 20708,
+        "boundsXYXY": [
+          193,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 50,
+        "foregroundPixels": 20876,
+        "boundsXYXY": [
+          193,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 51,
+        "foregroundPixels": 21019,
+        "boundsXYXY": [
+          192,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 52,
+        "foregroundPixels": 21165,
+        "boundsXYXY": [
+          192,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 53,
+        "foregroundPixels": 21324,
+        "boundsXYXY": [
+          191,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 54,
+        "foregroundPixels": 21437,
+        "boundsXYXY": [
+          191,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 55,
+        "foregroundPixels": 21632,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 56,
+        "foregroundPixels": 21781,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 57,
+        "foregroundPixels": 21954,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 58,
+        "foregroundPixels": 22157,
+        "boundsXYXY": [
+          189,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 59,
+        "foregroundPixels": 22334,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 60,
+        "foregroundPixels": 22515,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 61,
+        "foregroundPixels": 22660,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 62,
+        "foregroundPixels": 22871,
+        "boundsXYXY": [
+          188,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 63,
+        "foregroundPixels": 23048,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 64,
+        "foregroundPixels": 23250,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 65,
+        "foregroundPixels": 23450,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 66,
+        "foregroundPixels": 23644,
+        "boundsXYXY": [
+          188,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 67,
+        "foregroundPixels": 23889,
+        "boundsXYXY": [
+          188,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 68,
+        "foregroundPixels": 24072,
+        "boundsXYXY": [
+          188,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 69,
+        "foregroundPixels": 24253,
+        "boundsXYXY": [
+          187,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 70,
+        "foregroundPixels": 24403,
+        "boundsXYXY": [
+          186,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 71,
+        "foregroundPixels": 24606,
+        "boundsXYXY": [
+          184,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 72,
+        "foregroundPixels": 24758,
+        "boundsXYXY": [
+          183,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 73,
+        "foregroundPixels": 24952,
+        "boundsXYXY": [
+          182,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 74,
+        "foregroundPixels": 25062,
+        "boundsXYXY": [
+          181,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 75,
+        "foregroundPixels": 25237,
+        "boundsXYXY": [
+          180,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 76,
+        "foregroundPixels": 25345,
+        "boundsXYXY": [
+          179,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 77,
+        "foregroundPixels": 25454,
+        "boundsXYXY": [
+          178,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 78,
+        "foregroundPixels": 25611,
+        "boundsXYXY": [
+          178,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 79,
+        "foregroundPixels": 25687,
+        "boundsXYXY": [
+          177,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 80,
+        "foregroundPixels": 25779,
+        "boundsXYXY": [
+          176,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 81,
+        "foregroundPixels": 25893,
+        "boundsXYXY": [
+          175,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 82,
+        "foregroundPixels": 25910,
+        "boundsXYXY": [
+          175,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 83,
+        "foregroundPixels": 25952,
+        "boundsXYXY": [
+          174,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 84,
+        "foregroundPixels": 26027,
+        "boundsXYXY": [
+          173,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 85,
+        "foregroundPixels": 26059,
+        "boundsXYXY": [
+          173,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 86,
+        "foregroundPixels": 26055,
+        "boundsXYXY": [
+          172,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 87,
+        "foregroundPixels": 26043,
+        "boundsXYXY": [
+          172,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 88,
+        "foregroundPixels": 26026,
+        "boundsXYXY": [
+          171,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 89,
+        "foregroundPixels": 25979,
+        "boundsXYXY": [
+          171,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 90,
+        "foregroundPixels": 25926,
+        "boundsXYXY": [
+          171,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 91,
+        "foregroundPixels": 25888,
+        "boundsXYXY": [
+          171,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 92,
+        "foregroundPixels": 25814,
+        "boundsXYXY": [
+          170,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 93,
+        "foregroundPixels": 25702,
+        "boundsXYXY": [
+          170,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 94,
+        "foregroundPixels": 25617,
+        "boundsXYXY": [
+          170,
+          62,
+          324,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 95,
+        "foregroundPixels": 25502,
+        "boundsXYXY": [
+          170,
+          62,
+          324,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 96,
+        "foregroundPixels": 25357,
+        "boundsXYXY": [
+          170,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 97,
+        "foregroundPixels": 25183,
+        "boundsXYXY": [
+          170,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 98,
+        "foregroundPixels": 25015,
+        "boundsXYXY": [
+          170,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 99,
+        "foregroundPixels": 24885,
+        "boundsXYXY": [
+          170,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 100,
+        "foregroundPixels": 24676,
+        "boundsXYXY": [
+          171,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 101,
+        "foregroundPixels": 24494,
+        "boundsXYXY": [
+          171,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 102,
+        "foregroundPixels": 24292,
+        "boundsXYXY": [
+          171,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 103,
+        "foregroundPixels": 24119,
+        "boundsXYXY": [
+          172,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 104,
+        "foregroundPixels": 23905,
+        "boundsXYXY": [
+          172,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 105,
+        "foregroundPixels": 23710,
+        "boundsXYXY": [
+          173,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 106,
+        "foregroundPixels": 23486,
+        "boundsXYXY": [
+          173,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 107,
+        "foregroundPixels": 23273,
+        "boundsXYXY": [
+          174,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 108,
+        "foregroundPixels": 23061,
+        "boundsXYXY": [
+          175,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 109,
+        "foregroundPixels": 22880,
+        "boundsXYXY": [
+          175,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 110,
+        "foregroundPixels": 22654,
+        "boundsXYXY": [
+          176,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 111,
+        "foregroundPixels": 22445,
+        "boundsXYXY": [
+          177,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 112,
+        "foregroundPixels": 22207,
+        "boundsXYXY": [
+          178,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 113,
+        "foregroundPixels": 22007,
+        "boundsXYXY": [
+          179,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 114,
+        "foregroundPixels": 21790,
+        "boundsXYXY": [
+          180,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 115,
+        "foregroundPixels": 21603,
+        "boundsXYXY": [
+          181,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 116,
+        "foregroundPixels": 21418,
+        "boundsXYXY": [
+          182,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 117,
+        "foregroundPixels": 21217,
+        "boundsXYXY": [
+          183,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 118,
+        "foregroundPixels": 21059,
+        "boundsXYXY": [
+          184,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 119,
+        "foregroundPixels": 20897,
+        "boundsXYXY": [
+          185,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 120,
+        "foregroundPixels": 20788,
+        "boundsXYXY": [
+          186,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 121,
+        "foregroundPixels": 20695,
+        "boundsXYXY": [
+          188,
+          62,
+          324,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 122,
+        "foregroundPixels": 20632,
+        "boundsXYXY": [
+          189,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 123,
+        "foregroundPixels": 20620,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 124,
+        "foregroundPixels": 20607,
+        "boundsXYXY": [
+          192,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 125,
+        "foregroundPixels": 20600,
+        "boundsXYXY": [
+          193,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 126,
+        "foregroundPixels": 20587,
+        "boundsXYXY": [
+          195,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 127,
+        "foregroundPixels": 20566,
+        "boundsXYXY": [
+          196,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 128,
+        "foregroundPixels": 20521,
+        "boundsXYXY": [
+          198,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 129,
+        "foregroundPixels": 20500,
+        "boundsXYXY": [
+          199,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 130,
+        "foregroundPixels": 20452,
+        "boundsXYXY": [
+          201,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 131,
+        "foregroundPixels": 20440,
+        "boundsXYXY": [
+          202,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 132,
+        "foregroundPixels": 20404,
+        "boundsXYXY": [
+          204,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 133,
+        "foregroundPixels": 20310,
+        "boundsXYXY": [
+          206,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 134,
+        "foregroundPixels": 20268,
+        "boundsXYXY": [
+          207,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 135,
+        "foregroundPixels": 20207,
+        "boundsXYXY": [
+          208,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 136,
+        "foregroundPixels": 20113,
+        "boundsXYXY": [
+          208,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 137,
+        "foregroundPixels": 20054,
+        "boundsXYXY": [
+          207,
+          62,
+          311,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 138,
+        "foregroundPixels": 19953,
+        "boundsXYXY": [
+          206,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 139,
+        "foregroundPixels": 19886,
+        "boundsXYXY": [
+          205,
+          62,
+          309,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 140,
+        "foregroundPixels": 19799,
+        "boundsXYXY": [
+          205,
+          62,
+          308,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 141,
+        "foregroundPixels": 19703,
+        "boundsXYXY": [
+          204,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 142,
+        "foregroundPixels": 19615,
+        "boundsXYXY": [
+          203,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 143,
+        "foregroundPixels": 19544,
+        "boundsXYXY": [
+          202,
+          62,
+          305,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 144,
+        "foregroundPixels": 19504,
+        "boundsXYXY": [
+          202,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 145,
+        "foregroundPixels": 19482,
+        "boundsXYXY": [
+          201,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 146,
+        "foregroundPixels": 19456,
+        "boundsXYXY": [
+          201,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 147,
+        "foregroundPixels": 19475,
+        "boundsXYXY": [
+          200,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 148,
+        "foregroundPixels": 19483,
+        "boundsXYXY": [
+          199,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 149,
+        "foregroundPixels": 19460,
+        "boundsXYXY": [
+          199,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 150,
+        "foregroundPixels": 19484,
+        "boundsXYXY": [
+          198,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 151,
+        "foregroundPixels": 19418,
+        "boundsXYXY": [
+          198,
+          62,
+          306,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 152,
+        "foregroundPixels": 19431,
+        "boundsXYXY": [
+          198,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 153,
+        "foregroundPixels": 19404,
+        "boundsXYXY": [
+          197,
+          62,
+          307,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 154,
+        "foregroundPixels": 19402,
+        "boundsXYXY": [
+          197,
+          62,
+          308,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 155,
+        "foregroundPixels": 19387,
+        "boundsXYXY": [
+          196,
+          62,
+          309,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 156,
+        "foregroundPixels": 19386,
+        "boundsXYXY": [
+          196,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 157,
+        "foregroundPixels": 19398,
+        "boundsXYXY": [
+          195,
+          62,
+          310,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 158,
+        "foregroundPixels": 19428,
+        "boundsXYXY": [
+          194,
+          62,
+          311,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 159,
+        "foregroundPixels": 19428,
+        "boundsXYXY": [
+          193,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 160,
+        "foregroundPixels": 19472,
+        "boundsXYXY": [
+          193,
+          62,
+          312,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 161,
+        "foregroundPixels": 19555,
+        "boundsXYXY": [
+          192,
+          62,
+          313,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 162,
+        "foregroundPixels": 19669,
+        "boundsXYXY": [
+          192,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 163,
+        "foregroundPixels": 19808,
+        "boundsXYXY": [
+          191,
+          62,
+          314,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 164,
+        "foregroundPixels": 19918,
+        "boundsXYXY": [
+          191,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 165,
+        "foregroundPixels": 20092,
+        "boundsXYXY": [
+          190,
+          62,
+          315,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 166,
+        "foregroundPixels": 20232,
+        "boundsXYXY": [
+          190,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 167,
+        "foregroundPixels": 20405,
+        "boundsXYXY": [
+          189,
+          62,
+          316,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 168,
+        "foregroundPixels": 20551,
+        "boundsXYXY": [
+          189,
+          62,
+          317,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 169,
+        "foregroundPixels": 20716,
+        "boundsXYXY": [
+          189,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 170,
+        "foregroundPixels": 20865,
+        "boundsXYXY": [
+          189,
+          62,
+          318,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 171,
+        "foregroundPixels": 21013,
+        "boundsXYXY": [
+          188,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 172,
+        "foregroundPixels": 21162,
+        "boundsXYXY": [
+          188,
+          62,
+          319,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 173,
+        "foregroundPixels": 21322,
+        "boundsXYXY": [
+          188,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 174,
+        "foregroundPixels": 21441,
+        "boundsXYXY": [
+          188,
+          62,
+          320,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 175,
+        "foregroundPixels": 21641,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 176,
+        "foregroundPixels": 21775,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 177,
+        "foregroundPixels": 21951,
+        "boundsXYXY": [
+          188,
+          62,
+          321,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 178,
+        "foregroundPixels": 22153,
+        "boundsXYXY": [
+          188,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 179,
+        "foregroundPixels": 22331,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 180,
+        "foregroundPixels": 22517,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 181,
+        "foregroundPixels": 22671,
+        "boundsXYXY": [
+          189,
+          62,
+          322,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 182,
+        "foregroundPixels": 22868,
+        "boundsXYXY": [
+          189,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 183,
+        "foregroundPixels": 23051,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 184,
+        "foregroundPixels": 23252,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 185,
+        "foregroundPixels": 23453,
+        "boundsXYXY": [
+          190,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 186,
+        "foregroundPixels": 23639,
+        "boundsXYXY": [
+          191,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 187,
+        "foregroundPixels": 23881,
+        "boundsXYXY": [
+          191,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 188,
+        "foregroundPixels": 24069,
+        "boundsXYXY": [
+          192,
+          62,
+          323,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 189,
+        "foregroundPixels": 24252,
+        "boundsXYXY": [
+          192,
+          62,
+          324,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 190,
+        "foregroundPixels": 24404,
+        "boundsXYXY": [
+          193,
+          62,
+          325,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 191,
+        "foregroundPixels": 24606,
+        "boundsXYXY": [
+          193,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 192,
+        "foregroundPixels": 24750,
+        "boundsXYXY": [
+          194,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 193,
+        "foregroundPixels": 24947,
+        "boundsXYXY": [
+          194,
+          62,
+          329,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 194,
+        "foregroundPixels": 25066,
+        "boundsXYXY": [
+          195,
+          62,
+          330,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 195,
+        "foregroundPixels": 25242,
+        "boundsXYXY": [
+          195,
+          62,
+          331,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 196,
+        "foregroundPixels": 25345,
+        "boundsXYXY": [
+          196,
+          62,
+          332,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 197,
+        "foregroundPixels": 25449,
+        "boundsXYXY": [
+          197,
+          62,
+          333,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 198,
+        "foregroundPixels": 25610,
+        "boundsXYXY": [
+          197,
+          62,
+          333,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 199,
+        "foregroundPixels": 25694,
+        "boundsXYXY": [
+          198,
+          62,
+          334,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 200,
+        "foregroundPixels": 25760,
+        "boundsXYXY": [
+          199,
+          62,
+          335,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 201,
+        "foregroundPixels": 25898,
+        "boundsXYXY": [
+          199,
+          62,
+          336,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 202,
+        "foregroundPixels": 25909,
+        "boundsXYXY": [
+          198,
+          62,
+          336,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 203,
+        "foregroundPixels": 25969,
+        "boundsXYXY": [
+          196,
+          62,
+          337,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 204,
+        "foregroundPixels": 26024,
+        "boundsXYXY": [
+          195,
+          62,
+          338,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 205,
+        "foregroundPixels": 26061,
+        "boundsXYXY": [
+          195,
+          62,
+          338,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 206,
+        "foregroundPixels": 26057,
+        "boundsXYXY": [
+          194,
+          62,
+          339,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 207,
+        "foregroundPixels": 26042,
+        "boundsXYXY": [
+          193,
+          62,
+          339,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 208,
+        "foregroundPixels": 26028,
+        "boundsXYXY": [
+          192,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 209,
+        "foregroundPixels": 25987,
+        "boundsXYXY": [
+          191,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 210,
+        "foregroundPixels": 25935,
+        "boundsXYXY": [
+          190,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 211,
+        "foregroundPixels": 25886,
+        "boundsXYXY": [
+          189,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 212,
+        "foregroundPixels": 25822,
+        "boundsXYXY": [
+          189,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 213,
+        "foregroundPixels": 25700,
+        "boundsXYXY": [
+          188,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 214,
+        "foregroundPixels": 25617,
+        "boundsXYXY": [
+          187,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 215,
+        "foregroundPixels": 25497,
+        "boundsXYXY": [
+          187,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 216,
+        "foregroundPixels": 25358,
+        "boundsXYXY": [
+          186,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 217,
+        "foregroundPixels": 25184,
+        "boundsXYXY": [
+          186,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 218,
+        "foregroundPixels": 25018,
+        "boundsXYXY": [
+          185,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 219,
+        "foregroundPixels": 24874,
+        "boundsXYXY": [
+          185,
+          62,
+          341,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 220,
+        "foregroundPixels": 24675,
+        "boundsXYXY": [
+          185,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 221,
+        "foregroundPixels": 24503,
+        "boundsXYXY": [
+          184,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 222,
+        "foregroundPixels": 24286,
+        "boundsXYXY": [
+          184,
+          62,
+          340,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 223,
+        "foregroundPixels": 24127,
+        "boundsXYXY": [
+          184,
+          62,
+          339,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 224,
+        "foregroundPixels": 23901,
+        "boundsXYXY": [
+          183,
+          62,
+          339,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 225,
+        "foregroundPixels": 23712,
+        "boundsXYXY": [
+          183,
+          62,
+          338,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 226,
+        "foregroundPixels": 23487,
+        "boundsXYXY": [
+          183,
+          62,
+          338,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 227,
+        "foregroundPixels": 23272,
+        "boundsXYXY": [
+          183,
+          62,
+          337,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 228,
+        "foregroundPixels": 23065,
+        "boundsXYXY": [
+          183,
+          62,
+          336,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 229,
+        "foregroundPixels": 22880,
+        "boundsXYXY": [
+          183,
+          62,
+          336,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 230,
+        "foregroundPixels": 22654,
+        "boundsXYXY": [
+          183,
+          62,
+          335,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 231,
+        "foregroundPixels": 22435,
+        "boundsXYXY": [
+          183,
+          62,
+          334,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 232,
+        "foregroundPixels": 22209,
+        "boundsXYXY": [
+          183,
+          62,
+          333,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 233,
+        "foregroundPixels": 22011,
+        "boundsXYXY": [
+          184,
+          62,
+          332,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 234,
+        "foregroundPixels": 21790,
+        "boundsXYXY": [
+          184,
+          62,
+          331,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 235,
+        "foregroundPixels": 21605,
+        "boundsXYXY": [
+          184,
+          62,
+          330,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 236,
+        "foregroundPixels": 21418,
+        "boundsXYXY": [
+          185,
+          62,
+          329,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 237,
+        "foregroundPixels": 21215,
+        "boundsXYXY": [
+          185,
+          62,
+          328,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 238,
+        "foregroundPixels": 21052,
+        "boundsXYXY": [
+          186,
+          62,
+          327,
+          449
+        ],
+        "edgePixels": 0
+      },
+      {
+        "index": 239,
+        "foregroundPixels": 20898,
+        "boundsXYXY": [
+          186,
+          62,
+          326,
+          449
+        ],
+        "edgePixels": 0
+      }
+    ]
+  },
+  "inspectorHTMLUnmodified": true,
+  "alphaReport": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/alpha-240.json",
+    "sha256": "a8b81d03aac48767732969743dbba9fbb2aa11e4d3804468be6f37fbb8b87642"
+  },
+  "media": null,
+  "geometryDepthNormalIntervalRangeProxyCameraPreserved": true,
+  "limitations": [
+    "Alpha equality proves coverage preservation at these 240 cameras and 8-bit output precision.",
+    "Native depth/normal/interval/range files and metadata are byte-preserved; rendered depth buffers were not captured.",
+    "Mask registration and alpha equality do not prove texture quality, internal alignment, anatomical fidelity or multiview consistency.",
+    "Comparison images show the complete 512x512 frames; no face crops or image resizing are used."
+  ]
+}

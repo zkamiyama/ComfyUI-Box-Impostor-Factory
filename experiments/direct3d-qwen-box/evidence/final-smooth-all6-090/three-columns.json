@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "label": "Gray Box",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/capture.json"
+    },
+    {
+      "label": "Transferred color",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/before/capture.json"
+    },
+    {
+      "label": "Transferred + Qwen",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/after/capture.json"
+    }
+  ]
+}

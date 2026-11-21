@@ -1,0 +1,83 @@
+{
+  "kind": "qwen-selected-six-evidence-addition-v1",
+  "completed": true,
+  "createdAt": "2026-11-21T07:51:49.919190+00:00",
+  "summarySha256": "77d46d23409be4be5ae7313e661967e7d75ef6fc874e6c81061010c09c144f3b",
+  "files": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/nz-prior-unlit-090/result.json",
+      "destination": "evidence/qwen/nz-prior-unlit-090/result.json",
+      "bytes": 4278,
+      "sourceSha256": "380f5048c249fdc71e95f25019abaa72fc8d4f64f0b95474d10ea2a5e1f50bae",
+      "copiedSha256": "380f5048c249fdc71e95f25019abaa72fc8d4f64f0b95474d10ea2a5e1f50bae",
+      "sha256Matches": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/nz-prior-unlit-090/prepared.json",
+      "destination": "evidence/qwen/nz-prior-unlit-090/prepared.json",
+      "bytes": 5616,
+      "sourceSha256": "751ef412cd692cb254e7e040d60dafca0f5222a2c42ca96da8b37bff9081884d",
+      "copiedSha256": "751ef412cd692cb254e7e040d60dafca0f5222a2c42ca96da8b37bff9081884d",
+      "sha256Matches": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/nz-prior-unlit-090/prompt.json",
+      "destination": "evidence/qwen/nz-prior-unlit-090/prompt.json",
+      "bytes": 4833,
+      "sourceSha256": "a408a5a6fd2c2f09972702fcd213e58a99f20fe669417434f7a7012495b949ba",
+      "copiedSha256": "a408a5a6fd2c2f09972702fcd213e58a99f20fe669417434f7a7012495b949ba",
+      "sha256Matches": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/py-prior-unlit-090/result.json",
+      "destination": "evidence/qwen/py-prior-unlit-090/result.json",
+      "bytes": 4374,
+      "sourceSha256": "3a2c8bceb280b6044a73f43de685b338b7e7cddf31e59a2b2054c1c766874c9b",
+      "copiedSha256": "3a2c8bceb280b6044a73f43de685b338b7e7cddf31e59a2b2054c1c766874c9b",
+      "sha256Matches": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/py-prior-unlit-090/prepared.json",
+      "destination": "evidence/qwen/py-prior-unlit-090/prepared.json",
+      "bytes": 5712,
+      "sourceSha256": "ed6d83827e2739a63a94f6a8409a73ed65bfcc42f4d5ecefd008a435807ef1ec",
+      "copiedSha256": "ed6d83827e2739a63a94f6a8409a73ed65bfcc42f4d5ecefd008a435807ef1ec",
+      "sha256Matches": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/py-prior-unlit-090/prompt.json",
+      "destination": "evidence/qwen/py-prior-unlit-090/prompt.json",
+      "bytes": 4929,
+      "sourceSha256": "39bb47cbe210166233dcd2e7195f7450881042d6246e09980285125ee585f16a",
+      "copiedSha256": "39bb47cbe210166233dcd2e7195f7450881042d6246e09980285125ee585f16a",
+      "sha256Matches": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/ny-prior-unlit-090/result.json",
+      "destination": "evidence/qwen/ny-prior-unlit-090/result.json",
+      "bytes": 4451,
+      "sourceSha256": "eb45ec8c31ba83d37d4e2dfbc31ced9d8757cb96c834ccaee63a7b1b17c0e0f7",
+      "copiedSha256": "eb45ec8c31ba83d37d4e2dfbc31ced9d8757cb96c834ccaee63a7b1b17c0e0f7",
+      "sha256Matches": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/ny-prior-unlit-090/prepared.json",
+      "destination": "evidence/qwen/ny-prior-unlit-090/prepared.json",
+      "bytes": 5789,
+      "sourceSha256": "b159f71dc15f7582abbd79e6dc8434cf2148c91a0270f66af5506bc808b7f22c",
+      "copiedSha256": "b159f71dc15f7582abbd79e6dc8434cf2148c91a0270f66af5506bc808b7f22c",
+      "sha256Matches": true
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/ny-prior-unlit-090/prompt.json",
+      "destination": "evidence/qwen/ny-prior-unlit-090/prompt.json",
+      "bytes": 5006,
+      "sourceSha256": "d316c3c49671221ed7e18d93ead8c913985e947123b39c20ae6dcb901757a4df",
+      "copiedSha256": "d316c3c49671221ed7e18d93ead8c913985e947123b39c20ae6dcb901757a4df",
+      "sha256Matches": true
+    }
+  ],
+  "allSixCopiedResultHashesMatchRuntime": true,
+  "noBinaryAssetsAdded": true,
+  "originalPackagingRecordUnchanged": true
+}

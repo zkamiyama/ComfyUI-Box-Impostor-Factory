@@ -1,0 +1,329 @@
+{
+  "completed": true,
+  "sourceManifest": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/baseline512/manifest.json",
+    "sha256": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+    "bytes": 13073
+  },
+  "sourceFiles": {
+    "geometry/proxy.glb": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+    "guides/nx.depth16f.bin": "59a8c6d4bcfc25ea1d4ded109b7fb8cc9634618b7a77a0903a0d46809607b8d2",
+    "guides/nx.png": "5235cf0f4066375f46460e1273cb01bb18d669585d5296c8b7767696f5b9608d",
+    "guides/ny.depth16f.bin": "c6c32bc26f4f0a119ad7c20507725e26fc80590c73b7d1721235f5ebc1592f95",
+    "guides/ny.png": "253cbe1cf67f52c7a6a446c2058a76d84b5f0edb566bf3e7b74d20585acd537c",
+    "guides/nz.depth16f.bin": "0d824bdc68140297532d555c152a4a132b4e925c7470fd849cca667fb84cf9d8",
+    "guides/nz.png": "22c1ab7bb88008fbb1f7d48192bbc8b415d67eaca9defd1eb2136a911cc53fe4",
+    "guides/px.depth16f.bin": "fd7d681090c1adb203f9eae512b7bf4b1ec8f7271edbaa91e35943937877a013",
+    "guides/px.png": "0083969434908f9afd2d9f88558c22f40fa8fc27a195965449cc45e4048947b9",
+    "guides/py.depth16f.bin": "bf96bf91e88e5eb9eca4c426eec95d2bf311a616742b367f4abfc16e80ca149f",
+    "guides/py.png": "e58a0e96cbc0429e1b88a6adb38d95d4a987f1ca0d14089ca3a105abad3c2ee0",
+    "guides/pz.depth16f.bin": "e92e21c5745e87b319478b79cee3ddc3a0970840300f12d659740a94643ce87d",
+    "guides/pz.png": "f59c42ca6bd2029205fad2803edf016eeee1be2abfdfe3c10f43c5833263b8ba",
+    "manifest.json": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+    "maps/color.rgba16f.bin": "964d08902842d220dc84c0ed45ae993343f51536b5c20f58a1ddbde767bb106c",
+    "maps/interval.rgba16f.bin": "9458e5cda155b2d4e5b5482b229484abf0194f3d7e7fed8e40329f47f4dc2fd0",
+    "maps/normal.rgba16f.bin": "bbe3d460adb42932e843d4579e3dd2306bb17712ba130eda2cceaa445fcb2b38",
+    "maps/range.rgba16f.bin": "f638fb30287fdffe24c4802d6fd2dd432b615918b00235d81fa577bfb5eeabb7"
+  },
+  "sourceGuides": {
+    "+X": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/guides/px/guide.json",
+      "sha256": "78a21e86fcb328448090ff14dba04978d7d0cdf411a23ea0754160370c05f2a1",
+      "bytes": 6545
+    },
+    "-X": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/guides/nx/guide.json",
+      "sha256": "c0ed0d043d8b35197de6c30799aaaafc1eea240c76165b2eb8c4ebc0b3cb9f66",
+      "bytes": 6547
+    },
+    "+Y": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/guides/py/guide.json",
+      "sha256": "7947f7dc2039636e257c3c55796c4eda9673d46abcae04249531ac61e6c128df",
+      "bytes": 6557
+    },
+    "-Y": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/guides/ny/guide.json",
+      "sha256": "48be19012cda11a41e3ac61579b405b0c6d54e0a2d9c1545440af8253b8741c2",
+      "bytes": 6557
+    },
+    "+Z": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/guides/pz/guide.json",
+      "sha256": "f8377597bf19c0256ac98127f3ff2aca5d62e58901022b44608b275c38fc7b13",
+      "bytes": 6467
+    },
+    "-Z": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/guides/nz/guide.json",
+      "sha256": "1108ac69e4244c49a221ceb03ef04fa8ed52461b50fea2b6c57d6fac06e3e52a",
+      "bytes": 6475
+    }
+  },
+  "sourceGuideFiles": {
+    "+X": {
+      "alpha.npy": "c3e0317cbe7e251ae32d56c7f58263ff6baa77c7744fa170869cea59d188a69d",
+      "alpha.png": "dd250ddb91d60fc61694cdb8ae32da906e00ff33c3071b56728093a40e806e17",
+      "depth-512.png": "e009e2d877c6b68b0b935d3fc5977f94e5db5946bfc1d952ee596ce260a0f9eb",
+      "depth.npy": "46608bddd32bc5b065ed16653ed90fdcf7300328215df288b95bc0f3ac548c50",
+      "depth.png": "4357108a4bd409638705f384a830980ae074f415395ec6a782f5433efd6308d3",
+      "guide.json": "78a21e86fcb328448090ff14dba04978d7d0cdf411a23ea0754160370c05f2a1",
+      "rgb.png": "a3875fd00ed4facc359b02c901fba2ee349319cbe2129e6c3fcc3dfa7897e93e"
+    },
+    "-X": {
+      "alpha.npy": "97093a54b7457a011967609d8a227eb9e4b31bddc10a8f4b3b0901db8a3b4027",
+      "alpha.png": "9bea278d634d3ffe11997e7fc945daacd33c9c9a7a3d5d7a4344f1008243f1ad",
+      "depth-512.png": "310afe59da126aade6fda51d2bf13d5063b4a0173b7528c2a98610519d648aa1",
+      "depth.npy": "d01a20d6c70b74afa6b704e8cb88834fb4f836e1b93a10aef5238338d05289f8",
+      "depth.png": "fea66789299727ad866556d5e42d96ea1d8e3211252c51f0cbfc09db9d1d9e0f",
+      "guide.json": "c0ed0d043d8b35197de6c30799aaaafc1eea240c76165b2eb8c4ebc0b3cb9f66",
+      "rgb.png": "f4a24eafaa66958d80ab23658688186dbf8ccf814b237decb6b975cc35cddb84"
+    },
+    "+Y": {
+      "alpha.npy": "0f9a8235f80a008a2bcc977bfebddc617c077553d8f255e2ce6104bb04ece058",
+      "alpha.png": "54ff5761b80170aed25db699e14ee14c37d0ae71287ea1283da148e6d786f330",
+      "depth-512.png": "7d50184d46827611826855cee805c331f72a63c095e9bca8e8de92866b078c70",
+      "depth.npy": "1ecfee654208fea91dceea1244d4b24f6f10387f4337737d67306d3604da1f54",
+      "depth.png": "284087d83a8f4a2bac32066cca3d4cfafa4142a4559247584a11a878d477361c",
+      "guide.json": "7947f7dc2039636e257c3c55796c4eda9673d46abcae04249531ac61e6c128df",
+      "rgb.png": "38d3576a94a41a45179d78c5387cf7c54e14fbc91a0b5e82c78064c29b076277"
+    },
+    "-Y": {
+      "alpha.npy": "2ef87411a86a6cf1c53ebc0ca7e3b60274925c950848bba4e364703d0258d14e",
+      "alpha.png": "0a3e9296107137e8d25d7ab97fff319d8b929e12378ac8a5ddf6ad9edc250cad",
+      "depth-512.png": "c07f869e055716a6787c9026e96c1af3b26be469359486605f83c7b2aeef1a9c",
+      "depth.npy": "0f74304c62a4ebed442aa3ca8a71a4b7f0474aeffca9c77927e0ff37a5072eac",
+      "depth.png": "59b1a4e1497b860d536e884e9aeabdf67f3552eb6021e4b1db10ae5fabfaf239",
+      "guide.json": "48be19012cda11a41e3ac61579b405b0c6d54e0a2d9c1545440af8253b8741c2",
+      "rgb.png": "a476ed3e76680b18debea67f20cfa21683839bac6fc56e335414d460ab1c868a"
+    },
+    "+Z": {
+      "alpha.npy": "ad3f795f520648374745b15a7435ecdcc67657a856feec26d137090d8a4568f1",
+      "alpha.png": "0b4215a71974bfa9696a26db1f9abcb27fb95c9ef039801782fa354ccc1075d7",
+      "depth-512.png": "01bcc73ed12b1a5501398bccbd4b6049f8b31ba0587ceb9093ae56615411ef08",
+      "depth.npy": "820e9475b2698821fe1f2faacd891cbdab54836bf240ad5f5d0f8737e6cba504",
+      "depth.png": "764d1cae484e25a9c07c04c66d792747596828068ac83f397f8c5c63f1e195e0",
+      "guide.json": "f8377597bf19c0256ac98127f3ff2aca5d62e58901022b44608b275c38fc7b13",
+      "rgb.png": "e4396bd08ac03df305b022719ea9c2fc3b50bcfba98cc0c11effe64e37b8d1b7"
+    },
+    "-Z": {
+      "alpha.npy": "9ffa991d876b8234b830153f115790420915a0e41db4aa4c9e2212fd4ca7f90f",
+      "alpha.png": "ed36e23d44910a851c2f76af2207c4bd39c0b4c6c2e4174e2514b1b254c863b5",
+      "depth-512.png": "08d4a37a4ec5acfea03cf11b4c64105a2bfeeb9c4f1b99bb319a5cc589383d76",
+      "depth.npy": "f0d34d5f3157784f31d15a4199a41b34e65e9894d2e60657d88e06e421947e42",
+      "depth.png": "d9beb9c72eba7d544ed797d9f3103299eebce62bd3b8c8acac0e31da05ca6eeb",
+      "guide.json": "1108ac69e4244c49a221ceb03ef04fa8ed52461b50fea2b6c57d6fac06e3e52a",
+      "rgb.png": "d6a517b5cf90d1bc64ca39eed3deb2e0a4d995f7581635d02b989ffc6849fa1f"
+    }
+  },
+  "coarse": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/inputs/fullbody/coarse-original.glb",
+    "sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "bytes": 4866800,
+    "vertices": 49522,
+    "triangles": 81180,
+    "worldBounds": [
+      [
+        -0.17959635205538715,
+        -0.5,
+        -0.17067711655172313
+      ],
+      [
+        0.17959635205538715,
+        0.5,
+        0.17067711655172313
+      ]
+    ],
+    "worldFromLocalRows": [
+      [
+        1.1176511734153667,
+        0.0,
+        0.0,
+        0.010881411855650119
+      ],
+      [
+        0.0,
+        1.1176511734153667,
+        0.0,
+        0.02839508237150308
+      ],
+      [
+        0.0,
+        0.0,
+        1.1176511734153667,
+        0.013759666322433382
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "sceneTransformApplications": 1,
+    "vertexAndTriangleOrderPreserved": true,
+    "texture": {
+      "embeddedImageSha256": "3d2a5f8b01bf1aeed8da29623040dabfa3f24dc0c7fd05be4093fe52801f236c",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "baseColorFactor": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sampler": {
+        "magFilter": 9729,
+        "minFilter": 9729,
+        "wrapS": 33071,
+        "wrapT": 33071
+      },
+      "uvConvention": "Trimesh v=1-raw glTF v; image row=(1-v)*H-.5",
+      "sampling": "clamped bilinear in linear RGB; x=u*W-.5; factors are linear",
+      "alphaMode": "OPAQUE",
+      "usesMetalRoughnessAoNormalMaps": false
+    }
+  },
+  "helpers": {
+    "prepare_color_prior.py": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/prepare_color_prior.py",
+      "sha256": "51dc1805d25629ae6b9995af5751907b4a4a73b6096fa550368f5f09b95e64a0",
+      "bytes": 23330
+    },
+    "prepare_mesh_box.py": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/prepare_mesh_box.py",
+      "sha256": "1a11567411ca0c7502d98125c7580a31cd985867a65baedad7f7cf19b5c2af90",
+      "bytes": 17541
+    },
+    "compose_faces.py": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/compose_faces.py",
+      "sha256": "ca10a7373535664c3dd8b3a9289351a34e15865e2db0200f66e89a460d4faa1a",
+      "bytes": 28336
+    }
+  },
+  "method": "native-depth-closest-coarse-triangle-uv-v1",
+  "baselineManifest": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/manifest.json",
+    "sha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50",
+    "bytes": 13212
+  },
+  "qa": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/qa/color-prior-13dcf86d0f78aab1.json",
+    "sha256": "109e3e9d5cdefaa5c196561451cd32c01eae3f7cd130de0e7e1d561462d35d94",
+    "bytes": 28144
+  },
+  "structureChecks": {
+    "selectedFaces": [
+      "+X",
+      "-X",
+      "+Y",
+      "-Y",
+      "+Z",
+      "-Z"
+    ],
+    "unchangedFaces": [],
+    "changedRgbPixels": 553272,
+    "changedRgbPixelsByFace": {
+      "+X": 97342,
+      "-X": 97339,
+      "+Y": 91973,
+      "-Y": 91968,
+      "+Z": 87326,
+      "-Z": 87324
+    },
+    "colorAlphaBitDifferences": 0,
+    "rgbaAlphaChecks": {
+      "maps/color.rgba16f.bin": {
+        "source": "4c7313a92d6a7a08db34e1bd427299af4637005a291698d8ae7447f9555abd03",
+        "output": "4c7313a92d6a7a08db34e1bd427299af4637005a291698d8ae7447f9555abd03"
+      },
+      "maps/interval.rgba16f.bin": {
+        "source": "f79263f5c2ec73570adf07119363a977941f23e05778a54348afaeeb8a059ed1",
+        "output": "f79263f5c2ec73570adf07119363a977941f23e05778a54348afaeeb8a059ed1"
+      },
+      "maps/normal.rgba16f.bin": {
+        "source": "4c7313a92d6a7a08db34e1bd427299af4637005a291698d8ae7447f9555abd03",
+        "output": "4c7313a92d6a7a08db34e1bd427299af4637005a291698d8ae7447f9555abd03"
+      },
+      "maps/range.rgba16f.bin": {
+        "source": "f77ca159ec58e2042669e3e88f50f17b4f63b40ed21098ffe1e41e6af5eb163a",
+        "output": "f77ca159ec58e2042669e3e88f50f17b4f63b40ed21098ffe1e41e6af5eb163a"
+      }
+    },
+    "unselectedFacesBitIdentical": true,
+    "geometryMetadataSourceSha256": "b4b7df33ebe13f0e2ef1e9d4463b9f23da5cc47b5e5d223aa648cb851f14b9e3",
+    "geometryMetadataOutputSha256": "b4b7df33ebe13f0e2ef1e9d4463b9f23da5cc47b5e5d223aa648cb851f14b9e3",
+    "geometryDepthNormalIntervalRangeProxyCameraPreserved": true,
+    "preservedSourceFiles": {
+      "geometry/proxy.glb": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+      "guides/nx.depth16f.bin": "59a8c6d4bcfc25ea1d4ded109b7fb8cc9634618b7a77a0903a0d46809607b8d2",
+      "guides/nx.png": "5235cf0f4066375f46460e1273cb01bb18d669585d5296c8b7767696f5b9608d",
+      "guides/ny.depth16f.bin": "c6c32bc26f4f0a119ad7c20507725e26fc80590c73b7d1721235f5ebc1592f95",
+      "guides/ny.png": "253cbe1cf67f52c7a6a446c2058a76d84b5f0edb566bf3e7b74d20585acd537c",
+      "guides/nz.depth16f.bin": "0d824bdc68140297532d555c152a4a132b4e925c7470fd849cca667fb84cf9d8",
+      "guides/nz.png": "22c1ab7bb88008fbb1f7d48192bbc8b415d67eaca9defd1eb2136a911cc53fe4",
+      "guides/px.depth16f.bin": "fd7d681090c1adb203f9eae512b7bf4b1ec8f7271edbaa91e35943937877a013",
+      "guides/px.png": "0083969434908f9afd2d9f88558c22f40fa8fc27a195965449cc45e4048947b9",
+      "guides/py.depth16f.bin": "bf96bf91e88e5eb9eca4c426eec95d2bf311a616742b367f4abfc16e80ca149f",
+      "guides/py.png": "e58a0e96cbc0429e1b88a6adb38d95d4a987f1ca0d14089ca3a105abad3c2ee0",
+      "guides/pz.depth16f.bin": "e92e21c5745e87b319478b79cee3ddc3a0970840300f12d659740a94643ce87d",
+      "guides/pz.png": "f59c42ca6bd2029205fad2803edf016eeee1be2abfdfe3c10f43c5833263b8ba",
+      "maps/interval.rgba16f.bin": "9458e5cda155b2d4e5b5482b229484abf0194f3d7e7fed8e40329f47f4dc2fd0",
+      "maps/normal.rgba16f.bin": "bbe3d460adb42932e843d4579e3dd2306bb17712ba130eda2cceaa445fcb2b38",
+      "maps/range.rgba16f.bin": "f638fb30287fdffe24c4802d6fd2dd432b615918b00235d81fa577bfb5eeabb7"
+    },
+    "sourceManifestSha256": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+    "outputManifestSha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50"
+  },
+  "guides": [
+    {
+      "face": "+Z",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides/pz/guide.json",
+        "sha256": "a368c610537de9267167e06072662185562caf3ac8c7e3fa1e370f25a8d615d7",
+        "bytes": 11634
+      }
+    },
+    {
+      "face": "+X",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides/px/guide.json",
+        "sha256": "b2f5426e2835b911954ef6e931f91bea6d69c2a7177c01e6ba7f64d88b50ac19",
+        "bytes": 11706
+      }
+    },
+    {
+      "face": "-X",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides/nx/guide.json",
+        "sha256": "d7362c939069dd4c41788ceb8cdf57b4b8646b0a2ce2e4cfe30169ffb6f33602",
+        "bytes": 11692
+      }
+    },
+    {
+      "face": "-Z",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides/nz/guide.json",
+        "sha256": "81bd6cf88afbdd81e729d0f2a2a3bc648aa2e2cbf094ab1d906849edd03bb576",
+        "bytes": 11641
+      }
+    },
+    {
+      "face": "+Y",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides/py/guide.json",
+        "sha256": "8f7c58407a6b82544212b293fa8a6e9067269dab0498690991a801045c321612",
+        "bytes": 11679
+      }
+    },
+    {
+      "face": "-Y",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides/ny/guide.json",
+        "sha256": "f1a77e0527f20a7e546949fe9ebce68c95b3ec2fd1be1f8ad4223125db159594",
+        "bytes": 11718
+      }
+    }
+  ],
+  "seconds": 26.190195902978303
+}

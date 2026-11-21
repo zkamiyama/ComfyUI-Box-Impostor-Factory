@@ -1,0 +1,43 @@
+{
+  "glbSha256": "7d71a13f73b15d99a030b453a2c6c8954c9c17646cc47b406bc6048711e5171d",
+  "transform": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "inverseTransform": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "coordinateSystem": "right-handed-y-up",
+  "frontDirection": "+Z",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/canonical.smooth-normals.glb",
+  "additionalNormalization": false
+}

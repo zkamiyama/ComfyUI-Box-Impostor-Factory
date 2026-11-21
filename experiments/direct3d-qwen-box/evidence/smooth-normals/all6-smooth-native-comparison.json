@@ -1,0 +1,118 @@
+{
+  "before": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/variants/all6-prior-unlit-090/cc38d8d644deec6cedff633474acf35e0ea3633e4a8f65e39023ad318c3efa21/manifest.json",
+    "bytes": 13221,
+    "sha256": "39039ddb95e01f30e446dc3106cfeb9cb334d2f437d9d4a73694ddbfb7bb435e"
+  },
+  "after": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/variants/all6-smooth-prior-unlit-090/095fb922d6ace93bd4ae2b8679d2be1d91c5ee79dd1a2ef70d5b1580272272ee/manifest.json",
+    "bytes": 13221,
+    "sha256": "1ae379eb8b72a15c30d716c269c02b78352f0a1858b025c247efc5381c53eb13"
+  },
+  "metadata": {
+    "schemaVersion": true,
+    "mode": true,
+    "layout": true,
+    "resolution": true,
+    "tightBounds": true,
+    "bakeBox": true,
+    "transform": true,
+    "inverseTransform": true,
+    "faceOrder": true,
+    "coordinateSystem": true,
+    "backend": true,
+    "versions": true
+  },
+  "textures": {
+    "colorMap": {
+      "beforeSha256": "d8c45302c88ab5b4fda7de3abb7c2727c6c2b2dcfb17801eac4d5b236188cda3",
+      "afterSha256": "d8c45302c88ab5b4fda7de3abb7c2727c6c2b2dcfb17801eac4d5b236188cda3",
+      "rawBytesEqual": true,
+      "differentUint16Values": 0,
+      "alphaUint16Equal": true,
+      "differentAlphaUint16Values": 0
+    },
+    "normalMap": {
+      "beforeSha256": "bbe3d460adb42932e843d4579e3dd2306bb17712ba130eda2cceaa445fcb2b38",
+      "afterSha256": "bfe952bb631c95666f8054a2940cf28a0f3c721680549ee4f0d53987e0ed7741",
+      "rawBytesEqual": false,
+      "differentUint16Values": 1562754,
+      "alphaUint16Equal": true,
+      "differentAlphaUint16Values": 0,
+      "differentRgbPixels": 552462,
+      "maxAbsRgbDifference": 0.4012451171875,
+      "foregroundPixels": 553272
+    },
+    "intervalMap": {
+      "beforeSha256": "9458e5cda155b2d4e5b5482b229484abf0194f3d7e7fed8e40329f47f4dc2fd0",
+      "afterSha256": "9458e5cda155b2d4e5b5482b229484abf0194f3d7e7fed8e40329f47f4dc2fd0",
+      "rawBytesEqual": true,
+      "differentUint16Values": 0,
+      "alphaUint16Equal": true,
+      "differentAlphaUint16Values": 0
+    },
+    "rangeMap": {
+      "beforeSha256": "f638fb30287fdffe24c4802d6fd2dd432b615918b00235d81fa577bfb5eeabb7",
+      "afterSha256": "f638fb30287fdffe24c4802d6fd2dd432b615918b00235d81fa577bfb5eeabb7",
+      "rawBytesEqual": true,
+      "differentUint16Values": 0,
+      "alphaUint16Equal": true,
+      "differentAlphaUint16Values": 0
+    }
+  },
+  "faces": {
+    "+X": {
+      "cameraAndFaceMetadataEqual": true,
+      "depthBytesEqual": true,
+      "beforeDepthSha256": "fd7d681090c1adb203f9eae512b7bf4b1ec8f7271edbaa91e35943937877a013",
+      "afterDepthSha256": "fd7d681090c1adb203f9eae512b7bf4b1ec8f7271edbaa91e35943937877a013",
+      "guideAlphaEqual": true,
+      "guideRgbaEqual": true
+    },
+    "-X": {
+      "cameraAndFaceMetadataEqual": true,
+      "depthBytesEqual": true,
+      "beforeDepthSha256": "59a8c6d4bcfc25ea1d4ded109b7fb8cc9634618b7a77a0903a0d46809607b8d2",
+      "afterDepthSha256": "59a8c6d4bcfc25ea1d4ded109b7fb8cc9634618b7a77a0903a0d46809607b8d2",
+      "guideAlphaEqual": true,
+      "guideRgbaEqual": true
+    },
+    "+Y": {
+      "cameraAndFaceMetadataEqual": true,
+      "depthBytesEqual": true,
+      "beforeDepthSha256": "bf96bf91e88e5eb9eca4c426eec95d2bf311a616742b367f4abfc16e80ca149f",
+      "afterDepthSha256": "bf96bf91e88e5eb9eca4c426eec95d2bf311a616742b367f4abfc16e80ca149f",
+      "guideAlphaEqual": true,
+      "guideRgbaEqual": true
+    },
+    "-Y": {
+      "cameraAndFaceMetadataEqual": true,
+      "depthBytesEqual": true,
+      "beforeDepthSha256": "c6c32bc26f4f0a119ad7c20507725e26fc80590c73b7d1721235f5ebc1592f95",
+      "afterDepthSha256": "c6c32bc26f4f0a119ad7c20507725e26fc80590c73b7d1721235f5ebc1592f95",
+      "guideAlphaEqual": true,
+      "guideRgbaEqual": true
+    },
+    "+Z": {
+      "cameraAndFaceMetadataEqual": true,
+      "depthBytesEqual": true,
+      "beforeDepthSha256": "e92e21c5745e87b319478b79cee3ddc3a0970840300f12d659740a94643ce87d",
+      "afterDepthSha256": "e92e21c5745e87b319478b79cee3ddc3a0970840300f12d659740a94643ce87d",
+      "guideAlphaEqual": true,
+      "guideRgbaEqual": true
+    },
+    "-Z": {
+      "cameraAndFaceMetadataEqual": true,
+      "depthBytesEqual": true,
+      "beforeDepthSha256": "0d824bdc68140297532d555c152a4a132b4e925c7470fd849cca667fb84cf9d8",
+      "afterDepthSha256": "0d824bdc68140297532d555c152a4a132b4e925c7470fd849cca667fb84cf9d8",
+      "guideAlphaEqual": true,
+      "guideRgbaEqual": true
+    }
+  },
+  "allStructuralChecksPassed": true,
+  "normalRgbChanged": true,
+  "renderAdapterBefore": null,
+  "renderAdapterAfter": null,
+  "scope": "Separate bake candidate only; existing native512, prepared guides and Qwen assets are unchanged."
+}

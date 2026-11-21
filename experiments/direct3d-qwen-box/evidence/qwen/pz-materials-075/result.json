@@ -1,0 +1,81 @@
+{
+  "completed": true,
+  "case": "Direct3D-V3 Box face colorization candidate",
+  "face": "+Z",
+  "faceSlug": "pz",
+  "promptId": "fddc4b08-a88a-47ce-895a-19dbc2347166",
+  "promptSHA256": "eb3de67d4467cdc608341410a7276f74a03d84e44d795e4a13aed9557e4758b6",
+  "images": {
+    "generated": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-075/generated.png",
+      "sha256": "ddb42ee0eeb424a0052a15d01688e1d24881c1b6085bfc7e93a25099dcb8463b",
+      "bytes": 628303
+    },
+    "mask": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-075/mask.png",
+      "sha256": "060d9e36501789033fc48c08db456419dd7d6109d08bfacb99d1b0bb9367469d",
+      "bytes": 48451
+    }
+  },
+  "model": "Qwen Image 2.1 int8",
+  "lora": "QI2.1_AnyAngle",
+  "loraStrength": 0.0,
+  "size": 1024,
+  "steps": 10,
+  "cfg": 3,
+  "seed": 2026113031,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "prompt": "Convert the ENTIRE untextured 3D render in image 1 into a fully textured, realistic COLOR render of the woman in image 2. Color every visible part from head to shoes. Image 1 is the exact layout: keep its camera, projection, body pose, head direction, silhouette, proportions, framing, limb positions and gaps at the same image coordinates. Image 2 supplies the materials and colors only. Apply blonde hair strands to all hair; warm natural skin to the face, neck, exposed forearms, both hands and fingers, and ALL visible legs; gray-and-white heathered KNIT FABRIC with clearly visible fine textile detail to the fitted three-quarter-sleeve dress; BLACK suede and laces to the closed-toe ankle shoes, with tan wooden heels and tan sole edges. The hands and legs must be skin-colored, and the shoes must be black: do not leave these surfaces as gray clay. The entire dress must have knitted fabric texture rather than smooth clay. Retain the original surface shading and shape, but replace every unpainted material. This is the +Z front view; keep the head orientation and show only the facial features visible in image 1. Image 3 is matching depth, white nearer and black background, and supplies geometry only. Keep the uniform neutral gray background and the complete uncropped frame. Do not rotate, zoom, move limbs, fill background gaps or add objects, text or panels.",
+  "promptSource": {
+    "kind": "file",
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-090.prompt.txt",
+    "sha256": "5061eda30c1bca40fe3926bf64c178c8eb5a13bc09e08731c04078957bb45bb9"
+  },
+  "defaults": {
+    "profile": "anchored",
+    "denoise": 0.9,
+    "loraStrength": 0.0,
+    "size": 1024,
+    "steps": 10,
+    "cfg": 3,
+    "seed": 2026113031,
+    "sampler": "euler",
+    "scheduler": "simple"
+  },
+  "inputOrder": [
+    "target full-view RGB",
+    "original reference photograph",
+    "target depth"
+  ],
+  "server": "http://127.0.0.1:8198",
+  "runnerSha256": "4cf769b1d3ecc695d11324d32637f1df1deeaae251046f314e94d9aa93898698",
+  "profile": "anchored",
+  "denoise": 0.75,
+  "initialLatent": "VAE-encoded target RGB",
+  "serverExecutionSeconds": 67.272,
+  "clientWaitSeconds": 68.13441859101295,
+  "collectionOnly": false,
+  "cachedNodes": [
+    "6",
+    "7",
+    "8",
+    "15",
+    "19",
+    "9"
+  ],
+  "inputsSHA256": {
+    "target-color.png": "e4396bd08ac03df305b022719ea9c2fc3b50bcfba98cc0c11effe64e37b8d1b7",
+    "target-depth.png": "01bcc73ed12b1a5501398bccbd4b6049f8b31ba0587ceb9093ae56615411ef08",
+    "original.png": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+  },
+  "vram": {
+    "measurement": "nvidia-smi sampled whole-device used VRAM",
+    "intervalMilliseconds": 200,
+    "sampleCount": 337,
+    "peakSampledUsedMiB": 13853.0,
+    "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+  },
+  "boxModified": false,
+  "nextStage": "Review this full-view candidate, register generated RGB/mask against its guide, and compose only selected face RGB while preserving Direct3D structural alpha and geometry."
+}

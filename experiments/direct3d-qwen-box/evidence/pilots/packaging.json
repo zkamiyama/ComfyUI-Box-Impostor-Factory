@@ -1,0 +1,30 @@
+{
+  "completed": true,
+  "copiesUnchanged": true,
+  "files": [
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/front-materials-090/pilot-report.json",
+      "destination": "evidence/pilots/front-clay-pilot.json",
+      "sha256": "6c7ddf49f6f38a529eb7a93b6c09c5e2e33863a16666ff770e41558d12d0333b",
+      "bytes": 18413
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/front-prior-unlit-090/pilot-report.json",
+      "destination": "evidence/pilots/front-prior-pilot.json",
+      "sha256": "5a40a67847ec21519e2868947857406a042c6bdbd41750e959ecb1fd161971fe",
+      "bytes": 19588
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/all6-prior-unlit-090/independent-flat-normal-review.json",
+      "destination": "evidence/pilots/all6-flat-visual-review.json",
+      "sha256": "1599c5f6b99b62149f167ee260730ae0f09723939b3ca51d45826fd0a1f40935",
+      "bytes": 4709
+    },
+    {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/all6-prior-unlit-090/independent-review-inputs.json",
+      "destination": "evidence/pilots/all6-flat-visual-inputs.json",
+      "sha256": "f37ec00ff6bdcaeb19bae5127119980a148055f3f766f74033ee0bf3e9dd03f5",
+      "bytes": 9053
+    }
+  ]
+}

@@ -1,0 +1,4139 @@
+{
+  "completed": true,
+  "capture": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/capture.json",
+    "sha256": "1f96cab636b04e89310d0b4684827a339c2507d3612b3e1a5b2d04874c0c336f",
+    "bytes": 643258
+  },
+  "originalGrayCapture": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/baseline/capture.json",
+    "sha256": "2577affb0e1d0a278bb4d40424dec309ce3959570b4987d9274a2ea37a19ca0c",
+    "bytes": 642532
+  },
+  "execution": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/viewers/smooth-gray/dense240-execution.json",
+    "sha256": "f91599ef06da05cf11b0fd495706118be92e5f4cf20cd64030eadd61118ca08e",
+    "bytes": 1695
+  },
+  "framesVerified": 240,
+  "size": [
+    512,
+    512
+  ],
+  "fps": 24,
+  "durationSeconds": 10,
+  "sameSettingsAsOriginalGray": {
+    "referenceManifest": true,
+    "referenceManifestSHA256": true,
+    "scriptSHA256": true,
+    "sourceBounds": true,
+    "referenceBounds": true,
+    "sourceFaceResolution": true,
+    "display": true,
+    "camera": true,
+    "framesExpected": true,
+    "playbackFPS": true,
+    "durationSeconds": true,
+    "backendRequested": true,
+    "backend": true,
+    "browserVersion": true,
+    "graphicsRenderer": true,
+    "capture": true,
+    "captureScheduling": true
+  },
+  "allFrameSha256Verified": true,
+  "all240CamerasAndPosesExactlyMatchOriginalGray": true,
+  "all240AlphaDifferencePixelsVsOriginalGray": 0,
+  "totalEdgeAlphaPixels": 0,
+  "allFramesNonempty": true,
+  "materialOverride": false,
+  "toneMappingOverride": false,
+  "displayMode": "default",
+  "officialViewerHtmlUnmodified": true,
+  "browserVersion": "158.0.8127.18",
+  "graphicsRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "captureElapsedSeconds": 58.644171676,
+  "executionElapsedSeconds": 61.16513340099482,
+  "frames": [
+    {
+      "index": 0,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0000.png",
+      "sha256": "11d379819b7fa8c4d1e07e83617c5b9394aac0246b31113cd508a905e6034b7a",
+      "bytes": 49472,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20787,
+      "foregroundBoundsXYXY": [
+        186,
+        62,
+        325,
+        449
+      ]
+    },
+    {
+      "index": 1,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0001.png",
+      "sha256": "3697a8f892876e1370ac192ef1643ea79ca0a1431e9e46ce95bbf0b68d057829",
+      "bytes": 49195,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20693,
+      "foregroundBoundsXYXY": [
+        187,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 2,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0002.png",
+      "sha256": "f6b1d46cd0f199e53498e7518d5386137ab86ed4bc41eccf5fcb872aac1122d6",
+      "bytes": 49373,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20640,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 3,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0003.png",
+      "sha256": "cd3956ad82c6e799335aafd64b51085425e3246de61ef2b7f03945c83e3798bf",
+      "bytes": 49485,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20625,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 4,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0004.png",
+      "sha256": "3d0831650aea79d8c0bb68bcd1255c5c60a7fa394bedb38e58f895c60818b16f",
+      "bytes": 49388,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20611,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        319,
+        449
+      ]
+    },
+    {
+      "index": 5,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0005.png",
+      "sha256": "f2e4ef97cdb7c185da4b09288e940534321e5fcf9b7d4d3f94ee8273e57d4b95",
+      "bytes": 49462,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20608,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        318,
+        449
+      ]
+    },
+    {
+      "index": 6,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0006.png",
+      "sha256": "52aac1fa12215772b752cd9b02a7c8f38b34610ede3e5dcae59d39c337c9ad36",
+      "bytes": 49555,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20588,
+      "foregroundBoundsXYXY": [
+        190,
+        62,
+        316,
+        449
+      ]
+    },
+    {
+      "index": 7,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0007.png",
+      "sha256": "f7b765aebafdbaf8ae5b8209e1073868049bfb94031b08e400702d8e41154b66",
+      "bytes": 49618,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20572,
+      "foregroundBoundsXYXY": [
+        191,
+        62,
+        315,
+        449
+      ]
+    },
+    {
+      "index": 8,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0008.png",
+      "sha256": "e54628910bca86e4a2178a27b42f97b825b2175c1a82126cc83afd02ad080f40",
+      "bytes": 49640,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20522,
+      "foregroundBoundsXYXY": [
+        192,
+        62,
+        313,
+        449
+      ]
+    },
+    {
+      "index": 9,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0009.png",
+      "sha256": "4062b6c042baf0576ff3674a9672673a969f4e89c5c62f678cb00d9135a2946f",
+      "bytes": 49744,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20496,
+      "foregroundBoundsXYXY": [
+        193,
+        62,
+        312,
+        449
+      ]
+    },
+    {
+      "index": 10,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0010.png",
+      "sha256": "bce356f267fb33598f77637e18c29fd468abab49afefd6ee32d0d25a46885d96",
+      "bytes": 49587,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20458,
+      "foregroundBoundsXYXY": [
+        193,
+        62,
+        310,
+        449
+      ]
+    },
+    {
+      "index": 11,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0011.png",
+      "sha256": "10877a04da4de38036b04c7dd7d41819e2e6e763597668db4faef9e84384f0b9",
+      "bytes": 49689,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20437,
+      "foregroundBoundsXYXY": [
+        194,
+        62,
+        309,
+        449
+      ]
+    },
+    {
+      "index": 12,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0012.png",
+      "sha256": "f67ff4a69da598753979829d9bf6645376950a8af3aafdb802337652a58373b5",
+      "bytes": 49518,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20400,
+      "foregroundBoundsXYXY": [
+        195,
+        62,
+        307,
+        449
+      ]
+    },
+    {
+      "index": 13,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0013.png",
+      "sha256": "eae9fd88f6bd7e9ad53e45f1f5c50d7a3ed016e5f8d7606b60ef09bff61df013",
+      "bytes": 49462,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20308,
+      "foregroundBoundsXYXY": [
+        196,
+        62,
+        305,
+        449
+      ]
+    },
+    {
+      "index": 14,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0014.png",
+      "sha256": "c1ff2f6b4ac11151187df99168c53e037856fb792789554dc8acc391c9b839ba",
+      "bytes": 49340,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20265,
+      "foregroundBoundsXYXY": [
+        197,
+        62,
+        304,
+        449
+      ]
+    },
+    {
+      "index": 15,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0015.png",
+      "sha256": "4b4a5ad68142ac5e590283392509e4bf11230bd9cb68cbb4fb418dd94692aa0d",
+      "bytes": 49253,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20201,
+      "foregroundBoundsXYXY": [
+        198,
+        62,
+        303,
+        449
+      ]
+    },
+    {
+      "index": 16,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0016.png",
+      "sha256": "4ed257589b2216abbf097890021f7b83f10421c84483c13811275dc9549c6fb7",
+      "bytes": 49073,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20111,
+      "foregroundBoundsXYXY": [
+        199,
+        62,
+        303,
+        449
+      ]
+    },
+    {
+      "index": 17,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0017.png",
+      "sha256": "4ebcd05f6e18ee094b3e3a4da0481000e7357f3374fe51ffeacea8c7197d5741",
+      "bytes": 49072,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20053,
+      "foregroundBoundsXYXY": [
+        200,
+        62,
+        304,
+        449
+      ]
+    },
+    {
+      "index": 18,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0018.png",
+      "sha256": "d1ec3e3d6ee88450ea9f76c03ed778d8144677a02c5c0423f847b557e73118fc",
+      "bytes": 49017,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19950,
+      "foregroundBoundsXYXY": [
+        201,
+        62,
+        305,
+        449
+      ]
+    },
+    {
+      "index": 19,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0019.png",
+      "sha256": "d1bc6ee46d0b6d24232ba87bad793ef5311d17aeeb94d3d33e5253751c0b3d69",
+      "bytes": 49047,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19886,
+      "foregroundBoundsXYXY": [
+        202,
+        62,
+        306,
+        449
+      ]
+    },
+    {
+      "index": 20,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0020.png",
+      "sha256": "bba2b81802e8c1611a27b9168f548bd5eed2443dbe98d7e1d50d394a1b365556",
+      "bytes": 49032,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19802,
+      "foregroundBoundsXYXY": [
+        203,
+        62,
+        307,
+        449
+      ]
+    },
+    {
+      "index": 21,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0021.png",
+      "sha256": "46f9869b02a6f68f7e801a662e8f505b511a22bc31a441773c22ae3519944e23",
+      "bytes": 48699,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19703,
+      "foregroundBoundsXYXY": [
+        204,
+        62,
+        307,
+        449
+      ]
+    },
+    {
+      "index": 22,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0022.png",
+      "sha256": "74d32ead28a8af76b388938d1c87248e01a40cd0c7cc9d4f9998aabcd77725a7",
+      "bytes": 48512,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19616,
+      "foregroundBoundsXYXY": [
+        205,
+        62,
+        308,
+        449
+      ]
+    },
+    {
+      "index": 23,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0023.png",
+      "sha256": "8bd83a61b793c9a10d49b03a03185755599e85bc065ee6e8c82138f4675e216f",
+      "bytes": 48262,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19555,
+      "foregroundBoundsXYXY": [
+        206,
+        62,
+        309,
+        449
+      ]
+    },
+    {
+      "index": 24,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0024.png",
+      "sha256": "5c3da614ce5a0a2b10f460dd896df96246e88904cec0fc9060c8ac893a7f7e21",
+      "bytes": 48241,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19500,
+      "foregroundBoundsXYXY": [
+        205,
+        62,
+        309,
+        449
+      ]
+    },
+    {
+      "index": 25,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0025.png",
+      "sha256": "12c4cd688485ca68bd886229ca01b883ea72c08177859a964b9f9c91eb5e8e88",
+      "bytes": 48199,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19483,
+      "foregroundBoundsXYXY": [
+        205,
+        62,
+        310,
+        449
+      ]
+    },
+    {
+      "index": 26,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0026.png",
+      "sha256": "1f858a49a0c598ebd6b0cfefb8a9ff4bce65ffd1a48d6cdc7e229d6acebe73b4",
+      "bytes": 47792,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19457,
+      "foregroundBoundsXYXY": [
+        205,
+        62,
+        310,
+        449
+      ]
+    },
+    {
+      "index": 27,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0027.png",
+      "sha256": "8bdb52115648269afe0ef3268fc9fa32ae02421451141493470121104825fcc3",
+      "bytes": 48133,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19468,
+      "foregroundBoundsXYXY": [
+        205,
+        62,
+        311,
+        449
+      ]
+    },
+    {
+      "index": 28,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0028.png",
+      "sha256": "2c2a7b7eb73e16859cb21a1fa54abbb2f48860d2a9103e5de9424f82a544015d",
+      "bytes": 47938,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19481,
+      "foregroundBoundsXYXY": [
+        205,
+        62,
+        312,
+        449
+      ]
+    },
+    {
+      "index": 29,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0029.png",
+      "sha256": "7a9c48711dca966c6262fcb7befcd0fc951493495172280b256ef5a40e1911b7",
+      "bytes": 47776,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19466,
+      "foregroundBoundsXYXY": [
+        205,
+        62,
+        312,
+        449
+      ]
+    },
+    {
+      "index": 30,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0030.png",
+      "sha256": "927e03761192a1e80159a9af71898bd801159d1dcffe5f2b1ffe95238672ae6f",
+      "bytes": 47913,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19482,
+      "foregroundBoundsXYXY": [
+        205,
+        62,
+        313,
+        449
+      ]
+    },
+    {
+      "index": 31,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0031.png",
+      "sha256": "c9c166b06a046b0df5a9b78d5d886744e3105589f8b092643109ca0630a48ef5",
+      "bytes": 47751,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19436,
+      "foregroundBoundsXYXY": [
+        205,
+        62,
+        313,
+        449
+      ]
+    },
+    {
+      "index": 32,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0032.png",
+      "sha256": "82f16904b68ea6bbf673e166b9a8571613326849800758ea3f01aa65a17a49c0",
+      "bytes": 47786,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19431,
+      "foregroundBoundsXYXY": [
+        204,
+        62,
+        313,
+        449
+      ]
+    },
+    {
+      "index": 33,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0033.png",
+      "sha256": "e11dc3a84cc404dd05e36f49a044e69aa234104397e69d3cf668fcca0d2d2664",
+      "bytes": 47616,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19402,
+      "foregroundBoundsXYXY": [
+        204,
+        62,
+        314,
+        449
+      ]
+    },
+    {
+      "index": 34,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0034.png",
+      "sha256": "004d1bdb3c8ef8384dfd209905759d1a35a10881ae8a9eb75c718d6af27b53da",
+      "bytes": 47515,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19404,
+      "foregroundBoundsXYXY": [
+        203,
+        62,
+        314,
+        449
+      ]
+    },
+    {
+      "index": 35,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0035.png",
+      "sha256": "a01b4ef5179364a4c2ddd535f8ef2e0be3b3246fd86a7c66c4b9f77b09d098f9",
+      "bytes": 47331,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19384,
+      "foregroundBoundsXYXY": [
+        202,
+        62,
+        315,
+        449
+      ]
+    },
+    {
+      "index": 36,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0036.png",
+      "sha256": "5a3ad8f8e09a0190adac63c78ec4cc9520d3219364e0c3ee7d72e8bc7efd209f",
+      "bytes": 47336,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19395,
+      "foregroundBoundsXYXY": [
+        201,
+        62,
+        315,
+        449
+      ]
+    },
+    {
+      "index": 37,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0037.png",
+      "sha256": "1f89e94939695d44ea091e56028bd2e567637c457165b442a9cd8886b329e317",
+      "bytes": 47209,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19393,
+      "foregroundBoundsXYXY": [
+        201,
+        62,
+        316,
+        449
+      ]
+    },
+    {
+      "index": 38,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0038.png",
+      "sha256": "f90ef3bdfc736749d8fffd60a86930b9cec8bb3d9115b11229b5a3df65fbf0d2",
+      "bytes": 47256,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19427,
+      "foregroundBoundsXYXY": [
+        200,
+        62,
+        317,
+        449
+      ]
+    },
+    {
+      "index": 39,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0039.png",
+      "sha256": "20b74a599549737ec97abfed5d876a074f88242d0ffe77917a834bda55a839df",
+      "bytes": 47025,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19425,
+      "foregroundBoundsXYXY": [
+        199,
+        62,
+        318,
+        449
+      ]
+    },
+    {
+      "index": 40,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0040.png",
+      "sha256": "4ded34840da4141bbb535c82450e37442be9f7dd3ec4bc3685febc65ef424979",
+      "bytes": 46863,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19465,
+      "foregroundBoundsXYXY": [
+        199,
+        62,
+        318,
+        449
+      ]
+    },
+    {
+      "index": 41,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0041.png",
+      "sha256": "6166020bd2469d3f7f4447c1a01ed9d41cd2fefb89ca4a550948ed972a9abe33",
+      "bytes": 46898,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19558,
+      "foregroundBoundsXYXY": [
+        198,
+        62,
+        319,
+        449
+      ]
+    },
+    {
+      "index": 42,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0042.png",
+      "sha256": "ffd1f4c55ec3529accd8e80707b96f4b209046d6c904393a62432f9737c406ea",
+      "bytes": 46917,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19663,
+      "foregroundBoundsXYXY": [
+        197,
+        62,
+        319,
+        449
+      ]
+    },
+    {
+      "index": 43,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0043.png",
+      "sha256": "2a4d57089a79e5cd39c9f2da9f06f52cca174b2089ec0055aee642287c5f2239",
+      "bytes": 47213,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19809,
+      "foregroundBoundsXYXY": [
+        197,
+        62,
+        320,
+        449
+      ]
+    },
+    {
+      "index": 44,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0044.png",
+      "sha256": "4c69f774af97bb800bb9c106b5d8acd642657615d46b8bc16b1605a4eafa7c26",
+      "bytes": 47247,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19924,
+      "foregroundBoundsXYXY": [
+        196,
+        62,
+        320,
+        449
+      ]
+    },
+    {
+      "index": 45,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0045.png",
+      "sha256": "c85b6f4b92b9bc93028c713e87ca1105dbad2cf4ff5d90e13930d15a8ed27b6d",
+      "bytes": 47413,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20094,
+      "foregroundBoundsXYXY": [
+        196,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 46,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0046.png",
+      "sha256": "24ea5e0975b8485ecf8b50bfe6ddd9e59968bc5e3e4920198e72a5d147ff98c3",
+      "bytes": 47409,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20233,
+      "foregroundBoundsXYXY": [
+        195,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 47,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0047.png",
+      "sha256": "bad2be0aa0987bcc7c0e739b038df0e2b5cbc5d199457c15bbefa673b06b1879",
+      "bytes": 47469,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20404,
+      "foregroundBoundsXYXY": [
+        195,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 48,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0048.png",
+      "sha256": "1ef569d83612642a3c962423bae3cb6310dd3a0508d614cd85b521ba229b393c",
+      "bytes": 47604,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20548,
+      "foregroundBoundsXYXY": [
+        194,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 49,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0049.png",
+      "sha256": "1149b6bb9fb09243088871af6f930bf4f588d76b70497055515e5114fbe5777f",
+      "bytes": 47791,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20708,
+      "foregroundBoundsXYXY": [
+        193,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 50,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0050.png",
+      "sha256": "ea96737d1b6dc7c4d90a84bdad9c22266dd1226a69d17dda606df55c6d184add",
+      "bytes": 48065,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20876,
+      "foregroundBoundsXYXY": [
+        193,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 51,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0051.png",
+      "sha256": "b304a56f64df967a9a987ab41e8d263ea1984fc1c1976bfcc945b0c54078c43a",
+      "bytes": 47836,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21019,
+      "foregroundBoundsXYXY": [
+        192,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 52,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0052.png",
+      "sha256": "5d7f018d6d41d1cdfaa1329936f92c5dca7a907215fbd8e4d210d081a18a5f99",
+      "bytes": 48173,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21165,
+      "foregroundBoundsXYXY": [
+        192,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 53,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0053.png",
+      "sha256": "e429f1d39cb9712c4492aa1775e00fa0e3e9e08c7f1c231805d6e6b29e504d3b",
+      "bytes": 48125,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21324,
+      "foregroundBoundsXYXY": [
+        191,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 54,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0054.png",
+      "sha256": "601ad4d01e17e62cb8e96676d9260f134219d604b3666f70d395ed3b46156e40",
+      "bytes": 48087,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21437,
+      "foregroundBoundsXYXY": [
+        191,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 55,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0055.png",
+      "sha256": "e2d499f8c2a006400df03711873f195d4965c396f28d43790a223c442283a932",
+      "bytes": 48429,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21632,
+      "foregroundBoundsXYXY": [
+        190,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 56,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0056.png",
+      "sha256": "e288fe2d9720ad7f702e8071447d448b382543ea5d363d4ca4809c6836b06818",
+      "bytes": 48361,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21781,
+      "foregroundBoundsXYXY": [
+        190,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 57,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0057.png",
+      "sha256": "4a1f47eed342b28531b11b83f527625403727619cc463ec432bd42dcb421721d",
+      "bytes": 48564,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21954,
+      "foregroundBoundsXYXY": [
+        190,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 58,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0058.png",
+      "sha256": "366747ed77c6cba0a7d8bacc6b98d0839b020a7775e573608bae50e0186afb98",
+      "bytes": 48872,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22157,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 59,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0059.png",
+      "sha256": "698f6f57057ff1a96c2aa494567cb61749d2ddc12fb64571d4c8f40dd46a601b",
+      "bytes": 48995,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22334,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 60,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0060.png",
+      "sha256": "7c2d53e532ace482eb14495595fec5223f5ff03b4017532ee5101958f45ba5df",
+      "bytes": 49186,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22515,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 61,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0061.png",
+      "sha256": "eb3132a5b53f438575a53cf7717aebfa624d1b9bc0f84bbc18ae4f718a1a3b79",
+      "bytes": 49475,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22660,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 62,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0062.png",
+      "sha256": "e85f296dc87e7dd016f06d9060aedb8a632ef55c449b8370831a3d7b01ae8f07",
+      "bytes": 49670,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22871,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 63,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0063.png",
+      "sha256": "6f04ccc3d60abebf7cdf44e76b07ef662f6b0744d263785d570174bc32008112",
+      "bytes": 49837,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23048,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 64,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0064.png",
+      "sha256": "ce9e0c32c3e7539f5b802bbdeb7bba5d92de54dfe650566a6c5661014cbce639",
+      "bytes": 50114,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23250,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 65,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0065.png",
+      "sha256": "76f7d80f45122e43c47947744f0f1315c8651ec73e4e02084a7644d6337a4c5f",
+      "bytes": 50544,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23450,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 66,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0066.png",
+      "sha256": "bc96ba47905d48c71bceefa7bd73cb9f2723e68d1495275e1e483ed249eaed30",
+      "bytes": 50649,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23644,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        320,
+        449
+      ]
+    },
+    {
+      "index": 67,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0067.png",
+      "sha256": "6911c6be3b04e7362483824ac9f23b9c1e96b4709915619866f807eb13a6e44a",
+      "bytes": 51123,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23889,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        320,
+        449
+      ]
+    },
+    {
+      "index": 68,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0068.png",
+      "sha256": "6c1c27211103b5ed7ae8beb2f2a5495aa330af6322548568442ac0e9de79df69",
+      "bytes": 51201,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24072,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        319,
+        449
+      ]
+    },
+    {
+      "index": 69,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0069.png",
+      "sha256": "4eb8d5482a1ae3743b425ae0ee6814efc62b3b196059b6974276223a830f359d",
+      "bytes": 51501,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24253,
+      "foregroundBoundsXYXY": [
+        187,
+        62,
+        319,
+        449
+      ]
+    },
+    {
+      "index": 70,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0070.png",
+      "sha256": "949bc21a78995631f6be23af8de949ac4713f70a2528ac08529a79e2dda54d95",
+      "bytes": 51538,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24403,
+      "foregroundBoundsXYXY": [
+        186,
+        62,
+        318,
+        449
+      ]
+    },
+    {
+      "index": 71,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0071.png",
+      "sha256": "746e2430b31004a67600996847a85e1f924c2066beea5f5d66bb795f98f29e90",
+      "bytes": 51887,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24606,
+      "foregroundBoundsXYXY": [
+        184,
+        62,
+        318,
+        449
+      ]
+    },
+    {
+      "index": 72,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0072.png",
+      "sha256": "a9bdf782c661454587b6ea6da1b7df2ce3ac22c0aba75de1f87a601e3ef789b8",
+      "bytes": 52110,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24758,
+      "foregroundBoundsXYXY": [
+        183,
+        62,
+        317,
+        449
+      ]
+    },
+    {
+      "index": 73,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0073.png",
+      "sha256": "e0b77ef39336f32ec65f508391bba992e6c923a8bc5e1c8d8a58673e6ad13d78",
+      "bytes": 52277,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24952,
+      "foregroundBoundsXYXY": [
+        182,
+        62,
+        317,
+        449
+      ]
+    },
+    {
+      "index": 74,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0074.png",
+      "sha256": "86fa2c95bc4c814d7861597443243e5d89430c82e87b9c92d6cfe5d2cd052420",
+      "bytes": 52498,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25062,
+      "foregroundBoundsXYXY": [
+        181,
+        62,
+        316,
+        449
+      ]
+    },
+    {
+      "index": 75,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0075.png",
+      "sha256": "f0d242915010d8b7f9dd0c6fa5bf1bb0997928b4da614def268e98702c4cc0d0",
+      "bytes": 52579,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25237,
+      "foregroundBoundsXYXY": [
+        180,
+        62,
+        316,
+        449
+      ]
+    },
+    {
+      "index": 76,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0076.png",
+      "sha256": "21fbbddb8d0434d4bf15e0f3203b94815ea828733254ca9e6e7aa24d14ba272b",
+      "bytes": 52792,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25345,
+      "foregroundBoundsXYXY": [
+        179,
+        62,
+        315,
+        449
+      ]
+    },
+    {
+      "index": 77,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0077.png",
+      "sha256": "8e5b9b2cf6076d697854ba2c209e905a1125804956108352d05a50cec223fe9e",
+      "bytes": 52973,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25454,
+      "foregroundBoundsXYXY": [
+        178,
+        62,
+        314,
+        449
+      ]
+    },
+    {
+      "index": 78,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0078.png",
+      "sha256": "9fd70b58bd760356c7ddcbc734d2428d180f60fc5ee67482541e4535cdb2209c",
+      "bytes": 53008,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25611,
+      "foregroundBoundsXYXY": [
+        178,
+        62,
+        314,
+        449
+      ]
+    },
+    {
+      "index": 79,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0079.png",
+      "sha256": "a6233882862f872633adc8ab117d70c19a7327117ffd37824d273d0f18d457ba",
+      "bytes": 53006,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25687,
+      "foregroundBoundsXYXY": [
+        177,
+        62,
+        313,
+        449
+      ]
+    },
+    {
+      "index": 80,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0080.png",
+      "sha256": "1981df593df4f095f76cf01cb1241120495c619929acdce19260edff1fa37a74",
+      "bytes": 53088,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25779,
+      "foregroundBoundsXYXY": [
+        176,
+        62,
+        312,
+        449
+      ]
+    },
+    {
+      "index": 81,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0081.png",
+      "sha256": "870bb86173d71689a9aabe242ee0d7a319257a68583cb116fa3e6abc98e32029",
+      "bytes": 53222,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25893,
+      "foregroundBoundsXYXY": [
+        175,
+        62,
+        312,
+        449
+      ]
+    },
+    {
+      "index": 82,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0082.png",
+      "sha256": "c3701761bbb25c87f1c2dcb46cac2fd0b1a209ae354c7ea3622839b2c71dd117",
+      "bytes": 53005,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25910,
+      "foregroundBoundsXYXY": [
+        175,
+        62,
+        313,
+        449
+      ]
+    },
+    {
+      "index": 83,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0083.png",
+      "sha256": "d3036cbb5ea82a719575a3170a32d02c16783a59930b614acc20bcfa23af8ef8",
+      "bytes": 53072,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25952,
+      "foregroundBoundsXYXY": [
+        174,
+        62,
+        315,
+        449
+      ]
+    },
+    {
+      "index": 84,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0084.png",
+      "sha256": "ca7085c7900559d4803fecce0fa547a3227b2f6231558bb6957f921522a28628",
+      "bytes": 53093,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 26027,
+      "foregroundBoundsXYXY": [
+        173,
+        62,
+        316,
+        449
+      ]
+    },
+    {
+      "index": 85,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0085.png",
+      "sha256": "47fbce1a1d0d978b6e9fca2b0c09a914486c82e104218f05f5f0edf80a7b9abb",
+      "bytes": 53041,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 26059,
+      "foregroundBoundsXYXY": [
+        173,
+        62,
+        317,
+        449
+      ]
+    },
+    {
+      "index": 86,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0086.png",
+      "sha256": "c4f58cc42e7b3e70dd497d5811a0a47bf308bc41d648e287e412d3f2ed07049b",
+      "bytes": 52803,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 26055,
+      "foregroundBoundsXYXY": [
+        172,
+        62,
+        317,
+        449
+      ]
+    },
+    {
+      "index": 87,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0087.png",
+      "sha256": "ec14d2768225d85108b620d4a0137ea8ec0665131c9eae09277c0949289ba856",
+      "bytes": 52723,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 26043,
+      "foregroundBoundsXYXY": [
+        172,
+        62,
+        318,
+        449
+      ]
+    },
+    {
+      "index": 88,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0088.png",
+      "sha256": "fc41e5b5b0411bfb105677861fd9b07143668eba505ddae1e73fa5d47904ccb1",
+      "bytes": 52636,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 26026,
+      "foregroundBoundsXYXY": [
+        171,
+        62,
+        319,
+        449
+      ]
+    },
+    {
+      "index": 89,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0089.png",
+      "sha256": "b7f522805175038a7553afe7b2bb163574ca510ba1615ac490d86297e2df1711",
+      "bytes": 52456,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25979,
+      "foregroundBoundsXYXY": [
+        171,
+        62,
+        320,
+        449
+      ]
+    },
+    {
+      "index": 90,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0090.png",
+      "sha256": "569fd8fab903f8261e721c3041639d1faba144152ba0cfe0ac90949ce5b46bbd",
+      "bytes": 52392,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25926,
+      "foregroundBoundsXYXY": [
+        171,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 91,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0091.png",
+      "sha256": "05347c572a8beea5cec882f7275d997c23a31616c4019b341c5dce12f8528b89",
+      "bytes": 52079,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25888,
+      "foregroundBoundsXYXY": [
+        171,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 92,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0092.png",
+      "sha256": "3f5d57ee2fc9dfb748b2f59a9f8a2beda678ee75e6c7f60633606ed1fc4bfb6b",
+      "bytes": 51776,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25814,
+      "foregroundBoundsXYXY": [
+        170,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 93,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0093.png",
+      "sha256": "d99e11a71c3157c23c05ae4798f78050c543189f00d54f7cdaef58e252225009",
+      "bytes": 51750,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25702,
+      "foregroundBoundsXYXY": [
+        170,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 94,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0094.png",
+      "sha256": "6728b76b58bd0ecce9ac1505a173ebf830a13d111a990c7f7850837c6bbf6f16",
+      "bytes": 51436,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25617,
+      "foregroundBoundsXYXY": [
+        170,
+        62,
+        324,
+        449
+      ]
+    },
+    {
+      "index": 95,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0095.png",
+      "sha256": "2ba13d208bf10bea375b1ef507a5b088afed7a99cd09e756ba3b8dec11c79fea",
+      "bytes": 51248,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25502,
+      "foregroundBoundsXYXY": [
+        170,
+        62,
+        324,
+        449
+      ]
+    },
+    {
+      "index": 96,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0096.png",
+      "sha256": "d504ec45fc04e5b0ceb63fd93828d6464694f8f909981468138592868a5b07a6",
+      "bytes": 51036,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25357,
+      "foregroundBoundsXYXY": [
+        170,
+        62,
+        325,
+        449
+      ]
+    },
+    {
+      "index": 97,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0097.png",
+      "sha256": "4ba1e0bc30e7f1fb03ffc9e4e66114e00d5fdf836f3aa41c61def99f8c1c4c8d",
+      "bytes": 50791,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25183,
+      "foregroundBoundsXYXY": [
+        170,
+        62,
+        325,
+        449
+      ]
+    },
+    {
+      "index": 98,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0098.png",
+      "sha256": "629c855c44ecf53cb1630c29d28cabc36e4ce165f1d46a117a8642da375c5bac",
+      "bytes": 50249,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25015,
+      "foregroundBoundsXYXY": [
+        170,
+        62,
+        326,
+        449
+      ]
+    },
+    {
+      "index": 99,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0099.png",
+      "sha256": "7f59fb4c272e6368105e6dcea4e0a64e03248d3a690f8ecf8bc25d74a441b26f",
+      "bytes": 49955,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24885,
+      "foregroundBoundsXYXY": [
+        170,
+        62,
+        326,
+        449
+      ]
+    },
+    {
+      "index": 100,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0100.png",
+      "sha256": "baa19a6eefeb2c4a53703836bc34c50dcc73733283450f6809e7e0d24f5ff792",
+      "bytes": 49756,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24676,
+      "foregroundBoundsXYXY": [
+        171,
+        62,
+        326,
+        449
+      ]
+    },
+    {
+      "index": 101,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0101.png",
+      "sha256": "1202db9e8adb5094cbc0706a6dee60f74ab43daa0cd049e9a0c1b20e828336ce",
+      "bytes": 49349,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24494,
+      "foregroundBoundsXYXY": [
+        171,
+        62,
+        327,
+        449
+      ]
+    },
+    {
+      "index": 102,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0102.png",
+      "sha256": "f95f3e73e0a2d7e21dce3e15714e82924142d1607078c715a0db2a50aa16db83",
+      "bytes": 49118,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24292,
+      "foregroundBoundsXYXY": [
+        171,
+        62,
+        327,
+        449
+      ]
+    },
+    {
+      "index": 103,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0103.png",
+      "sha256": "6b502c218942224d26cdc327339b43241052c6a572248b4f5ff207ac4ad6ae2b",
+      "bytes": 48634,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24119,
+      "foregroundBoundsXYXY": [
+        172,
+        62,
+        327,
+        449
+      ]
+    },
+    {
+      "index": 104,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0104.png",
+      "sha256": "6ef63e7f71345c33fb09ba249d411000e225d6f36cef17bf08bcc081bd3a33d5",
+      "bytes": 48502,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23905,
+      "foregroundBoundsXYXY": [
+        172,
+        62,
+        328,
+        449
+      ]
+    },
+    {
+      "index": 105,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0105.png",
+      "sha256": "b24b5a3247d083de7ca2775d69228d8b01e8db43e764085d0daeaf226be22dc4",
+      "bytes": 48070,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23710,
+      "foregroundBoundsXYXY": [
+        173,
+        62,
+        328,
+        449
+      ]
+    },
+    {
+      "index": 106,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0106.png",
+      "sha256": "867f81c23119cb74feb7ff11323ca45154e11dfb42655097da1a39df883a113c",
+      "bytes": 47538,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23486,
+      "foregroundBoundsXYXY": [
+        173,
+        62,
+        328,
+        449
+      ]
+    },
+    {
+      "index": 107,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0107.png",
+      "sha256": "fac156a71732647729ea1e3b3d0f17aab769c23ddb0835ffa658cbe334005b4f",
+      "bytes": 47147,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23273,
+      "foregroundBoundsXYXY": [
+        174,
+        62,
+        328,
+        449
+      ]
+    },
+    {
+      "index": 108,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0108.png",
+      "sha256": "3379a002a45f48ffad1a504e16b44cd64a98e3af499aafee5f511cc8d574f761",
+      "bytes": 46748,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23061,
+      "foregroundBoundsXYXY": [
+        175,
+        62,
+        328,
+        449
+      ]
+    },
+    {
+      "index": 109,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0109.png",
+      "sha256": "6ae7bac3607c039d8ee9bcec761b434c7647c6584c3d4dc47ffb483053b94607",
+      "bytes": 46421,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22880,
+      "foregroundBoundsXYXY": [
+        175,
+        62,
+        328,
+        449
+      ]
+    },
+    {
+      "index": 110,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0110.png",
+      "sha256": "0989054bd791cdb059367504ffd777fbf42aa24e66d0547ded1631d0e80f4bb8",
+      "bytes": 46136,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22654,
+      "foregroundBoundsXYXY": [
+        176,
+        62,
+        328,
+        449
+      ]
+    },
+    {
+      "index": 111,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0111.png",
+      "sha256": "81124b77c32f88179c70664730e449c851e1f5846835a01bbc36f085a2c2f6ca",
+      "bytes": 45556,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22445,
+      "foregroundBoundsXYXY": [
+        177,
+        62,
+        328,
+        449
+      ]
+    },
+    {
+      "index": 112,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0112.png",
+      "sha256": "d6aae16108032790a57e918ebd4583f801098f765307b08d35fc3710fcb516f1",
+      "bytes": 45318,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22207,
+      "foregroundBoundsXYXY": [
+        178,
+        62,
+        327,
+        449
+      ]
+    },
+    {
+      "index": 113,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0113.png",
+      "sha256": "c3f0cbd324f6eca408add358ce382c48e4fabf6ad8932d742833c7531a99001a",
+      "bytes": 45102,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22007,
+      "foregroundBoundsXYXY": [
+        179,
+        62,
+        327,
+        449
+      ]
+    },
+    {
+      "index": 114,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0114.png",
+      "sha256": "e378e248afe7b72681273c72c109ac8960fcea01fb3ad9a72fdbc37b9319e00d",
+      "bytes": 44406,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21790,
+      "foregroundBoundsXYXY": [
+        180,
+        62,
+        327,
+        449
+      ]
+    },
+    {
+      "index": 115,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0115.png",
+      "sha256": "27b4b0eac5b43fe7e66775f2bdb073cf005abc3221173d243bad46fd834f4243",
+      "bytes": 44234,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21603,
+      "foregroundBoundsXYXY": [
+        181,
+        62,
+        327,
+        449
+      ]
+    },
+    {
+      "index": 116,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0116.png",
+      "sha256": "0d3f84eeea78283ef8b44be3dcfddb4ec54ae532feb69bf19c1da09e08be9e71",
+      "bytes": 44016,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21418,
+      "foregroundBoundsXYXY": [
+        182,
+        62,
+        326,
+        449
+      ]
+    },
+    {
+      "index": 117,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0117.png",
+      "sha256": "c4a01d5a7e5fd43775a17b94e1a3cda8d315cdf65091fcd8acb4fb870ad58c45",
+      "bytes": 43596,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21217,
+      "foregroundBoundsXYXY": [
+        183,
+        62,
+        326,
+        449
+      ]
+    },
+    {
+      "index": 118,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0118.png",
+      "sha256": "781786cb6b913f7d28d4a4b0ba113008be6803b596424b2673fbf3520035dea9",
+      "bytes": 43340,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21059,
+      "foregroundBoundsXYXY": [
+        184,
+        62,
+        326,
+        449
+      ]
+    },
+    {
+      "index": 119,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0119.png",
+      "sha256": "9c841c53f0425390b82d5a2631b2d8050123ceccee8c1432c29594847629b7b8",
+      "bytes": 43172,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20897,
+      "foregroundBoundsXYXY": [
+        185,
+        62,
+        325,
+        449
+      ]
+    },
+    {
+      "index": 120,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0120.png",
+      "sha256": "ccff75928d10e6afe06368249c0054795a808100a76b222b32af071e664a90bb",
+      "bytes": 42873,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20788,
+      "foregroundBoundsXYXY": [
+        186,
+        62,
+        325,
+        449
+      ]
+    },
+    {
+      "index": 121,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0121.png",
+      "sha256": "2b052e701172bc76ac67da974c926ed2df5683a1b8007ea9b4c0794e89dc0d6b",
+      "bytes": 42571,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20695,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        324,
+        449
+      ]
+    },
+    {
+      "index": 122,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0122.png",
+      "sha256": "97592f6fbbdeac3b03f466e3187405285c584601e4749ae6b76fa25fffd61eb5",
+      "bytes": 42163,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20632,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 123,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0123.png",
+      "sha256": "dea447ea1b0f9e0eef6ab5f6a9dfbc3049d71568e3aba7ed5712f6159abe63cd",
+      "bytes": 42137,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20620,
+      "foregroundBoundsXYXY": [
+        190,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 124,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0124.png",
+      "sha256": "02bf03a63474c5c4c63ed865bd34ed8fb3710aec655394beadae52f623c94f2a",
+      "bytes": 41892,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20607,
+      "foregroundBoundsXYXY": [
+        192,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 125,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0125.png",
+      "sha256": "0ecbac3cb6b7354ab7516ef005bb5eef25428259a50ffd2e91e66187e64df65c",
+      "bytes": 41980,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20600,
+      "foregroundBoundsXYXY": [
+        193,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 126,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0126.png",
+      "sha256": "7a3c6830c5e424cb1e73c3621d593c3d6712472e86047636aa157943363539b4",
+      "bytes": 41870,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20587,
+      "foregroundBoundsXYXY": [
+        195,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 127,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0127.png",
+      "sha256": "68fc621d3c1b1f5ff4d604195448603e601cfeeb532e814400f50429e31419bb",
+      "bytes": 41873,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20566,
+      "foregroundBoundsXYXY": [
+        196,
+        62,
+        320,
+        449
+      ]
+    },
+    {
+      "index": 128,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0128.png",
+      "sha256": "226b8183bfb0615953c7a4c8d3342f87c0d4a01003d0fc9e4c0e269e5ce7b5a2",
+      "bytes": 41771,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20521,
+      "foregroundBoundsXYXY": [
+        198,
+        62,
+        319,
+        449
+      ]
+    },
+    {
+      "index": 129,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0129.png",
+      "sha256": "eda7519a006538d82781a3062fd264d5a0d0b55bca2fe84bb7deb70a6416b39c",
+      "bytes": 41477,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20500,
+      "foregroundBoundsXYXY": [
+        199,
+        62,
+        319,
+        449
+      ]
+    },
+    {
+      "index": 130,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0130.png",
+      "sha256": "fb7fd4982e3232586b1eb9620f35cf6f737f5d7730299a68ec1b9be713b19e37",
+      "bytes": 41445,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20452,
+      "foregroundBoundsXYXY": [
+        201,
+        62,
+        318,
+        449
+      ]
+    },
+    {
+      "index": 131,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0131.png",
+      "sha256": "9a60a4a5787c210ce970067b3275f957d21cc2cf5192af9efbc841ba4b81c35e",
+      "bytes": 41031,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20440,
+      "foregroundBoundsXYXY": [
+        202,
+        62,
+        317,
+        449
+      ]
+    },
+    {
+      "index": 132,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0132.png",
+      "sha256": "6a72ffd17fda27f17ca7d30d63042d136eb25cde509d8431080eefd2b8e06e17",
+      "bytes": 40925,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20404,
+      "foregroundBoundsXYXY": [
+        204,
+        62,
+        316,
+        449
+      ]
+    },
+    {
+      "index": 133,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0133.png",
+      "sha256": "f25a733630f69b9aea69318d3ce66a6c9122fbc8a9c66585530b9cfad97bb390",
+      "bytes": 40489,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20310,
+      "foregroundBoundsXYXY": [
+        206,
+        62,
+        315,
+        449
+      ]
+    },
+    {
+      "index": 134,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0134.png",
+      "sha256": "f2b49f2dbe04016b3bd2db02fe991e98e77b9aee6acd0968e552d33faea36945",
+      "bytes": 40275,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20268,
+      "foregroundBoundsXYXY": [
+        207,
+        62,
+        314,
+        449
+      ]
+    },
+    {
+      "index": 135,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0135.png",
+      "sha256": "963d43edaf41e64281d60ce9ac020c336ec1cd72cf474c34aa8963ad30014ebb",
+      "bytes": 40290,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20207,
+      "foregroundBoundsXYXY": [
+        208,
+        62,
+        313,
+        449
+      ]
+    },
+    {
+      "index": 136,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0136.png",
+      "sha256": "0b592dc59ff5f4e017a7a47b6135513eadc1e0c031dfe5aaebc6631ecd3d010f",
+      "bytes": 40111,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20113,
+      "foregroundBoundsXYXY": [
+        208,
+        62,
+        312,
+        449
+      ]
+    },
+    {
+      "index": 137,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0137.png",
+      "sha256": "7dbd77be89b022458362097f13e9d54ce86824388a6213c086d3ef30825ee0a0",
+      "bytes": 39831,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20054,
+      "foregroundBoundsXYXY": [
+        207,
+        62,
+        311,
+        449
+      ]
+    },
+    {
+      "index": 138,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0138.png",
+      "sha256": "87c51e5a584b00854fada4d8d47d006b0e1de61a43f311ca1b6aeb437823bf9a",
+      "bytes": 39829,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19953,
+      "foregroundBoundsXYXY": [
+        206,
+        62,
+        310,
+        449
+      ]
+    },
+    {
+      "index": 139,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0139.png",
+      "sha256": "f5d731f2a14703c4ec87b7cefe6411abb732a5548f3f6545783175516f7ec932",
+      "bytes": 39697,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19886,
+      "foregroundBoundsXYXY": [
+        205,
+        62,
+        309,
+        449
+      ]
+    },
+    {
+      "index": 140,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0140.png",
+      "sha256": "6a90ae26b66564ff2084da784958072612a552053bd0c4e922b667f694e204ad",
+      "bytes": 39456,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19799,
+      "foregroundBoundsXYXY": [
+        205,
+        62,
+        308,
+        449
+      ]
+    },
+    {
+      "index": 141,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0141.png",
+      "sha256": "e23e31235682f4177749e8c4a0be9bc893beb76fa272d41e363844229787bcc3",
+      "bytes": 39421,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19703,
+      "foregroundBoundsXYXY": [
+        204,
+        62,
+        307,
+        449
+      ]
+    },
+    {
+      "index": 142,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0142.png",
+      "sha256": "8609c73609121c6c8b930321d8de469db60c01673fcf7b341dda853f5bcea53a",
+      "bytes": 39103,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19615,
+      "foregroundBoundsXYXY": [
+        203,
+        62,
+        306,
+        449
+      ]
+    },
+    {
+      "index": 143,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0143.png",
+      "sha256": "74e28eabaa850fe6c373d851cd0b77ff465c4fd33fa78bf9c3e837779d7eac65",
+      "bytes": 38929,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19544,
+      "foregroundBoundsXYXY": [
+        202,
+        62,
+        305,
+        449
+      ]
+    },
+    {
+      "index": 144,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0144.png",
+      "sha256": "ca43e822b6252de5519fa5b72afaf3accc4cbb0d27c5dea9cf427795651a1c4e",
+      "bytes": 38931,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19504,
+      "foregroundBoundsXYXY": [
+        202,
+        62,
+        306,
+        449
+      ]
+    },
+    {
+      "index": 145,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0145.png",
+      "sha256": "fd6848b9b14e8054d9f84e5be754c3683f86e54f8c30ebc7dd73041d5787a58b",
+      "bytes": 38870,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19482,
+      "foregroundBoundsXYXY": [
+        201,
+        62,
+        306,
+        449
+      ]
+    },
+    {
+      "index": 146,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0146.png",
+      "sha256": "17796faa5f0aa35e9669c03d838eb46e061457edfc9e786568e8ffbf17a49fb6",
+      "bytes": 38709,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19456,
+      "foregroundBoundsXYXY": [
+        201,
+        62,
+        306,
+        449
+      ]
+    },
+    {
+      "index": 147,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0147.png",
+      "sha256": "7e5506f992a42163ba57d5cdcc89cd10ca58c4fcbb264d324df5e7c5f85aabba",
+      "bytes": 38557,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19475,
+      "foregroundBoundsXYXY": [
+        200,
+        62,
+        306,
+        449
+      ]
+    },
+    {
+      "index": 148,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0148.png",
+      "sha256": "52e895040a889b10b10bc36f7b7d9b612b85d1f186b0b6d1dd8943bfa299f49f",
+      "bytes": 38501,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19483,
+      "foregroundBoundsXYXY": [
+        199,
+        62,
+        306,
+        449
+      ]
+    },
+    {
+      "index": 149,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0149.png",
+      "sha256": "06fdc42ae3804eeed323d6f18aea555a521d7c68db38e4cec37b4a26f62ebd98",
+      "bytes": 38404,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19460,
+      "foregroundBoundsXYXY": [
+        199,
+        62,
+        306,
+        449
+      ]
+    },
+    {
+      "index": 150,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0150.png",
+      "sha256": "c13019d41c6da6f291cb62f2d952fba95d3491a7638f20c331e8b8a77e92220f",
+      "bytes": 38560,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19484,
+      "foregroundBoundsXYXY": [
+        198,
+        62,
+        306,
+        449
+      ]
+    },
+    {
+      "index": 151,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0151.png",
+      "sha256": "77ba94d6ce0a97235f3aa8103b53a6d5adb90e81f840e065f209d51ed4081d67",
+      "bytes": 38296,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19418,
+      "foregroundBoundsXYXY": [
+        198,
+        62,
+        306,
+        449
+      ]
+    },
+    {
+      "index": 152,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0152.png",
+      "sha256": "ce4d3aa73e5bdad5b966386d5186ef3bdb270c9d9ec48c3a9242c0195cd7bee1",
+      "bytes": 38398,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19431,
+      "foregroundBoundsXYXY": [
+        198,
+        62,
+        307,
+        449
+      ]
+    },
+    {
+      "index": 153,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0153.png",
+      "sha256": "93c63fe68f9e27e2c114fb9dac83279913c6274eb811db23ca5d4e4db8345199",
+      "bytes": 38198,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19404,
+      "foregroundBoundsXYXY": [
+        197,
+        62,
+        307,
+        449
+      ]
+    },
+    {
+      "index": 154,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0154.png",
+      "sha256": "de9ec5ff67c216fd69a1ee211e539a203df1a40f37173109843d7483da46fb04",
+      "bytes": 38248,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19402,
+      "foregroundBoundsXYXY": [
+        197,
+        62,
+        308,
+        449
+      ]
+    },
+    {
+      "index": 155,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0155.png",
+      "sha256": "a1d4348e31b91433abf6c8b60bc9ee4b52a18a556a40393098685cc5496a298e",
+      "bytes": 38208,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19387,
+      "foregroundBoundsXYXY": [
+        196,
+        62,
+        309,
+        449
+      ]
+    },
+    {
+      "index": 156,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0156.png",
+      "sha256": "7da836fa773a8f027f1ff0436661312449401b512ba896b5f3eff4025516235e",
+      "bytes": 38310,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19386,
+      "foregroundBoundsXYXY": [
+        196,
+        62,
+        310,
+        449
+      ]
+    },
+    {
+      "index": 157,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0157.png",
+      "sha256": "596db51029165b2c855286289880dbac2e6205e66ec90bfc191b1cf1bb0b0e18",
+      "bytes": 38427,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19398,
+      "foregroundBoundsXYXY": [
+        195,
+        62,
+        310,
+        449
+      ]
+    },
+    {
+      "index": 158,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0158.png",
+      "sha256": "a8868470f3ad2a1c408da679271af8015d56c846a435844b54c880a8efdcfebb",
+      "bytes": 38322,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19428,
+      "foregroundBoundsXYXY": [
+        194,
+        62,
+        311,
+        449
+      ]
+    },
+    {
+      "index": 159,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0159.png",
+      "sha256": "dbc2f0a18f4a657ab98ac96b5bc1867a6c1db30b4a1f9c1fae1f9258c8748535",
+      "bytes": 38538,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19428,
+      "foregroundBoundsXYXY": [
+        193,
+        62,
+        312,
+        449
+      ]
+    },
+    {
+      "index": 160,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0160.png",
+      "sha256": "ad58d5580a54fe897bb4ffa5c0d997e3cfab23a9c78f7b9cbddb68ffb4ac59f1",
+      "bytes": 38678,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19472,
+      "foregroundBoundsXYXY": [
+        193,
+        62,
+        312,
+        449
+      ]
+    },
+    {
+      "index": 161,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0161.png",
+      "sha256": "9ede6ec04cda98de12d72a8f4ed05aff1dbe96159360c1055117cab72a63ce4d",
+      "bytes": 38996,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19555,
+      "foregroundBoundsXYXY": [
+        192,
+        62,
+        313,
+        449
+      ]
+    },
+    {
+      "index": 162,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0162.png",
+      "sha256": "72d3fc30e6cdd12c53365a0a7efed6e2833eb9edd862a4ff6a3c7af69470922c",
+      "bytes": 39200,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19669,
+      "foregroundBoundsXYXY": [
+        192,
+        62,
+        314,
+        449
+      ]
+    },
+    {
+      "index": 163,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0163.png",
+      "sha256": "7a337d1734a31e7c251665c081973f92eb8807ca371530a58ace618a492af487",
+      "bytes": 39272,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19808,
+      "foregroundBoundsXYXY": [
+        191,
+        62,
+        314,
+        449
+      ]
+    },
+    {
+      "index": 164,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0164.png",
+      "sha256": "f4b7d1b55c1147f48261729ae0b9beafdf1b311bf62e642610c773c46d59255a",
+      "bytes": 39562,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 19918,
+      "foregroundBoundsXYXY": [
+        191,
+        62,
+        315,
+        449
+      ]
+    },
+    {
+      "index": 165,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0165.png",
+      "sha256": "67d36ba1af1ea08ef1b8a53dc550f3e08572d30f7de6cc1cca2e388fc1bf44fe",
+      "bytes": 39712,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20092,
+      "foregroundBoundsXYXY": [
+        190,
+        62,
+        315,
+        449
+      ]
+    },
+    {
+      "index": 166,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0166.png",
+      "sha256": "3f6a89e6ac2b3729947cad22bfa668b25729f950fe2fd77d23df5280e94fe6ab",
+      "bytes": 40201,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20232,
+      "foregroundBoundsXYXY": [
+        190,
+        62,
+        316,
+        449
+      ]
+    },
+    {
+      "index": 167,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0167.png",
+      "sha256": "42adac7d6156cecea59136d0c74446e7a1a735beef66a3f994b9e6b474fa120c",
+      "bytes": 40278,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20405,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        316,
+        449
+      ]
+    },
+    {
+      "index": 168,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0168.png",
+      "sha256": "b23514ea2ae8b45b896bbc3893b7629730ead56525643a125098a92f2f2aeb5a",
+      "bytes": 40767,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20551,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        317,
+        449
+      ]
+    },
+    {
+      "index": 169,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0169.png",
+      "sha256": "4593add47671475649f070de3ba282158800e385e2270e83627026b780c9cb96",
+      "bytes": 41161,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20716,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        318,
+        449
+      ]
+    },
+    {
+      "index": 170,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0170.png",
+      "sha256": "7981fbd68d593a8a037bb8603aaabbc9dd249dff962bdff324ddfe5063f3002a",
+      "bytes": 41270,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20865,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        318,
+        449
+      ]
+    },
+    {
+      "index": 171,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0171.png",
+      "sha256": "f06578ccfb8982f0e2082b946cc9c3da0332abc14c532c349c1fd578cdc35b96",
+      "bytes": 41640,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21013,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        319,
+        449
+      ]
+    },
+    {
+      "index": 172,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0172.png",
+      "sha256": "5ec26c89f697a78ec980e4fb562b85667307130b81ff6f199827f00e61e564fd",
+      "bytes": 42180,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21162,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        319,
+        449
+      ]
+    },
+    {
+      "index": 173,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0173.png",
+      "sha256": "e257eae534c0d04ed34051896603116300578a1971db03c3f560da8cf006f005",
+      "bytes": 42359,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21322,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        320,
+        449
+      ]
+    },
+    {
+      "index": 174,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0174.png",
+      "sha256": "a08f3725a6a8ae964a17f0f79f6783ac801291fde96528fe061f66bdb1f20063",
+      "bytes": 42462,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21441,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        320,
+        449
+      ]
+    },
+    {
+      "index": 175,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0175.png",
+      "sha256": "32fee853365bf5353f04a4693355a85ec1152b7d0912f5ffca4cc8928ae2738d",
+      "bytes": 42763,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21641,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 176,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0176.png",
+      "sha256": "b68c5a0511319be20f29169f6412469d79a12e790c9b09559112a717933872b7",
+      "bytes": 43069,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21775,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 177,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0177.png",
+      "sha256": "7075f4df8bbbaf47147566b20e9721ef337e1b7e6b7cbda0fd6fdbc60501d375",
+      "bytes": 43477,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21951,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        321,
+        449
+      ]
+    },
+    {
+      "index": 178,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0178.png",
+      "sha256": "e5527bcfb0034278bd6a119a4c0f136fea3e3672220307ae62701e432cc05084",
+      "bytes": 44021,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22153,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 179,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0179.png",
+      "sha256": "b97c467a9f1947a3368e2423df30bec56d238690475eb2eb9f3fadf36342412f",
+      "bytes": 44501,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22331,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 180,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0180.png",
+      "sha256": "f0fe11a83c9601b2024f3b16b94bd9766e2cc94af9918e6724f44857c81a66d7",
+      "bytes": 44959,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22517,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 181,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0181.png",
+      "sha256": "64a06a92d9ebbe0a6f26efeb74de4ff045903f6b1cb2f46e9624281314c2bac1",
+      "bytes": 45218,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22671,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        322,
+        449
+      ]
+    },
+    {
+      "index": 182,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0182.png",
+      "sha256": "f53d6639ebf52f7e264b6d1f144926de25d8908f038206516e5ffb39b67bf4ae",
+      "bytes": 45621,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22868,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 183,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0183.png",
+      "sha256": "fdcef0d1aceeb08f74bae2bd9d660a5109874a930aad2898fe4fd0dc53e87167",
+      "bytes": 45904,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23051,
+      "foregroundBoundsXYXY": [
+        190,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 184,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0184.png",
+      "sha256": "792245414f6c0c39f3a1dec2417acb4f6641b41b262be6021b1fe98d83520d4e",
+      "bytes": 46417,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23252,
+      "foregroundBoundsXYXY": [
+        190,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 185,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0185.png",
+      "sha256": "2cf24bd5b34252fd90a7d0c844efb75e42c4d345cb5dd7f910a7e7d077ba79b0",
+      "bytes": 46976,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23453,
+      "foregroundBoundsXYXY": [
+        190,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 186,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0186.png",
+      "sha256": "18c6c631ee5d477c2790c59983ac9ee524c3424f841bb8d7192937017805e760",
+      "bytes": 47421,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23639,
+      "foregroundBoundsXYXY": [
+        191,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 187,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0187.png",
+      "sha256": "3dcd1d79b576d6be61e89da7030b866a8ac280333f5649b948509b3597a0a995",
+      "bytes": 48041,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23881,
+      "foregroundBoundsXYXY": [
+        191,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 188,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0188.png",
+      "sha256": "ddba17bba3de6146b8c5d61384d7170f3fbe9d7bce8a5cd7f2880012284f193e",
+      "bytes": 48622,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24069,
+      "foregroundBoundsXYXY": [
+        192,
+        62,
+        323,
+        449
+      ]
+    },
+    {
+      "index": 189,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0189.png",
+      "sha256": "8cb1d8fa8fe2dad1a2fdd1598c71f763d28a75ec261e4e6b58b64baeaf79b6e1",
+      "bytes": 48896,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24252,
+      "foregroundBoundsXYXY": [
+        192,
+        62,
+        324,
+        449
+      ]
+    },
+    {
+      "index": 190,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0190.png",
+      "sha256": "d30f1aa9bc139473e5f5201fbce3268a007839393dbedbf524e068420245a9c0",
+      "bytes": 49387,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24404,
+      "foregroundBoundsXYXY": [
+        193,
+        62,
+        325,
+        449
+      ]
+    },
+    {
+      "index": 191,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0191.png",
+      "sha256": "046c05c5de6d783ae539b3468530754a27bd9fcbaac9da01482ab4b2fe9e7c94",
+      "bytes": 50021,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24606,
+      "foregroundBoundsXYXY": [
+        193,
+        62,
+        327,
+        449
+      ]
+    },
+    {
+      "index": 192,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0192.png",
+      "sha256": "c6ee450a3a7f051ca5891366d4565b253e818a6385fa3bebddce7483ccfb1a5d",
+      "bytes": 50342,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24750,
+      "foregroundBoundsXYXY": [
+        194,
+        62,
+        328,
+        449
+      ]
+    },
+    {
+      "index": 193,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0193.png",
+      "sha256": "a89a2c35d194280c76d8aa33ce6f08eaca1f9e6fa5d01a2085590d0dd8d06a3d",
+      "bytes": 50689,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24947,
+      "foregroundBoundsXYXY": [
+        194,
+        62,
+        329,
+        449
+      ]
+    },
+    {
+      "index": 194,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0194.png",
+      "sha256": "c4ec299b9aba583ce988f7f1cbed305ba3ab67df8b461292d21d8a86a705cc70",
+      "bytes": 50957,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25066,
+      "foregroundBoundsXYXY": [
+        195,
+        62,
+        330,
+        449
+      ]
+    },
+    {
+      "index": 195,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0195.png",
+      "sha256": "4823481696c8bf5b8c9ee8c33a8519976928065b02a94a42060bb698fd33d884",
+      "bytes": 51481,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25242,
+      "foregroundBoundsXYXY": [
+        195,
+        62,
+        331,
+        449
+      ]
+    },
+    {
+      "index": 196,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0196.png",
+      "sha256": "4e5dc3dfceb907f4c69c6753b9c5e3f851cb112f09d1f5b40a409ff2ada8aec9",
+      "bytes": 51696,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25345,
+      "foregroundBoundsXYXY": [
+        196,
+        62,
+        332,
+        449
+      ]
+    },
+    {
+      "index": 197,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0197.png",
+      "sha256": "79da2d2e03948dccaf00c0612ef3530d465e2a45b8e237cbbd6217c476b62d93",
+      "bytes": 52004,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25449,
+      "foregroundBoundsXYXY": [
+        197,
+        62,
+        333,
+        449
+      ]
+    },
+    {
+      "index": 198,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0198.png",
+      "sha256": "fcf0860e67c09213f266b375f10dfb3b29629ab2a22f84bae96b66e9c389fda7",
+      "bytes": 52228,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25610,
+      "foregroundBoundsXYXY": [
+        197,
+        62,
+        333,
+        449
+      ]
+    },
+    {
+      "index": 199,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0199.png",
+      "sha256": "00a8363e1124a7c03df25e408e4f83239ca061b7ba2a376367fbb3222f3a8915",
+      "bytes": 52598,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25694,
+      "foregroundBoundsXYXY": [
+        198,
+        62,
+        334,
+        449
+      ]
+    },
+    {
+      "index": 200,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0200.png",
+      "sha256": "fd8a927df674922bfdbf7263acc4ae41f3f7693340e5a9d58406cda628330509",
+      "bytes": 52930,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25760,
+      "foregroundBoundsXYXY": [
+        199,
+        62,
+        335,
+        449
+      ]
+    },
+    {
+      "index": 201,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0201.png",
+      "sha256": "233442698c7a8846d74418a7ca3ecc5bf32a16941178c22e844d4143a8cbf078",
+      "bytes": 53083,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25898,
+      "foregroundBoundsXYXY": [
+        199,
+        62,
+        336,
+        449
+      ]
+    },
+    {
+      "index": 202,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0202.png",
+      "sha256": "4816a961d1744fa75031b8acb591b2908083632d968ed4b556ef775e711e3f81",
+      "bytes": 53246,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25909,
+      "foregroundBoundsXYXY": [
+        198,
+        62,
+        336,
+        449
+      ]
+    },
+    {
+      "index": 203,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0203.png",
+      "sha256": "5064612fbd85527be39d1f6afc8715d3e4fdaeb372100466cf8190cf5037b687",
+      "bytes": 53499,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25969,
+      "foregroundBoundsXYXY": [
+        196,
+        62,
+        337,
+        449
+      ]
+    },
+    {
+      "index": 204,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0204.png",
+      "sha256": "007de0724f0d575642b927f91b456d366d945a8cb05059f80e40c19b6036538d",
+      "bytes": 53539,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 26024,
+      "foregroundBoundsXYXY": [
+        195,
+        62,
+        338,
+        449
+      ]
+    },
+    {
+      "index": 205,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0205.png",
+      "sha256": "b1be7873b0518400b6679268776e8c6ef8614ffcc5844cf274b718467c0c2241",
+      "bytes": 53815,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 26061,
+      "foregroundBoundsXYXY": [
+        195,
+        62,
+        338,
+        449
+      ]
+    },
+    {
+      "index": 206,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0206.png",
+      "sha256": "087223caadecdbb9a569b56ff65efe9362953f2b1a7826fdefd6363701fd5f5f",
+      "bytes": 53718,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 26057,
+      "foregroundBoundsXYXY": [
+        194,
+        62,
+        339,
+        449
+      ]
+    },
+    {
+      "index": 207,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0207.png",
+      "sha256": "df5b1c69f8dbfedf40534afa6f3ca53f5f5838d0bc0436c9c0a131e2a02db740",
+      "bytes": 53900,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 26042,
+      "foregroundBoundsXYXY": [
+        193,
+        62,
+        339,
+        449
+      ]
+    },
+    {
+      "index": 208,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0208.png",
+      "sha256": "858f291cb086d94de971790a82f42fe22ef141ae023f74fe2c44c3ac2fdaeef1",
+      "bytes": 53903,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 26028,
+      "foregroundBoundsXYXY": [
+        192,
+        62,
+        340,
+        449
+      ]
+    },
+    {
+      "index": 209,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0209.png",
+      "sha256": "77b124c876bd2bcad9898b8036e0e76ae5b4a040459696845683c5ce8c456ca0",
+      "bytes": 53870,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25987,
+      "foregroundBoundsXYXY": [
+        191,
+        62,
+        340,
+        449
+      ]
+    },
+    {
+      "index": 210,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0210.png",
+      "sha256": "1231d4f81940821095fa6a135ba541771cc9a1f7b2fe76f139958edaa6c5f1d4",
+      "bytes": 53916,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25935,
+      "foregroundBoundsXYXY": [
+        190,
+        62,
+        340,
+        449
+      ]
+    },
+    {
+      "index": 211,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0211.png",
+      "sha256": "e62976e42636077efa0d546b7f34e1aeb57cdf3f97b2e61e385878e63b532cc5",
+      "bytes": 53809,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25886,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        340,
+        449
+      ]
+    },
+    {
+      "index": 212,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0212.png",
+      "sha256": "a55d55a572c7a3c0539405d29fa81cb462d6eb541a80736b04436fa9e4bef971",
+      "bytes": 53892,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25822,
+      "foregroundBoundsXYXY": [
+        189,
+        62,
+        341,
+        449
+      ]
+    },
+    {
+      "index": 213,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0213.png",
+      "sha256": "f37430857cac7c76bc66b9b017179c67831825d2908896e6bd1a924296e6a10d",
+      "bytes": 53692,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25700,
+      "foregroundBoundsXYXY": [
+        188,
+        62,
+        341,
+        449
+      ]
+    },
+    {
+      "index": 214,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0214.png",
+      "sha256": "399df03145aae7309e5bb7af3582a47a9d6312eea315c2df87a5fb8c62eb1f1d",
+      "bytes": 53699,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25617,
+      "foregroundBoundsXYXY": [
+        187,
+        62,
+        341,
+        449
+      ]
+    },
+    {
+      "index": 215,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0215.png",
+      "sha256": "47c74ec3f8e19e97f122e3a442c6ff4a75ebd6cf0fb1c81f0cb9f446db728a7c",
+      "bytes": 53562,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25497,
+      "foregroundBoundsXYXY": [
+        187,
+        62,
+        341,
+        449
+      ]
+    },
+    {
+      "index": 216,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0216.png",
+      "sha256": "ceff2d304921aad968d3758576aebd0e331961fcc1f888368942421d4f6c6494",
+      "bytes": 53320,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25358,
+      "foregroundBoundsXYXY": [
+        186,
+        62,
+        341,
+        449
+      ]
+    },
+    {
+      "index": 217,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0217.png",
+      "sha256": "8663881f0c5de2323c0ac23dccaa16cee453c35f470ef87c993708af032be7bb",
+      "bytes": 53185,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25184,
+      "foregroundBoundsXYXY": [
+        186,
+        62,
+        341,
+        449
+      ]
+    },
+    {
+      "index": 218,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0218.png",
+      "sha256": "5d6920d5f8b6e8bb51f1382cf4f80e81fa79477dc02c9f5f50507f554f94146f",
+      "bytes": 52902,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 25018,
+      "foregroundBoundsXYXY": [
+        185,
+        62,
+        341,
+        449
+      ]
+    },
+    {
+      "index": 219,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0219.png",
+      "sha256": "1b2e030b3263e2c719bf046b15ec80cbd35b5026ee53f6fb542aa296f1fa976b",
+      "bytes": 53074,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24874,
+      "foregroundBoundsXYXY": [
+        185,
+        62,
+        341,
+        449
+      ]
+    },
+    {
+      "index": 220,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0220.png",
+      "sha256": "37594af9b4aeaef198dd7826679a95fbe41b49f1a5c22be9cde93c5badc257c9",
+      "bytes": 52810,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24675,
+      "foregroundBoundsXYXY": [
+        185,
+        62,
+        340,
+        449
+      ]
+    },
+    {
+      "index": 221,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0221.png",
+      "sha256": "7244fdbf5ba8ad9020799932211cbe19e5101bd9e82ae29fce672ac6003d5249",
+      "bytes": 52589,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24503,
+      "foregroundBoundsXYXY": [
+        184,
+        62,
+        340,
+        449
+      ]
+    },
+    {
+      "index": 222,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0222.png",
+      "sha256": "6ea6dc3b43ff48493feecc328f26270c6c6b832b87b4d3aa0879c89c92817789",
+      "bytes": 52447,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24286,
+      "foregroundBoundsXYXY": [
+        184,
+        62,
+        340,
+        449
+      ]
+    },
+    {
+      "index": 223,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0223.png",
+      "sha256": "49608a2194d00e48e870f929f5445b121c5814ebf4e1fd43838fabf9538afd6c",
+      "bytes": 52309,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 24127,
+      "foregroundBoundsXYXY": [
+        184,
+        62,
+        339,
+        449
+      ]
+    },
+    {
+      "index": 224,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0224.png",
+      "sha256": "8b6951195922b81d79fae98ae4eb40ff7a024499eda9f0c788b0aa7be73496cd",
+      "bytes": 52082,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23901,
+      "foregroundBoundsXYXY": [
+        183,
+        62,
+        339,
+        449
+      ]
+    },
+    {
+      "index": 225,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0225.png",
+      "sha256": "4e174bc4b9ea1965c9baaddb57ad2d1756a01b9290cb5c2d897abd2620da87ec",
+      "bytes": 51939,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23712,
+      "foregroundBoundsXYXY": [
+        183,
+        62,
+        338,
+        449
+      ]
+    },
+    {
+      "index": 226,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0226.png",
+      "sha256": "3e77fe765e8473bed3e8acdac09b462cbce0af0e00494de50e81e9ebfc27a260",
+      "bytes": 51568,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23487,
+      "foregroundBoundsXYXY": [
+        183,
+        62,
+        338,
+        449
+      ]
+    },
+    {
+      "index": 227,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0227.png",
+      "sha256": "045ec8c2881bb9c01f0a02ed2071105759e27426ac017fbbc326fec21b87da1e",
+      "bytes": 51407,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23272,
+      "foregroundBoundsXYXY": [
+        183,
+        62,
+        337,
+        449
+      ]
+    },
+    {
+      "index": 228,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0228.png",
+      "sha256": "df1b240d985fe3c4ec854f35b42b4c4466058538e3795fcf41f3eabefbac2ff8",
+      "bytes": 51193,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 23065,
+      "foregroundBoundsXYXY": [
+        183,
+        62,
+        336,
+        449
+      ]
+    },
+    {
+      "index": 229,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0229.png",
+      "sha256": "76621f03c676eeb4c2ba097251778b53d858502ff6da1181ca9569a09f6d74d3",
+      "bytes": 51077,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22880,
+      "foregroundBoundsXYXY": [
+        183,
+        62,
+        336,
+        449
+      ]
+    },
+    {
+      "index": 230,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0230.png",
+      "sha256": "deff60ce5c1c3dd302dbd800f52ae5bae988ef04174d245420655121caad7577",
+      "bytes": 50798,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22654,
+      "foregroundBoundsXYXY": [
+        183,
+        62,
+        335,
+        449
+      ]
+    },
+    {
+      "index": 231,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0231.png",
+      "sha256": "8d02908f00c949b286b8a0e3c2812f1d897368fdec8d468921054c1cdedf10d4",
+      "bytes": 50726,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22435,
+      "foregroundBoundsXYXY": [
+        183,
+        62,
+        334,
+        449
+      ]
+    },
+    {
+      "index": 232,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0232.png",
+      "sha256": "83ca5944a8891bfe173e6337c0763d0b09162229886ac8d7e7bf028b5e15d242",
+      "bytes": 50398,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22209,
+      "foregroundBoundsXYXY": [
+        183,
+        62,
+        333,
+        449
+      ]
+    },
+    {
+      "index": 233,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0233.png",
+      "sha256": "e0f5a5d48813f2a49f42e1336b4ed4353f80bca617ffa37440c54530fb9c3cc3",
+      "bytes": 50258,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 22011,
+      "foregroundBoundsXYXY": [
+        184,
+        62,
+        332,
+        449
+      ]
+    },
+    {
+      "index": 234,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0234.png",
+      "sha256": "005a7edef560af86b7fb8dba291103d6eb3239097312bdee0e7d8b8814c6d905",
+      "bytes": 49994,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21790,
+      "foregroundBoundsXYXY": [
+        184,
+        62,
+        331,
+        449
+      ]
+    },
+    {
+      "index": 235,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0235.png",
+      "sha256": "be384b15a96fe02e01dc4ce0eff238c3cf1ff6a8e8090bb455a60a47909959af",
+      "bytes": 49819,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21605,
+      "foregroundBoundsXYXY": [
+        184,
+        62,
+        330,
+        449
+      ]
+    },
+    {
+      "index": 236,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0236.png",
+      "sha256": "abcc452e54875510ba7cf512fc39d3142fb395038b2dfb497dccb87dcca20f0b",
+      "bytes": 49750,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21418,
+      "foregroundBoundsXYXY": [
+        185,
+        62,
+        329,
+        449
+      ]
+    },
+    {
+      "index": 237,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0237.png",
+      "sha256": "a3693be424726f06e7d6d3dc6e355c5d36dec5c5637adcded66460b9ce2c5c74",
+      "bytes": 49647,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21215,
+      "foregroundBoundsXYXY": [
+        185,
+        62,
+        328,
+        449
+      ]
+    },
+    {
+      "index": 238,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0238.png",
+      "sha256": "8751c433ebfdc7d5c95a42dbad7680d8ee0ba41216ccb74d271aa864487cddfd",
+      "bytes": 49425,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 21052,
+      "foregroundBoundsXYXY": [
+        186,
+        62,
+        327,
+        449
+      ]
+    },
+    {
+      "index": 239,
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/frame-0239.png",
+      "sha256": "24140c77bdcdbc4cdfc1be27ce0963dcc9c1aac15685199bce71da0d2696bd7b",
+      "bytes": 49339,
+      "edgeAlphaPixels": 0,
+      "alphaDifferencePixelsVsOriginalGray": 0,
+      "cameraExactlyMatchesOriginalGray": true,
+      "poseExactlyMatchesOriginalGray": true,
+      "foregroundPixels": 20898,
+      "foregroundBoundsXYXY": [
+        186,
+        62,
+        326,
+        449
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "completed": true,
+  "case": "Direct3D-V3 Box face colorization candidate",
+  "face": "-Y",
+  "faceSlug": "ny",
+  "promptId": "fcb1763c-a477-45aa-808e-8826badc9b09",
+  "promptSHA256": "d316c3c49671221ed7e18d93ead8c913985e947123b39c20ae6dcb901757a4df",
+  "images": {
+    "generated": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/ny-prior-unlit-090/generated.png",
+      "sha256": "5bd5adecf6107c815d125679cc0390e17c0a6f165df72d78bfe18537c7150438",
+      "bytes": 966473
+    },
+    "mask": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/ny-prior-unlit-090/mask.png",
+      "sha256": "337f010ffc24116e4ff3d2eef3df83a0fd36241dd5de6b8a1cdc482fd2b66f68",
+      "bytes": 51989
+    }
+  },
+  "model": "Qwen Image 2.1 int8",
+  "lora": "QI2.1_AnyAngle",
+  "loraStrength": 0.0,
+  "size": 1024,
+  "steps": 10,
+  "cfg": 3,
+  "seed": 2026113031,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "prompt": "Refine the textures over the COMPLETE already colored 3D model in image 1, using image 2 only as an appearance reference. Preserve image 1's exact camera, projection, full-frame silhouette, body proportions, pose, head angle, facial expression, eye and mouth centers, hairline and hair length, sleeve boundaries, hand and finger locations, dress hem, legs, shoe outlines, heels and all background gaps. Improve every visible material: coherent fine gray-and-white heather knit on the whole dress, blonde hair strands, natural skin and facial detail, and black suede shoes with tan heels and sole edges. Correct rough pixels, obvious texture-transfer defects, missing eye detail and abrupt color patches while keeping every feature at its existing location. Keep the material regions fixed: skin stays skin, fabric stays fabric, hair stays hair, and black shoes stay black. Image 2 must not change image 1's pose, head direction, proportions or framing. Image 3 is matching structural depth, nearer white and background black. This is an orthographic UNDERSIDE view from -Y looking upward. The shoes and their soles are nearest to the camera and occlude the body; preserve this exact unusual underside projection and every overlap. Color the visible shoe soles tan and black. Only color surfaces already visible in image 1. Never rearrange this into an upright full-body or front view, reveal hidden limbs, or add a face. Keep all existing overlaps and hidden surfaces hidden. Maintain a soft, even surface-color appearance; do not add dramatic lighting, new strong shadows or highlights. Keep the complete uncropped frame and the same uniform neutral gray background. No rotation, zoom, moved limbs, new objects, text or panels.",
+  "promptSource": {
+    "kind": "file",
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/ny-prior-unlit.prompt.txt",
+    "sha256": "b207430da112e774156f3cf189b1bdfffc166edbe74d1bcc003574b5d2bda14f"
+  },
+  "defaults": {
+    "profile": "anchored",
+    "denoise": 0.9,
+    "loraStrength": 0.0,
+    "size": 1024,
+    "steps": 10,
+    "cfg": 3,
+    "seed": 2026113031,
+    "sampler": "euler",
+    "scheduler": "simple"
+  },
+  "inputOrder": [
+    "target full-view RGB",
+    "original reference photograph",
+    "target depth"
+  ],
+  "server": "http://127.0.0.1:8198",
+  "runnerSha256": "4cf769b1d3ecc695d11324d32637f1df1deeaae251046f314e94d9aa93898698",
+  "profile": "anchored",
+  "denoise": 0.9,
+  "initialLatent": "VAE-encoded target RGB",
+  "serverExecutionSeconds": 63.556,
+  "clientWaitSeconds": 64.11483015998965,
+  "collectionOnly": false,
+  "cachedNodes": [
+    "6",
+    "7",
+    "8",
+    "15",
+    "19",
+    "9"
+  ],
+  "inputsSHA256": {
+    "target-color.png": "6b1736a740e7f35caa21018aaed3ee189728df6aedd75e1df0ac07a42758ab1a",
+    "target-depth.png": "c07f869e055716a6787c9026e96c1af3b26be469359486605f83c7b2aeef1a9c",
+    "original.png": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+  },
+  "vram": {
+    "measurement": "nvidia-smi sampled whole-device used VRAM",
+    "intervalMilliseconds": 200,
+    "sampleCount": 312,
+    "peakSampledUsedMiB": 13720.0,
+    "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+  },
+  "boxModified": false,
+  "nextStage": "Review this full-view candidate, register generated RGB/mask against its guide, and compose only selected face RGB while preserving Direct3D structural alpha and geometry."
+}

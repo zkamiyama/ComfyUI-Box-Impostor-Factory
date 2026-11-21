@@ -1,0 +1,605 @@
+{
+  "schemaVersion": 1,
+  "asset_id": "7cf5c0f44df1c00e8ecd1d6a9ff9ce5ce3914fc4516e1f54710b67756fcb8dfc",
+  "mode": "geometry-neutral-gray",
+  "layout": "box",
+  "resolution": 512,
+  "proxy": "geometry/proxy.glb",
+  "proxySha256": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+  "tightBounds": {
+    "min": [
+      -0.17875587940216064,
+      -0.49684619903564453,
+      -0.17578305304050446
+    ],
+    "max": [
+      0.17804846167564392,
+      0.4993610084056854,
+      0.16957306861877441
+    ]
+  },
+  "bakeBox": {
+    "min": [
+      -0.19868002355098724,
+      -0.5167703431844711,
+      -0.19570719718933105
+    ],
+    "max": [
+      0.19797260582447052,
+      0.519285152554512,
+      0.189497212767601
+    ]
+  },
+  "transform": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "inverseTransform": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "faceOrder": [
+    "+X",
+    "-X",
+    "+Y",
+    "-Y",
+    "+Z",
+    "-Z"
+  ],
+  "faces": {
+    "+X": {
+      "guide": "guides/px.png",
+      "depth": "guides/px.depth16f.bin",
+      "depthEncoding": "linear-axis-0-near-1-far;nan-background",
+      "imageRowOrder": "top-to-bottom",
+      "imageColorSpace": "sRGB",
+      "foregroundPixels": 97342,
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "side": [
+        1,
+        0,
+        0
+      ],
+      "tile": [
+        0,
+        0
+      ],
+      "viewMatrix": [
+        2.220446049250313e-16,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        2.220446049250313e-16,
+        0,
+        -0.0031049922108650875,
+        -0.0012574046850204468,
+        -0.30157815539836885,
+        1
+      ],
+      "projectionMatrix": [
+        5.19204855474944,
+        0,
+        0,
+        0,
+        0,
+        1.9303985242349089,
+        0,
+        0,
+        0,
+        0,
+        -3.997935634356657,
+        0,
+        0,
+        0,
+        -1.2071041592792966,
+        1
+      ],
+      "frustum": [
+        -0.19260220497846603,
+        0.19260220497846603,
+        -0.5180277478694916,
+        0.5180277478694916,
+        0.05180277478694916,
+        0.5520609537363053
+      ],
+      "guideSha256": "0083969434908f9afd2d9f88558c22f40fa8fc27a195965449cc45e4048947b9",
+      "depthSha256": "fd7d681090c1adb203f9eae512b7bf4b1ec8f7271edbaa91e35943937877a013"
+    },
+    "-X": {
+      "guide": "guides/nx.png",
+      "depth": "guides/nx.depth16f.bin",
+      "depthEncoding": "linear-axis-0-near-1-far;nan-background",
+      "imageRowOrder": "top-to-bottom",
+      "imageColorSpace": "sRGB",
+      "foregroundPixels": 97339,
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "side": [
+        -1,
+        0,
+        0
+      ],
+      "tile": [
+        1,
+        0
+      ],
+      "viewMatrix": [
+        2.220446049250313e-16,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2.220446049250313e-16,
+        0,
+        0.003104992210865088,
+        -0.0012574046850204468,
+        -0.3022855731248856,
+        1
+      ],
+      "projectionMatrix": [
+        5.19204855474944,
+        0,
+        0,
+        0,
+        0,
+        1.9303985242349089,
+        0,
+        0,
+        0,
+        0,
+        -3.997935634356657,
+        0,
+        0,
+        0,
+        -1.2071041592792966,
+        1
+      ],
+      "frustum": [
+        -0.19260220497846603,
+        0.19260220497846603,
+        -0.5180277478694916,
+        0.5180277478694916,
+        0.05180277478694916,
+        0.5520609537363053
+      ],
+      "guideSha256": "5235cf0f4066375f46460e1273cb01bb18d669585d5296c8b7767696f5b9608d",
+      "depthSha256": "59a8c6d4bcfc25ea1d4ded109b7fb8cc9634618b7a77a0903a0d46809607b8d2"
+    },
+    "+Y": {
+      "guide": "guides/py.png",
+      "depth": "guides/py.depth16f.bin",
+      "depthEncoding": "linear-axis-0-near-1-far;nan-background",
+      "imageRowOrder": "top-to-bottom",
+      "imageColorSpace": "sRGB",
+      "foregroundPixels": 91973,
+      "up": [
+        0,
+        0,
+        -1
+      ],
+      "side": [
+        0,
+        1,
+        0
+      ],
+      "tile": [
+        2,
+        0
+      ],
+      "viewMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2.220446049250313e-16,
+        1,
+        0,
+        0,
+        -1,
+        2.220446049250313e-16,
+        0,
+        0.0003537088632583618,
+        -0.003104992210865159,
+        -0.6228907021284104,
+        1
+      ],
+      "projectionMatrix": [
+        5.042195240578801,
+        0,
+        0,
+        0,
+        0,
+        5.19204855474944,
+        0,
+        0,
+        0,
+        0,
+        -1.7549077493044627,
+        0,
+        0,
+        0,
+        -1.0909090909090908,
+        1
+      ],
+      "frustum": [
+        -0.19832631468772888,
+        0.19832631468772888,
+        -0.19260220497846603,
+        0.19260220497846603,
+        0.05180277478694916,
+        1.1914638200998307
+      ],
+      "guideSha256": "e58a0e96cbc0429e1b88a6adb38d95d4a987f1ca0d14089ca3a105abad3c2ee0",
+      "depthSha256": "bf96bf91e88e5eb9eca4c426eec95d2bf311a616742b367f4abfc16e80ca149f"
+    },
+    "-Y": {
+      "guide": "guides/ny.png",
+      "depth": "guides/ny.depth16f.bin",
+      "depthEncoding": "linear-axis-0-near-1-far;nan-background",
+      "imageRowOrder": "top-to-bottom",
+      "imageColorSpace": "sRGB",
+      "foregroundPixels": 91968,
+      "up": [
+        0,
+        0,
+        1
+      ],
+      "side": [
+        0,
+        -1,
+        0
+      ],
+      "tile": [
+        0,
+        1
+      ],
+      "viewMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2.220446049250313e-16,
+        -1,
+        0,
+        0,
+        1,
+        2.220446049250313e-16,
+        0,
+        0.0003537088632583618,
+        0.0031049922108651587,
+        -0.6203758927583695,
+        1
+      ],
+      "projectionMatrix": [
+        5.042195240578801,
+        0,
+        0,
+        0,
+        0,
+        5.19204855474944,
+        0,
+        0,
+        0,
+        0,
+        -1.7549077493044627,
+        0,
+        0,
+        0,
+        -1.0909090909090908,
+        1
+      ],
+      "frustum": [
+        -0.19832631468772888,
+        0.19832631468772888,
+        -0.19260220497846603,
+        0.19260220497846603,
+        0.05180277478694916,
+        1.1914638200998307
+      ],
+      "guideSha256": "253cbe1cf67f52c7a6a446c2058a76d84b5f0edb566bf3e7b74d20585acd537c",
+      "depthSha256": "c6c32bc26f4f0a119ad7c20507725e26fc80590c73b7d1721235f5ebc1592f95"
+    },
+    "+Z": {
+      "guide": "guides/pz.png",
+      "depth": "guides/pz.depth16f.bin",
+      "depthEncoding": "linear-axis-0-near-1-far;nan-background",
+      "imageRowOrder": "top-to-bottom",
+      "imageColorSpace": "sRGB",
+      "foregroundPixels": 87326,
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "side": [
+        0,
+        0,
+        1
+      ],
+      "tile": [
+        1,
+        1
+      ],
+      "viewMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0.0003537088632583618,
+        -0.0012574046850204468,
+        -0.29310276234149935,
+        1
+      ],
+      "projectionMatrix": [
+        5.042195240578801,
+        0,
+        0,
+        0,
+        0,
+        1.9303985242349089,
+        0,
+        0,
+        0,
+        0,
+        -4.091569660159216,
+        0,
+        0,
+        0,
+        -1.211954661630342,
+        1
+      ],
+      "frustum": [
+        -0.19832631468772888,
+        0.19832631468772888,
+        -0.5180277478694916,
+        0.5180277478694916,
+        0.05180277478694916,
+        0.5406127343177796
+      ],
+      "guideSha256": "f59c42ca6bd2029205fad2803edf016eeee1be2abfdfe3c10f43c5833263b8ba",
+      "depthSha256": "e92e21c5745e87b319478b79cee3ddc3a0970840300f12d659740a94643ce87d"
+    },
+    "-Z": {
+      "guide": "guides/nz.png",
+      "depth": "guides/nz.depth16f.bin",
+      "depthEncoding": "linear-axis-0-near-1-far;nan-background",
+      "imageRowOrder": "top-to-bottom",
+      "imageColorSpace": "sRGB",
+      "foregroundPixels": 87324,
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "side": [
+        0,
+        0,
+        -1
+      ],
+      "tile": [
+        2,
+        1
+      ],
+      "viewMatrix": [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -0.0003537088632583618,
+        -0.0012574046850204468,
+        -0.2993127467632294,
+        1
+      ],
+      "projectionMatrix": [
+        5.042195240578801,
+        0,
+        0,
+        0,
+        0,
+        1.9303985242349089,
+        0,
+        0,
+        0,
+        0,
+        -4.091569660159216,
+        0,
+        0,
+        0,
+        -1.211954661630342,
+        1
+      ],
+      "frustum": [
+        -0.19832631468772888,
+        0.19832631468772888,
+        -0.5180277478694916,
+        0.5180277478694916,
+        0.05180277478694916,
+        0.5406127343177796
+      ],
+      "guideSha256": "22c1ab7bb88008fbb1f7d48192bbc8b415d67eaca9defd1eb2136a911cc53fe4",
+      "depthSha256": "0d824bdc68140297532d555c152a4a132b4e925c7470fd849cca667fb84cf9d8"
+    }
+  },
+  "maps": [],
+  "textures": {
+    "colorMap": {
+      "path": "maps/color.rgba16f.bin",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "dtype": "float16",
+      "endian": "little",
+      "rowOrder": "increasingShaderV",
+      "rowBytes": 12288,
+      "byteLength": 12582912,
+      "sha256": "964d08902842d220dc84c0ed45ae993343f51536b5c20f58a1ddbde767bb106c",
+      "minFilter": "linear",
+      "magFilter": "linear",
+      "wrap": "clamp-to-edge",
+      "mipmaps": false,
+      "colorSpace": "linear-srgb",
+      "alpha": "premultiplied-coverage"
+    },
+    "normalMap": {
+      "path": "maps/normal.rgba16f.bin",
+      "width": 1536,
+      "height": 1024,
+      "channels": 4,
+      "dtype": "float16",
+      "endian": "little",
+      "rowOrder": "increasingShaderV",
+      "rowBytes": 12288,
+      "byteLength": 12582912,
+      "sha256": "bbe3d460adb42932e843d4579e3dd2306bb17712ba130eda2cceaa445fcb2b38",
+      "minFilter": "linear",
+      "magFilter": "linear",
+      "wrap": "clamp-to-edge",
+      "mipmaps": false,
+      "colorSpace": "data",
+      "alpha": "coverage"
+    },
+    "intervalMap": {
+      "path": "maps/interval.rgba16f.bin",
+      "width": 1536,
+      "height": 512,
+      "channels": 4,
+      "dtype": "float16",
+      "endian": "little",
+      "rowOrder": "increasingShaderV",
+      "rowBytes": 12288,
+      "byteLength": 6291456,
+      "sha256": "9458e5cda155b2d4e5b5482b229484abf0194f3d7e7fed8e40329f47f4dc2fd0",
+      "minFilter": "linear",
+      "magFilter": "linear",
+      "wrap": "clamp-to-edge",
+      "mipmaps": false,
+      "colorSpace": "data",
+      "alpha": "gap-end"
+    },
+    "rangeMap": {
+      "path": "maps/range.rgba16f.bin",
+      "width": 192,
+      "height": 64,
+      "channels": 4,
+      "dtype": "float16",
+      "endian": "little",
+      "rowOrder": "increasingShaderV",
+      "rowBytes": 1536,
+      "byteLength": 98304,
+      "sha256": "f638fb30287fdffe24c4802d6fd2dd432b615918b00235d81fa577bfb5eeabb7",
+      "minFilter": "nearest",
+      "magFilter": "nearest",
+      "wrap": "clamp-to-edge",
+      "mipmaps": false,
+      "colorSpace": "data",
+      "alpha": "constant-one"
+    }
+  },
+  "baseColor": {
+    "path": "maps/color.rgba16f.bin",
+    "width": 1536,
+    "height": 1024,
+    "channels": 4,
+    "dtype": "float16",
+    "endian": "little",
+    "rowOrder": "increasingShaderV",
+    "rowBytes": 12288,
+    "byteLength": 12582912,
+    "sha256": "964d08902842d220dc84c0ed45ae993343f51536b5c20f58a1ddbde767bb106c",
+    "minFilter": "linear",
+    "magFilter": "linear",
+    "wrap": "clamp-to-edge",
+    "mipmaps": false,
+    "colorSpace": "linear-srgb",
+    "alpha": "premultiplied-coverage"
+  },
+  "backend": "webgl2",
+  "versions": {
+    "three": "186",
+    "baker": "0.4.2",
+    "bakerCommit": "df6caf4f459f58cf424df32af07c4aed0de4905c"
+  },
+  "coordinateSystem": "right-handed-y-up",
+  "provenance": {
+    "kind": "native-mesh-gray-rgb-only-v1",
+    "sourceManifest": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/native512/manifest.json",
+      "sha256": "f7c86b4591cddea531560e03e749cceb9a1173808ddb49c6a12775b1bf0a4445",
+      "bytes": 12543
+    },
+    "nativeBake": {
+      "renderAdapter": {
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "jobKey": "19a9b6b9cf1ab4d5d49774f3fd204fc87685649c11a4ed6d4b2222972ec48b6f",
+      "sourceSha256": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee"
+    },
+    "sourceSha256": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+    "helperSha256": "1a11567411ca0c7502d98125c7580a31cd985867a65baedad7f7cf19b5c2af90",
+    "graySrgbByte": 128
+  }
+}

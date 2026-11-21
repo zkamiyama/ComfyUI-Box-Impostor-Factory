@@ -1,0 +1,461 @@
+{
+  "completed": true,
+  "method": "direct3d-normal-only-revision-v1",
+  "helper": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/apply_normal_revision.py",
+    "sha256": "46e0a8f71966f91b943a3db03925eef8007e0b8634d5ac861794790d8e92dbdc",
+    "bytes": 16609
+  },
+  "dependencies": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/prepare_mesh_box.py",
+      "sha256": "1a11567411ca0c7502d98125c7580a31cd985867a65baedad7f7cf19b5c2af90",
+      "bytes": 17541
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/compose_faces.py",
+      "sha256": "ca10a7373535664c3dd8b3a9289351a34e15865e2db0200f66e89a460d4faa1a",
+      "bytes": 28336
+    }
+  ],
+  "baselines": {
+    "gray": {
+      "sourceManifest": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/baseline512/manifest.json",
+        "sha256": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+        "bytes": 13073
+      },
+      "manifest": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/baselines/gray/manifest.json",
+        "sha256": "471d25a9b8f504368f12ac459d367eadf51e2bb2101b76ec886e997e73660e50",
+        "bytes": 13205
+      },
+      "qa": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/baselines/gray/qa/normal-only-3fcb2f986f158c05.json",
+        "sha256": "aa3092c0dfe32ae104953abb01ebfffee719aaece1254adfa017ff3929cd9719",
+        "bytes": 5881
+      },
+      "normalAlphaUint16DifferenceCount": 0,
+      "normalRgbChangedPixels": 552462,
+      "allOtherOriginalFilesIdentical": true,
+      "originalSourceFilesUnchanged": true
+    },
+    "prior": {
+      "sourceManifest": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/manifest.json",
+        "sha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50",
+        "bytes": 13212
+      },
+      "manifest": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/baselines/prior/manifest.json",
+        "sha256": "556b555829562c9cec35f97aa59e438eefdbd36f6619c4f1043b985c86568c87",
+        "bytes": 13205
+      },
+      "qa": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/baselines/prior/qa/normal-only-badb51598fbefcdc.json",
+        "sha256": "8d7af72eb0532221739c4e319c54647d3e39f0d0118f1162179bec972305d62a",
+        "bytes": 6108
+      },
+      "normalAlphaUint16DifferenceCount": 0,
+      "normalRgbChangedPixels": 552462,
+      "allOtherOriginalFilesIdentical": true,
+      "originalSourceFilesUnchanged": true
+    }
+  },
+  "guides": {
+    "result": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/guides-unlit/result.json",
+      "sha256": "84b9437c8c110cb91cf56dcdacadd0d7539eaf7e99116045aa4dfb76ae878c31",
+      "bytes": 19513
+    },
+    "guides": [
+      {
+        "face": "+X",
+        "slug": "px",
+        "sourceGuide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/px/guide.json",
+          "sha256": "75bac901d3ad3b6425c2cceea8043cc566e28c9181c5e5b9451742f1e473cd4a",
+          "bytes": 13016
+        },
+        "guide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/guides-unlit/px/guide.json",
+          "sha256": "fa81bde6988552637de87e64a1d62c107d76b398c8f0599985eca1ac7d56e8bd",
+          "bytes": 16350
+        },
+        "allImageRecordsUnchanged": true,
+        "cameraMappingProxyUnchanged": true,
+        "unlitReplay": {
+          "normalMapReadByReplay": false,
+          "allSevenFilesByteIdentical": true,
+          "files": {
+            "rgb": {
+              "sha256": "724007e9d9ca1f10410b00ea9da4c35344f850cfcb5d8d69f1ca0d4f72cc6c36",
+              "bytes": 186854,
+              "allBytesEqual": true
+            },
+            "albedo": {
+              "sha256": "724007e9d9ca1f10410b00ea9da4c35344f850cfcb5d8d69f1ca0d4f72cc6c36",
+              "bytes": 186854,
+              "allBytesEqual": true
+            },
+            "alpha": {
+              "sha256": "c3e0317cbe7e251ae32d56c7f58263ff6baa77c7744fa170869cea59d188a69d",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "alphaPng": {
+              "sha256": "dd250ddb91d60fc61694cdb8ae32da906e00ff33c3071b56728093a40e806e17",
+              "bytes": 14197,
+              "allBytesEqual": true
+            },
+            "depth": {
+              "sha256": "46608bddd32bc5b065ed16653ed90fdcf7300328215df288b95bc0f3ac548c50",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "depthPreview": {
+              "sha256": "4357108a4bd409638705f384a830980ae074f415395ec6a782f5433efd6308d3",
+              "bytes": 55708,
+              "allBytesEqual": true
+            },
+            "depth512": {
+              "sha256": "e009e2d877c6b68b0b935d3fc5977f94e5db5946bfc1d952ee596ce260a0f9eb",
+              "bytes": 20269,
+              "allBytesEqual": true
+            }
+          },
+          "dependencies": [
+            "colorMap RGB and alpha",
+            "native depth",
+            "fixed camera/affine",
+            "sRGB conversion and fixed background"
+          ],
+          "method": "In-memory replay of unlit albedo/alpha/depth PNG and NPY encodings; no normal or lighting input"
+        }
+      },
+      {
+        "face": "-X",
+        "slug": "nx",
+        "sourceGuide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/nx/guide.json",
+          "sha256": "dd477148417c13a82e36b0f25437457a4ea5f2cb5387f44325e0e96e3adf1002",
+          "bytes": 13002
+        },
+        "guide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/guides-unlit/nx/guide.json",
+          "sha256": "f0eac733c7f7c6191217a15ea29c4bbd092f6c7ab221dee46742bffeea7ea93c",
+          "bytes": 16336
+        },
+        "allImageRecordsUnchanged": true,
+        "cameraMappingProxyUnchanged": true,
+        "unlitReplay": {
+          "normalMapReadByReplay": false,
+          "allSevenFilesByteIdentical": true,
+          "files": {
+            "rgb": {
+              "sha256": "4bd107465e68ec61a85e96b45fe1cdbdb914fa66674e2004c4a66335bb06a6e1",
+              "bytes": 185688,
+              "allBytesEqual": true
+            },
+            "albedo": {
+              "sha256": "4bd107465e68ec61a85e96b45fe1cdbdb914fa66674e2004c4a66335bb06a6e1",
+              "bytes": 185688,
+              "allBytesEqual": true
+            },
+            "alpha": {
+              "sha256": "97093a54b7457a011967609d8a227eb9e4b31bddc10a8f4b3b0901db8a3b4027",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "alphaPng": {
+              "sha256": "9bea278d634d3ffe11997e7fc945daacd33c9c9a7a3d5d7a4344f1008243f1ad",
+              "bytes": 13903,
+              "allBytesEqual": true
+            },
+            "depth": {
+              "sha256": "d01a20d6c70b74afa6b704e8cb88834fb4f836e1b93a10aef5238338d05289f8",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "depthPreview": {
+              "sha256": "fea66789299727ad866556d5e42d96ea1d8e3211252c51f0cbfc09db9d1d9e0f",
+              "bytes": 55657,
+              "allBytesEqual": true
+            },
+            "depth512": {
+              "sha256": "310afe59da126aade6fda51d2bf13d5063b4a0173b7528c2a98610519d648aa1",
+              "bytes": 20654,
+              "allBytesEqual": true
+            }
+          },
+          "dependencies": [
+            "colorMap RGB and alpha",
+            "native depth",
+            "fixed camera/affine",
+            "sRGB conversion and fixed background"
+          ],
+          "method": "In-memory replay of unlit albedo/alpha/depth PNG and NPY encodings; no normal or lighting input"
+        }
+      },
+      {
+        "face": "+Y",
+        "slug": "py",
+        "sourceGuide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/py/guide.json",
+          "sha256": "fad993fb181fa72220affa6df27d0024d3bbd79c64e0ef919747d4ffcae88be3",
+          "bytes": 12989
+        },
+        "guide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/guides-unlit/py/guide.json",
+          "sha256": "d4734297a09f883e62c0700658bb135d686b131fe0bf35eaa988a70f1cb7dc07",
+          "bytes": 16323
+        },
+        "allImageRecordsUnchanged": true,
+        "cameraMappingProxyUnchanged": true,
+        "unlitReplay": {
+          "normalMapReadByReplay": false,
+          "allSevenFilesByteIdentical": true,
+          "files": {
+            "rgb": {
+              "sha256": "b4b1c28a952cc1dcbab8b9116e641afb5a9298848ec877f7bc5b6a9fc2865a78",
+              "bytes": 360688,
+              "allBytesEqual": true
+            },
+            "albedo": {
+              "sha256": "b4b1c28a952cc1dcbab8b9116e641afb5a9298848ec877f7bc5b6a9fc2865a78",
+              "bytes": 360688,
+              "allBytesEqual": true
+            },
+            "alpha": {
+              "sha256": "0f9a8235f80a008a2bcc977bfebddc617c077553d8f255e2ce6104bb04ece058",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "alphaPng": {
+              "sha256": "54ff5761b80170aed25db699e14ee14c37d0ae71287ea1283da148e6d786f330",
+              "bytes": 16377,
+              "allBytesEqual": true
+            },
+            "depth": {
+              "sha256": "1ecfee654208fea91dceea1244d4b24f6f10387f4337737d67306d3604da1f54",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "depthPreview": {
+              "sha256": "284087d83a8f4a2bac32066cca3d4cfafa4142a4559247584a11a878d477361c",
+              "bytes": 81660,
+              "allBytesEqual": true
+            },
+            "depth512": {
+              "sha256": "7d50184d46827611826855cee805c331f72a63c095e9bca8e8de92866b078c70",
+              "bytes": 30254,
+              "allBytesEqual": true
+            }
+          },
+          "dependencies": [
+            "colorMap RGB and alpha",
+            "native depth",
+            "fixed camera/affine",
+            "sRGB conversion and fixed background"
+          ],
+          "method": "In-memory replay of unlit albedo/alpha/depth PNG and NPY encodings; no normal or lighting input"
+        }
+      },
+      {
+        "face": "-Y",
+        "slug": "ny",
+        "sourceGuide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/ny/guide.json",
+          "sha256": "040998e820c23290b1846a4d36f43b55960b8919dc227c5c2027ad05f64316d9",
+          "bytes": 13028
+        },
+        "guide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/guides-unlit/ny/guide.json",
+          "sha256": "7376289c93f432a78744f08dd6cc1994e0753a653e250507af2fc38301554831",
+          "bytes": 16362
+        },
+        "allImageRecordsUnchanged": true,
+        "cameraMappingProxyUnchanged": true,
+        "unlitReplay": {
+          "normalMapReadByReplay": false,
+          "allSevenFilesByteIdentical": true,
+          "files": {
+            "rgb": {
+              "sha256": "6b1736a740e7f35caa21018aaed3ee189728df6aedd75e1df0ac07a42758ab1a",
+              "bytes": 342483,
+              "allBytesEqual": true
+            },
+            "albedo": {
+              "sha256": "6b1736a740e7f35caa21018aaed3ee189728df6aedd75e1df0ac07a42758ab1a",
+              "bytes": 342483,
+              "allBytesEqual": true
+            },
+            "alpha": {
+              "sha256": "2ef87411a86a6cf1c53ebc0ca7e3b60274925c950848bba4e364703d0258d14e",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "alphaPng": {
+              "sha256": "0a3e9296107137e8d25d7ab97fff319d8b929e12378ac8a5ddf6ad9edc250cad",
+              "bytes": 15473,
+              "allBytesEqual": true
+            },
+            "depth": {
+              "sha256": "0f74304c62a4ebed442aa3ca8a71a4b7f0474aeffca9c77927e0ff37a5072eac",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "depthPreview": {
+              "sha256": "59b1a4e1497b860d536e884e9aeabdf67f3552eb6021e4b1db10ae5fabfaf239",
+              "bytes": 84854,
+              "allBytesEqual": true
+            },
+            "depth512": {
+              "sha256": "c07f869e055716a6787c9026e96c1af3b26be469359486605f83c7b2aeef1a9c",
+              "bytes": 32925,
+              "allBytesEqual": true
+            }
+          },
+          "dependencies": [
+            "colorMap RGB and alpha",
+            "native depth",
+            "fixed camera/affine",
+            "sRGB conversion and fixed background"
+          ],
+          "method": "In-memory replay of unlit albedo/alpha/depth PNG and NPY encodings; no normal or lighting input"
+        }
+      },
+      {
+        "face": "+Z",
+        "slug": "pz",
+        "sourceGuide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/pz/guide.json",
+          "sha256": "9d81e1abdfe48b41abe2b274de9cc65f2cacebd8157bbb767e16ed2bae6a9067",
+          "bytes": 12944
+        },
+        "guide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/guides-unlit/pz/guide.json",
+          "sha256": "42b41de819ea8828ce8e112d3d5dcdb89e1afe67e955b9b4bbc26aec9906d682",
+          "bytes": 16278
+        },
+        "allImageRecordsUnchanged": true,
+        "cameraMappingProxyUnchanged": true,
+        "unlitReplay": {
+          "normalMapReadByReplay": false,
+          "allSevenFilesByteIdentical": true,
+          "files": {
+            "rgb": {
+              "sha256": "e2462d3bf25d2f17ad533966360b08a7d6ddc298b0ef9b8a864e71c6dc384f65",
+              "bytes": 184619,
+              "allBytesEqual": true
+            },
+            "albedo": {
+              "sha256": "e2462d3bf25d2f17ad533966360b08a7d6ddc298b0ef9b8a864e71c6dc384f65",
+              "bytes": 184619,
+              "allBytesEqual": true
+            },
+            "alpha": {
+              "sha256": "ad3f795f520648374745b15a7435ecdcc67657a856feec26d137090d8a4568f1",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "alphaPng": {
+              "sha256": "0b4215a71974bfa9696a26db1f9abcb27fb95c9ef039801782fa354ccc1075d7",
+              "bytes": 14129,
+              "allBytesEqual": true
+            },
+            "depth": {
+              "sha256": "820e9475b2698821fe1f2faacd891cbdab54836bf240ad5f5d0f8737e6cba504",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "depthPreview": {
+              "sha256": "764d1cae484e25a9c07c04c66d792747596828068ac83f397f8c5c63f1e195e0",
+              "bytes": 58106,
+              "allBytesEqual": true
+            },
+            "depth512": {
+              "sha256": "01bcc73ed12b1a5501398bccbd4b6049f8b31ba0587ceb9093ae56615411ef08",
+              "bytes": 21409,
+              "allBytesEqual": true
+            }
+          },
+          "dependencies": [
+            "colorMap RGB and alpha",
+            "native depth",
+            "fixed camera/affine",
+            "sRGB conversion and fixed background"
+          ],
+          "method": "In-memory replay of unlit albedo/alpha/depth PNG and NPY encodings; no normal or lighting input"
+        }
+      },
+      {
+        "face": "-Z",
+        "slug": "nz",
+        "sourceGuide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/nz/guide.json",
+          "sha256": "b04e9bd204086b9ba418d7bb6af6bcfbe0c17514b42262e6051a669804b92140",
+          "bytes": 12951
+        },
+        "guide": {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/guides-unlit/nz/guide.json",
+          "sha256": "db812794eb36311557269f9623e5268e77e39e4ca513239260f864babe3049ac",
+          "bytes": 16285
+        },
+        "allImageRecordsUnchanged": true,
+        "cameraMappingProxyUnchanged": true,
+        "unlitReplay": {
+          "normalMapReadByReplay": false,
+          "allSevenFilesByteIdentical": true,
+          "files": {
+            "rgb": {
+              "sha256": "7bedc96579c907c168ce9e22a5dbac23e9dfe04d710fa96790b705132b327ec7",
+              "bytes": 182629,
+              "allBytesEqual": true
+            },
+            "albedo": {
+              "sha256": "7bedc96579c907c168ce9e22a5dbac23e9dfe04d710fa96790b705132b327ec7",
+              "bytes": 182629,
+              "allBytesEqual": true
+            },
+            "alpha": {
+              "sha256": "9ffa991d876b8234b830153f115790420915a0e41db4aa4c9e2212fd4ca7f90f",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "alphaPng": {
+              "sha256": "ed36e23d44910a851c2f76af2207c4bd39c0b4c6c2e4174e2514b1b254c863b5",
+              "bytes": 14183,
+              "allBytesEqual": true
+            },
+            "depth": {
+              "sha256": "f0d34d5f3157784f31d15a4199a41b34e65e9894d2e60657d88e06e421947e42",
+              "bytes": 4194432,
+              "allBytesEqual": true
+            },
+            "depthPreview": {
+              "sha256": "d9beb9c72eba7d544ed797d9f3103299eebce62bd3b8c8acac0e31da05ca6eeb",
+              "bytes": 55065,
+              "allBytesEqual": true
+            },
+            "depth512": {
+              "sha256": "08d4a37a4ec5acfea03cf11b4c64105a2bfeeb9c4f1b99bb319a5cc589383d76",
+              "bytes": 20038,
+              "allBytesEqual": true
+            }
+          },
+          "dependencies": [
+            "colorMap RGB and alpha",
+            "native depth",
+            "fixed camera/affine",
+            "sRGB conversion and fixed background"
+          ],
+          "method": "In-memory replay of unlit albedo/alpha/depth PNG and NPY encodings; no normal or lighting input"
+        }
+      }
+    ]
+  },
+  "allOriginalSourceFilesUnchanged": true,
+  "qwenRunManifestsUnmodified": true,
+  "seconds": 12.57732958800625
+}

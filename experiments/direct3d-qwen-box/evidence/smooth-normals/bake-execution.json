@@ -1,0 +1,31 @@
+{
+  "command": [
+    "node",
+    "worker/cli.mjs",
+    "bake",
+    "--input",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/canonical.smooth-normals.glb",
+    "--output",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/native512",
+    "--resolution",
+    "512",
+    "--backend",
+    "webgl2",
+    "--canonical-meta",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/identity-canonical.json"
+  ],
+  "cwd": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121",
+  "environment": {
+    "BI_SOFTWARE_GPU": "1",
+    "BI_CHROMIUM": "/home/dev/.cache/ms-playwright/chromium-1254/chrome-linux64/chrome",
+    "DISPLAY": null,
+    "WAYLAND_DISPLAY": null
+  },
+  "nodeModulesTarget": "/home/dev/Projects/box-impostor-lab/ComfyUI/custom_nodes/box_impostor_factory/node_modules",
+  "temporarySymlinkCreated": true,
+  "cliSha256": "4950466420add8eb01b6486467bb4ab8d34734c827e6cc7af5f489a804dffb8e",
+  "nodeVersion": "v22.23.3",
+  "returnCode": 0,
+  "elapsedSeconds": 8.023433223017491,
+  "temporarySymlinkRemoved": true
+}

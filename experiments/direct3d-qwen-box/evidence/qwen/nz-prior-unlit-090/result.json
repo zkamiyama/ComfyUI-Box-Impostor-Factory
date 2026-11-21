@@ -1,0 +1,81 @@
+{
+  "completed": true,
+  "case": "Direct3D-V3 Box face colorization candidate",
+  "face": "-Z",
+  "faceSlug": "nz",
+  "promptId": "6607f121-f6e9-4287-979f-3ceb70c22130",
+  "promptSHA256": "a408a5a6fd2c2f09972702fcd213e58a99f20fe669417434f7a7012495b949ba",
+  "images": {
+    "generated": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/nz-prior-unlit-090/generated.png",
+      "sha256": "becd99139e759715e3fbc71ab2df81caa626c4509c535a57ec5092d302734c3b",
+      "bytes": 871359
+    },
+    "mask": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/nz-prior-unlit-090/mask.png",
+      "sha256": "1fcf982e1f33189fcbbd9ed505c2404b6830f32c966655358b576d7fe40f324e",
+      "bytes": 47103
+    }
+  },
+  "model": "Qwen Image 2.1 int8",
+  "lora": "QI2.1_AnyAngle",
+  "loraStrength": 0.0,
+  "size": 1024,
+  "steps": 10,
+  "cfg": 3,
+  "seed": 2026113031,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "prompt": "Refine the textures over the COMPLETE already colored 3D model in image 1, using image 2 only as an appearance reference. Preserve image 1's exact camera, projection, full-frame silhouette, body proportions, pose, head angle, facial expression, eye and mouth centers, hairline and hair length, sleeve boundaries, hand and finger locations, dress hem, legs, shoe outlines, heels and all background gaps. Improve every visible material: coherent fine gray-and-white heather knit on the whole dress, blonde hair strands, natural skin and facial detail, and black suede shoes with tan heels and sole edges. Correct rough pixels, obvious texture-transfer defects, missing eye detail and abrupt color patches while keeping every feature at its existing location. Keep the material regions fixed: skin stays skin, fabric stays fabric, hair stays hair, and black shoes stay black. Image 2 must not change image 1's pose, head direction, proportions or framing. Image 3 is matching structural depth, nearer white and background black. This is the -Z BACK view. Show the back of the hair and the rear of the dress. Preserve the back-facing head and body. Do not paint a face, eyes, nose or mouth on the back of the head or turn the person toward the camera. Keep all existing overlaps and hidden surfaces hidden. Maintain a soft, even surface-color appearance; do not add dramatic lighting, new strong shadows or highlights. Keep the complete uncropped frame and the same uniform neutral gray background. No rotation, zoom, moved limbs, new objects, text or panels.",
+  "promptSource": {
+    "kind": "file",
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/nz-prior-unlit.prompt.txt",
+    "sha256": "255f48212fbb4aa8ce65943d753f13e316b64afb1ed6ff6189e25d46fb15621f"
+  },
+  "defaults": {
+    "profile": "anchored",
+    "denoise": 0.9,
+    "loraStrength": 0.0,
+    "size": 1024,
+    "steps": 10,
+    "cfg": 3,
+    "seed": 2026113031,
+    "sampler": "euler",
+    "scheduler": "simple"
+  },
+  "inputOrder": [
+    "target full-view RGB",
+    "original reference photograph",
+    "target depth"
+  ],
+  "server": "http://127.0.0.1:8198",
+  "runnerSha256": "4cf769b1d3ecc695d11324d32637f1df1deeaae251046f314e94d9aa93898698",
+  "profile": "anchored",
+  "denoise": 0.9,
+  "initialLatent": "VAE-encoded target RGB",
+  "serverExecutionSeconds": 63.081,
+  "clientWaitSeconds": 64.11017213098239,
+  "collectionOnly": false,
+  "cachedNodes": [
+    "6",
+    "7",
+    "8",
+    "15",
+    "19",
+    "9"
+  ],
+  "inputsSHA256": {
+    "target-color.png": "7bedc96579c907c168ce9e22a5dbac23e9dfe04d710fa96790b705132b327ec7",
+    "target-depth.png": "08d4a37a4ec5acfea03cf11b4c64105a2bfeeb9c4f1b99bb319a5cc589383d76",
+    "original.png": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+  },
+  "vram": {
+    "measurement": "nvidia-smi sampled whole-device used VRAM",
+    "intervalMilliseconds": 200,
+    "sampleCount": 313,
+    "peakSampledUsedMiB": 13720.0,
+    "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+  },
+  "boxModified": false,
+  "nextStage": "Review this full-view candidate, register generated RGB/mask against its guide, and compose only selected face RGB while preserving Direct3D structural alpha and geometry."
+}

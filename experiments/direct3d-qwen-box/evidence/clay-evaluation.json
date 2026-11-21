@@ -1,0 +1,140 @@
+{
+  "scope": "Full-frame manual review; no face crops or local warps.",
+  "attempts": [
+    {
+      "variant": "pz-clay-090",
+      "selected": false,
+      "observation": "Only face and hair are colored; dress, hands, legs and shoes remain clay. Reject as incomplete whole-body colorization.",
+      "result": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-clay-090/result.json",
+        "sha256": "423a0b953f8efdfc8705290a3d5e1f6ed94e44b93a82a75471eec343762380c8"
+      },
+      "generated": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-clay-090/generated.png",
+        "sha256": "fd6bf9535b92d86316f357c257407f0d3de49540c07a1177ac5bf52f23a98935",
+        "bytes": 633201
+      },
+      "executionSeconds": 269.941,
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 1337,
+        "peakSampledUsedMiB": 13697.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      },
+      "denoise": 0.9,
+      "promptId": "b4d011ec-2d69-49a3-b27f-b98e2ff33584",
+      "promptSHA256": "682ab443b4f00ee92fb4994111b8745fad808cd2beb73da41b4853d9afec0e21",
+      "cachedNodes": []
+    },
+    {
+      "variant": "pz-materials-090",
+      "selected": false,
+      "observation": "Whole-body materials are colored, but head direction and hair placement shift toward the reference photograph and the rear heel shortens. Front-only native Box pilot shows internal facial mismatch and unsupported gray heel regions. Keep as rejected direct-clay pilot, not final.",
+      "result": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-090/result.json",
+        "sha256": "53d8fcfbb107acce0a48aa98f143d8fcb53fe316c2fd15c1e0c7dceea41e7dad"
+      },
+      "generated": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-090/generated.png",
+        "sha256": "bf029158b923c2c5140d69a30c3ac264ece0add94d2f454c64278e6f937fa0cc",
+        "bytes": 792188
+      },
+      "executionSeconds": 69.501,
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 347,
+        "peakSampledUsedMiB": 13729.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      },
+      "denoise": 0.9,
+      "promptId": "78d5c8b0-dc25-401e-ab8b-78762a645075",
+      "promptSHA256": "349a8ed5b4ff5b5fc171ead06f69774ea6b36ff7159b7ebdd38f08fef5df5b1e",
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ]
+    },
+    {
+      "variant": "pz-materials-075",
+      "selected": false,
+      "observation": "Lower denoise preserves more of the clay render but only shoes are colored. The rest of the body remains predominantly gray. Reject as incomplete colorization.",
+      "result": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-075/result.json",
+        "sha256": "b52bba0a9bba5266d13f11f570f4bc2477a7a1dc7f52b8c9fea7e90ba6e47dde"
+      },
+      "generated": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-075/generated.png",
+        "sha256": "ddb42ee0eeb424a0052a15d01688e1d24881c1b6085bfc7e93a25099dcb8463b",
+        "bytes": 628303
+      },
+      "executionSeconds": 67.272,
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 337,
+        "peakSampledUsedMiB": 13853.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      },
+      "denoise": 0.75,
+      "promptId": "fddc4b08-a88a-47ce-895a-19dbc2347166",
+      "promptSHA256": "eb3de67d4467cdc608341410a7276f74a03d84e44d795e4a13aed9557e4758b6",
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ]
+    },
+    {
+      "variant": "px-materials-090",
+      "selected": false,
+      "observation": "Side view colors forearms, legs and shoes but leaves the hair and upper back largely clay. Reject as incomplete colorization.",
+      "result": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/px-materials-090/result.json",
+        "sha256": "0789e52f755f56bd5f8f230606b318831616fcb7e28f45775c48eda18ee84b6e"
+      },
+      "generated": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/px-materials-090/generated.png",
+        "sha256": "dffed365622792c72e5c807aadf74db6755e34c02b3f473732096a0d7cf2242f",
+        "bytes": 644197
+      },
+      "executionSeconds": 65.594,
+      "vram": {
+        "measurement": "nvidia-smi sampled whole-device used VRAM",
+        "intervalMilliseconds": 200,
+        "sampleCount": 327,
+        "peakSampledUsedMiB": 13803.0,
+        "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+      },
+      "denoise": 0.9,
+      "promptId": "3a27b3c6-fb3d-49f8-9b4d-7a75c8354622",
+      "promptSHA256": "4d71da98bd9bd0d15b5739c37436a3aabc9fa33b98e5485cde7fd6f547e8d3d5",
+      "cachedNodes": [
+        "6",
+        "7",
+        "8",
+        "15",
+        "19",
+        "9"
+      ]
+    }
+  ],
+  "decision": "Prepare a complete color prior from the existing coarse model's UV texture on the unchanged Direct3D surface, then test Qwen refinement.",
+  "limitations": [
+    "Silhouette mask IoU cannot certify internal feature alignment.",
+    "The front pilot updates only +Z, so the other five gray faces are not evidence of six-face generation quality.",
+    "The lower-image-band support statistic is a coordinate band, not a semantic shoe segmentation."
+  ],
+  "frontPilot": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/front-materials-090/pilot-report.json",
+    "sha256": "6c7ddf49f6f38a529eb7a93b6c09c5e2e33863a16666ff770e41558d12d0333b"
+  }
+}

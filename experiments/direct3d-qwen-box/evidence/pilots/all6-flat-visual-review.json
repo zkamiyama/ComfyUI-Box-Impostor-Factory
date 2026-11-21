@@ -1,0 +1,79 @@
+{
+  "kind": "independent-full-frame-visual-review-v1",
+  "completed": true,
+  "createdAt": "2026-11-21T07:49:57.695698+00:00",
+  "inputRecord": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/all6-prior-unlit-090/independent-review-inputs.json",
+    "sha256": "f37ec00ff6bdcaeb19bae5127119980a148055f3f766f74033ee0bf3e9dd03f5"
+  },
+  "scope": "Flat-normal all-six-face Qwen RGB candidate; eight original full 512x512 Inspector frames at 45-degree azimuth intervals, pitch zero; compared individually with prior frames 0,30,...,210.",
+  "allEightQwenAndPriorFramesVisuallyInspected": true,
+  "noCropResizeOrColorAdjustment": true,
+  "overallAssessment": "元の色転写Boxに対してRGBの外観は改善。特に目元の黒塊と髪の大きな色むらが減った。8方向の範囲で大きな材質の混入や手足の位置ずれは見当たらない。最終的な6面品質、連続回転、真上・真下の品質はこの試験だけでは確定しない。",
+  "bodyParts": {
+    "face": "0、45、-90、-45度の可視面では元の黒い目元が改善し、頭の向きや顔の大きな配置ずれは見当たらない。512全身画像での確認なので、眼球・口の細かな位置精度までは評価していない。",
+    "hair": "側面と背面で元の大きな白っぽい色むらが減り、金髪の色と流れがまとまった。別の身体部位へ広い髪色がはみ出す異常は見当たらない。",
+    "dress": "灰色ニットの領域は8方向で保たれ、模様が細かく見える部分がある。胸から腰の縦方向の明暗帯や背中の陰影筋は元のpriorにもあり、今回のRGB更新後にも残っている。",
+    "hands": "腰に置いた手の大きな位置と肌／服の境界は保たれて見える。指先の細部を明確な改善と判断できる表示サイズではない。",
+    "legsAndShoes": "脚の色むらは弱まり、靴とヒールの大きな位置ずれや広い灰色の塗り残しは見当たらない。靴は多くの角度で暗く、靴底やかかとの細部品質の改善は断定できない。"
+  },
+  "seams": "45度間隔の斜め視点を含め、顔・髪・服の色が大きく分断される新しい継ぎ目は見当たらない。模様の細かな変化や連続回転時の切替は未評価。既存の明暗帯をQwenが新しく作った継ぎ目とは判断していない。",
+  "perView": [
+    {
+      "qwenIndex": 0,
+      "priorIndex": 0,
+      "yawDegrees": 0,
+      "observation": "正面。黒い目元が改善。服の中央の縦方向の明暗帯は両方に残る。"
+    },
+    {
+      "qwenIndex": 1,
+      "priorIndex": 30,
+      "yawDegrees": 45,
+      "observation": "前側面。髪の色むらが減り、手・脚・ヒールの大きな配置は維持。"
+    },
+    {
+      "qwenIndex": 2,
+      "priorIndex": 60,
+      "yawDegrees": 90,
+      "observation": "後側面。髪が均一になり、服・袖・肌の領域は整合。"
+    },
+    {
+      "qwenIndex": 3,
+      "priorIndex": 90,
+      "yawDegrees": 135,
+      "observation": "背面寄り。髪の大きな白い帯が減少。背中と腰の陰影筋は残る。"
+    },
+    {
+      "qwenIndex": 4,
+      "priorIndex": 120,
+      "yawDegrees": 180,
+      "observation": "背面。髪色がまとまり、衣服や脚への広い色の混入は見当たらない。"
+    },
+    {
+      "qwenIndex": 5,
+      "priorIndex": 150,
+      "yawDegrees": -135,
+      "observation": "反対側の後側面。服と肌の境界は整合。靴は暗く細部評価は限定的。"
+    },
+    {
+      "qwenIndex": 6,
+      "priorIndex": 180,
+      "yawDegrees": -90,
+      "observation": "反対側の前側面。目元の黒塊が改善し、髪・胸元・手の大きな位置は維持。"
+    },
+    {
+      "qwenIndex": 7,
+      "priorIndex": 210,
+      "yawDegrees": -45,
+      "observation": "正面寄り。目元の改善が見え、左右の手と靴に大きなずれは見当たらない。"
+    }
+  ],
+  "limitations": [
+    "Eight isolated frames do not establish continuous switching or absence of popping.",
+    "Pitch-zero views do not directly assess top and bottom texture quality.",
+    "No new 240-frame capture or alpha metric was run for this visual review.",
+    "No smoothing-normal candidate is included; this is the existing flat-native-normal branch.",
+    "No face crop, zoom, local warp or per-image exposure/color correction was used."
+  ],
+  "suggestedNextAssessment": "RGB改善の候補として保持し、rootが別に実施するnormal比較と、採用候補の240フレーム評価で最終判断する。"
+}

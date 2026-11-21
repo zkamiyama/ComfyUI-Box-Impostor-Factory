@@ -1,0 +1,43 @@
+{
+  "glbSha256": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+  "transform": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "inverseTransform": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "coordinateSystem": "right-handed-y-up",
+  "frontDirection": "+Z",
+  "sourcePath": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/rgb1024/canonical.glb",
+  "additionalNormalization": false
+}

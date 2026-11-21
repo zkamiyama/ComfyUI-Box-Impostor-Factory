@@ -1,0 +1,233 @@
+{
+  "completed": true,
+  "method": "immutable-guide-rgb-selection-v1",
+  "sourceKey": "albedo",
+  "sourceGuides": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides",
+  "sourceFiles": {
+    "nx/albedo.png": "4bd107465e68ec61a85e96b45fe1cdbdb914fa66674e2004c4a66335bb06a6e1",
+    "nx/alpha.npy": "97093a54b7457a011967609d8a227eb9e4b31bddc10a8f4b3b0901db8a3b4027",
+    "nx/alpha.png": "9bea278d634d3ffe11997e7fc945daacd33c9c9a7a3d5d7a4344f1008243f1ad",
+    "nx/depth-512.png": "310afe59da126aade6fda51d2bf13d5063b4a0173b7528c2a98610519d648aa1",
+    "nx/depth.npy": "d01a20d6c70b74afa6b704e8cb88834fb4f836e1b93a10aef5238338d05289f8",
+    "nx/depth.png": "fea66789299727ad866556d5e42d96ea1d8e3211252c51f0cbfc09db9d1d9e0f",
+    "nx/guide.json": "d7362c939069dd4c41788ceb8cdf57b4b8646b0a2ce2e4cfe30169ffb6f33602",
+    "nx/rgb.png": "595e45718a41e505877a473b46c39b4601815100c5a7005f23e22b2162e6bbd2",
+    "ny/albedo.png": "6b1736a740e7f35caa21018aaed3ee189728df6aedd75e1df0ac07a42758ab1a",
+    "ny/alpha.npy": "2ef87411a86a6cf1c53ebc0ca7e3b60274925c950848bba4e364703d0258d14e",
+    "ny/alpha.png": "0a3e9296107137e8d25d7ab97fff319d8b929e12378ac8a5ddf6ad9edc250cad",
+    "ny/depth-512.png": "c07f869e055716a6787c9026e96c1af3b26be469359486605f83c7b2aeef1a9c",
+    "ny/depth.npy": "0f74304c62a4ebed442aa3ca8a71a4b7f0474aeffca9c77927e0ff37a5072eac",
+    "ny/depth.png": "59b1a4e1497b860d536e884e9aeabdf67f3552eb6021e4b1db10ae5fabfaf239",
+    "ny/guide.json": "f1a77e0527f20a7e546949fe9ebce68c95b3ec2fd1be1f8ad4223125db159594",
+    "ny/rgb.png": "9ef78ec6ac829c1c0b811063cd07f84449ac08780c23259bbf4b3533e6f69039",
+    "nz/albedo.png": "7bedc96579c907c168ce9e22a5dbac23e9dfe04d710fa96790b705132b327ec7",
+    "nz/alpha.npy": "9ffa991d876b8234b830153f115790420915a0e41db4aa4c9e2212fd4ca7f90f",
+    "nz/alpha.png": "ed36e23d44910a851c2f76af2207c4bd39c0b4c6c2e4174e2514b1b254c863b5",
+    "nz/depth-512.png": "08d4a37a4ec5acfea03cf11b4c64105a2bfeeb9c4f1b99bb319a5cc589383d76",
+    "nz/depth.npy": "f0d34d5f3157784f31d15a4199a41b34e65e9894d2e60657d88e06e421947e42",
+    "nz/depth.png": "d9beb9c72eba7d544ed797d9f3103299eebce62bd3b8c8acac0e31da05ca6eeb",
+    "nz/guide.json": "81bd6cf88afbdd81e729d0f2a2a3bc648aa2e2cbf094ab1d906849edd03bb576",
+    "nz/rgb.png": "692bda7670dd8f53d0461a16b7918c3aea4e20b69e442284feec4cb96829430f",
+    "px/albedo.png": "724007e9d9ca1f10410b00ea9da4c35344f850cfcb5d8d69f1ca0d4f72cc6c36",
+    "px/alpha.npy": "c3e0317cbe7e251ae32d56c7f58263ff6baa77c7744fa170869cea59d188a69d",
+    "px/alpha.png": "dd250ddb91d60fc61694cdb8ae32da906e00ff33c3071b56728093a40e806e17",
+    "px/depth-512.png": "e009e2d877c6b68b0b935d3fc5977f94e5db5946bfc1d952ee596ce260a0f9eb",
+    "px/depth.npy": "46608bddd32bc5b065ed16653ed90fdcf7300328215df288b95bc0f3ac548c50",
+    "px/depth.png": "4357108a4bd409638705f384a830980ae074f415395ec6a782f5433efd6308d3",
+    "px/guide.json": "b2f5426e2835b911954ef6e931f91bea6d69c2a7177c01e6ba7f64d88b50ac19",
+    "px/rgb.png": "75e2be7837084a1e597703abec6768aefbf0624c9334b04f86a85a88c6ed10f0",
+    "py/albedo.png": "b4b1c28a952cc1dcbab8b9116e641afb5a9298848ec877f7bc5b6a9fc2865a78",
+    "py/alpha.npy": "0f9a8235f80a008a2bcc977bfebddc617c077553d8f255e2ce6104bb04ece058",
+    "py/alpha.png": "54ff5761b80170aed25db699e14ee14c37d0ae71287ea1283da148e6d786f330",
+    "py/depth-512.png": "7d50184d46827611826855cee805c331f72a63c095e9bca8e8de92866b078c70",
+    "py/depth.npy": "1ecfee654208fea91dceea1244d4b24f6f10387f4337737d67306d3604da1f54",
+    "py/depth.png": "284087d83a8f4a2bac32066cca3d4cfafa4142a4559247584a11a878d477361c",
+    "py/guide.json": "8f7c58407a6b82544212b293fa8a6e9067269dab0498690991a801045c321612",
+    "py/rgb.png": "acdad7c8731710676698874fef92dd2cf982b47afe70219bbf64a818eeccef5a",
+    "pz/albedo.png": "e2462d3bf25d2f17ad533966360b08a7d6ddc298b0ef9b8a864e71c6dc384f65",
+    "pz/alpha.npy": "ad3f795f520648374745b15a7435ecdcc67657a856feec26d137090d8a4568f1",
+    "pz/alpha.png": "0b4215a71974bfa9696a26db1f9abcb27fb95c9ef039801782fa354ccc1075d7",
+    "pz/depth-512.png": "01bcc73ed12b1a5501398bccbd4b6049f8b31ba0587ceb9093ae56615411ef08",
+    "pz/depth.npy": "820e9475b2698821fe1f2faacd891cbdab54836bf240ad5f5d0f8737e6cba504",
+    "pz/depth.png": "764d1cae484e25a9c07c04c66d792747596828068ac83f397f8c5c63f1e195e0",
+    "pz/guide.json": "a368c610537de9267167e06072662185562caf3ac8c7e3fa1e370f25a8d615d7",
+    "pz/rgb.png": "a6b3016e856744149ca1673eabed3f4d3848af208f92cd17238e02eef33ee572"
+  },
+  "helper": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/select_guide_rgb.py",
+    "sha256": "920c2ef29fc38fc7a1c3db8e99d67ed45ecb9560c4a47759f302e055a8cad153",
+    "bytes": 5228
+  },
+  "guides": [
+    {
+      "face": "+Z",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/pz/guide.json",
+        "sha256": "9d81e1abdfe48b41abe2b274de9cc65f2cacebd8157bbb767e16ed2bae6a9067",
+        "bytes": 12944
+      },
+      "rgb": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/pz/rgb.png",
+        "sha256": "e2462d3bf25d2f17ad533966360b08a7d6ddc298b0ef9b8a864e71c6dc384f65",
+        "bytes": 184619
+      },
+      "baselineManifest": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/manifest.json",
+        "sha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50",
+        "bytes": 13212
+      },
+      "allNonRgbFileHashesUnchanged": true,
+      "cameraAndStructureUnchanged": true
+    },
+    {
+      "face": "+X",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/px/guide.json",
+        "sha256": "75bac901d3ad3b6425c2cceea8043cc566e28c9181c5e5b9451742f1e473cd4a",
+        "bytes": 13016
+      },
+      "rgb": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/px/rgb.png",
+        "sha256": "724007e9d9ca1f10410b00ea9da4c35344f850cfcb5d8d69f1ca0d4f72cc6c36",
+        "bytes": 186854
+      },
+      "baselineManifest": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/manifest.json",
+        "sha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50",
+        "bytes": 13212
+      },
+      "allNonRgbFileHashesUnchanged": true,
+      "cameraAndStructureUnchanged": true
+    },
+    {
+      "face": "-X",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/nx/guide.json",
+        "sha256": "dd477148417c13a82e36b0f25437457a4ea5f2cb5387f44325e0e96e3adf1002",
+        "bytes": 13002
+      },
+      "rgb": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/nx/rgb.png",
+        "sha256": "4bd107465e68ec61a85e96b45fe1cdbdb914fa66674e2004c4a66335bb06a6e1",
+        "bytes": 185688
+      },
+      "baselineManifest": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/manifest.json",
+        "sha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50",
+        "bytes": 13212
+      },
+      "allNonRgbFileHashesUnchanged": true,
+      "cameraAndStructureUnchanged": true
+    },
+    {
+      "face": "-Z",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/nz/guide.json",
+        "sha256": "b04e9bd204086b9ba418d7bb6af6bcfbe0c17514b42262e6051a669804b92140",
+        "bytes": 12951
+      },
+      "rgb": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/nz/rgb.png",
+        "sha256": "7bedc96579c907c168ce9e22a5dbac23e9dfe04d710fa96790b705132b327ec7",
+        "bytes": 182629
+      },
+      "baselineManifest": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/manifest.json",
+        "sha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50",
+        "bytes": 13212
+      },
+      "allNonRgbFileHashesUnchanged": true,
+      "cameraAndStructureUnchanged": true
+    },
+    {
+      "face": "+Y",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/py/guide.json",
+        "sha256": "fad993fb181fa72220affa6df27d0024d3bbd79c64e0ef919747d4ffcae88be3",
+        "bytes": 12989
+      },
+      "rgb": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/py/rgb.png",
+        "sha256": "b4b1c28a952cc1dcbab8b9116e641afb5a9298848ec877f7bc5b6a9fc2865a78",
+        "bytes": 360688
+      },
+      "baselineManifest": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/manifest.json",
+        "sha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50",
+        "bytes": 13212
+      },
+      "allNonRgbFileHashesUnchanged": true,
+      "cameraAndStructureUnchanged": true
+    },
+    {
+      "face": "-Y",
+      "guide": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/ny/guide.json",
+        "sha256": "040998e820c23290b1846a4d36f43b55960b8919dc227c5c2027ad05f64316d9",
+        "bytes": 13028
+      },
+      "rgb": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/ny/rgb.png",
+        "sha256": "6b1736a740e7f35caa21018aaed3ee189728df6aedd75e1df0ac07a42758ab1a",
+        "bytes": 342483
+      },
+      "baselineManifest": {
+        "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/manifest.json",
+        "sha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50",
+        "bytes": 13212
+      },
+      "allNonRgbFileHashesUnchanged": true,
+      "cameraAndStructureUnchanged": true
+    }
+  ],
+  "outputFiles": {
+    "nx/albedo.png": "4bd107465e68ec61a85e96b45fe1cdbdb914fa66674e2004c4a66335bb06a6e1",
+    "nx/alpha.npy": "97093a54b7457a011967609d8a227eb9e4b31bddc10a8f4b3b0901db8a3b4027",
+    "nx/alpha.png": "9bea278d634d3ffe11997e7fc945daacd33c9c9a7a3d5d7a4344f1008243f1ad",
+    "nx/depth-512.png": "310afe59da126aade6fda51d2bf13d5063b4a0173b7528c2a98610519d648aa1",
+    "nx/depth.npy": "d01a20d6c70b74afa6b704e8cb88834fb4f836e1b93a10aef5238338d05289f8",
+    "nx/depth.png": "fea66789299727ad866556d5e42d96ea1d8e3211252c51f0cbfc09db9d1d9e0f",
+    "nx/guide.json": "dd477148417c13a82e36b0f25437457a4ea5f2cb5387f44325e0e96e3adf1002",
+    "nx/rgb.png": "4bd107465e68ec61a85e96b45fe1cdbdb914fa66674e2004c4a66335bb06a6e1",
+    "ny/albedo.png": "6b1736a740e7f35caa21018aaed3ee189728df6aedd75e1df0ac07a42758ab1a",
+    "ny/alpha.npy": "2ef87411a86a6cf1c53ebc0ca7e3b60274925c950848bba4e364703d0258d14e",
+    "ny/alpha.png": "0a3e9296107137e8d25d7ab97fff319d8b929e12378ac8a5ddf6ad9edc250cad",
+    "ny/depth-512.png": "c07f869e055716a6787c9026e96c1af3b26be469359486605f83c7b2aeef1a9c",
+    "ny/depth.npy": "0f74304c62a4ebed442aa3ca8a71a4b7f0474aeffca9c77927e0ff37a5072eac",
+    "ny/depth.png": "59b1a4e1497b860d536e884e9aeabdf67f3552eb6021e4b1db10ae5fabfaf239",
+    "ny/guide.json": "040998e820c23290b1846a4d36f43b55960b8919dc227c5c2027ad05f64316d9",
+    "ny/rgb.png": "6b1736a740e7f35caa21018aaed3ee189728df6aedd75e1df0ac07a42758ab1a",
+    "nz/albedo.png": "7bedc96579c907c168ce9e22a5dbac23e9dfe04d710fa96790b705132b327ec7",
+    "nz/alpha.npy": "9ffa991d876b8234b830153f115790420915a0e41db4aa4c9e2212fd4ca7f90f",
+    "nz/alpha.png": "ed36e23d44910a851c2f76af2207c4bd39c0b4c6c2e4174e2514b1b254c863b5",
+    "nz/depth-512.png": "08d4a37a4ec5acfea03cf11b4c64105a2bfeeb9c4f1b99bb319a5cc589383d76",
+    "nz/depth.npy": "f0d34d5f3157784f31d15a4199a41b34e65e9894d2e60657d88e06e421947e42",
+    "nz/depth.png": "d9beb9c72eba7d544ed797d9f3103299eebce62bd3b8c8acac0e31da05ca6eeb",
+    "nz/guide.json": "b04e9bd204086b9ba418d7bb6af6bcfbe0c17514b42262e6051a669804b92140",
+    "nz/rgb.png": "7bedc96579c907c168ce9e22a5dbac23e9dfe04d710fa96790b705132b327ec7",
+    "px/albedo.png": "724007e9d9ca1f10410b00ea9da4c35344f850cfcb5d8d69f1ca0d4f72cc6c36",
+    "px/alpha.npy": "c3e0317cbe7e251ae32d56c7f58263ff6baa77c7744fa170869cea59d188a69d",
+    "px/alpha.png": "dd250ddb91d60fc61694cdb8ae32da906e00ff33c3071b56728093a40e806e17",
+    "px/depth-512.png": "e009e2d877c6b68b0b935d3fc5977f94e5db5946bfc1d952ee596ce260a0f9eb",
+    "px/depth.npy": "46608bddd32bc5b065ed16653ed90fdcf7300328215df288b95bc0f3ac548c50",
+    "px/depth.png": "4357108a4bd409638705f384a830980ae074f415395ec6a782f5433efd6308d3",
+    "px/guide.json": "75bac901d3ad3b6425c2cceea8043cc566e28c9181c5e5b9451742f1e473cd4a",
+    "px/rgb.png": "724007e9d9ca1f10410b00ea9da4c35344f850cfcb5d8d69f1ca0d4f72cc6c36",
+    "py/albedo.png": "b4b1c28a952cc1dcbab8b9116e641afb5a9298848ec877f7bc5b6a9fc2865a78",
+    "py/alpha.npy": "0f9a8235f80a008a2bcc977bfebddc617c077553d8f255e2ce6104bb04ece058",
+    "py/alpha.png": "54ff5761b80170aed25db699e14ee14c37d0ae71287ea1283da148e6d786f330",
+    "py/depth-512.png": "7d50184d46827611826855cee805c331f72a63c095e9bca8e8de92866b078c70",
+    "py/depth.npy": "1ecfee654208fea91dceea1244d4b24f6f10387f4337737d67306d3604da1f54",
+    "py/depth.png": "284087d83a8f4a2bac32066cca3d4cfafa4142a4559247584a11a878d477361c",
+    "py/guide.json": "fad993fb181fa72220affa6df27d0024d3bbd79c64e0ef919747d4ffcae88be3",
+    "py/rgb.png": "b4b1c28a952cc1dcbab8b9116e641afb5a9298848ec877f7bc5b6a9fc2865a78",
+    "pz/albedo.png": "e2462d3bf25d2f17ad533966360b08a7d6ddc298b0ef9b8a864e71c6dc384f65",
+    "pz/alpha.npy": "ad3f795f520648374745b15a7435ecdcc67657a856feec26d137090d8a4568f1",
+    "pz/alpha.png": "0b4215a71974bfa9696a26db1f9abcb27fb95c9ef039801782fa354ccc1075d7",
+    "pz/depth-512.png": "01bcc73ed12b1a5501398bccbd4b6049f8b31ba0587ceb9093ae56615411ef08",
+    "pz/depth.npy": "820e9475b2698821fe1f2faacd891cbdab54836bf240ad5f5d0f8737e6cba504",
+    "pz/depth.png": "764d1cae484e25a9c07c04c66d792747596828068ac83f397f8c5c63f1e195e0",
+    "pz/guide.json": "9d81e1abdfe48b41abe2b274de9cc65f2cacebd8157bbb767e16ed2bae6a9067",
+    "pz/rgb.png": "e2462d3bf25d2f17ad533966360b08a7d6ddc298b0ef9b8a864e71c6dc384f65"
+  }
+}

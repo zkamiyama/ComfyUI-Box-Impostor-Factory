@@ -1,0 +1,72 @@
+{
+  "completed": true,
+  "case": "Direct3D-V3 Box face colorization candidate",
+  "face": "+Z",
+  "faceSlug": "pz",
+  "promptId": "b4d011ec-2d69-49a3-b27f-b98e2ff33584",
+  "promptSHA256": "682ab443b4f00ee92fb4994111b8745fad808cd2beb73da41b4853d9afec0e21",
+  "images": {
+    "generated": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-clay-090/generated.png",
+      "sha256": "fd6bf9535b92d86316f357c257407f0d3de49540c07a1177ac5bf52f23a98935",
+      "bytes": 633201
+    },
+    "mask": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-clay-090/mask.png",
+      "sha256": "7c3a758c7079592166d706f4a1a150075f5b0f81e6b1408ff2c061598a43f5c4",
+      "bytes": 48544
+    }
+  },
+  "model": "Qwen Image 2.1 int8",
+  "lora": "QI2.1_AnyAngle",
+  "loraStrength": 0.0,
+  "size": 1024,
+  "steps": 10,
+  "cfg": 3,
+  "seed": 2026113031,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "prompt": "Colorize the neutral-clay render in image 1 using the appearance of the person in image 2. Image 1 defines the exact camera, projection, framing, head direction, pose, silhouette, body proportions, limb positions, clothing outline, occlusions and background gaps between arms and torso and between the legs. Preserve those structures at the same image coordinates. Image 2 is only an appearance reference for the same person: blonde hair, gray knit sweater dress, natural skin colors and shoes. Do not copy its pose, camera angle, head direction, expression, body proportions or framing. Image 3 is the corresponding Z-depth of image 1, brighter nearer and black background. Use it to understand the existing structure and occlusions; never copy depth values as material colors. Replace the clay appearance with natural photographic skin, hair strands, coherent gray knit fabric and shoe materials wherever those surfaces are visible. Preserve the complete uncropped camera frame and all visible subject coverage. Keep occluded surfaces hidden and keep the same uniform neutral gray background. This is the +Z front camera view. Preserve the full-body framing in image 1 and the existing head direction; show only facial features visible from this exact camera. Do not rotate the person, move body parts, close background gaps, zoom, crop, add subjects, text, graphics, panels or diagrams. This is surface colorization of the geometry already visible in image 1.",
+  "promptSource": {
+    "kind": "built-in-face-prompt"
+  },
+  "defaults": {
+    "profile": "anchored",
+    "denoise": 0.9,
+    "loraStrength": 0.0,
+    "size": 1024,
+    "steps": 10,
+    "cfg": 3,
+    "seed": 2026113031,
+    "sampler": "euler",
+    "scheduler": "simple"
+  },
+  "inputOrder": [
+    "target full-view RGB",
+    "original reference photograph",
+    "target depth"
+  ],
+  "server": "http://127.0.0.1:8198",
+  "runnerSha256": "4cf769b1d3ecc695d11324d32637f1df1deeaae251046f314e94d9aa93898698",
+  "profile": "anchored",
+  "denoise": 0.9,
+  "initialLatent": "VAE-encoded target RGB",
+  "serverExecutionSeconds": 269.941,
+  "clientWaitSeconds": 271.27530842498527,
+  "collectionOnly": false,
+  "cachedNodes": [],
+  "inputsSHA256": {
+    "target-color.png": "e4396bd08ac03df305b022719ea9c2fc3b50bcfba98cc0c11effe64e37b8d1b7",
+    "target-depth.png": "01bcc73ed12b1a5501398bccbd4b6049f8b31ba0587ceb9093ae56615411ef08",
+    "original.png": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+  },
+  "vram": {
+    "measurement": "nvidia-smi sampled whole-device used VRAM",
+    "intervalMilliseconds": 200,
+    "sampleCount": 1337,
+    "peakSampledUsedMiB": 13697.0,
+    "limitation": "Includes driver/other processes; not allocator peak; may miss short peaks."
+  },
+  "boxModified": false,
+  "nextStage": "Review this full-view candidate, register generated RGB/mask against its guide, and compose only selected face RGB while preserving Direct3D structural alpha and geometry."
+}

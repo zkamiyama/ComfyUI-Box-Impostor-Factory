@@ -1,0 +1,104 @@
+{
+  "completed": true,
+  "method": "direct3d-normal-only-revision-v1",
+  "parentManifest": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/baseline512/manifest.json",
+    "sha256": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+    "bytes": 13073
+  },
+  "normalDonorManifest": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/native512/manifest.json",
+    "sha256": "e6cc1ecbc28ff93ef212d1225af1f06be84cfa29478a07e2843c7050ef7802ee",
+    "bytes": 12543
+  },
+  "normalSha256": "bfe952bb631c95666f8054a2940cf28a0f3c721680549ee4f0d53987e0ed7741",
+  "helper": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/apply_normal_revision.py",
+    "sha256": "46e0a8f71966f91b943a3db03925eef8007e0b8634d5ac861794790d8e92dbdc",
+    "bytes": 16609
+  },
+  "proofs": {
+    "normalPreparation": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/prepare-verification.json",
+      "sha256": "08a613a0589195a16bcfffffd86e66e40aab12c50edce4649a7f1533955b73ff",
+      "bytes": 2844
+    },
+    "nativeBakeComparison": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/native-comparison.json",
+      "sha256": "c34031eb493fdefeac628ce7f7fb60ebeeb95599cfbc562088721de8075bd0f7",
+      "bytes": 4794
+    }
+  },
+  "normalOnlyRevision": true,
+  "changedExistingFiles": [
+    "manifest.json",
+    "maps/normal.rgba16f.bin"
+  ],
+  "manifestDifferences": [
+    "asset_id",
+    "mode",
+    "parentAsset",
+    "qa",
+    "textures.normalMap.sha256"
+  ],
+  "allowedManifestDifferences": [
+    "asset_id",
+    "mode",
+    "parentAsset",
+    "qa",
+    "textures.normalMap.sha256"
+  ],
+  "sourceFiles": {
+    "geometry/proxy.glb": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+    "guides/nx.depth16f.bin": "59a8c6d4bcfc25ea1d4ded109b7fb8cc9634618b7a77a0903a0d46809607b8d2",
+    "guides/nx.png": "5235cf0f4066375f46460e1273cb01bb18d669585d5296c8b7767696f5b9608d",
+    "guides/ny.depth16f.bin": "c6c32bc26f4f0a119ad7c20507725e26fc80590c73b7d1721235f5ebc1592f95",
+    "guides/ny.png": "253cbe1cf67f52c7a6a446c2058a76d84b5f0edb566bf3e7b74d20585acd537c",
+    "guides/nz.depth16f.bin": "0d824bdc68140297532d555c152a4a132b4e925c7470fd849cca667fb84cf9d8",
+    "guides/nz.png": "22c1ab7bb88008fbb1f7d48192bbc8b415d67eaca9defd1eb2136a911cc53fe4",
+    "guides/px.depth16f.bin": "fd7d681090c1adb203f9eae512b7bf4b1ec8f7271edbaa91e35943937877a013",
+    "guides/px.png": "0083969434908f9afd2d9f88558c22f40fa8fc27a195965449cc45e4048947b9",
+    "guides/py.depth16f.bin": "bf96bf91e88e5eb9eca4c426eec95d2bf311a616742b367f4abfc16e80ca149f",
+    "guides/py.png": "e58a0e96cbc0429e1b88a6adb38d95d4a987f1ca0d14089ca3a105abad3c2ee0",
+    "guides/pz.depth16f.bin": "e92e21c5745e87b319478b79cee3ddc3a0970840300f12d659740a94643ce87d",
+    "guides/pz.png": "f59c42ca6bd2029205fad2803edf016eeee1be2abfdfe3c10f43c5833263b8ba",
+    "manifest.json": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+    "maps/color.rgba16f.bin": "964d08902842d220dc84c0ed45ae993343f51536b5c20f58a1ddbde767bb106c",
+    "maps/interval.rgba16f.bin": "9458e5cda155b2d4e5b5482b229484abf0194f3d7e7fed8e40329f47f4dc2fd0",
+    "maps/normal.rgba16f.bin": "bbe3d460adb42932e843d4579e3dd2306bb17712ba130eda2cceaa445fcb2b38",
+    "maps/range.rgba16f.bin": "f638fb30287fdffe24c4802d6fd2dd432b615918b00235d81fa577bfb5eeabb7"
+  },
+  "outputFilesBeforeAddingThisQa": {
+    "geometry/proxy.glb": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+    "guides/nx.depth16f.bin": "59a8c6d4bcfc25ea1d4ded109b7fb8cc9634618b7a77a0903a0d46809607b8d2",
+    "guides/nx.png": "5235cf0f4066375f46460e1273cb01bb18d669585d5296c8b7767696f5b9608d",
+    "guides/ny.depth16f.bin": "c6c32bc26f4f0a119ad7c20507725e26fc80590c73b7d1721235f5ebc1592f95",
+    "guides/ny.png": "253cbe1cf67f52c7a6a446c2058a76d84b5f0edb566bf3e7b74d20585acd537c",
+    "guides/nz.depth16f.bin": "0d824bdc68140297532d555c152a4a132b4e925c7470fd849cca667fb84cf9d8",
+    "guides/nz.png": "22c1ab7bb88008fbb1f7d48192bbc8b415d67eaca9defd1eb2136a911cc53fe4",
+    "guides/px.depth16f.bin": "fd7d681090c1adb203f9eae512b7bf4b1ec8f7271edbaa91e35943937877a013",
+    "guides/px.png": "0083969434908f9afd2d9f88558c22f40fa8fc27a195965449cc45e4048947b9",
+    "guides/py.depth16f.bin": "bf96bf91e88e5eb9eca4c426eec95d2bf311a616742b367f4abfc16e80ca149f",
+    "guides/py.png": "e58a0e96cbc0429e1b88a6adb38d95d4a987f1ca0d14089ca3a105abad3c2ee0",
+    "guides/pz.depth16f.bin": "e92e21c5745e87b319478b79cee3ddc3a0970840300f12d659740a94643ce87d",
+    "guides/pz.png": "f59c42ca6bd2029205fad2803edf016eeee1be2abfdfe3c10f43c5833263b8ba",
+    "manifest.json": "471d25a9b8f504368f12ac459d367eadf51e2bb2101b76ec886e997e73660e50",
+    "maps/color.rgba16f.bin": "964d08902842d220dc84c0ed45ae993343f51536b5c20f58a1ddbde767bb106c",
+    "maps/interval.rgba16f.bin": "9458e5cda155b2d4e5b5482b229484abf0194f3d7e7fed8e40329f47f4dc2fd0",
+    "maps/normal.rgba16f.bin": "bfe952bb631c95666f8054a2940cf28a0f3c721680549ee4f0d53987e0ed7741",
+    "maps/range.rgba16f.bin": "f638fb30287fdffe24c4802d6fd2dd432b615918b00235d81fa577bfb5eeabb7"
+  },
+  "proxyBytesUnchanged": true,
+  "colorBytesUnchanged": true,
+  "allSixDepthAndGuideBytesUnchanged": true,
+  "intervalRangeBytesUnchanged": true,
+  "cameraBoundsTransformMetadataUnchanged": true,
+  "normalAlphaUint16DifferenceCount": 0,
+  "colorAlphaUint16DifferenceCount": 0,
+  "normalRgbChangedPixels": 552462,
+  "normalMap": {
+    "before": "bbe3d460adb42932e843d4579e3dd2306bb17712ba130eda2cceaa445fcb2b38",
+    "after": "bfe952bb631c95666f8054a2940cf28a0f3c721680549ee4f0d53987e0ed7741"
+  },
+  "scope": "Only the normalMap RGB changes; original proxy bytes and all other asset data remain authoritative."
+}

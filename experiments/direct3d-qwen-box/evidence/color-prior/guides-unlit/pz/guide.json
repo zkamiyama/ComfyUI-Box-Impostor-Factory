@@ -1,0 +1,434 @@
+{
+  "kind": "native-mesh-square-guide-v1",
+  "baselineManifest": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/manifest.json",
+    "sha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50",
+    "bytes": 13212
+  },
+  "sourceManifest": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/native512/manifest.json",
+    "sha256": "f7c86b4591cddea531560e03e749cceb9a1173808ddb49c6a12775b1bf0a4445",
+    "bytes": 12543
+  },
+  "sourceMesh": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/inputs/direct3d-1024.glb",
+    "sha256": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+    "bytes": 27002988
+  },
+  "reference": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/inputs/source-original.png",
+    "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+    "bytes": 270164
+  },
+  "face": "+Z",
+  "slug": "pz",
+  "tile": [
+    1,
+    1
+  ],
+  "nativeResolution": 512,
+  "size": [
+    1024,
+    1024
+  ],
+  "physicalSize": [
+    0.39665262937545775,
+    1.0360554957389831
+  ],
+  "squarePhysicalSpan": 1.0774977155685426,
+  "contentPixels": [
+    376.9588432641378,
+    984.6153846153845
+  ],
+  "nativeToSquarePixel": [
+    [
+      0.7362477407502691,
+      0.0,
+      323.3887022383062
+    ],
+    [
+      0.0,
+      1.923076923076923,
+      20.153846153846196
+    ]
+  ],
+  "squareToNativePixel": [
+    [
+      1.358238463293559,
+      0.0,
+      -439.2389739746553
+    ],
+    [
+      0.0,
+      0.52,
+      -10.480000000000022
+    ]
+  ],
+  "pixelConvention": "top-down rows; zero-based pixel-center indices; no crop or per-face warp",
+  "camera": {
+    "viewMatrix": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0.0003537088632583618,
+      -0.0012574046850204468,
+      -0.29310276234149935,
+      1
+    ],
+    "projectionMatrix": [
+      5.042195240578801,
+      0,
+      0,
+      0,
+      0,
+      1.9303985242349089,
+      0,
+      0,
+      0,
+      0,
+      -4.091569660159216,
+      0,
+      0,
+      0,
+      -1.211954661630342,
+      1
+    ],
+    "frustum": [
+      -0.19832631468772888,
+      0.19832631468772888,
+      -0.5180277478694916,
+      0.5180277478694916,
+      0.05180277478694916,
+      0.5406127343177796
+    ],
+    "up": [
+      0,
+      1,
+      0
+    ],
+    "side": [
+      0,
+      0,
+      1
+    ]
+  },
+  "squareCamera": {
+    "viewMatrix": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0.0003537088632583618,
+      -0.0012574046850204468,
+      -0.29310276234149935,
+      1
+    ],
+    "projectionMatrix": [
+      1.8561524271489507,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.8561524271489507,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      -4.091569660159216,
+      0.0,
+      -0.0,
+      -0.0,
+      -1.211954661630342,
+      1.0
+    ],
+    "frustum": [
+      -0.5387488577842713,
+      0.5387488577842713,
+      -0.5387488577842713,
+      0.5387488577842713,
+      0.05180277478694916,
+      0.5406127343177796
+    ],
+    "up": [
+      0,
+      1,
+      0
+    ],
+    "side": [
+      0,
+      0,
+      1
+    ]
+  },
+  "structure": {
+    "proxySha256": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee",
+    "depthSha256": "e92e21c5745e87b319478b79cee3ddc3a0970840300f12d659740a94643ce87d",
+    "nativeAlphaUint16Sha256": "7d7212d49a54b2079f314e9efb11c1ba22ba26508005fad8d4e906d545bfb10f",
+    "normalMapSha256": "bbe3d460adb42932e843d4579e3dd2306bb17712ba130eda2cceaa445fcb2b38",
+    "intervalMapSha256": "9458e5cda155b2d4e5b5482b229484abf0194f3d7e7fed8e40329f47f4dc2fd0",
+    "rangeMapSha256": "f638fb30287fdffe24c4802d6fd2dd432b615918b00235d81fa577bfb5eeabb7"
+  },
+  "files": {
+    "rgb": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/pz/rgb.png",
+      "sha256": "e2462d3bf25d2f17ad533966360b08a7d6ddc298b0ef9b8a864e71c6dc384f65",
+      "bytes": 184619
+    },
+    "alpha": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/pz/alpha.npy",
+      "sha256": "ad3f795f520648374745b15a7435ecdcc67657a856feec26d137090d8a4568f1",
+      "bytes": 4194432
+    },
+    "alphaPng": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/pz/alpha.png",
+      "sha256": "0b4215a71974bfa9696a26db1f9abcb27fb95c9ef039801782fa354ccc1075d7",
+      "bytes": 14129
+    },
+    "depth": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/pz/depth.npy",
+      "sha256": "820e9475b2698821fe1f2faacd891cbdab54836bf240ad5f5d0f8737e6cba504",
+      "bytes": 4194432
+    },
+    "depthPreview": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/pz/depth.png",
+      "sha256": "764d1cae484e25a9c07c04c66d792747596828068ac83f397f8c5c63f1e195e0",
+      "bytes": 58106
+    },
+    "depth512": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/pz/depth-512.png",
+      "sha256": "01bcc73ed12b1a5501398bccbd4b6049f8b31ba0587ceb9093ae56615411ef08",
+      "bytes": 21409
+    },
+    "albedo": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides-unlit/pz/albedo.png",
+      "sha256": "e2462d3bf25d2f17ad533966360b08a7d6ddc298b0ef9b8a864e71c6dc384f65",
+      "bytes": 184619
+    }
+  },
+  "depthEncoding": "linear-axis-0-near-1-far; float32 NaN background; PNG=(1-depth)*coverage, black background",
+  "alphaSource": "Native colorMap alpha only; affine bilinear resampling; no generated mask",
+  "normalSource": "Native normalMap RGB/coverage * 2 - 1; unit world normals; original flat mesh normals",
+  "shading": {
+    "applied": false,
+    "kind": "no added illumination",
+    "albedoSource": "existing albedo.png from coarse baseColor transfer",
+    "backgroundSrgbByte": 128,
+    "scope": "Qwen RGB guide only; baseline color atlas unchanged"
+  },
+  "qa": {
+    "nativeAtlasGuideAlphaExact": true,
+    "nativeDepthValidMatchesAlpha": true,
+    "nativeForegroundPixels": 87326,
+    "squareCoverageSum": 123635.859375,
+    "nativeDepthRange": [
+      0.051727294921875,
+      0.8974609375
+    ]
+  },
+  "helperSha256": "51dc1805d25629ae6b9995af5751907b4a4a73b6096fa550368f5f09b95e64a0",
+  "sourceGuide": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides/pz/guide.json",
+    "sha256": "a368c610537de9267167e06072662185562caf3ac8c7e3fa1e370f25a8d615d7",
+    "bytes": 11634
+  },
+  "colorPrior": {
+    "coarse": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/inputs/fullbody/coarse-original.glb",
+      "sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+      "bytes": 4866800,
+      "vertices": 49522,
+      "triangles": 81180,
+      "worldBounds": [
+        [
+          -0.17959635205538715,
+          -0.5,
+          -0.17067711655172313
+        ],
+        [
+          0.17959635205538715,
+          0.5,
+          0.17067711655172313
+        ]
+      ],
+      "worldFromLocalRows": [
+        [
+          1.1176511734153667,
+          0.0,
+          0.0,
+          0.010881411855650119
+        ],
+        [
+          0.0,
+          1.1176511734153667,
+          0.0,
+          0.02839508237150308
+        ],
+        [
+          0.0,
+          0.0,
+          1.1176511734153667,
+          0.013759666322433382
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "sceneTransformApplications": 1,
+      "vertexAndTriangleOrderPreserved": true,
+      "texture": {
+        "embeddedImageSha256": "3d2a5f8b01bf1aeed8da29623040dabfa3f24dc0c7fd05be4093fe52801f236c",
+        "size": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "baseColorFactor": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "sampler": {
+          "magFilter": 9729,
+          "minFilter": 9729,
+          "wrapS": 33071,
+          "wrapT": 33071
+        },
+        "uvConvention": "Trimesh v=1-raw glTF v; image row=(1-v)*H-.5",
+        "sampling": "clamped bilinear in linear RGB; x=u*W-.5; factors are linear",
+        "alphaMode": "OPAQUE",
+        "usesMetalRoughnessAoNormalMaps": false
+      }
+    },
+    "faceDiagnostics": {
+      "face": "+Z",
+      "foregroundPixels": 87326,
+      "projection": {
+        "independentPlaneFormulaMaxWorldError": 2.7755575615628914e-17,
+        "projectionMaxPixelError": 5.684341886080802e-14,
+        "axisDepthRoundTripMaxError": 1.1102230246251565e-16,
+        "cameraMargin": 0.10360554957389834,
+        "axisSpan": 0.38520440995693206,
+        "near": 0.05180277478694916,
+        "far": 0.5406127343177796,
+        "finitePoints": 87326
+      },
+      "targetSurfaceValidation": {
+        "samples": 256,
+        "distanceWorld": {
+          "p0": 2.7706507986595367e-07,
+          "p50": 2.4296036104471794e-05,
+          "p90": 7.482070737254444e-05,
+          "p95": 9.833273596922758e-05,
+          "p99": 0.000148170359826803,
+          "max": 0.00015970870712580019
+        },
+        "conservativeFloat16DepthToleranceWorld": 0.0003771761815985665,
+        "allWithinTolerance": true,
+        "targetProxySha256": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee"
+      },
+      "transfer": {
+        "method": "exact closest point on source triangles via trimesh proximity and rtree; barycentric UV",
+        "surfaceDistanceWorld": {
+          "p0": 1.0762259424825082e-09,
+          "p50": 0.0010668546575167358,
+          "p90": 0.003040303935599996,
+          "p95": 0.0037375003533680713,
+          "p99": 0.0055362526514853945,
+          "max": 0.011096181504924764
+        },
+        "surfaceDistanceDividedBySourceHeight": {
+          "p0": 1.0762259424825082e-09,
+          "p50": 0.0010668546575167358,
+          "p90": 0.003040303935599996,
+          "p95": 0.0037375003533680713,
+          "p99": 0.0055362526514853945,
+          "max": 0.011096181504924764
+        },
+        "fractionDistanceAboveHeight": {
+          "0.01": 5.7256716212811763e-05,
+          "0.02": 0.0,
+          "0.05": 0.0
+        },
+        "sourceTriangleVsNativeNormalDot": {
+          "p0": -0.9898012464510699,
+          "p50": 0.9919209513621305,
+          "p90": 0.9992365008521298,
+          "p95": 0.9996344261512331,
+          "p99": 0.999928262582998,
+          "max": 0.9999999206719323
+        },
+        "negativeNormalDotFraction": 0.0011909396972264847,
+        "barycentricSumMaxError": 2.220446049250313e-16,
+        "closestPointBarycentricMaxWorldError": 4.440892098500626e-16,
+        "distanceOrNormalQualityCutoffApplied": false
+      },
+      "seconds": 5.257006875996012
+    },
+    "baselineQa": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/baseline512/qa/color-prior-13dcf86d0f78aab1.json",
+      "sha256": "109e3e9d5cdefaa5c196561451cd32c01eae3f7cd130de0e7e1d561462d35d94",
+      "bytes": 28144
+    },
+    "guideAlphaDepthFilesBitIdentical": true,
+    "resampledAlphaMaxDifference": 0.0
+  },
+  "rgbSelection": {
+    "sourceKey": "albedo",
+    "sourceImage": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides/pz/albedo.png",
+      "sha256": "e2462d3bf25d2f17ad533966360b08a7d6ddc298b0ef9b8a864e71c6dc384f65",
+      "bytes": 184619
+    },
+    "sourceGuide": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/color-prior/guides/pz/guide.json",
+      "sha256": "a368c610537de9267167e06072662185562caf3ac8c7e3fa1e370f25a8d615d7",
+      "bytes": 11634
+    },
+    "previousGuideSource": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/guides/pz/guide.json",
+      "sha256": "f8377597bf19c0256ac98127f3ff2aca5d62e58901022b44608b275c38fc7b13",
+      "bytes": 6467
+    },
+    "sourceShading": {
+      "kind": "Lambert from native world-normal atlas",
+      "ambient": 0.35,
+      "keyIntensity": 0.8,
+      "keyDirectionCamera": [
+        -0.35,
+        0.5,
+        0.85
+      ],
+      "keyDirectionWorld": [
+        -0.3344729377972476,
+        0.4778184825674966,
+        0.8122914203647442
+      ],
+      "backgroundSrgbByte": 128,
+      "scope": "RGB guide only; albedo.png and baseline color atlas have no added lighting",
+      "albedoSource": "coarse nearest-triangle baseColor sampled in linear RGB; fixed target alpha"
+    },
+    "method": "exact byte copy; no resampling, recoloring or relighting",
+    "helperSha256": "920c2ef29fc38fc7a1c3db8e99d67ed45ecb9560c4a47759f302e055a8cad153"
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "direct3d-qwen-box-20261121/pz-prior-unlit-090/target-color.png"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "direct3d-qwen-box-20261121/pz-prior-unlit-090/original.png"
+    }
+  },
+  "6": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "7": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "8": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "10": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "7",
+        0
+      ],
+      "vae": [
+        "8",
+        0
+      ],
+      "prompt": "Refine the textures over the COMPLETE already colored 3D model in image 1, using image 2 only as an appearance reference. Preserve image 1's exact camera, projection, full-frame silhouette, body proportions, pose, head angle, facial expression, eye and mouth centers, hairline and hair length, sleeve boundaries, hand and finger locations, dress hem, legs, shoe outlines, heels and all background gaps. Improve every visible material: coherent fine gray-and-white heather knit on the whole dress, blonde hair strands, natural skin and facial detail, and black suede shoes with tan heels and sole edges. Correct rough pixels, obvious texture-transfer defects, missing eye detail and abrupt color patches while keeping every feature at its existing location. Keep the material regions fixed: skin stays skin, fabric stays fabric, hair stays hair, and black shoes stay black. Image 2 must not change image 1's pose, head direction, proportions or framing. Image 3 is matching structural depth, nearer white and background black. This is the +Z front view. Keep the existing downward head angle, expression, eye direction and all feature locations from image 1. Keep all existing overlaps and hidden surfaces hidden. Maintain a soft, even surface-color appearance; do not add dramatic lighting, new strong shadows or highlights. Keep the complete uncropped frame and the same uniform neutral gray background. No rotation, zoom, moved limbs, new objects, text or panels.",
+      "negative_prompt": "",
+      "resolution": 0,
+      "images.image_1": [
+        "1",
+        0
+      ],
+      "images.image_2": [
+        "2",
+        0
+      ],
+      "images.image_3": [
+        "3",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "KSampler",
+    "inputs": {
+      "steps": 10,
+      "cfg": 3,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.9,
+      "seed": 2026113031,
+      "model": [
+        "9",
+        0
+      ],
+      "positive": [
+        "10",
+        0
+      ],
+      "negative": [
+        "10",
+        1
+      ],
+      "latent_image": [
+        "20",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "8",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "direct3d-qwen-box-20261121/pz-prior-unlit-090/raw"
+    }
+  },
+  "15": {
+    "class_type": "LoadBackgroundRemovalModel",
+    "inputs": {
+      "bg_removal_name": "birefnet.safetensors"
+    }
+  },
+  "16": {
+    "class_type": "RemoveBackground",
+    "inputs": {
+      "bg_removal_model": [
+        "15",
+        0
+      ],
+      "image": [
+        "13",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "16",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "17",
+        0
+      ],
+      "filename_prefix": "direct3d-qwen-box-20261121/pz-prior-unlit-090/mask"
+    }
+  },
+  "19": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "lora_name": "QI2.1_AnyAngle.safetensors",
+      "strength_model": 0.0
+    }
+  },
+  "9": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "19",
+        0
+      ],
+      "device": "cpu",
+      "dtype": "int8"
+    }
+  },
+  "3": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "direct3d-qwen-box-20261121/pz-prior-unlit-090/target-depth.png"
+    }
+  },
+  "20": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "1",
+        0
+      ],
+      "vae": [
+        "8",
+        0
+      ]
+    }
+  }
+}

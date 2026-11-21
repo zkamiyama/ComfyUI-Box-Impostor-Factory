@@ -1,0 +1,70 @@
+{
+  "kind": "normal-only-render-rgb-mae-v1",
+  "completed": true,
+  "sourceComparison": {
+    "path": "/home/dev/Projects/box-impostor-lab/worktrees/direct3d-qwen-box-20261121/experiments/direct3d-qwen-box/evidence/smooth-normals/all6-flat-smooth-sparse-comparison.json",
+    "sha256": "be7e44ab2d0c8e242cc736883da6633295e53e6b3ca53c8c289e936cba7846c2"
+  },
+  "definition": "Mean absolute RGB byte difference over all 512x512x3 channels, including background; no crop, resize, color correction or masking. Eight identical-camera official Inspector captures.",
+  "frames": [
+    {
+      "index": 0,
+      "flatSha256": "445e1ebd816ec08213abfeb922290d06df953bdfa07e83950d8a04f30faf52d9",
+      "smoothSha256": "e16a9821c9e5f0c9893acb249a066e2d5002d7a1f24b65ed9846a15d3522467f",
+      "fullFrameRgbMAEUint8": 0.040035247802734375,
+      "alphaDifferentPixels": 0
+    },
+    {
+      "index": 1,
+      "flatSha256": "1ee5ca9038d345880d0f920bd4e92a29511b5132f00bbbab9f7f68a7c6fee982",
+      "smoothSha256": "d814e3f11c61197f4d370ddba9c6fd3f2716816671690aa3e4b5e54a24caa632",
+      "fullFrameRgbMAEUint8": 0.035186767578125,
+      "alphaDifferentPixels": 0
+    },
+    {
+      "index": 2,
+      "flatSha256": "8a4f2b8ee07353a8ef9fe9fcbbdc81eabab7a55d50db17cdd3c727238369ae5b",
+      "smoothSha256": "fa0e32b44a39ebaa4799f15194114ed95f82a6efaeb2985319511a302f9860bd",
+      "fullFrameRgbMAEUint8": 0.030750274658203125,
+      "alphaDifferentPixels": 0
+    },
+    {
+      "index": 3,
+      "flatSha256": "c789e2ec45ce5fe070f3c1ab3a68e3a281a77cc231500d62f09a70885c31d624",
+      "smoothSha256": "2a585bfa3a22eaba1ffdd27e871e23ab587c93a255bfa484eaa47f85c15d1757",
+      "fullFrameRgbMAEUint8": 0.028882344563802082,
+      "alphaDifferentPixels": 0
+    },
+    {
+      "index": 4,
+      "flatSha256": "3e087eb670cdfc45d15f0ad1f637d135781e670c3803c8f0e00423e0aa7a6c2d",
+      "smoothSha256": "33dfa65da789c506282b510f41af5ce3fc766cf2d3704b10cf6e3b877811e67b",
+      "fullFrameRgbMAEUint8": 0.017153422037760418,
+      "alphaDifferentPixels": 0
+    },
+    {
+      "index": 5,
+      "flatSha256": "af2cbd9fb2b61f248711e7f3f3403b8d0b8208d614b33a0d15345dcbc4abe246",
+      "smoothSha256": "10bf461fa5450f65b2351b58afdb7ae32dcc6c91e23ddd1ee9d8e6ff5a947df0",
+      "fullFrameRgbMAEUint8": 0.012849171956380209,
+      "alphaDifferentPixels": 0
+    },
+    {
+      "index": 6,
+      "flatSha256": "98babc894d7c951acb7b6e89c5f8229fe59d07d7af6cf11bcff527d15131bb42",
+      "smoothSha256": "dacac5668316e01927dde06ca45bef248c82ef32c8ea62d15cceb73d643161e0",
+      "fullFrameRgbMAEUint8": 0.020666758219401043,
+      "alphaDifferentPixels": 0
+    },
+    {
+      "index": 7,
+      "flatSha256": "c2d04a37ece4a0c0dde6d8c06d443efbc7c74ebee406a815fda66413a68d4bee",
+      "smoothSha256": "9f198e9c65ccac8588fbfece1dbee2fba3db44c32007237e5bb02004efd24b54",
+      "fullFrameRgbMAEUint8": 0.03697331746419271,
+      "alphaDifferentPixels": 0
+    }
+  ],
+  "minimumFullFrameRgbMAEUint8": 0.012849171956380209,
+  "maximumFullFrameRgbMAEUint8": 0.040035247802734375,
+  "scope": "Flat versus smooth normal map on the same all-six Qwen color atlas; not a 240-frame result, not a geometry-quality measure."
+}

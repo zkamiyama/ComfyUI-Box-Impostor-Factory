@@ -1,0 +1,611 @@
+{
+  "completed": true,
+  "method": "official-inspector-top-bottom-rgb-comparison-v1",
+  "captures": {
+    "before": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-before/capture.json",
+    "after": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-after/capture.json"
+  },
+  "inputHashes": {
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-before/capture.json": "49d89d5b05aee7d3848157e543e0d8a4a2a223df34e0ea2efa60847661ba2a93",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/viewers/smooth-prior/smooth-prior512.inspector.html": "ba720adc3899f54f0851edbcd953b68db43ac7ed7ffcd7bfef50c01553d0c09b",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/baseline512/manifest.json": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-before/top.png": "1cab6cbd973bcb081d291dd5c7f25763122599ecf6c2ce49b8e2a5aede5296f0",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-before/bottom.png": "afb8d379d301e2e0c8276c7e20d059fffd18fa8288303b2930bd122c7b4284cc",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-after/capture.json": "cfe2fac6e567d783960a11e797be6f2acf284746df6b352b168336e8547ed46e",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/viewers/all6-smooth-prior-unlit-090/all6-smooth-prior-unlit-090.inspector.html": "277075c56f8a2ec433b03607c140f2bdfeca19c2c63a2f38e5cdfd96e840a6e2",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-after/top.png": "47542f48e5c4525ca3c33df40728ae29a1d23c37b3646e369f39a7c4b0295de6",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-after/bottom.png": "8fbd19c05a54807586953a4174c4569085645d51577ca738ab7ccb7112460899",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/compare_top_bottom.py": "7ed122c179352c0779bf33158bf3479767d808fa965bc3e05bc7aa54ae658c91",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/encode_three.py": "95a5242e6d01285f545f489b2284f67ff7e919d06a706ae4bf8dde912625ed64"
+  },
+  "cameraMaxAbsDifference": 0,
+  "all2AlphaFramesZero": true,
+  "alphaMaxUint8": 0,
+  "alphaNonzeroPixels": 0,
+  "allFramesNonemptyAndUnclipped": true,
+  "htmlUnmodified": true,
+  "sheet": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/top-bottom/top-bottom-before-after.png",
+    "sha256": "c1496f451e9eca8cdad42572418ab3d2268360e797d69a243f683561b6a55324",
+    "pixels": [
+      1024,
+      1096
+    ],
+    "sourceFramePixels": [
+      512,
+      512
+    ],
+    "crop": false,
+    "resize": false,
+    "backgroundRGB": [
+      128,
+      128,
+      128
+    ],
+    "titleHeight": 36
+  },
+  "views": [
+    {
+      "view": "top",
+      "sources": [
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-before/top.png",
+          "sha256": "1cab6cbd973bcb081d291dd5c7f25763122599ecf6c2ce49b8e2a5aede5296f0",
+          "camera": {
+            "type": "OrthographicCamera",
+            "position": [
+              -0.00035370886325836176,
+              1.8039003268619394,
+              -0.0031031895679428426
+            ],
+            "quaternion": [
+              -0.7071064276330686,
+              0,
+              0,
+              0.7071071347398497
+            ],
+            "up": [
+              0,
+              1,
+              0
+            ],
+            "matrixWorld": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              9.999999996956888e-07,
+              -0.9999999999995001,
+              0,
+              0,
+              0.9999999999995001,
+              9.999999996956888e-07,
+              0,
+              -0.00035370886325836176,
+              1.8039003268619394,
+              -0.0031031895679428426,
+              1
+            ],
+            "matrixWorldInverse": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              9.999999996956885e-07,
+              0.9999999999994998,
+              0,
+              0,
+              -0.9999999999994998,
+              9.999999996956885e-07,
+              0,
+              0.00035370886325836176,
+              -0.0031049934682676034,
+              -1.8039003237578477,
+              1
+            ],
+            "projectionMatrix": [
+              1.524138466721586,
+              0,
+              0,
+              0,
+              0,
+              1.524138466721586,
+              0,
+              0,
+              0,
+              0,
+              -0.028384436410031102,
+              0,
+              0,
+              0,
+              -1.0000166668055566,
+              1
+            ],
+            "projectionMatrixInverse": [
+              0.6561083666833728,
+              0,
+              0,
+              0,
+              0,
+              0.6561083666833728,
+              0,
+              0,
+              0,
+              0,
+              -35.23057444419078,
+              0,
+              0,
+              0,
+              -35.23116162532469,
+              1
+            ],
+            "near": 0.0005871811339126289,
+            "far": 70.46173606951547,
+            "top": 0.6561083666833728,
+            "bottom": -0.6561083666833728,
+            "left": -0.6561083666833728,
+            "right": 0.6561083666833728,
+            "zoom": 1,
+            "canvasPixels": [
+              512,
+              512
+            ]
+          },
+          "actualOutward": [
+            0,
+            0.9999999999995001,
+            9.999999996956888e-07
+          ],
+          "axisErrorDegrees": 5.729196509083288e-05
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-after/top.png",
+          "sha256": "47542f48e5c4525ca3c33df40728ae29a1d23c37b3646e369f39a7c4b0295de6",
+          "camera": {
+            "type": "OrthographicCamera",
+            "position": [
+              -0.00035370886325836176,
+              1.8039003268619394,
+              -0.0031031895679428426
+            ],
+            "quaternion": [
+              -0.7071064276330686,
+              0,
+              0,
+              0.7071071347398497
+            ],
+            "up": [
+              0,
+              1,
+              0
+            ],
+            "matrixWorld": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              9.999999996956888e-07,
+              -0.9999999999995001,
+              0,
+              0,
+              0.9999999999995001,
+              9.999999996956888e-07,
+              0,
+              -0.00035370886325836176,
+              1.8039003268619394,
+              -0.0031031895679428426,
+              1
+            ],
+            "matrixWorldInverse": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              9.999999996956885e-07,
+              0.9999999999994998,
+              0,
+              0,
+              -0.9999999999994998,
+              9.999999996956885e-07,
+              0,
+              0.00035370886325836176,
+              -0.0031049934682676034,
+              -1.8039003237578477,
+              1
+            ],
+            "projectionMatrix": [
+              1.524138466721586,
+              0,
+              0,
+              0,
+              0,
+              1.524138466721586,
+              0,
+              0,
+              0,
+              0,
+              -0.028384436410031102,
+              0,
+              0,
+              0,
+              -1.0000166668055566,
+              1
+            ],
+            "projectionMatrixInverse": [
+              0.6561083666833728,
+              0,
+              0,
+              0,
+              0,
+              0.6561083666833728,
+              0,
+              0,
+              0,
+              0,
+              -35.23057444419078,
+              0,
+              0,
+              0,
+              -35.23116162532469,
+              1
+            ],
+            "near": 0.0005871811339126289,
+            "far": 70.46173606951547,
+            "top": 0.6561083666833728,
+            "bottom": -0.6561083666833728,
+            "left": -0.6561083666833728,
+            "right": 0.6561083666833728,
+            "zoom": 1,
+            "canvasPixels": [
+              512,
+              512
+            ]
+          },
+          "actualOutward": [
+            0,
+            0.9999999999995001,
+            9.999999996956888e-07
+          ],
+          "axisErrorDegrees": 5.729196509083288e-05
+        }
+      ],
+      "cameraMaxAbsDifference": 0.0,
+      "cameraFieldDifferences": {
+        "position": 0.0,
+        "quaternion": 0.0,
+        "up": 0.0,
+        "matrixWorld": 0.0,
+        "matrixWorldInverse": 0.0,
+        "projectionMatrix": 0.0,
+        "projectionMatrixInverse": 0.0,
+        "near": 0.0,
+        "far": 0.0,
+        "top": 0.0,
+        "bottom": 0.0,
+        "left": 0.0,
+        "right": 0.0,
+        "zoom": 0.0,
+        "canvasPixels": 0.0
+      },
+      "alpha": {
+        "maxUint8": 0,
+        "nonzeroPixels": 0
+      },
+      "rgb": {
+        "maxUint8": 98,
+        "nonzeroPixels": 8090,
+        "sumAbsoluteDifference": 277301,
+        "values": 786432
+      },
+      "coverage": [
+        {
+          "foregroundPixels": 8142,
+          "edgePixels": 0,
+          "boundsXYXY": [
+            187,
+            189,
+            324,
+            322
+          ]
+        },
+        {
+          "foregroundPixels": 8142,
+          "edgePixels": 0,
+          "boundsXYXY": [
+            187,
+            189,
+            324,
+            322
+          ]
+        }
+      ]
+    },
+    {
+      "view": "bottom",
+      "sources": [
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-before/bottom.png",
+          "sha256": "afb8d379d301e2e0c8276c7e20d059fffd18fa8288303b2930bd122c7b4284cc",
+          "camera": {
+            "type": "OrthographicCamera",
+            "position": [
+              -0.00035370886325836176,
+              -1.8013855174918982,
+              -0.00310318956794237
+            ],
+            "quaternion": [
+              0.7071064276330684,
+              0,
+              0,
+              0.7071071347398499
+            ],
+            "up": [
+              0,
+              1,
+              0
+            ],
+            "matrixWorld": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1.0000000003618226e-06,
+              0.9999999999995001,
+              0,
+              0,
+              -0.9999999999995001,
+              1.0000000003618226e-06,
+              0,
+              -0.00035370886325836176,
+              -1.8013855174918982,
+              -0.00310318956794237,
+              1
+            ],
+            "matrixWorldInverse": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1.0000000003618224e-06,
+              -0.9999999999994998,
+              0,
+              0,
+              0.9999999999994998,
+              1.0000000003618224e-06,
+              0,
+              0.00035370886325836176,
+              0.0031049909534589613,
+              -1.8013855143878077,
+              1
+            ],
+            "projectionMatrix": [
+              1.524138466721586,
+              0,
+              0,
+              0,
+              0,
+              1.524138466721586,
+              0,
+              0,
+              0,
+              0,
+              -0.028384436410031102,
+              0,
+              0,
+              0,
+              -1.0000166668055566,
+              1
+            ],
+            "projectionMatrixInverse": [
+              0.6561083666833728,
+              0,
+              0,
+              0,
+              0,
+              0.6561083666833728,
+              0,
+              0,
+              0,
+              0,
+              -35.23057444419078,
+              0,
+              0,
+              0,
+              -35.23116162532469,
+              1
+            ],
+            "near": 0.0005871811339126289,
+            "far": 70.46173606951547,
+            "top": 0.6561083666833728,
+            "bottom": -0.6561083666833728,
+            "left": -0.6561083666833728,
+            "right": 0.6561083666833728,
+            "zoom": 1,
+            "canvasPixels": [
+              512,
+              512
+            ]
+          },
+          "actualOutward": [
+            0,
+            -0.9999999999995001,
+            1.0000000003618226e-06
+          ],
+          "axisErrorDegrees": 5.729196509083288e-05
+        },
+        {
+          "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/top-bottom-after/bottom.png",
+          "sha256": "8fbd19c05a54807586953a4174c4569085645d51577ca738ab7ccb7112460899",
+          "camera": {
+            "type": "OrthographicCamera",
+            "position": [
+              -0.00035370886325836176,
+              -1.8013855174918982,
+              -0.00310318956794237
+            ],
+            "quaternion": [
+              0.7071064276330684,
+              0,
+              0,
+              0.7071071347398499
+            ],
+            "up": [
+              0,
+              1,
+              0
+            ],
+            "matrixWorld": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1.0000000003618226e-06,
+              0.9999999999995001,
+              0,
+              0,
+              -0.9999999999995001,
+              1.0000000003618226e-06,
+              0,
+              -0.00035370886325836176,
+              -1.8013855174918982,
+              -0.00310318956794237,
+              1
+            ],
+            "matrixWorldInverse": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1.0000000003618224e-06,
+              -0.9999999999994998,
+              0,
+              0,
+              0.9999999999994998,
+              1.0000000003618224e-06,
+              0,
+              0.00035370886325836176,
+              0.0031049909534589613,
+              -1.8013855143878077,
+              1
+            ],
+            "projectionMatrix": [
+              1.524138466721586,
+              0,
+              0,
+              0,
+              0,
+              1.524138466721586,
+              0,
+              0,
+              0,
+              0,
+              -0.028384436410031102,
+              0,
+              0,
+              0,
+              -1.0000166668055566,
+              1
+            ],
+            "projectionMatrixInverse": [
+              0.6561083666833728,
+              0,
+              0,
+              0,
+              0,
+              0.6561083666833728,
+              0,
+              0,
+              0,
+              0,
+              -35.23057444419078,
+              0,
+              0,
+              0,
+              -35.23116162532469,
+              1
+            ],
+            "near": 0.0005871811339126289,
+            "far": 70.46173606951547,
+            "top": 0.6561083666833728,
+            "bottom": -0.6561083666833728,
+            "left": -0.6561083666833728,
+            "right": 0.6561083666833728,
+            "zoom": 1,
+            "canvasPixels": [
+              512,
+              512
+            ]
+          },
+          "actualOutward": [
+            0,
+            -0.9999999999995001,
+            1.0000000003618226e-06
+          ],
+          "axisErrorDegrees": 5.729196509083288e-05
+        }
+      ],
+      "cameraMaxAbsDifference": 0.0,
+      "cameraFieldDifferences": {
+        "position": 0.0,
+        "quaternion": 0.0,
+        "up": 0.0,
+        "matrixWorld": 0.0,
+        "matrixWorldInverse": 0.0,
+        "projectionMatrix": 0.0,
+        "projectionMatrixInverse": 0.0,
+        "near": 0.0,
+        "far": 0.0,
+        "top": 0.0,
+        "bottom": 0.0,
+        "left": 0.0,
+        "right": 0.0,
+        "zoom": 0.0,
+        "canvasPixels": 0.0
+      },
+      "alpha": {
+        "maxUint8": 0,
+        "nonzeroPixels": 0
+      },
+      "rgb": {
+        "maxUint8": 71,
+        "nonzeroPixels": 7610,
+        "sumAbsoluteDifference": 132936,
+        "values": 786432
+      },
+      "coverage": [
+        {
+          "foregroundPixels": 8143,
+          "edgePixels": 0,
+          "boundsXYXY": [
+            187,
+            189,
+            324,
+            322
+          ]
+        },
+        {
+          "foregroundPixels": 8143,
+          "edgePixels": 0,
+          "boundsXYXY": [
+            187,
+            189,
+            324,
+            322
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Alpha equality is limited to these two cameras and 8-bit PNG precision.",
+    "RGB difference proves a change, not internal texture correspondence or quality."
+  ]
+}

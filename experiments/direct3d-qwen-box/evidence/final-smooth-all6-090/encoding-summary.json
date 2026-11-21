@@ -1,0 +1,214 @@
+{
+  "completed": true,
+  "specification": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/three-columns.json",
+  "specification_sha256": "d6fb144b867e6da32fea1cddf4b1d9efbf2f43fff9538ee4f2bd3ce14f47af34",
+  "script_sha256": "95a5242e6d01285f545f489b2284f67ff7e919d06a706ae4bf8dde912625ed64",
+  "ffmpeg": "/mnt/f/_dev/box-impostor-lab/experiments/sdf-morph-20261120/tools/ffmpeg-linux-x86_64-v7.0.2",
+  "encode_command": [
+    "/mnt/f/_dev/box-impostor-lab/experiments/sdf-morph-20261120/tools/ffmpeg-linux-x86_64-v7.0.2",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-y",
+    "-f",
+    "rawvideo",
+    "-pixel_format",
+    "rgb24",
+    "-video_size",
+    "1536x584",
+    "-framerate",
+    "24",
+    "-i",
+    "pipe:0",
+    "-an",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "medium",
+    "-crf",
+    "19",
+    "-pix_fmt",
+    "yuv420p",
+    "-frames:v",
+    "240",
+    "-movflags",
+    "+faststart",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/comparison.partial.mp4"
+  ],
+  "layout": {
+    "columns": 3,
+    "rows": 1,
+    "panel_pixels": [
+      512,
+      512
+    ],
+    "label_band_pixels": 36,
+    "footer_pixels": 36,
+    "output_pixels": [
+      1536,
+      584
+    ],
+    "background": "#808080",
+    "compositing": "Pillow straight-sRGB alpha-over; identical for every panel",
+    "resize": false,
+    "crop": false
+  },
+  "frames": 240,
+  "fps": 24,
+  "duration_seconds": 10.0,
+  "codec": "h264",
+  "pixel_format": "yuv420p",
+  "crf": 19,
+  "faststart": true,
+  "common_reference_sha256": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba",
+  "validation": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/capture-validation.json",
+    "sha256": "d20afb895844d8ab72f796fcfadf804a1469a4ad2c2f4730fdc850420f6d5807",
+    "all240AlphaFramesEqualAcrossThreeColumns": true,
+    "recordedCamerasExactlyEqual": true,
+    "cameraTolerance": 0.0,
+    "pairs": [
+      {
+        "columns": [
+          0,
+          1
+        ],
+        "labels": [
+          "Gray Box",
+          "Transferred color"
+        ],
+        "framesCompared": 240,
+        "cameraMaxAbsDifference": 0.0,
+        "cameraTolerance": 0.0,
+        "alpha": {
+          "all240FramesZero": true,
+          "maxUint8": 0,
+          "nonzeroPixels": 0
+        },
+        "rgb": {
+          "changedFrames": 240,
+          "maxUint8": 125,
+          "nonzeroPixels": 5337104,
+          "maeUint8": 2.294899559020996
+        }
+      },
+      {
+        "columns": [
+          1,
+          2
+        ],
+        "labels": [
+          "Transferred color",
+          "Transferred + Qwen"
+        ],
+        "framesCompared": 240,
+        "cameraMaxAbsDifference": 0.0,
+        "cameraTolerance": 0.0,
+        "alpha": {
+          "all240FramesZero": true,
+          "maxUint8": 0,
+          "nonzeroPixels": 0
+        },
+        "rgb": {
+          "changedFrames": 240,
+          "maxUint8": 117,
+          "nonzeroPixels": 5280731,
+          "maeUint8": 0.9042599148220486
+        }
+      },
+      {
+        "columns": [
+          0,
+          2
+        ],
+        "labels": [
+          "Gray Box",
+          "Transferred + Qwen"
+        ],
+        "framesCompared": 240,
+        "cameraMaxAbsDifference": 0.0,
+        "cameraTolerance": 0.0,
+        "alpha": {
+          "all240FramesZero": true,
+          "maxUint8": 0,
+          "nonzeroPixels": 0
+        },
+        "rgb": {
+          "changedFrames": 240,
+          "maxUint8": 122,
+          "nonzeroPixels": 5334966,
+          "maeUint8": 1.8530287636650933
+        }
+      }
+    ]
+  },
+  "inputs": [
+    {
+      "label": "Gray Box",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/capture/smooth-gray/capture.json",
+      "capture_sha256": "1f96cab636b04e89310d0b4684827a339c2507d3612b3e1a5b2d04874c0c336f",
+      "html_sha256": "f90a3fce329b4ca9494b1b67be365008208c37c086ca3ceddf317e0623125b50",
+      "verified_frame_hashes": 240,
+      "verified_frame_order": true
+    },
+    {
+      "label": "Transferred color",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/before/capture.json",
+      "capture_sha256": "097772989ec079743c5c374a1c5eeeefa947790790a6fef925601318ffebec75",
+      "html_sha256": "ba720adc3899f54f0851edbcd953b68db43ac7ed7ffcd7bfef50c01553d0c09b",
+      "verified_frame_hashes": 240,
+      "verified_frame_order": true
+    },
+    {
+      "label": "Transferred + Qwen",
+      "capture": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/comparison/final-smooth-all6-090/capture/after/capture.json",
+      "capture_sha256": "08eb0877c877bf603ed580fdc596f2e7bcf1ae60f5dca27cce9f12f1b776a527",
+      "html_sha256": "277075c56f8a2ec433b03607c140f2bdfeca19c2c63a2f38e5cdfd96e840a6e2",
+      "verified_frame_hashes": 240,
+      "verified_frame_order": true
+    }
+  ],
+  "max_cross_capture_actual_yaw_difference_degrees": 0,
+  "composite_rgb24_stream_sha256": "aa38b2245b61e166711b6f10a172e7af931eafacb6e429880e4cb5af0e236354",
+  "decode": {
+    "completed": true,
+    "frames": 240,
+    "rgb24_bytes": 645857280,
+    "rgb24_stream_sha256": "2d12ef60f72ce8238aabbd441aff3a60a78839ba2aa58daac56f271cc2bfa3b7",
+    "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1536x584, 663 kb/s, 24 fps, 24 tbr, 12288 tbn (default)"
+  },
+  "artifacts": {
+    "comparison.mp4": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/comparison.mp4",
+      "sha256": "f1f87866d178de6238ccbfbf0c5a5542e603d38e7c63c01e0852ed61b657175a"
+    },
+    "poster-yaw000.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/poster-yaw000.png",
+      "sha256": "6e28ae1395cdac1fa85927cdabe5e880e706e3c19ae836719afd50e794bbae54"
+    },
+    "poster-yaw090.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/poster-yaw090.png",
+      "sha256": "f14311dbc126f7fcfc6016ae046a12908d52bb34f12421fe29482639b89c3eb6"
+    },
+    "poster-yaw180.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/poster-yaw180.png",
+      "sha256": "28846160d77bb98e25494a962122f9fc9a5704b1f02df7be082f39700f58bb8c"
+    },
+    "poster-yaw270.png": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/poster-yaw270.png",
+      "sha256": "c7e34189be345a43917ef08184dd4d7bd967807ec6907410a124a312386a5824"
+    },
+    "ffmpeg-encode.log": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/ffmpeg-encode.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ffmpeg-decode.log": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/ffmpeg-decode.log",
+      "sha256": "afbfccd04474f51bdd6eb6da12f839f7e1154cad4adb40739ae3a3edbc6cf7d4"
+    },
+    "capture-validation.json": {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/media/final-smooth-all6-090/capture-validation.json",
+      "sha256": "d20afb895844d8ab72f796fcfadf804a1469a4ad2c2f4730fdc850420f6d5807"
+    }
+  }
+}

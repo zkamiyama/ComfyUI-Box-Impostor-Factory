@@ -1,0 +1,31 @@
+{
+  "scope": "Full-frame manual review; no face crops or local warps.",
+  "attempts": [
+    {
+      "variant": "pz-clay-090",
+      "selected": false,
+      "observation": "Only face and hair are colored; dress, hands, legs and shoes remain clay. Reject as incomplete whole-body colorization."
+    },
+    {
+      "variant": "pz-materials-090",
+      "selected": false,
+      "observation": "Whole-body materials are colored, but head direction and hair placement shift toward the reference photograph and the rear heel shortens. Front-only native Box pilot shows internal facial mismatch and unsupported gray heel regions. Keep as rejected direct-clay pilot, not final."
+    },
+    {
+      "variant": "pz-materials-075",
+      "selected": false,
+      "observation": "Lower denoise preserves more of the clay render but only shoes are colored. The rest of the body remains predominantly gray. Reject as incomplete colorization."
+    },
+    {
+      "variant": "px-materials-090",
+      "selected": false,
+      "observation": "Side view colors forearms, legs and shoes but leaves the hair and upper back largely clay. Reject as incomplete colorization."
+    }
+  ],
+  "decision": "Prepare a complete color prior from the existing coarse model's UV texture on the unchanged Direct3D surface, then test Qwen refinement.",
+  "limitations": [
+    "Silhouette mask IoU cannot certify internal feature alignment.",
+    "The front pilot updates only +Z, so the other five gray faces are not evidence of six-face generation quality.",
+    "The lower-image-band support statistic is a coordinate band, not a semantic shoe segmentation."
+  ]
+}

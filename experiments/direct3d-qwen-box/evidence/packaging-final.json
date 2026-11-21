@@ -1,0 +1,574 @@
+{
+  "completed": true,
+  "readmeSha256": "3ae9de62ffb4028954c754906b93b43bfb9ae8ca20302866cde5b5c82cfb1a7f",
+  "branch": "experiment/direct3d-qwen-box-20261121",
+  "baseCommit": "331c768e68c3dcc2749be06e28f33de46e2bace2",
+  "readmeRelativeLinksValid": true,
+  "sourceArtifactsRemainByteIdenticalToExecutedCopies": true,
+  "whitespaceCheck": {
+    "onlyFindings": "One extra blank line at EOF in three executed Python source files and the unmodified extracted document material.",
+    "retainedToPreserveRecordedBytes": [
+      "compare_boxes.py",
+      "compose_faces.py",
+      "encode_three.py",
+      "README.md.material.txt"
+    ]
+  },
+  "filesBeforeThisIndex": [
+    {
+      "path": "experiments/direct3d-qwen-box/README.md",
+      "bytes": 43679,
+      "sha256": "3ae9de62ffb4028954c754906b93b43bfb9ae8ca20302866cde5b5c82cfb1a7f"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/README.md.material.txt",
+      "bytes": 87597,
+      "sha256": "4c55aa43769ccbbe370fd2ef57b23d3e39c0d997b330e0ba78e359e46c83d982"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/apply_normal_revision.py",
+      "bytes": 16609,
+      "sha256": "46e0a8f71966f91b943a3db03925eef8007e0b8634d5ac861794790d8e92dbdc"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/capture_inspector.mjs",
+      "bytes": 15267,
+      "sha256": "a34b872abbad6b197b475692a06d3ade15681e52c55fd0b0c901d9202d7a1ab1"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/capture_top_bottom.mjs",
+      "bytes": 19163,
+      "sha256": "f1128355ace402dcc930c83e4353caa00a5197bb2130e4a9bad18fa721bd2a78"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/compare_boxes.py",
+      "bytes": 13971,
+      "sha256": "333099f104030663ad65bdb7a14b4d28cd8ca481661adc7a94f9627ce04b5b5e"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/compare_capture_alpha.py",
+      "bytes": 12379,
+      "sha256": "f85db40664b8e6259c52e9589cc2d01c662c76f3e25f2cd2969811d2ddd1347c"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/compare_top_bottom.py",
+      "bytes": 7721,
+      "sha256": "7ed122c179352c0779bf33158bf3479767d808fa965bc3e05bc7aa54ae658c91"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/compose_faces.py",
+      "bytes": 28336,
+      "sha256": "ca10a7373535664c3dd8b3a9289351a34e15865e2db0200f66e89a460d4faa1a"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/encode_comparison.py",
+      "bytes": 10696,
+      "sha256": "696b873a0eb9691d27e04d9b19d5b6172749cf15790bbb9970da23338a5447b4"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/encode_three.py",
+      "bytes": 17952,
+      "sha256": "95a5242e6d01285f545f489b2284f67ff7e919d06a706ae4bf8dde912625ed64"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/clay-evaluation.json",
+      "bytes": 6198,
+      "sha256": "94d6e6b339226100bcfcd0a648ea259422b987d23e0f989b051ef0f097db11f5"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/color-prior/baseline512/manifest.json",
+      "bytes": 13212,
+      "sha256": "e6e4dc0039029141fddc6655c9670a20dd6955b79bfb21bc114d2db601c13e50"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/color-prior/baseline512/qa/color-prior-13dcf86d0f78aab1.json",
+      "bytes": 28144,
+      "sha256": "109e3e9d5cdefaa5c196561451cd32c01eae3f7cd130de0e7e1d561462d35d94"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/color-prior/guides-unlit/nx/guide.json",
+      "bytes": 13002,
+      "sha256": "dd477148417c13a82e36b0f25437457a4ea5f2cb5387f44325e0e96e3adf1002"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/color-prior/guides-unlit/ny/guide.json",
+      "bytes": 13028,
+      "sha256": "040998e820c23290b1846a4d36f43b55960b8919dc227c5c2027ad05f64316d9"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/color-prior/guides-unlit/nz/guide.json",
+      "bytes": 12951,
+      "sha256": "b04e9bd204086b9ba418d7bb6af6bcfbe0c17514b42262e6051a669804b92140"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/color-prior/guides-unlit/px/guide.json",
+      "bytes": 13016,
+      "sha256": "75bac901d3ad3b6425c2cceea8043cc566e28c9181c5e5b9451742f1e473cd4a"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/color-prior/guides-unlit/py/guide.json",
+      "bytes": 12989,
+      "sha256": "fad993fb181fa72220affa6df27d0024d3bbd79c64e0ef919747d4ffcae88be3"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/color-prior/guides-unlit/pz/guide.json",
+      "bytes": 12944,
+      "sha256": "9d81e1abdfe48b41abe2b274de9cc65f2cacebd8157bbb767e16ed2bae6a9067"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/color-prior/guides-unlit/result.json",
+      "bytes": 14443,
+      "sha256": "f6e122391682bf28ae58e7e542648705758810127b066db27bc22a012a03f94b"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/color-prior/result.json",
+      "bytes": 15336,
+      "sha256": "a9ee75afaf15cbd296582ab5aa6d86f4e0b0263fc5874e3829826f83b38fffc9"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/document-review.json",
+      "bytes": 1050,
+      "sha256": "4d7eea1b91f18c870186452ec4cc31352441b3b5bab3ad2fb670e266ef150d75"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/alpha-240.json",
+      "bytes": 348868,
+      "sha256": "a8b81d03aac48767732969743dbba9fbb2aa11e4d3804468be6f37fbb8b87642"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/copy-index.json",
+      "bytes": 5135,
+      "sha256": "5b3dfd971884658650d220b000c886f31b15ee3cbd4be9d03fde1a70b6cd9339"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/encoding-summary.json",
+      "bytes": 7560,
+      "sha256": "e3e527dacf43ec69343cb4dcdd188e2e332b54d869ea94df25da53cef5502fa8"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/smooth-gray-verification.json",
+      "bytes": 134320,
+      "sha256": "3f0f85d677e8f4ae49ce815225a1e8cedee33eb6796b20b2ac709b921e5bbe2f"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/summary.json",
+      "bytes": 100187,
+      "sha256": "b0abc6740534847112600f51a22850effb33f8e0490916f6156acfdd27aad59b"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/three-column-capture-validation.json",
+      "bytes": 455329,
+      "sha256": "d20afb895844d8ab72f796fcfadf804a1469a4ad2c2f4730fdc850420f6d5807"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/three-columns.json",
+      "bytes": 573,
+      "sha256": "d6fb144b867e6da32fea1cddf4b1d9efbf2f43fff9538ee4f2bd3ce14f47af34"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/final-smooth-all6-090/top-bottom-comparison.json",
+      "bytes": 17581,
+      "sha256": "f4c3ecb74fce643946852b606daadfee7c3bde9d49b4bebaf7ddf3dd79b311f9"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/identity-canonical.json",
+      "bytes": 567,
+      "sha256": "ef8b2900c6d459bbec1b08e60fc13f81ecb5c5710f72194333c1dd60269efc5e"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/input-provenance.json",
+      "bytes": 1434,
+      "sha256": "25769b40364f9281e9dd6101baf22053b9115577f995aaf99379c06c8d941b6c"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/packaging-selected-six-addition.json",
+      "bytes": 4272,
+      "sha256": "193c35328335241fbf9cd2dfea572310b32aac02f8b4d7c40f88ba95b5d8385d"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/packaging.json",
+      "bytes": 26427,
+      "sha256": "abab23ec259617c0fdf7df788a9d08e4b435a55b911abc898bccc82ea78ad2ca"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/pilots/all6-flat-visual-inputs.json",
+      "bytes": 9053,
+      "sha256": "f37ec00ff6bdcaeb19bae5127119980a148055f3f766f74033ee0bf3e9dd03f5"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/pilots/all6-flat-visual-review.json",
+      "bytes": 4709,
+      "sha256": "1599c5f6b99b62149f167ee260730ae0f09723939b3ca51d45826fd0a1f40935"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/pilots/front-clay-pilot.json",
+      "bytes": 18413,
+      "sha256": "6c7ddf49f6f38a529eb7a93b6c09c5e2e33863a16666ff770e41558d12d0333b"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/pilots/front-prior-pilot.json",
+      "bytes": 19588,
+      "sha256": "5a40a67847ec21519e2868947857406a042c6bdbd41750e959ecb1fd161971fe"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/pilots/packaging.json",
+      "bytes": 1360,
+      "sha256": "7c637fcaf76cfa0d8d3a60ae67f6b22f90209d01dad9019253364073f9895bcd"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/prepared/baseline512/manifest.json",
+      "bytes": 13073,
+      "sha256": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/prepared/prepared.json",
+      "bytes": 8915,
+      "sha256": "211a370b8ca2c91b9b062bbd8dd87358f24a49e9e02608cae0040957256a82eb"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen-selected-six-summary.json",
+      "bytes": 10268,
+      "sha256": "77d46d23409be4be5ae7313e661967e7d75ef6fc874e6c81061010c09c144f3b"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/nx-prior-unlit-090/prepared.json",
+      "bytes": 5587,
+      "sha256": "5a48d58bb4c13e1ea53ac508aa592226db26db74cdac784a337a4027e9d7e4e8"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/nx-prior-unlit-090/prompt.json",
+      "bytes": 4804,
+      "sha256": "d08dd5e70c4f9c2daa3306fc16bdf4c4c9c7922319a0b06c9dab934b4ee8fea8"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/nx-prior-unlit-090/result.json",
+      "bytes": 4249,
+      "sha256": "15e2d75ef954f7d3e62ef37501169f0bf4f2a1830773644abb7eac0f4fee2a10"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/ny-prior-unlit-090/prepared.json",
+      "bytes": 5789,
+      "sha256": "b159f71dc15f7582abbd79e6dc8434cf2148c91a0270f66af5506bc808b7f22c"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/ny-prior-unlit-090/prompt.json",
+      "bytes": 5006,
+      "sha256": "d316c3c49671221ed7e18d93ead8c913985e947123b39c20ae6dcb901757a4df"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/ny-prior-unlit-090/result.json",
+      "bytes": 4451,
+      "sha256": "eb45ec8c31ba83d37d4e2dfbc31ced9d8757cb96c834ccaee63a7b1b17c0e0f7"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/nz-prior-unlit-090/prepared.json",
+      "bytes": 5616,
+      "sha256": "751ef412cd692cb254e7e040d60dafca0f5222a2c42ca96da8b37bff9081884d"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/nz-prior-unlit-090/prompt.json",
+      "bytes": 4833,
+      "sha256": "a408a5a6fd2c2f09972702fcd213e58a99f20fe669417434f7a7012495b949ba"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/nz-prior-unlit-090/result.json",
+      "bytes": 4278,
+      "sha256": "380f5048c249fdc71e95f25019abaa72fc8d4f64f0b95474d10ea2a5e1f50bae"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/px-materials-090/prepared.json",
+      "bytes": 5479,
+      "sha256": "61dce9b1a852578837fd3ec262c1f4c9d5199a65f0fe6495851275769d73d055"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/px-materials-090/prompt.json",
+      "bytes": 4724,
+      "sha256": "4d71da98bd9bd0d15b5739c37436a3aabc9fa33b98e5485cde7fd6f547e8d3d5"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/px-materials-090/result.json",
+      "bytes": 4173,
+      "sha256": "0789e52f755f56bd5f8f230606b318831616fcb7e28f45775c48eda18ee84b6e"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/px-prior-unlit-090/prepared.json",
+      "bytes": 5584,
+      "sha256": "5ffcce699ddce07da8fa1d3c3494fff625fe8691b209c3dbf70303434b756a9b"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/px-prior-unlit-090/prompt.json",
+      "bytes": 4801,
+      "sha256": "1eea579079fc92722946fd074a3c84cb0566cdb8f9a896c224bf13a7dc01f53e"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/px-prior-unlit-090/result.json",
+      "bytes": 4246,
+      "sha256": "15688890540b2201950ea8fa21060e5227d3e6dd1f63cb145d8b29cb9dee9325"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/py-prior-unlit-090/prepared.json",
+      "bytes": 5712,
+      "sha256": "ed6d83827e2739a63a94f6a8409a73ed65bfcc42f4d5ecefd008a435807ef1ec"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/py-prior-unlit-090/prompt.json",
+      "bytes": 4929,
+      "sha256": "39bb47cbe210166233dcd2e7195f7450881042d6246e09980285125ee585f16a"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/py-prior-unlit-090/result.json",
+      "bytes": 4374,
+      "sha256": "3a2c8bceb280b6044a73f43de685b338b7e7cddf31e59a2b2054c1c766874c9b"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-clay-090/prepared.json",
+      "bytes": 5292,
+      "sha256": "d0871f699cbc3ea0c80bc5d49de6957749f5ea07b45ec73e25abfdad3c6ce015"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-clay-090/prompt.json",
+      "bytes": 4705,
+      "sha256": "682ab443b4f00ee92fb4994111b8745fad808cd2beb73da41b4853d9afec0e21"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-clay-090/result.json",
+      "bytes": 3936,
+      "sha256": "423a0b953f8efdfc8705290a3d5e1f6ed94e44b93a82a75471eec343762380c8"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-materials-075/prepared.json",
+      "bytes": 5402,
+      "sha256": "8ad8dfd141b47f21bcd169772a51355e528668e78b849bba5f78fdf5eaa5609d"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-materials-075/prompt.json",
+      "bytes": 4642,
+      "sha256": "eb3de67d4467cdc608341410a7276f74a03d84e44d795e4a13aed9557e4758b6"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-materials-075/result.json",
+      "bytes": 4095,
+      "sha256": "b52bba0a9bba5266d13f11f570f4bc2477a7a1dc7f52b8c9fea7e90ba6e47dde"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-materials-090/prepared.json",
+      "bytes": 5400,
+      "sha256": "378ccd3b6bf024522aba36c293d3947f519c03384e60cc6a92823da72c59718a"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-materials-090/prompt.json",
+      "bytes": 4641,
+      "sha256": "349a8ed5b4ff5b5fc171ead06f69774ea6b36ff7159b7ebdd38f08fef5df5b1e"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-materials-090/result.json",
+      "bytes": 4094,
+      "sha256": "53d8fcfbb107acce0a48aa98f143d8fcb53fe316c2fd15c1e0c7dceea41e7dad"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-prior-unlit-075/prepared.json",
+      "bytes": 5528,
+      "sha256": "080b1987b0e46d7cffe39818faa544e089ae97fb036e4ac5ff1107f5ec4eb69a"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-prior-unlit-075/prompt.json",
+      "bytes": 4744,
+      "sha256": "60af9ce47be3c561e5de9fcc9d638567bafb009460fce31a6858d2e288e121cd"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-prior-unlit-075/result.json",
+      "bytes": 4189,
+      "sha256": "a1ed7ade129a091520adab5d1755e1994e48b48c3cfb3039fa4da93b719a9a19"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-prior-unlit-090/prepared.json",
+      "bytes": 5526,
+      "sha256": "d91270bcee3ac317752989237876d03d88b321de7c1301b0120797102eb2a22c"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-prior-unlit-090/prompt.json",
+      "bytes": 4743,
+      "sha256": "d2c35ad6e2db480586c80e78051b9041b199809abef6293808e2ebd87a92ad26"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/qwen/pz-prior-unlit-090/result.json",
+      "bytes": 4188,
+      "sha256": "69bc84a9dc27048447fe1814af446ee3db04b70f49d23df30f08c47c4fc6c2dd"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/review-clay-input.json",
+      "bytes": 1632,
+      "sha256": "b6cb77e18e1e04fa80b71e52764f95d1c903c02fec4e986a35cd82cdac6a929a"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/all6-flat-smooth-sparse-comparison.json",
+      "bytes": 6882,
+      "sha256": "be7e44ab2d0c8e242cc736883da6633295e53e6b3ca53c8c289e936cba7846c2"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/all6-smooth-native-comparison.json",
+      "bytes": 4732,
+      "sha256": "05a032391d5595042ecc7d225a384b4a65158dea925ab826f8e32ac620547271"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/all6-smooth-sparse-capture-execution.json",
+      "bytes": 1465,
+      "sha256": "e2f3d1ddc9986dc9f3f8fd5b065a5518ff31b14039c53ac4708e14d23bc6ca5e"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/all6-smooth-sparse-capture.json",
+      "bytes": 23605,
+      "sha256": "d6ba5b0797fea3031c132208fc1db783773021830e9361eae3125dc99fea0c51"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/all6-smooth-viewer.json",
+      "bytes": 5375,
+      "sha256": "35977a48c32a94c9c88d15edcbd38b345c910dc6ba40052d76acd45921845abc"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/bake-execution.json",
+      "bytes": 1150,
+      "sha256": "b71c69c98727acc1d90eea13559c76ffb6165f7cd16690059653c6ffeee17663"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/baseline-native-manifest.json",
+      "bytes": 12543,
+      "sha256": "f7c86b4591cddea531560e03e749cceb9a1173808ddb49c6a12775b1bf0a4445"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/guides-unlit-result.json",
+      "bytes": 19513,
+      "sha256": "84b9437c8c110cb91cf56dcdacadd0d7539eaf7e99116045aa4dfb76ae878c31"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/guides-unlit/nx/guide.json",
+      "bytes": 16336,
+      "sha256": "f0eac733c7f7c6191217a15ea29c4bbd092f6c7ab221dee46742bffeea7ea93c"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/guides-unlit/ny/guide.json",
+      "bytes": 16362,
+      "sha256": "7376289c93f432a78744f08dd6cc1994e0753a653e250507af2fc38301554831"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/guides-unlit/nz/guide.json",
+      "bytes": 16285,
+      "sha256": "db812794eb36311557269f9623e5268e77e39e4ca513239260f864babe3049ac"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/guides-unlit/px/guide.json",
+      "bytes": 16350,
+      "sha256": "fa81bde6988552637de87e64a1d62c107d76b398c8f0599985eca1ac7d56e8bd"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/guides-unlit/py/guide.json",
+      "bytes": 16323,
+      "sha256": "d4734297a09f883e62c0700658bb135d686b131fe0bf35eaa988a70f1cb7dc07"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/guides-unlit/pz/guide.json",
+      "bytes": 16278,
+      "sha256": "42b41de819ea8828ce8e112d3d5dcdb89e1afe67e955b9b4bbc26aec9906d682"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/identity-canonical.json",
+      "bytes": 595,
+      "sha256": "eaa5927f2cce68e5b59d8b522a25fbcaa03cb1be829dbee7162d6e8d73db794e"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/native-comparison.json",
+      "bytes": 4794,
+      "sha256": "c34031eb493fdefeac628ce7f7fb60ebeeb95599cfbc562088721de8075bd0f7"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/native-manifest.json",
+      "bytes": 12543,
+      "sha256": "e6cc1ecbc28ff93ef212d1225af1f06be84cfa29478a07e2843c7050ef7802ee"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/normal-render-rgb-mae.json",
+      "bytes": 3167,
+      "sha256": "e0b148bea5286f4391fb6cbc86d3b1cab9f700858ad27372dbbc2a68c2e9dd4d"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/normal-revision-result.json",
+      "bytes": 18590,
+      "sha256": "3138260abd651a3fb78ddcd0a4808d2ee38234803710f84531a4f4b8762d2fad"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/prepare-verification.json",
+      "bytes": 2844,
+      "sha256": "08a613a0589195a16bcfffffd86e66e40aab12c50edce4649a7f1533955b73ff"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/revision-gray-manifest.json",
+      "bytes": 13205,
+      "sha256": "471d25a9b8f504368f12ac459d367eadf51e2bb2101b76ec886e997e73660e50"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/revision-gray-qa.json",
+      "bytes": 5881,
+      "sha256": "aa3092c0dfe32ae104953abb01ebfffee719aaece1254adfa017ff3929cd9719"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/revision-prior-manifest.json",
+      "bytes": 13205,
+      "sha256": "556b555829562c9cec35f97aa59e438eefdbd36f6619c4f1043b985c86568c87"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/revision-prior-qa.json",
+      "bytes": 6108,
+      "sha256": "8d7af72eb0532221739c4e319c54647d3e39f0d0118f1162179bec972305d62a"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/smooth-gray-dense240-execution.json",
+      "bytes": 1695,
+      "sha256": "f91599ef06da05cf11b0fd495706118be92e5f4cf20cd64030eadd61118ca08e"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/smooth-gray-dense240-verification.json",
+      "bytes": 134320,
+      "sha256": "3f0f85d677e8f4ae49ce815225a1e8cedee33eb6796b20b2ac709b921e5bbe2f"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/viewer-smooth-gray.json",
+      "bytes": 3877,
+      "sha256": "2636165d3ee91fdb66d4b05e7ac4bd73b2e7492d8f6a10a4884b48380e0cbb6f"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/evidence/smooth-normals/viewer-smooth-prior.json",
+      "bytes": 4002,
+      "sha256": "b88046f169788ba4f1ae9db1d0670be33f3b9aec957a5b87e365d558cc5d6c97"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/prepare_color_prior.py",
+      "bytes": 23330,
+      "sha256": "51dc1805d25629ae6b9995af5751907b4a4a73b6096fa550368f5f09b95e64a0"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/prepare_mesh_box.py",
+      "bytes": 17541,
+      "sha256": "1a11567411ca0c7502d98125c7580a31cd985867a65baedad7f7cf19b5c2af90"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/prepare_smooth_normals.py",
+      "bytes": 15846,
+      "sha256": "375a6d1ae59aa5e86ff990c6b85db4b38ceb99a119ff7ed45f34eceda1f978ab"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/qwen_success_template.json",
+      "bytes": 4444,
+      "sha256": "7c3d96f0ea0b7485f130ecd847cfe1bd78e4a09effa4864a10700ffec2c04bce"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/run_qwen_face.py",
+      "bytes": 22476,
+      "sha256": "4cf769b1d3ecc695d11324d32637f1df1deeaae251046f314e94d9aa93898698"
+    },
+    {
+      "path": "experiments/direct3d-qwen-box/select_guide_rgb.py",
+      "bytes": 5228,
+      "sha256": "920c2ef29fc38fc7a1c3db8e99d67ed45ecb9560c4a47759f302e055a8cad153"
+    }
+  ]
+}

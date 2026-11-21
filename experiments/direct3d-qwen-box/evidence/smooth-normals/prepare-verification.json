@@ -1,0 +1,74 @@
+{
+  "completed": true,
+  "source": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/rgb1024/canonical.glb",
+    "bytes": 27002988,
+    "sha256": "d7f5e2eb289a4565815782165486485cb9a161094695c1786141c81aea6064ee"
+  },
+  "output": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/canonical.smooth-normals.glb",
+    "bytes": 36003860,
+    "sha256": "7d71a13f73b15d99a030b453a2c6c8954c9c17646cc47b406bc6048711e5171d"
+  },
+  "identityMeta": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/smooth-normals/identity-canonical.json",
+    "bytes": 595,
+    "sha256": "eaa5927f2cce68e5b59d8b522a25fbcaa03cb1be829dbee7162d6e8d73db794e"
+  },
+  "helper": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/prepare_smooth_normals.py",
+    "bytes": 15846,
+    "sha256": "375a6d1ae59aa5e86ff990c6b85db4b38ceb99a119ff7ed45f34eceda1f978ab"
+  },
+  "inspectorScript": {
+    "path": "/home/dev/Projects/box-impostor-lab/third_party/3D-Inspector-skills/skills/3d-inspector/scripts/build_viewer.py",
+    "bytes": 37806,
+    "sha256": "ed0d642c76e73b4acdec5a890d3ed82612949ea977b72ec85cfc76b623e3130d"
+  },
+  "trimeshVersion": "5.2.1",
+  "normalMethod": "Official Inspector: trimesh.load(force='scene', process=False).geometry[only].vertex_normals; corner-angle weighting; identity normal matrix; float64 re-unitize; float32 little-endian",
+  "positionsAndIndices": {
+    "POSITION": {
+      "rawBytesEqual": true,
+      "sha256": "8715015e2d5373d7f4d20b1dc2e698658bb0a3ca0a49ef43a9fe77bcb43a9147",
+      "count": 750060,
+      "dtype": "float32"
+    },
+    "indices": {
+      "rawBytesEqual": true,
+      "sha256": "c544ea7d727fe298476a3ca381f7a0ae4f42d9ff00595878973e3df04663dd6b",
+      "count": 4500372,
+      "dtype": "uint32"
+    }
+  },
+  "sceneJson": {
+    "scene": {
+      "rawJsonBytesEqual": true,
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    "scenes": {
+      "rawJsonBytesEqual": true,
+      "sha256": "09a90a0a479492a2a12bd40b28da366ef440490071c092a6b6f971267867a454"
+    },
+    "nodes": {
+      "rawJsonBytesEqual": true,
+      "sha256": "03c76ac2d01cadd2d4c1687e3bb232b9b5d44ef8c89e924b0de766582d920d45"
+    }
+  },
+  "originalBinPrefix": {
+    "bytes": 27002208,
+    "sha256": "3a57656b7ed8027916ef212fb804392b5b3630494ca2c0973d73f9e89e8474b0",
+    "equal": true
+  },
+  "originalDocumentUnchangedExceptNormalAdditionAndBufferLength": true,
+  "vertices": 750060,
+  "triangles": 1500124,
+  "normalData": {
+    "sha256": "d81eeb6d139f59e186d8ff836dc47cf31a945b9378638836c0a148e3a17c6c2b",
+    "bytes": 9000720,
+    "zeroLengthCount": 0,
+    "minLength": 0.9999999514809682,
+    "maxLength": 1.0000000502189228
+  },
+  "elapsedSeconds": 1.8863960360176861
+}

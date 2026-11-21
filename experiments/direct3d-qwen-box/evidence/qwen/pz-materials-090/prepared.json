@@ -1,0 +1,107 @@
+{
+  "case": "Direct3D-V3 Box face colorization",
+  "face": "+Z",
+  "faceSlug": "pz",
+  "sourceTemplate": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/scripts/qwen_success_template.json",
+  "sourceTemplateSha256": "7c3d96f0ea0b7485f130ecd847cfe1bd78e4a09effa4864a10700ffec2c04bce",
+  "sourceSuccessfulPromptId": "1f0e2f3a-6651-4db2-89e6-c8e956fa740a",
+  "inputs": {
+    "target-color.png": {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/guides/pz/rgb.png",
+      "comfyInput": "/home/dev/Projects/box-impostor-lab/ComfyUI/input/direct3d-qwen-box-20261121/pz-materials-090/target-color.png",
+      "sha256": "e4396bd08ac03df305b022719ea9c2fc3b50bcfba98cc0c11effe64e37b8d1b7",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "target-depth.png": {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/guides/pz/depth-512.png",
+      "comfyInput": "/home/dev/Projects/box-impostor-lab/ComfyUI/input/direct3d-qwen-box-20261121/pz-materials-090/target-depth.png",
+      "sha256": "01bcc73ed12b1a5501398bccbd4b6049f8b31ba0587ceb9093ae56615411ef08",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGB"
+    },
+    "original.png": {
+      "source": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/inputs/source-original.png",
+      "comfyInput": "/home/dev/Projects/box-impostor-lab/ComfyUI/input/direct3d-qwen-box-20261121/pz-materials-090/original.png",
+      "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB"
+    }
+  },
+  "inputOrder": [
+    "target full-view RGB",
+    "original reference photograph",
+    "target depth"
+  ],
+  "size": 1024,
+  "depthSize": 512,
+  "textEncodeResolution": 0,
+  "steps": 10,
+  "cfg": 3,
+  "seed": 2026113031,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "cache": {
+    "device": "cpu",
+    "dtype": "int8"
+  },
+  "loraStrength": 0.0,
+  "changesFromSuccessful2K": [
+    "Image 1 is 1024 square instead of 2048 square",
+    "Face-specific Direct3D surface-colorization prompt replaces the camera-change prompt",
+    "New target RGB/depth, frozen input paths, and output prefixes",
+    "AnyAngle LoRA strength is 0.0",
+    "VAEEncode target RGB is the initial sampling latent instead of zeros",
+    "Sampler denoise is 0.9",
+    "Sampler starts from the target full-view RGB rather than an empty latent"
+  ],
+  "unchanged": [
+    "1024 square original photograph",
+    "512 square depth reference size",
+    "reference order",
+    "resolution=0 preserves each reference size",
+    "10 steps, CFG 3, seed",
+    "base model, text encoder, VAE, and CPU int8 KV cache",
+    "BiRefNet output-mask branch"
+  ],
+  "server": "http://127.0.0.1:8198",
+  "profile": "anchored",
+  "runnerSha256": "4cf769b1d3ecc695d11324d32637f1df1deeaae251046f314e94d9aa93898698",
+  "defaults": {
+    "profile": "anchored",
+    "denoise": 0.9,
+    "loraStrength": 0.0,
+    "size": 1024,
+    "steps": 10,
+    "cfg": 3,
+    "seed": 2026113031,
+    "sampler": "euler",
+    "scheduler": "simple"
+  },
+  "prompt": "Convert the ENTIRE untextured 3D render in image 1 into a fully textured, realistic COLOR render of the woman in image 2. Color every visible part from head to shoes. Image 1 is the exact layout: keep its camera, projection, body pose, head direction, silhouette, proportions, framing, limb positions and gaps at the same image coordinates. Image 2 supplies the materials and colors only. Apply blonde hair strands to all hair; warm natural skin to the face, neck, exposed forearms, both hands and fingers, and ALL visible legs; gray-and-white heathered KNIT FABRIC with clearly visible fine textile detail to the fitted three-quarter-sleeve dress; BLACK suede and laces to the closed-toe ankle shoes, with tan wooden heels and tan sole edges. The hands and legs must be skin-colored, and the shoes must be black: do not leave these surfaces as gray clay. The entire dress must have knitted fabric texture rather than smooth clay. Retain the original surface shading and shape, but replace every unpainted material. This is the +Z front view; keep the head orientation and show only the facial features visible in image 1. Image 3 is matching depth, white nearer and black background, and supplies geometry only. Keep the uniform neutral gray background and the complete uncropped frame. Do not rotate, zoom, move limbs, fill background gaps or add objects, text or panels.",
+  "promptSource": {
+    "kind": "file",
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/qwen/pz-materials-090.prompt.txt",
+    "sha256": "5061eda30c1bca40fe3926bf64c178c8eb5a13bc09e08731c04078957bb45bb9"
+  },
+  "denoise": 0.9,
+  "initialLatent": "VAE-encoded target RGB",
+  "targetAlpha": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/guides/pz/alpha.npy",
+    "sha256": "ad3f795f520648374745b15a7435ecdcc67657a856feec26d137090d8a4568f1",
+    "usage": "Registration/QA only; not fed to Qwen and never replaces Box alpha"
+  },
+  "boxManifest": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-qwen-box-20261121/prepared/baseline512/manifest.json",
+    "sha256": "0fcd3e3d57f75aa35f8ec07af8541dca0c0dfe56167b49fef65f373533fd88ba"
+  }
+}
