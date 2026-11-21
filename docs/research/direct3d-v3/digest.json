@@ -1,0 +1,151 @@
+{
+  "title": "Direct3D-V3 公開版を試すための確認",
+  "question": "Direct3D-V3を既存の人物画像とcoarse meshで試すために、公開機能、入力条件、単段実行経路を確認する。",
+  "stopped": "公開範囲・入力条件・単段ロードの根拠が固定した公式READMEとコードにそろったため、調査を区切って実行に進んだ。検索の網羅性や飽和は判定していない。",
+  "claims": [
+    {
+      "claim": "公開版はcoarse meshを受け取る形状生成で、初期形状とテクスチャの生成モデルは未公開。",
+      "status": "根拠あり"
+    },
+    {
+      "claim": "画像とcoarse meshの向きをそろえる。RGB/RGBAを受け付け、法線画像または白いクレイ画像が推奨される。",
+      "status": "根拠あり"
+    },
+    {
+      "claim": "from_single_fileで選んだ解像度の段だけをロードできる。",
+      "status": "根拠あり"
+    },
+    {
+      "claim": "max_tokensは占有パッチ数の上限で、超過時には形状を縮小して再ボクセル化する。",
+      "status": "根拠あり"
+    }
+  ],
+  "levels": {
+    "lv1": {
+      "summary": [
+        {
+          "text": "現在の公開版には参照画像と初期の立体形状が必要で、初期形状を作るモデルとテクスチャ生成モデルは未公開である。",
+          "quotes": [
+            {
+              "file": "Direct3D-V3-pipeline.py",
+              "line": 196,
+              "text": "if coarse_mesh is None:",
+              "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/pipeline.py#L196"
+            },
+            {
+              "file": "Direct3D-V3-README.md",
+              "line": 42,
+              "text": "not yet",
+              "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/README.md#L42"
+            },
+            {
+              "file": "Direct3D-V3-README.md",
+              "line": 35,
+              "text": "[ ]",
+              "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/README.md#L35"
+            }
+          ]
+        },
+        {
+          "text": "単段APIを使うと、指定した解像度の段だけで形状を生成できる。",
+          "quotes": [
+            {
+              "file": "Direct3D-V3-pipeline.py",
+              "line": 113,
+              "text": "stages=(resolution,),",
+              "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/pipeline.py#L113"
+            }
+          ]
+        }
+      ],
+      "terms": [],
+      "answers": []
+    },
+    "lv2": {
+      "summary": [
+        {
+          "text": "各段は入力メッシュから占有パッチを作り、その座標を画像条件付きの生成に使う。",
+          "quotes": [
+            {
+              "file": "Direct3D-V3-pipeline.py",
+              "line": 250,
+              "text": "coords = mesh_patches(vertices, faces, stage, patch_size, max_tokens)",
+              "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/pipeline.py#L250"
+            }
+          ]
+        },
+        {
+          "text": "画像特徴の計算後にはエンコーダーをCPUへ戻す処理がある。",
+          "quotes": [
+            {
+              "file": "Direct3D-V3-pipeline.py",
+              "line": 256,
+              "text": "self._encoder.cpu()",
+              "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/pipeline.py#L256"
+            }
+          ]
+        }
+      ],
+      "terms": [],
+      "answers": []
+    },
+    "lv3": {
+      "summary": [
+        {
+          "text": "単段ロードはstagesを指定解像度の1要素に限定し、パイプラインの計算dtypeにはfloat16またはbfloat16を受け付ける。",
+          "quotes": [
+            {
+              "file": "Direct3D-V3-pipeline.py",
+              "line": 113,
+              "text": "stages=(resolution,),",
+              "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/pipeline.py#L113"
+            },
+            {
+              "file": "Direct3D-V3-pipeline.py",
+              "line": 38,
+              "text": "torch.float16, torch.bfloat16",
+              "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/pipeline.py#L38"
+            }
+          ]
+        },
+        {
+          "text": "占有パッチがmax_tokensを超える間は、入力形状のスケールを0.99倍して再評価する。",
+          "quotes": [
+            {
+              "file": "Direct3D-V3-voxelization.py",
+              "line": 39,
+              "text": "if len(coords) <= max_tokens:",
+              "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/utils/voxelization.py#L39"
+            },
+            {
+              "file": "Direct3D-V3-voxelization.py",
+              "line": 44,
+              "text": "scale *= 0.99",
+              "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/utils/voxelization.py#L44"
+            }
+          ]
+        },
+        {
+          "text": "公開コードの画像特徴にはDINOv3の第4・8・16・32層が使われる。",
+          "quotes": [
+            {
+              "file": "Direct3D-V3-image_encoder.py",
+              "line": 6,
+              "text": "DINO_FEATURE_LAYERS = (4, 8, 16, 32)",
+              "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/models/image_encoder.py#L6"
+            }
+          ]
+        }
+      ],
+      "terms": [],
+      "answers": []
+    }
+  },
+  "people_places": [],
+  "unresolved": [
+    "この資料の目的は実行前提の確認。生成物の評価と計測値は実験報告を参照する。",
+    "公式の入力推奨から、今回の表示上の粒状感をRGB入力のせいだとは判断できない。",
+    "検索語を保持できたのは1バッチの3クエリと、そのバッチで返った7ヒット。別の検索枝の詳細履歴は欠けている。",
+    "ここに保存した一次資料はGitHub上の5ファイル。閲覧済みだが未保存のモデル・論文ページは、抜き書きの照合対象に含めていない。"
+  ]
+}

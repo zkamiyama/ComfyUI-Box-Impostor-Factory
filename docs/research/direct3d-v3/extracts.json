@@ -1,0 +1,95 @@
+{
+  "title": "Direct3D-V3 実行前提の原文確認",
+  "question": "Direct3D-V3を既存の人物画像とcoarse meshで試すために、公開機能、入力条件、単段実行経路を確認する。",
+  "stopped": "公開範囲・入力条件・単段ロードの根拠が固定した公式READMEとコードにそろったため、調査を区切って実行に進んだ。検索の網羅性や飽和は判定していない。",
+  "claims": [
+    {
+      "claim": "公開版はcoarse meshを受け取る形状生成で、初期形状とテクスチャの生成モデルは未公開。",
+      "status": "根拠あり",
+      "note": "調査時の固定commitにおける公開状態。初期形状モデルの未公開記述と、textureの未完了TODOを別々に確認した。",
+      "quotes": [
+        {
+          "file": "Direct3D-V3-README.md",
+          "line": 42,
+          "text": "not yet",
+          "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/README.md#L42"
+        },
+        {
+          "file": "Direct3D-V3-README.md",
+          "line": 35,
+          "text": "[ ]",
+          "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/README.md#L35"
+        },
+        {
+          "file": "Direct3D-V3-pipeline.py",
+          "line": 196,
+          "text": "if coarse_mesh is None:",
+          "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/pipeline.py#L196"
+        }
+      ]
+    },
+    {
+      "claim": "画像とcoarse meshの向きをそろえる。RGB/RGBAを受け付け、法線画像または白いクレイ画像が推奨される。",
+      "status": "根拠あり",
+      "note": "READMEの入力節とInference節。入力形式はOBJ、GLB、PLYまたはtrimesh.Trimesh、戻り値は正規化座標系のtrimesh.Trimesh。推奨入力の記述だけでは、今回の画質差の原因は決められない。",
+      "quotes": [
+        {
+          "file": "Direct3D-V3-README.md",
+          "line": 116,
+          "text": "RGB",
+          "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/README.md#L116"
+        },
+        {
+          "file": "Direct3D-V3-README.md",
+          "line": 48,
+          "text": "white clay",
+          "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/README.md#L48"
+        }
+      ]
+    },
+    {
+      "claim": "from_single_fileで選んだ解像度の段だけをロードできる。",
+      "status": "根拠あり",
+      "note": "公式単段APIがstagesを1要素にする。GPU使用量や所要時間は、このソース確認からは確定しない。",
+      "quotes": [
+        {
+          "file": "Direct3D-V3-pipeline.py",
+          "line": 113,
+          "text": "stages=(resolution,),",
+          "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/pipeline.py#L113"
+        },
+        {
+          "file": "Direct3D-V3-pipeline.py",
+          "line": 38,
+          "text": "torch.float16, torch.bfloat16",
+          "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/pipeline.py#L38"
+        }
+      ]
+    },
+    {
+      "claim": "max_tokensは占有パッチ数の上限で、超過時には形状を縮小して再ボクセル化する。",
+      "status": "根拠あり",
+      "note": "上限内になるまで0.99倍の縮小を繰り返すコードを確認。上限値を品質指標として扱わない。",
+      "quotes": [
+        {
+          "file": "Direct3D-V3-voxelization.py",
+          "line": 39,
+          "text": "if len(coords) <= max_tokens:",
+          "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/utils/voxelization.py#L39"
+        },
+        {
+          "file": "Direct3D-V3-voxelization.py",
+          "line": 44,
+          "text": "scale *= 0.99",
+          "url": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/direct3d/utils/voxelization.py#L44"
+        }
+      ]
+    }
+  ],
+  "disagreements": [],
+  "unreached": [
+    "第2検索枝の初期検索語と全ヒットは保持されていない。検索記録は完全ではない。",
+    "論文、プロジェクトページ、モデル設定・重みヘッダーは調査時に閲覧したが、この資料束には原文を保存していない。数値の再検証にはその記録が必要。",
+    "今回の出力の品質、負荷、表示上の問題の原因は別の実測記録で扱う。"
+  ]
+}

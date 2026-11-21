@@ -26,9 +26,9 @@
   },
   "normalization": {
     "center": [
-      0.0,
-      0.0,
-      0.0
+      0,
+      0,
+      0
     ],
     "inputToCenteredScale": 1.9,
     "inputToVoxelSpaceScale": 0.95,

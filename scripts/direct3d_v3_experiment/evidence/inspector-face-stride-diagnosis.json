@@ -1,0 +1,357 @@
+{
+  "method": "Read-only diagnostic; no geometry edits or rerendering performed",
+  "sourceMetrics": [
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/inputs/fullbody/coarse-original.glb",
+      "vertices": 49522,
+      "faces": 81180,
+      "windingConsistent": true,
+      "watertight": false,
+      "volume": 0.012585225980028805,
+      "euler": 146,
+      "degenerateFacesAreaLT1e-18": 0,
+      "coincidentVertices": 8934,
+      "duplicateFacesGeometric": 2,
+      "adjacentNormalCosPercentiles": [
+        -1,
+        0.9477924016062482,
+        0.982177790683514,
+        0.9991899225309524,
+        0.9999952467486933,
+        0.9999998105429444,
+        0.9999999999999138
+      ],
+      "adjacentNormalsNegativeFraction": 0.00008850810734263259,
+      "faceToVertexNormalCosPercentiles": [
+        -1.0913008087115636e-29,
+        0.9711298502510088,
+        0.9888422800238454,
+        0.9990761868485838,
+        0.999970074679703,
+        0.999998265640272,
+        1.0000000000000004
+      ],
+      "normalNormRange": [
+        0,
+        1.0000000000000002
+      ],
+      "edgeLengthPercentiles": [
+        0.0002721398473781272,
+        0.002444582313620706,
+        0.002958018983253629,
+        0.003759050623708868,
+        0.0053595912177654415,
+        0.006027066703759875,
+        0.006844459184641009
+      ],
+      "glb": {
+        "meshes": 1,
+        "nodes": 2,
+        "sceneNodes": [
+          [
+            1
+          ]
+        ],
+        "primitives": [
+          1
+        ],
+        "materials": [
+          {
+            "pbrMetallicRoughness": {
+              "metallicFactor": 1,
+              "roughnessFactor": 1,
+              "baseColorFactor": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "baseColorTexture": {
+                "index": 0,
+                "texCoord": 0
+              },
+              "metallicRoughnessTexture": {
+                "index": 1,
+                "texCoord": 0
+              }
+            },
+            "doubleSided": true,
+            "occlusionTexture": {
+              "index": 1,
+              "texCoord": 0,
+              "strength": 1
+            },
+            "normalTexture": {
+              "index": 2,
+              "texCoord": 0,
+              "scale": 1
+            }
+          }
+        ],
+        "textures": 3
+      },
+      "seconds": 0.26
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/rgb512/canonical.glb",
+      "vertices": 187579,
+      "faces": 375162,
+      "windingConsistent": true,
+      "watertight": true,
+      "volume": 0.01282352227044449,
+      "euler": -2,
+      "degenerateFacesAreaLT1e-18": 0,
+      "coincidentVertices": 0,
+      "duplicateFacesGeometric": 0,
+      "adjacentNormalCosPercentiles": [
+        -0.6515402110406132,
+        0.9562286467466186,
+        0.9923695070099442,
+        0.9998689326553875,
+        0.9999995253485404,
+        0.9999999829463139,
+        1.0000000000000002
+      ],
+      "adjacentNormalsNegativeFraction": 0.000031986181969389225,
+      "faceToVertexNormalCosPercentiles": [
+        -0.17454205697964376,
+        0.9704812928071733,
+        0.9932078329554066,
+        0.9997255796478224,
+        0.9999950710401284,
+        0.999999249462337,
+        0.9999999998035848
+      ],
+      "normalNormRange": [
+        0.9999999999999997,
+        1.0000000000000002
+      ],
+      "edgeLengthPercentiles": [
+        1.7258389867690954e-7,
+        0.00006368949729839382,
+        0.0003265301901805419,
+        0.002111458553453068,
+        0.003015225482579151,
+        0.0032357805466841656,
+        0.0050979396243368245
+      ],
+      "glb": {
+        "meshes": 1,
+        "nodes": 1,
+        "sceneNodes": [
+          [
+            0
+          ]
+        ],
+        "primitives": [
+          1
+        ],
+        "materials": [],
+        "textures": 0
+      },
+      "seconds": 0.92
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/rgb1024/canonical.glb",
+      "vertices": 750060,
+      "faces": 1500124,
+      "windingConsistent": true,
+      "watertight": true,
+      "volume": 0.01279147248118813,
+      "euler": -2,
+      "degenerateFacesAreaLT1e-18": 26,
+      "coincidentVertices": 13,
+      "duplicateFacesGeometric": 0,
+      "adjacentNormalCosPercentiles": [
+        -0.383848482640632,
+        0.9856072307595536,
+        0.9978966935801146,
+        0.999947745727478,
+        0.9999997612762468,
+        0.9999999911427346,
+        1.0000000000000004
+      ],
+      "adjacentNormalsNegativeFraction": 0.000002666446240444123,
+      "faceToVertexNormalCosPercentiles": [
+        0,
+        0.9883094427651763,
+        0.9981113195819564,
+        0.9999174866454987,
+        0.9999975219294913,
+        0.9999995940178998,
+        0.9999999999919114
+      ],
+      "normalNormRange": [
+        0.9999999999999997,
+        1.0000000000000002
+      ],
+      "edgeLengthPercentiles": [
+        0,
+        0.00003270255415006903,
+        0.00016474448549701881,
+        0.0010538303565538428,
+        0.001504619018688243,
+        0.0016136881199622262,
+        0.0017799793356210035
+      ],
+      "glb": {
+        "meshes": 1,
+        "nodes": 1,
+        "sceneNodes": [
+          [
+            0
+          ]
+        ],
+        "primitives": [
+          1
+        ],
+        "materials": [],
+        "textures": 0
+      },
+      "seconds": 3.99
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/preview512/before.neutral-gray.glb",
+      "glb": {
+        "meshes": 1,
+        "nodes": 1,
+        "sceneNodes": [
+          [
+            0
+          ]
+        ],
+        "primitives": [
+          1
+        ],
+        "materials": [
+          {
+            "pbrMetallicRoughness": {
+              "baseColorFactor": [
+                0.7058823529411765,
+                0.7058823529411765,
+                0.7058823529411765,
+                1
+              ],
+              "roughnessFactor": 1,
+              "metallicFactor": 0
+            },
+            "name": "Comparison neutral gray",
+            "alphaMode": "OPAQUE",
+            "doubleSided": true
+          }
+        ],
+        "textures": 0
+      }
+    },
+    {
+      "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/preview512/after.neutral-gray.glb",
+      "glb": {
+        "meshes": 1,
+        "nodes": 1,
+        "sceneNodes": [
+          [
+            0
+          ]
+        ],
+        "primitives": [
+          1
+        ],
+        "materials": [
+          {
+            "pbrMetallicRoughness": {
+              "baseColorFactor": [
+                0.7058823529411765,
+                0.7058823529411765,
+                0.7058823529411765,
+                1
+              ],
+              "roughnessFactor": 1,
+              "metallicFactor": 0
+            },
+            "name": "Comparison neutral gray",
+            "alphaMode": "OPAQUE",
+            "doubleSided": true
+          }
+        ],
+        "textures": 0
+      }
+    }
+  ],
+  "oldInspectorPayloads": [
+    {
+      "model": "before",
+      "payloadVertices": 49522,
+      "payloadFaces": 81180,
+      "originalCounts": {
+        "vertices": 49522,
+        "triangles": 81180
+      },
+      "watertight": false,
+      "euler": 146,
+      "normalNormP": [
+        0,
+        0.9999999403953552,
+        1,
+        1,
+        1
+      ],
+      "boundaryEdges": 17572
+    },
+    {
+      "model": "after",
+      "payloadVertices": 187556,
+      "payloadFaces": 187581,
+      "originalCounts": {
+        "vertices": 187579,
+        "triangles": 375162
+      },
+      "watertight": false,
+      "euler": -129600,
+      "normalNormP": [
+        0.9999999403953552,
+        0.9999999403953552,
+        1,
+        1,
+        1
+      ],
+      "boundaryEdges": 446731
+    }
+  ],
+  "observedImagePaths": [
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/preview512/Direct3DV3_Geometry_000.png",
+    "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/preview512/Direct3DV3_Geometry_090.png"
+  ],
+  "implementationEvidence": {
+    "source": "/home/dev/Projects/box-impostor-lab/third_party/3D-Inspector-skills/skills/3d-inspector/scripts/build_viewer.py",
+    "defaultMaxTriangles": 250000,
+    "logic": "if len(idx)//3 > limit: step = ceil(faceCount/limit); faces = idx.reshape(-1,3)[::step]",
+    "lines": [
+      240,
+      247
+    ],
+    "launcher": "view.py forwards all additional options to build_viewer.py"
+  },
+  "conclusion": {
+    "confirmed": "The old 512 viewer contains exactly half of the source faces; deterministic face stride produces holes.",
+    "sourceFaces512": 375162,
+    "oldRendererFaces512": 187581,
+    "sourceWatertight512": true,
+    "oldRendererWatertight512": false,
+    "oldRendererBoundaryEdges512": 446731,
+    "sourceMeshGeometryQuality": "Cannot be judged from the old preview with missing faces; rerender all faces before visual assessment.",
+    "notFound": [
+      "Broad mesh winding inconsistency",
+      "Duplicate generated faces",
+      "Non-unit generated vertex normals",
+      "Material texture/normal-map differences between the comparison copies"
+    ]
+  },
+  "correction": {
+    "scope": "Only the comparison adapter's official launcher arguments and read-only payload validation",
+    "viewerArgument": "--max-triangles SOURCE_FACE_COUNT",
+    "requiredGate": "Decoded payload triangles must equal source faces and original metadata triangles.",
+    "officialHTMLModified": false,
+    "originalGeometryModified": false,
+    "correctedAdapterSha256": "6751fa4c0726f24d50684dd84e21ecc4adac82dd52bd4617ed8a73c0a873dc86"
+  }
+}

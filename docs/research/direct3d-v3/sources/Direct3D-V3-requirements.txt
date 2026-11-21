@@ -1,0 +1,15 @@
+torch>=2.5
+torchvision
+numpy
+pillow
+trimesh>=4
+pyfqmr
+transformers>=4.56,<5
+huggingface-hub>=0.34
+safetensors
+scikit-image>=0.22,<0.27
+tqdm
+timm
+kornia
+einops
+

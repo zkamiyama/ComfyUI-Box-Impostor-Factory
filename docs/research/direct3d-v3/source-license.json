@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/DreamTechAI/Direct3D-V3",
+  "commit": "b93ad9c0a451729bb76b60ce69cbf076e76e95af",
+  "license": "MIT",
+  "licenseUrl": "https://github.com/DreamTechAI/Direct3D-V3/blob/b93ad9c0a451729bb76b60ce69cbf076e76e95af/LICENSE",
+  "licenseSha256": "8b825e286e604a8629157e2fdf05b40c304cba6dc3b69d3f95fbf104ee4c6df1",
+  "storedLicense": "sources/Direct3D-V3-LICENSE",
+  "appliesTo": [
+    "sources/Direct3D-V3-README.md",
+    "sources/Direct3D-V3-pipeline.py",
+    "sources/Direct3D-V3-image_encoder.py",
+    "sources/Direct3D-V3-voxelization.py",
+    "sources/Direct3D-V3-requirements.txt"
+  ],
+  "externalWeightsIncluded": false
+}

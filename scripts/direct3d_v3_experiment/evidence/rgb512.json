@@ -26,7 +26,7 @@
   "settings": {
     "resolution": 512,
     "steps": 15,
-    "guidanceScale": 4.0,
+    "guidanceScale": 4,
     "seed": 46,
     "maxTokens": 150000,
     "targetFaces": 2000000,
@@ -167,11 +167,11 @@
   "generationSeconds": 7.263703827979043,
   "normalization": {
     "center": [
-      0.0,
-      0.0,
-      0.0
+      0,
+      0,
+      0
     ],
-    "inputExtent": 1.0,
+    "inputExtent": 1,
     "tokenScale": 0.9999999874516537,
     "nativeToInputScale": 1.0526315921561542,
     "noAdditionalRotation": true
@@ -199,11 +199,11 @@
     "appearance": "Geometry only; Direct3D-V3 texture generation is not released."
   },
   "gpuMemory": {
-    "sampledWholeDevicePeakMiB": 10362.0,
+    "sampledWholeDevicePeakMiB": 10362,
     "sampleCount": 137,
     "sampleIntervalMilliseconds": 200,
     "torchMaxAllocatedMiB": 5928.24853515625,
-    "torchMaxReservedMiB": 6910.0,
+    "torchMaxReservedMiB": 6910,
     "note": "nvidia-smi includes other processes and can miss shorter peaks; torch counters cover this process."
   },
   "wallSeconds": 30.803408659005072

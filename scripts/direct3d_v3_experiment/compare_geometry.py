@@ -15,6 +15,7 @@ No 3D inference is performed. --prepare-only builds the models and viewers only.
 from __future__ import annotations
 
 import argparse
+import base64
 import hashlib
 import json
 import os
@@ -23,6 +24,7 @@ import re
 import subprocess
 import sys
 import time
+import zlib
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -56,6 +58,44 @@ def sha(path: Path) -> str:
 def write_json(path: Path, data: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+
+
+def verify_viewer_face_count(html: Path, source_faces: int) -> dict:
+    """Read the official payload and reject any automatic face-stride preview."""
+    content = html.read_text()
+    match = re.search(r'<script id="scene-payload"[^>]*>([\s\S]*?)</script>', content)
+    if match is None:
+        raise AssertionError('Official Inspector scene-payload was not found')
+    packed = base64.b64decode(match.group(1).strip(), validate=True)
+    payload = zlib.decompress(packed) if packed[:1] == b'\x78' else packed
+    scene = json.loads(payload)
+    meshes = scene.get('meshes', [])
+    if not meshes or scene.get('previewType') != 'mesh':
+        raise AssertionError('Expected explicit full-mesh payload for the gray GLB')
+    counts = []
+    vertices = 0
+    for mesh in meshes:
+        if mesh.get('primitive', 'triangles') == 'points':
+            raise AssertionError('A point preview is not a geometry comparison')
+        indices = base64.b64decode(mesh['indices'], validate=True)
+        positions = base64.b64decode(mesh['positions'], validate=True)
+        if len(indices) % 12 or len(positions) % 12:
+            raise AssertionError('Unexpected u32-triangle or f32-position payload size')
+        counts.append(len(indices) // 12)
+        vertices += len(positions) // 12
+    renderer_faces = sum(counts)
+    metadata_faces = scene.get('original', {}).get('triangles')
+    if renderer_faces != source_faces or metadata_faces != source_faces:
+        raise AssertionError(
+            f'Incomplete Inspector geometry: source={source_faces}, '
+            f'metadata={metadata_faces}, rendered={renderer_faces}. '
+            'The default per-mesh cap uses face stride and produces holes; '
+            'all source faces must be preserved for this comparison.')
+    return {'sourceFaceCount': source_faces, 'rendererFaceCount': renderer_faces,
+            'originalMetadataFaceCount': metadata_faces,
+            'rendererVertexCount': vertices, 'perMeshFaceCounts': counts,
+            'allSourceFacesPresent': True, 'faceStridePreview': False,
+            'verification': 'Decoded unchanged scene-payload; u32 index byte count / 12'}
 
 
 def run(command: list[str], log: Path, env: dict) -> dict:
@@ -300,6 +340,7 @@ def main() -> None:
             'extraModels': [{'key': key, 'label': label, 'path': str(path), 'sha256': sha(path)}
                             for key, label, path in inputs[2:]],
             'inspectorSha256': sha(args.inspector), 'captureSourceSha256': sha(args.capture_script),
+            'viewerFacePolicy': 'Pass source face count as max-triangles; require decoded payload equality',
             'material': MATERIAL}
     args.out.mkdir(parents=True, exist_ok=True)
     plan_path = args.out/'plan.json'
@@ -318,12 +359,16 @@ def main() -> None:
         record = gray_copy(source, args.out/f'{name}.neutral-gray.glb')
         record['label'] = label
         html = args.out/f'{name}.neutral-gray.inspector.html'
-        record['viewerCommand'] = run([args.python, str(args.inspector), record['grayMesh'], '-o', str(html)],
+        record['viewerCommand'] = run([args.python, str(args.inspector), record['grayMesh'],
+                                      '-o', str(html), '--max-triangles', str(record['faces'])],
                                       args.out/'logs'/f'{name}-view.log', env)
         if not html.is_file():
             raise AssertionError(f'Official view.py did not produce {html}')
         record['viewer'] = str(html)
         record['viewerSha256'] = sha(html)
+        record['viewerGeometry'] = verify_viewer_face_count(html, record['faces'])
+        record['sourceFaceCount'] = record['faces']
+        record['rendererFaceCount'] = record['viewerGeometry']['rendererFaceCount']
         models[name] = record
     low = np.min([models[k]['exportedBounds']['min'] for k in models], axis=0)
     high = np.max([models[k]['exportedBounds']['max'] for k in models], axis=0)

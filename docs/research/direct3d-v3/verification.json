@@ -1,0 +1,71 @@
+{
+  "imozuru": {
+    "report_quotes": 9,
+    "report_check": "OK",
+    "digest_sentences_have_verified_quotes": true,
+    "digest_check": "OK",
+    "query_records": 1,
+    "aggregate_batch_queries": 3,
+    "returned_hits": 7,
+    "history_complete": false,
+    "missing_history": "Initial query strings and all hits from direct3d_memory_review were not retained."
+  },
+  "yomiyasu": [
+    {
+      "file": "map.md",
+      "run_id": "20261121T063034Z-4ced87ae",
+      "attempt": 1,
+      "status": "executed",
+      "sha256": "00e766e4e9628e00b534718ef241397834c74e4c9f9986ec659e1150d430e887",
+      "lint": {
+        "error": 0,
+        "warn": 1,
+        "info": 0
+      },
+      "materials_candidates": 38,
+      "review": "行番号、ファイル名、固定commit、検索件数、日付などの記録情報と、英語コードからの日本語説明を確認。解像度は字義どおりの用語として保持。本文の追加修正なし。",
+      "verify": "official CLI returned executed and matched the final file"
+    },
+    {
+      "file": "log.md",
+      "run_id": "20261121T063034Z-b751f852",
+      "attempt": 1,
+      "status": "executed",
+      "sha256": "e65f070effd7825dd1b7bc9e4dbffe246c0234d79f8948ae8f0a67eb20493773",
+      "lint": {
+        "error": 0,
+        "warn": 0,
+        "info": 0
+      },
+      "materials_candidates": 22,
+      "review": "行番号、ファイル名、固定commit、検索件数、日付などの記録情報と、英語コードからの日本語説明を確認。解像度は字義どおりの用語として保持。本文の追加修正なし。",
+      "verify": "official CLI returned executed and matched the final file"
+    },
+    {
+      "file": "digest.prose.md",
+      "run_id": "20261121T063034Z-1b1985d1",
+      "attempt": 1,
+      "status": "executed",
+      "sha256": "775eee32001ef54753996b4d158ab791bda52f7d53b3c2baff50e52bc7930bf7",
+      "lint": {
+        "error": 0,
+        "warn": 3,
+        "info": 0
+      },
+      "materials_candidates": 11,
+      "review": "行番号、ファイル名、固定commit、検索件数、日付などの記録情報と、英語コードからの日本語説明を確認。解像度は字義どおりの用語として保持。本文の追加修正なし。",
+      "verify": "official CLI returned executed and matched the final file"
+    }
+  ],
+  "html": {
+    "auto_context_removed": {
+      "report.html": 9,
+      "digest.html": 11
+    },
+    "original_helpers_unchanged": true,
+    "source_links_and_line_anchors_retained": true,
+    "syntax_parse_completed": true,
+    "visual_render_check": false
+  },
+  "scope": "No new search, no model download, no experiment measurements authored in this task."
+}
