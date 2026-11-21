@@ -1,0 +1,50 @@
+{
+  "reference": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/inputs/fullbody/source-original.png",
+    "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+  },
+  "coarse": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/inputs/fullbody/coarse-original.glb",
+    "sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3",
+    "vertices": 49522,
+    "faces": 81180,
+    "bounds": [
+      [
+        -0.17959635205538715,
+        -0.5,
+        -0.17067711655172313
+      ],
+      [
+        0.17959635205538715,
+        0.5,
+        0.17067711655172313
+      ]
+    ],
+    "watertight": false,
+    "provenance": "Pixal3D int8 with TRELLIS.2 shape/texture VAE; original pre-Hi3D mesh",
+    "coordinates": "Y-up, front +Z, no additional rotation"
+  },
+  "normalization": {
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "inputToCenteredScale": 1.9,
+    "inputToVoxelSpaceScale": 0.95,
+    "nativeToInputScale": 1.0526315789473684,
+    "source": "Direct3D-V3 mesh_patches + voxelize + sparse_mc/get_mesh",
+    "note": "voxelize additionally multiplies by 0.5; sparse_mc returns coordinates in [-0.5, 0.5]. Additional token-cap scaling is measured during inference."
+  },
+  "imageEncoder": {
+    "directory": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/inputs/fullbody/dinov3-vith-local",
+    "weights": "/mnt/f/mnt/models/clip_vision/dino_v3_vit_h.safetensors",
+    "sha256": "a29ef35101a16966972a0d50732a6f3a608ff7cfffb2afa9bbe9007cb842cc53",
+    "stateDictStrictLoad": true,
+    "tensorCount": 615,
+    "parameters": 840592640,
+    "source": "https://huggingface.co/VAST-AI/TripoSplat/resolve/56a96e603204ec410c4da60c13ea4fa09a2169a9/clip_vision/dino_v3_vit_h.safetensors",
+    "configSource": "ComfyUI comfy/image_encoders/dino3.py DINOV3_VITH_CONFIG; Transformers 4.57.6",
+    "weightsModified": false
+  }
+}

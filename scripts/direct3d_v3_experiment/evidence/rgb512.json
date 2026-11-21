@@ -1,0 +1,210 @@
+{
+  "status": "success",
+  "sourceCommit": "b93ad9c0a451729bb76b60ce69cbf076e76e95af",
+  "modelRevision": "1f42e11da6efbc8cc0661c62132b0533c338e3d3",
+  "modelDirectory": "/mnt/f/_dev/box-impostor-lab/models/direct3d-v3-1f42e11",
+  "checkpoint": "/mnt/f/_dev/box-impostor-lab/models/direct3d-v3-1f42e11/shape_transformers_512/model.safetensors",
+  "inputImage": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/inputs/fullbody/source-original.png",
+    "sha256": "9d92ad97b34bb949b3aa555afed321b8dae427c0102c862b2afb96745b93390b"
+  },
+  "coarseMesh": {
+    "path": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/inputs/fullbody/coarse-original.glb",
+    "sha256": "8aac16b2d7125bc41f76990eb414c46dbd2e5d664f89267791d0151a3113a0b3"
+  },
+  "imageEncoder": {
+    "directory": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/inputs/fullbody/dinov3-vith-local",
+    "weights": "/mnt/f/mnt/models/clip_vision/dino_v3_vit_h.safetensors",
+    "sha256": "a29ef35101a16966972a0d50732a6f3a608ff7cfffb2afa9bbe9007cb842cc53",
+    "stateDictStrictLoad": true,
+    "tensorCount": 615,
+    "parameters": 840592640,
+    "source": "https://huggingface.co/VAST-AI/TripoSplat/resolve/56a96e603204ec410c4da60c13ea4fa09a2169a9/clip_vision/dino_v3_vit_h.safetensors",
+    "configSource": "ComfyUI comfy/image_encoders/dino3.py DINOV3_VITH_CONFIG; Transformers 4.57.6",
+    "weightsModified": false
+  },
+  "settings": {
+    "resolution": 512,
+    "steps": 15,
+    "guidanceScale": 4.0,
+    "seed": 46,
+    "maxTokens": 150000,
+    "targetFaces": 2000000,
+    "dtype": "float16",
+    "singleStage": true
+  },
+  "packages": {
+    "torch": "2.9.1+cu128",
+    "torchvision": "0.24.1+cu128",
+    "transformers": "4.57.6",
+    "flash-attn": "2.8.3",
+    "trimesh": "5.2.1",
+    "scikit-image": "0.26.0",
+    "safetensors": "0.8.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 4080",
+  "voxelizations": [
+    {
+      "resolution": 512,
+      "patchSize": 8,
+      "tokens": 3218,
+      "centeredBounds": [
+        [
+          -0.3412330746650696,
+          -0.949999988079071,
+          -0.3242865204811096
+        ],
+        [
+          0.3412330746650696,
+          0.949999988079071,
+          0.3242865204811096
+        ]
+      ],
+      "seconds": 0.02111228901776485
+    }
+  ],
+  "samplingProgress": [
+    {
+      "stage": 512,
+      "completed": 0,
+      "total": 15,
+      "elapsedSeconds": 25.653670272004092
+    },
+    {
+      "stage": 512,
+      "completed": 1,
+      "total": 15,
+      "elapsedSeconds": 26.81075902900193
+    },
+    {
+      "stage": 512,
+      "completed": 2,
+      "total": 15,
+      "elapsedSeconds": 27.056999671011
+    },
+    {
+      "stage": 512,
+      "completed": 3,
+      "total": 15,
+      "elapsedSeconds": 27.31093675000011
+    },
+    {
+      "stage": 512,
+      "completed": 4,
+      "total": 15,
+      "elapsedSeconds": 27.5644560130022
+    },
+    {
+      "stage": 512,
+      "completed": 5,
+      "total": 15,
+      "elapsedSeconds": 27.815776884992374
+    },
+    {
+      "stage": 512,
+      "completed": 6,
+      "total": 15,
+      "elapsedSeconds": 28.067854796012398
+    },
+    {
+      "stage": 512,
+      "completed": 7,
+      "total": 15,
+      "elapsedSeconds": 28.31944810799905
+    },
+    {
+      "stage": 512,
+      "completed": 8,
+      "total": 15,
+      "elapsedSeconds": 28.574598464998417
+    },
+    {
+      "stage": 512,
+      "completed": 9,
+      "total": 15,
+      "elapsedSeconds": 28.82861467899056
+    },
+    {
+      "stage": 512,
+      "completed": 10,
+      "total": 15,
+      "elapsedSeconds": 29.08716562698828
+    },
+    {
+      "stage": 512,
+      "completed": 11,
+      "total": 15,
+      "elapsedSeconds": 29.34283534801216
+    },
+    {
+      "stage": 512,
+      "completed": 12,
+      "total": 15,
+      "elapsedSeconds": 29.595863561000442
+    },
+    {
+      "stage": 512,
+      "completed": 13,
+      "total": 15,
+      "elapsedSeconds": 29.852871298004175
+    },
+    {
+      "stage": 512,
+      "completed": 14,
+      "total": 15,
+      "elapsedSeconds": 30.10922159900656
+    },
+    {
+      "stage": 512,
+      "completed": 15,
+      "total": 15,
+      "elapsedSeconds": 30.364440275996458
+    }
+  ],
+  "modelLoadSeconds": 6.716595753998263,
+  "foregroundSeconds": 14.500854590995004,
+  "foregroundSha256": "ddd02cec357147b680d14a101d2b63d966ce38aae9716ff09008aa61358dc543",
+  "generationSeconds": 7.263703827979043,
+  "normalization": {
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "inputExtent": 1.0,
+    "tokenScale": 0.9999999874516537,
+    "nativeToInputScale": 1.0526315921561542,
+    "noAdditionalRotation": true
+  },
+  "output": {
+    "raw": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/rgb512/generated-native.glb",
+    "rawSha256": "74b19c9a1e73e6801b25fb83c1c7e73b28b4167a1a301232eef37ca17bf33c2d",
+    "canonical": "/mnt/f/_dev/box-impostor-lab/experiments/direct3d-v3-20261121/rgb512/canonical.glb",
+    "canonicalSha256": "4d14593c0aed17d200b953c99fe8531f43cc33e765296bbea6b6d689d49d3893",
+    "vertices": 187579,
+    "faces": 375162,
+    "bounds": [
+      [
+        -0.1787260354032772,
+        -0.4989906423843615,
+        -0.17585089552842814
+      ],
+      [
+        0.17865833707430911,
+        0.5004822015822837,
+        0.1693591967301519
+      ]
+    ],
+    "watertight": true,
+    "appearance": "Geometry only; Direct3D-V3 texture generation is not released."
+  },
+  "gpuMemory": {
+    "sampledWholeDevicePeakMiB": 10362.0,
+    "sampleCount": 137,
+    "sampleIntervalMilliseconds": 200,
+    "torchMaxAllocatedMiB": 5928.24853515625,
+    "torchMaxReservedMiB": 6910.0,
+    "note": "nvidia-smi includes other processes and can miss shorter peaks; torch counters cover this process."
+  },
+  "wallSeconds": 30.803408659005072
+}
